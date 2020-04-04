@@ -44,6 +44,17 @@ class Manufacturer(models.Model):
         return self.name
 
 
+@python_2_unicode_compatible
+class Country(models.Model):
+    name = models.CharField(
+        _("Country of Origin"),
+        max_length=150,
+        unique=True
+    )
+
+    def __str__(self):
+        return self.name
+
 class ProductQuerySet(TranslatableQuerySet, PolymorphicQuerySet):
     pass
 
@@ -127,120 +138,6 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
 class ProductTranslation(TranslatedFieldsModel):
     master = models.ForeignKey(
         Product,
-        on_delete=models.CASCADE,
-        related_name='translations',
-        null=True,
-    )
-
-    caption = HTMLField(
-        verbose_name=_("Caption"),
-        configuration='CKEDITOR_SETTINGS_CAPTION',
-        help_text=_(
-            "Short description used in the catalog's list view of products."),
-    )
-
-    description = HTMLField(
-        verbose_name=_("Description"),
-        configuration='CKEDITOR_SETTINGS_DESCRIPTION',
-        help_text=_(
-            "Full description used in the catalog's detail view of Smart Cards."),
-    )
-
-    class Meta:
-        unique_together = [('language_code', 'master')]
-
-
-@python_2_unicode_compatible
-class SmartCard(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
-    product_name = models.CharField(
-        max_length=255,
-        verbose_name=_("Product Name"),
-    )
-
-    slug = models.SlugField(verbose_name=_("Slug"))
-
-    caption = TranslatedField()
-    description = TranslatedField()
-
-    # product properties
-    manufacturer = models.ForeignKey(
-        Manufacturer,
-        on_delete=models.CASCADE,
-        verbose_name=_("Manufacturer"),
-    )
-
-    # controlling the catalog
-    order = models.PositiveIntegerField(
-        _("Sort by"),
-        db_index=True,
-    )
-
-    cms_pages = models.ManyToManyField(
-        'cms.Page',
-        through=ProductPage,
-        help_text=_("Choose list view this product shall appear on."),
-    )
-
-    images = models.ManyToManyField(
-        'filer.Image',
-        through=ProductImage,
-    )
-
-    unit_price = MoneyField(
-        _("Unit price"),
-        decimal_places=3,
-        help_text=_("Net price for this product"),
-    )
-
-    card_type = models.CharField(
-        _("Card Type"),
-        choices=[2 * ('{}{}'.format(s, t),)
-                 for t in ['SD', 'SDXC', 'SDHC', 'SDHC II'] for s in ['', 'micro ']],
-        max_length=15,
-    )
-
-    speed = models.CharField(
-        _("Transfer Speed"),
-        choices=[(str(s), "{} MB/s".format(s))
-                 for s in [4, 20, 30, 40, 48, 80, 95, 280]],
-        max_length=8,
-    )
-
-    product_code = models.CharField(
-        _("Product code"),
-        max_length=255,
-        unique=True,
-    )
-
-    storage = models.PositiveIntegerField(
-        _("Storage Capacity"),
-        help_text=_("Storage capacity in GB"),
-    )
-
-    class Meta:
-        verbose_name = _("Smart Card")
-        verbose_name_plural = _("Smart Cards")
-        ordering = ['order']
-
-    # filter expression used to lookup for a product item using the Select2 widget
-    lookup_fields = ['product_code__startswith', 'product_name__icontains']
-
-    def get_price(self, request):
-        return self.unit_price
-
-    objects = ProductManager()
-
-    def __str__(self):
-        return self.product_name
-
-    @property
-    def sample_image(self):
-        return self.images.first()
-
-
-class SmartCardTranslation(TranslatedFieldsModel):
-    master = models.ForeignKey(
-        SmartCard,
         on_delete=models.CASCADE,
         related_name='translations',
         null=True,

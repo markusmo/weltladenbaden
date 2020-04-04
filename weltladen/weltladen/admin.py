@@ -11,7 +11,7 @@ from shop.models.defaults.order import Order
 from shop.admin.delivery import DeliveryOrderAdminMixin
 from adminsortable2.admin import SortableAdminMixin
 from shop.admin.product import CMSPageAsCategoryMixin, UnitPriceMixin, ProductImageInline, InvalidateProductCacheMixin
-from weltladen.models import Manufacturer, SmartCard, Product
+from weltladen.models import Manufacturer, Product#,SmartCard
 
 
 admin.site.site_header = "Weltladen Administration"
@@ -41,14 +41,14 @@ class ProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Translatable
             'fields': ['caption', 'description'],
         }),
         (_("Properties"), {
-            'fields': ['manufacturer', 'storage', 'card_type'],
+            'fields': ['manufacturer'],
         }),
     ]
     inlines = [ProductImageInline]
     prepopulated_fields = {'slug': ['product_name']}
     list_display = ['product_name', 'product_code', 'get_unit_price', 'active']
     search_fields = ['product_name']
-
+'''
 @admin.register(SmartCard)
 class SmartCardAdmin(InvalidateProductCacheMixin, SortableAdminMixin, TranslatableAdmin, CMSPageAsCategoryMixin, UnitPriceMixin, admin.ModelAdmin):
     fieldsets = [
@@ -70,3 +70,4 @@ class SmartCardAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Translatab
     prepopulated_fields = {'slug': ['product_name']}
     list_display = ['product_name', 'product_code', 'get_unit_price', 'active']
     search_fields = ['product_name']
+'''

@@ -10,7 +10,7 @@ from weltladen.search_indexes import myshop_search_index_classes
 
 class ProductDetailSerializer(ProductSerializer):
     class Meta(ProductSerializer.Meta):
-        fields = ['product_name', 'slug', 'unit_price', 'manufacturer', 'card_type', 'speed',
+        fields = ['product_name', 'slug', 'unit_price', 'manufacturer',
                   'product_code', 'storage']
 
 
