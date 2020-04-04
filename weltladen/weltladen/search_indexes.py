@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from haystack import indexes
 from shop.search.indexes import ProductIndex as ProductIndexBase
-from weltladen.models import SmartCard
+from weltladen.models import Product
 
 
 class ProductIndex(ProductIndexBase):
@@ -22,9 +22,9 @@ class ProductIndex(ProductIndexBase):
 myshop_search_index_classes = []
 
 
-class SmartCardIndex(ProductIndex, indexes.Indexable):
+class ProcuctIndex(ProductIndex, indexes.Indexable):
     def get_model(self):
-        return SmartCard
+        return
 
 
-myshop_search_index_classes.append(SmartCardIndex)
+myshop_search_index_classes.append(ProductIndex)
