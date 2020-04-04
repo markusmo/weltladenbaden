@@ -31,9 +31,15 @@
 			<p>{{ product.description|safe }} </p>
 			<ul class="list-group mb-3">
 				<li class="list-group-item d-flex">
-					<div class="w-50">{% trans "Herkunfsland" %}:</div>
-					<strong>Afrika</strong>
+					<div class="w-50">{% trans "Supplier" %}:</div>
+					<strong>{{ product.supplier }}</strong>
 				</li>
+				{% if product.country_of_origin %}
+				<li class="list-group-item d-flex">
+					<div class="w-50">{% trans "Country of Origin" %}:</div>
+					<strong>{{ product.country_of_origin }}</strong>
+				</li>
+				{% endif %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Manufacturer" %}:</div>
 					<strong>{{ product.manufacturer }}</strong>
