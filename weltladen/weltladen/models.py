@@ -55,6 +55,17 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
+@python_2_unicode_compatible
+class Supplier(models.Model):
+    name = models.CharField(
+        _("Supplier"),
+        max_length=150,
+        unique=True
+    )
+
+    def __str__(self):
+        return self.name
+
 
 class ProductQuerySet(TranslatableQuerySet, PolymorphicQuerySet):
     pass
@@ -83,7 +94,25 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
     manufacturer = models.ForeignKey(
         Manufacturer,
         on_delete=models.CASCADE,
-        verbose_name=_("Manufacturer")
+        verbose_name=_("Manufacturer"),
+        blank=True,
+        null=True,
+    )
+
+    supplier = models.ForeignKey(
+        Supplier,
+        on_delete=models.CASCADE,
+        verbose_name=_("Supplier"),
+        blank=True,
+        null=True,
+    )
+
+    country_of_origin = models.ForeignKey(
+        Country,
+        on_delete=models.CASCADE,
+        verbose_name=_("Country of Origin"),
+        blank=True,
+        null=True,
     )
 
     # controlling the catalog
@@ -113,6 +142,11 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
         _("Product code"),
         max_length=255,
         unique=True,
+    )
+
+    vegan = models.BooleanField(
+        _("Vegan"),
+        default=False
     )
 
     class Meta:
