@@ -44,16 +44,40 @@ class Manufacturer(models.Model):
         return self.name
 
 
+class CountryQuerySet(TranslatableQuerySet):
+    pass
+
+
+class CountryManager(TranslatableManager):
+    queryset_class=CountryQuerySet
+
+    def get_queryset(self):
+        qs = self.queryset_class(self.model, using=self._db)
+        return qs.prefetch_related('translations')
+
+
 @python_2_unicode_compatible
-class Country(models.Model):
-    name = models.CharField(
-        _("Country of Origin"),
-        max_length=150,
-        unique=True
-    )
+class Country(TranslatableModelMixin, models.Model):
+    name = TranslatedField()
+
+    objects = CountryManager()
 
     def __str__(self):
         return self.name
+
+
+class CountryTranslation(TranslatedFieldsModel):
+    master = models.ForeignKey(
+        Country,
+        on_delete=models.CASCADE,
+        related_name='translations',
+        null=True,
+    )
+
+    name = models.CharField(
+        _("Country"),
+        max_length=255,
+    )
 
 @python_2_unicode_compatible
 class Supplier(models.Model):

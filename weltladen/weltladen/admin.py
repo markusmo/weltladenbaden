@@ -25,9 +25,15 @@ class OrderAdmin(DeliveryOrderAdminMixin, OrderAdmin):
 
 admin.site.register(Manufacturer, admin.ModelAdmin)
 admin.site.register(Supplier, admin.ModelAdmin)
-admin.site.register(Country, admin.ModelAdmin)
 
 __all__ = ['customer']
+
+@admin.register(Country)
+class CountryAdmin(TranslatableAdmin):
+    fieldsets = [
+    (_("None"), {
+        'fields': ['name'],
+    })]
 
 @admin.register(Product)
 class ProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, TranslatableAdmin, CMSPageAsCategoryMixin, UnitPriceMixin, admin.ModelAdmin):
@@ -43,7 +49,7 @@ class ProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Translatable
             'fields': ['caption', 'description'],
         }),
         (_("Properties"), {
-            'fields': ['manufacturer', 'supplier', 'country_of_origin'],
+            'fields': ['manufacturer', 'supplier', 'country_of_origin', 'vegan'],
         }),
     ]
     inlines = [ProductImageInline]
