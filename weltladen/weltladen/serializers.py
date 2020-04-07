@@ -10,8 +10,20 @@ from weltladen.search_indexes import myshop_search_index_classes
 
 class ProductDetailSerializer(ProductSerializer):
     class Meta(ProductSerializer.Meta):
-        fields = ['product_name', 'slug', 'unit_price', 'supplier', 'vegan',
+        fields = ['product_name', 'slug', 'unit_price', 'vegan', 'supplier',
                   'manufacturer', 'country_of_origin', 'product_code']
+
+    def create(self, request, *args, **kwargs):
+        """
+        Create a new item in the cart.
+        """
+        import pdb; pdb.set_trace()
+        context = self.get_serializer_context()
+        item_serializer = self.item_serializer_class(context=context, data=request.data, label=self.serializer_label)
+        item_serializer.is_valid(raise_exception=True)
+        self.perform_create(item_serializer)
+        headers = self.get_success_headers(item_serializer.data)
+        return Response(item_serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class ProductSearchSerializer(BaseProductSearchSerializer):

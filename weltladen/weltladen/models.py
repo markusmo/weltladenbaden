@@ -79,6 +79,10 @@ class CountryTranslation(TranslatedFieldsModel):
         max_length=255,
     )
 
+    class Meta:
+        unique_together = [('language_code', 'master')]
+
+
 @python_2_unicode_compatible
 class Supplier(models.Model):
     name = models.CharField(
@@ -179,7 +183,7 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
         ordering = ['order']
 
     # filter expression used to lookup for a product item using the Select2 widget
-    lookup_fields = ['product_code__startswith', 'product_name__icontains']
+    lookup_fields = ('product_code__startswith', 'product_name__icontains')
 
     def get_price(self, request):
         return self.unit_price

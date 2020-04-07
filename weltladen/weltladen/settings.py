@@ -115,6 +115,7 @@ INSTALLED_APPS = [
     'parler',
     'post_office',
     'haystack',
+    'django_extensions',
     'shop',
     'weltladen',
 ]
@@ -627,7 +628,6 @@ SHOP_CART_MODIFIERS = [
     'shop.modifiers.defaults.DefaultCartModifier',
     'shop.modifiers.taxes.CartExcludedTaxModifier',
     'weltladen.modifiers.PostalShippingModifier',
-    'weltladen.modifiers.BicycleShippingModifier',
     'shop.payment.modifiers.PayInAdvanceModifier',
     'shop.shipping.modifiers.SelfCollectionModifier',
 ]
