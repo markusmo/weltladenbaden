@@ -40,6 +40,8 @@ class PostalShippingModifier(ShippingModifier):
             return
         # add a shipping flat fee
         amount = Money('5')
+        if cart.total >= 100:
+            amoount = Money('0')
         instance = {'label': _("Shipping costs"), 'amount': amount}
         cart.extra_rows[self.identifier] = ExtraCartRow(instance)
         cart.total += amount
