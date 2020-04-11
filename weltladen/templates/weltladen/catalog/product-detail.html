@@ -1,0 +1,63 @@
+{% extends "weltladen/pages/default.html" %}
+{% load static i18n cms_tags sekizai_tags sass_tags thumbnail  %}
+
+{% block title %}{{ product.product_name }}{% endblock %}
+
+{% block breadcrumb %}{% with extra_ance=product.product_name %}
+	{% include "shop/breadcrumb/default.html" %}
+{% endwith %}{% endblock %}
+
+{% block main-content %}
+{% include "shop/catalog/bsp-scrollpanel.tmpl.html" %}
+
+{% thumbnail product.images.first 250x250 crop as thumb %}
+<div class="container">
+	<div class="row">
+		<div class="col col-md-4 offset-sm-1">
+			<h1>{% render_model product "product_name" %}</h1>
+			<bsp-scrollpanel class="shop-product-detail">
+				<ul>
+					{% for img in product.images.all %}
+						<li>
+							<img width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ product.product_name }}" src="{{ img.url }}" alt="{{ product.product_name }}" />
+						</li>
+					{% endfor %}
+				</ul>
+			</bsp-scrollpanel>
+		</div>
+		<div class="col col-md-6">
+			<!-- include "Add to Cart" dialog box -->
+			{% include "shop/catalog/product-add2cart.html" with card_css_classes="mb-1" %}
+		</div>
+		<div class="col col-md-10 offset-md-1">
+			<details>
+				<summary style="font-size: 26px;">{% trans "Details" %}</summary>
+				<p>{{ product.description|safe }} </p>
+			</details>
+			<ul class="list-group mb-3">
+				<li class="list-group-item d-flex">
+					<div class="w-50">{% trans "Supplier" %}:</div>
+					<strong>{{ product.supplier }}</strong>
+				</li>
+				{% if product.country_of_origin %}
+				<li class="list-group-item d-flex">
+					<div class="w-50">{% trans "Country of Origin" %}:</div>
+					<strong>{{ product.country_of_origin }}</strong>
+				</li>
+				{% endif %}
+				<li class="list-group-item d-flex">
+					<div class="w-50">{% trans "Manufacturer" %}:</div>
+					<strong>{{ product.manufacturer }}</strong>
+				</li>
+				{% if product.vegan %}
+				<li class="list-group-item d-flex">
+					<div class="w-50">{% trans "Vegan" %}:</div>
+					<strong style='color: green;'><i class="fontaws-leaf"></i></strong>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
+</div>
+{% endblock main-content %}
