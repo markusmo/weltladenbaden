@@ -1,0 +1,15 @@
+*
+!poetry.lock
+!pyproject.toml
+!docker-files
+!weltladen
+!.coveragerc
+!.pylintrc
+!manage.py
+!package.json
+!Pipfile
+!README.md
+!requirements.txt
+!workdir
+!worker.py
+!wsgi.py
