@@ -15,6 +15,7 @@ from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenc
 from shop.models.defaults.cart import Cart
 from shop.models.defaults.cart_item import CartItem
 from shop.models.order import BaseOrderItem
+from shop.models.address import CountryField
 from shop.models.defaults.delivery import Delivery
 from shop.models.defaults.delivery_item import DeliveryItem
 from shop.models.defaults.order import Order
@@ -222,3 +223,28 @@ class ProductTranslation(TranslatedFieldsModel):
 
     class Meta:
         unique_together = [('language_code', 'master')]
+
+
+class Locations(models.Model):
+    zip_code = models.CharField(
+        _("ZIP / Postal code"),
+        max_length=12,
+    )
+
+    city = models.CharField(
+        _("City"),
+        max_length=1024,
+    )
+
+    country = models.CharField(
+        _("Country"),
+        max_length=25
+    )
+
+    distance = models.PositiveIntegerField(
+        _("Distance to Baden")
+    )
+
+    class Meta:
+        verbose_name = _("Location")
+        verbose_name_plural = _("Locations")

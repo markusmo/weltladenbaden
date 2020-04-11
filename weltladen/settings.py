@@ -628,6 +628,7 @@ SHOP_CART_MODIFIERS = [
     'shop.modifiers.defaults.DefaultCartModifier',
     'shop.modifiers.taxes.CartExcludedTaxModifier',
     'weltladen.modifiers.PostalShippingModifier',
+    'weltladen.modifiers.ClimateNeutralShippingModifier',
     'shop.payment.modifiers.PayInAdvanceModifier',
     'shop.shipping.modifiers.SelfCollectionModifier',
 ]
@@ -642,3 +643,6 @@ SHOP_ORDER_WORKFLOWS = [
 SHOP_CASCADE_FORMS = {
     'CustomerForm': 'weltladen.forms.CustomerForm',
 }
+
+WELTLADEN_BADEN_LOCATION = (48.0083297, 16.2340982)
+WELTLADEN_SHIPPING_DISTANCE = 10
