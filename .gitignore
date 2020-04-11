@@ -34,3 +34,4 @@ django-shop-workdir_*
 .pytest_cache/
 .npm/
 .config/
+__pycache__/
