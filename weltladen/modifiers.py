@@ -9,11 +9,21 @@ from shop.serializers.cart import ExtraCartRow
 from shop.money import Money
 from shop.shipping.modifiers import ShippingModifier
 
-class BicycleShippingModifier(ShippingModifier):
+from weltladen.settings import WELTLADEN_SHIPPING_DISTANCE
+from weltladen.geolocate import checkdistance
+
+class ClimateNeutralShippingModifier(ShippingModifier):
     identifier = 'bicycle-shipping'
 
     def get_choice(self):
-        return (self.identifier, _("Shipping by Bicycle"))
+        return (self.identifier, _("Climate neutral Shipping"))
+
+    def is_disabled(self, cart):
+        #geolocate address of customer
+        distance = checkdistance(cart.shipping_address)
+        if distance > WELTLADEN_SHIPPING_DISTANCE:
+            return True
+        return False
 
     def add_extra_cart_row(self, cart, request):
         if not self.is_active(cart.extra.get('shipping_modifier')) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
@@ -40,7 +50,7 @@ class PostalShippingModifier(ShippingModifier):
             return
         # add a shipping flat fee
         amount = Money('5')
-        if cart.total >= 100:
+        if cart.total >= Money(100):
             amoount = Money('0')
         instance = {'label': _("Shipping costs"), 'amount': amount}
         cart.extra_rows[self.identifier] = ExtraCartRow(instance)

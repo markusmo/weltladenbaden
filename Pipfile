@@ -37,6 +37,7 @@ libsass = "*"
 django-shop = "<1.2"
 django-extensions = "*"
 werkzeug = "*"
+geopy = "*"
 
 [dev-packages]
 tox = "*"
