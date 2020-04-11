@@ -13,17 +13,22 @@ from weltladen.settings import WELTLADEN_SHIPPING_DISTANCE
 from weltladen.geolocate import checkdistance
 
 class ClimateNeutralShippingModifier(ShippingModifier):
-    identifier = 'bicycle-shipping'
+    identifier = 'climate-neutral-shipping'
 
     def get_choice(self):
         return (self.identifier, _("Climate neutral Shipping"))
 
     def is_disabled(self, cart):
         #geolocate address of customer
-        distance = checkdistance(cart.shipping_address)
-        if distance > WELTLADEN_SHIPPING_DISTANCE:
-            return True
-        return False
+        if cart.shipping_address:
+            zip_code = cart.shipping_address.zip_code
+            city = cart.shipping_address.city
+            country = cart.shipping_address.country
+            distance = checkdistance(zip_code, city, country)
+            if distance > WELTLADEN_SHIPPING_DISTANCE:
+                return True
+        else:
+            return False
 
     def add_extra_cart_row(self, cart, request):
         if not self.is_active(cart.extra.get('shipping_modifier')) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
