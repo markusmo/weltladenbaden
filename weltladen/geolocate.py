@@ -6,6 +6,9 @@ from weltladen.models import Locations
 from weltladen.settings import SHOP_APP_LABEL, WELTLADEN_BADEN_LOCATION
 
 def checkdistance(zip_code, city, country):
+    '''
+    see https://geopy.readthedocs.io/en/stable/#module-geopy.geocoders
+    '''
     if not Locations.objects.filter(zip_code=zip_code, country=country).exists():
         geolocator = Nominatim(SHOP_APP_LABEL+'_baden')
         location_str = {

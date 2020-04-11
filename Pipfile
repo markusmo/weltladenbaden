@@ -38,6 +38,7 @@ django-shop = "<1.2"
 django-extensions = "*"
 werkzeug = "*"
 geopy = "*"
+pillow = "*"
 
 [dev-packages]
 tox = "*"

@@ -2243,6 +2243,44 @@ ALTER SEQUENCE public.weltladen_deliveryitem_id_seq OWNED BY public.weltladen_de
 
 
 --
+-- Name: weltladen_locations; Type: TABLE; Schema: public; Owner: djangouser
+--
+
+CREATE TABLE public.weltladen_locations (
+    id integer NOT NULL,
+    zip_code character varying(12) NOT NULL,
+    city character varying(1024) NOT NULL,
+    country character varying(25) NOT NULL,
+    distance integer NOT NULL,
+    CONSTRAINT weltladen_locations_distance_check CHECK ((distance >= 0))
+);
+
+
+ALTER TABLE public.weltladen_locations OWNER TO djangouser;
+
+--
+-- Name: weltladen_locations_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
+--
+
+CREATE SEQUENCE public.weltladen_locations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.weltladen_locations_id_seq OWNER TO djangouser;
+
+--
+-- Name: weltladen_locations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
+--
+
+ALTER SEQUENCE public.weltladen_locations_id_seq OWNED BY public.weltladen_locations.id;
+
+
+--
 -- Name: weltladen_manufacturer; Type: TABLE; Schema: public; Owner: djangouser
 --
 
@@ -3098,6 +3136,13 @@ ALTER TABLE ONLY public.weltladen_deliveryitem ALTER COLUMN id SET DEFAULT nextv
 
 
 --
+-- Name: weltladen_locations id; Type: DEFAULT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_locations ALTER COLUMN id SET DEFAULT nextval('public.weltladen_locations_id_seq'::regclass);
+
+
+--
 -- Name: weltladen_manufacturer id; Type: DEFAULT; Schema: public; Owner: djangouser
 --
 
@@ -3746,6 +3791,10 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 542	Can change country translation	137	change_countrytranslation
 543	Can delete country translation	137	delete_countrytranslation
 544	Can view country translation	137	view_countrytranslation
+545	Can add Location	138	add_locations
+546	Can change Location	138	change_locations
+547	Can delete Location	138	delete_locations
+548	Can view Location	138	view_locations
 \.
 
 
@@ -3757,7 +3806,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 2	!qIyv4xYdiE292blenyXr9eduHxBYU3k5EhvpGwyK	\N	f	9OmKacig9RrdWbzpDJH9KHFxkCE2			guest@somewhere.net	f	f	2016-01-20 12:49:10.545+01
 3	!skyNepYH2gLHmhYkntFy6rJNEq4X0EPuZF3CDMf7	\N	f	8PzvblEJCEUdBCHmEYVEYbRtq16k				f	f	2016-11-24 23:24:33.836+01
 1	pbkdf2_sha256$36000$aW5f365D8NcY$t6ud/cxz3Ffjma/fn739Os2O/UtJZE/SyK3Fj2n8Quo=	2019-02-27 22:38:19.929+01	t	admin	Adam	De Mol	admin@example.com	t	t	2015-10-16 15:01:57.437+02
-4	pbkdf2_sha256$150000$RDuSdRsNNRMy$KekEUJYmjK6E3uYfg5HrUq3+YMuEzHDcWbMmSPEE82g=	2020-04-07 19:41:00.750084+02	t	markusmo	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-02 18:34:17.588926+02
+4	pbkdf2_sha256$150000$RDuSdRsNNRMy$KekEUJYmjK6E3uYfg5HrUq3+YMuEzHDcWbMmSPEE82g=	2020-04-11 17:05:11.023671+02	t	markusmo	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-02 18:34:17.588926+02
 \.
 
 
@@ -5766,6 +5815,7 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 135	weltladen	country
 136	weltladen	supplier
 137	weltladen	countrytranslation
+138	weltladen	locations
 \.
 
 
@@ -5892,6 +5942,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 116	weltladen	0003_auto_20200404_2144	2020-04-04 21:45:03.586043+02
 117	weltladen	0004_auto_20200405_1643	2020-04-05 16:43:14.045067+02
 118	weltladen	0005_auto_20200407_1916	2020-04-07 19:16:41.596782+02
+119	weltladen	0006_locations	2020-04-11 19:09:32.903895+02
 \.
 
 
@@ -5908,6 +5959,7 @@ gjzm8kbbkv7cllnepdsji9sllsevdyco	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTk
 6a1pafiqxpmg7a65psc898sz40si2ui6	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-21 20:05:30.093398+02
 fvmzaas2734z5v46o0j4htehak14qjnl	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-21 21:06:47.186001+02
 k4l2rkt0auuxexkdk9gg6zb6dyfyuqmc	NGQxOWVmYTdlYzdjOTExYmU0NmFhMDk4MWM2YmY5NWZkY2IyNzdhMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0Ijp0cnVlLCJjbXNfcHJldmlldyI6ZmFsc2UsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCJ9	2020-04-19 16:34:19.255256+02
+t1ecawwr4eqpfn6xhyyplkcnwufk88qm	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-25 20:10:06.736198+02
 \.
 
 
@@ -6486,7 +6538,7 @@ COPY public.weltladen_billingaddress (id, priority, name, address1, address2, zi
 --
 
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
-1	2020-04-02 18:36:06.757942+02	2020-04-07 19:54:12.847715+02	{}	\N	4	\N
+1	2020-04-02 18:36:06.757942+02	2020-04-11 20:10:06.652704+02	{"shipping_modifier": "postal-shipping"}	\N	4	2
 \.
 
 
@@ -6523,7 +6575,7 @@ COPY public.weltladen_countrytranslation (id, language_code, name, master_id) FR
 --
 
 COPY public.weltladen_customer (user_id, recognized, last_access, extra, number, salutation) FROM stdin;
-4	2	2020-04-07 21:06:44.259914+02	{}	\N	mr
+4	2	2020-04-11 20:10:01.501448+02	{}	\N	mr
 \.
 
 
@@ -6540,6 +6592,16 @@ COPY public.weltladen_delivery (id, shipping_id, fulfilled_at, shipped_at, shipp
 --
 
 COPY public.weltladen_deliveryitem (id, quantity, delivery_id, item_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: weltladen_locations; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.weltladen_locations (id, zip_code, city, country, distance) FROM stdin;
+1	1100	Wien	AT	20
+2	2500	Baden	AT	0
 \.
 
 
@@ -6623,6 +6685,7 @@ COPY public.weltladen_producttranslation (id, language_code, caption, descriptio
 --
 
 COPY public.weltladen_shippingaddress (id, priority, name, address1, address2, zip_code, city, country, customer_id) FROM stdin;
+2	2	Markus	Straße 1	\N	1100	Wien	AT	4
 \.
 
 
@@ -6669,7 +6732,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 524, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 548, true);
 
 
 --
@@ -6844,14 +6907,14 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, true);
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 132, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 138, true);
 
 
 --
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 114, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 119, true);
 
 
 --
@@ -7030,6 +7093,13 @@ SELECT pg_catalog.setval('public.weltladen_deliveryitem_id_seq', 1, false);
 
 
 --
+-- Name: weltladen_locations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
+--
+
+SELECT pg_catalog.setval('public.weltladen_locations_id_seq', 2, true);
+
+
+--
 -- Name: weltladen_manufacturer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
@@ -7089,7 +7159,7 @@ SELECT pg_catalog.setval('public.weltladen_producttranslation_id_seq', 2, true);
 -- Name: weltladen_shippingaddress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_shippingaddress_id_seq', 1, false);
+SELECT pg_catalog.setval('public.weltladen_shippingaddress_id_seq', 2, true);
 
 
 --
@@ -7911,6 +7981,14 @@ ALTER TABLE ONLY public.weltladen_delivery
 
 ALTER TABLE ONLY public.weltladen_deliveryitem
     ADD CONSTRAINT weltladen_deliveryitem_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: weltladen_locations weltladen_locations_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_locations
+    ADD CONSTRAINT weltladen_locations_pkey PRIMARY KEY (id);
 
 
 --
