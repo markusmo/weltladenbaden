@@ -8,15 +8,27 @@ from shop.modifiers.defaults import DefaultCartModifier
 from shop.serializers.cart import ExtraCartRow
 from shop.money import Money
 from shop.shipping.modifiers import ShippingModifier
+from shop.payment.modifiers import PaymentModifier
+from shop.payment.providers import PaymentProvider, ForwardFundPayment
 
 from weltladen.settings import WELTLADEN_SHIPPING_DISTANCE
 from weltladen.geolocate import checkdistance
+
+
+class DeliveryNotePaymentModifier(PaymentModifier):
+    identifier = 'delivery-note-payment'
+
+    payment_provider = ForwardFundPayment()
+
+    def get_choice(self):
+        return (self.payment_provider.namespace, _("Payment by delivery note"))
+
 
 class ClimateNeutralShippingModifier(ShippingModifier):
     identifier = 'climate-neutral-shipping'
 
     def get_choice(self):
-        return (self.identifier, _("Climate neutral Shipping"))
+        return (self.identifier, _("Climate neutral shipping"))
 
     def is_disabled(self, cart):
         #geolocate address of customer
@@ -56,7 +68,7 @@ class PostalShippingModifier(ShippingModifier):
         # add a shipping flat fee
         amount = Money('5')
         if cart.total >= Money(100):
-            amoount = Money('0')
+            amount = Money('0')
         instance = {'label': _("Shipping costs"), 'amount': amount}
         cart.extra_rows[self.identifier] = ExtraCartRow(instance)
         cart.total += amount

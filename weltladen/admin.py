@@ -46,7 +46,7 @@ class ProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Translatable
             ],
         }),
         (_("Translatable Fields"), {
-            'fields': ['caption', 'description'],
+            'fields': ['caption', 'short_description' ,'description'],
         }),
         (_("Properties"), {
             'fields': ['manufacturer', 'supplier', 'country_of_origin', 'vegan'],

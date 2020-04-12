@@ -629,6 +629,7 @@ SHOP_CART_MODIFIERS = [
     'shop.modifiers.taxes.CartExcludedTaxModifier',
     'weltladen.modifiers.PostalShippingModifier',
     'weltladen.modifiers.ClimateNeutralShippingModifier',
+    'weltladen.modifiers.DeliveryNotePaymentModifier',
     'shop.payment.modifiers.PayInAdvanceModifier',
     'shop.shipping.modifiers.SelfCollectionModifier',
 ]

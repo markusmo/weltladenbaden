@@ -118,6 +118,7 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
     slug = models.SlugField(verbose_name=_("Slug"))
 
     caption = TranslatedField()
+    short_description = TranslatedField()
     description = TranslatedField()
 
     manufacturer = models.ForeignKey(
@@ -214,11 +215,18 @@ class ProductTranslation(TranslatedFieldsModel):
             "Short description used in the catalog's list view of products."),
     )
 
+    short_description = HTMLField(
+        verbose_name=_("Short description"),
+        configuration='CKEDITOR_SETTINGS_DESCRIPTION',
+        help_text=_(
+            "A short description for customers to give an overview."),
+    )
+
     description = HTMLField(
         verbose_name=_("Description"),
         configuration='CKEDITOR_SETTINGS_DESCRIPTION',
         help_text=_(
-            "Full description used in the catalog's detail view of Smart Cards."),
+            "Full description used in the catalog's detail view."),
     )
 
     class Meta:
