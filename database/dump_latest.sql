@@ -2569,7 +2569,8 @@ CREATE TABLE public.weltladen_producttranslation (
     language_code character varying(15) NOT NULL,
     caption text NOT NULL,
     description text NOT NULL,
-    master_id integer
+    master_id integer,
+    short_description text NOT NULL
 );
 
 
@@ -2636,91 +2637,6 @@ ALTER TABLE public.weltladen_shippingaddress_id_seq OWNER TO djangouser;
 --
 
 ALTER SEQUENCE public.weltladen_shippingaddress_id_seq OWNED BY public.weltladen_shippingaddress.id;
-
-
---
--- Name: weltladen_smartcard; Type: TABLE; Schema: public; Owner: djangouser
---
-
-CREATE TABLE public.weltladen_smartcard (
-    id integer NOT NULL,
-    created_at timestamp with time zone NOT NULL,
-    updated_at timestamp with time zone NOT NULL,
-    active boolean NOT NULL,
-    product_name character varying(255) NOT NULL,
-    slug character varying(50) NOT NULL,
-    "order" integer NOT NULL,
-    unit_price numeric(30,3) NOT NULL,
-    card_type character varying(15) NOT NULL,
-    speed character varying(8) NOT NULL,
-    product_code character varying(255) NOT NULL,
-    storage integer NOT NULL,
-    manufacturer_id integer NOT NULL,
-    polymorphic_ctype_id integer,
-    CONSTRAINT weltladen_smartcard_order_check CHECK (("order" >= 0)),
-    CONSTRAINT weltladen_smartcard_storage_check CHECK ((storage >= 0))
-);
-
-
-ALTER TABLE public.weltladen_smartcard OWNER TO djangouser;
-
---
--- Name: weltladen_smartcard_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
---
-
-CREATE SEQUENCE public.weltladen_smartcard_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.weltladen_smartcard_id_seq OWNER TO djangouser;
-
---
--- Name: weltladen_smartcard_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
---
-
-ALTER SEQUENCE public.weltladen_smartcard_id_seq OWNED BY public.weltladen_smartcard.id;
-
-
---
--- Name: weltladen_smartcardtranslation; Type: TABLE; Schema: public; Owner: djangouser
---
-
-CREATE TABLE public.weltladen_smartcardtranslation (
-    id integer NOT NULL,
-    language_code character varying(15) NOT NULL,
-    caption text NOT NULL,
-    description text NOT NULL,
-    master_id integer
-);
-
-
-ALTER TABLE public.weltladen_smartcardtranslation OWNER TO djangouser;
-
---
--- Name: weltladen_smartcardtranslation_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
---
-
-CREATE SEQUENCE public.weltladen_smartcardtranslation_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.weltladen_smartcardtranslation_id_seq OWNER TO djangouser;
-
---
--- Name: weltladen_smartcardtranslation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
---
-
-ALTER SEQUENCE public.weltladen_smartcardtranslation_id_seq OWNED BY public.weltladen_smartcardtranslation.id;
 
 
 --
@@ -3203,20 +3119,6 @@ ALTER TABLE ONLY public.weltladen_producttranslation ALTER COLUMN id SET DEFAULT
 --
 
 ALTER TABLE ONLY public.weltladen_shippingaddress ALTER COLUMN id SET DEFAULT nextval('public.weltladen_shippingaddress_id_seq'::regclass);
-
-
---
--- Name: weltladen_smartcard id; Type: DEFAULT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcard ALTER COLUMN id SET DEFAULT nextval('public.weltladen_smartcard_id_seq'::regclass);
-
-
---
--- Name: weltladen_smartcardtranslation id; Type: DEFAULT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcardtranslation ALTER COLUMN id SET DEFAULT nextval('public.weltladen_smartcardtranslation_id_seq'::regclass);
 
 
 --
@@ -5040,6 +4942,7 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 93	{"render_type": "catalog"}	\N
 94	{"render_type": "catalog"}	\N
 95	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "background_and_color": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
+262	{"render_type": "form"}	\N
 96	{"extra_inline_styles:Paddings": {"padding-right": "", "padding-left": ""}, "extra_inline_styles:Margins": {"margin-top": "", "margin-bottom": ""}}	\N
 97	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "col-md-10", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "offset-md-1", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 940.0, "sm": 720.0, "lg": 1140.0}}	\N
 98	{"pagination": "auto", "hide_plugin": ""}	\N
@@ -5107,6 +5010,7 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 163	{"tag_type": "h4", "content": "This could be interesting for you", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "element_id": "", "hide_plugin": ""}	\N
 164	{"hide_plugin": ""}	\N
 166	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 16}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "shopping-bag", "link_content": "Continue Shopping", "button_type": "btn-primary", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
+263	{"open_tag": "elif", "condition": "customer.is_guest"}	\N
 167	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "", "padding_lg": "", "hide_plugin": ""}	\N
 168	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 40}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "logout", "link_content": "Proceed to Checkout", "button_type": "btn-success", "button_size": "btn-lg", "button_options": ["btn-block"], "icon_align": "icon-right", "stretched_link": false}	\N
 169	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
@@ -5135,6 +5039,9 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 192	{"render_type": "watch"}	\N
 193	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
 194	{"extra_css_classes": [], "extra_inline_styles:Margins": {"margin-top": "", "margin-bottom": ""}, "hide_plugin": ""}	\N
+264	{"render_type": "form"}	\N
+265	{"open_tag": "else", "condition": ""}	\N
+266	{"content": "Sie m\\u00fcssen angemeldet sein, um Ihre Details \\u00e4ndern zu k\\u00f6nnen", "element_id": "", "tag_type": "h3"}	\N
 195	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "col-md-10", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "offset-md-1", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720, "md": 940, "sm": 720, "lg": 1140}}	\N
 196	{"open_tag": "if", "condition": "is_last_order"}	\N
 197	{"tag_type": "h2", "content": "Thanks for your order", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "element_id": "", "hide_plugin": ""}	\N
@@ -5169,6 +5076,9 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 225	{"render_type": "default"}	\N
 226	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
 227	{"extra_css_classes": [], "extra_inline_styles:Margins": {"margin-top": "", "margin-bottom": ""}, "hide_plugin": ""}	\N
+303	{"content": "Sie m\\u00fcssen angemeldet sein, um Ihre Details \\u00e4ndern zu k\\u00f6nnen", "element_id": "", "tag_type": "h3"}	\N
+339	{"hide_plugin": false, "link_type": "RELOAD_PAGE", "cms_page": null, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "form_type": "login"}	\N
+340	{"render_type": "default"}	\N
 228	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "col-md-10", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "offset-md-1", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720, "md": 940, "sm": 720, "lg": 1140}}	\N
 229	{"open_tag": "if", "condition": "is_last_order"}	\N
 230	{"tag_type": "h2", "content": "Thanks for your order", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "element_id": "", "hide_plugin": ""}	\N
@@ -5203,11 +5113,6 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 259	{"xs-column-width": "col-12", "sm-column-width": "col-sm-10", "md-column-width": "col-md-8", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "offset-sm-1", "md-column-offset": "offset-md-2", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 616.67, "sm": 595.0, "lg": 750.0}}	\N
 260	{}	\N
 261	{"open_tag": "if", "condition": "customer.is_registered"}	\N
-262	{"render_type": "form"}	\N
-263	{"open_tag": "elif", "condition": "customer.is_guest"}	\N
-264	{"render_type": "form"}	\N
-265	{"open_tag": "else", "condition": ""}	\N
-266	{"content": "Sie m\\u00fcssen angemeldet sein, um Ihre Details \\u00e4ndern zu k\\u00f6nnen", "element_id": "", "tag_type": "h3"}	\N
 267	{"hide_plugin": false, "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "margins_xl": "", "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "disable_invalid": false, "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 2}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": null, "symbol": "right-open", "link_content": "Change Your Details", "button_type": "btn-success", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
 268	{"render_type": "default"}	\N
 269	{"render_type": "default"}	\N
@@ -5245,7 +5150,6 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 300	{"open_tag": "elif", "condition": "customer.is_guest"}	\N
 301	{"render_type": "form"}	\N
 302	{"open_tag": "else", "condition": ""}	\N
-303	{"content": "Sie m\\u00fcssen angemeldet sein, um Ihre Details \\u00e4ndern zu k\\u00f6nnen", "element_id": "", "tag_type": "h3"}	\N
 304	{"hide_plugin": false, "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "margins_xl": "", "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "disable_invalid": false, "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 2}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": null, "symbol": "right-open", "link_content": "Change Your Details", "button_type": "btn-success", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
 305	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": null}	\N
 306	{}	\N
@@ -5279,8 +5183,7 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 336	{"media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}, "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "hide_plugin": "", "fluid": "", "breakpoints": ["xs", "sm", "md", "lg"]}	\N
 337	{"extra_css_classes": [], "hide_plugin": "", "extra_inline_styles:Margins": {"margin-top": "", "margin-bottom": ""}}	\N
 338	{"xs-column-width": "col-12", "sm-column-width": "col-sm-10", "md-column-width": "col-md-8", "lg-column-width": "", "xs-column-offset": "", "sm-column-offset": "offset-sm-1", "md-column-offset": "offset-md-2", "lg-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 616.67, "sm": 595.0, "lg": 750.0}}	\N
-339	{"hide_plugin": false, "link_type": "RELOAD_PAGE", "cms_page": null, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "form_type": "login"}	\N
-340	{"render_type": "default"}	\N
+514	{"render_type": "summary"}	\N
 341	{"media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}, "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "hide_plugin": "", "fluid": "", "breakpoints": ["xs", "sm", "md", "lg"]}	\N
 342	{"extra_css_classes": [], "hide_plugin": "", "extra_inline_styles:Margins": {"margin-top": "", "margin-bottom": ""}}	\N
 343	{"xs-column-width": "col-12", "sm-column-width": "col-sm-10", "md-column-width": "col-md-8", "lg-column-width": "", "xs-column-offset": "", "sm-column-offset": "offset-sm-1", "md-column-offset": "offset-md-2", "lg-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 616.67, "sm": 595.0, "lg": 750.0}}	\N
@@ -5309,6 +5212,8 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 364	{"hide_plugin": false, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 26}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "form_type": "register-user"}	\N
 365	{"media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}, "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "breakpoints": ["xs", "sm", "md", "lg"], "hide_plugin": "", "fluid": ""}	\N
 366	{"extra_css_classes": [], "hide_plugin": "", "extra_inline_styles:Margins": {"margin-top": "", "margin-bottom": ""}}	\N
+515	{"render_type": "summary"}	\N
+516	{"render_type": "summary"}	\N
 367	{"xs-column-width": "col", "sm-column-width": "col-sm-10", "md-column-width": "col-md-8", "lg-column-width": "", "xs-column-offset": "", "sm-column-offset": "offset-sm-1", "md-column-offset": "offset-md-2", "lg-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 616.67, "sm": 595.0, "lg": 750.0}}	\N
 368	{"hide_plugin": false, "link_type": "DO_NOTHING", "cms_page": null, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "form_type": "password-reset-request"}	\N
 369	{"render_type": "default"}	\N
@@ -5451,9 +5356,6 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 511	{"open_tag": "else", "condition": ""}	\N
 512	{"render_type": "summary"}	\N
 513	{"address_form": "shipping", "render_type": "summary", "allow_multiple": "", "allow_use_primary": "", "headline_legend": "on", "hide_plugin": ""}	\N
-514	{"render_type": "summary"}	\N
-515	{"render_type": "summary"}	\N
-516	{"render_type": "summary"}	\N
 518	{"link_content": "terms and conditions", "link": {"pk": 15, "model": "cms.Page", "type": "cmspage", "section": ""}, "target": "", "title": ""}	\N
 519	{}	\N
 520	{"hide_plugin": false, "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "margins_xl": "", "float_xs": "float-right", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "disable_invalid": false, "product": null, "link_type": "PURCHASE_NOW", "cms_page": null, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "handshake-o", "link_content": "Purchase Now", "button_type": "btn-success", "button_size": "btn-lg", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
@@ -5482,6 +5384,9 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 550	{"render_type": "form", "headline_legend": "on", "show_additional_charge": "on", "hide_plugin": ""}	\N
 551	{"render_type": "form"}	\N
 552	{}	\N
+590	{"address_form": "shipping", "render_type": "form", "allow_multiple": "on", "allow_use_primary": "", "headline_legend": "on", "hide_plugin": ""}	\N
+591	{"allow_use_primary": "on", "allow_multiple": "on", "address_form": "billing", "render_type": "form", "hide_plugin": "", "headline_legend": "on"}	\N
+592	{}	\N
 553	{"hide_plugin": false, "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "margins_xl": "", "float_xs": "float-right", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "disable_invalid": false, "product": null, "link_type": "NEXT_STEP", "cms_page": null, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "right-open", "link_content": "Next", "button_type": "btn-success", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
 554	{"hide_plugin": "", "step_title": "Summary"}	\N
 555	{"content": "Summary of your Order", "element_id": "", "tag_type": "h3", "hide_plugin": "", "extra_inline_styles:Margins": {"margin-right": "", "margin-top": "", "margin-left": "", "margin-bottom": ""}}	\N
@@ -5518,9 +5423,6 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 587	{}	\N
 588	{"hide_plugin": false, "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "margins_xl": "", "float_xs": "float-right", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "disable_invalid": false, "product": null, "link_type": "NEXT_STEP", "cms_page": null, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "right-open", "link_content": "Next", "button_type": "btn-success", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
 589	{"hide_plugin": "", "step_title": "Addresses"}	\N
-590	{"address_form": "shipping", "render_type": "form", "allow_multiple": "on", "allow_use_primary": "", "headline_legend": "on", "hide_plugin": ""}	\N
-591	{"allow_use_primary": "on", "allow_multiple": "on", "address_form": "billing", "render_type": "form", "hide_plugin": "", "headline_legend": "on"}	\N
-592	{}	\N
 593	{"hide_plugin": false, "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "margins_xl": "", "float_xs": "float-right", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "disable_invalid": false, "product": null, "link_type": "NEXT_STEP", "cms_page": null, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "right-open", "link_content": "Next", "button_type": "btn-success", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
 594	{"hide_plugin": "", "step_title": "Payment"}	\N
 595	{"content": "Bezahlen und Versenden", "element_id": "", "tag_type": "h3"}	\N
@@ -5943,6 +5845,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 117	weltladen	0004_auto_20200405_1643	2020-04-05 16:43:14.045067+02
 118	weltladen	0005_auto_20200407_1916	2020-04-07 19:16:41.596782+02
 119	weltladen	0006_locations	2020-04-11 19:09:32.903895+02
+120	weltladen	0007_auto_20200411_2249	2020-04-12 14:43:23.820274+02
 \.
 
 
@@ -5959,7 +5862,7 @@ gjzm8kbbkv7cllnepdsji9sllsevdyco	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTk
 6a1pafiqxpmg7a65psc898sz40si2ui6	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-21 20:05:30.093398+02
 fvmzaas2734z5v46o0j4htehak14qjnl	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-21 21:06:47.186001+02
 k4l2rkt0auuxexkdk9gg6zb6dyfyuqmc	NGQxOWVmYTdlYzdjOTExYmU0NmFhMDk4MWM2YmY5NWZkY2IyNzdhMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0Ijp0cnVlLCJjbXNfcHJldmlldyI6ZmFsc2UsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCJ9	2020-04-19 16:34:19.255256+02
-t1ecawwr4eqpfn6xhyyplkcnwufk88qm	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-25 20:10:06.736198+02
+t1ecawwr4eqpfn6xhyyplkcnwufk88qm	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-26 14:47:50.438515+02
 \.
 
 
@@ -6025,8 +5928,8 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 19	f9bde26a1556cd667f742bd34ec7c55e	filer_public/cd/4e/cd4efce0-917e-40db-8862-94ebc4c3923a/shower-389260.jpg	2020-04-02 18:37:48.025918+02
 20	f9bde26a1556cd667f742bd34ec7c55e	filer_public/12/87/1287f73b-0aab-42f9-b812-f00114ee624d/swimming-pool.jpg	2020-04-02 18:37:48.534381+02
 1	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c8/c2/c8c2ba21-5ac1-4cba-a01b-6e2cf58e2889/django-pony.png	2020-04-04 19:27:36.62028+02
-21	f9bde26a1556cd667f742bd34ec7c55e	filer_public/19/01/1901e95c-b257-4f82-93cb-3a1f62dd6757/97970.jpg	2020-04-05 19:07:22.867519+02
 22	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg	2020-04-05 19:07:29.711223+02
+21	f9bde26a1556cd667f742bd34ec7c55e	filer_public/19/01/1901e95c-b257-4f82-93cb-3a1f62dd6757/97970.jpg	2020-04-12 14:46:36.732477+02
 \.
 
 
@@ -6538,7 +6441,7 @@ COPY public.weltladen_billingaddress (id, priority, name, address1, address2, zi
 --
 
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
-1	2020-04-02 18:36:06.757942+02	2020-04-11 20:10:06.652704+02	{"shipping_modifier": "postal-shipping"}	\N	4	2
+1	2020-04-02 18:36:06.757942+02	2020-04-12 14:47:50.337638+02	{"shipping_modifier": "postal-shipping"}	\N	4	2
 \.
 
 
@@ -6547,6 +6450,7 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 --
 
 COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, cart_id, product_id) FROM stdin;
+2	3214254	2020-04-12 14:46:57.186646+02	{}	15	1	2
 \.
 
 
@@ -6575,7 +6479,7 @@ COPY public.weltladen_countrytranslation (id, language_code, name, master_id) FR
 --
 
 COPY public.weltladen_customer (user_id, recognized, last_access, extra, number, salutation) FROM stdin;
-4	2	2020-04-11 20:10:01.501448+02	{}	\N	mr
+4	2	2020-04-12 14:47:45.732535+02	{}	\N	mr
 \.
 
 
@@ -6674,9 +6578,9 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 -- Data for Name: weltladen_producttranslation; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
-COPY public.weltladen_producttranslation (id, language_code, caption, description, master_id) FROM stdin;
-1	de	<p>Schokohase aus fairer Schokolade</p>	<ul>\n\t<li>Fakt 1</li>\n\t<li>Fakt 2</li>\n\t<li>Fakt 3</li>\n</ul>\n\n<p>Das ist noch anderer Text.</p>	1
-2	de	<p>Faire Eier von braunen Hühnern</p>	<ul>\n\t<li>Egg Fact</li>\n\t<li>Eier Fakt</li>\n\t<li>anderer Fakt</li>\n</ul>\n\n<p>Irgendein Text.</p>	2
+COPY public.weltladen_producttranslation (id, language_code, caption, description, master_id, short_description) FROM stdin;
+1	de	<p>Schokohase aus fairer Schokolade</p>	<ul>\n\t<li>Fakt 1</li>\n\t<li>Fakt 2</li>\n\t<li>Fakt 3</li>\n</ul>\n\n<p>Das ist noch anderer Text.</p>	1	2020-04-12 12:43:23.803517+00
+2	de	<p>Faire Eier von braunen Hühnern</p>	<ul>\n\t<li>Egg Fact</li>\n\t<li>Eier Fakt</li>\n\t<li>anderer Fakt</li>\n</ul>\n\n<p>Irgendein Text.</p>	2	2020-04-12 12:43:23.803517+00
 \.
 
 
@@ -6686,22 +6590,6 @@ COPY public.weltladen_producttranslation (id, language_code, caption, descriptio
 
 COPY public.weltladen_shippingaddress (id, priority, name, address1, address2, zip_code, city, country, customer_id) FROM stdin;
 2	2	Markus	Straße 1	\N	1100	Wien	AT	4
-\.
-
-
---
--- Data for Name: weltladen_smartcard; Type: TABLE DATA; Schema: public; Owner: djangouser
---
-
-COPY public.weltladen_smartcard (id, created_at, updated_at, active, product_name, slug, "order", unit_price, card_type, speed, product_code, storage, manufacturer_id, polymorphic_ctype_id) FROM stdin;
-\.
-
-
---
--- Data for Name: weltladen_smartcardtranslation; Type: TABLE DATA; Schema: public; Owner: djangouser
---
-
-COPY public.weltladen_smartcardtranslation (id, language_code, caption, description, master_id) FROM stdin;
 \.
 
 
@@ -6914,7 +6802,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 138, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 119, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 120, true);
 
 
 --
@@ -6935,7 +6823,7 @@ SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 20, true);
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 102, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 106, true);
 
 
 --
@@ -7061,7 +6949,7 @@ SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 1, true);
 -- Name: weltladen_cartitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 1, false);
+SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 2, true);
 
 
 --
@@ -7160,20 +7048,6 @@ SELECT pg_catalog.setval('public.weltladen_producttranslation_id_seq', 2, true);
 --
 
 SELECT pg_catalog.setval('public.weltladen_shippingaddress_id_seq', 2, true);
-
-
---
--- Name: weltladen_smartcard_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
---
-
-SELECT pg_catalog.setval('public.weltladen_smartcard_id_seq', 1, false);
-
-
---
--- Name: weltladen_smartcardtranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
---
-
-SELECT pg_catalog.setval('public.weltladen_smartcardtranslation_id_seq', 1, false);
 
 
 --
@@ -8101,38 +7975,6 @@ ALTER TABLE ONLY public.weltladen_producttranslation
 
 ALTER TABLE ONLY public.weltladen_shippingaddress
     ADD CONSTRAINT weltladen_shippingaddress_pkey PRIMARY KEY (id);
-
-
---
--- Name: weltladen_smartcard weltladen_smartcard_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcard
-    ADD CONSTRAINT weltladen_smartcard_pkey PRIMARY KEY (id);
-
-
---
--- Name: weltladen_smartcard weltladen_smartcard_product_code_key; Type: CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcard
-    ADD CONSTRAINT weltladen_smartcard_product_code_key UNIQUE (product_code);
-
-
---
--- Name: weltladen_smartcardtranslation weltladen_smartcardtrans_language_code_master_id_55da043d_uniq; Type: CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcardtranslation
-    ADD CONSTRAINT weltladen_smartcardtrans_language_code_master_id_55da043d_uniq UNIQUE (language_code, master_id);
-
-
---
--- Name: weltladen_smartcardtranslation weltladen_smartcardtranslation_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcardtranslation
-    ADD CONSTRAINT weltladen_smartcardtranslation_pkey PRIMARY KEY (id);
 
 
 --
@@ -9216,69 +9058,6 @@ CREATE INDEX weltladen_shippingaddress_priority_05752c9f ON public.weltladen_shi
 
 
 --
--- Name: weltladen_smartcard_manufacturer_id_e16ff266; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcard_manufacturer_id_e16ff266 ON public.weltladen_smartcard USING btree (manufacturer_id);
-
-
---
--- Name: weltladen_smartcard_order_79148ec0; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcard_order_79148ec0 ON public.weltladen_smartcard USING btree ("order");
-
-
---
--- Name: weltladen_smartcard_polymorphic_ctype_id_0765b698; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcard_polymorphic_ctype_id_0765b698 ON public.weltladen_smartcard USING btree (polymorphic_ctype_id);
-
-
---
--- Name: weltladen_smartcard_product_code_481c0294_like; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcard_product_code_481c0294_like ON public.weltladen_smartcard USING btree (product_code varchar_pattern_ops);
-
-
---
--- Name: weltladen_smartcard_slug_f1be1beb; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcard_slug_f1be1beb ON public.weltladen_smartcard USING btree (slug);
-
-
---
--- Name: weltladen_smartcard_slug_f1be1beb_like; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcard_slug_f1be1beb_like ON public.weltladen_smartcard USING btree (slug varchar_pattern_ops);
-
-
---
--- Name: weltladen_smartcardtranslation_language_code_773377eb; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcardtranslation_language_code_773377eb ON public.weltladen_smartcardtranslation USING btree (language_code);
-
-
---
--- Name: weltladen_smartcardtranslation_language_code_773377eb_like; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcardtranslation_language_code_773377eb_like ON public.weltladen_smartcardtranslation USING btree (language_code varchar_pattern_ops);
-
-
---
--- Name: weltladen_smartcardtranslation_master_id_2336bd83; Type: INDEX; Schema: public; Owner: djangouser
---
-
-CREATE INDEX weltladen_smartcardtranslation_master_id_2336bd83 ON public.weltladen_smartcardtranslation USING btree (master_id);
-
-
---
 -- Name: weltladen_supplier_name_c596291e_like; Type: INDEX; Schema: public; Owner: djangouser
 --
 
@@ -9918,14 +9697,6 @@ ALTER TABLE ONLY public.weltladen_cartitem
 
 
 --
--- Name: weltladen_cartitem weltladen_cartitem_product_id_ed8a5508_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_cartitem
-    ADD CONSTRAINT weltladen_cartitem_product_id_ed8a5508_fk_weltladen FOREIGN KEY (product_id) REFERENCES public.weltladen_smartcard(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
 -- Name: weltladen_cartitem weltladen_cartitem_product_id_ed8a5508_fk_weltladen_product_id; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -9987,14 +9758,6 @@ ALTER TABLE ONLY public.weltladen_order
 
 ALTER TABLE ONLY public.weltladen_orderitem
     ADD CONSTRAINT weltladen_orderitem_order_id_2166a288_fk_weltladen_order_id FOREIGN KEY (order_id) REFERENCES public.weltladen_order(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: weltladen_orderitem weltladen_orderitem_product_id_b269c0fb_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_orderitem
-    ADD CONSTRAINT weltladen_orderitem_product_id_b269c0fb_fk_weltladen FOREIGN KEY (product_id) REFERENCES public.weltladen_smartcard(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
@@ -10091,30 +9854,6 @@ ALTER TABLE ONLY public.weltladen_producttranslation
 
 ALTER TABLE ONLY public.weltladen_shippingaddress
     ADD CONSTRAINT weltladen_shippingad_customer_id_64bac2e8_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_customer(user_id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: weltladen_smartcard weltladen_smartcard_manufacturer_id_e16ff266_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcard
-    ADD CONSTRAINT weltladen_smartcard_manufacturer_id_e16ff266_fk_weltladen FOREIGN KEY (manufacturer_id) REFERENCES public.weltladen_manufacturer(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: weltladen_smartcard weltladen_smartcard_polymorphic_ctype_id_0765b698_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcard
-    ADD CONSTRAINT weltladen_smartcard_polymorphic_ctype_id_0765b698_fk_django_co FOREIGN KEY (polymorphic_ctype_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: weltladen_smartcardtranslation weltladen_smartcardt_master_id_2336bd83_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_smartcardtranslation
-    ADD CONSTRAINT weltladen_smartcardt_master_id_2336bd83_fk_weltladen FOREIGN KEY (master_id) REFERENCES public.weltladen_smartcard(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

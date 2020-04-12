@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2fdfabe4475b5e32cfbac33cc5e3a51e1b2b70b8108aa0640f6dd02e8de86efd"
+            "sha256": "d12d29b21055813a735f39464a7a0e439622f2cacce27c1d929aa9d45539b81e"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.6"
+            "python_version": "3.7"
         },
         "sources": [
             {
@@ -256,10 +256,10 @@
         },
         "django-shop": {
             "hashes": [
-                "sha256:d7c271087d31b69c2430b756b916db55a1199eabe0086eef3d158f4803f561d6"
+                "sha256:404a6234bc06e98f345330437f9e1037a6800893f4c5da7fa27a97f89201ba33"
             ],
             "index": "pypi",
-            "version": "==1.1.1"
+            "version": "==1.1.2"
         },
         "django-treebeard": {
             "hashes": [
