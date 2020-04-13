@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
+from django.template.loader import select_template
 from djangocms_text_ckeditor.fields import HTMLField
 from polymorphic.query import PolymorphicQuerySet
 from parler.managers import TranslatableManager, TranslatableQuerySet
@@ -23,6 +24,7 @@ from shop.models.defaults.order import Order
 from shop.models.defaults.mapping import ProductPage, ProductImage
 from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
+from shop.conf import app_settings
 #from shop.models.defaults.customer import Customer
 
 
