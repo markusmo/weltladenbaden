@@ -254,6 +254,7 @@ TEMPLATES = [{
             'cms.context_processors.cms_settings',
             'shop.context_processors.customer',
             'shop.context_processors.shop_settings',
+            'weltladen.context_processor.weltladen_settings',
         ]
     }
 }, {
