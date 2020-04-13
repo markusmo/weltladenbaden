@@ -34,6 +34,7 @@
 			{% include "shop/catalog/product-add2cart.html" with card_css_classes="mb-1" %}
 		</div>
 		<div class="col col-md-10 offset-md-1">
+			<p>{{ product.short_description|safe }}</p>
 			<details style="padding:1em;">
 				<summary style="font-size: 26px; text-decoration:underline;">{% trans "Details" %}</summary>
 				<p>{{ product.description|safe }} </p>

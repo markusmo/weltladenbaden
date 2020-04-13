@@ -631,7 +631,7 @@ SHOP_CART_MODIFIERS = [
     'weltladen.modifiers.PostalShippingModifier',
     'weltladen.modifiers.ClimateNeutralShippingModifier',
     'weltladen.modifiers.DeliveryNotePaymentModifier',
-    'shop.payment.modifiers.PayInAdvanceModifier',
+    #'shop.payment.modifiers.PayInAdvanceModifier',
     'shop.shipping.modifiers.SelfCollectionModifier',
 ]
 
@@ -648,6 +648,6 @@ SHOP_CASCADE_FORMS = {
 
 #Weltladen settings
 WELTLADEN_BADEN_LOCATION = (48.0083297, 16.2340982)
-WELTLADEN_SHIPPING_DISTANCE = 10
+WELTLADEN_SHIPPING_DISTANCE = 5
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'
