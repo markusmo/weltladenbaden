@@ -9,7 +9,7 @@
 	{% block navbar-brand %}
 	<div class="shop-brand-icon">
 		<a href="/">
-			<img src="{% static 'weltladen/weltladen.jpg' %}" alt="django-SHOP" aria-hidden="true">
+			<img src="{% static 'weltladen/weltladen.jpg' %}" alt="Weltladen Baden" aria-hidden="true">
 		</a>
 	</div>
 	{% endblock %}
@@ -18,7 +18,7 @@
 
 	<div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
 		<ul class="navbar-nav flex-wrap align-content-between w-100">
-			<li class="nav-item shop-social-icons">{% static_placeholder "Social Icons" %}</li>
+			<li class="nav-item shop-social-icons">{% static_placeholder "Social Icons" %} {% include "weltladen/pages/social-media-bar.html" %} </li>
 			<li class="mx-auto"></li>
 			{% include "shop/navbar/login-logout.html" with item_class="shop-secondary-menu" %}
 			{% with item_class="shop-secondary-menu" %}{% language_chooser "shop/navbar/language-chooser.html" %}{% endwith %}

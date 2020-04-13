@@ -48,6 +48,7 @@ beautifulsoup4 = "*"
 lxml = "*"
 factory-boy = "*"
 pytest-factoryboy = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.7"

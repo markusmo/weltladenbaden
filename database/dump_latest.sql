@@ -3781,7 +3781,6 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 23	1	de	BootstrapSecondaryMenuPlugin	2020-04-02 18:29:24.712714+02	2020-04-02 18:29:24.723432+02	21	4	5	0	00020001000400020002
 26	0	de	BootstrapColumnPlugin	2020-04-02 18:29:24.781223+02	2020-04-02 18:29:24.795072+02	25	3	3	2	000300010001
 28	1	de	BootstrapSecondaryMenuPlugin	2020-04-02 18:29:24.821301+02	2020-04-02 18:29:24.838721+02	26	3	4	0	0003000100010002
-29	1	de	BootstrapColumnPlugin	2020-04-02 18:29:24.853737+02	2020-04-02 18:29:24.863679+02	25	3	3	1	000300010002
 30	0	de	HeadingPlugin	2020-04-02 18:29:24.868727+02	2020-04-02 18:29:24.877324+02	29	3	4	0	0003000100020001
 41	0	en	BootstrapRowPlugin	2020-04-02 18:29:24.27721+02	2020-04-02 18:29:25.111135+02	40	2	2	2	00040001
 38	0	de	HeadingPlugin	2020-04-02 18:29:25.01777+02	2020-04-02 18:29:25.028206+02	37	3	5	0	00030001000400020001
@@ -3858,7 +3857,6 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 116	0	de	BootstrapCardHeaderPlugin	2020-04-02 18:29:28.27162+02	2020-04-02 18:29:28.2871+02	115	40	7	1	000N000100010002000100010001
 115	0	de	BootstrapCardPlugin	2020-04-02 18:29:28.250351+02	2020-04-02 18:29:28.263373+02	114	40	6	2	000N00010001000200010001
 117	0	de	HeadingPlugin	2020-04-02 18:29:28.296459+02	2020-04-02 18:29:28.308808+02	116	40	8	0	000N0001000100020001000100010001
-119	0	de	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-02 18:29:28.36149+02	118	40	8	0	000N0001000100020001000100020001
 118	1	de	BootstrapCardBodyPlugin	2020-04-02 18:29:28.316057+02	2020-04-02 18:29:28.331025+02	115	40	7	2	000N000100010002000100010002
 120	1	de	BootstrapButtonPlugin	2020-04-02 18:29:28.371976+02	2020-04-02 18:29:28.392951+02	118	40	8	0	000N0001000100020001000100020002
 113	1	de	ShopCartPlugin	2020-04-02 18:29:28.202763+02	2020-04-02 18:29:28.217909+02	111	40	4	2	000N000100010002
@@ -3870,47 +3868,17 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 125	0	en	BootstrapContainerPlugin	2020-04-02 18:29:28.120498+02	2020-04-02 18:29:28.526565+02	\N	40	1	1	000Q
 126	0	en	BootstrapRowPlugin	2020-04-02 18:29:28.134785+02	2020-04-02 18:29:28.548389+02	125	40	2	1	000Q0001
 127	0	en	BootstrapColumnPlugin	2020-04-02 18:29:28.157914+02	2020-04-02 18:29:28.56626+02	126	40	3	2	000Q00010001
-152	1	de	ShopRightExtension	2020-04-02 18:29:28.401184+02	2020-04-02 18:29:29.000735+02	144	42	5	1	000S0001000100020002
-150	0	de	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-02 18:29:29.019012+02	149	42	8	0	000S0001000100020001000100020001
-154	0	en	BreadcrumbPlugin	2020-04-02 18:29:28.451761+02	2020-04-02 18:29:29.061082+02	\N	41	1	0	000T
 130	0	en	ShopLeftExtension	2020-04-02 18:29:28.227019+02	2020-04-02 18:29:28.626555+02	129	40	5	1	000Q0001000100020001
-155	0	en	BootstrapContainerPlugin	2020-04-02 18:29:28.120498+02	2020-04-02 18:29:29.109606+02	\N	42	1	1	000U
 132	0	en	BootstrapCardHeaderPlugin	2020-04-02 18:29:28.27162+02	2020-04-02 18:29:28.665122+02	131	40	7	1	000Q000100010002000100010001
 133	0	en	HeadingPlugin	2020-04-02 18:29:28.296459+02	2020-04-02 18:29:28.684928+02	132	40	8	0	000Q0001000100020001000100010001
 131	0	en	BootstrapCardPlugin	2020-04-02 18:29:28.250351+02	2020-04-02 18:29:28.647241+02	130	40	6	2	000Q00010001000200010001
-156	0	en	BootstrapRowPlugin	2020-04-02 18:29:28.134785+02	2020-04-02 18:29:29.11895+02	155	42	2	1	000U0001
-158	0	en	HeadingPlugin	2020-04-02 18:29:28.179605+02	2020-04-02 18:29:29.140681+02	157	42	4	0	000U000100010001
 134	1	en	BootstrapCardBodyPlugin	2020-04-02 18:29:28.316057+02	2020-04-02 18:29:28.705525+02	131	40	7	2	000Q000100010002000100010002
 136	1	en	BootstrapButtonPlugin	2020-04-02 18:29:28.371976+02	2020-04-02 18:29:28.746712+02	134	40	8	0	000Q0001000100020001000100020002
 129	1	en	ShopCartPlugin	2020-04-02 18:29:28.202763+02	2020-04-02 18:29:28.605782+02	127	40	4	2	000Q000100010002
 137	1	en	ShopRightExtension	2020-04-02 18:29:28.401184+02	2020-04-02 18:29:28.764186+02	129	40	5	1	000Q0001000100020002
 138	0	en	BootstrapButtonPlugin	2020-04-02 18:29:28.42754+02	2020-04-02 18:29:28.781641+02	137	40	6	0	000Q00010001000200020001
-135	0	en	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-02 18:29:28.811906+02	134	40	8	0	000Q0001000100020001000100020001
-139	0	de	BreadcrumbPlugin	2020-04-02 18:29:28.451761+02	2020-04-02 18:29:28.849962+02	\N	41	1	0	000R
-140	0	de	BootstrapContainerPlugin	2020-04-02 18:29:28.120498+02	2020-04-02 18:29:28.894773+02	\N	42	1	1	000S
-141	0	de	BootstrapRowPlugin	2020-04-02 18:29:28.134785+02	2020-04-02 18:29:28.89982+02	140	42	2	1	000S0001
-143	0	de	HeadingPlugin	2020-04-02 18:29:28.179605+02	2020-04-02 18:29:28.917397+02	142	42	4	0	000S000100010001
-142	0	de	BootstrapColumnPlugin	2020-04-02 18:29:28.157914+02	2020-04-02 18:29:28.907883+02	141	42	3	2	000S00010001
-157	0	en	BootstrapColumnPlugin	2020-04-02 18:29:28.157914+02	2020-04-02 18:29:29.129579+02	156	42	3	2	000U00010001
-145	0	de	ShopLeftExtension	2020-04-02 18:29:28.227019+02	2020-04-02 18:29:28.937066+02	144	42	5	1	000S0001000100020001
-148	0	de	HeadingPlugin	2020-04-02 18:29:28.296459+02	2020-04-02 18:29:28.961093+02	147	42	8	0	000S0001000100020001000100010001
-147	0	de	BootstrapCardHeaderPlugin	2020-04-02 18:29:28.27162+02	2020-04-02 18:29:28.953446+02	146	42	7	1	000S000100010002000100010001
-146	0	de	BootstrapCardPlugin	2020-04-02 18:29:28.250351+02	2020-04-02 18:29:28.945018+02	145	42	6	2	000S00010001000200010001
-151	1	de	BootstrapButtonPlugin	2020-04-02 18:29:28.371976+02	2020-04-02 18:29:28.991682+02	149	42	8	0	000S0001000100020001000100020002
-149	1	de	BootstrapCardBodyPlugin	2020-04-02 18:29:28.316057+02	2020-04-02 18:29:28.970359+02	146	42	7	2	000S000100010002000100010002
-144	1	de	ShopCartPlugin	2020-04-02 18:29:28.202763+02	2020-04-02 18:29:28.927452+02	142	42	4	2	000S000100010002
-153	0	de	BootstrapButtonPlugin	2020-04-02 18:29:28.42754+02	2020-04-02 18:29:29.009588+02	152	42	6	0	000S00010001000200020001
-160	0	en	ShopLeftExtension	2020-04-02 18:29:28.227019+02	2020-04-02 18:29:29.168007+02	159	42	5	1	000U0001000100020001
-163	0	en	HeadingPlugin	2020-04-02 18:29:28.296459+02	2020-04-02 18:29:29.202149+02	162	42	8	0	000U0001000100020001000100010001
-162	0	en	BootstrapCardHeaderPlugin	2020-04-02 18:29:28.27162+02	2020-04-02 18:29:29.192562+02	161	42	7	1	000U000100010002000100010001
-161	0	en	BootstrapCardPlugin	2020-04-02 18:29:28.250351+02	2020-04-02 18:29:29.180952+02	160	42	6	2	000U00010001000200010001
+119	0	de	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-12 21:43:56.024554+02	118	40	8	0	000N0001000100020001000100020001
 169	0	de	BootstrapContainerPlugin	2020-04-02 18:29:29.396752+02	2020-04-02 18:29:29.398926+02	\N	44	1	1	000V
-166	1	en	BootstrapButtonPlugin	2020-04-02 18:29:28.371976+02	2020-04-02 18:29:29.241692+02	164	42	8	0	000U0001000100020001000100020002
-164	1	en	BootstrapCardBodyPlugin	2020-04-02 18:29:28.316057+02	2020-04-02 18:29:29.212622+02	161	42	7	2	000U000100010002000100010002
-159	1	en	ShopCartPlugin	2020-04-02 18:29:28.202763+02	2020-04-02 18:29:29.151684+02	157	42	4	2	000U000100010002
-168	0	en	BootstrapButtonPlugin	2020-04-02 18:29:28.42754+02	2020-04-02 18:29:29.260522+02	167	42	6	0	000U00010001000200020001
-167	1	en	ShopRightExtension	2020-04-02 18:29:28.401184+02	2020-04-02 18:29:29.252783+02	159	42	5	1	000U0001000100020002
-165	0	en	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-02 18:29:29.270214+02	164	42	8	0	000U0001000100020001000100020001
 171	0	de	BootstrapColumnPlugin	2020-04-02 18:29:29.422672+02	2020-04-02 18:29:29.437698+02	170	44	3	2	000V00010001
 170	0	de	BootstrapRowPlugin	2020-04-02 18:29:29.406702+02	2020-04-02 18:29:29.416034+02	169	44	2	1	000V0001
 173	1	de	ShopCartPlugin	2020-04-02 18:29:29.464412+02	2020-04-02 18:29:29.480595+02	171	44	4	0	000V000100010002
@@ -4398,6 +4366,75 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 667	1	de	BootstrapCarouselSlidePlugin	2020-04-05 19:06:57.352902+02	2020-04-05 19:37:23.404919+02	665	6	5	0	003D0002000100010002
 665	0	de	BootstrapCarouselPlugin	2020-04-05 19:06:57.284525+02	2020-04-05 19:37:23.368891+02	664	6	4	2	003D000200010001
 662	1	de	TextPlugin	2020-04-02 18:29:24.399026+02	2020-04-05 19:37:23.417917+02	660	6	4	0	003D000100020002
+668	0	de	BootstrapContainerPlugin	2020-04-12 15:26:59.800039+02	2020-04-12 15:26:59.804663+02	\N	16	1	1	003E
+669	0	de	BootstrapRowPlugin	2020-04-12 15:27:19.195037+02	2020-04-12 15:27:19.199404+02	668	16	2	1	003E0001
+696	0	de	BootstrapContainerPlugin	2020-04-12 19:53:28.79535+02	2020-04-12 19:54:19.236688+02	\N	22	1	1	003J
+670	0	de	BootstrapColumnPlugin	2020-04-12 15:27:19.207681+02	2020-04-12 15:27:19.217752+02	669	16	3	1	003E00010001
+671	0	de	TextPlugin	2020-04-12 15:27:28.089302+02	2020-04-12 19:40:10.358775+02	670	16	4	0	003E000100010001
+686	0	de	BootstrapColumnPlugin	2020-04-12 19:42:35.987487+02	2020-04-12 19:42:35.99726+02	685	12	3	1	003G00010001
+697	0	de	BootstrapRowPlugin	2020-04-12 19:53:36.672839+02	2020-04-12 19:54:19.240939+02	696	22	2	1	003J0001
+698	0	de	BootstrapColumnPlugin	2020-04-12 19:53:36.684446+02	2020-04-12 19:54:19.244888+02	697	22	3	1	003J00010001
+687	0	de	TextPlugin	2020-04-12 19:42:45.89829+02	2020-04-12 19:50:40.463547+02	686	12	4	0	003G000100010001
+680	0	de	BootstrapContainerPlugin	2020-04-12 15:26:59.800039+02	2020-04-12 19:42:06.920554+02	\N	18	1	1	003F
+681	0	de	BootstrapRowPlugin	2020-04-12 15:27:19.195037+02	2020-04-12 19:42:06.92539+02	680	18	2	1	003F0001
+682	0	de	BootstrapColumnPlugin	2020-04-12 15:27:19.207681+02	2020-04-12 19:42:06.929823+02	681	18	3	1	003F00010001
+683	0	de	TextPlugin	2020-04-12 15:27:28.089302+02	2020-04-12 19:42:06.952962+02	682	18	4	0	003F000100010001
+684	0	de	BootstrapContainerPlugin	2020-04-12 19:42:27.436451+02	2020-04-12 19:42:27.444084+02	\N	12	1	1	003G
+685	0	de	BootstrapRowPlugin	2020-04-12 19:42:35.976843+02	2020-04-12 19:42:35.982565+02	684	12	2	1	003G0001
+688	0	de	BootstrapContainerPlugin	2020-04-12 19:42:27.436451+02	2020-04-12 19:53:12.911486+02	\N	14	1	1	003H
+689	0	de	BootstrapRowPlugin	2020-04-12 19:42:35.976843+02	2020-04-12 19:53:12.916262+02	688	14	2	1	003H0001
+690	0	de	BootstrapColumnPlugin	2020-04-12 19:42:35.987487+02	2020-04-12 19:53:12.920413+02	689	14	3	1	003H00010001
+691	0	de	TextPlugin	2020-04-12 19:42:45.89829+02	2020-04-12 19:53:12.930416+02	690	14	4	0	003H000100010001
+692	0	de	BootstrapContainerPlugin	2020-04-12 19:53:28.79535+02	2020-04-12 19:53:28.803291+02	\N	20	1	1	003I
+693	0	de	BootstrapRowPlugin	2020-04-12 19:53:36.672839+02	2020-04-12 19:53:36.676945+02	692	20	2	1	003I0001
+699	0	de	TextPlugin	2020-04-12 19:53:42.7461+02	2020-04-12 19:54:19.266503+02	698	22	4	0	003J000100010001
+700	1	de	BootstrapSecondaryMenuPlugin	2020-04-12 20:04:02.012312+02	2020-04-12 20:04:02.01972+02	29	3	4	0	0003000100020002
+29	1	de	BootstrapColumnPlugin	2020-04-02 18:29:24.853737+02	2020-04-02 18:29:24.863679+02	25	3	3	2	000300010002
+694	0	de	BootstrapColumnPlugin	2020-04-12 19:53:36.684446+02	2020-04-12 19:53:36.698382+02	693	20	3	1	003I00010001
+695	0	de	TextPlugin	2020-04-12 19:53:42.7461+02	2020-04-12 19:54:13.900647+02	694	20	4	0	003I000100010001
+701	0	en	BootstrapContainerPlugin	2020-04-12 20:05:48.990037+02	2020-04-12 20:05:48.997922+02	\N	95	1	1	003K
+702	0	en	BootstrapRowPlugin	2020-04-12 20:05:58.403943+02	2020-04-12 20:05:58.408892+02	701	95	2	1	003K0001
+731	0	en	BootstrapContainerPlugin	2020-04-12 20:05:48.990037+02	2020-04-12 21:28:29.45059+02	\N	97	1	1	003L
+709	0	en	HeadingPlugin	2020-04-12 20:54:18.960185+02	2020-04-12 20:54:18.970733+02	703	95	4	0	003K000100010002
+703	0	en	BootstrapColumnPlugin	2020-04-12 20:05:58.41885+02	2020-04-12 20:05:58.434673+02	702	95	3	3	003K00010001
+135	0	en	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-12 21:30:55.142279+02	134	40	8	0	000Q0001000100020001000100020001
+730	2	en	TextPlugin	2020-04-12 21:27:37.634993+02	2020-04-12 21:27:53.475465+02	703	95	4	0	003K000100010003
+704	1	en	LeafletPlugin	2020-04-12 20:09:13.101811+02	2020-04-12 21:28:24.039071+02	703	95	4	0	003K000100010001
+737	0	en	BreadcrumbPlugin	2020-04-02 18:29:28.451761+02	2020-04-12 21:30:59.207048+02	\N	41	1	0	003M
+732	0	en	BootstrapRowPlugin	2020-04-12 20:05:58.403943+02	2020-04-12 21:28:29.453635+02	731	97	2	1	003L0001
+734	1	en	LeafletPlugin	2020-04-12 20:09:13.101811+02	2020-04-12 21:28:29.461636+02	733	97	4	0	003L000100010001
+735	0	en	HeadingPlugin	2020-04-12 20:54:18.960185+02	2020-04-12 21:28:29.46818+02	733	97	4	0	003L000100010002
+738	0	en	BootstrapContainerPlugin	2020-04-02 18:29:28.120498+02	2020-04-12 21:30:59.238012+02	\N	42	1	1	003N
+733	0	en	BootstrapColumnPlugin	2020-04-12 20:05:58.41885+02	2020-04-12 21:28:29.457846+02	732	97	3	3	003L00010001
+736	2	en	TextPlugin	2020-04-12 21:27:37.634993+02	2020-04-12 21:28:29.478302+02	733	97	4	0	003L000100010003
+739	0	en	BootstrapRowPlugin	2020-04-02 18:29:28.134785+02	2020-04-12 21:30:59.241498+02	738	42	2	1	003N0001
+741	0	en	HeadingPlugin	2020-04-02 18:29:28.179605+02	2020-04-12 21:30:59.249767+02	740	42	4	0	003N000100010001
+740	0	en	BootstrapColumnPlugin	2020-04-02 18:29:28.157914+02	2020-04-12 21:30:59.245468+02	739	42	3	2	003N00010001
+743	0	en	ShopLeftExtension	2020-04-02 18:29:28.227019+02	2020-04-12 21:30:59.259529+02	742	42	5	1	003N0001000100020001
+746	0	en	HeadingPlugin	2020-04-02 18:29:28.296459+02	2020-04-12 21:30:59.271426+02	745	42	8	0	003N0001000100020001000100010001
+745	0	en	BootstrapCardHeaderPlugin	2020-04-02 18:29:28.27162+02	2020-04-12 21:30:59.267771+02	744	42	7	1	003N000100010002000100010001
+744	0	en	BootstrapCardPlugin	2020-04-02 18:29:28.250351+02	2020-04-12 21:30:59.263382+02	743	42	6	2	003N00010001000200010001
+749	1	en	BootstrapButtonPlugin	2020-04-02 18:29:28.371976+02	2020-04-12 21:30:59.28649+02	747	42	8	0	003N0001000100020001000100020002
+747	1	en	BootstrapCardBodyPlugin	2020-04-02 18:29:28.316057+02	2020-04-12 21:30:59.276949+02	744	42	7	2	003N000100010002000100010002
+742	1	en	ShopCartPlugin	2020-04-02 18:29:28.202763+02	2020-04-12 21:30:59.255175+02	740	42	4	2	003N000100010002
+751	0	en	BootstrapButtonPlugin	2020-04-02 18:29:28.42754+02	2020-04-12 21:30:59.29636+02	750	42	6	0	003N00010001000200020001
+750	1	en	ShopRightExtension	2020-04-02 18:29:28.401184+02	2020-04-12 21:30:59.292311+02	742	42	5	1	003N0001000100020002
+748	0	en	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-12 21:30:59.302107+02	747	42	8	0	003N0001000100020001000100020001
+752	0	de	BreadcrumbPlugin	2020-04-02 18:29:28.451761+02	2020-04-12 21:43:59.435107+02	\N	41	1	0	003O
+753	0	de	BootstrapContainerPlugin	2020-04-02 18:29:28.120498+02	2020-04-12 21:43:59.464934+02	\N	42	1	1	003P
+754	0	de	BootstrapRowPlugin	2020-04-02 18:29:28.134785+02	2020-04-12 21:43:59.467928+02	753	42	2	1	003P0001
+756	0	de	HeadingPlugin	2020-04-02 18:29:28.179605+02	2020-04-12 21:43:59.477939+02	755	42	4	0	003P000100010001
+755	0	de	BootstrapColumnPlugin	2020-04-02 18:29:28.157914+02	2020-04-12 21:43:59.47166+02	754	42	3	2	003P00010001
+758	0	de	ShopLeftExtension	2020-04-02 18:29:28.227019+02	2020-04-12 21:43:59.486959+02	757	42	5	1	003P0001000100020001
+761	0	de	HeadingPlugin	2020-04-02 18:29:28.296459+02	2020-04-12 21:43:59.499691+02	760	42	8	0	003P0001000100020001000100010001
+760	0	de	BootstrapCardHeaderPlugin	2020-04-02 18:29:28.27162+02	2020-04-12 21:43:59.495313+02	759	42	7	1	003P000100010002000100010001
+759	0	de	BootstrapCardPlugin	2020-04-02 18:29:28.250351+02	2020-04-12 21:43:59.491492+02	758	42	6	2	003P00010001000200010001
+764	1	de	BootstrapButtonPlugin	2020-04-02 18:29:28.371976+02	2020-04-12 21:43:59.513658+02	762	42	8	0	003P0001000100020001000100020002
+762	1	de	BootstrapCardBodyPlugin	2020-04-02 18:29:28.316057+02	2020-04-12 21:43:59.50442+02	759	42	7	2	003P000100010002000100010002
+757	1	de	ShopCartPlugin	2020-04-02 18:29:28.202763+02	2020-04-12 21:43:59.483152+02	755	42	4	2	003P000100010002
+766	0	de	BootstrapButtonPlugin	2020-04-02 18:29:28.42754+02	2020-04-12 21:43:59.525319+02	765	42	6	0	003P00010001000200020001
+765	1	de	ShopRightExtension	2020-04-02 18:29:28.401184+02	2020-04-12 21:43:59.518943+02	757	42	5	1	003P0001000100020002
+763	0	de	TextPlugin	2020-04-02 18:29:28.342296+02	2020-04-12 21:43:59.530612+02	762	42	8	0	003P0001000100020001000100020001
 \.
 
 
@@ -4427,20 +4464,12 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 3	script	script	2020-04-02 18:29:25.565838+02	2020-04-02 18:29:25.565859+02	2020-04-02 18:29:25.659931+02	\N	f	t	shop-legal-pages	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	4	f	2
 16	script	script	2020-04-02 18:29:27.104505+02	2020-04-02 18:29:27.271955+02	2020-04-02 18:29:27.104213+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	f	de,en	0	15	f	8
 15	script	script	2020-04-02 18:29:26.719922+02	2020-04-02 18:29:26.719943+02	2020-04-02 18:29:27.104213+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	t	de,en	0	16	f	8
-6	script	script	2020-04-02 18:29:25.830437+02	2020-04-02 18:29:25.866617+02	2020-04-02 18:29:25.83005+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	5	f	3
-5	script	script	2020-04-02 18:29:25.733937+02	2020-04-02 18:29:25.733965+02	2020-04-02 18:29:25.83005+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	6	f	3
-8	script	script	2020-04-02 18:29:26.013953+02	2020-04-02 18:29:26.050329+02	2020-04-02 18:29:26.013741+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	7	f	4
-7	script	script	2020-04-02 18:29:25.910153+02	2020-04-02 18:29:25.910173+02	2020-04-02 18:29:26.013741+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	8	f	4
-10	script	script	2020-04-02 18:29:26.186138+02	2020-04-02 18:29:26.219348+02	2020-04-02 18:29:26.185751+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	9	f	5
-9	script	script	2020-04-02 18:29:26.088782+02	2020-04-02 18:29:26.088813+02	2020-04-02 18:29:26.185751+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	10	f	5
 18	script	script	2020-04-02 18:29:27.810023+02	2020-04-02 18:29:27.909443+02	2020-04-02 18:29:27.809747+02	\N	f	f	shop-search-product	\N	weltladen/pages/default.html	f	\N	f	CatalogSearchApp	\N	f	de,en	0	17	f	9
 12	script	script	2020-04-02 18:29:26.41726+02	2020-04-02 18:29:26.455166+02	2020-04-02 18:29:26.417036+02	\N	f	t	shop-personal-pages	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	11	f	6
 11	script	script	2020-04-02 18:29:26.258695+02	2020-04-02 18:29:26.258715+02	2020-04-02 18:29:26.417036+02	\N	f	t	shop-personal-pages	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	12	f	6
 17	script	script	2020-04-02 18:29:27.46288+02	2020-04-02 18:29:27.462901+02	2020-04-02 18:29:27.809747+02	\N	f	f	shop-search-product	\N	weltladen/pages/default.html	f	\N	f	CatalogSearchApp	\N	t	de,en	0	18	f	9
 14	script	script	2020-04-02 18:29:26.621495+02	2020-04-02 18:29:26.669572+02	2020-04-02 18:29:26.621226+02	\N	f	t	shop-impersonal-pages	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	13	f	7
 13	script	script	2020-04-02 18:29:26.500137+02	2020-04-02 18:29:26.500158+02	2020-04-02 18:29:26.621226+02	\N	f	t	shop-impersonal-pages	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	14	f	7
-20	script	script	2020-04-02 18:29:28.822202+02	2020-04-02 18:29:29.036555+02	2020-04-02 18:29:28.821965+02	\N	f	f	shop-cart	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	19	f	10
-19	script	script	2020-04-02 18:29:28.028246+02	2020-04-02 18:29:28.028282+02	2020-04-02 18:29:28.821965+02	\N	f	f	shop-cart	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	20	f	10
 26	script	script	2020-04-02 18:29:31.568589+02	2020-04-02 18:29:31.72999+02	2020-04-02 18:29:31.568356+02	\N	t	f	shop-customer-details	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	25	f	13
 25	script	script	2020-04-02 18:29:31.048108+02	2020-04-02 18:29:31.048128+02	2020-04-02 18:29:31.568356+02	\N	t	f	shop-customer-details	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	26	f	13
 22	script	script	2020-04-02 18:29:29.629124+02	2020-04-02 18:29:29.744173+02	2020-04-02 18:29:29.628786+02	\N	f	f	shop-watch-list	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	21	f	11
@@ -4462,6 +4491,18 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 39	script	script	2020-04-02 18:29:35.02314+02	2020-04-02 18:29:35.023159+02	2020-04-02 18:29:37.369981+02	\N	f	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	40	f	20
 2	script	markusmo	2020-04-02 18:29:25.255597+02	2020-04-05 19:37:23.232081+02	2020-04-02 18:29:25.255353+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	f	de,en	0	1	f	1
 1	script	markusmo	2020-04-02 18:29:24.160134+02	2020-04-04 18:33:33.173073+02	2020-04-02 18:29:25.255353+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	t	de,en	0	2	f	1
+10	script	markusmo	2020-04-02 18:29:26.186138+02	2020-04-12 19:54:19.211212+02	2020-04-02 18:29:26.185751+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	9	f	5
+9	script	markusmo	2020-04-02 18:29:26.088782+02	2020-04-02 18:29:26.088813+02	2020-04-02 18:29:26.185751+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	10	f	5
+8	script	markusmo	2020-04-02 18:29:26.013953+02	2020-04-12 19:42:06.896644+02	2020-04-02 18:29:26.013741+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	7	f	4
+7	script	markusmo	2020-04-02 18:29:25.910153+02	2020-04-02 18:29:25.910173+02	2020-04-02 18:29:26.013741+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	8	f	4
+6	script	markusmo	2020-04-02 18:29:25.830437+02	2020-04-12 19:53:12.887029+02	2020-04-02 18:29:25.83005+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	5	f	3
+5	script	markusmo	2020-04-02 18:29:25.733937+02	2020-04-02 18:29:25.733965+02	2020-04-02 18:29:25.83005+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	6	f	3
+46	markusmo	markusmo	2020-04-12 20:05:32.693018+02	2020-04-12 21:28:29.388464+02	2020-04-12 20:05:32.692774+02	\N	t	f	\N	\N	INHERIT	f	\N	f		\N	f	de,en	0	45	f	23
+44	markusmo	markusmo	2020-04-12 20:01:11.912989+02	2020-04-12 20:03:40.304804+02	2020-04-12 20:01:11.91277+02	\N	f	t	id-contact	\N	weltladen/pages/default.html	f	\N	f		\N	f	de,en	0	43	f	22
+43	markusmo	markusmo	2020-04-12 19:59:57.283492+02	2020-04-12 20:02:29.053661+02	2020-04-12 20:01:11.91277+02	\N	f	t	id-contact	\N	weltladen/pages/default.html	f	\N	f		\N	t	en,de	0	44	f	22
+45	markusmo	markusmo	2020-04-12 20:04:32.618364+02	2020-04-12 20:05:28.702047+02	2020-04-12 20:05:32.692774+02	\N	t	f	\N	\N	INHERIT	f	\N	f		\N	t	en,de	0	46	f	23
+20	script	markusmo	2020-04-02 18:29:28.822202+02	2020-04-12 21:43:59.35129+02	2020-04-02 18:29:28.821965+02	\N	f	f	shop-cart	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	19	f	10
+19	script	markusmo	2020-04-02 18:29:28.028246+02	2020-04-02 18:29:28.028282+02	2020-04-02 18:29:28.821965+02	\N	f	f	shop-cart	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	20	f	10
 \.
 
 
@@ -4550,6 +4591,14 @@ COPY public.cms_page_placeholders (id, page_id, placeholder_id) FROM stdin;
 78	39	80
 79	40	81
 80	40	82
+85	43	90
+86	43	91
+87	44	92
+88	44	93
+89	45	94
+90	45	95
+91	46	96
+92	46	97
 \.
 
 
@@ -4667,6 +4716,14 @@ COPY public.cms_placeholder (id, slot, default_width) FROM stdin;
 83	Social Icons	\N
 84	Social Icons	\N
 85	clipboard	\N
+90	Breadcrumb	\N
+91	Main Content	\N
+92	Breadcrumb	\N
+93	Main Content	\N
+94	Breadcrumb	\N
+95	Main Content	\N
+96	Breadcrumb	\N
+97	Main Content	\N
 \.
 
 
@@ -4683,8 +4740,8 @@ COPY public.cms_placeholderreference (cmsplugin_ptr_id, name, placeholder_ref_id
 --
 
 COPY public.cms_staticplaceholder (id, name, code, dirty, creation_method, draft_id, public_id, site_id) FROM stdin;
-1		Static Footer	f	code	3	4	\N
 2		Social Icons	f	code	83	84	\N
+1		Static Footer	f	code	3	4	\N
 \.
 
 
@@ -4699,16 +4756,10 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 5	de	Legal	\N	\N	\N	legal	legal	f	\N	2020-04-02 18:29:25.641107+02	t	t	0	3	7
 8	en	Legal	\N	\N	\N	legal	legal	f	\N	2020-04-02 18:29:25.650228+02	t	f	0	4	6
 6	en	Legal	\N	\N	\N	legal	legal	f	\N	2020-04-02 18:29:25.650228+02	t	t	0	3	8
-11	de	Imprint	\N	\N	\N	imprint	legal/imprint	f	\N	2020-04-02 18:29:25.805052+02	t	f	0	6	9
-9	de	Imprint	\N	\N	\N	imprint	legal/imprint	f	\N	2020-04-02 18:29:25.805052+02	t	t	0	5	11
 12	en	Imprint	\N	\N	\N	imprint	legal/imprint	f	\N	2020-04-02 18:29:25.814901+02	t	f	0	6	10
 10	en	Imprint	\N	\N	\N	imprint	legal/imprint	f	\N	2020-04-02 18:29:25.814901+02	t	t	0	5	12
-15	de	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-02 18:29:25.983721+02	t	f	0	8	13
-13	de	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-02 18:29:25.983721+02	t	t	0	7	15
 16	en	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-02 18:29:26.000459+02	t	f	0	8	14
 14	en	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-02 18:29:26.000459+02	t	t	0	7	16
-19	de	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-02 18:29:26.156187+02	t	f	0	10	17
-17	de	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-02 18:29:26.156187+02	t	t	0	9	19
 20	en	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-02 18:29:26.168+02	t	f	0	10	18
 18	en	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-02 18:29:26.168+02	t	t	0	9	20
 23	de	Personal Pages	\N	\N	\N	personal-pages	personal-pages	f	\N	2020-04-02 18:29:26.398194+02	t	f	0	12	21
@@ -4727,10 +4778,6 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 33	de	Search	\N	\N	\N	search	search	f	\N	2020-04-02 18:29:27.54741+02	t	t	0	17	35
 36	en	Search	\N	\N	\N	search	search	f	\N	2020-04-02 18:29:27.674095+02	t	f	0	18	34
 34	en	Search	\N	\N	\N	search	search	f	\N	2020-04-02 18:29:27.674095+02	t	t	0	17	36
-39	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.107118+02	t	f	0	20	37
-37	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.107118+02	t	t	0	19	39
-40	en	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.463934+02	t	f	0	20	38
-38	en	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.463934+02	t	t	0	19	40
 43	de	Watch-List	\N	\N	\N	watch-list	watch-list	f	\N	2020-04-02 18:29:29.380391+02	t	f	0	22	41
 41	de	Watch-List	\N	\N	\N	watch-list	watch-list	f	\N	2020-04-02 18:29:29.380391+02	t	t	0	21	43
 44	en	Watch-List	\N	\N	\N	watch-list	watch-list	f	\N	2020-04-02 18:29:29.500807+02	t	f	0	22	42
@@ -4764,6 +4811,14 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 72	en	Confirm Password Reset	\N	\N	\N	confirm-password-reset	confirm-password-reset	f	\N	2020-04-02 18:29:33.915878+02	t	f	0	36	70
 3	de	Home	\N	\N	\N	home		f	\N	2020-04-02 18:29:24.253479+02	t	f	0	2	1
 70	en	Confirm Password Reset	\N	\N	\N	confirm-password-reset	confirm-password-reset	f	\N	2020-04-02 18:29:33.915878+02	t	t	0	35	72
+15	de	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-02 18:29:25.983721+02	t	f	0	8	13
+11	de	Imprint	\N	\N	\N	imprint	legal/imprint	f	\N	2020-04-02 18:29:25.805052+02	t	f	0	6	9
+9	de	Imprint	\N	\N	\N	imprint	legal/imprint	f	\N	2020-04-02 18:29:25.805052+02	t	t	0	5	11
+19	de	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-02 18:29:26.156187+02	t	f	0	10	17
+40	en	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.463934+02	t	f	0	20	38
+38	en	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.463934+02	t	t	0	19	40
+39	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.107118+02	t	f	0	20	37
+37	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-02 18:29:28.107118+02	t	t	0	19	39
 75	de	Payment Canceled	\N	\N	\N	payment-canceled	payment-canceled	f	\N	2020-04-02 18:29:34.445838+02	t	f	0	38	73
 73	de	Payment Canceled	\N	\N	\N	payment-canceled	payment-canceled	f	\N	2020-04-02 18:29:34.445838+02	t	t	0	37	75
 76	en	Payment Canceled	\N	\N	\N	payment-canceled	payment-canceled	f	\N	2020-04-02 18:29:34.603044+02	t	f	0	38	74
@@ -4773,6 +4828,16 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 80	en	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-02 18:29:36.205551+02	t	f	0	40	78
 78	en	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-02 18:29:36.205551+02	t	t	0	39	80
 1	de	Home	\N	\N	\N	home		f	\N	2020-04-02 18:29:24.253479+02	t	t	0	1	3
+87	en	Maps				maps	contact/maps	f	\N	2020-04-12 20:04:32.619958+02	t	t	0	45	90
+13	de	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-02 18:29:25.983721+02	t	t	0	7	15
+17	de	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-02 18:29:26.156187+02	t	t	0	9	19
+85	de	Kontakt				contact	contact	f	\N	2020-04-12 20:00:45.231425+02	t	f	0	44	84
+84	de	Kontakt				contact	contact	f	\N	2020-04-12 20:00:45.231425+02	t	t	0	43	85
+86	en	Kontakt				contact	contact	f	\N	2020-04-12 19:59:57.28472+02	t	f	0	44	83
+83	en	Kontakt				contact	contact	f	\N	2020-04-12 19:59:57.28472+02	t	t	0	43	86
+89	de	Maps				maps	contact/maps	f	\N	2020-04-12 20:05:28.698135+02	t	f	0	46	88
+88	de	Maps				maps	contact/maps	f	\N	2020-04-12 20:05:28.698135+02	t	t	1	45	89
+90	en	Maps				maps	contact/maps	f	\N	2020-04-12 20:04:32.619958+02	t	f	0	46	87
 \.
 
 
@@ -4786,21 +4851,23 @@ COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM st
 4	00020002	2	0	2	1
 5	00020003	2	0	2	1
 2	0002	1	3	\N	1
-8	0005	1	0	\N	1
-9	0006	1	0	\N	1
-10	0007	1	0	\N	1
-11	0008	1	0	\N	1
-12	00030001	2	0	6	1
-13	00030002	2	0	6	1
-14	00030003	2	0	6	1
-6	0003	1	3	\N	1
-15	00040001	2	0	7	1
-16	00040002	2	0	7	1
-17	00040003	2	0	7	1
-7	0004	1	3	\N	1
-18	0009	1	0	\N	1
-19	000A	1	0	\N	1
-20	000B	1	0	\N	1
+20	000C	1	0	\N	1
+19	000B	1	0	\N	1
+18	000A	1	0	\N	1
+11	0009	1	0	\N	1
+10	0008	1	0	\N	1
+9	0007	1	0	\N	1
+8	0006	1	0	\N	1
+15	00050001	2	0	7	1
+16	00050002	2	0	7	1
+17	00050003	2	0	7	1
+7	0005	1	3	\N	1
+12	00040001	2	0	6	1
+13	00040002	2	0	6	1
+14	00040003	2	0	6	1
+6	0004	1	3	\N	1
+23	00030001	2	0	22	1
+22	0003	1	1	\N	1
 \.
 
 
@@ -4984,35 +5051,7 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 136	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 16}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "shopping-bag", "link_content": "Continue Shopping", "button_type": "btn-primary", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
 137	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "", "padding_lg": "", "hide_plugin": ""}	\N
 138	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 40}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "logout", "link_content": "Proceed to Checkout", "button_type": "btn-success", "button_size": "btn-lg", "button_options": ["btn-block"], "icon_align": "icon-right", "stretched_link": false}	\N
-139	{"render_type": "soft-root"}	\N
-140	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
-141	{}	\N
-142	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 778.33, "sm": 720.0, "lg": 945.0}}	\N
-143	{"content": "Your Shopping Cart", "element_id": "", "tag_type": "h2"}	\N
-144	{"render_type": "editable", "hide_plugin": ""}	\N
-145	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "pt-md-0", "padding_lg": "", "hide_plugin": ""}	\N
-146	{"heading_size": "", "panel_type": "panel-success", "heading": "Suggested Articles", "hide_plugin": "", "footer": ""}	\N
-147	{"hide_plugin": ""}	\N
-148	{"tag_type": "h4", "content": "This could be interesting for you", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "element_id": "", "hide_plugin": ""}	\N
-149	{"hide_plugin": ""}	\N
-151	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 16}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "shopping-bag", "link_content": "Continue Shopping", "button_type": "btn-primary", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
-152	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "", "padding_lg": "", "hide_plugin": ""}	\N
-153	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 40}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "logout", "link_content": "Proceed to Checkout", "button_type": "btn-success", "button_size": "btn-lg", "button_options": ["btn-block"], "icon_align": "icon-right", "stretched_link": false}	\N
-154	{"render_type": "soft-root"}	\N
-155	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
-156	{}	\N
-157	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 778.33, "sm": 720.0, "lg": 945.0}}	\N
-158	{"content": "Your Shopping Cart", "element_id": "", "tag_type": "h2"}	\N
-159	{"render_type": "editable", "hide_plugin": ""}	\N
-160	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "pt-md-0", "padding_lg": "", "hide_plugin": ""}	\N
-161	{"heading_size": "", "panel_type": "panel-success", "heading": "Suggested Articles", "hide_plugin": "", "footer": ""}	\N
-162	{"hide_plugin": ""}	\N
-163	{"tag_type": "h4", "content": "This could be interesting for you", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "element_id": "", "hide_plugin": ""}	\N
-164	{"hide_plugin": ""}	\N
-166	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 16}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "shopping-bag", "link_content": "Continue Shopping", "button_type": "btn-primary", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
 263	{"open_tag": "elif", "condition": "customer.is_guest"}	\N
-167	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "", "padding_lg": "", "hide_plugin": ""}	\N
-168	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 40}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "logout", "link_content": "Proceed to Checkout", "button_type": "btn-success", "button_size": "btn-lg", "button_options": ["btn-block"], "icon_align": "icon-right", "stretched_link": false}	\N
 169	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
 170	{"extra_css_classes": [], "extra_inline_styles:Margins": {"margin-top": "", "margin-bottom": ""}, "extra_inline_styles:background-color": ["disabled", "#ffffff"], "extra_inline_styles:Paddings": {"padding-right": "", "padding-left": ""}}	\N
 171	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "col-md-10", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "offset-md-1", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 940.0, "sm": 720.0, "lg": 1140.0}}	\N
@@ -5483,6 +5522,63 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 665	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "interval": 5,\n    "options": [\n        "slide",\n        "pause",\n        "wrap"\n    ],\n    "container_max_heights": {\n        "xs": "100px",\n        "sm": "150px",\n        "md": "200px",\n        "lg": "250px",\n        "xl": "300px"\n    },\n    "resize_options": [\n        "upscale",\n        "crop",\n        "subject_location",\n        "high_resolution"\n    ]\n}	\N
 666	{\n    "hide_plugin": false,\n    "image_file": {\n        "model": "filer.image",\n        "pk": 199\n    },\n    "image_title": "",\n    "alt_tag": "",\n    "_image_properties": {\n        "width": 662,\n        "height": 752,\n        "exif_orientation": 1\n    },\n    "resize_options": [\n        "upscale",\n        "crop",\n        "subject_location",\n        "high_resolution"\n    ],\n    "media_queries": {\n        "xs": {\n            "width": 572,\n            "media": "(max-width: 575.98px)"\n        },\n        "sm": {\n            "width": 540,\n            "media": "(min-width: 576px) and (max-width: 767.98px)"\n        },\n        "md": {\n            "width": 720,\n            "media": "(min-width: 768px) and (max-width: 991.98px)"\n        },\n        "lg": {\n            "width": 960,\n            "media": "(min-width: 992px) and (max-width: 1199.98px)"\n        },\n        "xl": {\n            "width": 1140,\n            "media": "(min-width: 1200px)"\n        }\n    }\n}	\N
 667	{\n    "hide_plugin": false,\n    "image_file": {\n        "model": "filer.image",\n        "pk": 200\n    },\n    "image_title": "",\n    "alt_tag": "",\n    "_image_properties": {\n        "width": 662,\n        "height": 752,\n        "exif_orientation": 1\n    },\n    "resize_options": [\n        "upscale",\n        "crop",\n        "subject_location",\n        "high_resolution"\n    ],\n    "media_queries": {\n        "xs": {\n            "width": 572,\n            "media": "(max-width: 575.98px)"\n        },\n        "sm": {\n            "width": 540,\n            "media": "(min-width: 576px) and (max-width: 767.98px)"\n        },\n        "md": {\n            "width": 720,\n            "media": "(min-width: 768px) and (max-width: 991.98px)"\n        },\n        "lg": {\n            "width": 960,\n            "media": "(min-width: 992px) and (max-width: 1199.98px)"\n        },\n        "xl": {\n            "width": 1140,\n            "media": "(min-width: 1200px)"\n        }\n    }\n}	\N
+668	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+669	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+670	{\n    "xs-column-width": "col"\n}	\N
+680	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+681	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+682	{\n    "xs-column-width": "col"\n}	\N
+684	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+685	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+686	{\n    "xs-column-width": "col"\n}	\N
+688	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+689	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+690	{\n    "xs-column-width": "col"\n}	\N
+692	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+693	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+694	{\n    "xs-column-width": "col"\n}	\N
+696	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+697	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+698	{\n    "xs-column-width": "col"\n}	\N
+700	{\n    "hide_plugin": false,\n    "render_template": "cascade/bootstrap4/secmenu-list-group.html",\n    "page_id": "id-contact",\n    "offset": 0,\n    "limit": 100\n}	\N
+701	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+702	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+703	{\n    "xs-column-width": "col"\n}	\N
+709	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h1",\n    "content": "So finden Sie uns!"\n}	\N
+704	{\n    "hide_plugin": false,\n    "render_template": "cascade/plugins/leaflet.html",\n    "map_width": "100%",\n    "map_height": "400px",\n    "map_position": {\n        "lat": 48.008321738367236,\n        "lng": 16.234509944915775,\n        "zoom": 17\n    },\n    "map_min_height": "",\n    "scroll_wheel_zoom": true\n}	\N
+731	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+732	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+733	{\n    "xs-column-width": "col"\n}	\N
+734	{\n    "hide_plugin": false,\n    "render_template": "cascade/plugins/leaflet.html",\n    "map_width": "100%",\n    "map_height": "400px",\n    "map_position": {\n        "lat": 48.008321738367236,\n        "lng": 16.234509944915775,\n        "zoom": 17\n    },\n    "map_min_height": "",\n    "scroll_wheel_zoom": true\n}	\N
+735	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h1",\n    "content": "So finden Sie uns!"\n}	\N
+737	{\n    "render_type": "soft-root"\n}	\N
+738	{\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": "",\n    "hide_plugin": "",\n    "container_max_widths": {\n        "xs": 750,\n        "md": 970,\n        "sm": 750,\n        "lg": 1170\n    },\n    "media_queries": {\n        "xs": [\n            "(max-width: 768px)"\n        ],\n        "md": [\n            "(min-width: 992px)",\n            "(max-width: 1200px)"\n        ],\n        "sm": [\n            "(min-width: 768px)",\n            "(max-width: 992px)"\n        ],\n        "lg": [\n            "(min-width: 1200px)"\n        ]\n    }\n}	\N
+739	{}	\N
+740	{\n    "xs-column-width": "col",\n    "sm-column-width": "",\n    "md-column-width": "",\n    "lg-column-width": "",\n    "xl-column-width": "",\n    "xs-column-offset": "",\n    "sm-column-offset": "",\n    "md-column-offset": "",\n    "lg-column-offset": "",\n    "xl-column-offset": "",\n    "xs-column-ordering": "",\n    "sm-column-ordering": "",\n    "md-column-ordering": "",\n    "lg-column-ordering": "",\n    "xl-column-ordering": "",\n    "xs-responsive-utils": "",\n    "sm-responsive-utils": "",\n    "md-responsive-utils": "",\n    "lg-responsive-utils": "",\n    "xl-responsive-utils": "",\n    "hide_plugin": "",\n    "container_max_widths": {\n        "xs": 720.0,\n        "md": 778.33,\n        "sm": 720.0,\n        "lg": 945.0\n    }\n}	\N
+741	{\n    "content": "Your Shopping Cart",\n    "element_id": "",\n    "tag_type": "h2"\n}	\N
+742	{\n    "render_type": "editable",\n    "hide_plugin": ""\n}	\N
+743	{\n    "padding_xs": "pt-3",\n    "padding_sm": "",\n    "padding_md": "pt-md-0",\n    "padding_lg": "",\n    "hide_plugin": ""\n}	\N
+744	{\n    "heading_size": "",\n    "panel_type": "panel-success",\n    "heading": "Suggested Articles",\n    "hide_plugin": "",\n    "footer": ""\n}	\N
+745	{\n    "hide_plugin": ""\n}	\N
+746	{\n    "tag_type": "h4",\n    "content": "This could be interesting for you",\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "element_id": "",\n    "hide_plugin": ""\n}	\N
+747	{\n    "hide_plugin": ""\n}	\N
+749	{\n    "hide_plugin": false,\n    "float_xs": "",\n    "float_sm": "",\n    "float_md": "",\n    "float_lg": "",\n    "float_xl": "",\n    "render_template": "shop/button.html",\n    "product": null,\n    "link_type": "cmspage",\n    "cms_page": {\n        "model": "cms.page",\n        "pk": 16\n    },\n    "section": "",\n    "download_file": null,\n    "ext_url": "",\n    "mail_to": "",\n    "link_target": "",\n    "link_title": "",\n    "icon_font": {\n        "model": "cmsplugin_cascade.iconfont",\n        "pk": 1\n    },\n    "symbol": "shopping-bag",\n    "link_content": "Continue Shopping",\n    "button_type": "btn-primary",\n    "button_size": "",\n    "button_options": [],\n    "icon_align": "icon-right",\n    "stretched_link": false\n}	\N
+750	{\n    "padding_xs": "pt-3",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "hide_plugin": ""\n}	\N
+751	{\n    "hide_plugin": false,\n    "float_xs": "",\n    "float_sm": "",\n    "float_md": "",\n    "float_lg": "",\n    "float_xl": "",\n    "render_template": "shop/button.html",\n    "product": null,\n    "link_type": "cmspage",\n    "cms_page": {\n        "model": "cms.page",\n        "pk": 40\n    },\n    "section": "",\n    "download_file": null,\n    "ext_url": "",\n    "mail_to": "",\n    "link_target": "",\n    "link_title": "",\n    "icon_font": {\n        "model": "cmsplugin_cascade.iconfont",\n        "pk": 1\n    },\n    "symbol": "logout",\n    "link_content": "Proceed to Checkout",\n    "button_type": "btn-success",\n    "button_size": "btn-lg",\n    "button_options": [\n        "btn-block"\n    ],\n    "icon_align": "icon-right",\n    "stretched_link": false\n}	\N
+752	{"render_type": "soft-root"}	\N
+753	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
+754	{}	\N
+755	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "", "lg-column-width": "", "xl-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "", "lg-column-offset": "", "xl-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xl-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "xl-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720.0, "md": 778.33, "sm": 720.0, "lg": 945.0}}	\N
+756	{"content": "Your Shopping Cart", "element_id": "", "tag_type": "h2"}	\N
+757	{"render_type": "editable", "hide_plugin": ""}	\N
+758	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "pt-md-0", "padding_lg": "", "hide_plugin": ""}	\N
+759	{"heading_size": "", "panel_type": "panel-success", "heading": "Suggested Articles", "hide_plugin": "", "footer": ""}	\N
+760	{"hide_plugin": ""}	\N
+761	{"tag_type": "h4", "content": "This could be interesting for you", "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "element_id": "", "hide_plugin": ""}	\N
+762	{"hide_plugin": ""}	\N
+764	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 16}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "shopping-bag", "link_content": "Continue Shopping", "button_type": "btn-primary", "button_size": "", "button_options": [], "icon_align": "icon-right", "stretched_link": false}	\N
+765	{"padding_xs": "pt-3", "padding_sm": "", "padding_md": "", "padding_lg": "", "hide_plugin": ""}	\N
+766	{"hide_plugin": false, "float_xs": "", "float_sm": "", "float_md": "", "float_lg": "", "float_xl": "", "render_template": "shop/button.html", "product": null, "link_type": "cmspage", "cms_page": {"model": "cms.page", "pk": 40}, "section": "", "download_file": null, "ext_url": "", "mail_to": "", "link_target": "", "link_title": "", "icon_font": {"model": "cmsplugin_cascade.iconfont", "pk": 1}, "symbol": "logout", "link_content": "Proceed to Checkout", "button_type": "btn-success", "button_size": "btn-lg", "button_options": ["btn-block"], "icon_align": "icon-right", "stretched_link": false}	\N
 \.
 
 
@@ -5500,6 +5596,8 @@ COPY public.cmsplugin_cascade_iconfont (id, identifier, config_data, font_folder
 --
 
 COPY public.cmsplugin_cascade_inline (id, glossary, cascade_element_id) FROM stdin;
+7	{\n    "title": "Weltladen Baden",\n    "use_icon": false,\n    "marker_image": null,\n    "marker_width": "",\n    "marker_anchor": {},\n    "popup_text": "<p><span style=\\"\\">Weltladen Baden</span><br style=\\"\\"><span style=\\"\\">Volksbank Passage, Hauptplatz 9-12</span><br style=\\"\\"><span style=\\"\\">2500 Baden</span><br style=\\"\\"><br style=\\"\\"><span style=\\"\\">Tel.: +43 2252 45236</span><br style=\\"\\"><span style=\\"\\">Mail:</span><a href=\\"mailto:info@weltladen-baden.at\\" style=\\"\\">info@weltladen-baden.at</a></p><p><a href=\\"https://www.openstreetmap.org/directions?from=48.00815%2C16.23460&amp;to=\\" target=\\"_blank\\">Für Route hier klicken</a></p>",\n    "position": {\n        "lat": 48.00814229219308,\n        "lng": 16.234563589096073\n    }\n}	734
+1	{\n    "title": "Weltladen Baden",\n    "use_icon": false,\n    "marker_image": null,\n    "marker_width": "",\n    "marker_anchor": {},\n    "popup_text": "<p><span style=\\"\\">Weltladen Baden</span><br style=\\"\\"><span style=\\"\\">Volksbank Passage, Hauptplatz 9-12</span><br style=\\"\\"><span style=\\"\\">2500 Baden</span><br style=\\"\\"><br style=\\"\\"><span style=\\"\\">Tel.: +43 2252 45236</span><br style=\\"\\"><span style=\\"\\">Mail:</span><a href=\\"mailto:info@weltladen-baden.at\\" style=\\"\\">info@weltladen-baden.at</a></p><p><a href=\\"https://www.openstreetmap.org/directions?from=48.00815%2C16.23460&amp;to=\\" target=\\"_blank\\">Für Route hier klicken</a></p>",\n    "position": {\n        "lat": 48.00814229219308,\n        "lng": 16.234563589096073\n    }\n}	704
 \.
 
 
@@ -5508,6 +5606,8 @@ COPY public.cmsplugin_cascade_inline (id, glossary, cascade_element_id) FROM std
 --
 
 COPY public.cmsplugin_cascade_page (id, settings, glossary, extended_object_id, public_extension_id, icon_font_id, menu_symbol) FROM stdin;
+1	{}	{\n    "element_ids": {\n        "709": ""\n    }\n}	45	2	\N	\N
+2	{}	{\n    "element_ids": {\n        "709": ""\n    }\n}	46	\N	\N	\N
 \.
 
 
@@ -5572,6 +5672,37 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 21	2020-04-07 20:32:10.205598+02	1	admin	2	[]	117	4
 22	2020-04-07 20:32:37.475189+02	4	markusmo	2	[]	117	4
 23	2020-04-07 20:33:15.901427+02	1	weltladen-baden.at	2	[{"changed": {"fields": ["domain", "name"]}}]	8	4
+24	2020-04-12 19:42:06.980062+02	7	Terms and Conditions	2		2	4
+25	2020-04-12 19:53:12.943412+02	5	Imprint	2		2	4
+26	2020-04-12 19:54:19.288128+02	9	Privacy Protection	2		2	4
+27	2020-04-12 19:57:41.412476+02	41	Kontakt	1	[{"added": {}}]	2	4
+28	2020-04-12 19:58:09.859482+02	41	Kontakt	2		2	4
+29	2020-04-12 19:58:55.139576+02	41	Kontakt	3		2	4
+30	2020-04-12 19:59:57.320907+02	43	Kontakt	1	[{"added": {}}]	2	4
+31	2020-04-12 20:00:13.17063+02	43	Kontakt	2	[{"changed": {"fields": ["soft_root", "xframe_options"]}}]	2	4
+32	2020-04-12 20:00:45.239492+02	43	Kontakt	2	[{"changed": {"fields": ["title", "slug"]}}]	2	4
+33	2020-04-12 20:01:04.174285+02	43	Kontakt	2	[{"changed": {"fields": ["slug"]}}]	2	4
+34	2020-04-12 20:01:11.937532+02	43	Kontakt	2		2	4
+35	2020-04-12 20:01:15.622167+02	43	Kontakt	2		2	4
+36	2020-04-12 20:02:29.054913+02	43	Kontakt	2	[{"changed": {"fields": ["reverse_id", "xframe_options"]}}]	2	4
+37	2020-04-12 20:03:37.173774+02	43	Kontakt	2		2	4
+38	2020-04-12 20:03:40.35544+02	43	Kontakt	2		2	4
+39	2020-04-12 20:04:32.660813+02	45	Maps	1	[{"added": {}}]	2	4
+40	2020-04-12 20:05:20.029581+02	45	Maps	2	[{"changed": {"fields": ["xframe_options"]}}]	2	4
+41	2020-04-12 20:05:28.703044+02	45	Maps	2	[{"changed": {"fields": ["title", "slug"]}}]	2	4
+42	2020-04-12 20:05:32.71766+02	45	Maps	2		2	4
+43	2020-04-12 20:05:36.531362+02	45	Maps	2		2	4
+44	2020-04-12 20:09:21.190456+02	45	Maps	2		2	4
+45	2020-04-12 20:55:46.730748+02	45	Maps	2		2	4
+46	2020-04-12 20:56:30.53847+02	45	Maps	2		2	4
+47	2020-04-12 21:23:47.627269+02	45	Maps	2		2	4
+48	2020-04-12 21:25:34.682635+02	45	Maps	2		2	4
+49	2020-04-12 21:28:29.492228+02	45	Maps	2		2	4
+50	2020-04-12 21:30:59.312149+02	19	Cart	2		2	4
+51	2020-04-12 21:43:59.545062+02	19	Cart	2		2	4
+52	2020-04-12 22:26:13.561031+02	2	Schokoeier	2	[{"changed": {"fields": ["caption", "short_description", "description"]}}, {"added": {"name": "Product Image", "object": "ProductImage object (5)"}}, {"deleted": {"name": "Product Image", "object": "ProductImage object (None)"}}]	133	4
+53	2020-04-12 22:26:37.64932+02	209	P-Space_Zoom.jpg	3		106	4
+54	2020-04-12 22:26:45.579288+02	2	Schokoeier	2	[{"changed": {"fields": ["caption", "description"]}}]	133	4
 \.
 
 
@@ -5862,7 +5993,7 @@ gjzm8kbbkv7cllnepdsji9sllsevdyco	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTk
 6a1pafiqxpmg7a65psc898sz40si2ui6	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-21 20:05:30.093398+02
 fvmzaas2734z5v46o0j4htehak14qjnl	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-21 21:06:47.186001+02
 k4l2rkt0auuxexkdk9gg6zb6dyfyuqmc	NGQxOWVmYTdlYzdjOTExYmU0NmFhMDk4MWM2YmY5NWZkY2IyNzdhMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0Ijp0cnVlLCJjbXNfcHJldmlldyI6ZmFsc2UsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCJ9	2020-04-19 16:34:19.255256+02
-t1ecawwr4eqpfn6xhyyplkcnwufk88qm	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-26 14:47:50.438515+02
+t1ecawwr4eqpfn6xhyyplkcnwufk88qm	ZGI1NzJlMWI3OWU2OGJhYTY0OTQxZGZkNTliODI0OTYxNzhlYjUzODp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWUsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCJ9	2020-04-26 22:27:23.830421+02
 \.
 
 
@@ -5890,16 +6021,24 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 79	<h2>Our Catalog List View</h2>\n
 86	<h2>Our Catalog List View</h2>\n
 469	<p>I have read the <cms-plugin alt="Link - terms and conditions " title="Link - terms and conditions" id="470"></cms-plugin> and agree with them.</p>
-119	<p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-135	<p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 517	<p>I have read the <cms-plugin alt="Link - terms and conditions " title="Link - terms and conditions" id="518"></cms-plugin> and agree with them.</p>
-150	<p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-165	<p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 565	<p>I have read the <cms-plugin alt="Link - terms and conditions " title="Link - terms and conditions" id="566"></cms-plugin> and agree with them.</p>
 409	<p>The Payment Service Provider rejected your payment. Please visit the checkout page again and try with another payment method. </p>
 417	<p>The Payment Service Provider rejected your payment. Please visit the checkout page again and try with another payment method. </p>
 613	<p>I have read the <cms-plugin alt="Link - terms and conditions " title="Link - terms and conditions" id="614"></cms-plugin> and agree with them.</p>
+135	<p>Haben Sie schon alles gefunden was Sie suchen?</p>\n\n<p>Falls nicht klicken sie hier.</p>
+119	<p>Wenn Sie noch etwas suchen, klicken Sie hier.</p>
 662	<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum.</p>\n\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+671	<p style='font-size: 2em; margin: 0px 0px 30px; font-family: "Trebuchet MS", sans-serif; font-weight: normal; line-height: normal; color: rgb(49, 49, 49); padding-bottom: 5px; font-style: normal;'><span style="background-color: #ffffff;"><span style="font-size: 20px;"><strong>Allgemeine Geschäftsbedingungen und Kundeninformationen</strong></span></span></p>\n\n<div class="col-xs-12 col-lg-9 col-lg-push-3" id="content" style="font-weight: normal; padding-left: 15px; padding-right: 15px; float: left; width: 920px; margin-bottom: 30px;">\n<h3><span style="background-color: #ffffff;"><span style="text-decoration: underline;"><span style="font-size: 16px;">I. Allgemeine Geschäftsbedingungen</span></span></span></h3>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 1 Grundlegende Bestimmungen<br>\n(1) Die nachstehenden Geschäftsbedingungen gelten für Verträge, die Sie mit uns als Anbieter (Verein Balance Global) über die Internetseite <a href="https://www.weltladen-baden.at/" style="background-color: transparent; color: #155826; text-decoration: none;" target="_blank">https://www.weltladen-baden.at/</a> schließen. Soweit nicht anders vereinbart, wird der Einbeziehung gegebenenfalls von Ihnen verwendeter eigener Bedingungen widersprochen.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">(2) Verbraucher im Sinne der nachstehenden Regelungen ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden kann. Unternehmer ist jede natürliche oder juristische Person oder eine rechtsfähige Personengesellschaft, die bei Abschluss eines Rechtsgeschäfts in Ausübung ihrer selbständigen beruflichen oder gewerblichen Tätigkeit handelt.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 2 Zustandekommen des Vertrages<br>\n(1) Gegenstand des Vertrages ist der Verkauf von Waren. </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">(2) Bereits mit dem Einstellen des jeweiligen Produkts auf unserer Internetseite unterbreiten wir Ihnen ein </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">verbindliches Angebot zum Abschluss eines Vertrages zu den in der Artikelbeschreibung angegebenen Bedingungen.<br>\n(3) Der Vertrag kommt über das Online-Warenkorbsystem wie folgt zustande:</span> <span style="background-color: #ffffff;">Die zum Kauf beabsichtigten Waren werden im "Warenkorb" abgelegt. Über die entsprechende Schaltfläche in der Navigationsleiste können Sie den "Warenkorb" aufrufen und dort jederzeit Änderungen vornehmen. Nach Aufrufen der Seite "Kasse" und der Eingabe der persönlichen Daten sowie der Zahlungs- und Versandbedingungen werden abschließend nochmals alle Bestelldaten auf der Bestellübersichtsseite angezeigt. Soweit Sie als Zahlungsart ein Sofortzahl-System (z.B. PayPal / PayPal Express, Sofort) nutzen, werden Sie entweder in unserem Online-Shop auf die Bestellübersichtsseite geführt oder Sie werden zunächst auf die Internetseite des Anbieters des Sofortzahl-Systems weitergeleitet. Erfolgt die Weiterleitung zu dem jeweiligen Sofortzahl-System, nehmen Sie dort die entsprechende Auswahl bzw. Eingabe Ihrer Daten vor. Abschließend werden Sie zurück in unseren Online-Shop auf die Bestellübersichtsseite geleitet. Vor Absenden der Bestellung haben Sie die Möglichkeit, hier sämtliche Angaben nochmals zu überprüfen, zu ändern (auch über die Funktion „zurück" des Internetbrowsers) bzw. den Kauf abzubrechen. Mit dem Absenden der Bestellung über die Schaltfläche "zahlungspflichtig bestellen" erklären Sie rechtsverbindlich die Annahme des Angebotes, wodurch der Vertrag zustande kommt.</span><br>\n<span style="background-color: #ffffff;">(4) Ihre Anfragen zur Erstellung eines Angebotes sind für Sie unverbindlich. Wir unterbreiten Ihnen hierzu ein</span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">verbindliches Angebot in Textform (z.B. per E-Mail), welches Sie innerhalb von 5 Werktagen annehmen können.<br>\n(5) Die Abwicklung der Bestellung und Übermittlung aller im Zusammenhang mit dem Vertragsschluss</span><span style="background-color: #ffffff;"> erforderlichen Informationen erfolgt per E-Mail zum Teil automatisiert. Sie haben deshalb sicherzustellen, dass die von Ihnen bei uns hinterlegte E-Mail-Adresse zutreffend ist, der Empfang der E-Mails technisch sichergestellt und insbesondere nicht durch SPAM-Filter verhindert wird.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 3 Besondere Vereinbarungen zu angebotenen Zahlungsarten<br>\nderzeit nicht aktiviert</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 4 Zurückbehaltungsrecht, Eigentumsvorbehalt<br>\n(1) Ein Zurückbehaltungsrecht können Sie nur ausüben, soweit es sich um Forderungen aus demselben</span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Vertragsverhältnis handelt.<br>\n(2) Die Ware bleibt bis zur vollständigen Zahlung des Kaufpreises unser Eigentum. </span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 5 Gewährleistung<br>\n(1) Es bestehen die gesetzlichen Mängelhaftungsrechte.<br>\n(2) Als Verbraucher werden Sie gebeten, die Sache bei Lieferung umgehend auf Vollständigkeit, offensichtliche Mängel und Transportschäden zu überprüfen und uns sowie dem Spediteur Beanstandungen schnellstmöglich mitzuteilen. Kommen Sie dem nicht nach, hat dies keine Auswirkung auf Ihre gesetzlichen Gewährleistungsansprüche.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 6 Rechtswahl, Erfüllungsort, Gerichtsstand<br>\n(1) Es gilt deutsches Recht. Bei Verbrauchern gilt diese Rechtswahl nur, soweit hierdurch der durch zwingendeBestimmungen des Rechts des Staates des gewöhnlichen Aufenthaltes des Verbrauchers gewährte Schutz nicht entzogen wird (Günstigkeitsprinzip).<br>\n(2) Erfüllungsort für alle Leistungen aus den mit uns bestehenden Geschäftsbeziehungen sowie Gerichtsstand<br>\nist unser Sitz, soweit Sie nicht Verbraucher, sondern Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen sind. Dasselbe gilt, wenn Sie keinen allgemeinen Gerichtsstand in Deutschland oder der EU haben oder der Wohnsitz oder gewöhnliche Aufenthalt im Zeitpunkt der Klageerhebung nicht bekannt ist. Die Befugnis, auch das Gericht an einem anderen gesetzlichen Gerichtsstand anzurufen, bleibt hiervon unberührt.<br>\n(3) Die Bestimmungen des UN-Kaufrechts finden ausdrücklich keine Anwendung.</span></div>\n\n<h3 style="text-align: justify;"><br>\n<span style="background-color: #ffffff;"><span style="text-decoration: underline;"><span style="font-size: 16px;">II. Kundeninformationen</span></span></span></h3>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">1. Identität des Verkäufers<br>\nWeltladen Baden </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Hauptplatz 9-12</span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">2500 Baden </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Österreich </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Telefon: </span> 0043 2252 45236</div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">E-Mail: baden@weltladen.at<br>\nAlternative Streitbeilegung: Die Europäische Kommission stellt eine Plattform für die außergerichtliche Online-Streitbeilegung (OS-Plattform) bereit, aufrufbar unter: <a href="https://ec.europa.eu/odr" style="background-color: transparent; color: #155826; text-decoration: none;">https://ec.europa.eu/odr</a></span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">2. Informationen zum Zustandekommen des Vertrages<br>\nDie technischen Schritte zum Vertragsschluss, der Vertragsschluss selbst und die Korrekturmöglichkeiten erfolgen nach Maßgabe der Regelungen "Zustandekommen des Vertrages" unserer Allgemeinen Geschäftsbedingungen (Teil I.).</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">3. Vertragssprache, Vertragstextspeicherung</span></div>\n\n<ul style="margin-top: 0px; margin-bottom: 10px;">\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">3.1. Vertragssprache ist deutsch .</span></li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">3.2. Der vollständige Vertragstext wird von uns nicht gespeichert. Vor Absenden der Bestellung über das Online Warenkorbsystem  können die Vertragsdaten über die Druckfunktion des Browsers ausgedruckt oder elektronisch gesichert werden. Nach Zugang der Bestellung bei uns werden die Bestelldaten nochmals per E-Mail an Sie übersandt.</span></li>\n</ul>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">4. Wesentliche Merkmale der Ware oder Dienstleistung<br>\nDie wesentlichen Merkmale der Ware und/oder Dienstleistung finden sich im jeweiligen Angebot.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">5. Preise und Zahlungsmodalitäten</span></div>\n\n<ul style="margin-top: 0px; margin-bottom: 10px;">\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">6.1. Die in den jeweiligen Angeboten angeführten Preise sowie die Versandkosten stellen Gesamtpreise dar. Sie beinhalten alle Preisbestandteile einschließlich aller anfallenden Steuern.</span></li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">6.2. Die anfallenden Versandkosten sind nicht im Kaufpreis enthalten. Sie sind über eine entsprechend bezeichnete Schaltfläche auf unserer Internetpräsenz oder im jeweiligen Angebot aufrufbar, werden im Laufe des Bestellvorganges gesondert ausgewiesen und sind von Ihnen zusätzlich zu tragen, soweit nicht die versandkostenfreie Lieferung zugesagt ist.</span></li>\n\t<li style="text-align: justify;">6.3. Die Ihnen zur Verfügung stehenden Zahlungsarten sind unter einer entsprechend bezeichneten Schaltfläche auf unserer Internetpräsenz oder im jeweiligen Angebot ausgewiesen.</li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">6.4. Soweit bei den einzelnen Zahlungsarten nicht anders angegeben, sind die Zahlungsansprüche aus dem geschlossenen Vertrag sofort zur Zahlung fällig.</span></li>\n</ul>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">7. Lieferbedingungen</span></div>\n\n<ul style="margin-top: 0px; margin-bottom: 10px;">\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">7.1. Die Lieferbedingungen, der Liefertermin sowie gegebenenfalls bestehende Lieferbeschränkungen finden sich unter einer entsprechend bezeichneten Schaltfläche auf unserer Internetpräsenz oder im jeweiligen Angebot.</span></li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">7.2. Soweit Sie Verbraucher sind ist gesetzlich geregelt, dass die Gefahr des zufälligen Untergangs und der zufälligen Verschlechterung der verkauften Sache während der Versendung erst mit der Übergabe der Ware an Sie übergeht, unabhängig davon, ob die Versendung versichert oder unversichert erfolgt. Dies gilt nicht, wenn Sie eigenständig ein nicht vom Unternehmer benanntes Transportunternehmen oder eine sonst zur Ausführung der Versendung bestimmte Person beauftragt haben.</span></li>\n</ul>\n\n<p style="margin: 0px 0px 10px; text-align: justify;"><span style="background-color: #ffffff;">8. Gesetzliches Mängelhaftungsrecht</span></p>\n\n<p style="margin: 0px 0px 10px; text-align: justify;"><span style="background-color: #ffffff;">Die Mängelhaftung richtet sich nach der Regelung "Gewährleistung" in unseren Allgemeinen Geschäftsbedingungen (Teil I).</span></p>\n\n<div style="text-align: justify;"> </div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">letzte Aktualisierung: 12.4.2020</span></div>\n</div>
+687	<h1>Impressum</h1>\n\n<p><span style="">MMag. Gertrude Jaksch-Fliegenschnee, Geschäftsführerin</span><br style="">\n<span style="">Weltladen Baden</span><br style="">\n<span style="">Volksbank Passage, Hauptplatz 9-12</span><br style="">\n<span style="">2500 Baden</span><br>\n<span style="">Tel.: 02252/45236</span><br style="">\n<span style="">Mail:<span> </span></span><a href="mailto:info@weltladen-baden.at" style="">info@weltladen-baden.at</a></p>\n\n<h2>Bankverbindung</h2>\n\n<p>Volksbank Wien AG<br>\n2500 Hauptplatz 9-13<br>\nWeltladen Baden<br>\nAT90 4300 0364 0778 0000<br>\nVB0EATWW</p>\n\n<p>https://www.firmenwebseiten.at/impressum-generator/</p>
+695	<h1 class="adsimple-221122606">Datenschutzerklärung</h1>\n\n<h2 class="adsimple-221122606">Datenschutz</h2>\n\n<p>Wir haben diese Datenschutzerklärung (Fassung 12.04.2020-221122606) verfasst, um Ihnen gemäß der Vorgaben der <a class="adsimple-221122606" href="https://eur-lex.europa.eu/legal-content/DE/ALL/?uri=celex%3A32016R0679&amp;tid=221122606" rel="noopener nofollow" target="_blank">Datenschutz-Grundverordnung (EU) 2016/679</a> zu erklären, welche Informationen wir sammeln, wie wir Daten verwenden und welche Entscheidungsmöglichkeiten Sie als Besucher dieser Webseite haben.</p>\n\n<p>Leider liegt es in der Natur der Sache, dass diese Erklärungen sehr technisch klingen, wir haben uns bei der Erstellung jedoch bemüht die wichtigsten Dinge so einfach und klar wie möglich zu beschreiben.</p>\n\n<h2 class="adsimple-221122606">Automatische Datenspeicherung</h2>\n\n<p>Wenn Sie heutzutage Webseiten besuchen, werden gewisse Informationen automatisch erstellt und gespeichert, so auch auf dieser Webseite.</p>\n\n<p>Wenn Sie unsere Webseite so wie jetzt gerade besuchen, speichert unser Webserver (Computer auf dem diese Webseite gespeichert ist) automatisch Daten wie</p>\n\n<ul class="adsimple-221122606">\n\t<li class="adsimple-221122606">die Adresse (URL) der aufgerufenen Webseite</li>\n\t<li class="adsimple-221122606">Browser und Browserversion</li>\n\t<li class="adsimple-221122606">das verwendete Betriebssystem</li>\n\t<li class="adsimple-221122606">die Adresse (URL) der zuvor besuchten Seite (Referrer URL)</li>\n\t<li class="adsimple-221122606">den Hostname und die IP-Adresse des Geräts von welchem aus zugegriffen wird</li>\n\t<li class="adsimple-221122606">Datum und Uhrzeit</li>\n</ul>\n\n<p>in Dateien (Webserver-Logfiles).</p>\n\n<p>In der Regel werden Webserver-Logfiles zwei Wochen gespeichert und danach automatisch gelöscht. Wir geben diese Daten nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.</p>\n\n<h2 class="adsimple-221122606">Cookies</h2>\n\n<p>Unsere Webseite verwendet HTTP-Cookies, um nutzerspezifische Daten zu speichern.<br>\nIm Folgenden erklären wir, was Cookies sind und warum Sie genutzt werden, damit Sie die folgende Datenschutzerklärung besser verstehen.</p>\n\n<h3 class="adsimple-221122606">Was genau sind Cookies?</h3>\n\n<p>Immer wenn Sie durch das Internet surfen, verwenden Sie einen Browser. Bekannte Browser sind beispielsweise Chrome, Safari, Firefox, Internet Explorer und Microsoft Edge. Die meisten Webseiten speichern kleine Text-Dateien in Ihrem Browser. Diese Dateien nennt man Cookies.</p>\n\n<p>Eines ist nicht von der Hand zu weisen: Cookies sind echt nützliche Helferlein. Fast alle Webseiten verwenden Cookies. Genauer gesprochen sind es HTTP-Cookies, da es auch noch andere Cookies für andere Anwendungsbereiche gibt. HTTP-Cookies sind kleine Dateien, die von unserer Webseite auf Ihrem Computer gespeichert werden. Diese Cookie-Dateien werden automatisch im Cookie-Ordner, quasi dem „Hirn“ Ihres Browsers, untergebracht. Ein Cookie besteht aus einem Namen und einem Wert. Bei der Definition eines Cookies müssen zusätzlich ein oder mehrere Attribute angegeben werden.</p>\n\n<p>Cookies speichern gewisse Nutzerdaten von Ihnen, wie beispielsweise Sprache oder persönliche Seiteneinstellungen. Wenn Sie unsere Seite wieder aufrufen, übermittelt Ihr Browser die „userbezogenen“ Informationen an unsere Seite zurück. Dank der Cookies weiß unsere Webseite, wer Sie sind und bietet Ihnen die Einstellung, die Sie gewohnt sind. In einigen Browsern hat jedes Cookie eine eigene Datei, in anderen wie beispielsweise Firefox sind alle Cookies in einer einzigen Datei gespeichert.</p>\n\n<p>Es gibt sowohl Erstanbieter Cookies als auch Drittanbieter-Cookies. Erstanbieter-Cookies werden direkt von unserer Seite erstellt, Drittanbieter-Cookies werden von Partner-Webseiten (z.B. Google Analytics) erstellt. Jedes Cookie ist individuell zu bewerten, da jedes Cookie andere Daten speichert. Auch die Ablaufzeit eines Cookies variiert von ein paar Minuten bis hin zu ein paar Jahren. Cookies sind keine Software-Programme und enthalten keine Viren, Trojaner oder andere „Schädlinge“. Cookies können auch nicht auf Informationen Ihres PCs zugreifen.</p>\n\n<p>So können zum Beispiel Cookie-Daten aussehen:</p>\n\n<p><strong class="adsimple-221122606">Name:</strong> _ga<br>\n<strong class="adsimple-221122606">Wert:</strong> GA1.2.1326744211.152221122606-6<br>\n<strong class="adsimple-221122606">Verwendungszweck:</strong> Unterscheidung der Webseitenbesucher<br>\n<strong class="adsimple-221122606">Ablaufdatum:</strong> nach 2 Jahren</p>\n\n<p>Diese Mindestgrößen sollte ein Browser unterstützen können:</p>\n\n<ul class="adsimple-221122606">\n\t<li class="adsimple-221122606">Mindestens 4096 Bytes pro Cookie</li>\n\t<li class="adsimple-221122606">Mindestens 50 Cookies pro Domain</li>\n\t<li class="adsimple-221122606">Mindestens 3000 Cookies insgesamt</li>\n</ul>\n\n<h3 class="adsimple-221122606">Welche Arten von Cookies gibt es?</h3>\n\n<p>Die Frage welche Cookies wir im Speziellen verwenden, hängt von den verwendeten Diensten ab und wird in den folgenden Abschnitten der Datenschutzerklärung geklärt. An dieser Stelle möchten wir kurz auf die verschiedenen Arten von HTTP-Cookies eingehen.</p>\n\n<p>Man kann 4 Arten von Cookies unterscheiden:</p>\n\n<p><strong class="adsimple-221122606">Unerlässliche Cookies</strong><br>\nDiese Cookies sind nötig, um grundlegende Funktionen der Webseite sicherzustellen. Zum Beispiel braucht es diese Cookies, wenn ein User ein Produkt in den Warenkorb legt, dann auf anderen Seiten weitersurft und später erst zur Kasse geht. Durch diese Cookies wird der Warenkorb nicht gelöscht, selbst wenn der User sein Browserfenster schließt.</p>\n\n<p><strong class="adsimple-221122606">Zweckmäßige Cookies</strong><br>\nDiese Cookies sammeln Infos über das Userverhalten und ob der User etwaige Fehlermeldungen bekommt. Zudem werden mithilfe dieser Cookies auch die Ladezeit und das Verhalten der Webseite bei verschiedenen Browsern gemessen.</p>\n\n<p><strong class="adsimple-221122606">Zielorientierte Cookies</strong><br>\nDiese Cookies sorgen für eine bessere Nutzerfreundlichkeit. Beispielsweise werden eingegebene Standorte, Schriftgrößen oder Formulardaten gespeichert.</p>\n\n<p><strong class="adsimple-221122606">Werbe-Cookies</strong><br>\nDiese Cookies werden auch Targeting-Cookies genannt. Sie dienen dazu dem User individuell angepasste Werbung zu liefern. Das kann sehr praktisch, aber auch sehr nervig sein.</p>\n\n<p>Üblicherweise werden Sie beim erstmaligen Besuch einer Webseite gefragt, welche dieser Cookiearten Sie zulassen möchten. Und natürlich wird diese Entscheidung auch in einem Cookie gespeichert.</p>\n\n<h3 class="adsimple-221122606">Wie kann ich Cookies löschen?</h3>\n\n<p>Wie und ob Sie Cookies verwenden wollen, entscheiden Sie selbst. Unabhängig von welchem Service oder welcher Webseite die Cookies stammen, haben Sie immer die Möglichkeit Cookies zu löschen, zu deaktivieren oder nur teilweise zuzulassen. Zum Beispiel können Sie Cookies von Drittanbietern blockieren, aber alle anderen Cookies zulassen.</p>\n\n<p>Wenn Sie feststellen möchten, welche Cookies in Ihrem Browser gespeichert wurden, wenn Sie Cookie-Einstellungen ändern oder löschen wollen, können Sie dies in Ihren Browser-Einstellungen finden:</p>\n\n<p><a class="adsimple-221122606" href="https://support.google.com/chrome/answer/95647?tid=221122606" rel="noopener nofollow" target="_blank">Chrome: Cookies in Chrome löschen, aktivieren und verwalten</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.apple.com/de-at/guide/safari/sfri11471/mac?tid=221122606" rel="noopener nofollow" target="_blank">Safari: Verwalten von Cookies und Websitedaten mit Safari</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.mozilla.org/de/kb/cookies-und-website-daten-in-firefox-loschen?tid=221122606" rel="noopener nofollow" target="_blank">Firefox: Cookies löschen, um Daten zu entfernen, die Websites auf Ihrem Computer abgelegt haben</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.microsoft.com/de-at/help/17442/windows-internet-explorer-delete-manage-cookies?tid=221122606" rel="noopener nofollow" target="_blank">Internet Explorer: Löschen und Verwalten von Cookies</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.microsoft.com/de-at/help/4027947/windows-delete-cookies?tid=221122606" rel="noopener nofollow" target="_blank">Microsoft Edge: Löschen und Verwalten von Cookies</a></p>\n\n<p>Falls Sie grundsätzlich keine Cookies haben wollen, können Sie Ihren Browser so einrichten, dass er Sie immer informiert, wenn ein Cookie gesetzt werden soll. So können Sie bei jedem einzelnen Cookie entscheiden, ob Sie das Cookie erlauben oder nicht. Die Vorgangsweise ist je nach Browser verschieden. Am besten Sie suchen die Anleitung in Google mit dem Suchbegriff “Cookies löschen Chrome” oder „Cookies deaktivieren Chrome“ im Falle eines Chrome Browsers.</p>\n\n<h3 class="adsimple-221122606">Wie sieht es mit meinem Datenschutz aus?</h3>\n\n<p>Seit 2009 gibt es die sogenannten „Cookie-Richtlinien“. Darin ist festgehalten, dass das Speichern von Cookies eine Einwilligung des von Ihnen verlangt. Innerhalb der EU-Länder gibt es allerdings noch sehr unterschiedliche Reaktionen auf diese Richtlinien. In Österreich erfolgte aber die Umsetzung dieser Richtlinie in § 96 Abs. 3 des Telekommunikationsgesetzes (TKG).</p>\n\n<p>Wenn Sie mehr über Cookies wissen möchten und vor technischen Dokumentationen nicht zurückscheuen, empfehlen wir <a class="adsimple-221122606" href="https://tools.ietf.org/html/rfc6265" rel="nofollow noopener" target="_blank">https://tools.ietf.org/html/rfc6265</a>, dem Request for Comments der Internet Engineering Task Force (IETF) namens „HTTP State Management Mechanism“.</p>\n\n<h2 class="adsimple-221122606">Speicherung persönlicher Daten</h2>\n\n<p>Persönliche Daten, die Sie uns auf dieser Website elektronisch übermitteln, wie zum Beispiel Name, E-Mail-Adresse, Adresse oder andere persönlichen Angaben im Rahmen der Übermittlung eines Formulars oder Kommentaren im Blog, werden von uns gemeinsam mit dem Zeitpunkt und der IP-Adresse nur zum jeweils angegebenen Zweck verwendet, sicher verwahrt und nicht an Dritte weitergegeben.</p>\n\n<p>Wir nutzen Ihre persönlichen Daten somit nur für die Kommunikation mit jenen Besuchern, die Kontakt ausdrücklich wünschen und für die Abwicklung der auf dieser Webseite angebotenen Dienstleistungen und Produkte. Wir geben Ihre persönlichen Daten ohne Zustimmung nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.</p>\n\n<p>Wenn Sie uns persönliche Daten per E-Mail schicken – somit abseits dieser Webseite – können wir keine sichere Übertragung und den Schutz Ihrer Daten garantieren. Wir empfehlen Ihnen, vertrauliche Daten niemals unverschlüsselt per E-Mail zu übermitteln.</p>\n\n<h2 class="adsimple-221122606">TLS-Verschlüsselung mit https</h2>\n\n<p>Wir verwenden https um Daten abhörsicher im Internet zu übertragen (Datenschutz durch Technikgestaltung <a class="adsimple-221122606" href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32016R0679&amp;from=DE&amp;tid=221122606" rel="noopener nofollow" target="_blank">Artikel 25 Absatz 1 DSGVO</a>). Durch den Einsatz von TLS (Transport Layer Security), einem Verschlüsselungsprotokoll zur sicheren Datenübertragung im Internet können wir den Schutz vertraulicher Daten sicherstellen. Sie erkennen die Benutzung dieser Absicherung der Datenübertragung am kleinen Schlosssymbol links oben im Browser und der Verwendung des Schemas https (anstatt http) als Teil unserer Internetadresse.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc" rel="follow" style="text-decoration: none;" target="_blank" title="Dr. Doris Wallentin - asthetische Behandlungen mit und ohne Operation in Wien">wallentin.cc</a></p>
+691	<h1>Impressum</h1>\n\n<p><span style="">MMag. Gertrude Jaksch-Fliegenschnee, Geschäftsführerin</span><br style="">\n<span style="">Weltladen Baden</span><br style="">\n<span style="">Volksbank Passage, Hauptplatz 9-12</span><br style="">\n<span style="">2500 Baden</span><br>\n<span style="">Tel.: 02252/45236</span><br style="">\n<span style="">Mail:<span> </span></span><a href="mailto:info@weltladen-baden.at" style="">info@weltladen-baden.at</a></p>\n\n<h2>Bankverbindung</h2>\n\n<p>Volksbank Wien AG<br>\n2500 Hauptplatz 9-13<br>\nWeltladen Baden<br>\nAT90 4300 0364 0778 0000<br>\nVB0EATWW</p>\n\n<p>https://www.firmenwebseiten.at/impressum-generator/</p>
+683	<p style='font-size: 2em; margin: 0px 0px 30px; font-family: "Trebuchet MS", sans-serif; font-weight: normal; line-height: normal; color: rgb(49, 49, 49); padding-bottom: 5px; font-style: normal;'><span style="background-color: #ffffff;"><span style="font-size: 20px;"><strong>Allgemeine Geschäftsbedingungen und Kundeninformationen</strong></span></span></p>\n\n<div class="col-xs-12 col-lg-9 col-lg-push-3" id="content" style="font-weight: normal; padding-left: 15px; padding-right: 15px; float: left; width: 920px; margin-bottom: 30px;">\n<h3><span style="background-color: #ffffff;"><span style="text-decoration: underline;"><span style="font-size: 16px;">I. Allgemeine Geschäftsbedingungen</span></span></span></h3>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 1 Grundlegende Bestimmungen<br>\n(1) Die nachstehenden Geschäftsbedingungen gelten für Verträge, die Sie mit uns als Anbieter (Verein Balance Global) über die Internetseite <a href="https://www.weltladen-baden.at/" style="background-color: transparent; color: #155826; text-decoration: none;" target="_blank">https://www.weltladen-baden.at/</a> schließen. Soweit nicht anders vereinbart, wird der Einbeziehung gegebenenfalls von Ihnen verwendeter eigener Bedingungen widersprochen.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">(2) Verbraucher im Sinne der nachstehenden Regelungen ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden kann. Unternehmer ist jede natürliche oder juristische Person oder eine rechtsfähige Personengesellschaft, die bei Abschluss eines Rechtsgeschäfts in Ausübung ihrer selbständigen beruflichen oder gewerblichen Tätigkeit handelt.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 2 Zustandekommen des Vertrages<br>\n(1) Gegenstand des Vertrages ist der Verkauf von Waren. </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">(2) Bereits mit dem Einstellen des jeweiligen Produkts auf unserer Internetseite unterbreiten wir Ihnen ein </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">verbindliches Angebot zum Abschluss eines Vertrages zu den in der Artikelbeschreibung angegebenen Bedingungen.<br>\n(3) Der Vertrag kommt über das Online-Warenkorbsystem wie folgt zustande:</span> <span style="background-color: #ffffff;">Die zum Kauf beabsichtigten Waren werden im "Warenkorb" abgelegt. Über die entsprechende Schaltfläche in der Navigationsleiste können Sie den "Warenkorb" aufrufen und dort jederzeit Änderungen vornehmen. Nach Aufrufen der Seite "Kasse" und der Eingabe der persönlichen Daten sowie der Zahlungs- und Versandbedingungen werden abschließend nochmals alle Bestelldaten auf der Bestellübersichtsseite angezeigt. Soweit Sie als Zahlungsart ein Sofortzahl-System (z.B. PayPal / PayPal Express, Sofort) nutzen, werden Sie entweder in unserem Online-Shop auf die Bestellübersichtsseite geführt oder Sie werden zunächst auf die Internetseite des Anbieters des Sofortzahl-Systems weitergeleitet. Erfolgt die Weiterleitung zu dem jeweiligen Sofortzahl-System, nehmen Sie dort die entsprechende Auswahl bzw. Eingabe Ihrer Daten vor. Abschließend werden Sie zurück in unseren Online-Shop auf die Bestellübersichtsseite geleitet. Vor Absenden der Bestellung haben Sie die Möglichkeit, hier sämtliche Angaben nochmals zu überprüfen, zu ändern (auch über die Funktion „zurück" des Internetbrowsers) bzw. den Kauf abzubrechen. Mit dem Absenden der Bestellung über die Schaltfläche "zahlungspflichtig bestellen" erklären Sie rechtsverbindlich die Annahme des Angebotes, wodurch der Vertrag zustande kommt.</span><br>\n<span style="background-color: #ffffff;">(4) Ihre Anfragen zur Erstellung eines Angebotes sind für Sie unverbindlich. Wir unterbreiten Ihnen hierzu ein</span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">verbindliches Angebot in Textform (z.B. per E-Mail), welches Sie innerhalb von 5 Werktagen annehmen können.<br>\n(5) Die Abwicklung der Bestellung und Übermittlung aller im Zusammenhang mit dem Vertragsschluss</span><span style="background-color: #ffffff;"> erforderlichen Informationen erfolgt per E-Mail zum Teil automatisiert. Sie haben deshalb sicherzustellen, dass die von Ihnen bei uns hinterlegte E-Mail-Adresse zutreffend ist, der Empfang der E-Mails technisch sichergestellt und insbesondere nicht durch SPAM-Filter verhindert wird.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 3 Besondere Vereinbarungen zu angebotenen Zahlungsarten<br>\nderzeit nicht aktiviert</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 4 Zurückbehaltungsrecht, Eigentumsvorbehalt<br>\n(1) Ein Zurückbehaltungsrecht können Sie nur ausüben, soweit es sich um Forderungen aus demselben</span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Vertragsverhältnis handelt.<br>\n(2) Die Ware bleibt bis zur vollständigen Zahlung des Kaufpreises unser Eigentum. </span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 5 Gewährleistung<br>\n(1) Es bestehen die gesetzlichen Mängelhaftungsrechte.<br>\n(2) Als Verbraucher werden Sie gebeten, die Sache bei Lieferung umgehend auf Vollständigkeit, offensichtliche Mängel und Transportschäden zu überprüfen und uns sowie dem Spediteur Beanstandungen schnellstmöglich mitzuteilen. Kommen Sie dem nicht nach, hat dies keine Auswirkung auf Ihre gesetzlichen Gewährleistungsansprüche.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">§ 6 Rechtswahl, Erfüllungsort, Gerichtsstand<br>\n(1) Es gilt deutsches Recht. Bei Verbrauchern gilt diese Rechtswahl nur, soweit hierdurch der durch zwingendeBestimmungen des Rechts des Staates des gewöhnlichen Aufenthaltes des Verbrauchers gewährte Schutz nicht entzogen wird (Günstigkeitsprinzip).<br>\n(2) Erfüllungsort für alle Leistungen aus den mit uns bestehenden Geschäftsbeziehungen sowie Gerichtsstand<br>\nist unser Sitz, soweit Sie nicht Verbraucher, sondern Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen sind. Dasselbe gilt, wenn Sie keinen allgemeinen Gerichtsstand in Deutschland oder der EU haben oder der Wohnsitz oder gewöhnliche Aufenthalt im Zeitpunkt der Klageerhebung nicht bekannt ist. Die Befugnis, auch das Gericht an einem anderen gesetzlichen Gerichtsstand anzurufen, bleibt hiervon unberührt.<br>\n(3) Die Bestimmungen des UN-Kaufrechts finden ausdrücklich keine Anwendung.</span></div>\n\n<h3 style="text-align: justify;"><br>\n<span style="background-color: #ffffff;"><span style="text-decoration: underline;"><span style="font-size: 16px;">II. Kundeninformationen</span></span></span></h3>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">1. Identität des Verkäufers<br>\nWeltladen Baden </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Hauptplatz 9-12</span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">2500 Baden </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Österreich </span></div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">Telefon: </span> 0043 2252 45236</div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">E-Mail: baden@weltladen.at<br>\nAlternative Streitbeilegung: Die Europäische Kommission stellt eine Plattform für die außergerichtliche Online-Streitbeilegung (OS-Plattform) bereit, aufrufbar unter: <a href="https://ec.europa.eu/odr" style="background-color: transparent; color: #155826; text-decoration: none;">https://ec.europa.eu/odr</a></span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">2. Informationen zum Zustandekommen des Vertrages<br>\nDie technischen Schritte zum Vertragsschluss, der Vertragsschluss selbst und die Korrekturmöglichkeiten erfolgen nach Maßgabe der Regelungen "Zustandekommen des Vertrages" unserer Allgemeinen Geschäftsbedingungen (Teil I.).</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">3. Vertragssprache, Vertragstextspeicherung</span></div>\n\n<ul style="margin-top: 0px; margin-bottom: 10px;">\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">3.1. Vertragssprache ist deutsch .</span></li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">3.2. Der vollständige Vertragstext wird von uns nicht gespeichert. Vor Absenden der Bestellung über das Online Warenkorbsystem  können die Vertragsdaten über die Druckfunktion des Browsers ausgedruckt oder elektronisch gesichert werden. Nach Zugang der Bestellung bei uns werden die Bestelldaten nochmals per E-Mail an Sie übersandt.</span></li>\n</ul>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">4. Wesentliche Merkmale der Ware oder Dienstleistung<br>\nDie wesentlichen Merkmale der Ware und/oder Dienstleistung finden sich im jeweiligen Angebot.</span></div>\n\n<div style="text-align: justify;"><br>\n<span style="background-color: #ffffff;">5. Preise und Zahlungsmodalitäten</span></div>\n\n<ul style="margin-top: 0px; margin-bottom: 10px;">\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">6.1. Die in den jeweiligen Angeboten angeführten Preise sowie die Versandkosten stellen Gesamtpreise dar. Sie beinhalten alle Preisbestandteile einschließlich aller anfallenden Steuern.</span></li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">6.2. Die anfallenden Versandkosten sind nicht im Kaufpreis enthalten. Sie sind über eine entsprechend bezeichnete Schaltfläche auf unserer Internetpräsenz oder im jeweiligen Angebot aufrufbar, werden im Laufe des Bestellvorganges gesondert ausgewiesen und sind von Ihnen zusätzlich zu tragen, soweit nicht die versandkostenfreie Lieferung zugesagt ist.</span></li>\n\t<li style="text-align: justify;">6.3. Die Ihnen zur Verfügung stehenden Zahlungsarten sind unter einer entsprechend bezeichneten Schaltfläche auf unserer Internetpräsenz oder im jeweiligen Angebot ausgewiesen.</li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">6.4. Soweit bei den einzelnen Zahlungsarten nicht anders angegeben, sind die Zahlungsansprüche aus dem geschlossenen Vertrag sofort zur Zahlung fällig.</span></li>\n</ul>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">7. Lieferbedingungen</span></div>\n\n<ul style="margin-top: 0px; margin-bottom: 10px;">\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">7.1. Die Lieferbedingungen, der Liefertermin sowie gegebenenfalls bestehende Lieferbeschränkungen finden sich unter einer entsprechend bezeichneten Schaltfläche auf unserer Internetpräsenz oder im jeweiligen Angebot.</span></li>\n\t<li style="text-align: justify;"><span style="background-color: #ffffff;">7.2. Soweit Sie Verbraucher sind ist gesetzlich geregelt, dass die Gefahr des zufälligen Untergangs und der zufälligen Verschlechterung der verkauften Sache während der Versendung erst mit der Übergabe der Ware an Sie übergeht, unabhängig davon, ob die Versendung versichert oder unversichert erfolgt. Dies gilt nicht, wenn Sie eigenständig ein nicht vom Unternehmer benanntes Transportunternehmen oder eine sonst zur Ausführung der Versendung bestimmte Person beauftragt haben.</span></li>\n</ul>\n\n<p style="margin: 0px 0px 10px; text-align: justify;"><span style="background-color: #ffffff;">8. Gesetzliches Mängelhaftungsrecht</span></p>\n\n<p style="margin: 0px 0px 10px; text-align: justify;"><span style="background-color: #ffffff;">Die Mängelhaftung richtet sich nach der Regelung "Gewährleistung" in unseren Allgemeinen Geschäftsbedingungen (Teil I).</span></p>\n\n<div style="text-align: justify;"> </div>\n\n<div style="text-align: justify;"><span style="background-color: #ffffff;">letzte Aktualisierung: 12.4.2020</span></div>\n</div>
+699	<h1 class="adsimple-221122606">Datenschutzerklärung</h1>\n\n<h2 class="adsimple-221122606">Datenschutz</h2>\n\n<p>Wir haben diese Datenschutzerklärung (Fassung 12.04.2020-221122606) verfasst, um Ihnen gemäß der Vorgaben der <a class="adsimple-221122606" href="https://eur-lex.europa.eu/legal-content/DE/ALL/?uri=celex%3A32016R0679&amp;tid=221122606" rel="noopener nofollow" target="_blank">Datenschutz-Grundverordnung (EU) 2016/679</a> zu erklären, welche Informationen wir sammeln, wie wir Daten verwenden und welche Entscheidungsmöglichkeiten Sie als Besucher dieser Webseite haben.</p>\n\n<p>Leider liegt es in der Natur der Sache, dass diese Erklärungen sehr technisch klingen, wir haben uns bei der Erstellung jedoch bemüht die wichtigsten Dinge so einfach und klar wie möglich zu beschreiben.</p>\n\n<h2 class="adsimple-221122606">Automatische Datenspeicherung</h2>\n\n<p>Wenn Sie heutzutage Webseiten besuchen, werden gewisse Informationen automatisch erstellt und gespeichert, so auch auf dieser Webseite.</p>\n\n<p>Wenn Sie unsere Webseite so wie jetzt gerade besuchen, speichert unser Webserver (Computer auf dem diese Webseite gespeichert ist) automatisch Daten wie</p>\n\n<ul class="adsimple-221122606">\n\t<li class="adsimple-221122606">die Adresse (URL) der aufgerufenen Webseite</li>\n\t<li class="adsimple-221122606">Browser und Browserversion</li>\n\t<li class="adsimple-221122606">das verwendete Betriebssystem</li>\n\t<li class="adsimple-221122606">die Adresse (URL) der zuvor besuchten Seite (Referrer URL)</li>\n\t<li class="adsimple-221122606">den Hostname und die IP-Adresse des Geräts von welchem aus zugegriffen wird</li>\n\t<li class="adsimple-221122606">Datum und Uhrzeit</li>\n</ul>\n\n<p>in Dateien (Webserver-Logfiles).</p>\n\n<p>In der Regel werden Webserver-Logfiles zwei Wochen gespeichert und danach automatisch gelöscht. Wir geben diese Daten nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.</p>\n\n<h2 class="adsimple-221122606">Cookies</h2>\n\n<p>Unsere Webseite verwendet HTTP-Cookies, um nutzerspezifische Daten zu speichern.<br>\nIm Folgenden erklären wir, was Cookies sind und warum Sie genutzt werden, damit Sie die folgende Datenschutzerklärung besser verstehen.</p>\n\n<h3 class="adsimple-221122606">Was genau sind Cookies?</h3>\n\n<p>Immer wenn Sie durch das Internet surfen, verwenden Sie einen Browser. Bekannte Browser sind beispielsweise Chrome, Safari, Firefox, Internet Explorer und Microsoft Edge. Die meisten Webseiten speichern kleine Text-Dateien in Ihrem Browser. Diese Dateien nennt man Cookies.</p>\n\n<p>Eines ist nicht von der Hand zu weisen: Cookies sind echt nützliche Helferlein. Fast alle Webseiten verwenden Cookies. Genauer gesprochen sind es HTTP-Cookies, da es auch noch andere Cookies für andere Anwendungsbereiche gibt. HTTP-Cookies sind kleine Dateien, die von unserer Webseite auf Ihrem Computer gespeichert werden. Diese Cookie-Dateien werden automatisch im Cookie-Ordner, quasi dem „Hirn“ Ihres Browsers, untergebracht. Ein Cookie besteht aus einem Namen und einem Wert. Bei der Definition eines Cookies müssen zusätzlich ein oder mehrere Attribute angegeben werden.</p>\n\n<p>Cookies speichern gewisse Nutzerdaten von Ihnen, wie beispielsweise Sprache oder persönliche Seiteneinstellungen. Wenn Sie unsere Seite wieder aufrufen, übermittelt Ihr Browser die „userbezogenen“ Informationen an unsere Seite zurück. Dank der Cookies weiß unsere Webseite, wer Sie sind und bietet Ihnen die Einstellung, die Sie gewohnt sind. In einigen Browsern hat jedes Cookie eine eigene Datei, in anderen wie beispielsweise Firefox sind alle Cookies in einer einzigen Datei gespeichert.</p>\n\n<p>Es gibt sowohl Erstanbieter Cookies als auch Drittanbieter-Cookies. Erstanbieter-Cookies werden direkt von unserer Seite erstellt, Drittanbieter-Cookies werden von Partner-Webseiten (z.B. Google Analytics) erstellt. Jedes Cookie ist individuell zu bewerten, da jedes Cookie andere Daten speichert. Auch die Ablaufzeit eines Cookies variiert von ein paar Minuten bis hin zu ein paar Jahren. Cookies sind keine Software-Programme und enthalten keine Viren, Trojaner oder andere „Schädlinge“. Cookies können auch nicht auf Informationen Ihres PCs zugreifen.</p>\n\n<p>So können zum Beispiel Cookie-Daten aussehen:</p>\n\n<p><strong class="adsimple-221122606">Name:</strong> _ga<br>\n<strong class="adsimple-221122606">Wert:</strong> GA1.2.1326744211.152221122606-6<br>\n<strong class="adsimple-221122606">Verwendungszweck:</strong> Unterscheidung der Webseitenbesucher<br>\n<strong class="adsimple-221122606">Ablaufdatum:</strong> nach 2 Jahren</p>\n\n<p>Diese Mindestgrößen sollte ein Browser unterstützen können:</p>\n\n<ul class="adsimple-221122606">\n\t<li class="adsimple-221122606">Mindestens 4096 Bytes pro Cookie</li>\n\t<li class="adsimple-221122606">Mindestens 50 Cookies pro Domain</li>\n\t<li class="adsimple-221122606">Mindestens 3000 Cookies insgesamt</li>\n</ul>\n\n<h3 class="adsimple-221122606">Welche Arten von Cookies gibt es?</h3>\n\n<p>Die Frage welche Cookies wir im Speziellen verwenden, hängt von den verwendeten Diensten ab und wird in den folgenden Abschnitten der Datenschutzerklärung geklärt. An dieser Stelle möchten wir kurz auf die verschiedenen Arten von HTTP-Cookies eingehen.</p>\n\n<p>Man kann 4 Arten von Cookies unterscheiden:</p>\n\n<p><strong class="adsimple-221122606">Unerlässliche Cookies</strong><br>\nDiese Cookies sind nötig, um grundlegende Funktionen der Webseite sicherzustellen. Zum Beispiel braucht es diese Cookies, wenn ein User ein Produkt in den Warenkorb legt, dann auf anderen Seiten weitersurft und später erst zur Kasse geht. Durch diese Cookies wird der Warenkorb nicht gelöscht, selbst wenn der User sein Browserfenster schließt.</p>\n\n<p><strong class="adsimple-221122606">Zweckmäßige Cookies</strong><br>\nDiese Cookies sammeln Infos über das Userverhalten und ob der User etwaige Fehlermeldungen bekommt. Zudem werden mithilfe dieser Cookies auch die Ladezeit und das Verhalten der Webseite bei verschiedenen Browsern gemessen.</p>\n\n<p><strong class="adsimple-221122606">Zielorientierte Cookies</strong><br>\nDiese Cookies sorgen für eine bessere Nutzerfreundlichkeit. Beispielsweise werden eingegebene Standorte, Schriftgrößen oder Formulardaten gespeichert.</p>\n\n<p><strong class="adsimple-221122606">Werbe-Cookies</strong><br>\nDiese Cookies werden auch Targeting-Cookies genannt. Sie dienen dazu dem User individuell angepasste Werbung zu liefern. Das kann sehr praktisch, aber auch sehr nervig sein.</p>\n\n<p>Üblicherweise werden Sie beim erstmaligen Besuch einer Webseite gefragt, welche dieser Cookiearten Sie zulassen möchten. Und natürlich wird diese Entscheidung auch in einem Cookie gespeichert.</p>\n\n<h3 class="adsimple-221122606">Wie kann ich Cookies löschen?</h3>\n\n<p>Wie und ob Sie Cookies verwenden wollen, entscheiden Sie selbst. Unabhängig von welchem Service oder welcher Webseite die Cookies stammen, haben Sie immer die Möglichkeit Cookies zu löschen, zu deaktivieren oder nur teilweise zuzulassen. Zum Beispiel können Sie Cookies von Drittanbietern blockieren, aber alle anderen Cookies zulassen.</p>\n\n<p>Wenn Sie feststellen möchten, welche Cookies in Ihrem Browser gespeichert wurden, wenn Sie Cookie-Einstellungen ändern oder löschen wollen, können Sie dies in Ihren Browser-Einstellungen finden:</p>\n\n<p><a class="adsimple-221122606" href="https://support.google.com/chrome/answer/95647?tid=221122606" rel="noopener nofollow" target="_blank">Chrome: Cookies in Chrome löschen, aktivieren und verwalten</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.apple.com/de-at/guide/safari/sfri11471/mac?tid=221122606" rel="noopener nofollow" target="_blank">Safari: Verwalten von Cookies und Websitedaten mit Safari</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.mozilla.org/de/kb/cookies-und-website-daten-in-firefox-loschen?tid=221122606" rel="noopener nofollow" target="_blank">Firefox: Cookies löschen, um Daten zu entfernen, die Websites auf Ihrem Computer abgelegt haben</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.microsoft.com/de-at/help/17442/windows-internet-explorer-delete-manage-cookies?tid=221122606" rel="noopener nofollow" target="_blank">Internet Explorer: Löschen und Verwalten von Cookies</a></p>\n\n<p><a class="adsimple-221122606" href="https://support.microsoft.com/de-at/help/4027947/windows-delete-cookies?tid=221122606" rel="noopener nofollow" target="_blank">Microsoft Edge: Löschen und Verwalten von Cookies</a></p>\n\n<p>Falls Sie grundsätzlich keine Cookies haben wollen, können Sie Ihren Browser so einrichten, dass er Sie immer informiert, wenn ein Cookie gesetzt werden soll. So können Sie bei jedem einzelnen Cookie entscheiden, ob Sie das Cookie erlauben oder nicht. Die Vorgangsweise ist je nach Browser verschieden. Am besten Sie suchen die Anleitung in Google mit dem Suchbegriff “Cookies löschen Chrome” oder „Cookies deaktivieren Chrome“ im Falle eines Chrome Browsers.</p>\n\n<h3 class="adsimple-221122606">Wie sieht es mit meinem Datenschutz aus?</h3>\n\n<p>Seit 2009 gibt es die sogenannten „Cookie-Richtlinien“. Darin ist festgehalten, dass das Speichern von Cookies eine Einwilligung des von Ihnen verlangt. Innerhalb der EU-Länder gibt es allerdings noch sehr unterschiedliche Reaktionen auf diese Richtlinien. In Österreich erfolgte aber die Umsetzung dieser Richtlinie in § 96 Abs. 3 des Telekommunikationsgesetzes (TKG).</p>\n\n<p>Wenn Sie mehr über Cookies wissen möchten und vor technischen Dokumentationen nicht zurückscheuen, empfehlen wir <a class="adsimple-221122606" href="https://tools.ietf.org/html/rfc6265" rel="nofollow noopener" target="_blank">https://tools.ietf.org/html/rfc6265</a>, dem Request for Comments der Internet Engineering Task Force (IETF) namens „HTTP State Management Mechanism“.</p>\n\n<h2 class="adsimple-221122606">Speicherung persönlicher Daten</h2>\n\n<p>Persönliche Daten, die Sie uns auf dieser Website elektronisch übermitteln, wie zum Beispiel Name, E-Mail-Adresse, Adresse oder andere persönlichen Angaben im Rahmen der Übermittlung eines Formulars oder Kommentaren im Blog, werden von uns gemeinsam mit dem Zeitpunkt und der IP-Adresse nur zum jeweils angegebenen Zweck verwendet, sicher verwahrt und nicht an Dritte weitergegeben.</p>\n\n<p>Wir nutzen Ihre persönlichen Daten somit nur für die Kommunikation mit jenen Besuchern, die Kontakt ausdrücklich wünschen und für die Abwicklung der auf dieser Webseite angebotenen Dienstleistungen und Produkte. Wir geben Ihre persönlichen Daten ohne Zustimmung nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.</p>\n\n<p>Wenn Sie uns persönliche Daten per E-Mail schicken – somit abseits dieser Webseite – können wir keine sichere Übertragung und den Schutz Ihrer Daten garantieren. Wir empfehlen Ihnen, vertrauliche Daten niemals unverschlüsselt per E-Mail zu übermitteln.</p>\n\n<h2 class="adsimple-221122606">TLS-Verschlüsselung mit https</h2>\n\n<p>Wir verwenden https um Daten abhörsicher im Internet zu übertragen (Datenschutz durch Technikgestaltung <a class="adsimple-221122606" href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32016R0679&amp;from=DE&amp;tid=221122606" rel="noopener nofollow" target="_blank">Artikel 25 Absatz 1 DSGVO</a>). Durch den Einsatz von TLS (Transport Layer Security), einem Verschlüsselungsprotokoll zur sicheren Datenübertragung im Internet können wir den Schutz vertraulicher Daten sicherstellen. Sie erkennen die Benutzung dieser Absicherung der Datenübertragung am kleinen Schlosssymbol links oben im Browser und der Verwendung des Schemas https (anstatt http) als Teil unserer Internetadresse.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc" rel="follow" style="text-decoration: none;" target="_blank" title="Dr. Doris Wallentin - asthetische Behandlungen mit und ohne Operation in Wien">wallentin.cc</a></p>
+730	<p><span style="">Weltladen Baden</span><br style="">\n<span style="">Volksbank Passage, Hauptplatz 9-12</span><br style="">\n<span style="">2500 Baden</span><br style="">\n<br style="">\n<span style="">Tel.: +43 2252 45236</span><br style="">\n<span style="">Mail:<span> </span></span><a href="mailto:info@weltladen-baden.at" style="">info@weltladen-baden.at</a></p>
+736	<p><span style="">Weltladen Baden</span><br style="">\n<span style="">Volksbank Passage, Hauptplatz 9-12</span><br style="">\n<span style="">2500 Baden</span><br style="">\n<br style="">\n<span style="">Tel.: +43 2252 45236</span><br style="">\n<span style="">Mail:<span> </span></span><a href="mailto:info@weltladen-baden.at" style="">info@weltladen-baden.at</a></p>
+748	<p>Haben Sie schon alles gefunden was Sie suchen?</p>\n\n<p>Falls nicht klicken sie hier.</p>
+763	<p>Wenn Sie noch etwas suchen, klicken Sie hier.</p>
 \.
 
 
@@ -5928,8 +6067,9 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 19	f9bde26a1556cd667f742bd34ec7c55e	filer_public/cd/4e/cd4efce0-917e-40db-8862-94ebc4c3923a/shower-389260.jpg	2020-04-02 18:37:48.025918+02
 20	f9bde26a1556cd667f742bd34ec7c55e	filer_public/12/87/1287f73b-0aab-42f9-b812-f00114ee624d/swimming-pool.jpg	2020-04-02 18:37:48.534381+02
 1	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c8/c2/c8c2ba21-5ac1-4cba-a01b-6e2cf58e2889/django-pony.png	2020-04-04 19:27:36.62028+02
-22	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg	2020-04-05 19:07:29.711223+02
 21	f9bde26a1556cd667f742bd34ec7c55e	filer_public/19/01/1901e95c-b257-4f82-93cb-3a1f62dd6757/97970.jpg	2020-04-12 14:46:36.732477+02
+31	f9bde26a1556cd667f742bd34ec7c55e	filer_public/24/2f/242f6d04-bc43-46a1-a4b7-d803ca71e449/98000.jpg	2020-04-12 22:24:15.428717+02
+22	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg	2020-04-12 22:27:00.686627+02
 \.
 
 
@@ -6082,6 +6222,13 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 142	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg__1140x300_q85_crop_subsampling-2_upscale.jpg	2020-04-05 19:07:29.353267+02	22
 143	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg__2280x600_q85_crop_subsampling-2_upscale.jpg	2020-04-05 19:07:29.565192+02	22
 144	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg__1140x1295_q85_crop_subsampling-2_upscale.jpg	2020-04-05 19:07:29.719832+02	22
+145	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/2f/242f6d04-bc43-46a1-a4b7-d803ca71e449/98000.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-04-12 22:24:15.500701+02	31
+146	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/2f/242f6d04-bc43-46a1-a4b7-d803ca71e449/98000.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-04-12 22:24:15.559072+02	31
+147	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/2f/242f6d04-bc43-46a1-a4b7-d803ca71e449/98000.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-04-12 22:24:15.601586+02	31
+154	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg__50x50_q85_crop_subsampling-2.jpg	2020-04-12 22:26:55.59121+02	22
+155	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg__100x100_q85_crop_subsampling-2.jpg	2020-04-12 22:26:55.646566+02	22
+156	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg__80x80_q85_crop_subsampling-2.jpg	2020-04-12 22:27:00.631586+02	22
+157	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg__160x160_q85_crop_subsampling-2.jpg	2020-04-12 22:27:00.694476+02	22
 \.
 
 
@@ -6213,6 +6360,7 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 198	filer_public/57/a1/57a1ef50-16cf-4b33-8ab6-7af26c4759e3/bedroom.jpg	501510	577c475e60743b08995f5cc177af346564a37df1	f	bedroom.jpg		\N	2019-02-19 10:29:20.802+01	2019-02-19 10:29:20.802+01	t	6	1	106
 199	filer_public/19/01/1901e95c-b257-4f82-93cb-3a1f62dd6757/97970.jpg	126014	fa3a07466856803b4246cbb70f38681210cbdd05	f	97970.jpg		\N	2020-04-04 19:28:40.038725+02	2020-04-04 19:28:40.038745+02	t	8	4	106
 200	filer_public/c8/39/c839273f-80e3-4b19-98dc-02db1e5b9661/97975.jpg	292460	4186c084d54f5df65b45b921a23635bcf9b9d0da	f	97975.jpg		\N	2020-04-05 18:54:42.996859+02	2020-04-05 18:54:42.996875+02	t	8	4	106
+208	filer_public/24/2f/242f6d04-bc43-46a1-a4b7-d803ca71e449/98000.jpg	293018	7aceacb99f70fedd4a6387b12d95609947da3869	f	98000.jpg		\N	2020-04-12 22:24:15.371624+02	2020-04-12 22:24:15.371639+02	t	8	4	106
 \.
 
 
@@ -6342,6 +6490,7 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 198	1280	1920	2019-02-19 10:29:20.797+01	\N	\N	\N	f	f	
 199	752	662	2020-04-04 19:28:40.006961+02	\N	\N	\N	f	f	
 200	752	662	2020-04-05 18:54:42.992601+02	\N	\N	\N	f	f	
+208	752	662	2020-04-12 22:24:15.363636+02	\N	\N	\N	f	f	
 \.
 
 
@@ -6358,13 +6507,7 @@ COPY public.filer_thumbnailoption (id, name, width, height, crop, upscale) FROM 
 --
 
 COPY public.menus_cachekey (id, language, site, key) FROM stdin;
-8	de	1	cms_3.7.1_menu_nodes_de_1_4_user:public
-9	de	1	cms_3.7.1_menu_nodes_de_1_4_user:draft
-10	de	1	cms_3.7.1_menu_nodes_de_1:public
-11	en	1	cms_3.7.1_menu_nodes_en_1:public
-12	en	1	cms_3.7.1_menu_nodes_en_1_4_user:draft
-1	en	1	cms_3.7.1_menu_nodes_en_1:public
-2	en	1	cms_3.7.1_menu_nodes_en_1_4_user:draft
+38	de	1	cms_3.7.1_menu_nodes_de_1_4_user:public
 \.
 
 
@@ -6441,7 +6584,7 @@ COPY public.weltladen_billingaddress (id, priority, name, address1, address2, zi
 --
 
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
-1	2020-04-02 18:36:06.757942+02	2020-04-12 14:47:50.337638+02	{"shipping_modifier": "postal-shipping"}	\N	4	2
+1	2020-04-02 18:36:06.757942+02	2020-04-12 21:43:03.430323+02	{"payment_modifier": "forward-fund-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	2
 \.
 
 
@@ -6450,7 +6593,7 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 --
 
 COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, cart_id, product_id) FROM stdin;
-2	3214254	2020-04-12 14:46:57.186646+02	{}	15	1	2
+2	3214254	2020-04-12 21:43:03.428776+02	{}	16	1	2
 \.
 
 
@@ -6479,7 +6622,7 @@ COPY public.weltladen_countrytranslation (id, language_code, name, master_id) FR
 --
 
 COPY public.weltladen_customer (user_id, recognized, last_access, extra, number, salutation) FROM stdin;
-4	2	2020-04-12 14:47:45.732535+02	{}	\N	mr
+4	2	2020-04-12 22:27:23.528535+02	{}	\N	mr
 \.
 
 
@@ -6548,7 +6691,7 @@ COPY public.weltladen_orderpayment (id, amount, transaction_id, created_at, paym
 
 COPY public.weltladen_product (id, created_at, updated_at, active, product_name, slug, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, vegan, country_of_origin_id, supplier_id) FROM stdin;
 1	2020-04-04 19:28:48.004337+02	2020-04-05 18:54:48.343162+02	t	Schokohase	schokohase	1	5.990	123456	1	133	f	1	1
-2	2020-04-05 19:05:44.277475+02	2020-04-05 19:45:33.266881+02	t	Schokoeier	schokoeier	2	7.990	3214254	1	133	t	1	1
+2	2020-04-05 19:05:44.277475+02	2020-04-12 22:26:45.574517+02	t	Schokoeier	schokoeier	2	7.990	3214254	1	133	t	1	1
 \.
 
 
@@ -6560,7 +6703,7 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 1	1	199	1
 2	2	200	1
 3	1	200	2
-4	2	199	2
+5	2	208	2
 \.
 
 
@@ -6580,7 +6723,7 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 
 COPY public.weltladen_producttranslation (id, language_code, caption, description, master_id, short_description) FROM stdin;
 1	de	<p>Schokohase aus fairer Schokolade</p>	<ul>\n\t<li>Fakt 1</li>\n\t<li>Fakt 2</li>\n\t<li>Fakt 3</li>\n</ul>\n\n<p>Das ist noch anderer Text.</p>	1	2020-04-12 12:43:23.803517+00
-2	de	<p>Faire Eier von braunen Hühnern</p>	<ul>\n\t<li>Egg Fact</li>\n\t<li>Eier Fakt</li>\n\t<li>anderer Fakt</li>\n</ul>\n\n<p>Irgendein Text.</p>	2	2020-04-12 12:43:23.803517+00
+2	de	<p>Faire Eier von braunen Hühnern</p>	<ul>\n\t<li>Egg Fact</li>\n\t<li>Eier Fakt</li>\n\t<li>anderer Fakt</li>\n</ul>\n\n<p>Irgendein Text.</p>	2	<p>2020-04-12 12:43:23.803517+00</p>
 \.
 
 
@@ -6648,7 +6791,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: cms_cmsplugin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 638, true);
+SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 766, true);
 
 
 --
@@ -6669,14 +6812,14 @@ SELECT pg_catalog.setval('public.cms_globalpagepermission_sites_id_seq', 1, fals
 -- Name: cms_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_id_seq', 40, true);
+SELECT pg_catalog.setval('public.cms_page_id_seq', 46, true);
 
 
 --
 -- Name: cms_page_placeholders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 80, true);
+SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 92, true);
 
 
 --
@@ -6690,7 +6833,7 @@ SELECT pg_catalog.setval('public.cms_pagepermission_id_seq', 1, false);
 -- Name: cms_placeholder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 85, true);
+SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 97, true);
 
 
 --
@@ -6704,14 +6847,14 @@ SELECT pg_catalog.setval('public.cms_staticplaceholder_id_seq', 2, true);
 -- Name: cms_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_title_id_seq', 80, true);
+SELECT pg_catalog.setval('public.cms_title_id_seq', 90, true);
 
 
 --
 -- Name: cms_treenode_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_treenode_id_seq', 20, true);
+SELECT pg_catalog.setval('public.cms_treenode_id_seq', 23, true);
 
 
 --
@@ -6746,14 +6889,14 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_iconfont_id_seq', 1, true);
 -- Name: cmsplugin_cascade_inline_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cmsplugin_cascade_inline_id_seq', 1, false);
+SELECT pg_catalog.setval('public.cmsplugin_cascade_inline_id_seq', 7, true);
 
 
 --
 -- Name: cmsplugin_cascade_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cmsplugin_cascade_page_id_seq', 1, false);
+SELECT pg_catalog.setval('public.cmsplugin_cascade_page_id_seq', 2, true);
 
 
 --
@@ -6788,7 +6931,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 54, true);
 
 
 --
@@ -6816,14 +6959,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 20, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 32, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 106, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 157, true);
 
 
 --
@@ -6851,7 +6994,7 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 198, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 209, true);
 
 
 --
@@ -6879,7 +7022,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 2, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 38, true);
 
 
 --
@@ -7026,7 +7169,7 @@ SELECT pg_catalog.setval('public.weltladen_product_id_seq', 2, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 1, false);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 5, true);
 
 
 --
