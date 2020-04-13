@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/mohi/.local/share/virtualenvs/weltladen-shop-HCPwLesS/bin/python"
+    "python.pythonPath": "/Users/mohi/.local/share/virtualenvs/weltladen-shop-HCPwLesS/bin/python",
+    "python.autoComplete.extraPaths": ["/Users/mohi/.local/share/virtualenvs/weltladen-shop-HCPwLesS/lib/python3.7/site-packages/"],
 }

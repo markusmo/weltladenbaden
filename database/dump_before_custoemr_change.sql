@@ -2151,6 +2151,24 @@ ALTER SEQUENCE public.weltladen_countrytranslation_id_seq OWNED BY public.weltla
 
 
 --
+-- Name: weltladen_customer; Type: TABLE; Schema: public; Owner: djangouser
+--
+
+CREATE TABLE public.weltladen_customer (
+    user_id integer NOT NULL,
+    recognized smallint NOT NULL,
+    last_access timestamp with time zone NOT NULL,
+    extra jsonb NOT NULL,
+    number integer,
+    salutation character varying(5) NOT NULL,
+    CONSTRAINT weltladen_customer_number_check CHECK ((number >= 0)),
+    CONSTRAINT weltladen_customer_recognized_check CHECK ((recognized >= 0))
+);
+
+
+ALTER TABLE public.weltladen_customer OWNER TO djangouser;
+
+--
 -- Name: weltladen_delivery; Type: TABLE; Schema: public; Owner: djangouser
 --
 
@@ -2654,25 +2672,6 @@ ALTER TABLE public.weltladen_supplier_id_seq OWNER TO djangouser;
 
 ALTER SEQUENCE public.weltladen_supplier_id_seq OWNED BY public.weltladen_supplier.id;
 
-
---
--- Name: weltladen_weltladencustomer; Type: TABLE; Schema: public; Owner: djangouser
---
-
-CREATE TABLE public.weltladen_weltladencustomer (
-    user_id integer NOT NULL,
-    recognized smallint NOT NULL,
-    last_access timestamp with time zone NOT NULL,
-    extra jsonb NOT NULL,
-    number integer,
-    phonenumber character varying(128),
-    salutation character varying(5) NOT NULL,
-    CONSTRAINT weltladen_weltladencustomer_number_check CHECK ((number >= 0)),
-    CONSTRAINT weltladen_weltladencustomer_recognized_check CHECK ((recognized >= 0))
-);
-
-
-ALTER TABLE public.weltladen_weltladencustomer OWNER TO djangouser;
 
 --
 -- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: djangouser
@@ -3698,10 +3697,6 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 546	Can change Location	138	change_locations
 547	Can delete Location	138	delete_locations
 548	Can view Location	138	view_locations
-549	Can add weltladen customer	139	add_weltladencustomer
-550	Can change weltladen customer	139	change_weltladencustomer
-551	Can delete weltladen customer	139	delete_weltladencustomer
-552	Can view weltladen customer	139	view_weltladencustomer
 \.
 
 
@@ -5851,7 +5846,6 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 136	weltladen	supplier
 137	weltladen	countrytranslation
 138	weltladen	locations
-139	weltladen	weltladencustomer
 \.
 
 
@@ -5980,7 +5974,6 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 118	weltladen	0005_auto_20200407_1916	2020-04-07 19:16:41.596782+02
 119	weltladen	0006_locations	2020-04-11 19:09:32.903895+02
 120	weltladen	0007_auto_20200411_2249	2020-04-12 14:43:23.820274+02
-121	weltladen	0008_auto_20200413_1927	2020-04-13 20:01:16.315714+02
 \.
 
 
@@ -5998,8 +5991,8 @@ gjzm8kbbkv7cllnepdsji9sllsevdyco	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTk
 fvmzaas2734z5v46o0j4htehak14qjnl	YzUwZDRkMDcxMmQ1MGM2NTgxNDQ5ZTQ3NzExZGEzYTRhOTkyYzZjMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-04-21 21:06:47.186001+02
 k4l2rkt0auuxexkdk9gg6zb6dyfyuqmc	NGQxOWVmYTdlYzdjOTExYmU0NmFhMDk4MWM2YmY5NWZkY2IyNzdhMzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0Ijp0cnVlLCJjbXNfcHJldmlldyI6ZmFsc2UsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCJ9	2020-04-19 16:34:19.255256+02
 t1ecawwr4eqpfn6xhyyplkcnwufk88qm	ZGI1NzJlMWI3OWU2OGJhYTY0OTQxZGZkNTliODI0OTYxNzhlYjUzODp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWUsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCJ9	2020-04-26 22:27:23.830421+02
+jopdemrsv01wjcst4qdcbu37yp9pm6zb	NmI2Njc0ZjRkOGIzZDAxZDViYmRlY2ZmNjM5NjMwYWVkYTU5Yjg0Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-04-27 17:38:03.055111+02
 b35o4fp9vhzpuyj8jrx4x6yyqd8xbei1	MzQwYThhN2EyMTVkZGZkZWU3NDk4OWYxMjlmYjg2MDQ4NDkxY2Y4MTp7ImNtc19lZGl0IjpmYWxzZX0=	2020-04-27 16:59:59.136982+02
-jopdemrsv01wjcst4qdcbu37yp9pm6zb	NmI2Njc0ZjRkOGIzZDAxZDViYmRlY2ZmNjM5NjMwYWVkYTU5Yjg0Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1ZGJkODk5NDhjYmFlMmY3YzE0NGNiZjJjODk4Yjg0ZTNjOWUxYjA4IiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-04-27 20:03:14.040461+02
 \.
 
 
@@ -6591,7 +6584,7 @@ COPY public.weltladen_billingaddress (id, priority, name, address1, address2, zi
 --
 
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
-1	2020-04-02 18:36:06.757942+02	2020-04-13 20:03:08.244473+02	{"payment_modifier": "forward-fund-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	2
+1	2020-04-02 18:36:06.757942+02	2020-04-12 21:43:03.430323+02	{"payment_modifier": "forward-fund-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	2
 \.
 
 
@@ -6620,6 +6613,15 @@ COPY public.weltladen_country (id) FROM stdin;
 COPY public.weltladen_countrytranslation (id, language_code, name, master_id) FROM stdin;
 1	de	Afrika	2
 2	de	Österreich	1
+\.
+
+
+--
+-- Data for Name: weltladen_customer; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.weltladen_customer (user_id, recognized, last_access, extra, number, salutation) FROM stdin;
+4	2	2020-04-13 17:38:02.336186+02	{}	\N	mr
 \.
 
 
@@ -6743,15 +6745,6 @@ COPY public.weltladen_supplier (id, name) FROM stdin;
 
 
 --
--- Data for Name: weltladen_weltladencustomer; Type: TABLE DATA; Schema: public; Owner: djangouser
---
-
-COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra, number, phonenumber, salutation) FROM stdin;
-4	2	2020-04-13 20:03:13.701081+02	{}	\N	+43 676 3239108	mr
-\.
-
-
---
 -- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
@@ -6769,7 +6762,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 552, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 548, true);
 
 
 --
@@ -6944,14 +6937,14 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 74, true);
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 139, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 138, true);
 
 
 --
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 121, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 120, true);
 
 
 --
@@ -7967,6 +7960,22 @@ ALTER TABLE ONLY public.weltladen_countrytranslation
 
 
 --
+-- Name: weltladen_customer weltladen_customer_number_key; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_customer
+    ADD CONSTRAINT weltladen_customer_number_key UNIQUE (number);
+
+
+--
+-- Name: weltladen_customer weltladen_customer_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_customer
+    ADD CONSTRAINT weltladen_customer_pkey PRIMARY KEY (user_id);
+
+
+--
 -- Name: weltladen_delivery weltladen_delivery_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -8124,22 +8133,6 @@ ALTER TABLE ONLY public.weltladen_supplier
 
 ALTER TABLE ONLY public.weltladen_supplier
     ADD CONSTRAINT weltladen_supplier_pkey PRIMARY KEY (id);
-
-
---
--- Name: weltladen_weltladencustomer weltladen_weltladencustomer_number_key; Type: CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_weltladencustomer
-    ADD CONSTRAINT weltladen_weltladencustomer_number_key UNIQUE (number);
-
-
---
--- Name: weltladen_weltladencustomer weltladen_weltladencustomer_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_weltladencustomer
-    ADD CONSTRAINT weltladen_weltladencustomer_pkey PRIMARY KEY (user_id);
 
 
 --
@@ -9810,7 +9803,7 @@ ALTER TABLE ONLY public.shop_notificationattachment
 --
 
 ALTER TABLE ONLY public.weltladen_billingaddress
-    ADD CONSTRAINT weltladen_billingadd_customer_id_c631e62a_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_weltladencustomer(user_id) DEFERRABLE INITIALLY DEFERRED;
+    ADD CONSTRAINT weltladen_billingadd_customer_id_c631e62a_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_customer(user_id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
@@ -9826,7 +9819,7 @@ ALTER TABLE ONLY public.weltladen_cart
 --
 
 ALTER TABLE ONLY public.weltladen_cart
-    ADD CONSTRAINT weltladen_cart_customer_id_693d123a_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_weltladencustomer(user_id) DEFERRABLE INITIALLY DEFERRED;
+    ADD CONSTRAINT weltladen_cart_customer_id_693d123a_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_customer(user_id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
@@ -9862,6 +9855,14 @@ ALTER TABLE ONLY public.weltladen_countrytranslation
 
 
 --
+-- Name: weltladen_customer weltladen_customer_user_id_a62340e0_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_customer
+    ADD CONSTRAINT weltladen_customer_user_id_a62340e0_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: weltladen_delivery weltladen_delivery_order_id_61f10e9e_fk_weltladen_order_id; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -9890,7 +9891,7 @@ ALTER TABLE ONLY public.weltladen_deliveryitem
 --
 
 ALTER TABLE ONLY public.weltladen_order
-    ADD CONSTRAINT weltladen_order_customer_id_f2c4defa_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_weltladencustomer(user_id) DEFERRABLE INITIALLY DEFERRED;
+    ADD CONSTRAINT weltladen_order_customer_id_f2c4defa_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_customer(user_id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
@@ -9994,15 +9995,7 @@ ALTER TABLE ONLY public.weltladen_producttranslation
 --
 
 ALTER TABLE ONLY public.weltladen_shippingaddress
-    ADD CONSTRAINT weltladen_shippingad_customer_id_64bac2e8_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_weltladencustomer(user_id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: weltladen_weltladencustomer weltladen_weltladencustomer_user_id_14eec5f3_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_weltladencustomer
-    ADD CONSTRAINT weltladen_weltladencustomer_user_id_14eec5f3_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+    ADD CONSTRAINT weltladen_shippingad_customer_id_64bac2e8_fk_weltladen FOREIGN KEY (customer_id) REFERENCES public.weltladen_customer(user_id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
