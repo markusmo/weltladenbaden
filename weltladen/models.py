@@ -10,6 +10,7 @@ from polymorphic.query import PolymorphicQuerySet
 from parler.managers import TranslatableManager, TranslatableQuerySet
 from parler.models import TranslatableModelMixin, TranslatedFieldsModel
 from parler.fields import TranslatedField
+from phonenumber_field.modelfields import PhoneNumberField
 from shop.money.fields import MoneyField
 from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenceMixin
 from shop.models.defaults.cart import Cart
@@ -21,11 +22,53 @@ from shop.models.defaults.delivery_item import DeliveryItem
 from shop.models.defaults.order import Order
 from shop.models.defaults.mapping import ProductPage, ProductImage
 from shop.models.defaults.address import BillingAddress, ShippingAddress
-from shop.models.defaults.customer import Customer
+from shop.models.customer import BaseCustomer
+#from shop.models.defaults.customer import Customer
 
 
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
-           'BillingAddress', 'ShippingAddress', 'Customer', ]
+           'BillingAddress', 'ShippingAddress', ]#'Customer', ]
+
+
+class WeltladenCustomer(BaseCustomer):
+    SALUTATION = [('mrs', _("Mrs.")), ('mr', _("Mr.")), ('na', _("(n/a)"))]
+
+    number = models.PositiveIntegerField(
+        _("Customer Number"),
+        null=True,
+        default=None,
+        unique=True,
+    )
+
+    phonenumber = PhoneNumberField(
+        _("Phone number"),
+        null=True,
+        blank=True,
+    )
+
+    salutation = models.CharField(
+        _("Salutation"),
+        max_length=5,
+        choices=SALUTATION,
+    )
+
+    def get_number(self):
+        return self.number
+
+    def get_or_assign_number(self):
+        if self.number is None:
+            aggr = Customer.objects.filter(number__isnull=False).aggregate(models.Max('number'))
+            self.number = (aggr['number__max'] or 0) + 1
+            self.save()
+        return self.get_number()
+
+    def as_text(self):
+        template_names = [
+            '{}/customer.txt'.format(app_settings.APP_LABEL),
+            'shop/customer.txt',
+        ]
+        template = select_template(template_names)
+        return template.render({'customer': self})
 
 
 class OrderItem(BaseOrderItem):
