@@ -1,0 +1,42 @@
+{% extends "shop/catalog/product-add2cart.html" %}
+{% load i18n cms_tags %}
+
+{% block add-product-to-cart-body %}
+	<div class="card-body pb-0">
+		<div class="d-flex justify-content-between">
+		{% block available-quantity-in-stock %}{% endblock %}
+		{% block change-purchasing-quantity %}
+			<div class="d-flex flex-column w-25">
+				<label for="quantity">{% trans "Quantity" %}</label>
+				<div class="form-group">
+					<input class="form-control" name="quantity" type="number" min="1" ng-model="context.quantity" ng-model-options="{{ ADD2CART_NG_MODEL_OPTIONS }}" ng-change="updateContext()" />
+				</div>
+			</div>
+		{% endblock %}
+		{% block product-unit-price %}
+			<div class="d-flex flex-column">
+				<span class="label">{% trans "Unit Price" %}</span>
+				<div class="lead mt-1" ng-cloak>
+				{% verbatim %}{{ context.unit_price }}{% endverbatim %}
+				</div>
+			</div>
+		{% endblock %}
+		{% block purchase-item-subtotal %}
+			<div class="d-flex flex-column">
+				<span class="label">{% trans "Subtotal" %}</span>
+				<div class="lead mt-1 font-weight-bold" ng-cloak>
+				{% verbatim %}{{ context.subtotal }}<sup>*</sup>{% endverbatim %}
+				</div>
+			</div>
+		{% endblock %}
+		</div>
+		<div class="d-flex justify-content-between">
+		{% block limited-availability %}{% endblock %}
+		{% block unmentioned-costs %}
+			<div class="flex-grow-1 text-muted text-right mb-3">
+				<small><sup>*</sup>&nbsp;{% trans "incl. VAT" %}</small>
+			</div>
+		{% endblock %}
+		</div>
+	</div>
+	{% endblock add-product-to-cart-body %}

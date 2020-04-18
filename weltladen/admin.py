@@ -41,7 +41,8 @@ class ProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Translatable
         (None, {
             'fields': [
                 ('product_name', 'slug'),
-                ('product_code', 'unit_price'),
+                ('product_code'),
+                ('unit_price', 'tax_switch'),
                 'active',
             ],
         }),

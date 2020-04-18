@@ -622,12 +622,13 @@ HAYSTACK_ROUTERS = [
 # settings for django-shop and its plugins
 
 SHOP_VALUE_ADDED_TAX = Decimal(20)
+SHOP_VALUE_ADDED_TAX10 = Decimal(10)
 SHOP_DEFAULT_CURRENCY = 'EUR'
 SHOP_EDITCART_NG_MODEL_OPTIONS = "{updateOn: 'default blur', debounce: {'default': 2500, 'blur': 0}}"
 
 SHOP_CART_MODIFIERS = [
     'shop.modifiers.defaults.DefaultCartModifier',
-    'shop.modifiers.taxes.CartExcludedTaxModifier',
+    'weltladen.modifiers.CartExcludedTaxModifier',
     'weltladen.modifiers.PostalShippingModifier',
     'weltladen.modifiers.ClimateNeutralShippingModifier',
     'weltladen.modifiers.DeliveryNotePaymentModifier',
