@@ -25,11 +25,10 @@ from shop.models.defaults.mapping import ProductPage, ProductImage
 from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
 from shop.conf import app_settings
-#from shop.models.defaults.customer import Customer
 
 
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
-           'BillingAddress', 'ShippingAddress', ]#'Customer', ]
+           'BillingAddress', 'ShippingAddress', ]
 
 
 class WeltladenCustomer(BaseCustomer):
