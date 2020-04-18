@@ -224,6 +224,12 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
         default=False
     )
 
+    tax_switch = models.BooleanField(
+        _("Switch Tax"),
+        default=True,
+        help_text=_("If switched on, then 20% tax item, if off then 10% tax item")
+    )
+
     class Meta:
         verbose_name = _("Product")
         verbose_name_plural = _("Products")
