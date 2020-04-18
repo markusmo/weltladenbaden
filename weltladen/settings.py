@@ -499,7 +499,7 @@ CMSPLUGIN_CASCADE = {
     'plugins_with_extra_render_templates': {
         'CustomSnippetPlugin': [
             ('shop/catalog/product-heading.html', _("Product Heading")),
-            ('weltladen/catalog/manufacturer-filter.html', _("Manufacturer Filter")),
+            #('weltladen/catalog/manufacturer-filter.html', _("Manufacturer Filter")),
         ],
         # required to purchase real estate
         'ShopAddToCartPlugin': [
