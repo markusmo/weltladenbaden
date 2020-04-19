@@ -527,7 +527,7 @@ CMSPLUGIN_CASCADE = {
     },
     'leaflet': {
         'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
-        'accessToken': 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+        'accessToken': 'pk.eyJ1IjoibWFya3VzbW8iLCJhIjoiY2s5NzZtdWZwMGV6azNocnNrYmRjc2ltciJ9.gn39wNwba9Y01rvSlXpiaw',
         'apiKey': 'AIzaSyD71sHrtkZMnLqTbgRmY_NsO0A9l9BQmv4',
     },
     'bookmark_prefix': '/',

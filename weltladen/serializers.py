@@ -9,9 +9,15 @@ from weltladen.search_indexes import myshop_search_index_classes
 
 
 class ProductDetailSerializer(ProductSerializer):
+
+    country_of_origin = serializers.SerializerMethodField()
+
     class Meta(ProductSerializer.Meta):
         fields = ['product_name', 'slug', 'unit_price', 'vegan', 'supplier',
                   'manufacturer', 'country_of_origin', 'product_code']
+    
+    def get_country_of_origin(self, product):
+        return getattr(product, 'country_of_origin', None)  
                     
 
 class ProductSearchSerializer(BaseProductSearchSerializer):
