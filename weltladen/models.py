@@ -77,7 +77,6 @@ class OrderItem(BaseOrderItem):
     canceled = models.BooleanField(_("Item canceled "), default=False)
 
 
-@python_2_unicode_compatible
 class Manufacturer(models.Model):
     name = models.CharField(
         _("Name"),
@@ -101,7 +100,6 @@ class CountryManager(TranslatableManager):
         return qs.prefetch_related('translations')
 
 
-@python_2_unicode_compatible
 class Country(TranslatableModelMixin, models.Model):
     name = TranslatedField()
 
@@ -128,7 +126,6 @@ class CountryTranslation(TranslatedFieldsModel):
         unique_together = [('language_code', 'master')]
 
 
-@python_2_unicode_compatible
 class Supplier(models.Model):
     name = models.CharField(
         _("Supplier"),
@@ -152,7 +149,6 @@ class ProductManager(BaseProductManager, TranslatableManager):
         return qs.prefetch_related('translations')
 
 
-@python_2_unicode_compatible
 class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
     product_name = models.CharField(
         max_length=255,
