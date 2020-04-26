@@ -1,6 +1,0 @@
-{{ object.product_name }}
-{{ object.product_code }}
-{{ object.manufacturer }}
-{{ objec.supplier }}
-{{ object.country_of_origin }}
-

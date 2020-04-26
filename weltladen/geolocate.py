@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+
 from geopy import distance
 from geopy.geocoders import Nominatim
-
 from weltladen.models import Locations
 from weltladen.settings import SHOP_APP_LABEL, WELTLADEN_BADEN_LOCATION
+
 
 def checkdistance(zip_code, city, country):
     '''

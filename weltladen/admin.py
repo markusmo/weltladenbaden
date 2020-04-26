@@ -11,7 +11,7 @@ from shop.models.defaults.order import Order
 from shop.admin.delivery import DeliveryOrderAdminMixin
 from adminsortable2.admin import SortableAdminMixin
 from shop.admin.product import CMSPageAsCategoryMixin, UnitPriceMixin, ProductImageInline, InvalidateProductCacheMixin
-from weltladen.models import Manufacturer, Product, Country, Supplier
+from weltladen.models import Manufacturer, Supplier, WeltladenProduct, WeltladenCustomer
 
 
 admin.site.site_header = "Weltladen Administration"
@@ -28,15 +28,9 @@ admin.site.register(Supplier, admin.ModelAdmin)
 
 __all__ = ['customer']
 
-@admin.register(Country)
-class CountryAdmin(TranslatableAdmin):
-    fieldsets = [
-    (_("None"), {
-        'fields': ['name'],
-    })]
 
-@admin.register(Product)
-class ProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, TranslatableAdmin, CMSPageAsCategoryMixin, UnitPriceMixin, admin.ModelAdmin):
+@admin.register(WeltladenProduct)
+class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, TranslatableAdmin, CMSPageAsCategoryMixin, UnitPriceMixin, admin.ModelAdmin):
     fieldsets = [
         (None, {
             'fields': [

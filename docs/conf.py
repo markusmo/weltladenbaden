@@ -1,4 +1,4 @@
-# weltladen documentation build configuration file, created by
+# Weltladen documentation build configuration file, created by
 # sphinx-quickstart.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -39,7 +39,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "weltladen"
+project = "Weltladen"
 copyright = """2020, Markus Mohanty"""
 
 # The version info for the project you're documenting, acts as replacement for
@@ -183,7 +183,7 @@ latex_documents = [
     (
         "index",
         "weltladen.tex",
-        "weltladen Documentation",
+        "Weltladen Documentation",
         """Markus Mohanty""",
         "manual",
     )
@@ -218,7 +218,7 @@ man_pages = [
     (
         "index",
         "weltladen",
-        "weltladen Documentation",
+        "Weltladen Documentation",
         ["""Markus Mohanty"""],
         1,
     )
@@ -237,10 +237,10 @@ texinfo_documents = [
     (
         "index",
         "weltladen",
-        "weltladen Documentation",
+        "Weltladen Documentation",
         """Markus Mohanty""",
-        "weltladen",
-        """Das ist der Webshop des Weltladen Baden""",
+        "Weltladen",
+        """Weltladen Baden Onlineshop""",
         "Miscellaneous",
     )
 ]

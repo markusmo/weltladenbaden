@@ -37,7 +37,7 @@ ADMINS = [("Markus Mohanty", 'markus.mohanty@gmail.com')]
 
 # SECURITY WARNING: in production, inject the secret key through the environment
 SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY', 'B7EcD8JzeXtTVtnS7lwH6z3uXVWivcd3B9WGoZKa5sbn5lB7SMW1ZXcTGHpt8Rpq')
+    'DJANGO_SECRET_KEY', '75lHXSVhpVrMW0v7bFvYX9WoWAaUJ7muW4jh3j9AJHUgfFQY3aGRCVDdotQ4Kt6H')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -115,7 +115,6 @@ INSTALLED_APPS = [
     'parler',
     'post_office',
     'haystack',
-    'django_extensions',
     'shop',
     'weltladen',
 ]
@@ -145,7 +144,7 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'weltladen'),
+        'NAME': os.getenv('POSTGRES_DB', 'weltladenshop'),
         'USER': os.getenv('POSTGRES_USER', 'djangouser'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
@@ -620,6 +619,7 @@ HAYSTACK_ROUTERS = [
 
 ############################################
 # settings for django-shop and its plugins
+
 
 SHOP_VALUE_ADDED_TAX = Decimal(20)
 SHOP_VALUE_ADDED_TAX10 = Decimal(10)

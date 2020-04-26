@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from haystack import indexes
 from shop.search.indexes import ProductIndex as ProductIndexBase
-from weltladen.models import Product
+from weltladen.models import WeltladenProduct
 
 
 class ProductIndex(ProductIndexBase):
@@ -22,9 +22,9 @@ class ProductIndex(ProductIndexBase):
 myshop_search_index_classes = []
 
 
-class ProcuctIndex(ProductIndex, indexes.Indexable):
+class WeltladenProductIndex(ProductIndex, indexes.Indexable):
     def get_model(self):
-        return
+        return WeltladenProduct
 
 
-myshop_search_index_classes.append(ProductIndex)
+myshop_search_index_classes.append(WeltladenProductIndex)

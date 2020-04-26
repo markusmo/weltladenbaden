@@ -5,22 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Django Server_Plus",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/manage.py",
-            "args": [
-                "runserver_plus",
-            ],
-            "django": true
-        },
-        {
             "name": "Django Server",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/manage.py",
             "args": [
                 "runserver",
+            ],
+            "django": true
+        },
+        {
+            "name": "Django Server_Plus",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "runserver_plus",
             ],
             "django": true
         }

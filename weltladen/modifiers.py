@@ -61,7 +61,7 @@ class CartExcludedTaxModifier(BaseCartModifier):
             t_format = SHOP_VALUE_ADDED_TAX
         else:
             taxes = self.taxes10
-            f_format = SHOP_VALUE_ADDED_TAX10
+            t_format = SHOP_VALUE_ADDED_TAX10
         
         amount = cart_item.line_total * taxes
         instance = {
@@ -108,7 +108,7 @@ class ClimateNeutralShippingModifier(ShippingModifier):
         cart.total += amount
 
     def ship_the_goods(self, delivery):
-        super(BicycleShippingModifier, self).ship_the_goods(delivery)
+        super(ClimateNeutralShippingModifier, self).ship_the_goods(delivery)
 
 
 
