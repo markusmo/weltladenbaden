@@ -503,7 +503,7 @@ CMSPLUGIN_CASCADE = {
         # required to purchase real estate
         'ShopAddToCartPlugin': [
             (None, _("Default")),
-            ('weltladen/catalog/commodity-add2cart.html', _("Add Commodity to Cart")),
+            #('weltladen/catalog/commodity-add2cart.html', _("Add Commodity to Cart")),
         ],
     },
     'plugins_with_sharables': {

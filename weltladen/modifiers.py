@@ -72,7 +72,6 @@ class CartExcludedTaxModifier(BaseCartModifier):
 
 
 class DeliveryNotePaymentModifier(PaymentModifier):
-    identifier = 'delivery-note-payment'
 
     payment_provider = ForwardFundPayment()
 
