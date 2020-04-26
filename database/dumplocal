@@ -1,1 +1,1 @@
-pg_dump -U djangouser weltladen > dump_latest.sql
+pg_dump -U djangouser weltladenshop > dump_latest.sql
