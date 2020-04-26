@@ -11,7 +11,7 @@ from shop.money import Money
 from shop.modifiers.base import BaseCartModifier
 from shop.shipping.modifiers import ShippingModifier
 from shop.payment.modifiers import PaymentModifier
-from shop.payment.providers import PaymentProvider, ForwardFundPayment
+from weltladen.providers import DeliveryNotePayment
 
 from weltladen.settings import WELTLADEN_SHIPPING_DISTANCE, SHOP_VALUE_ADDED_TAX, SHOP_VALUE_ADDED_TAX10
 from weltladen.geolocate import checkdistance
@@ -73,7 +73,7 @@ class CartExcludedTaxModifier(BaseCartModifier):
 
 class DeliveryNotePaymentModifier(PaymentModifier):
 
-    payment_provider = ForwardFundPayment()
+    payment_provider = DeliveryNotePayment()
 
     def get_choice(self):
         return (self.payment_provider.namespace, _("Payment by delivery note"))

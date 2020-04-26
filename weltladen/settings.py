@@ -632,12 +632,12 @@ SHOP_CART_MODIFIERS = [
     'weltladen.modifiers.PostalShippingModifier',
     'weltladen.modifiers.ClimateNeutralShippingModifier',
     'weltladen.modifiers.DeliveryNotePaymentModifier',
-    #'shop.payment.modifiers.PayInAdvanceModifier',
     'shop.shipping.modifiers.SelfCollectionModifier',
 ]
 
 SHOP_ORDER_WORKFLOWS = [
     'shop.payment.workflows.ManualPaymentWorkflowMixin',
+    'weltladen.workflows.DeliveryNotePaymentWorkflowMixin',
     'shop.payment.workflows.CancelOrderWorkflowMixin',
     'shop.shipping.workflows.CommissionGoodsWorkflowMixin',
 ]
