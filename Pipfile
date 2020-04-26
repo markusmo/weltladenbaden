@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "==2.2.12"
+django = "<3"
 djangocms-cascade = "*"
 django-allauth = "*"
 django-angular = "*"
@@ -17,11 +17,6 @@ django-haystack = "*"
 drf-haystack = "*"
 django-parler = "*"
 django-parler-rest = "*"
-psycopg2-binary = "<2.8"
-django-redis-cache = "*"
-django-redis-sessions = "*"
-schedule = "*"
-uWSGI = "*"
 djangorestframework = "*"
 django-rest-auth = "*"
 django_polymorphic = "*"
@@ -34,11 +29,9 @@ phonenumbers = "*"
 djangocms-bootstrap = "*"
 elasticsearch = "<1.8"
 libsass = "*"
-django-shop = "==1.1.3"
-django-extensions = "*"
-werkzeug = "*"
+django-shop = "<1.2"
+psycopg2-binary = "*"
 geopy = "*"
-pillow = "*"
 
 [dev-packages]
 tox = "*"
@@ -51,7 +44,7 @@ pytest-factoryboy = "*"
 pylint = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.7"
 
 [pipenv]
 allow_prereleases = true

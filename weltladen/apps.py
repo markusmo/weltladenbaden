@@ -8,7 +8,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 
-class weltladen(AppConfig):
+class Weltladen(AppConfig):
     name = 'weltladen'
     verbose_name = _("My Shop")
     logger = logging.getLogger('weltladen')

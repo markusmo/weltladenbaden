@@ -17,18 +17,18 @@ from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenc
 from shop.models.defaults.cart import Cart
 from shop.models.defaults.cart_item import CartItem
 from shop.models.order import BaseOrderItem
-from shop.models.address import CountryField
 from shop.models.defaults.delivery import Delivery
 from shop.models.defaults.delivery_item import DeliveryItem
 from shop.models.defaults.order import Order
 from shop.models.defaults.mapping import ProductPage, ProductImage
 from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
+from shop.models.address import CountryField
 from shop.conf import app_settings
 
 
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
-           'BillingAddress', 'ShippingAddress', ]
+           'BillingAddress', 'ShippingAddress']
 
 
 class WeltladenCustomer(BaseCustomer):
@@ -58,7 +58,7 @@ class WeltladenCustomer(BaseCustomer):
 
     def get_or_assign_number(self):
         if self.number is None:
-            aggr = Customer.objects.filter(number__isnull=False).aggregate(models.Max('number'))
+            aggr = WeltladenCustomer.objects.filter(number__isnull=False).aggregate(models.Max('number'))
             self.number = (aggr['number__max'] or 0) + 1
             self.save()
         return self.get_number()
@@ -77,6 +77,7 @@ class OrderItem(BaseOrderItem):
     canceled = models.BooleanField(_("Item canceled "), default=False)
 
 
+@python_2_unicode_compatible
 class Manufacturer(models.Model):
     name = models.CharField(
         _("Name"),
@@ -88,44 +89,7 @@ class Manufacturer(models.Model):
         return self.name
 
 
-class CountryQuerySet(TranslatableQuerySet):
-    pass
-
-
-class CountryManager(TranslatableManager):
-    queryset_class=CountryQuerySet
-
-    def get_queryset(self):
-        qs = self.queryset_class(self.model, using=self._db)
-        return qs.prefetch_related('translations')
-
-
-class Country(TranslatableModelMixin, models.Model):
-    name = TranslatedField()
-
-    objects = CountryManager()
-
-    def __str__(self):
-        return self.name
-
-
-class CountryTranslation(TranslatedFieldsModel):
-    master = models.ForeignKey(
-        Country,
-        on_delete=models.CASCADE,
-        related_name='translations',
-        null=True,
-    )
-
-    name = models.CharField(
-        _("Country"),
-        max_length=255,
-    )
-
-    class Meta:
-        unique_together = [('language_code', 'master')]
-
-
+@python_2_unicode_compatible
 class Supplier(models.Model):
     name = models.CharField(
         _("Supplier"),
@@ -149,7 +113,8 @@ class ProductManager(BaseProductManager, TranslatableManager):
         return qs.prefetch_related('translations')
 
 
-class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
+@python_2_unicode_compatible
+class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
     product_name = models.CharField(
         max_length=255,
         verbose_name=_("Product Name"),
@@ -161,34 +126,27 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
     short_description = TranslatedField()
     description = TranslatedField()
 
+    # product properties
     manufacturer = models.ForeignKey(
         Manufacturer,
         on_delete=models.CASCADE,
         verbose_name=_("Manufacturer"),
-        blank=True,
-        null=True,
     )
 
-    supplier = models.ForeignKey(
-        Supplier,
-        on_delete=models.CASCADE,
-        verbose_name=_("Supplier"),
-        blank=True,
-        null=True,
+    supplier = models.ForeignKey( 
+        Supplier, 
+        verbose_name=_("Supplier"), 
+        on_delete=models.CASCADE
     )
 
-    country_of_origin = models.ForeignKey(
-        Country,
-        on_delete=models.CASCADE,
-        verbose_name=_("Country of Origin"),
-        blank=True,
-        null=True,
+    country_of_origin = CountryField(
+        'Country of origin'
     )
 
     # controlling the catalog
     order = models.PositiveIntegerField(
         _("Sort by"),
-        db_index=True
+        db_index=True,
     )
 
     cms_pages = models.ManyToManyField(
@@ -208,12 +166,6 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
         help_text=_("Net price for this product"),
     )
 
-    product_code = models.CharField(
-        _("Product code"),
-        max_length=255,
-        unique=True,
-    )
-
     vegan = models.BooleanField(
         _("Vegan"),
         default=False
@@ -225,13 +177,19 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
         help_text=_("If switched on, then 20% tax item, if off then 10% tax item")
     )
 
+    product_code = models.CharField(
+        _("Product code"),
+        max_length=255,
+        unique=True,
+    )
+
     class Meta:
         verbose_name = _("Product")
         verbose_name_plural = _("Products")
         ordering = ['order']
 
     # filter expression used to lookup for a product item using the Select2 widget
-    lookup_fields = ('product_code__startswith', 'product_name__icontains')
+    lookup_fields = ['product_code__startswith', 'product_name__icontains']
 
     def get_price(self, request):
         return self.unit_price
@@ -246,9 +204,9 @@ class Product(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
         return self.images.first()
 
 
-class ProductTranslation(TranslatedFieldsModel):
+class WeltladenProductTranslation(TranslatedFieldsModel):
     master = models.ForeignKey(
-        Product,
+        WeltladenProduct,
         on_delete=models.CASCADE,
         related_name='translations',
         null=True,
@@ -262,17 +220,17 @@ class ProductTranslation(TranslatedFieldsModel):
     )
 
     short_description = HTMLField(
-        verbose_name=_("Short description"),
+        verbose_name=_("Short Description"),
         configuration='CKEDITOR_SETTINGS_DESCRIPTION',
         help_text=_(
-            "A short description for customers to give an overview."),
+            "A short description as an overview for customers."),
     )
 
     description = HTMLField(
         verbose_name=_("Description"),
         configuration='CKEDITOR_SETTINGS_DESCRIPTION',
         help_text=_(
-            "Full description used in the catalog's detail view."),
+            "Full description used in the catalog's detail view of Smart Cards."),
     )
 
     class Meta:
