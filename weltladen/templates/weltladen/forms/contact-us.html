@@ -1,0 +1,61 @@
+{% load i18n %}
+
+{% include "shop/djng-form.html" %}
+
+<div class="card">
+	<div class="card-header">
+    {% trans "Contact Us" %}
+	</div>
+
+	<div class="card-body">
+        <form name="{{ form_name }}" djng-endpoint="{% url 'contact-us' %}" role="form" novalidate>
+            <div class="alert alert-success animate-show" ng-show="successMessageIsVisible()" ng-cloak>
+                <a class="close" ng-click="dismissSubmitMessage()">×</a>
+                <p ng-bind="getSubmitMessage()"></p>
+            </div>
+
+            <div class="alert alert-danger animate-show" ng-show="rejectMessageIsVisible()" ng-cloak>
+                <a class="close" ng-click="dismissSubmitMessage()">×</a>
+                <p ng-bind="getSubmitMessage()"></p>
+            </div>
+
+            <div class="form-group has-feedback">
+                {{ contact_us_form.email.label_tag }}
+                <div class="input-group" ng-class="hasError('email')">
+                    <div class="input-group-prepend"><i class="input-group-text fa fa-envelope"></i></div>
+                    {{ contact_us_form.email }}
+                </div>
+                <ul ng-show="contact_us_form.email.$dirty && contact_us_form.email.$touched" class="djng-field-errors" ng-cloak>
+                    <li ng-show="contact_us_form.email.$error.required" class="invalid">{% trans "This field is required." %}</li>
+                </ul>
+            </div>
+
+            <div class="form-group has-feedback">
+                {{ contact_us_form.subject.label_tag }}
+                <div class="input-group" ng-class="hasError('subject')">
+                    {{ contact_us_form.subject }}
+                </div>
+                <ul ng-show="contact_us_form.subject.$dirty && contact_us_form.subject.$touched" class="djng-field-errors" ng-cloak>
+                    <li ng-show="contact_us_form.subject.$error.required" class="invalid">{% trans "This field is required." %}</li>
+                </ul>
+            </div>
+
+            <div class="form-group has-feedback">
+                {{ contact_us_form.body.label_tag }}
+                <div class="input-group" ng-class="hasError('body')">
+                    {{ contact_us_form.body }}
+                </div>
+                <ul ng-show="contact_us_form.body.$dirty && contact_us_form.body.$touched" class="djng-field-errors" ng-cloak>
+                    <li ng-show="contact_us_form.body.$error.required" class="invalid">{% trans "This field is required." %}</li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <button type="button" ng-click="{% include './proceed-with.html' with proceed_delay=1000 %}" ng-disabled="isDisabled()" class="btn btn-primary">
+                    {% trans "Send" %}&emsp;<i class="fa fa-envelope"></i>
+                </button>
+            </div>
+
+        </form>
+	</div>
+</div>
