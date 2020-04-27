@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="card-body">
-        <form name="{{ form_name }}" djng-endpoint="{% url 'contact-us' %}" role="form" novalidate>
+        <form name="{{ form_name }}" djng-endpoint="{% url 'weltladen:contact-us' %}" role="form" novalidate>
             <div class="alert alert-success animate-show" ng-show="successMessageIsVisible()" ng-cloak>
                 <a class="close" ng-click="dismissSubmitMessage()">×</a>
                 <p ng-bind="getSubmitMessage()"></p>
