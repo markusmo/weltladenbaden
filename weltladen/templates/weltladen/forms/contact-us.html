@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n cms_tags sekizai_tags sass_tags %}
 
 {% include "shop/djng-form.html" %}
 
@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="card-body">
-        <form name="{{ form_name }}" djng-endpoint="{% url 'weltladen:contact-us' %}" role="form" novalidate>
+        <form name="{{ form_name }}" djng-endpoint="{% url 'contact-us' %}" role="form" novalidate>
             <div class="alert alert-success animate-show" ng-show="successMessageIsVisible()" ng-cloak>
                 <a class="close" ng-click="dismissSubmitMessage()">×</a>
                 <p ng-bind="getSubmitMessage()"></p>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="form-group">
-                <button type="button" ng-click="{% include './proceed-with.html' with proceed_delay=1000 %}" ng-disabled="isDisabled()" class="btn btn-primary">
+                <button type="button" ng-click="{% include './proceed-with.html' with proceed_delay=1000 %}" ng-disabled="isDisabled(); console.log($scope)" class="btn btn-primary">
                     {% trans "Send" %}&emsp;<i class="fa fa-envelope"></i>
                 </button>
             </div>

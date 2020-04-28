@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
@@ -10,6 +11,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 from cms.sitemaps import CMSSitemap
 from weltladen.sitemap import ProductSitemap
+from weltladen.views import ContactUsView 
 
 sitemaps = {'cmspages': CMSSitemap,
             'products': ProductSitemap}
@@ -29,6 +31,11 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     url(r'^shop/', include('shop.urls')),
 ]
+
+urlpatterns.extend(
+    [ path(r'contact-us', ContactUsView.as_view(), name='contact-us')
+])
+
 if settings.USE_I18N:
     urlpatterns.extend(i18n_patterns(*i18n_urls))
 else:
