@@ -1,4 +1,5 @@
 from django.core.exceptions import NON_FIELD_ERRORS
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
@@ -13,12 +14,12 @@ class ContactUsView(GenericAPIView):
         validate and such
         '''
         form_data = request.data.get(self.form_class.scope_prefix, {})
-        form = self.form_class(data=form_data, instance=customer)
+        form = self.form_class(data=form_data)
         #success
         if form.is_valid():
             form.save(request=request)
             response_data = {form.form_name: {
-                'success_message': _("Successfully registered yourself."),
+                'success_message': _("Successfully sent message"),
             }}
             return Response(response_data, status=status.HTTP_200_OK)
         #handle errors
