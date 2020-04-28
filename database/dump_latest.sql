@@ -3667,7 +3667,6 @@ COPY public.cms_aliaspluginmodel (cmsplugin_ptr_id, plugin_id, alias_placeholder
 --
 
 COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date, changed_date, parent_id, placeholder_id, depth, numchild, path) FROM stdin;
-817	0	de	BootstrapContainerPlugin	2020-04-27 22:00:00.461237+02	2020-04-27 22:00:00.464249+02	\N	99	1	1	003V
 30	0	de	HeadingPlugin	2020-04-26 19:50:04.132708+02	2020-04-27 21:12:50.200461+02	29	3	4	0	0003000100020001
 33	3	de	BootstrapColumnPlugin	2020-04-26 19:50:04.16802+02	2020-04-26 19:50:04.176802+02	25	3	3	2	000300010004
 32	0	de	HeadingPlugin	2020-04-26 19:50:04.15713+02	2020-04-27 21:12:59.127269+02	31	3	4	0	0003000100030001
@@ -3835,12 +3834,10 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 218	0	en	BootstrapCardHeaderPlugin	2020-04-26 19:50:06.999243+02	2020-04-26 19:50:07.218102+02	217	48	7	1	0016000100010002000100010001
 219	0	en	HeadingPlugin	2020-04-26 19:50:07.010388+02	2020-04-26 19:50:07.229272+02	218	48	8	0	00160001000100020001000100010001
 194	0	de	BootstrapRowPlugin	2020-04-26 19:50:06.911441+02	2020-04-26 19:50:06.918501+02	193	48	2	1	00130001
-818	0	de	BootstrapRowPlugin	2020-04-27 22:00:17.718307+02	2020-04-27 22:00:17.722843+02	817	99	2	1	003V0001
 217	0	en	BootstrapCardPlugin	2020-04-26 19:50:06.988462+02	2020-04-26 19:50:07.2074+02	216	48	6	2	001600010001000200010001
 206	0	de	ShopReorderButtonPlugin	2020-04-26 19:50:07.060308+02	2020-04-26 19:50:07.066745+02	205	48	6	0	001300010001000200020001
 196	0	de	SegmentPlugin	2020-04-26 19:50:06.940534+02	2020-04-26 19:50:06.948024+02	195	48	4	1	0013000100010001
 197	0	de	HeadingPlugin	2020-04-26 19:50:06.952693+02	2020-04-26 19:50:06.959284+02	196	48	5	0	00130001000100010001
-819	0	de	BootstrapColumnPlugin	2020-04-27 22:00:17.729203+02	2020-04-27 22:00:17.741506+02	818	99	3	0	003V00010001
 195	0	de	BootstrapColumnPlugin	2020-04-26 19:50:06.924874+02	2020-04-26 19:50:06.935796+02	194	48	3	2	001300010001
 205	1	de	ShopRightExtension	2020-04-26 19:50:07.047415+02	2020-04-26 19:50:07.055393+02	198	48	5	2	00130001000100020002
 207	1	de	ShopCancelOrderButtonPlugin	2020-04-26 19:50:07.071192+02	2020-04-26 19:50:07.080412+02	205	48	6	0	001300010001000200020002
@@ -3882,10 +3879,7 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 254	1	en	ShopRightExtension	2020-04-26 19:50:07.047415+02	2020-04-26 19:50:07.5402+02	247	50	5	2	001A0001000100020002
 257	0	de	BootstrapContainerPlugin	2020-04-26 19:50:07.610484+02	2020-04-26 19:50:07.612787+02	\N	52	1	1	001B
 270	0	en	BootstrapContainerPlugin	2020-04-26 19:50:07.610484+02	2020-04-26 19:50:07.786851+02	\N	52	1	1	001E
-820	0	de	BootstrapContainerPlugin	2020-04-27 22:00:00.461237+02	2020-04-27 22:00:52.483302+02	\N	101	1	1	003W
 258	0	de	BootstrapRowPlugin	2020-04-26 19:50:07.618451+02	2020-04-26 19:50:07.627985+02	257	52	2	1	001B0001
-822	0	de	BootstrapColumnPlugin	2020-04-27 22:00:17.729203+02	2020-04-27 22:00:52.492307+02	821	101	3	0	003W00010001
-821	0	de	BootstrapRowPlugin	2020-04-27 22:00:17.718307+02	2020-04-27 22:00:52.487772+02	820	101	2	1	003W0001
 259	0	de	BootstrapColumnPlugin	2020-04-26 19:50:07.635077+02	2020-04-26 19:50:07.641449+02	258	52	3	1	001B00010001
 271	0	en	BootstrapRowPlugin	2020-04-26 19:50:07.618451+02	2020-04-26 19:50:07.797588+02	270	52	2	1	001E0001
 300	1	en	SegmentPlugin	2020-04-26 19:50:07.682323+02	2020-04-26 19:50:08.075607+02	297	54	5	1	001I0001000100010002
@@ -3929,6 +3923,7 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 311	0	en	BootstrapContainerPlugin	2020-04-26 19:50:08.156484+02	2020-04-26 19:50:08.237641+02	\N	56	1	1	001M
 312	0	en	BootstrapRowPlugin	2020-04-26 19:50:08.164473+02	2020-04-26 19:50:08.249281+02	311	56	2	1	001M0001
 313	0	en	BootstrapColumnPlugin	2020-04-26 19:50:08.179359+02	2020-04-26 19:50:08.261335+02	312	56	3	1	001M00010001
+823	0	de	BootstrapContainerPlugin	2020-04-28 20:27:09.959027+02	2020-04-28 20:27:09.966386+02	\N	99	1	1	003V
 320	0	en	BreadcrumbPlugin	2020-04-26 19:50:08.205134+02	2020-04-26 19:50:08.353604+02	\N	57	1	0	001P
 321	0	en	BootstrapContainerPlugin	2020-04-26 19:50:08.156484+02	2020-04-26 19:50:08.365755+02	\N	58	1	1	001Q
 322	0	en	BootstrapRowPlugin	2020-04-26 19:50:08.164473+02	2020-04-26 19:50:08.369136+02	321	58	2	1	001Q0001
@@ -3988,6 +3983,7 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 386	0	de	BootstrapRowPlugin	2020-04-26 19:50:09.268365+02	2020-04-26 19:50:09.278059+02	385	72	2	1	002F0001
 415	0	en	BootstrapColumnPlugin	2020-04-26 19:50:09.547726+02	2020-04-26 19:50:09.658091+02	414	76	3	3	002Q00010001
 408	0	de	HeadingPlugin	2020-04-26 19:50:09.560461+02	2020-04-26 19:50:09.567214+02	407	76	4	0	002N000100010001
+824	0	de	BootstrapRowPlugin	2020-04-28 20:27:17.932956+02	2020-04-28 20:27:17.940191+02	823	99	2	1	003V0001
 387	0	de	BootstrapColumnPlugin	2020-04-26 19:50:09.285294+02	2020-04-26 19:50:09.291767+02	386	72	3	1	002F00010001
 388	0	de	ShopAuthenticationPlugin	2020-04-26 19:50:09.296448+02	2020-04-26 19:50:09.303712+02	387	72	4	0	002F000100010001
 389	0	de	BreadcrumbPlugin	2020-04-26 19:50:09.308525+02	2020-04-26 19:50:09.310154+02	\N	71	1	0	002G
@@ -4224,7 +4220,9 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 618	0	en	BootstrapRowPlugin	2020-04-26 19:50:10.448387+02	2020-04-26 19:50:11.876451+02	617	82	3	3	002Y00020001
 613	8	en	AcceptConditionPlugin	2020-04-26 19:50:10.373352+02	2020-04-26 19:50:11.916855+02	602	82	7	1	002Y000100010001000100040009
 624	0	en	ShopAuthenticationPlugin	2020-04-26 19:50:10.521116+02	2020-04-26 19:50:11.908745+02	623	82	5	0	002Y0002000100030001
+826	0	de	ContactUsPlugin	2020-04-28 20:27:29.652117+02	2020-04-28 20:27:29.65596+02	825	99	4	0	003V000100010001
 657	1	de	TextPlugin	2020-04-26 19:50:03.853836+02	2020-04-26 22:19:56.120636+02	655	2	4	0	0039000100020002
+825	0	de	BootstrapColumnPlugin	2020-04-28 20:27:17.954588+02	2020-04-28 20:27:17.970461+02	824	99	3	1	003V00010001
 632	0	de	SimpleIconPlugin	2020-04-26 19:50:12.025628+02	2020-04-26 22:12:57.231681+02	\N	83	1	0	0036
 646	0	de	SimpleIconPlugin	2020-04-26 19:50:12.025628+02	2020-04-26 22:13:55.414863+02	\N	84	1	0	0038
 651	0	de	BootstrapContainerPlugin	2020-04-26 19:50:03.777868+02	2020-04-26 22:19:56.015149+02	\N	2	1	1	0039
@@ -4233,6 +4231,7 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 652	0	de	BootstrapRowPlugin	2020-04-26 19:50:03.785219+02	2020-04-26 22:19:56.020627+02	651	2	2	2	00390001
 656	0	de	HeadingPlugin	2020-04-26 19:50:03.843423+02	2020-04-26 22:19:56.081609+02	655	2	4	0	0039000100020001
 655	1	de	BootstrapColumnPlugin	2020-04-26 19:50:03.830774+02	2020-04-26 22:19:56.072224+02	652	2	3	2	003900010002
+827	0	de	BootstrapContainerPlugin	2020-04-28 20:27:09.959027+02	2020-04-28 20:37:22.12664+02	\N	101	1	1	003W
 681	0	de	BreadcrumbPlugin	2020-04-26 19:50:08.760351+02	2020-04-27 21:15:49.749764+02	\N	65	1	0	003C
 682	0	de	BootstrapContainerPlugin	2020-04-26 19:50:08.716078+02	2020-04-27 21:15:49.763527+02	\N	66	1	1	003D
 683	0	de	BootstrapRowPlugin	2020-04-26 19:50:08.723701+02	2020-04-27 21:15:49.766563+02	682	66	2	1	003D0001
@@ -4287,9 +4286,12 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 731	0	de	BootstrapColumnPlugin	2020-04-27 21:21:21.813572+02	2020-04-27 21:22:18.71031+02	730	22	3	2	003N00010001
 733	1	de	TextPlugin	2020-04-27 21:21:51.013421+02	2020-04-27 21:22:18.736827+02	731	22	4	0	003N000100010002
 734	0	de	BootstrapContainerPlugin	2020-04-27 21:29:07.546362+02	2020-04-27 21:29:07.549348+02	\N	12	1	1	003O
+828	0	de	BootstrapRowPlugin	2020-04-28 20:27:17.932956+02	2020-04-28 20:37:22.135407+02	827	101	2	1	003W0001
 735	0	de	BootstrapRowPlugin	2020-04-27 21:29:13.780944+02	2020-04-27 21:29:13.784308+02	734	12	2	1	003O0001
 737	0	de	HeadingPlugin	2020-04-27 21:29:22.770801+02	2020-04-27 21:29:22.774436+02	736	12	4	0	003O000100010001
+830	0	de	ContactUsPlugin	2020-04-28 20:27:29.652117+02	2020-04-28 20:37:22.148339+02	829	101	4	0	003W000100010001
 736	0	de	BootstrapColumnPlugin	2020-04-27 21:29:13.789115+02	2020-04-27 21:29:13.798059+02	735	12	3	2	003O00010001
+829	0	de	BootstrapColumnPlugin	2020-04-28 20:27:17.954588+02	2020-04-28 20:37:22.14227+02	828	101	3	1	003W00010001
 738	1	de	TextPlugin	2020-04-27 21:29:27.970935+02	2020-04-27 21:32:24.861272+02	736	12	4	0	003O000100010002
 744	0	de	BootstrapContainerPlugin	2020-04-27 21:29:07.546362+02	2020-04-27 21:32:28.12125+02	\N	14	1	1	003P
 745	0	de	BootstrapRowPlugin	2020-04-27 21:29:13.780944+02	2020-04-27 21:32:28.12449+02	744	14	2	1	003P0001
@@ -4403,7 +4405,7 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 41	markus	markus	2020-04-27 21:36:39.515616+02	2020-04-27 21:39:01.16847+02	2020-04-27 21:37:07.016193+02	\N	t	t	id-contact	\N	weltladen/pages/default.html	f	\N	f		\N	t	de	0	42	f	21
 2	script	markus	2020-04-26 19:50:04.386148+02	2020-04-27 21:58:02.631432+02	2020-04-26 19:50:04.385884+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	f	de,en	0	1	f	1
 1	script	markus	2020-04-26 19:50:03.722639+02	2020-04-26 22:19:56.137493+02	2020-04-26 19:50:04.385884+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	t	de,en	0	2	f	1
-48	markus	markus	2020-04-27 21:58:50.255009+02	2020-04-27 22:00:52.456277+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	47	f	24
+48	markus	markus	2020-04-27 21:58:50.255009+02	2020-04-28 20:37:22.082836+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	47	f	24
 47	markus	markus	2020-04-27 21:58:46.314331+02	2020-04-27 21:59:45.019561+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	48	f	24
 \.
 
@@ -4739,10 +4741,10 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 80	en	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-26 19:50:10.534483+02	t	f	0	40	78
 78	en	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-26 19:50:10.534483+02	t	t	0	39	80
 18	en	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-26 19:50:04.965549+02	t	t	1	9	20
-88	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	f	0	48	87
-87	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	t	0	47	88
 17	de	Datenschutzvereinbarung				datenschutz	legal/datenschutz	f	\N	2020-04-26 19:50:04.957671+02	t	t	0	9	19
 83	de	Kontakt				kontakt	kontakt/kontakt	f	\N	2020-04-27 21:37:23.204577+02	t	t	0	43	84
+88	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	f	0	48	87
+87	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	t	0	47	88
 82	de	Kontakt				kontakt	kontakt	f	\N	2020-04-27 21:36:39.523948+02	t	f	0	42	81
 81	de	Kontakt				kontakt	kontakt	f	\N	2020-04-27 21:36:39.523948+02	t	t	0	41	82
 84	de	Kontakt				kontakt	kontakt/kontakt	f	\N	2020-04-27 21:37:23.204577+02	t	f	0	44	83
@@ -5465,12 +5467,14 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 814	{\n    "open_tag": "else",\n    "condition": ""\n}	\N
 815	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h4",\n    "content": "Über mich"\n}	\N
 816	{\n    "page_id": "shop-personal-pages",\n    "offset": "0",\n    "limit": "3",\n    "render_template": "cascade/bootstrap4/secmenu-unstyled-list.html",\n    "hide_plugin": ""\n}	\N
-817	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
-818	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
-819	{\n    "xs-column-width": "col"\n}	\N
-820	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
-821	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
-822	{\n    "xs-column-width": "col"\n}	\N
+823	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+824	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+825	{\n    "xs-column-width": "col"\n}	\N
+826	{\n    "hide_plugin": false\n}	\N
+827	{"hide_plugin": false, "breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": false}	\N
+828	{"hide_plugin": false, "padding_xs": "", "padding_sm": "", "padding_md": "", "padding_lg": "", "padding_xl": ""}	\N
+829	{"xs-column-width": "col"}	\N
+830	{"hide_plugin": false}	\N
 \.
 
 
@@ -5613,6 +5617,9 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 66	2020-04-27 21:59:38.688288+02	47	Nachricht an uns	2	[]	2	4
 67	2020-04-27 21:59:45.022702+02	47	Nachricht an uns	2	[]	2	4
 68	2020-04-27 22:00:52.50492+02	47	Nachricht an uns	2		2	4
+69	2020-04-28 20:03:00.678909+02	99	Main Content	3		1	4
+70	2020-04-28 20:03:03.693582+02	47	Nachricht an uns	2		2	4
+71	2020-04-28 20:37:22.167+02	47	Nachricht an uns	2		2	4
 \.
 
 
@@ -5758,6 +5765,7 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 135	weltladen	weltladenproduct
 136	weltladen	weltladenproducttranslation
 137	weltladen	locations
+138	cmsplugin_cascade	contactuspluginmodel
 \.
 
 
@@ -5892,7 +5900,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
-ai1wquv3fyscven5ttvcoy0em6ak2rju	NTM0OWEzNDAxM2JkNTYxYTZlNGY1NjA2OWIwOWNjNmU3MjRiZmYxMDp7ImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZSwiX2F1dGhfdXNlcl9pZCI6IjQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjZiYjMwNjExZTI2N2RhYTQxOWNlYjlhMzYxNTdmZjE2NmU5ZmRiN2QifQ==	2020-05-11 22:01:02.01654+02
+ai1wquv3fyscven5ttvcoy0em6ak2rju	NTM0OWEzNDAxM2JkNTYxYTZlNGY1NjA2OWIwOWNjNmU3MjRiZmYxMDp7ImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZSwiX2F1dGhfdXNlcl9pZCI6IjQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjZiYjMwNjExZTI2N2RhYTQxOWNlYjlhMzYxNTdmZjE2NmU5ZmRiN2QifQ==	2020-05-12 21:07:26.405107+02
 0ebrsxiixbcyjkabmjm50jsu7j6zpc9u	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-05-10 21:47:55.365977+02
 \.
 
@@ -6259,7 +6267,7 @@ COPY public.filer_thumbnailoption (id, name, width, height, crop, upscale) FROM 
 --
 
 COPY public.menus_cachekey (id, language, site, key) FROM stdin;
-42	de	1	cms_3.7.2_menu_nodes_de_1_4_user:public
+46	de	1	cms_3.7.2_menu_nodes_de_1_4_user:public
 \.
 
 
@@ -6287,6 +6295,10 @@ COPY public.post_office_email (id, from_email, "to", cc, bcc, subject, message, 
 1	no-reply@localhost	+markus.mohanty@gmail.com						2	1	2020-04-26 20:41:03.282053+02	2020-04-26 20:41:03.282071+02	\N	\N	{"customer": {"number": "1", "first_name": "Markus", "last_name": "Mohanty", "email": "+markus.mohanty@gmail.com", "salutation": "Herr"}, "order": {"number": "2020-00001", "url": "/de/personal-pages/your-orders/2020-00001/483827d232444bcec66d81a34b3ee29d6d0868be", "status": "Erwarte einen Zahlungseingang", "subtotal": "\\u20ac 5,99", "total": "\\u20ac 10,99", "items": [{"line_total": "\\u20ac 5,99", "unit_price": "\\u20ac 5,99", "product_code": "12314121", "quantity": 1, "summary": {"id": 2, "product_name": "Schokoeier", "product_url": "/de/catalog/schokoeier", "product_model": "weltladenproduct", "price": "\\u20ac 5,99", "media": "", "caption": "<p>Das sind Schokoeier</p>"}, "extra": {"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "\\u20ac 1,00"}]]}}], "extra": {"annotation": "", "payment_modifier": "forward-fund-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}, "rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "\\u20ac 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "\\u20ac 5,00"}]]}, "amount_paid": "\\u20ac \\u2013", "outstanding_amount": "\\u20ac 10,99", "cancelable": true, "is_partially_paid": false, "active_payment_method": {"value": "forward-fund-payment", "label": "Vorauskasse"}, "active_shipping_method": {"value": "postal-shipping", "label": "Postal shipping"}, "currency": "EUR", "created_at": "2020-04-26T20:41:03.222389+02:00", "updated_at": "2020-04-26T20:41:03.240413+02:00", "shipping_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n", "billing_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n", "token": "483827d232444bcec66d81a34b3ee29d6d0868be"}, "ABSOLUTE_BASE_URI": "http://localhost:8000", "render_language": "de"}	1	
 2	no-reply@localhost	+markus.mohanty@gmail.com						2	1	2020-04-26 21:25:52.241711+02	2020-04-26 21:25:52.241753+02	\N	\N	{"customer": {"number": "1", "first_name": "Markus", "last_name": "Mohanty", "email": "+markus.mohanty@gmail.com", "salutation": "Herr"}, "order": {"number": "2020-00003", "url": "/de/personal-pages/your-orders/2020-00003/74d34c0c77bc17d2cece73f1bc31b9abccd844df", "status": "Erwarte einen Zahlungseingang", "subtotal": "\\u20ac 5,99", "total": "\\u20ac 10,99", "items": [{"line_total": "\\u20ac 5,99", "unit_price": "\\u20ac 5,99", "product_code": "12314121", "quantity": 1, "summary": {"id": 2, "product_name": "Schokoeier", "product_url": "/de/catalog/schokoeier", "product_model": "weltladenproduct", "price": "\\u20ac 5,99", "media": "/Users/mohi/Programming/weltladen-shop/workdir/media/filer_public_thumbnails/filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg__80x80_q85_crop_subsampling-2.jpg", "caption": "<p>Das sind Schokoeier</p>"}, "extra": {"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "\\u20ac 1,00"}]]}}], "extra": {"annotation": "", "payment_modifier": "forward-fund-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}, "rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "\\u20ac 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "\\u20ac 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "\\u20ac 5,00"}]]}, "amount_paid": "\\u20ac \\u2013", "outstanding_amount": "\\u20ac 10,99", "cancelable": true, "is_partially_paid": false, "active_payment_method": {"value": "forward-fund-payment", "label": "Payment by delivery note"}, "active_shipping_method": {"value": "postal-shipping", "label": "Postal shipping"}, "currency": "EUR", "created_at": "2020-04-26T21:25:52.139406+02:00", "updated_at": "2020-04-26T21:25:52.170969+02:00", "shipping_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n", "billing_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n", "token": "74d34c0c77bc17d2cece73f1bc31b9abccd844df"}, "ABSOLUTE_BASE_URI": "http://localhost:8000", "render_language": "de"}	1	
 3	no-reply@localhost	+markus.mohanty@gmail.com						2	1	2020-04-26 22:23:07.00116+02	2020-04-26 22:23:07.001202+02	\N	\N	{\n    "customer": {\n        "number": "1",\n        "first_name": "Markus",\n        "last_name": "Mohanty",\n        "email": "+markus.mohanty@gmail.com",\n        "salutation": "Herr"\n    },\n    "order": {\n        "number": "2020-00003",\n        "url": "/de/personal-pages/your-orders/2020-00003/74d34c0c77bc17d2cece73f1bc31b9abccd844df",\n        "status": "Bereit zur Auslieferung",\n        "subtotal": "€ 5,99",\n        "total": "€ 10,99",\n        "items": [\n            {\n                "line_total": "€ 5,99",\n                "unit_price": "€ 5,99",\n                "product_code": "12314121",\n                "quantity": 1,\n                "summary": {\n                    "id": 2,\n                    "product_name": "Schokoeier",\n                    "product_url": "/de/catalog/schokoeier",\n                    "product_model": "weltladenproduct",\n                    "price": "€ 5,99",\n                    "media": "/Users/mohi/Programming/weltladen-shop/workdir/media/filer_public_thumbnails/filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg__80x80_q85_crop_subsampling-2.jpg",\n                    "caption": "<p>Das sind Schokoeier</p>"\n                },\n                "extra": {\n                    "rows": [\n                        [\n                            "taxes",\n                            {\n                                "label": "inkl. 20% MWSt.",\n                                "amount": "€ 1,00"\n                            }\n                        ]\n                    ]\n                }\n            }\n        ],\n        "extra": {\n            "rows": [\n                [\n                    "taxes10",\n                    {\n                        "label": "inkl. 10% MWSt.",\n                        "amount": "€ 0,00"\n                    }\n                ],\n                [\n                    "taxes20",\n                    {\n                        "label": "inkl. 20% MWSt.",\n                        "amount": "€ 1,00"\n                    }\n                ],\n                [\n                    "postal-shipping",\n                    {\n                        "label": "Shipping costs",\n                        "amount": "€ 5,00"\n                    }\n                ]\n            ],\n            "annotation": "",\n            "payment_modifier": "forward-fund-payment",\n            "shipping_modifier": "postal-shipping",\n            "payment_extra_data": {}\n        },\n        "amount_paid": "€ 10,99",\n        "outstanding_amount": "€ 0,00",\n        "cancelable": true,\n        "is_partially_paid": true,\n        "active_payment_method": {\n            "value": "forward-fund-payment",\n            "label": "Payment by delivery note"\n        },\n        "active_shipping_method": {\n            "value": "postal-shipping",\n            "label": "Postal shipping"\n        },\n        "currency": "EUR",\n        "created_at": "2020-04-26T21:25:52.139406+02:00",\n        "updated_at": "2020-04-26T22:23:06.896099+02:00",\n        "shipping_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n",\n        "billing_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n",\n        "token": "74d34c0c77bc17d2cece73f1bc31b9abccd844df"\n    },\n    "ABSOLUTE_BASE_URI": "http://localhost:8000",\n    "render_language": "de",\n    "latest_delivery": {\n        "items": [\n            {\n                "line_total": "€ 5,99",\n                "unit_price": "€ 5,99",\n                "product_code": "12314121",\n                "summary": {\n                    "id": 2,\n                    "product_name": "Schokoeier",\n                    "product_url": "/de/catalog/schokoeier",\n                    "product_model": "weltladenproduct",\n                    "price": "€ 5,99",\n                    "media": "/Users/mohi/Programming/weltladen-shop/workdir/media/filer_public_thumbnails/filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg__80x80_q85_crop_subsampling-2.jpg",\n                    "caption": "<p>Das sind Schokoeier</p>"\n                },\n                "extra": {\n                    "rows": [\n                        [\n                            "taxes",\n                            {\n                                "label": "inkl. 20% MWSt.",\n                                "amount": "€ 1,00"\n                            }\n                        ]\n                    ]\n                },\n                "ordered_quantity": 1,\n                "quantity": 1\n            }\n        ],\n        "number": "2020-00003",\n        "shipping_method": {\n            "value": "postal-shipping",\n            "label": "Postal shipping"\n        },\n        "shipping_id": "123444",\n        "fulfilled_at": "2020-04-26T22:22:40.273047+02:00",\n        "shipped_at": "2020-04-26T22:23:06.893833+02:00"\n    }\n}	2	
+4	markus.mohanty@gmail.com	info@weltladen-baden.at			hans	hans		2	1	2020-04-28 21:05:50.917122+02	2020-04-28 21:05:50.917157+02	\N	\N	\N	\N	
+5	markus.mohanty@gmail.com	info@weltladen-baden.at			hans	hans		2	1	2020-04-28 21:06:19.550552+02	2020-04-28 21:06:19.550584+02	\N	\N	\N	\N	
+6	markus.mohanty@gmail.com	info@weltladen-baden.at			hansi	hansi		2	1	2020-04-28 21:06:56.529797+02	2020-04-28 21:06:56.529889+02	\N	\N	\N	\N	
+7	markus.mohanty@gmail.com	info@weltladen-baden.at			hansi	hasi		2	1	2020-04-28 21:07:23.735915+02	2020-04-28 21:07:23.735949+02	\N	\N	\N	\N	
 \.
 
 
@@ -6465,10 +6477,10 @@ COPY public.weltladen_supplier (id, name) FROM stdin;
 --
 
 COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra, number, phonenumber, salutation) FROM stdin;
-4	2	2020-04-27 22:01:01.743015+02	{}	1	+43 676 3239108	mr
 6	0	2020-04-26 21:43:08.944981+02	{}	\N	\N	
 7	0	2020-04-26 21:49:57.866817+02	{}	\N	\N	
 5	0	2020-04-26 20:42:06.093394+02	{}	\N	\N	
+4	2	2020-04-28 21:07:25.995503+02	{}	1	+43 676 3239108	mr
 \.
 
 
@@ -6536,7 +6548,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: cms_cmsplugin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 822, true);
+SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 830, true);
 
 
 --
@@ -6676,14 +6688,14 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 68, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 71, true);
 
 
 --
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 137, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 138, true);
 
 
 --
@@ -6767,7 +6779,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 42, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 46, true);
 
 
 --
@@ -6788,7 +6800,7 @@ SELECT pg_catalog.setval('public.post_office_attachment_id_seq', 1, false);
 -- Name: post_office_email_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.post_office_email_id_seq', 3, true);
+SELECT pg_catalog.setval('public.post_office_email_id_seq', 7, true);
 
 
 --
