@@ -118,6 +118,8 @@ INSTALLED_APPS = [
     'shop',
     'weltladen',
 ]
+if DEBUG:
+    INSTALLED_APPS.extend(['django_extensions',])
 
 MIDDLEWARE = [
     # 'django.middleware.cache.UpdateCacheMiddleware',
@@ -650,6 +652,6 @@ SHOP_CASCADE_FORMS = {
 #Weltladen settings
 WELTLADEN_BADEN_LOCATION = (48.0083297, 16.2340982)
 WELTLADEN_SHIPPING_DISTANCE = 5
-WELTLADEN_EMAIL_ADDRESS = 'info@weltladen-baden.at'
+WELTLADEN_EMAIL_ADDRESS = 'baden@weltladen.at'
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'

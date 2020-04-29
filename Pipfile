@@ -42,6 +42,8 @@ lxml = "*"
 factory-boy = "*"
 pytest-factoryboy = "*"
 pylint = "*"
+django-extensions = "*"
+werkzeug = "*"
 
 [requires]
 python_version = "3.7.7"

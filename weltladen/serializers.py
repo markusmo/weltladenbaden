@@ -5,11 +5,13 @@ from django.utils.safestring import mark_safe
 from rest_framework import serializers
 from shop.search.serializers import ProductSearchSerializer as BaseProductSearchSerializer
 from shop.serializers.bases import ProductSerializer
+from weltladen.models import WeltladenProduct
 from weltladen.search_indexes import myshop_search_index_classes
 
 
 class ProductDetailSerializer(ProductSerializer):
     class Meta(ProductSerializer.Meta):
+        model = WeltladenProduct
         fields = ['product_name', 'slug', 'unit_price', 'manufacturer', 'vegan', 
                   'supplier', 'country_of_origin', 'product_code']
 
