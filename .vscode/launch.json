@@ -16,6 +16,7 @@
         },
         {
             "name": "Django Server_Plus",
+            "env": {"WERKZEUG_DEBUG_PIN":"off"},
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/manage.py",
