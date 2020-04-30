@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "81b565c8cb602bd3f0a9df13f82894193aa86386ab85473fdce7b5bc3ac38c6e"
+            "sha256": "2575c778f4bee279f6e0271cc6113b5ece82989c18be4e55c18ae2eef4481823"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -231,11 +231,9 @@
             "version": "==7.2.3"
         },
         "django-shop": {
-            "hashes": [
-                "sha256:fe3a0d37233a7dfc6363bd07e543fb2e7e727078c8a98421b092336c77a5f733"
-            ],
-            "index": "pypi",
-            "version": "==1.1.3"
+            "editable": true,
+            "git": "https://github.com/awesto/django-shop",
+            "ref": "83d77b8ecd20ac1ba7320c861f9a5c81eef9ef95"
         },
         "django-treebeard": {
             "hashes": [
