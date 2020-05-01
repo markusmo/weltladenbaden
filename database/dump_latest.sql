@@ -2003,6 +2003,41 @@ ALTER SEQUENCE public.weltladen_billingaddress_id_seq OWNED BY public.weltladen_
 
 
 --
+-- Name: weltladen_bioqualitylabel; Type: TABLE; Schema: public; Owner: djangouser
+--
+
+CREATE TABLE public.weltladen_bioqualitylabel (
+    id integer NOT NULL,
+    name character varying(150) NOT NULL,
+    logo_id integer NOT NULL
+);
+
+
+ALTER TABLE public.weltladen_bioqualitylabel OWNER TO djangouser;
+
+--
+-- Name: weltladen_bioqualitylabel_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
+--
+
+CREATE SEQUENCE public.weltladen_bioqualitylabel_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.weltladen_bioqualitylabel_id_seq OWNER TO djangouser;
+
+--
+-- Name: weltladen_bioqualitylabel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
+--
+
+ALTER SEQUENCE public.weltladen_bioqualitylabel_id_seq OWNED BY public.weltladen_bioqualitylabel.id;
+
+
+--
 -- Name: weltladen_cart; Type: TABLE; Schema: public; Owner: djangouser
 --
 
@@ -2540,11 +2575,49 @@ CREATE TABLE public.weltladen_weltladenproduct (
     supplier_id integer NOT NULL,
     tax_switch boolean NOT NULL,
     vegan boolean NOT NULL,
+    fairtrade boolean NOT NULL,
+    gluten_free boolean NOT NULL,
+    lactose_free boolean NOT NULL,
     CONSTRAINT weltladen_weltladenproduct_order_check CHECK (("order" >= 0))
 );
 
 
 ALTER TABLE public.weltladen_weltladenproduct OWNER TO djangouser;
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers; Type: TABLE; Schema: public; Owner: djangouser
+--
+
+CREATE TABLE public.weltladen_weltladenproduct_additional_manufacturers (
+    id integer NOT NULL,
+    weltladenproduct_id integer NOT NULL,
+    manufacturer_id integer NOT NULL
+);
+
+
+ALTER TABLE public.weltladen_weltladenproduct_additional_manufacturers OWNER TO djangouser;
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
+--
+
+CREATE SEQUENCE public.weltladen_weltladenproduct_additional_manufacturers_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.weltladen_weltladenproduct_additional_manufacturers_id_seq OWNER TO djangouser;
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
+--
+
+ALTER SEQUENCE public.weltladen_weltladenproduct_additional_manufacturers_id_seq OWNED BY public.weltladen_weltladenproduct_additional_manufacturers.id;
+
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
@@ -2943,6 +3016,13 @@ ALTER TABLE ONLY public.weltladen_billingaddress ALTER COLUMN id SET DEFAULT nex
 
 
 --
+-- Name: weltladen_bioqualitylabel id; Type: DEFAULT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_bioqualitylabel ALTER COLUMN id SET DEFAULT nextval('public.weltladen_bioqualitylabel_id_seq'::regclass);
+
+
+--
 -- Name: weltladen_cart id; Type: DEFAULT; Schema: public; Owner: djangouser
 --
 
@@ -3038,6 +3118,13 @@ ALTER TABLE ONLY public.weltladen_supplier ALTER COLUMN id SET DEFAULT nextval('
 --
 
 ALTER TABLE ONLY public.weltladen_weltladenproduct ALTER COLUMN id SET DEFAULT nextval('public.weltladen_weltladenproduct_id_seq'::regclass);
+
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers id; Type: DEFAULT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_additional_manufacturers ALTER COLUMN id SET DEFAULT nextval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq'::regclass);
 
 
 --
@@ -3612,6 +3699,14 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 542	Can change Location	137	change_locations
 543	Can delete Location	137	delete_locations
 544	Can view Location	137	view_locations
+545	Can add contact us plugin model	138	add_contactuspluginmodel
+546	Can change contact us plugin model	138	change_contactuspluginmodel
+547	Can delete contact us plugin model	138	delete_contactuspluginmodel
+548	Can view contact us plugin model	138	view_contactuspluginmodel
+549	Can add bio quality label	139	add_bioqualitylabel
+550	Can change bio quality label	139	change_bioqualitylabel
+551	Can delete bio quality label	139	delete_bioqualitylabel
+552	Can view bio quality label	139	view_bioqualitylabel
 \.
 
 
@@ -3622,7 +3717,8 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
 1	pbkdf2_sha256$36000$aW5f365D8NcY$t6ud/cxz3Ffjma/fn739Os2O/UtJZE/SyK3Fj2n8Quo=	2019-02-27 22:38:19.929+01	t	admin	Adam	De Mol	admin@example.com	t	t	2015-10-16 15:01:57.437+02
 2	!qIyv4xYdiE292blenyXr9eduHxBYU3k5EhvpGwyK	\N	f	9OmKacig9RrdWbzpDJH9KHFxkCE2			guest@somewhere.net	f	f	2016-01-20 12:49:10.545+01
-4	pbkdf2_sha256$150000$l8ruPs8DuMkn$Dd+OJblLFtibKWDMqgF6CMSHsktTNhBxcvODxM5FQyw=	2020-04-30 19:42:25.106958+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
+10	pbkdf2_sha256$150000$6lzHOKBrALS7$Qzc5V3VN1iaZGg0DBT4e4U4Z3hvAqnndFIk6KcctvLQ=	2020-05-01 12:37:51.926729+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
+4	pbkdf2_sha256$150000$l8ruPs8DuMkn$Dd+OJblLFtibKWDMqgF6CMSHsktTNhBxcvODxM5FQyw=	2020-05-01 22:50:18.988878+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 \.
 
 
@@ -3647,7 +3743,8 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 --
 
 COPY public.authtoken_token (key, created, user_id) FROM stdin;
-864f2ec530b0896465f0dd6af7159050be78b057	2020-04-30 19:42:25.094792+02	4
+65480e58b05c47dc99d289ea08901d8a228bac70	2020-05-01 12:21:00.267311+02	10
+18bd073d1824b32b83ffc8ed51406140ced60869	2020-05-01 14:31:26.08091+02	4
 \.
 
 
@@ -4627,6 +4724,7 @@ COPY public.cms_placeholder (id, slot, default_width) FROM stdin;
 99	Main Content	\N
 100	Breadcrumb	\N
 101	Main Content	\N
+102	clipboard	\N
 \.
 
 
@@ -4788,6 +4886,7 @@ COPY public.cms_urlconfrevision (id, revision) FROM stdin;
 
 COPY public.cms_usersettings (id, language, clipboard_id, user_id) FROM stdin;
 1	de	85	4
+2	de	102	10
 \.
 
 
@@ -5771,6 +5870,42 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 219	2020-04-30 20:01:34.999584+02	9	2020-00006	2	[{"changed": {"fields": ["status"]}}]	123	4
 220	2020-04-30 20:01:52.228887+02	9	2020-00006	2	[{"changed": {"fields": ["status"]}}, {"changed": {"name": "Delivery", "object": "Delivery ID: 2", "fields": ["shipping_id"]}}]	123	4
 221	2020-04-30 20:05:39.40559+02	1	Home	2		2	4
+222	2020-04-30 20:14:49.778583+02	10	2020-00007	2	[{"changed": {"fields": ["status"]}}]	123	4
+223	2020-04-30 20:15:22.378769+02	10	2020-00007	2	[{"changed": {"fields": ["status"]}}, {"changed": {"name": "Delivery", "object": "Delivery ID: 3", "fields": ["shipping_id"]}}]	123	4
+224	2020-04-30 20:16:36.414418+02	10	2020-00007	2	[{"changed": {"name": "Delivery", "object": "Delivery ID: 3", "fields": []}}]	123	4
+225	2020-05-01 12:20:11.632645+02	10	<anonymous>	1	[{"added": {}}]	117	4
+226	2020-05-01 12:20:42.875795+02	10	marija	2	[{"changed": {"fields": ["first_name", "last_name", "email", "is_staff", "is_superuser"]}}]	117	4
+227	2020-05-01 14:01:06.053538+02	2	EZA Fairer Handel GmbH	1	[{"added": {}}]	133	10
+228	2020-05-01 14:04:57.64271+02	2	Indianische Kleinbäuer*innen aus Mexico	1	[{"added": {}}]	122	10
+229	2020-05-01 14:05:09.581809+02	7	ORGANICO Vakuum 250g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (3)"}}]	135	10
+230	2020-05-01 14:08:38.862531+02	7	ORGANICO Vakuum 250g	2	[{"changed": {"fields": ["short_description", "description"]}}]	135	10
+231	2020-05-01 14:13:57.344159+02	7	ORGANICO Vakuum 250g	2	[{"changed": {"fields": ["unit_price", "short_description", "description"]}}]	135	10
+232	2020-05-01 14:14:50.506106+02	7	ORGANICO Vakuum 250g	2	[{"changed": {"fields": ["caption", "short_description", "description"]}}]	135	10
+233	2020-05-01 14:18:00.16552+02	7	ORGANICO Vakuum 250g	2	[{"changed": {"fields": ["short_description", "description"]}}, {"added": {"name": "Product Image", "object": "ProductImage object (4)"}}]	135	10
+234	2020-05-01 14:19:30.445768+02	7	ORGANICO Vakuum 250g	2	[{"changed": {"fields": ["short_description", "description"]}}, {"deleted": {"name": "Product Image", "object": "ProductImage object (None)"}}]	135	10
+235	2020-05-01 20:31:41.679701+02	8	ORGANICO Bohne 1kg	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (5)"}}]	135	10
+236	2020-05-01 20:37:02.646676+02	9	ORGANICO gemahlen 1kg	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (6)"}}]	135	10
+237	2020-05-01 20:38:09.610092+02	7	ORGANICO Vakuum 250g	2	[{"changed": {"fields": ["caption", "short_description", "description"]}}]	135	10
+238	2020-05-01 20:38:19.641703+02	8	ORGANICO Bohne 1kg	2	[{"changed": {"fields": ["caption", "short_description", "description"]}}]	135	10
+239	2020-05-01 20:38:29.267228+02	9	ORGANICO gemahlen 1kg	2	[{"changed": {"fields": ["caption", "short_description", "description"]}}]	135	10
+240	2020-05-01 20:47:40.690856+02	10	ESPRESSO ORGANICO 1kg	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (7)"}}]	135	10
+241	2020-05-01 20:48:51.037683+02	7	ORGANICO Vakuum 250g	2	[{"changed": {"fields": ["short_description", "description"]}}]	135	10
+242	2020-05-01 20:49:16.435524+02	8	ORGANICO Bohne 1kg	2	[{"changed": {"fields": ["short_description", "description"]}}]	135	10
+243	2020-05-01 20:49:43.362331+02	9	ORGANICO gemahlen 1kg	2	[{"changed": {"fields": ["short_description", "description"]}}]	135	10
+244	2020-05-01 20:50:08.860153+02	10	ESPRESSO ORGANICO 1kg	2	[{"changed": {"fields": ["short_description", "description"]}}]	135	10
+245	2020-05-01 20:52:02.138299+02	10	ESPRESSO ORGANICO Bohne 1kg	2	[{"changed": {"fields": ["product_name", "slug", "short_description", "description"]}}]	135	10
+246	2020-05-01 20:53:58.442812+02	11	ESPRESSO ORGANICO Bohne 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (8)"}}]	135	10
+247	2020-05-01 20:54:43.774896+02	11	ESPRESSO ORGANICO Bohne 500g	2	[{"changed": {"fields": ["short_description", "description"]}}]	135	10
+248	2020-05-01 21:03:24.283387+02	12	ESPRESSO ORGANICO 18 Pads 125g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (9)"}}]	135	10
+249	2020-05-01 21:04:03.041591+02	3	Tee	3		135	10
+250	2020-05-01 21:04:03.0492+02	4	Reis	3		135	10
+251	2020-05-01 21:04:03.050923+02	5	Seife	3		135	10
+252	2020-05-01 21:04:03.052208+02	6	Honig	3		135	10
+253	2020-05-01 21:04:31.125825+02	2	Schokoeier	3		135	10
+254	2020-05-01 21:09:57.05465+02	13	ORGANICO Bohne 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (10)"}}]	135	10
+255	2020-05-01 21:12:58.267621+02	14	ORGANICO Vakuum 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (11)"}}]	135	10
+256	2020-05-01 21:56:08.661064+02	15	ORGANICO entkoffeiniert Vakuum 250g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (12)"}}]	135	10
+257	2020-05-01 21:59:22.727506+02	16	ORGANICO entkoffeiniert Bohne 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (13)"}}]	135	10
 \.
 
 
@@ -5917,6 +6052,7 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 136	weltladen	weltladenproducttranslation
 137	weltladen	locations
 138	cmsplugin_cascade	contactuspluginmodel
+139	weltladen	bioqualitylabel
 \.
 
 
@@ -6043,6 +6179,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 116	weltladen	0003_auto_20200426_2013	2020-04-26 20:13:16.273343+02
 117	weltladen	0004_locations	2020-04-26 20:18:44.57986+02
 118	weltladen	0005_auto_20200426_2039	2020-04-26 20:39:43.714239+02
+119	weltladen	0006_auto_20200501_2220	2020-05-01 22:20:42.582856+02
 \.
 
 
@@ -6052,9 +6189,11 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 ai1wquv3fyscven5ttvcoy0em6ak2rju	NjM0Yjc1NGRlOGQ1OWRlOGZhOTE5YmU1NmI2ZjAzMDM0MDNiOTlhYTp7ImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZSwiX2F1dGhfdXNlcl9pZCI6IjQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjZiYjMwNjExZTI2N2RhYTQxOWNlYjlhMzYxNTdmZjE2NmU5ZmRiN2QiLCJlbXVsYXRlX3VzZXJfaWQiOjN9	2020-05-13 20:28:01.599754+02
+oyd2dfrfddwcjkrm60oqq3qmmfl0txex	YzQ2YWU1MDI1YWUzMjM5Nzg3OTFkY2FkNzY1NjM3ZTIwYzYxNDJjNDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-05-15 14:31:40.773767+02
 n2oscw6np6fvbbk3cnu7wdaxu2yrsvkf	ODcwNmIyYjk3NmE4Y2MwYjI3MGMwYmYyYjRmMGUzNDVkMzc1MTQ3Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIn0=	2020-05-13 20:35:48.978166+02
 0ebrsxiixbcyjkabmjm50jsu7j6zpc9u	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-05-10 21:47:55.365977+02
-89z73246m8fgbqmzbe568vcmjndvi736	YmIzNzQ0OTM3ZmFkNDZkYzViZDJkYjNkYzI1YWUyNDIxZmI3MDBmZDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlLCJmaWxlcl9sYXN0X2ZvbGRlcl9pZCI6IjEifQ==	2020-05-14 20:07:56.139936+02
+h3wx0i70osbi24wnppfophpxaacx0682	ZDFjYjA4OWFhZjM0N2QxMDVhYjg5MmZiZjljODMxMmRjNGMyYWMwNTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjpudWxsfQ==	2020-05-15 22:49:56.6311+02
+syd5hf3q9fppblwcdaxbu5tbgd9iddmk	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-15 23:07:19.389443+02
 \.
 
 
@@ -6111,9 +6250,20 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 
 COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin;
 3	f9bde26a1556cd667f742bd34ec7c55e	filer_public/db/d2/dbd28a47-4275-4193-a25b-ced01748349e/98000.jpg	2020-04-26 21:08:53.529163+02
+12	f9bde26a1556cd667f742bd34ec7c55e	filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg	2020-05-01 21:48:00.421139+02
 2	f9bde26a1556cd667f742bd34ec7c55e	filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg	2020-04-29 20:24:30.124909+02
 4	f9bde26a1556cd667f742bd34ec7c55e	filer_public/21/35/213591e4-1574-481b-9985-c5f9a3f6ba49/banner.png	2020-04-29 20:58:33.85023+02
 5	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8b/c6/8bc65fc9-4034-4a1f-8071-a778d5dc99da/weltladen.png	2020-04-30 19:59:27.380429+02
+16	f9bde26a1556cd667f742bd34ec7c55e	filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg	2020-05-01 21:59:27.387957+02
+15	f9bde26a1556cd667f742bd34ec7c55e	filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg	2020-05-01 21:59:36.709824+02
+6	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg	2020-05-01 14:09:06.092778+02
+7	f9bde26a1556cd667f742bd34ec7c55e	filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg	2020-05-01 14:17:55.773025+02
+14	f9bde26a1556cd667f742bd34ec7c55e	filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg	2020-05-01 21:59:52.22547+02
+13	f9bde26a1556cd667f742bd34ec7c55e	filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg	2020-05-01 21:59:59.515606+02
+11	f9bde26a1556cd667f742bd34ec7c55e	filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg	2020-05-01 22:00:26.821136+02
+8	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg	2020-05-01 20:32:37.250373+02
+10	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg	2020-05-01 22:00:32.58131+02
+9	f9bde26a1556cd667f742bd34ec7c55e	filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg	2020-05-01 22:00:38.951239+02
 \.
 
 
@@ -6159,6 +6309,101 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 47	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/c6/8bc65fc9-4034-4a1f-8071-a778d5dc99da/weltladen.png__80x80_q85_crop_subsampling-2_upscale.png	2020-04-30 19:59:27.484639+02	5
 48	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/c6/8bc65fc9-4034-4a1f-8071-a778d5dc99da/weltladen.png__128x128_q85_crop_subsampling-2_upscale.png	2020-04-30 19:59:27.521778+02	5
 49	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/c6/8bc65fc9-4034-4a1f-8071-a778d5dc99da/weltladen.png__180x180_q85_crop_subsampling-2_upscale.png	2020-04-30 19:59:27.565105+02	5
+50	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:03:14.737241+02	6
+51	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:03:14.78175+02	6
+52	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:03:14.818395+02	6
+53	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:03:14.854402+02	6
+54	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:03:14.892334+02	6
+55	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:03:14.933736+02	6
+56	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 14:08:50.608639+02	6
+57	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 14:08:50.678442+02	6
+58	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 14:09:06.100587+02	6
+59	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:17:55.781349+02	7
+60	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:17:55.811539+02	7
+61	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:17:55.842513+02	7
+62	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:17:55.880162+02	7
+63	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:17:55.914039+02	7
+64	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 14:17:55.946033+02	7
+65	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:31:36.199189+02	8
+66	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:31:36.246508+02	8
+67	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:31:36.272545+02	8
+68	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:31:36.300356+02	8
+69	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:31:36.327591+02	8
+70	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:31:36.371624+02	8
+71	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 20:32:02.358771+02	8
+72	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 20:32:02.42704+02	8
+73	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 20:32:37.259151+02	8
+74	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:36:45.518338+02	9
+75	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:36:45.566346+02	9
+76	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:36:45.605656+02	9
+77	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:36:45.643234+02	9
+78	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:36:45.68718+02	9
+79	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:36:45.730798+02	9
+80	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 20:38:35.877914+02	9
+81	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 20:38:35.948274+02	9
+82	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:45:03.830741+02	10
+83	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:45:03.870409+02	10
+84	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:45:03.911275+02	10
+85	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:45:03.951764+02	10
+86	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:45:04.007765+02	10
+87	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:45:04.058808+02	10
+88	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:53:46.279639+02	11
+89	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:53:46.314462+02	11
+90	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:53:46.346018+02	11
+91	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:53:46.378416+02	11
+92	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:53:46.412107+02	11
+93	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 20:53:46.450173+02	11
+94	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 20:54:49.014508+02	10
+95	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 20:54:49.084412+02	10
+96	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 20:54:49.14574+02	11
+97	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 20:54:49.211001+02	11
+98	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:02:44.623048+02	12
+99	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:02:44.662728+02	12
+100	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:02:44.701663+02	12
+101	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:02:44.740931+02	12
+102	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:02:44.782268+02	12
+103	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:02:44.827142+02	12
+104	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:09:54.290764+02	13
+105	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:09:54.333582+02	13
+106	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:09:54.3737+02	13
+107	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:09:54.41467+02	13
+108	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:09:54.4546+02	13
+109	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:09:54.497878+02	13
+110	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:12:45.134442+02	14
+111	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:12:45.177474+02	14
+112	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:12:45.218985+02	14
+113	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:12:45.258203+02	14
+114	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:12:45.299182+02	14
+115	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:12:45.344832+02	14
+116	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 21:47:49.474309+02	12
+117	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 21:47:49.548961+02	12
+118	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 21:47:49.621747+02	13
+119	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 21:47:49.70121+02	13
+120	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 21:47:49.775612+02	14
+121	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 21:47:49.847273+02	14
+122	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 21:48:00.429157+02	12
+123	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:55:35.000487+02	15
+124	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:55:35.037207+02	15
+125	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:55:35.080016+02	15
+126	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:55:35.119127+02	15
+127	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:55:35.166975+02	15
+128	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:55:35.207508+02	15
+129	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:59:15.069919+02	16
+130	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:59:15.108631+02	16
+131	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:59:15.146855+02	16
+132	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:59:15.185351+02	16
+133	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:59:15.226258+02	16
+134	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-01 21:59:15.269559+02	16
+135	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 21:59:27.168046+02	15
+136	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 21:59:27.240083+02	15
+137	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-01 21:59:27.323236+02	16
+138	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-01 21:59:27.396352+02	16
+139	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 21:59:36.719497+02	15
+140	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 21:59:52.23348+02	14
+141	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 21:59:59.523281+02	13
+142	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 22:00:26.82891+02	11
+143	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 22:00:32.589124+02	10
+144	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 22:00:38.962601+02	9
 \.
 
 
@@ -6176,6 +6421,7 @@ COPY public.easy_thumbnails_thumbnaildimensions (id, thumbnail_id, width, height
 
 COPY public.filer_clipboard (id, user_id) FROM stdin;
 1	4
+2	10
 \.
 
 
@@ -6194,8 +6440,19 @@ COPY public.filer_clipboarditem (id, clipboard_id, file_id) FROM stdin;
 COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, original_filename, name, description, uploaded_at, modified_at, is_public, folder_id, owner_id, polymorphic_ctype_id) FROM stdin;
 2	filer_public/63/15/631543b5-f68e-487a-a06b-67c23f590fde/fontello-319b939c.zip	1137483	3f75a1a6f0a813266a9ba688d6c370a0dd643921	f	fontello-319b939c.zip	Font Awesome	\N	2017-01-10 17:52:21.194+01	2017-03-06 12:59:00.807+01	t	2	1	103
 202	filer_public/8b/c6/8bc65fc9-4034-4a1f-8071-a778d5dc99da/weltladen.png	39527	95590fe3765d082cf46517f733552302b90212a3	f	weltladen.png		\N	2020-04-30 19:59:27.365167+02	2020-04-30 19:59:27.365195+02	t	1	4	106
+205	filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg	44148	411032c3324277a78aee837f416ce4a61fc6a3ef	f	83017.jpg		\N	2020-05-01 20:31:36.101012+02	2020-05-01 20:31:36.10104+02	t	\N	10	106
+208	filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg	67289	41e9aaa7f641da7b349c3156c969979de8b96cad	f	83077.jpg		\N	2020-05-01 20:53:46.249749+02	2020-05-01 20:53:46.249771+02	t	\N	10	106
+211	filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg	354599	006017774764c21d82f2caaa837c17450d299481	f	83550.jpg		\N	2020-05-01 21:12:45.100634+02	2020-05-01 21:12:45.100652+02	t	\N	10	106
+203	filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg	346199	7640814350a8dbc8c7371506b2d1d3ce46bf5e61	f	83010.jpg		\N	2020-05-01 14:03:14.607249+02	2020-05-01 14:03:14.607265+02	t	\N	10	106
+206	filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg	285676	00003be28f3117fe10a6c56bbce7f75bd2a7d3dc	f	83022.jpg		\N	2020-05-01 20:36:45.481866+02	2020-05-01 20:36:45.481909+02	t	\N	10	106
+209	filer_public/cd/a9/cda97756-7ae7-4f62-b50d-f1114384e0db/83088.jpg	356215	2429949f47c8745cd0c3b5e18cd2d7d31cd5746a	f	83088.jpg		\N	2020-05-01 21:02:44.587481+02	2020-05-01 21:02:44.587504+02	t	\N	10	106
+212	filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg	303321	332f37b570afca836fe31a31b59c05f6dcc7e8b3	f	83900.jpg		\N	2020-05-01 21:55:34.967949+02	2020-05-01 21:55:34.967968+02	t	\N	10	106
 56	filer_public/fb/b2/fbb280d7-a8c8-4a4e-b80c-49ed886a4369/highendurance_microsdhc_c10_32gb-retina.png	114459	4a2b030d753d717e566ccc8150f04465adbd0477	f	HighEndurance_microSDHC_C10_32GB-retina.png		\N	2015-12-03 12:16:26.324+01	2018-09-20 18:10:25.245+02	t	2	1	106
 57	filer_public/e6/7c/e67c6c43-4ed3-4389-a99e-526ef2054e5a/highendurance_microsdxc_c10_64gb-retina.png	116994	77d4cab457bef125957ddd866ca3cd788c177e64	f	HighEndurance_microSDXC_C10_64GB-retina.png		\N	2015-12-03 12:16:31.457+01	2018-09-20 18:10:25.252+02	t	2	1	106
+204	filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg	175466	61f9eefa4d5d6e25bbe726c0c71d0ad313639670	f	organico.jpg		\N	2020-05-01 14:17:55.749693+02	2020-05-01 14:17:55.749707+02	t	\N	10	106
+207	filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg	301159	c8558125529c53394285ee776d5836a658a5d6bf	f	83066.jpg		\N	2020-05-01 20:45:03.796615+02	2020-05-01 20:45:03.796633+02	t	\N	10	106
+210	filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg	365864	b1247a39a569306945cecda0a07f5efd5e87c081	f	83511.jpg		\N	2020-05-01 21:09:54.255491+02	2020-05-01 21:09:54.25556+02	t	\N	10	106
+213	filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg	333763	82647b392a1e12509fd67b35213d82c720db0244	f	83917.jpg		\N	2020-05-01 21:59:15.033684+02	2020-05-01 21:59:15.033702+02	t	\N	10	106
 199	filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg	292460	4186c084d54f5df65b45b921a23635bcf9b9d0da	f	97975.jpg		\N	2020-04-26 21:08:49.447484+02	2020-04-26 21:08:49.447513+02	t	8	4	106
 200	filer_public/db/d2/dbd28a47-4275-4193-a25b-ced01748349e/98000.jpg	293018	7aceacb99f70fedd4a6387b12d95609947da3869	f	98000.jpg		\N	2020-04-26 21:08:53.49932+02	2020-04-26 21:08:53.499353+02	t	8	4	106
 201	filer_public/21/35/213591e4-1574-481b-9985-c5f9a3f6ba49/banner.png	353391	55ea8d234ad26c544a3ec85a6f48d87f844e7914	f	banner.png		\N	2020-04-29 20:58:20.216931+02	2020-04-29 20:58:20.216996+02	t	9	4	106
@@ -6230,6 +6487,17 @@ COPY public.filer_folderpermission (id, type, everybody, can_edit, can_read, can
 
 COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_text, default_caption, author, must_always_publish_author_credit, must_always_publish_copyright, subject_location) FROM stdin;
 202	210	340	2020-04-30 19:59:27.359602+02	\N	\N	\N	f	f	
+203	752	662	2020-05-01 14:03:14.588017+02	\N	\N	\N	f	f	
+204	405	750	2020-05-01 14:17:55.745587+02	\N	\N	\N	f	f	
+205	500	441	2020-05-01 20:31:36.071481+02	\N	\N	\N	f	f	
+206	752	662	2020-05-01 20:36:45.472401+02	\N	\N	\N	f	f	
+207	752	662	2020-05-01 20:45:03.785822+02	\N	\N	\N	f	f	
+208	752	662	2020-05-01 20:53:46.234199+02	\N	\N	\N	f	f	
+209	752	662	2020-05-01 21:02:44.575833+02	\N	\N	\N	f	f	
+210	752	662	2020-05-01 21:09:54.250867+02	\N	\N	\N	f	f	
+211	752	662	2020-05-01 21:12:45.095441+02	\N	\N	\N	f	f	
+212	752	662	2020-05-01 21:55:34.963285+02	\N	\N	\N	f	f	
+213	752	662	2020-05-01 21:59:15.028931+02	\N	\N	\N	f	f	
 56	1000	1000	2015-12-03 12:16:26.311+01	\N	\N	\N	f	f	
 57	1000	1000	2015-12-03 12:16:31.439+01	\N	\N	\N	f	f	
 199	752	662	2020-04-26 21:08:49.441254+02	\N	\N	\N	f	f	
@@ -6252,6 +6520,9 @@ COPY public.filer_thumbnailoption (id, name, width, height, crop, upscale) FROM 
 
 COPY public.menus_cachekey (id, language, site, key) FROM stdin;
 80	de	1	cms_3.7.2_menu_nodes_de_1_4_user:public
+81	de	1	cms_3.7.2_menu_nodes_de_1:public
+82	de	1	cms_3.7.2_menu_nodes_de_1_10_user:draft
+83	de	1	cms_3.7.2_menu_nodes_de_1_4_user:draft
 \.
 
 
@@ -6277,6 +6548,7 @@ COPY public.post_office_attachment_emails (id, attachment_id, email_id) FROM std
 
 COPY public.post_office_email (id, from_email, "to", cc, bcc, subject, message, html_message, status, priority, created, last_updated, scheduled_time, headers, context, template_id, backend_alias) FROM stdin;
 8	no-reply@localhost	markus.mohanty@gmail.com						2	1	2020-04-30 20:01:52.337216+02	2020-04-30 20:01:52.33725+02	\N	\N	{\n    "customer": {\n        "number": "1",\n        "first_name": "Markus",\n        "last_name": "Mohanty",\n        "email": "markus.mohanty@gmail.com",\n        "salutation": "Herr"\n    },\n    "order": {\n        "number": "2020-00006",\n        "url": "/de/personal-pages/your-orders/2020-00006/18acc2e40eea7622c59b041bfe11bca0496fe4df",\n        "status": "Bereit zur Auslieferung",\n        "subtotal": "€ 5,99",\n        "total": "€ 10,99",\n        "items": [\n            {\n                "line_total": "€ 5,99",\n                "unit_price": "€ 5,99",\n                "product_code": "12314121",\n                "quantity": 1,\n                "summary": {\n                    "id": 2,\n                    "product_name": "Schokoeier",\n                    "product_url": "/de/onlineshop/schokoeier",\n                    "product_model": "weltladenproduct",\n                    "price": "€ 5,99",\n                    "media": "/Users/mohi/Programming/weltladen-shop/workdir/media/filer_public_thumbnails/filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg__80x80_q85_crop_subsampling-2.jpg",\n                    "caption": "<p>Das sind Schokoeier</p>"\n                },\n                "extra": {\n                    "rows": [\n                        [\n                            "taxes",\n                            {\n                                "label": "inkl. 20% MWSt.",\n                                "amount": "€ 1,00"\n                            }\n                        ]\n                    ]\n                }\n            }\n        ],\n        "extra": {\n            "rows": [\n                [\n                    "taxes10",\n                    {\n                        "label": "inkl. 10% MWSt.",\n                        "amount": "€ 0,00"\n                    }\n                ],\n                [\n                    "taxes20",\n                    {\n                        "label": "inkl. 20% MWSt.",\n                        "amount": "€ 1,00"\n                    }\n                ],\n                [\n                    "postal-shipping",\n                    {\n                        "label": "Shipping costs",\n                        "amount": "€ 5,00"\n                    }\n                ]\n            ],\n            "annotation": "",\n            "payment_modifier": "delivery-note-payment",\n            "shipping_modifier": "postal-shipping",\n            "payment_extra_data": {}\n        },\n        "amount_paid": "€ –",\n        "outstanding_amount": "€ 10,99",\n        "cancelable": true,\n        "is_partially_paid": false,\n        "active_payment_method": {\n            "value": "delivery-note-payment",\n            "label": "Payment by delivery note"\n        },\n        "active_shipping_method": {\n            "value": "postal-shipping",\n            "label": "Postal shipping"\n        },\n        "currency": "EUR",\n        "created_at": "2020-04-26T23:35:26.648034+02:00",\n        "updated_at": "2020-04-30T20:01:52.225337+02:00",\n        "shipping_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n",\n        "billing_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n",\n        "token": "18acc2e40eea7622c59b041bfe11bca0496fe4df"\n    },\n    "ABSOLUTE_BASE_URI": "http://localhost:8000",\n    "render_language": "de",\n    "latest_delivery": {\n        "items": [\n            {\n                "line_total": "€ 5,99",\n                "unit_price": "€ 5,99",\n                "product_code": "12314121",\n                "summary": {\n                    "id": 2,\n                    "product_name": "Schokoeier",\n                    "product_url": "/de/onlineshop/schokoeier",\n                    "product_model": "weltladenproduct",\n                    "price": "€ 5,99",\n                    "media": "/Users/mohi/Programming/weltladen-shop/workdir/media/filer_public_thumbnails/filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg__80x80_q85_crop_subsampling-2.jpg",\n                    "caption": "<p>Das sind Schokoeier</p>"\n                },\n                "extra": {\n                    "rows": [\n                        [\n                            "taxes",\n                            {\n                                "label": "inkl. 20% MWSt.",\n                                "amount": "€ 1,00"\n                            }\n                        ]\n                    ]\n                },\n                "ordered_quantity": 1,\n                "quantity": 1\n            }\n        ],\n        "number": "2020-00006",\n        "shipping_method": {\n            "value": "postal-shipping",\n            "label": "Postal shipping"\n        },\n        "shipping_id": "Bereit zur Abholung",\n        "fulfilled_at": "2020-04-30T20:01:34.983796+02:00",\n        "shipped_at": "2020-04-30T20:01:52.222427+02:00"\n    }\n}	2	
+9	no-reply@localhost	markus.mohanty@gmail.com						2	1	2020-04-30 20:15:22.485078+02	2020-04-30 20:15:22.485183+02	\N	\N	{"customer": {"number": "1", "first_name": "Markus", "last_name": "Mohanty", "email": "markus.mohanty@gmail.com", "salutation": "Herr"}, "order": {"number": "2020-00007", "url": "/de/personal-pages/your-orders/2020-00007/50fb2849d0d87170b67bd43d81547b854d0c0993", "status": "Bereit zur Auslieferung", "subtotal": "\\u20ac 5,99", "total": "\\u20ac 10,99", "items": [{"line_total": "\\u20ac 5,99", "unit_price": "\\u20ac 5,99", "product_code": "12314121", "quantity": 1, "summary": {"id": 2, "product_name": "Schokoeier", "product_url": "/de/onlineshop/schokoeier", "product_model": "weltladenproduct", "price": "\\u20ac 5,99", "media": "/Users/mohi/Programming/weltladen-shop/workdir/media/filer_public_thumbnails/filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg__80x80_q85_crop_subsampling-2.jpg", "caption": "<p>Das sind Schokoeier</p>"}, "extra": {"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "\\u20ac 1,00"}]]}}], "extra": {"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "\\u20ac 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "\\u20ac 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "\\u20ac 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}, "amount_paid": "\\u20ac \\u2013", "outstanding_amount": "\\u20ac 10,99", "cancelable": true, "is_partially_paid": false, "active_payment_method": {"value": "delivery-note-payment", "label": "Payment by delivery note"}, "active_shipping_method": {"value": "postal-shipping", "label": "Postal shipping"}, "currency": "EUR", "created_at": "2020-04-30T19:52:59.608996+02:00", "updated_at": "2020-04-30T20:15:22.374721+02:00", "shipping_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n", "billing_address_text": "Markus Mohanty\\nHintschiggasse 3/3/17\\n1100 Wien\\nAustria\\n", "token": "50fb2849d0d87170b67bd43d81547b854d0c0993"}, "ABSOLUTE_BASE_URI": "http://localhost:8000", "render_language": "de", "latest_delivery": {"items": [{"line_total": "\\u20ac 5,99", "unit_price": "\\u20ac 5,99", "product_code": "12314121", "summary": {"id": 2, "product_name": "Schokoeier", "product_url": "/de/onlineshop/schokoeier", "product_model": "weltladenproduct", "price": "\\u20ac 5,99", "media": "/Users/mohi/Programming/weltladen-shop/workdir/media/filer_public_thumbnails/filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg__80x80_q85_crop_subsampling-2.jpg", "caption": "<p>Das sind Schokoeier</p>"}, "extra": {"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "\\u20ac 1,00"}]]}, "ordered_quantity": 1, "quantity": 1}], "number": "2020-00007", "shipping_method": {"value": "postal-shipping", "label": "Postal shipping"}, "shipping_id": "127394048302", "fulfilled_at": "2020-04-30T20:14:49.770590+02:00", "shipped_at": "2020-04-30T20:15:22.371988+02:00"}}	2	
 \.
 
 
@@ -6325,11 +6597,20 @@ COPY public.weltladen_billingaddress (id, priority, name, address1, address2, zi
 
 
 --
+-- Data for Name: weltladen_bioqualitylabel; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.weltladen_bioqualitylabel (id, name, logo_id) FROM stdin;
+\.
+
+
+--
 -- Data for Name: weltladen_cart; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
 1	2020-04-26 20:36:28.808627+02	2020-04-30 19:52:59.589927+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	1
+6	2020-05-01 12:21:00.288425+02	2020-05-01 12:21:00.288449+02	{}	\N	10	\N
 \.
 
 
@@ -6347,6 +6628,7 @@ COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, c
 
 COPY public.weltladen_delivery (id, shipping_id, fulfilled_at, shipped_at, shipping_method, order_id) FROM stdin;
 2	Bereit zur Abholung	2020-04-30 20:01:34.983796+02	2020-04-30 20:01:52.222427+02	postal-shipping	9
+3	127394048302	2020-04-30 20:14:49.77059+02	2020-04-30 20:15:22.371988+02	postal-shipping	10
 \.
 
 
@@ -6356,6 +6638,7 @@ COPY public.weltladen_delivery (id, shipping_id, fulfilled_at, shipped_at, shipp
 
 COPY public.weltladen_deliveryitem (id, quantity, delivery_id, item_id) FROM stdin;
 2	1	2	5
+3	1	3	6
 \.
 
 
@@ -6374,6 +6657,7 @@ COPY public.weltladen_locations (id, zip_code, city, country, distance) FROM std
 
 COPY public.weltladen_manufacturer (id, name) FROM stdin;
 1	EZA
+2	Indianische Kleinbäuer*innen aus Mexico
 \.
 
 
@@ -6385,8 +6669,8 @@ COPY public.weltladen_order (id, status, currency, _subtotal, _total, created_at
 4	new	EUR	5.99	10.99	2020-04-26 23:23:05.935171+02	2020-04-26 23:23:05.961864+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000001	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	91511af5c2b003436e17ee2f2803fa3e4afe1969	4
 5	new	EUR	0.00	5.00	2020-04-26 23:25:57.248069+02	2020-04-26 23:25:57.276695+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 0,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000002	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	2c39e4ae0c0ada27f3d370bf65507d6221c0c743	4
 6	new	EUR	0.00	5.00	2020-04-26 23:26:23.390791+02	2020-04-26 23:26:23.404364+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 0,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000003	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	ffc24a83775bb7343cd0843c5812985e768cc0dd	4
+10	ready_for_delivery	EUR	5.99	10.99	2020-04-30 19:52:59.608996+02	2020-04-30 20:16:36.410314+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000007	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	50fb2849d0d87170b67bd43d81547b854d0c0993	4
 8	payment_confirmed	EUR	0.00	5.00	2020-04-26 23:31:47.868236+02	2020-04-26 23:31:47.898697+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 0,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000005	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	7626d23137ee45c5d9a8113a822755c8db87c652	4
-10	pick_goods	EUR	5.99	10.99	2020-04-30 19:52:59.608996+02	2020-04-30 19:52:59.639659+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000007	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	50fb2849d0d87170b67bd43d81547b854d0c0993	4
 9	ready_for_delivery	EUR	5.99	10.99	2020-04-26 23:35:26.648034+02	2020-04-30 20:01:52.225337+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000006	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	18acc2e40eea7622c59b041bfe11bca0496fe4df	4
 7	order_canceled	EUR	0.00	5.00	2020-04-26 23:26:54.864607+02	2020-04-30 19:55:05.218086+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 0,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "addendum": [], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000004	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	9fe6ef18b6294f1c84c4ed38227bca1204b13f20	4
 \.
@@ -6397,9 +6681,9 @@ COPY public.weltladen_order (id, status, currency, _subtotal, _total, created_at
 --
 
 COPY public.weltladen_orderitem (id, product_name, product_code, _unit_price, _line_total, extra, quantity, canceled, order_id, product_id) FROM stdin;
-4	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	4	2
-5	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	9	2
-6	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	10	2
+4	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	4	\N
+5	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	9	\N
+6	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	10	\N
 \.
 
 
@@ -6416,8 +6700,16 @@ COPY public.weltladen_orderpayment (id, amount, transaction_id, created_at, paym
 --
 
 COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdin;
-1	1	199	2
-2	2	200	2
+3	1	203	7
+5	1	205	8
+6	1	206	9
+7	1	207	10
+8	1	208	11
+9	1	209	12
+10	1	210	13
+11	1	211	14
+12	1	212	15
+13	1	213	16
 \.
 
 
@@ -6426,11 +6718,16 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 --
 
 COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
-1	16	2
-2	16	3
-3	16	4
-4	16	5
-5	16	6
+6	16	7
+7	16	8
+8	16	9
+9	16	10
+10	16	11
+11	16	12
+12	16	13
+13	16	14
+14	16	15
+15	16	16
 \.
 
 
@@ -6449,6 +6746,7 @@ COPY public.weltladen_shippingaddress (id, priority, name, address1, address2, z
 
 COPY public.weltladen_supplier (id, name) FROM stdin;
 1	EZA
+2	EZA Fairer Handel GmbH
 \.
 
 
@@ -6457,7 +6755,8 @@ COPY public.weltladen_supplier (id, name) FROM stdin;
 --
 
 COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra, number, phonenumber, salutation) FROM stdin;
-4	2	2020-04-30 20:07:56.075211+02	{}	1	+43 676 3239108	mr
+10	2	2020-05-01 22:49:55.342639+02	{}	\N	\N	
+4	2	2020-05-01 23:07:19.137806+02	{}	1	+43 676 3239108	mr
 \.
 
 
@@ -6465,12 +6764,25 @@ COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra
 -- Data for Name: weltladen_weltladenproduct; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
-COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, product_name, slug, country_of_origin, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, supplier_id, tax_switch, vegan) FROM stdin;
-2	2020-04-26 20:39:56.587783+02	2020-04-26 21:09:06.424516+02	t	Schokoeier	schokoeier	AT	1	5.990	12314121	1	135	1	t	t
-3	2020-04-29 19:42:10.632829+02	2020-04-29 19:42:10.632864+02	t	Tee	tee	AT	2	5.990	36372319230	1	135	1	t	t
-4	2020-04-29 19:42:52.353977+02	2020-04-29 19:42:52.35401+02	t	Reis	reis	BD	3	15.990	73625238393	1	135	1	t	t
-5	2020-04-29 19:43:35.968116+02	2020-04-29 19:43:35.968149+02	t	Seife	seife	AT	4	2.990	6383929474	1	135	1	t	t
-6	2020-04-29 19:44:34.716483+02	2020-04-29 19:44:34.71652+02	t	Honig	honig	AT	5	7.990	17373940436	1	135	1	t	f
+COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, product_name, slug, country_of_origin, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, supplier_id, tax_switch, vegan, fairtrade, gluten_free, lactose_free) FROM stdin;
+7	2020-05-01 14:05:09.569673+02	2020-05-01 20:48:51.033627+02	t	ORGANICO Vakuum 250g	organico-vakuum-250g	MX	6	3.990	83010	2	135	2	t	t	t	f	f
+8	2020-05-01 20:31:41.660464+02	2020-05-01 20:49:16.431487+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	MX	7	15.750	83017	2	135	2	t	t	t	f	f
+9	2020-05-01 20:37:02.640044+02	2020-05-01 20:49:43.358622+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	MX	8	15.750	83022	2	135	2	t	t	t	f	f
+10	2020-05-01 20:47:40.68414+02	2020-05-01 20:52:02.135414+02	t	ESPRESSO ORGANICO Bohne 1kg	espresso-organico-bohne-1kg	MX	9	15.750	83066	2	135	2	t	t	t	f	f
+11	2020-05-01 20:53:58.436741+02	2020-05-01 20:54:43.771857+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	MX	10	7.890	83077	2	135	2	t	t	t	f	f
+12	2020-05-01 21:03:24.276724+02	2020-05-01 21:03:24.276744+02	t	ESPRESSO ORGANICO 18 Pads 125g	espresso-organico-18-pads-125g	MX	11	3.690	83088	2	135	2	t	t	t	f	f
+13	2020-05-01 21:09:57.047411+02	2020-05-01 21:09:57.047433+02	t	ORGANICO Bohne 500g	organico-bohne-500g	MX	12	7.890	83511	2	135	2	t	t	t	f	f
+14	2020-05-01 21:12:58.251966+02	2020-05-01 21:12:58.251987+02	t	ORGANICO Vakuum 500g	organico-vakuum-500g	MX	13	7.890	83550	2	135	2	t	t	t	f	f
+15	2020-05-01 21:56:08.654616+02	2020-05-01 21:56:08.654636+02	t	ORGANICO entkoffeiniert Vakuum 250g	organico-entkoffeiniert-vakuum-250g	MX	14	4.590	83900	2	135	2	t	t	t	f	f
+16	2020-05-01 21:59:22.717934+02	2020-05-01 21:59:22.717981+02	t	ORGANICO entkoffeiniert Bohne 500g	organico-entkoffeiniert-bohne-500g	MX	15	9.090	83917	2	135	2	t	t	t	f	f
+\.
+
+
+--
+-- Data for Name: weltladen_weltladenproduct_additional_manufacturers; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.weltladen_weltladenproduct_additional_manufacturers (id, weltladenproduct_id, manufacturer_id) FROM stdin;
 \.
 
 
@@ -6479,11 +6791,16 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 --
 
 COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, short_description, description, master_id) FROM stdin;
-1	de	<p>Das sind Schokoeier</p>	<p>Braune Eier. Braune Hühner. Super Geschmack.</p>	<p>faeff</p>\n\n<p>f</p>\n\n<p>fdaf</p>\n\n<p>af</p>\n\n<p>das</p>\n\n<p>fdsf</p>	2
-2	de	<p>Das ist Tee.</p>	<p>Das ist ein Tee.</p>	<p>Das ist ein Tee.</p>\n\n<p>Und eine Beschreibung</p>	3
-3	de	<p>Das ist Reis.</p>	<p>Das ist ein Reis.</p>	<p>Das ist ein Reis.</p>\n\n<p>Und das ist eine Beschreibung</p>	4
-4	de	<p>Das ist Seife.</p>	<p>Das ist eine Seife.</p>	<p>Und das ist eine Beschreibung für diese Seife</p>	5
-5	de	<p>Das ist Honig.</p>	<p>Das ist ein Honig.</p>	<p>Das ist eine Beschreibung für diesen Honig.</p>	6
+9	de	<p>Kaffee Espresso Organico</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Kräftige Französische Espresso Röstung: Stärke 4 von 5</li>\n\t<li>Aromen nach Rohkakao und Bitterschokolade, leicht herb, Nuancen von der Dörrpflaume, langanhaltend im Abgang</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	10
+10	de	<p>Kaffee Espresso Organico</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Kräftige Französische Espresso Röstung: Stärke 4 von 5</li>\n\t<li>Aromen nach Rohkakao und Bitterschokolade, leicht herb, Nuancen von der Dörrpflaume, langanhaltend im Abgang</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	11
+11	de	<p>Kaffee Espresso Organico</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Kräftige Französische Espresso Röstung: Stärke 4 von 5</li>\n\t<li>Aromen nach Rohkakao und Bitterschokolade, leicht herb, Nuancen von der Dörrpflaume, langanhaltend im Abgang</li>\n\t<li>Geeignet für alle gängigen Kaffeepadmaschinen</li>\n\t<li>Einzelportionen à ca. 7 g</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	12
+6	de	<p>Kaffee Organico mild</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 2 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	7
+7	de	<p>Kaffee Organico mild</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 2 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	8
+8	de	<p>Kaffee Organico mild</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 2 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	9
+12	de	<p>Kaffee Organico mild</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 2 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	13
+13	de	<p>Kaffee Organico mild</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 2 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	14
+14	de	<p>Kaffee Organico entkoffeiniert</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 1 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Die Entkoffeinierung erfolgt mit natürlicher Quellkohlensäure und reinem Wasser. Alle wertvollen Geschmacksbestandteile bleiben dadurch enthalten. Dieses Verfahren (CR3) kommt im Vergleich zu anderen völlig ohne Chemie aus und ist daher für biologischen Kaffee zulässig.</p>\n\n<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	15
+15	de	<p>Kaffee Organico entkoffeiniert</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 1 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Die Entkoffeinierung erfolgt mit natürlicher Quellkohlensäure und reinem Wasser. Alle wertvollen Geschmacksbestandteile bleiben dadurch enthalten. Dieses Verfahren (CR3) kommt im Vergleich zu anderen völlig ohne Chemie aus und ist daher für biologischen Kaffee zulässig.</p>\n\n<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuer*innen gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	16
 \.
 
 
@@ -6505,7 +6822,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 544, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 552, true);
 
 
 --
@@ -6519,7 +6836,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_user_id_seq', 9, true);
+SELECT pg_catalog.setval('public.auth_user_id_seq', 10, true);
 
 
 --
@@ -6575,7 +6892,7 @@ SELECT pg_catalog.setval('public.cms_pagepermission_id_seq', 1, false);
 -- Name: cms_placeholder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 101, true);
+SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 102, true);
 
 
 --
@@ -6610,7 +6927,7 @@ SELECT pg_catalog.setval('public.cms_urlconfrevision_id_seq', 1, false);
 -- Name: cms_usersettings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_usersettings_id_seq', 1, true);
+SELECT pg_catalog.setval('public.cms_usersettings_id_seq', 2, true);
 
 
 --
@@ -6673,21 +6990,21 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 221, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 257, true);
 
 
 --
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 138, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 139, true);
 
 
 --
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 118, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 119, true);
 
 
 --
@@ -6701,14 +7018,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 5, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 16, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 49, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 144, true);
 
 
 --
@@ -6722,7 +7039,7 @@ SELECT pg_catalog.setval('public.easy_thumbnails_thumbnaildimensions_id_seq', 1,
 -- Name: filer_clipboard_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_clipboard_id_seq', 1, true);
+SELECT pg_catalog.setval('public.filer_clipboard_id_seq', 2, true);
 
 
 --
@@ -6736,7 +7053,7 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 202, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 213, true);
 
 
 --
@@ -6764,7 +7081,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 80, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 83, true);
 
 
 --
@@ -6785,7 +7102,7 @@ SELECT pg_catalog.setval('public.post_office_attachment_id_seq', 1, false);
 -- Name: post_office_email_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.post_office_email_id_seq', 8, true);
+SELECT pg_catalog.setval('public.post_office_email_id_seq', 9, true);
 
 
 --
@@ -6824,10 +7141,17 @@ SELECT pg_catalog.setval('public.weltladen_billingaddress_id_seq', 1, false);
 
 
 --
+-- Name: weltladen_bioqualitylabel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
+--
+
+SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 1, false);
+
+
+--
 -- Name: weltladen_cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 5, true);
+SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 6, true);
 
 
 --
@@ -6841,14 +7165,14 @@ SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 12, true);
 -- Name: weltladen_delivery_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_delivery_id_seq', 2, true);
+SELECT pg_catalog.setval('public.weltladen_delivery_id_seq', 3, true);
 
 
 --
 -- Name: weltladen_deliveryitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_deliveryitem_id_seq', 2, true);
+SELECT pg_catalog.setval('public.weltladen_deliveryitem_id_seq', 3, true);
 
 
 --
@@ -6862,7 +7186,7 @@ SELECT pg_catalog.setval('public.weltladen_locations_id_seq', 1, true);
 -- Name: weltladen_manufacturer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 1, true);
+SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 2, true);
 
 
 --
@@ -6890,14 +7214,14 @@ SELECT pg_catalog.setval('public.weltladen_orderpayment_id_seq', 1, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 2, true);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 13, true);
 
 
 --
 -- Name: weltladen_productpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 5, true);
+SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 15, true);
 
 
 --
@@ -6911,21 +7235,28 @@ SELECT pg_catalog.setval('public.weltladen_shippingaddress_id_seq', 1, true);
 -- Name: weltladen_supplier_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 1, true);
+SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 2, true);
+
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
+--
+
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 1, false);
 
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 6, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 16, true);
 
 
 --
 -- Name: weltladen_weltladenproducttranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 5, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 15, true);
 
 
 --
@@ -7641,6 +7972,22 @@ ALTER TABLE ONLY public.weltladen_billingaddress
 
 
 --
+-- Name: weltladen_bioqualitylabel weltladen_bioqualitylabel_name_key; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_bioqualitylabel
+    ADD CONSTRAINT weltladen_bioqualitylabel_name_key UNIQUE (name);
+
+
+--
+-- Name: weltladen_bioqualitylabel weltladen_bioqualitylabel_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_bioqualitylabel
+    ADD CONSTRAINT weltladen_bioqualitylabel_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: weltladen_cart weltladen_cart_customer_id_key; Type: CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -7814,6 +8161,22 @@ ALTER TABLE ONLY public.weltladen_weltladencustomer
 
 ALTER TABLE ONLY public.weltladen_weltladenproducttranslation
     ADD CONSTRAINT weltladen_weltladenprodu_language_code_master_id_d93a0576_uniq UNIQUE (language_code, master_id);
+
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers weltladen_weltladenprodu_weltladenproduct_id_manu_b34e6b8f_uniq; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_additional_manufacturers
+    ADD CONSTRAINT weltladen_weltladenprodu_weltladenproduct_id_manu_b34e6b8f_uniq UNIQUE (weltladenproduct_id, manufacturer_id);
+
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers weltladen_weltladenproduct_additional_manufacturers_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_additional_manufacturers
+    ADD CONSTRAINT weltladen_weltladenproduct_additional_manufacturers_pkey PRIMARY KEY (id);
 
 
 --
@@ -8681,6 +9044,20 @@ CREATE INDEX weltladen_billingaddress_priority_ceefcb31 ON public.weltladen_bill
 
 
 --
+-- Name: weltladen_bioqualitylabel_logo_id_da20c5c1; Type: INDEX; Schema: public; Owner: djangouser
+--
+
+CREATE INDEX weltladen_bioqualitylabel_logo_id_da20c5c1 ON public.weltladen_bioqualitylabel USING btree (logo_id);
+
+
+--
+-- Name: weltladen_bioqualitylabel_name_b466ed58_like; Type: INDEX; Schema: public; Owner: djangouser
+--
+
+CREATE INDEX weltladen_bioqualitylabel_name_b466ed58_like ON public.weltladen_bioqualitylabel USING btree (name varchar_pattern_ops);
+
+
+--
 -- Name: weltladen_cart_billing_address_id_a83d8ead; Type: INDEX; Schema: public; Owner: djangouser
 --
 
@@ -8821,6 +9198,13 @@ CREATE INDEX weltladen_weltladenprodu_language_code_f772ccfc_like ON public.welt
 
 
 --
+-- Name: weltladen_weltladenproduct_manufacturer_id_3172b313; Type: INDEX; Schema: public; Owner: djangouser
+--
+
+CREATE INDEX weltladen_weltladenproduct_manufacturer_id_3172b313 ON public.weltladen_weltladenproduct_additional_manufacturers USING btree (manufacturer_id);
+
+
+--
 -- Name: weltladen_weltladenproduct_manufacturer_id_7c6206bd; Type: INDEX; Schema: public; Owner: djangouser
 --
 
@@ -8867,6 +9251,13 @@ CREATE INDEX weltladen_weltladenproduct_slug_549c895b_like ON public.weltladen_w
 --
 
 CREATE INDEX weltladen_weltladenproduct_supplier_id_2029c477 ON public.weltladen_weltladenproduct USING btree (supplier_id);
+
+
+--
+-- Name: weltladen_weltladenproduct_weltladenproduct_id_6c6f6955; Type: INDEX; Schema: public; Owner: djangouser
+--
+
+CREATE INDEX weltladen_weltladenproduct_weltladenproduct_id_6c6f6955 ON public.weltladen_weltladenproduct_additional_manufacturers USING btree (weltladenproduct_id);
 
 
 --
@@ -9484,6 +9875,14 @@ ALTER TABLE ONLY public.weltladen_billingaddress
 
 
 --
+-- Name: weltladen_bioqualitylabel weltladen_bioquality_logo_id_da20c5c1_fk_filer_ima; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_bioqualitylabel
+    ADD CONSTRAINT weltladen_bioquality_logo_id_da20c5c1_fk_filer_ima FOREIGN KEY (logo_id) REFERENCES public.filer_image(file_ptr_id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: weltladen_cart weltladen_cart_billing_address_id_a83d8ead_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -9628,6 +10027,14 @@ ALTER TABLE ONLY public.weltladen_weltladencustomer
 
 
 --
+-- Name: weltladen_weltladenproduct_additional_manufacturers weltladen_weltladenp_manufacturer_id_3172b313_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_additional_manufacturers
+    ADD CONSTRAINT weltladen_weltladenp_manufacturer_id_3172b313_fk_weltladen FOREIGN KEY (manufacturer_id) REFERENCES public.weltladen_manufacturer(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: weltladen_weltladenproduct weltladen_weltladenp_manufacturer_id_7c6206bd_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -9657,6 +10064,14 @@ ALTER TABLE ONLY public.weltladen_weltladenproduct
 
 ALTER TABLE ONLY public.weltladen_weltladenproduct
     ADD CONSTRAINT weltladen_weltladenp_supplier_id_2029c477_fk_weltladen FOREIGN KEY (supplier_id) REFERENCES public.weltladen_supplier(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: weltladen_weltladenproduct_additional_manufacturers weltladen_weltladenp_weltladenproduct_id_6c6f6955_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_additional_manufacturers
+    ADD CONSTRAINT weltladen_weltladenp_weltladenproduct_id_6c6f6955_fk_weltladen FOREIGN KEY (weltladenproduct_id) REFERENCES public.weltladen_weltladenproduct(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

@@ -11,7 +11,7 @@ from shop.models.defaults.order import Order
 from shop.admin.delivery import DeliveryOrderAdminMixin
 from adminsortable2.admin import SortableAdminMixin
 from shop.admin.product import CMSPageAsCategoryMixin, UnitPriceMixin, ProductImageInline, InvalidateProductCacheMixin
-from weltladen.models import Manufacturer, Supplier, WeltladenProduct, WeltladenCustomer
+from weltladen.models import Manufacturer, Supplier, BioQualityLabel, WeltladenProduct, WeltladenCustomer
 
 
 admin.site.site_header = "Weltladen Administration"
@@ -25,6 +25,7 @@ class OrderAdmin(DeliveryOrderAdminMixin, OrderAdmin):
 
 admin.site.register(Manufacturer, admin.ModelAdmin)
 admin.site.register(Supplier, admin.ModelAdmin)
+admin.site.register(BioQualityLabel, admin.ModelAdmin)
 
 __all__ = ['customer']
 
@@ -44,7 +45,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             'fields': ['caption', 'short_description' ,'description'],
         }),
         (_("Properties"), {
-            'fields': ['manufacturer', 'supplier', 'country_of_origin', 'vegan'],
+            'fields': ['manufacturer', 'additional_manufacturers', 'supplier', 'country_of_origin', 'vegan', 'lactose_free', 'gluten_free'],
         }),
     ]
     inlines = [ProductImageInline]

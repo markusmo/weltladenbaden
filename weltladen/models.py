@@ -25,6 +25,8 @@ from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
 from shop.models.address import CountryField
 from shop.conf import app_settings
+from filer.fields import image
+
 
 
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
@@ -100,6 +102,20 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
+@python_2_unicode_compatible
+class BioQualityLabel(models.Model):
+    name = models.CharField(
+        _("Bio Quality Label"),
+        max_length=150,
+        unique=True
+    )
+
+    logo = image.FilerImageField(
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
 
 class ProductQuerySet(TranslatableQuerySet, PolymorphicQuerySet):
     pass
@@ -133,6 +149,12 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         verbose_name=_("Manufacturer"),
     )
 
+    additional_manufacturers = models.ManyToManyField(
+        Manufacturer,
+        verbose_name=_("Additional Manufacturers"),
+        related_name="additional_manufacturers",
+    )
+
     supplier = models.ForeignKey( 
         Supplier, 
         verbose_name=_("Supplier"), 
@@ -163,12 +185,27 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
     unit_price = MoneyField(
         _("Unit price"),
         decimal_places=3,
-        help_text=_("Net price for this product"),
+        help_text=_("Gross price for this product"),
     )
 
     vegan = models.BooleanField(
         _("Vegan"),
         default=False
+    )
+
+    lactose_free = models.BooleanField(
+        _("Lactose free"),
+        default=False
+    )
+
+    gluten_free = models.BooleanField(
+        _("Gluten free"),
+        default=False
+    )
+
+    fairtrade = models.BooleanField(
+        _("Fairtrade"),
+        default=True
     )
 
     tax_switch = models.BooleanField(
