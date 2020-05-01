@@ -1,12 +1,12 @@
 {% extends "weltladen/catalog/product-detail.html" %}
-{% load i18n cms_tags thumbnail %}
+{% load static i18n cms_tags thumbnail %}
 
 {% block main-content %}
 {% include "shop/catalog/bsp-scrollpanel.tmpl.html" %}
 {% thumbnail product.images.first 250x250 crop as thumb %}
 <div class="container">
 	<div class="row">
-		<div class="col col-md-10 offset-sm-1">
+		<div class="col col-md-10 offset-sm-1" style="margin-bottom:1em;">
 			<h1>{% render_model product "product_name" %}</h1>
 		</div>
 		<div class="col col-md-4 offset-sm-1">
@@ -44,6 +44,11 @@
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Manufacturer" %}:</div>
 					<strong>{{ product.manufacturer }}</strong>
+					{% if product.additional_manufacturers %}
+						{% for manufacturer in product.additional_manufacturers.all %}
+							<strong>{{ manufacturer }}</strong>
+						{% endfor %}
+					{% endif %}
 				</li>
 				{% if product.vegan %}
 				<li class="list-group-item d-flex">
@@ -51,7 +56,26 @@
 					<strong style='color: green;'> {% trans "Yes" %} <i class="fontaws-leaf"></i></strong>
 				</li>
 				{% endif %}
+				{% if product.lactose_free %}
+				<li class="list-group-item d-flex">
+					<div class="w-50">{% trans "Lactose free" %}:</div>
+					<strong style='color: green;'> {% trans "Yes" %}</strong>
+				</li>
+				{% endif %}
+				{% if product.gluten_free %}
+				<li class="list-group-item d-flex">
+					<div class="w-50">{% trans "Gluten Free" %}:</div>
+					<strong style='color: green;'> {% trans "Yes" %}</strong>
+				</li>
+				{% endif %}
 			</ul>
+		</div>
+		{% if product.fairtrade %}
+		<div class="col col-md-2 offset-md-1">
+			<img width="80px" alt="Fairtrade logo" src={% static 'weltladen/fairtrade_logo.svg' %}>
+		</div>
+		{% endif %}
+		<div class="col col-md-2 offset-md-1">
 		</div>
 	</div>
 </div>
