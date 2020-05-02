@@ -151,6 +151,7 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
 
     additional_manufacturers = models.ManyToManyField(
         Manufacturer,
+        blank=True,
         verbose_name=_("Additional Manufacturers"),
         related_name="additional_manufacturers",
     )
