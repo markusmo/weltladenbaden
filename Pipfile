@@ -29,7 +29,7 @@ phonenumbers = "*"
 djangocms-bootstrap = "*"
 elasticsearch = "<1.8"
 libsass = "*"
-django-shop = {editable = true,git = "https://github.com/awesto/django-shop"}
+django-shop = "<1.2"
 psycopg2-binary = "*"
 geopy = "*"
 
