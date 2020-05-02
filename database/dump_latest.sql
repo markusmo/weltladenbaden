@@ -2578,6 +2578,7 @@ CREATE TABLE public.weltladen_weltladenproduct (
     fairtrade boolean NOT NULL,
     gluten_free boolean NOT NULL,
     lactose_free boolean NOT NULL,
+    bio_quality_label_id integer NOT NULL,
     CONSTRAINT weltladen_weltladenproduct_order_check CHECK (("order" >= 0))
 );
 
@@ -3718,7 +3719,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 1	pbkdf2_sha256$36000$aW5f365D8NcY$t6ud/cxz3Ffjma/fn739Os2O/UtJZE/SyK3Fj2n8Quo=	2019-02-27 22:38:19.929+01	t	admin	Adam	De Mol	admin@example.com	t	t	2015-10-16 15:01:57.437+02
 2	!qIyv4xYdiE292blenyXr9eduHxBYU3k5EhvpGwyK	\N	f	9OmKacig9RrdWbzpDJH9KHFxkCE2			guest@somewhere.net	f	f	2016-01-20 12:49:10.545+01
 10	pbkdf2_sha256$150000$6lzHOKBrALS7$Qzc5V3VN1iaZGg0DBT4e4U4Z3hvAqnndFIk6KcctvLQ=	2020-05-01 12:37:51.926729+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
-4	pbkdf2_sha256$150000$l8ruPs8DuMkn$Dd+OJblLFtibKWDMqgF6CMSHsktTNhBxcvODxM5FQyw=	2020-05-01 22:50:18.988878+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
+4	pbkdf2_sha256$150000$l8ruPs8DuMkn$Dd+OJblLFtibKWDMqgF6CMSHsktTNhBxcvODxM5FQyw=	2020-05-02 15:34:39.705295+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 \.
 
 
@@ -5906,6 +5907,8 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 255	2020-05-01 21:12:58.267621+02	14	ORGANICO Vakuum 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (11)"}}]	135	10
 256	2020-05-01 21:56:08.661064+02	15	ORGANICO entkoffeiniert Vakuum 250g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (12)"}}]	135	10
 257	2020-05-01 21:59:22.727506+02	16	ORGANICO entkoffeiniert Bohne 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (13)"}}]	135	10
+258	2020-05-02 15:31:58.518419+02	214	Organic-Logo.svg	3		103	4
+259	2020-05-02 15:32:07.483501+02	2	Europäisches Biosiegel	1	[{"added": {}}]	139	4
 \.
 
 
@@ -6180,6 +6183,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 117	weltladen	0004_locations	2020-04-26 20:18:44.57986+02
 118	weltladen	0005_auto_20200426_2039	2020-04-26 20:39:43.714239+02
 119	weltladen	0006_auto_20200501_2220	2020-05-01 22:20:42.582856+02
+121	weltladen	0007_weltladenproduct_bio_quality_label	2020-05-02 15:34:08.095822+02
 \.
 
 
@@ -6191,9 +6195,11 @@ COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 ai1wquv3fyscven5ttvcoy0em6ak2rju	NjM0Yjc1NGRlOGQ1OWRlOGZhOTE5YmU1NmI2ZjAzMDM0MDNiOTlhYTp7ImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZSwiX2F1dGhfdXNlcl9pZCI6IjQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjZiYjMwNjExZTI2N2RhYTQxOWNlYjlhMzYxNTdmZjE2NmU5ZmRiN2QiLCJlbXVsYXRlX3VzZXJfaWQiOjN9	2020-05-13 20:28:01.599754+02
 oyd2dfrfddwcjkrm60oqq3qmmfl0txex	YzQ2YWU1MDI1YWUzMjM5Nzg3OTFkY2FkNzY1NjM3ZTIwYzYxNDJjNDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-05-15 14:31:40.773767+02
 n2oscw6np6fvbbk3cnu7wdaxu2yrsvkf	ODcwNmIyYjk3NmE4Y2MwYjI3MGMwYmYyYjRmMGUzNDVkMzc1MTQ3Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIn0=	2020-05-13 20:35:48.978166+02
+rp1jwmqdujpkerc35c9zo4pidjd9szxo	YzM3ZDdjZGExYmUwMzUzMWQzZTllNGFmZjEwYzBhMWIwNzg1ZjMzNDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJmaWxlcl9sYXN0X2ZvbGRlcl9pZCI6IjExIiwiY21zX2xvZ19sYXRlc3QiOjI1OX0=	2020-05-16 15:32:07.640163+02
 0ebrsxiixbcyjkabmjm50jsu7j6zpc9u	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-05-10 21:47:55.365977+02
-h3wx0i70osbi24wnppfophpxaacx0682	ZDFjYjA4OWFhZjM0N2QxMDVhYjg5MmZiZjljODMxMmRjNGMyYWMwNTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjpudWxsfQ==	2020-05-15 22:49:56.6311+02
-syd5hf3q9fppblwcdaxbu5tbgd9iddmk	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-15 23:07:19.389443+02
+58zxrocg7zmflbgwff3qf8xdqbqxo8ar	ODcwNmIyYjk3NmE4Y2MwYjI3MGMwYmYyYjRmMGUzNDVkMzc1MTQ3Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIn0=	2020-05-16 15:36:09.141381+02
+syd5hf3q9fppblwcdaxbu5tbgd9iddmk	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-15 23:20:34.755113+02
+h3wx0i70osbi24wnppfophpxaacx0682	ZDFjYjA4OWFhZjM0N2QxMDVhYjg5MmZiZjljODMxMmRjNGMyYWMwNTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjpudWxsfQ==	2020-05-16 13:33:07.913179+02
 \.
 
 
@@ -6264,6 +6270,7 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 8	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg	2020-05-01 20:32:37.250373+02
 10	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg	2020-05-01 22:00:32.58131+02
 9	f9bde26a1556cd667f742bd34ec7c55e	filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg	2020-05-01 22:00:38.951239+02
+18	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png	2020-05-02 15:32:03.164469+02
 \.
 
 
@@ -6404,6 +6411,12 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 142	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 22:00:26.82891+02	11
 143	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 22:00:32.589124+02	10
 144	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-01 22:00:38.962601+02	9
+145	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__16x16_q85_crop_subsampling-2_upscale.png	2020-05-02 15:32:03.172878+02	18
+146	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__32x32_q85_crop_subsampling-2_upscale.png	2020-05-02 15:32:03.210151+02	18
+147	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__48x48_q85_crop_subsampling-2_upscale.png	2020-05-02 15:32:03.23165+02	18
+148	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__80x80_q85_crop_subsampling-2_upscale.png	2020-05-02 15:32:03.255781+02	18
+149	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__128x128_q85_crop_subsampling-2_upscale.png	2020-05-02 15:32:03.28306+02	18
+150	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__180x180_q85_crop_subsampling-2_upscale.png	2020-05-02 15:32:03.310931+02	18
 \.
 
 
@@ -6453,6 +6466,7 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 207	filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg	301159	c8558125529c53394285ee776d5836a658a5d6bf	f	83066.jpg		\N	2020-05-01 20:45:03.796615+02	2020-05-01 20:45:03.796633+02	t	\N	10	106
 210	filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg	365864	b1247a39a569306945cecda0a07f5efd5e87c081	f	83511.jpg		\N	2020-05-01 21:09:54.255491+02	2020-05-01 21:09:54.25556+02	t	\N	10	106
 213	filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg	333763	82647b392a1e12509fd67b35213d82c720db0244	f	83917.jpg		\N	2020-05-01 21:59:15.033684+02	2020-05-01 21:59:15.033702+02	t	\N	10	106
+215	filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png	4709	7427315e45412e6d1ddde2d4e373a0763074c01e	f	Organic-Logo.png		\N	2020-05-02 15:32:03.071205+02	2020-05-02 15:32:03.071225+02	t	11	4	106
 199	filer_public/fb/07/fb076063-cb6d-4d4b-9181-79c9e6ec16a9/97975.jpg	292460	4186c084d54f5df65b45b921a23635bcf9b9d0da	f	97975.jpg		\N	2020-04-26 21:08:49.447484+02	2020-04-26 21:08:49.447513+02	t	8	4	106
 200	filer_public/db/d2/dbd28a47-4275-4193-a25b-ced01748349e/98000.jpg	293018	7aceacb99f70fedd4a6387b12d95609947da3869	f	98000.jpg		\N	2020-04-26 21:08:53.49932+02	2020-04-26 21:08:53.499353+02	t	8	4	106
 201	filer_public/21/35/213591e4-1574-481b-9985-c5f9a3f6ba49/banner.png	353391	55ea8d234ad26c544a3ec85a6f48d87f844e7914	f	banner.png		\N	2020-04-29 20:58:20.216931+02	2020-04-29 20:58:20.216996+02	t	9	4	106
@@ -6467,9 +6481,10 @@ COPY public.filer_folder (id, name, uploaded_at, created_at, modified_at, lft, r
 1	Logos	2015-11-25 18:32:52.806+01	2015-11-25 18:32:52.806+01	2015-11-25 18:32:52.806+01	1	2	1	0	1	\N
 2	Fonts	2017-03-06 12:58:24.184+01	2017-03-06 12:58:24.184+01	2017-03-06 12:58:24.184+01	1	2	5	0	1	\N
 10	Website	2020-04-30 19:58:57.877327+02	2020-04-30 19:58:57.87736+02	2020-04-30 19:58:57.877379+02	1	4	8	0	4	\N
-7	Shop	2020-04-26 21:08:34.382838+02	2020-04-26 21:08:34.382871+02	2020-04-30 19:58:16.590839+02	1	4	7	0	4	\N
 8	Produkte	2020-04-26 21:08:40.143532+02	2020-04-26 21:08:40.143575+02	2020-04-26 21:08:40.143602+02	2	3	7	1	4	7
 9	fotos	2020-04-29 20:58:12.209216+02	2020-04-29 20:58:12.209249+02	2020-04-30 19:59:07.912471+02	2	3	8	1	4	10
+7	Shop	2020-04-26 21:08:34.382838+02	2020-04-26 21:08:34.382871+02	2020-04-30 19:58:16.590839+02	1	6	7	0	4	\N
+11	Bio Siegel	2020-05-02 15:30:35.122911+02	2020-05-02 15:30:35.122938+02	2020-05-02 15:30:35.122949+02	4	5	7	1	4	7
 \.
 
 
@@ -6498,6 +6513,7 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 211	752	662	2020-05-01 21:12:45.095441+02	\N	\N	\N	f	f	
 212	752	662	2020-05-01 21:55:34.963285+02	\N	\N	\N	f	f	
 213	752	662	2020-05-01 21:59:15.028931+02	\N	\N	\N	f	f	
+215	268	400	2020-05-02 15:32:03.067136+02	\N	\N	\N	f	f	
 56	1000	1000	2015-12-03 12:16:26.311+01	\N	\N	\N	f	f	
 57	1000	1000	2015-12-03 12:16:31.439+01	\N	\N	\N	f	f	
 199	752	662	2020-04-26 21:08:49.441254+02	\N	\N	\N	f	f	
@@ -6601,6 +6617,7 @@ COPY public.weltladen_billingaddress (id, priority, name, address1, address2, zi
 --
 
 COPY public.weltladen_bioqualitylabel (id, name, logo_id) FROM stdin;
+2	Europäisches Biosiegel	215
 \.
 
 
@@ -6755,8 +6772,8 @@ COPY public.weltladen_supplier (id, name) FROM stdin;
 --
 
 COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra, number, phonenumber, salutation) FROM stdin;
-10	2	2020-05-01 22:49:55.342639+02	{}	\N	\N	
-4	2	2020-05-01 23:07:19.137806+02	{}	1	+43 676 3239108	mr
+10	2	2020-05-02 13:33:03.377177+02	{}	\N	\N	
+4	2	2020-05-02 15:36:09.132556+02	{}	1	+43 676 3239108	mr
 \.
 
 
@@ -6764,17 +6781,17 @@ COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra
 -- Data for Name: weltladen_weltladenproduct; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
-COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, product_name, slug, country_of_origin, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, supplier_id, tax_switch, vegan, fairtrade, gluten_free, lactose_free) FROM stdin;
-7	2020-05-01 14:05:09.569673+02	2020-05-01 20:48:51.033627+02	t	ORGANICO Vakuum 250g	organico-vakuum-250g	MX	6	3.990	83010	2	135	2	t	t	t	f	f
-8	2020-05-01 20:31:41.660464+02	2020-05-01 20:49:16.431487+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	MX	7	15.750	83017	2	135	2	t	t	t	f	f
-9	2020-05-01 20:37:02.640044+02	2020-05-01 20:49:43.358622+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	MX	8	15.750	83022	2	135	2	t	t	t	f	f
-10	2020-05-01 20:47:40.68414+02	2020-05-01 20:52:02.135414+02	t	ESPRESSO ORGANICO Bohne 1kg	espresso-organico-bohne-1kg	MX	9	15.750	83066	2	135	2	t	t	t	f	f
-11	2020-05-01 20:53:58.436741+02	2020-05-01 20:54:43.771857+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	MX	10	7.890	83077	2	135	2	t	t	t	f	f
-12	2020-05-01 21:03:24.276724+02	2020-05-01 21:03:24.276744+02	t	ESPRESSO ORGANICO 18 Pads 125g	espresso-organico-18-pads-125g	MX	11	3.690	83088	2	135	2	t	t	t	f	f
-13	2020-05-01 21:09:57.047411+02	2020-05-01 21:09:57.047433+02	t	ORGANICO Bohne 500g	organico-bohne-500g	MX	12	7.890	83511	2	135	2	t	t	t	f	f
-14	2020-05-01 21:12:58.251966+02	2020-05-01 21:12:58.251987+02	t	ORGANICO Vakuum 500g	organico-vakuum-500g	MX	13	7.890	83550	2	135	2	t	t	t	f	f
-15	2020-05-01 21:56:08.654616+02	2020-05-01 21:56:08.654636+02	t	ORGANICO entkoffeiniert Vakuum 250g	organico-entkoffeiniert-vakuum-250g	MX	14	4.590	83900	2	135	2	t	t	t	f	f
-16	2020-05-01 21:59:22.717934+02	2020-05-01 21:59:22.717981+02	t	ORGANICO entkoffeiniert Bohne 500g	organico-entkoffeiniert-bohne-500g	MX	15	9.090	83917	2	135	2	t	t	t	f	f
+COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, product_name, slug, country_of_origin, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, supplier_id, tax_switch, vegan, fairtrade, gluten_free, lactose_free, bio_quality_label_id) FROM stdin;
+7	2020-05-01 14:05:09.569673+02	2020-05-01 20:48:51.033627+02	t	ORGANICO Vakuum 250g	organico-vakuum-250g	MX	6	3.990	83010	2	135	2	t	t	t	f	f	2
+8	2020-05-01 20:31:41.660464+02	2020-05-01 20:49:16.431487+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	MX	7	15.750	83017	2	135	2	t	t	t	f	f	2
+9	2020-05-01 20:37:02.640044+02	2020-05-01 20:49:43.358622+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	MX	8	15.750	83022	2	135	2	t	t	t	f	f	2
+10	2020-05-01 20:47:40.68414+02	2020-05-01 20:52:02.135414+02	t	ESPRESSO ORGANICO Bohne 1kg	espresso-organico-bohne-1kg	MX	9	15.750	83066	2	135	2	t	t	t	f	f	2
+11	2020-05-01 20:53:58.436741+02	2020-05-01 20:54:43.771857+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	MX	10	7.890	83077	2	135	2	t	t	t	f	f	2
+12	2020-05-01 21:03:24.276724+02	2020-05-01 21:03:24.276744+02	t	ESPRESSO ORGANICO 18 Pads 125g	espresso-organico-18-pads-125g	MX	11	3.690	83088	2	135	2	t	t	t	f	f	2
+13	2020-05-01 21:09:57.047411+02	2020-05-01 21:09:57.047433+02	t	ORGANICO Bohne 500g	organico-bohne-500g	MX	12	7.890	83511	2	135	2	t	t	t	f	f	2
+14	2020-05-01 21:12:58.251966+02	2020-05-01 21:12:58.251987+02	t	ORGANICO Vakuum 500g	organico-vakuum-500g	MX	13	7.890	83550	2	135	2	t	t	t	f	f	2
+15	2020-05-01 21:56:08.654616+02	2020-05-01 21:56:08.654636+02	t	ORGANICO entkoffeiniert Vakuum 250g	organico-entkoffeiniert-vakuum-250g	MX	14	4.590	83900	2	135	2	t	t	t	f	f	2
+16	2020-05-01 21:59:22.717934+02	2020-05-01 21:59:22.717981+02	t	ORGANICO entkoffeiniert Bohne 500g	organico-entkoffeiniert-bohne-500g	MX	15	9.090	83917	2	135	2	t	t	t	f	f	2
 \.
 
 
@@ -6990,7 +7007,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 257, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 259, true);
 
 
 --
@@ -7004,7 +7021,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 139, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 119, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 121, true);
 
 
 --
@@ -7018,14 +7035,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 16, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 18, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 144, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 150, true);
 
 
 --
@@ -7053,14 +7070,14 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 213, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 215, true);
 
 
 --
 -- Name: filer_folder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_folder_id_seq', 10, true);
+SELECT pg_catalog.setval('public.filer_folder_id_seq', 11, true);
 
 
 --
@@ -7144,7 +7161,7 @@ SELECT pg_catalog.setval('public.weltladen_billingaddress_id_seq', 1, false);
 -- Name: weltladen_bioqualitylabel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 1, false);
+SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 2, true);
 
 
 --
@@ -9198,6 +9215,13 @@ CREATE INDEX weltladen_weltladenprodu_language_code_f772ccfc_like ON public.welt
 
 
 --
+-- Name: weltladen_weltladenproduct_bio_quality_label_id_6ba3273f; Type: INDEX; Schema: public; Owner: djangouser
+--
+
+CREATE INDEX weltladen_weltladenproduct_bio_quality_label_id_6ba3273f ON public.weltladen_weltladenproduct USING btree (bio_quality_label_id);
+
+
+--
 -- Name: weltladen_weltladenproduct_manufacturer_id_3172b313; Type: INDEX; Schema: public; Owner: djangouser
 --
 
@@ -10024,6 +10048,14 @@ ALTER TABLE ONLY public.weltladen_shippingaddress
 
 ALTER TABLE ONLY public.weltladen_weltladencustomer
     ADD CONSTRAINT weltladen_weltladencustomer_user_id_14eec5f3_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: weltladen_weltladenproduct weltladen_weltladenp_bio_quality_label_id_6ba3273f_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct
+    ADD CONSTRAINT weltladen_weltladenp_bio_quality_label_id_6ba3273f_fk_weltladen FOREIGN KEY (bio_quality_label_id) REFERENCES public.weltladen_bioqualitylabel(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

@@ -161,6 +161,11 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         on_delete=models.CASCADE
     )
 
+    bio_quality_label = models.ForeignKey(
+        BioQualityLabel,
+        _("Bio Quality Label")
+    )
+
     country_of_origin = CountryField(
         'Country of origin'
     )
