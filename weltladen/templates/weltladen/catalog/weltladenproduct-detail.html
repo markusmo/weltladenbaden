@@ -4,6 +4,7 @@
 {% block main-content %}
 {% include "shop/catalog/bsp-scrollpanel.tmpl.html" %}
 {% thumbnail product.images.first 250x250 crop as thumb %}
+{% thumbnail product.bio_quality_label.logo 124x200 as biothumb %}
 <div class="container">
 	<div class="row">
 		<div class="col col-md-10 offset-sm-1" style="margin-bottom:1em;">
@@ -26,6 +27,14 @@
 		</div>
 		<div class="col col-md-10 offset-md-1">
 			<p>{{ product.short_description|safe }}</p>
+
+			{% if product.fairtrade %}
+			<img width="82px" alt="Fairtrade logo" src={% static 'weltladen/fairtrade_logo.svg' %}/>
+			{% endif %}
+			{% if product.bio_quality_label %}
+			<img width="{{ biothumb.width }}" height="{{ biothumb.height }}" src="{{ biothumb.url }}"/>
+			{% endif %}
+
 			<details style="padding:1em;">
 				<summary style="font-size: 26px; text-decoration:underline;">{% trans "Details" %}</summary>
 				<p>{{ product.description|safe }} </p>
@@ -69,13 +78,6 @@
 				</li>
 				{% endif %}
 			</ul>
-		</div>
-		{% if product.fairtrade %}
-		<div class="col col-md-2 offset-md-1">
-			<img width="80px" alt="Fairtrade logo" src={% static 'weltladen/fairtrade_logo.svg' %}>
-		</div>
-		{% endif %}
-		<div class="col col-md-2 offset-md-1">
 		</div>
 	</div>
 </div>
