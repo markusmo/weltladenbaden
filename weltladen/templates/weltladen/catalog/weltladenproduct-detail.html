@@ -52,11 +52,15 @@
 				{% endif %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Manufacturer" %}:</div>
-					<strong>{{ product.manufacturer }}</strong>
 					{% if product.additional_manufacturers %}
+					<details>
+					<summary><strong>{{ product.manufacturer }}</strong></summary>
 						{% for manufacturer in product.additional_manufacturers.all %}
-							<strong>{{ manufacturer }}</strong>
+							{{ manufacturer }}{% if not forloop.last %},{% endif %}
 						{% endfor %}
+					</details>	
+					{% else %}	
+					<strong>{{ product.manufacturer }}</strong>		
 					{% endif %}
 				</li>
 				{% if product.vegan %}
@@ -68,13 +72,13 @@
 				{% if product.lactose_free %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Lactose free" %}:</div>
-					<strong style='color: green;'> {% trans "Yes" %}</strong>
+					<strong> {% trans "Yes" %}</strong>
 				</li>
 				{% endif %}
 				{% if product.gluten_free %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Gluten Free" %}:</div>
-					<strong style='color: green;'> {% trans "Yes" %}</strong>
+					<strong> {% trans "Yes" %}</strong>
 				</li>
 				{% endif %}
 			</ul>
