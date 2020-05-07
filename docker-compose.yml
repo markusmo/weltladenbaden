@@ -3,10 +3,11 @@ version: '2.1'
 services:
   postgresdb:
     restart: always
-    image: postgres:10
+    image: postgres:12
     env_file:
       - docker-files/databases.environ
     volumes:
+      - ./database/dump_latest.sql:/docker-entrypoint-initdb.d/dump_latest.sql
       - pgdata:/var/lib/postgresql/data
     networks:
       - shopnet
