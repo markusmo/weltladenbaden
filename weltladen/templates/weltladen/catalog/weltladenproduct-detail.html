@@ -52,15 +52,15 @@
 				{% endif %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Manufacturer" %}:</div>
-					{% if product.additional_manufacturers %}
+					{% if not product.additional_manufacturers.all %}
+					<strong>{{ product.manufacturer }}</strong>
+					{% else %}
 					<details>
 					<summary><strong>{{ product.manufacturer }}</strong></summary>
 						{% for manufacturer in product.additional_manufacturers.all %}
 							{{ manufacturer }}{% if not forloop.last %},{% endif %}
 						{% endfor %}
 					</details>	
-					{% else %}	
-					<strong>{{ product.manufacturer }}</strong>		
 					{% endif %}
 				</li>
 				{% if product.vegan %}
