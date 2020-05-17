@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.utils.safestring import mark_safe
 from rest_framework import serializers
+from django_countries.serializer_fields import CountryField
 from shop.search.serializers import ProductSearchSerializer as BaseProductSearchSerializer
 from shop.serializers.bases import ProductSerializer
 from weltladen.models import WeltladenProduct
@@ -10,10 +11,11 @@ from weltladen.search_indexes import myshop_search_index_classes
 
 
 class ProductDetailSerializer(ProductSerializer):
+    origin_countries = CountryField()
     class Meta(ProductSerializer.Meta):
         model = WeltladenProduct
         fields = ['product_name', 'slug', 'unit_price', 'manufacturer', 'vegan', 
-                  'supplier', 'country_of_origin', 'product_code']
+                  'supplier', 'origin_countries', 'product_code']
 
 
 class ProductSearchSerializer(BaseProductSearchSerializer):

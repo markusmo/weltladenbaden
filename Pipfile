@@ -32,6 +32,7 @@ libsass = "*"
 django-shop = "<1.2"
 psycopg2-binary = "*"
 geopy = "*"
+django-countries = "*"
 
 [dev-packages]
 tox = "*"

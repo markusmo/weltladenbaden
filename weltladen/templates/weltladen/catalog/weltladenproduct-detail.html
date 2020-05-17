@@ -56,10 +56,12 @@
 					<div class="w-50">{% trans "Supplier" %}:</div>
 					<strong>{{ product.supplier }}</strong>
 				</li>
-				{% if product.country_of_origin %}
+				{% if product.origin_countries %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Country of Origin" %}:</div>
-					<strong>{{ product.country_of_origin }}</strong>
+					<strong> {% for country in product.origin_countries %}
+						{{ country.name }}{% if not forloop.last %},{% endif %}
+					{% endfor %} </strong>
 				</li>
 				{% endif %}
 				<li class="list-group-item d-flex">
