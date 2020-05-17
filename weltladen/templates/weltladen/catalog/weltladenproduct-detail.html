@@ -41,6 +41,14 @@
 				<summary style="font-size: 26px; text-decoration:underline;">{% trans "Details" %}</summary>
 				<p>{{ product.description|safe }} </p>
 			</details>
+			
+			{% if product.ingredients %}
+			<details style="padding:1em;">
+				<summary style="font-size: 26px; text-decoration:underline;">{% trans "Ingredients" %}</summary>
+				<p>{{ product.ingredients|safe }} </p>
+			</details>
+			{% endif %}
+
 			<ul class="list-group mb-3">
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Supplier" %}:</div>
