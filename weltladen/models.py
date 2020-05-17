@@ -23,8 +23,9 @@ from shop.models.defaults.order import Order
 from shop.models.defaults.mapping import ProductPage, ProductImage
 from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
-from shop.models.address import CountryField
+from shop.models import address
 from shop.conf import app_settings
+from django_countries.fields import CountryField
 from filer.fields import image
 
 
@@ -87,6 +88,9 @@ class Manufacturer(models.Model):
         unique=True,
     )
 
+    class Meta:
+        ordering = ('name',)
+
     def __str__(self):
         return self.name
 
@@ -98,6 +102,9 @@ class Supplier(models.Model):
         max_length=150,
         unique=True
     )
+
+    class Meta:
+        ordering = ('name',)
 
     def __str__(self):
         return self.name
@@ -173,10 +180,11 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         null=True
     )
 
-    country_of_origin = CountryField(
-        'Country of origin',
+    origin_countries = CountryField(
+        verbose_name=_("Origin countries"),
+        blank_label=_('Select one or many'),
+        multiple=True,
         blank=True,
-        null=True
     )
 
     # controlling the catalog

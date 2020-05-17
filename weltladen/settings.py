@@ -115,6 +115,7 @@ INSTALLED_APPS = [
     'parler',
     'post_office',
     'haystack',
+    'django_countries',
     'shop',
     'weltladen',
 ]
