@@ -552,6 +552,7 @@ CKEDITOR_SETTINGS = {
             'Subscript', 'Superscript', '-', 'RemoveFormat'],
         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
         ['HorizontalRule'],
+        ['Table'],
         ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
         ['Source']
     ],
@@ -586,6 +587,7 @@ CKEDITOR_SETTINGS_DESCRIPTION = {
             'Superscript', '-', 'RemoveFormat'],
         ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
         ['HorizontalRule'],
+        ['Table'],
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'],
         ['Source']
     ],
