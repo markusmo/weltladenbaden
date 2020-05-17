@@ -1,7 +1,9 @@
 {% extends "weltladen/catalog/product-detail.html" %}
-{% load static i18n cms_tags thumbnail %}
+{% load static i18n sekizai_tags cms_tags thumbnail %}
 
 {% block main-content %}
+{% addtoblock "css" %}<link href="{% static 'weltladen/css/ingredients.css' %}" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+
 {% include "shop/catalog/bsp-scrollpanel.tmpl.html" %}
 {% thumbnail product.images.first 250x250 crop as thumb %}
 {% thumbnail product.bio_quality_label.logo 124x200 as biothumb %}
@@ -39,13 +41,13 @@
 
 			<details style="padding:1em;">
 				<summary style="font-size: 26px; text-decoration:underline;">{% trans "Details" %}</summary>
-				<p>{{ product.description|safe }} </p>
+				<p>{{ product.description|safe }}</p>
 			</details>
 			
 			{% if product.ingredients %}
 			<details style="padding:1em;">
 				<summary style="font-size: 26px; text-decoration:underline;">{% trans "Ingredients" %}</summary>
-				<p>{{ product.ingredients|safe }} </p>
+				<p>{{ product.ingredients|safe }}</p>
 			</details>
 			{% endif %}
 
