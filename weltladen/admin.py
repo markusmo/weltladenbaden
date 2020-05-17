@@ -48,6 +48,10 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             'fields': ['bio_quality_label', 'fairtrade','manufacturer', 'additional_manufacturers',
                        'supplier', 'country_of_origin', 'vegan', 'lactose_free', 'gluten_free'],
         }),
+        (_("Ingredients"), {
+            'classes': ['collapse'],
+            'fields': ['ingredients'],
+        }),
     ]
     inlines = [ProductImageInline]
     prepopulated_fields = {'slug': ['product_name']}
