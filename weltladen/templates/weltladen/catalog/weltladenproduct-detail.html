@@ -28,12 +28,14 @@
 		<div class="col col-md-10 offset-md-1">
 			<p>{{ product.short_description|safe }}</p>
 
+			<div style="margin-top: 3em; margin-bottom:2em;">
 			{% if product.fairtrade %}
 			<img width="82px" alt="Fairtrade logo" src={% static 'weltladen/fairtrade_logo.svg' %}/>
 			{% endif %}
 			{% if product.bio_quality_label %}
 			<img width="{{ biothumb.width }}" height="{{ biothumb.height }}" src="{{ biothumb.url }}"/>
 			{% endif %}
+			</div>
 
 			<details style="padding:1em;">
 				<summary style="font-size: 26px; text-decoration:underline;">{% trans "Details" %}</summary>
