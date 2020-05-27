@@ -5,6 +5,7 @@
 {% addtoblock "css" %}<link href="{% static 'weltladen/css/ingredients.css' %}" rel="stylesheet" type="text/css" />{% endaddtoblock %}
 
 {% include "shop/catalog/bsp-scrollpanel.tmpl.html" %}
+{% include "weltladen/catalog/modal-image-view.html" %}
 {% thumbnail product.images.first 250x250 crop as thumb %}
 {% thumbnail product.bio_quality_label.logo 124x200 as biothumb %}
 <div class="container">
@@ -22,6 +23,10 @@
 					{% endfor %}
 				</ul>
 			</bsp-scrollpanel>
+
+			<div class="modal-view" ng-controller="ModalViewImageController as $scope">
+				<button type="button" class="btn btn-primary" ng-click="open('lg')">Click to zoom</button>
+			</div>
 		</div>
 		<div class="col col-md-6">
 			<!-- include "Add to Cart" dialog box -->
@@ -59,24 +64,28 @@
 				{% if product.origin_countries %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Country of Origin" %}:</div>
-					<strong> {% for country in product.origin_countries %}
-						{{ country.name }}{% if not forloop.last %},{% endif %}
-					{% endfor %} </strong>
+					<div class="pretty-countries">
+						<strong> {% for country in product.origin_countries %}
+							{{ country.name }}{% if not forloop.last %},{% endif %}
+						{% endfor %} </strong>
+					</div>
 				</li>
 				{% endif %}
+				{% if product.manufacturer%}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Manufacturer" %}:</div>
 					{% if not product.additional_manufacturers.all %}
 					<strong>{{ product.manufacturer }}</strong>
 					{% else %}
-					<details>
-					<summary><strong>{{ product.manufacturer }}</strong></summary>
-						{% for manufacturer in product.additional_manufacturers.all %}
-							{{ manufacturer }}{% if not forloop.last %},{% endif %}
-						{% endfor %}
+					<details class="pretty-manufacturer">
+						<summary><strong>{{ product.manufacturer }}</strong></summary>
+							{% for manufacturer in product.additional_manufacturers.all %}
+								{{ manufacturer }}{% if not forloop.last %},{% endif %}
+							{% endfor %}
 					</details>	
 					{% endif %}
 				</li>
+				{% endif %}
 				{% if product.vegan %}
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Vegan" %}:</div>
@@ -100,3 +109,6 @@
 	</div>
 </div>
 {% endblock main-content %}
+
+{% block custom-js %}<script src="{% static 'weltladen/js/modal-view-controller.js' %}" type="text/javascript" ></script> {% endblock custom-js %}
+

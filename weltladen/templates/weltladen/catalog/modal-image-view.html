@@ -1,0 +1,19 @@
+<script type="text/ng-template" id="modal-image-view.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{ product.product_name }}</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <bsp-scrollpanel class="shop-product-detail">
+            <ul>
+                {% for img in product.images.all %}
+                    <li>
+                        <img width="{{ img.width }}" height="{{ img.height }}" alt="{{ product.product_name }}" src="{{ img.url }}" alt="{{ product.product_name }}" />
+                    </li>
+                {% endfor %}
+            </ul>
+		</bsp-scrollpanel>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="close()">Close</button>
+    </div>
+</script>

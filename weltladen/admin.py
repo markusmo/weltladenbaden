@@ -46,7 +46,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
         }),
         (_("Properties"), {
             'fields': ['bio_quality_label', 'fairtrade','manufacturer', 'additional_manufacturers',
-                       'supplier', 'country_of_origin', 'origin_countries', 'vegan', 'lactose_free', 'gluten_free'],
+                       'supplier', 'origin_countries', 'vegan', 'lactose_free', 'gluten_free'],
         }),
         (_("Ingredients"), {
             'classes': ['collapse'],

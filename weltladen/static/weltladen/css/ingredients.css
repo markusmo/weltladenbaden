@@ -8,8 +8,20 @@ table.bestandteile{
     border-spacing: 0px;
 }
 
+details.pretty-manufacturer {
+    max-width: 390px;
+}
+
 @media only screen and (max-width: 600px) {
     table.bestandteile{
         width: 100% !important;
+    }
+
+    details.pretty-manufacturer{
+        width: 2em;
+    }
+
+    div.pretty-countries{
+        width: 2em;
     }
 }
