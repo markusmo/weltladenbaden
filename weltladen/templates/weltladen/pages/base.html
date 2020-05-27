@@ -62,6 +62,7 @@
 		{% for config in configs %}.config({{ config }}){% endfor %};
 	{% end_with_data %}
 	</script>
+	{% block custom-js %} {% endblock custom-js %}
 </body>
 
 </html>
