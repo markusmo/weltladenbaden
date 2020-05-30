@@ -6,14 +6,16 @@ from django.conf.urls import url
 from cms.apphook_pool import apphook_pool
 from cms.cms_menus import SoftRootCutter
 from menus.menu_pool import menu_pool
-from shop.cms_apphooks import CatalogListCMSApp, CatalogSearchCMSApp, OrderApp, PasswordResetApp
+from shop.cms_apphooks import CatalogListCMSApp, CatalogSearchApp, OrderApp, PasswordResetApp
 
 
 class CatalogListApp(CatalogListCMSApp):
     def get_urls(self, page=None, language=None, **kwargs):
+        from shop.search.mixins import ProductSearchViewMixin
         from shop.views.catalog import AddToCartView, ProductListView, ProductRetrieveView
         from weltladen.serializers import ProductDetailSerializer
 
+        ProductListView = type('ProductSearchListView', (ProductSearchViewMixin, ProductListView), {})
         return [
             url(r'^(?P<slug>[\w-]+)/add-to-cart', AddToCartView.as_view()),
             url(r'^(?P<slug>[\w-]+)', ProductRetrieveView.as_view(
@@ -26,19 +28,6 @@ class CatalogListApp(CatalogListCMSApp):
 
 
 apphook_pool.register(CatalogListApp)
-
-
-class CatalogSearchApp(CatalogSearchCMSApp):
-    def get_urls(self, page=None, language=None, **kwargs):
-        from shop.search.views import SearchView
-        from weltladen.serializers import ProductSearchSerializer
-
-        return [
-            url(r'^', SearchView.as_view(
-                serializer_class=ProductSearchSerializer,
-            )),
-        ]
-
 
 apphook_pool.register(CatalogSearchApp)
 

@@ -8,7 +8,7 @@ from shop.models.order import BaseOrder, OrderPayment
 from shop.payment.workflows import CancelOrderWorkflowMixin
 
 class DeliveryNotePaymentWorkflowMixin(object):
-    
+
     TRANSITION_TARGETS = {
         'prepare_for_shipping': _("Prepare for Shipping"),
     }
@@ -18,7 +18,7 @@ class DeliveryNotePaymentWorkflowMixin(object):
         if not isinstance(self, BaseOrder):
             raise ImproperlyConfigured("class 'DeliveryNotePaymentWorkflowMixin' is not of type 'BaseOrder'")
         CancelOrderWorkflowMixin.CANCELABLE_SOURCES.update(self._manual_payment_transitions)
-        super(DeliveryNotePaymentWorkflowMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     @transition(field='status', source=['created', 'no_payment_required'],
                 target=RETURN_VALUE('payment_confirmed'))
@@ -27,9 +27,8 @@ class DeliveryNotePaymentWorkflowMixin(object):
         Acknowledge the payment. Create Payment-line
         """
         OrderPayment.objects.create(
-            order=self, 
-            amount=self._total, 
-            transaction_id='auto generated', 
+            order=self,
+            amount=self._total,
+            transaction_id='auto generated',
             payment_method='delivery-note'
-        ).save()        
-        
+        ).save()
