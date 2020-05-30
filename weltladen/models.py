@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import python_2_unicode_compatible
 from django.template.loader import select_template
 from djangocms_text_ckeditor.fields import HTMLField
 from polymorphic.query import PolymorphicQuerySet
@@ -80,7 +79,6 @@ class OrderItem(BaseOrderItem):
     canceled = models.BooleanField(_("Item canceled "), default=False)
 
 
-@python_2_unicode_compatible
 class Manufacturer(models.Model):
     name = models.CharField(
         _("Name"),
@@ -95,7 +93,6 @@ class Manufacturer(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
 class Supplier(models.Model):
     name = models.CharField(
         _("Supplier"),
@@ -109,7 +106,6 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
-@python_2_unicode_compatible
 class BioQualityLabel(models.Model):
     name = models.CharField(
         _("Bio Quality Label"),
@@ -136,7 +132,6 @@ class ProductManager(BaseProductManager, TranslatableManager):
         return qs.prefetch_related('translations')
 
 
-@python_2_unicode_compatible
 class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduct):
     product_name = models.CharField(
         max_length=255,
@@ -166,9 +161,9 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         related_name="additional_manufacturers",
     )
 
-    supplier = models.ForeignKey( 
-        Supplier, 
-        verbose_name=_("Supplier"), 
+    supplier = models.ForeignKey(
+        Supplier,
+        verbose_name=_("Supplier"),
         on_delete=models.CASCADE
     )
 

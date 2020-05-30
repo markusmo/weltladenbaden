@@ -1,30 +1,10 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.conf import settings as config
+from shop.search.documents import ProductDocument
 
-from haystack import indexes
-from shop.search.indexes import ProductIndex as ProductIndexBase
-from weltladen.models import WeltladenProduct
+settings = {
+    'number_of_shards': 1,
+    'number_of_replicas': 0,
+}
 
-
-class ProductIndex(ProductIndexBase):
-    catalog_media = indexes.CharField(stored=True, indexed=False, null=True)
-    search_media = indexes.CharField(stored=True, indexed=False, null=True)
-    caption = indexes.CharField(
-        stored=True, indexed=False, null=True, model_attr='caption')
-
-    def prepare_catalog_media(self, product):
-        return self.render_html('catalog', product, 'media')
-
-    def prepare_search_media(self, product):
-        return self.render_html('search', product, 'media')
-
-
-myshop_search_index_classes = []
-
-
-class WeltladenProductIndex(ProductIndex, indexes.Indexable):
-    def get_model(self):
-        return WeltladenProduct
-
-
-myshop_search_index_classes.append(WeltladenProductIndex)
+for language, _ in config.LANGUAGES:
+    ProductDocument(language=language, settings=settings)

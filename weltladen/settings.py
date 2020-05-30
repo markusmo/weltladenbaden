@@ -100,6 +100,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'django_elasticsearch_dsl',
     'django_fsm',
     'fsm_admin',
     'djng',
@@ -114,7 +115,6 @@ INSTALLED_APPS = [
     'easy_thumbnails.optimize',
     'parler',
     'post_office',
-    'haystack',
     'django_countries',
     'shop',
     'weltladen',
@@ -147,7 +147,7 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'weltladenshop'),
+        'NAME': os.getenv('POSTGRES_DB', 'weltladen'),
         'USER': os.getenv('POSTGRES_USER', 'djangouser'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
@@ -419,12 +419,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 THUMBNAIL_HIGH_RESOLUTION = False
 
-THUMBNAIL_OPTIMIZE_COMMAND = {
-    'gif': '/usr/bin/optipng {filename}',
-    'jpeg': '/usr/bin/jpegoptim {filename}',
-    'png': '/usr/bin/optipng {filename}'
-}
-
 THUMBNAIL_PRESERVE_EXTENSIONS = True
 
 THUMBNAIL_PROCESSORS = (
@@ -600,26 +594,15 @@ SELECT2_I18N_PATH = 'node_modules/select2/dist/js/i18n'
 
 
 #############################################
-# settings for full index text search (Haystack)
+# settings for full index text search
 
 ELASTICSEARCH_HOST = os.getenv('ELASTICSEARCH_HOST', 'localhost')
 
-HAYSTACK_CONNECTIONS = {
+ELASTICSEARCH_DSL = {
     'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://{}:9200/'.format(ELASTICSEARCH_HOST),
-        'INDEX_NAME': 'weltladen-en',
+        'hosts': '{}:9200'.format(ELASTICSEARCH_HOST)
     },
-    'de': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://{}:9200/'.format(ELASTICSEARCH_HOST),
-        'INDEX_NAME': 'weltladen-de',
-    }
 }
-
-HAYSTACK_ROUTERS = [
-    'shop.search.routers.LanguageRouter',
-]
 
 
 ############################################

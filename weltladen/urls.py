@@ -11,7 +11,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 from cms.sitemaps import CMSSitemap
 from weltladen.sitemap import ProductSitemap
-from weltladen.views import ContactUsView 
+from weltladen.views import ContactUsView
 
 sitemaps = {'cmspages': CMSSitemap,
             'products': ProductSitemap}
@@ -41,4 +41,5 @@ if settings.USE_I18N:
 else:
     urlpatterns.extend(i18n_urls)
 urlpatterns.extend(
-    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+    static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

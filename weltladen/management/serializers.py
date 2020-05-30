@@ -23,7 +23,7 @@ class ProductSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         cms_pages = validated_data.pop('cms_pages')
         images = validated_data.pop('images')
-        product = super(ProductSerializer, self).create(validated_data)
+        product = super().create(validated_data)
         for page in cms_pages:
             ProductPage.objects.create(product=product, page=page)
         for image in images:

@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='weltladenproduct',
             name='bio_quality_label',
-            field=models.ForeignKey(blank=True, null=True, on_delete='Bio Quality Label', to='weltladen.BioQualityLabel'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE, to='weltladen.BioQualityLabel'),
         ),
         migrations.AlterField(
             model_name='weltladenproduct',
