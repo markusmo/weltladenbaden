@@ -1,11 +1,7 @@
 {
     "_meta": {
         "hash": {
-<<<<<<< HEAD
-            "sha256": "f9022ad0f4c0d40c7b0ab7ebf2116ee3b770e6d613df4922913ad62564cbf385"
-=======
             "sha256": "348f4e780d579bd9a7fadaa52d235f5187b310a8b33643230e2ff1f356f3f41d"
->>>>>>> django3
         },
         "pipfile-spec": 6,
         "requires": {
@@ -252,19 +248,11 @@
         },
         "django-select2": {
             "hashes": [
-<<<<<<< HEAD
-                "sha256:4dd156a9e3b9126b9f1e3fa711cefb4731d9ff3aaaa415b1b92d58d8e6040cb6",
-                "sha256:8db488c25ce3661077587aff736a9eccf40a25d20734dc27c5516723c4b5194a"
-            ],
-            "index": "pypi",
-            "version": "==7.2.4"
-=======
                 "sha256:06531d563ce33c3133682ae2bb9e6d762103a863d0054ffef51bae8b4cfcca6c",
                 "sha256:9d3330fa0083a03fb69fceb5dcd2e78065cfd08e45c89d4fd727fce4673d3e08"
             ],
             "index": "pypi",
             "version": "==7.4.2"
->>>>>>> django3
         },
         "django-shop": {
             "hashes": [
@@ -400,19 +388,11 @@
         },
         "phonenumbers": {
             "hashes": [
-<<<<<<< HEAD
-                "sha256:78e06d97ad8a4e1832061f9062ef17ba96b51c97f1ae489d557d41305173521b",
-                "sha256:a5e6615a36b3366bc1193feeb4e461b49d2b26b29ea43ca4f7dcc53f0182bbd1"
-            ],
-            "index": "pypi",
-            "version": "==8.12.3"
-=======
                 "sha256:46c5997fe076026aa2d4b66d0c53eea4babae2e808e8a5f39c09e2dfa6612d08",
                 "sha256:c6c43d6459aac85b646d6b7a7ab79b3b629eb168f0e9b851b331e2e5872bbd01"
             ],
             "index": "pypi",
             "version": "==8.12.4"
->>>>>>> django3
         },
         "pillow": {
             "hashes": [
@@ -814,19 +794,11 @@
         },
         "tox": {
             "hashes": [
-<<<<<<< HEAD
-                "sha256:8d97bfaf70053ed3db56f57377288621f1bcc7621446d301927d18df93b1c4c3",
-                "sha256:af09c19478e8fc7ce7555b3d802ddf601b82684b874812c5857f774b8aee1b67"
-            ],
-            "index": "pypi",
-            "version": "==3.15.0"
-=======
                 "sha256:322dfdf007d7d53323f767badcb068a5cfa7c44d8aabb698d131b28cf44e62c4",
                 "sha256:8c9ad9b48659d291c5bc78bcabaa4d680d627687154b812fa52baedaa94f9f83"
             ],
             "index": "pypi",
             "version": "==3.15.1"
->>>>>>> django3
         },
         "typed-ast": {
             "hashes": [
@@ -857,17 +829,10 @@
         },
         "virtualenv": {
             "hashes": [
-<<<<<<< HEAD
-                "sha256:b4c14d4d73a0c23db267095383c4276ef60e161f94fde0427f2f21a0132dde74",
-                "sha256:fd0e54dec8ac96c1c7c87daba85f0a59a7c37fe38748e154306ca21c73244637"
-            ],
-            "version": "==20.0.20"
-=======
                 "sha256:a116629d4e7f4d03433b8afa27f43deba09d48bc48f5ecefa4f015a178efb6cf",
                 "sha256:a730548b27366c5e6cbdf6f97406d861cccece2e22275e8e1a757aeff5e00c70"
             ],
             "version": "==20.0.21"
->>>>>>> django3
         },
         "wcwidth": {
             "hashes": [
