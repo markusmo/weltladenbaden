@@ -39,12 +39,12 @@ class CartExcludedTaxModifier(BaseCartModifier):
             .aggregate(total=ExpressionWrapper(
                 Sum(F('quantity')*F('product__unit_price')), DecimalField())
                 ))['total'] #20 percent tax
-        
+
         amount10 = (subtotal10 or 0) * self.taxes10
         amount20 = (subtotal20 or 0) * self.taxes20
 
         instance10 = {
-            'label': _("{}% VAT incl.").format(SHOP_VALUE_ADDED_TAX10), 
+            'label': _("{}% VAT incl.").format(SHOP_VALUE_ADDED_TAX10),
             'amount': Money(amount10),
         }
         instance20 = {
@@ -62,7 +62,7 @@ class CartExcludedTaxModifier(BaseCartModifier):
         else:
             taxes = self.taxes10
             t_format = SHOP_VALUE_ADDED_TAX10
-        
+
         amount = cart_item.line_total * taxes
         instance = {
             'label': _("{}% VAT incl.").format(t_format),
@@ -107,7 +107,7 @@ class ClimateNeutralShippingModifier(ShippingModifier):
         cart.total += amount
 
     def ship_the_goods(self, delivery):
-        super(ClimateNeutralShippingModifier, self).ship_the_goods(delivery)
+        super().ship_the_goods(delivery)
 
 
 
@@ -118,7 +118,8 @@ class PostalShippingModifier(ShippingModifier):
         return (self.identifier, _("Postal shipping"))
 
     def add_extra_cart_row(self, cart, request):
-        if not self.is_active(cart.extra.get('shipping_modifier')) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
+        shipping_modifiers = cart_modifiers_pool.get_shipping_modifiers()
+        if not self.is_active(cart.extra.get('shipping_modifier')) and len(shipping_modifiers) > 1:
             return
         # add a shipping flat fee
         amount = Money('5')
@@ -131,4 +132,4 @@ class PostalShippingModifier(ShippingModifier):
     def ship_the_goods(self, delivery):
         if not delivery.shipping_id:
             raise ValidationError("Please provide a valid Shipping ID")
-        super(PostalShippingModifier, self).ship_the_goods(delivery)
+        super().ship_the_goods(delivery)

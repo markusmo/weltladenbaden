@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='weltladenproduct',
             name='bio_quality_label',
-            field=models.ForeignKey(default=2, on_delete='Bio Quality Label', to='weltladen.BioQualityLabel'),
+            field=models.ForeignKey(default=2, on_delete=models.CASCADE, to='weltladen.BioQualityLabel'),
             preserve_default=False,
         ),
     ]
