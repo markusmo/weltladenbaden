@@ -30,14 +30,11 @@ libsass = "*"
 django-shop = ">=1.2"
 psycopg2-binary = "<2.8"
 geopy = "*"
-<<<<<<< HEAD
 django-countries = "*"
-=======
 django-elasticsearch-dsl = "*"
 elasticsearch-dsl = ">=7"
 django-extensions = "*"
 werkzeug = "*"
->>>>>>> django3
 
 [dev-packages]
 tox = "*"
