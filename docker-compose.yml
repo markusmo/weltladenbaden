@@ -20,7 +20,7 @@ services:
       - shopnet
 
   elasticsearch:
-    image: elasticsearch:1.7.5
+    image: elasticsearch:7.7.0
     container_name: elasticsearch
     environment:
       - cluster.name=docker-cluster
