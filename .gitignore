@@ -35,3 +35,4 @@ django-shop-workdir_*
 .npm/
 .config/
 __pycache__/
+staticfiles/
