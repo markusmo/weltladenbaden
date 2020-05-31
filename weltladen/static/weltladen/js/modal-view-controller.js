@@ -1,36 +1,39 @@
 (function (angular, undefined) {
 'use strict';
 
-    var module = angular.module('myShop');
-    module.controller('ModalViewImageController', ['$scope','$uibModal', '$document', function ($scope, $uibModal, $document) {
-        
-        $scope.open = function (size) {
+    var module = angular.module('weltladen.image.modal', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+    module.controller('ModalViewImageController', ['$uibModal', '$document', function ($uibModal, $document) {
+        var $ctrl = this;
+        $ctrl.open = function (size, imgUrl) {
             var parentElem = angular.element($document[0].querySelector('.modal-view'));
+            $ctrl.imgUrl = imgUrl;
             var instance = $uibModal.open({
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
                 templateUrl: 'modal-image-view.html',
-                controller: 'ModalInstanceCtrl',
+                controller: 'ModalImageViewControllerInstance',
+                controllerAs: '$ctrl',
                 size: size,
                 appendTo: parentElem,
                 resolve: {
-                    context: function() {
-                        return $scope.context;
+                    imgUrl: function(){
+                        return $ctrl.imgUrl;
                     }
                 }
             });
 
-            instance.result.then(function(resolve){
-                resolve;
-            }, function(reject){
-                reject;
+            instance.result.then(function (selectedItem) {
+                $ctrl.selected = selectedItem;
+            }, function () {
+                //do nothing
             });
         };
     }]);
-    module.controller('ModalInstanceCtrl', ['$scope','$uibModalInstance', function ($scope, $uibModalInstance) {
-
-        $scope.close = function () {
-            $uibModalInstance.close();
+    module.controller('ModalImageViewControllerInstance', ['$uibModalInstance', 'imgUrl', function ($uibModalInstance, imgUrl) {
+        var $ctrl = this;
+        $ctrl.imgUrl = imgUrl;
+        $ctrl.close = function () {
+            $uibModalInstance.dismiss('cancel');
         };
     }]);
 })(window.angular);

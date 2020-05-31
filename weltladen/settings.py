@@ -147,7 +147,7 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'weltladen'),
+        'NAME': os.getenv('POSTGRES_DB', 'weltladenshop'),
         'USER': os.getenv('POSTGRES_USER', 'djangouser'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
