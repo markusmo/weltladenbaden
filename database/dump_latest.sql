@@ -3725,6 +3725,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 10	pbkdf2_sha256$150000$6lzHOKBrALS7$Qzc5V3VN1iaZGg0DBT4e4U4Z3hvAqnndFIk6KcctvLQ=	2020-05-01 12:37:51.926729+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
 11	!hRhQ0JyetX3vFiPZnOTEBzLoG2kSq2p6fv9riueH	\N	f	6j3TdFYz9FhuS5uyZ5LT8@deNufb			markus.mo@gmx.net	f	f	2020-05-06 22:02:43.087829+02
 4	pbkdf2_sha256$150000$l8ruPs8DuMkn$Dd+OJblLFtibKWDMqgF6CMSHsktTNhBxcvODxM5FQyw=	2020-05-12 22:02:25.918352+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
+12	!vrxxGrlvmPUCPuGzKm473uGVwXA29iBxBVZNJqnu	\N	f	84jLT.wKpmd@6ouyM3pVA43jKMx4				f	f	2020-05-30 18:25:16.132496+02
 \.
 
 
@@ -6346,6 +6347,19 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 676	2020-05-27 14:59:46.711284+02	76	MASCAO Noir 100g	2	[{"changed": {"fields": ["short_description", "description", "ingredients"]}}]	135	10
 677	2020-05-27 15:00:33.294497+02	77	MASCAO Kuvertüre Noir 200g	2	[{"changed": {"fields": ["short_description", "description", "ingredients"]}}]	135	10
 678	2020-05-27 15:01:26.669921+02	78	COMPAÑERA Honig Krokant 50g	2	[{"changed": {"fields": ["short_description", "description", "ingredients"]}}]	135	10
+679	2020-05-28 10:42:25.812965+02	78	COMPAÑERA Honig Krokant 50g	2	[{"changed": {"fields": ["short_description", "description", "ingredients"]}}]	135	10
+680	2020-05-28 10:48:30.782159+02	50	Apovinces	1	[{"added": {}}]	122	10
+681	2020-05-28 10:53:29.672769+02	79	COMPAÑERA Crispy 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (78)"}}]	135	10
+682	2020-05-28 10:54:21.789275+02	79	COMPAÑERA Crispy 50g	2	[{"changed": {"fields": ["caption", "short_description", "description", "ingredients"]}}]	135	10
+683	2020-05-28 11:07:34.968621+02	80	COMPAÑERA Noisette 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (79)"}}]	135	10
+684	2020-05-28 11:09:07.358115+02	79	COMPAÑERA Crispy 50g	2	[{"changed": {"fields": ["caption", "short_description", "description", "ingredients"]}}]	135	10
+685	2020-05-28 14:02:56.698014+02	81	COMPAÑERA Noir 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (80)"}}]	135	10
+686	2020-05-28 14:33:00.327653+02	82	COMPAÑERA Ingwer-Zitrone 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (81)"}}]	135	10
+687	2020-05-31 16:56:19.41085+02	83	COMPAÑERA Mocca 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (82)"}}]	135	10
+688	2020-05-31 23:30:06.378271+02	51	PT Mega Inovasi Organik	1	[{"added": {}}]	122	10
+689	2020-05-31 23:54:26.822178+02	84	COMPAÑERA Kokos 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (83)"}}]	135	10
+690	2020-06-01 00:48:10.175354+02	84	COMPAÑERA Kokos 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+691	2020-06-01 01:07:13.705985+02	85	COMPAÑERA Orange 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (84)"}}]	135	10
 \.
 
 
@@ -6643,10 +6657,11 @@ rp1jwmqdujpkerc35c9zo4pidjd9szxo	YzM3ZDdjZGExYmUwMzUzMWQzZTllNGFmZjEwYzBhMWIwNzg
 0ebrsxiixbcyjkabmjm50jsu7j6zpc9u	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-05-10 21:47:55.365977+02
 58zxrocg7zmflbgwff3qf8xdqbqxo8ar	ODcwNmIyYjk3NmE4Y2MwYjI3MGMwYmYyYjRmMGUzNDVkMzc1MTQ3Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIn0=	2020-05-16 15:36:09.141381+02
 syd5hf3q9fppblwcdaxbu5tbgd9iddmk	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-15 23:20:34.755113+02
+qtpszskiuwrbjclmszl3culhwnddpz2c	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-06-14 11:57:41.26403+02
 umlq4gqgw7arkw2jl0264667xh89znj3	ODM2MzJhOGM2ODQ0ZWY5OTZhNjE1OWZmZjBkYzNkZmI2YTU0ZmQ0Mjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWV9	2020-05-26 22:03:35.532141+02
 o37wug4iv9mvnnwy8i515n19gif0qybi	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-31 21:14:58.566445+02
-h3wx0i70osbi24wnppfophpxaacx0682	N2IyNGZmZGU2ZmIxM2JkN2IwMjdmZmJlN2MxYzYyYzUxYzQ0OTkyMjp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc19sb2dfbGF0ZXN0Ijo2Nzh9	2020-06-10 15:01:27.304745+02
 btkkvd10sl8663eakzadyxbu5c399gz8	MDNiYTI4YjIyMzE1YTNmODBmMDEzNTlhOGQ1MjZlNzk0MmJhMDgyMjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3IjpmYWxzZSwiY21zX2xvZ19sYXRlc3QiOjMwN30=	2020-05-16 16:40:07.084549+02
+h3wx0i70osbi24wnppfophpxaacx0682	YzgzNDk5ZjFkZjM2OGQzZjI0MGQ2Y2UzYzhjYTVjNzg4NjQzYzA2ZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZX0=	2020-06-15 01:07:29.338514+02
 \.
 
 
@@ -6709,11 +6724,9 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 5	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8b/c6/8bc65fc9-4034-4a1f-8071-a778d5dc99da/weltladen.png	2020-04-30 19:59:27.380429+02
 16	f9bde26a1556cd667f742bd34ec7c55e	filer_public/67/5f/675fcef5-2faf-4125-8c2b-e91867bc5346/83917.jpg	2020-05-01 21:59:27.387957+02
 15	f9bde26a1556cd667f742bd34ec7c55e	filer_public/82/2b/822bce62-8374-4546-bf1f-821711786c14/83900.jpg	2020-05-01 21:59:36.709824+02
-6	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg	2020-05-01 14:09:06.092778+02
 7	f9bde26a1556cd667f742bd34ec7c55e	filer_public/62/ef/62eff737-1d5a-4cb2-b6ad-c636e5d32376/organico.jpg	2020-05-01 14:17:55.773025+02
 14	f9bde26a1556cd667f742bd34ec7c55e	filer_public/85/c5/85c51e1d-caf3-4c10-b506-409284926efa/83550.jpg	2020-05-01 21:59:52.22547+02
 13	f9bde26a1556cd667f742bd34ec7c55e	filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg	2020-05-01 21:59:59.515606+02
-11	f9bde26a1556cd667f742bd34ec7c55e	filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg	2020-05-01 22:00:26.821136+02
 10	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg	2020-05-01 22:00:32.58131+02
 9	f9bde26a1556cd667f742bd34ec7c55e	filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg	2020-05-01 22:00:38.951239+02
 18	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png	2020-05-02 15:32:03.164469+02
@@ -6757,6 +6770,9 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 24	f9bde26a1556cd667f742bd34ec7c55e	filer_public/64/c9/64c9a7b2-2364-4c32-8ed1-9a5b18ac11a5/91018.jpg	2020-05-27 22:12:23.711621+02
 57	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ce/d8/ced86093-3480-4b42-ba32-05255ef6a1c1/84011.jpg	2020-05-07 15:33:40.429857+02
 21	f9bde26a1556cd667f742bd34ec7c55e	filer_public/9c/64/9c645783-0672-4c47-82ed-6d34d3a633a5/82033.jpg	2020-05-18 10:24:20.148902+02
+11	f9bde26a1556cd667f742bd34ec7c55e	filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg	2020-05-30 18:26:51.245188+02
+6	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg	2020-05-30 18:54:58.518851+02
+88	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg	2020-05-28 14:03:24.008736+02
 83	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ce/e2/cee2c3b3-b217-45b6-a1ed-77a16b99699b/97388.jpg	2020-05-26 11:40:59.876952+02
 69	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e7/9f/e79f91df-4f4d-412c-b617-c0769b85ba71/97198.jpg	2020-05-16 22:19:44.772584+02
 59	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4d/37/4d37cd10-0e80-47be-b147-26449480a022/84142.jpg	2020-05-07 16:07:42.171961+02
@@ -6776,6 +6792,7 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 79	f9bde26a1556cd667f742bd34ec7c55e	filer_public/08/e6/08e6c5d2-ba24-4683-8a81-d63309a71117/97345.jpg	2020-05-25 16:18:38.605389+02
 66	f9bde26a1556cd667f742bd34ec7c55e	filer_public/0d/b4/0db4077d-dd12-4fcc-a201-308f71f36464/94033.jpg	2020-05-08 16:23:34.737778+02
 73	f9bde26a1556cd667f742bd34ec7c55e	filer_public/cf/e2/cfe24227-597d-41ee-aa11-67bb4af66483/89801.jpg	2020-05-25 13:28:25.59432+02
+89	f9bde26a1556cd667f742bd34ec7c55e	filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg	2020-05-28 14:33:17.732106+02
 67	f9bde26a1556cd667f742bd34ec7c55e	filer_public/df/87/df87876c-bc62-45a0-996a-c0c76ae1112a/94111.jpg	2020-05-16 19:34:20.282464+02
 85	f9bde26a1556cd667f742bd34ec7c55e	filer_public/14/a4/14a43f2d-5121-4c82-a092-fad925d7a7bd/97205.jpg	2020-05-26 15:30:05.524587+02
 74	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d7/ec/d7ecdba5-53a2-495a-9f4b-293274630301/89806.jpg	2020-05-25 13:40:14.003827+02
@@ -6784,7 +6801,12 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 75	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/2f/452fcf54-8016-4d3b-8745-e9bc41505101/97311.jpg	2020-05-25 14:12:33.175564+02
 81	f9bde26a1556cd667f742bd34ec7c55e	filer_public/43/50/43507b96-a4b1-445c-a8bf-806e5fae950a/97355.jpg	2020-05-26 11:18:27.328068+02
 76	f9bde26a1556cd667f742bd34ec7c55e	filer_public/1d/d0/1dd0f9fb-aa7f-4116-a0e2-24e84a544002/97313.jpg	2020-05-25 14:51:33.557032+02
+86	f9bde26a1556cd667f742bd34ec7c55e	filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg	2020-05-28 10:53:48.039412+02
 82	f9bde26a1556cd667f742bd34ec7c55e	filer_public/34/ea/34ea019b-03dd-439e-b0ec-a1723e289c54/97366.jpg	2020-05-26 11:30:33.494855+02
+90	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg	2020-05-31 16:56:35.267634+02
+87	f9bde26a1556cd667f742bd34ec7c55e	filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg	2020-05-28 11:07:57.481064+02
+91	f9bde26a1556cd667f742bd34ec7c55e	filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg	2020-06-01 00:47:35.152251+02
+92	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg	2020-06-01 01:07:28.463267+02
 \.
 
 
@@ -7520,6 +7542,73 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 737	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/a4/14a43f2d-5121-4c82-a092-fad925d7a7bd/97205.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-26 15:29:55.353486+02	85
 738	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/a4/14a43f2d-5121-4c82-a092-fad925d7a7bd/97205.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-26 15:30:05.532439+02	85
 739	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/64/c9/64c9a7b2-2364-4c32-8ed1-9a5b18ac11a5/91018.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-27 22:12:23.752123+02	24
+740	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-28 10:53:27.68905+02	86
+741	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-28 10:53:27.738826+02	86
+742	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-28 10:53:27.772439+02	86
+743	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-28 10:53:27.819537+02	86
+744	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-28 10:53:27.857556+02	86
+745	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-28 10:53:27.899872+02	86
+746	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-28 10:53:44.436946+02	86
+747	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-28 10:53:44.511216+02	86
+748	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-28 10:53:48.0477+02	86
+749	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-28 11:07:32.409958+02	87
+750	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-28 11:07:32.452426+02	87
+751	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-28 11:07:32.494747+02	87
+752	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-28 11:07:32.529337+02	87
+753	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-28 11:07:32.572646+02	87
+754	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-28 11:07:32.614407+02	87
+755	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-28 11:07:48.334307+02	87
+756	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-28 11:07:48.413081+02	87
+757	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-28 11:07:57.494134+02	87
+758	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:02:53.519183+02	88
+759	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:02:53.567936+02	88
+760	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:02:53.605205+02	88
+761	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:02:53.648748+02	88
+762	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:02:53.68724+02	88
+763	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:02:53.732372+02	88
+764	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-28 14:03:20.316255+02	88
+765	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-28 14:03:20.387986+02	88
+766	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-28 14:03:24.019246+02	88
+767	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:32:57.817776+02	89
+768	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:32:57.866015+02	89
+769	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:32:57.900591+02	89
+770	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:32:57.934457+02	89
+771	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:32:57.973224+02	89
+772	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-28 14:32:58.017667+02	89
+773	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-28 14:33:14.148101+02	89
+774	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-28 14:33:14.217659+02	89
+775	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-28 14:33:17.740714+02	89
+776	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__50x50_q85_crop_subsampling-2.jpg	2020-05-30 18:26:51.219449+02	11
+777	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/75/24/7524d8b3-4fb7-4d39-9938-2b6662c53943/83077.jpg__100x100_q85_crop_subsampling-2.jpg	2020-05-30 18:26:51.253664+02	11
+778	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__50x50_q85_crop_subsampling-2.jpg	2020-05-30 18:54:58.471316+02	6
+779	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg__100x100_q85_crop_subsampling-2.jpg	2020-05-30 18:54:58.527615+02	6
+780	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-31 16:56:15.25921+02	90
+781	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-31 16:56:15.291439+02	90
+782	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-31 16:56:15.318512+02	90
+783	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-31 16:56:15.342565+02	90
+784	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-31 16:56:15.380294+02	90
+785	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-31 16:56:15.413583+02	90
+786	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__244x244_q85_crop_subsampling-2.jpg	2020-05-31 16:56:29.956781+02	90
+787	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__488x488_q85_crop_subsampling-2.jpg	2020-05-31 16:56:30.010941+02	90
+788	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg__250x250_q85_crop_subsampling-2.jpg	2020-05-31 16:56:35.275057+02	90
+789	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-05-31 23:53:30.639466+02	91
+790	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-05-31 23:53:30.680539+02	91
+791	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-05-31 23:53:30.70829+02	91
+792	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-05-31 23:53:30.738429+02	91
+793	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-05-31 23:53:30.772551+02	91
+794	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-05-31 23:53:30.808198+02	91
+795	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-01 00:47:28.560614+02	91
+796	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-01 00:47:28.63004+02	91
+797	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-01 00:47:35.160563+02	91
+798	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-01 01:06:37.180565+02	92
+799	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-01 01:06:37.21834+02	92
+800	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-01 01:06:37.245074+02	92
+801	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-01 01:06:37.27956+02	92
+802	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-01 01:06:37.317846+02	92
+803	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-01 01:06:37.349741+02	92
+804	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-01 01:07:23.987012+02	92
+805	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-01 01:07:24.039363+02	92
+806	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-01 01:07:28.471517+02	92
 \.
 
 
@@ -7640,6 +7729,13 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 280	filer_public/ce/e2/cee2c3b3-b217-45b6-a1ed-77a16b99699b/97388.jpg	254390	e7c0fa9fe3d595f4f7a340382eab041f5fd1eb9e	f	97388.jpg		\N	2020-05-26 11:40:18.784084+02	2020-05-26 11:40:18.784103+02	t	8	10	106
 281	filer_public/a4/7f/a47f254c-34ac-4211-a01d-22f06f5c9e54/97315.jpg	266662	e294e366b275b5be4853792a939e5616bcfa47b1	f	97315.jpg		\N	2020-05-26 13:24:47.086745+02	2020-05-26 13:24:47.086765+02	t	8	10	106
 282	filer_public/14/a4/14a43f2d-5121-4c82-a092-fad925d7a7bd/97205.jpg	147257	95b9864ff8f3428ed435e3050a5196a3d11b52c6	f	97205.jpg		\N	2020-05-26 15:29:37.928566+02	2020-05-26 15:29:37.928589+02	t	8	10	106
+283	filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg	134315	e97d0a28279e4bca4403b9ba6ad3d1fe71fab108	f	97215.jpg		\N	2020-05-28 10:53:27.585129+02	2020-05-28 10:53:27.585199+02	t	8	10	106
+284	filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg	138837	2e16966da5d30c482d7e0064fc7a1dd5584f5397	f	97220.jpg		\N	2020-05-28 11:07:32.367417+02	2020-05-28 11:07:32.367436+02	t	8	10	106
+285	filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg	143130	3f6a4821ce53b1ad02f60b0be50c6cc8ff24bad2	f	97225.jpg		\N	2020-05-28 14:02:53.484669+02	2020-05-28 14:02:53.484686+02	t	8	10	106
+286	filer_public/42/a5/42a572ff-8a93-4726-9b8b-d2e95a7cd4eb/97230.jpg	120299	47a536bb5811602e5500cffeb64811eba56d6602	f	97230.jpg		\N	2020-05-28 14:32:57.784031+02	2020-05-28 14:32:57.784047+02	t	8	10	106
+287	filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg	136781	6eb0c26a90f84d77f56ce6dbd3924439e422aace	f	97235.jpg		\N	2020-05-31 16:56:15.157264+02	2020-05-31 16:56:15.157289+02	t	8	10	106
+288	filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg	131216	7af2476aa4da091b349a1c3c75d77b7751b8680c	f	97240.jpg		\N	2020-05-31 23:53:30.600531+02	2020-05-31 23:53:30.600567+02	t	8	10	106
+289	filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg	155055	f48ad6b0c277c7de2b2c7e60b53302ba995c5efe	f	97266.jpg		\N	2020-06-01 01:06:37.146363+02	2020-06-01 01:06:37.146381+02	t	8	10	106
 \.
 
 
@@ -7756,6 +7852,13 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 280	752	662	2020-05-26 11:40:18.779726+02	\N	\N	\N	f	f	
 281	752	662	2020-05-26 13:24:47.082272+02	\N	\N	\N	f	f	
 282	752	662	2020-05-26 15:29:37.916406+02	\N	\N	\N	f	f	
+283	752	662	2020-05-28 10:53:27.551844+02	\N	\N	\N	f	f	
+284	752	662	2020-05-28 11:07:32.35718+02	\N	\N	\N	f	f	
+285	752	662	2020-05-28 14:02:53.469164+02	\N	\N	\N	f	f	
+286	752	662	2020-05-28 14:32:57.780232+02	\N	\N	\N	f	f	
+287	752	662	2020-05-31 16:56:15.121487+02	\N	\N	\N	f	f	
+288	752	662	2020-05-31 23:53:30.5888+02	\N	\N	\N	f	f	
+289	752	662	2020-06-01 01:06:37.138219+02	\N	\N	\N	f	f	
 \.
 
 
@@ -7776,6 +7879,9 @@ COPY public.menus_cachekey (id, language, site, key) FROM stdin;
 105	de	1	cms_3.7.2_menu_nodes_de_1:public
 106	de	1	cms_3.7.2_menu_nodes_de_1_4_user:draft
 107	de	1	cms_3.7.2_menu_nodes_de_1_4_user:public
+108	de	1	cms_3.7.3_menu_nodes_de_1:public
+109	de	1	cms_3.7.3_menu_nodes_de_1_10_user:draft
+110	de	1	cms_3.7.3_menu_nodes_de_1_10_user:public
 \.
 
 
@@ -7867,6 +7973,7 @@ COPY public.weltladen_bioqualitylabel (id, name, logo_id) FROM stdin;
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
 1	2020-04-26 20:36:28.808627+02	2020-04-30 19:52:59.589927+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	1
 6	2020-05-01 12:21:00.288425+02	2020-05-01 12:21:00.288449+02	{}	\N	10	\N
+8	2020-05-30 18:25:16.153109+02	2020-05-30 18:54:58.126773+02	{}	\N	12	\N
 \.
 
 
@@ -7875,6 +7982,7 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 --
 
 COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, cart_id, product_id) FROM stdin;
+14	83010	2020-05-30 18:54:58.125377+02	{}	1	8	7
 \.
 
 
@@ -7960,6 +8068,8 @@ COPY public.weltladen_manufacturer (id, name) FROM stdin;
 48	Oro Verde
 49	Acopagro
 2	Indianische Kleinbäuerinnen und -bauern aus Mexico
+50	Apovinces
+51	PT Mega Inovasi Organik
 \.
 
 
@@ -8078,6 +8188,13 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 75	1	280	76
 76	1	281	77
 77	1	282	78
+78	1	283	79
+79	1	284	80
+80	1	285	81
+81	1	286	82
+82	1	287	83
+83	1	288	84
+84	1	289	85
 \.
 
 
@@ -8192,6 +8309,13 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 113	16	76
 114	16	77
 115	16	78
+116	16	79
+117	16	80
+118	16	81
+119	16	82
+120	16	83
+121	16	84
+122	16	85
 \.
 
 
@@ -8221,7 +8345,8 @@ COPY public.weltladen_supplier (id, name) FROM stdin;
 COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra, number, phonenumber, salutation) FROM stdin;
 11	1	2020-05-12 22:02:10.818315+02	{}	2	\N	
 4	2	2020-05-17 21:14:58.217244+02	{}	1	+43 676 3239108	mr
-10	2	2020-05-27 15:01:26.966293+02	{}	\N	\N	
+12	0	2020-05-31 11:57:40.706449+02	{}	\N	\N	
+10	2	2020-06-01 01:07:28.568326+02	{}	\N	\N	
 \.
 
 
@@ -8241,6 +8366,8 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 11	2020-05-01 20:53:58.436741+02	2020-05-27 10:35:51.673985+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	10	8.990	83077	2	135	2	t	t	t	t	t	2	MX
 37	2020-05-06 16:22:40.017131+02	2020-05-25 13:26:58.060312+02	t	Kaffeekapsel Set - milde Röstung	kaffeekapsel-set-milde-rostung	38	9.990	89800	\N	135	2	t	f	f	f	f	\N	
 20	2020-05-05 15:44:41.117401+02	2020-05-18 10:23:57.121612+02	t	NICA Bohne 1kg	nica-bohne-1kg	20	17.990	82017	17	135	2	t	t	t	t	t	2	NI
+79	2020-05-28 10:53:29.644663+02	2020-05-28 11:09:07.341064+02	t	COMPAÑERA Crispy 50g	companera-crispy-50g	78	1.690	97215	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
+81	2020-05-28 14:02:56.684837+02	2020-05-28 14:02:56.684857+02	t	COMPAÑERA Noir 50g	companera-noir-50g	80	1.590	97225	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
 8	2020-05-01 20:31:41.660464+02	2020-05-27 10:32:50.435202+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	7	17.990	83017	2	135	2	t	t	t	t	t	2	MX
 9	2020-05-01 20:37:02.640044+02	2020-05-27 10:33:42.260083+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	8	17.990	83022	2	135	2	t	t	t	t	t	2	MX
 12	2020-05-01 21:03:24.276724+02	2020-05-27 10:37:24.562685+02	t	ESPRESSO ORGANICO 18 Pads 125g	espresso-organico-18-pads-125g	11	4.990	83088	2	135	2	t	t	t	t	t	2	MX
@@ -8267,6 +8394,8 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 73	2020-05-26 10:49:40.475089+02	2020-05-27 14:36:40.510841+02	t	MASCAO Caramel 100g	mascao-caramel-100g	72	2.990	97350	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
 75	2020-05-26 11:30:07.773077+02	2020-05-27 14:58:41.271107+02	t	MASCAO Rum Trüffel 100g	mascao-rum-truffel-100g	74	3.290	97366	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
 77	2020-05-26 13:24:49.294532+02	2020-05-27 15:00:33.287932+02	t	MASCAO Kuvertüre Noir 200g	mascao-kuverture-noir-200g	76	4.990	97315	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+83	2020-05-31 16:56:19.376252+02	2020-05-31 16:56:19.376329+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	82	1.590	97235	45	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE,PH
+85	2020-06-01 01:07:13.694673+02	2020-06-01 01:07:13.694692+02	t	COMPAÑERA Orange 50g	companera-orange-50g	84	1.790	97266	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
 38	2020-05-06 16:43:24.308003+02	2020-05-25 13:32:36.709934+02	t	Kaffeekapsel Set - Espresso	kaffeekapsel-set-espresso	40	9.990	89805	28	135	2	t	f	f	f	f	\N	
 57	2020-05-08 14:55:03.099947+02	2020-05-08 15:42:15.122162+02	t	Teenetz klein	teenetz-klein	60	1.700	89809	28	135	2	t	f	f	f	f	\N	
 49	2020-05-07 15:03:05.821184+02	2020-05-20 15:43:50.728959+02	t	DARJEELING Grüntee lose 100g	darjeeling-gruntee-lose-100g	52	5.489	86085	32	135	2	t	t	t	t	t	2	IN
@@ -8282,7 +8411,6 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 25	2020-05-06 11:10:18.653798+02	2020-05-27 13:10:19.097042+02	t	MUNDO ESPRESSO Bohne 500g	mundo-espresso-bohne-500g	25	8.990	90555	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
 29	2020-05-06 11:53:17.235208+02	2020-05-18 10:50:40.156668+02	t	ADELANTE Bohne 250g	adelante-bohne-250g	29	5.490	90733	22	135	2	t	t	t	t	t	2	HN,PE
 30	2020-05-06 11:55:30.566591+02	2020-05-18 10:51:28.384732+02	t	ADELANTE Bohne 1kg	adelante-bohne-1kg	30	20.990	90712	22	135	2	t	t	t	t	t	2	HN,PE
-78	2020-05-26 15:29:42.763982+02	2020-05-27 15:01:26.662809+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	77	1.690	97205	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
 26	2020-05-06 11:14:13.759445+02	2020-05-27 13:11:01.489272+02	t	MUNDO Bohne 1kg	mundo-bohne-1kg	26	17.990	90527	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
 7	2020-05-01 14:05:09.569673+02	2020-05-27 10:31:16.754135+02	t	ORGANICO Vakuum 250g	organico-vakuum-250g	6	4.990	83010	2	135	2	t	t	t	t	t	2	MX
 64	2020-05-25 10:59:34.087385+02	2020-05-27 10:44:57.780049+02	t	PUEBLO Vakuum 500g	pueblo-vakuum-500g	17	8.990	80013	13	135	2	t	t	t	t	t	2	GT,HN
@@ -8302,6 +8430,10 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 68	2020-05-25 14:12:10.055323+02	2020-05-27 14:22:14.091384+02	t	MASCAO Vollmilch 100g	mascao-vollmilch-100g	67	2.990	97311	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
 70	2020-05-25 14:59:32.726729+02	2020-05-27 14:33:03.212086+02	t	MASCAO Haselnuss 100g	mascao-haselnuss-100g	69	3.290	97322	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
 72	2020-05-25 16:18:13.850489+02	2020-05-27 14:34:46.333412+02	t	MASCAO Granatapfel 100g	mascao-granatapfel-100g	71	2.990	97345	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+78	2020-05-26 15:29:42.763982+02	2020-05-28 10:42:25.801592+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	77	1.690	97205	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
+80	2020-05-28 11:07:34.957162+02	2020-05-28 11:07:34.957185+02	t	COMPAÑERA Noisette 50g	companera-noisette-50g	79	1.690	97220	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
+82	2020-05-28 14:33:00.313556+02	2020-05-28 14:33:00.313576+02	t	COMPAÑERA Ingwer-Zitrone 50g	companera-ingwer-zitrone-50g	81	1.690	97230	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
+84	2020-05-31 23:54:26.806277+02	2020-06-01 00:48:10.167166+02	t	COMPAÑERA Kokos 50g	companera-kokos-50g	83	1.790	97240	45	135	2	f	t	t	t	t	2	BO,DO,ID,PE
 \.
 
 
@@ -8584,6 +8716,62 @@ COPY public.weltladen_weltladenproduct_additional_manufacturers (id, weltladenpr
 272	78	48
 273	78	49
 274	78	24
+275	79	40
+276	79	42
+277	79	43
+278	79	47
+279	79	48
+280	79	49
+281	79	50
+282	79	24
+283	80	40
+284	80	42
+285	80	43
+286	80	47
+287	80	48
+288	80	49
+289	80	50
+290	80	24
+291	81	40
+292	81	42
+293	81	43
+294	81	47
+295	81	48
+296	81	49
+297	81	50
+298	81	24
+299	82	40
+300	82	42
+301	82	43
+302	82	47
+303	82	48
+304	82	49
+305	82	50
+306	82	24
+307	83	40
+308	83	42
+309	83	43
+310	83	46
+311	83	47
+312	83	48
+313	83	49
+314	83	50
+315	83	24
+316	84	48
+317	84	49
+318	84	51
+319	84	40
+320	84	24
+321	84	42
+322	84	47
+323	85	40
+324	85	42
+325	85	43
+326	85	47
+327	85	48
+328	85	49
+329	85	50
+330	85	24
 \.
 
 
@@ -8638,6 +8826,8 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 66	de	<p>Ersatzmembran - Kaffeekapsel Set</p>	<ul>\n\t<li>Kompatibel mit dem wiederbefüllbaren Kaffeekapsel Set von EZA</li>\n\t<li>Geeignet für ein gemahlenen Kaffeesorten (Espressokaffeesorten)</li>\n\t<li>Perfekt für einen Kaffee Espresso</li>\n\t<li>Frei von Aluminium</li>\n\t<li>Spülmaschinenfest</li>\n</ul>\n\n<p>Die Membran (Deckel) ist ein Verschleißteil und sollte daher für die Sicherstellung eines reibungslosen Betriebes alle 6 Monate ausgetauscht werden.</p>	<p>Mit dem Kaffeekapsel Set von EZA entlasten Sie enorm die Umwelt da nur der Kaffeesatz zu entsorgen ist. Dazu können Sie Ihren Lieblingskaffee trinken und nebenbei eine Menge Geld sparen.</p>\n\n<p><strong>Für das Kaffeekapsel Set - Espresso empfehlen wir:</strong></p>\n\n<ul>\n\t<li>Kaffee Jambo</li>\n\t<li>Kaffee Adelante</li>\n\t<li>Kaffee Espresso Italiano</li>\n</ul>	67	
 24	de	<p>Kaffee Mundo Espresso</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Edle Mischung aus Mittelamerika</li>\n\t<li>Kräftige Espresso Röstung: Stärke 4 von 5</li>\n\t<li>Aromen nach Johannisbeeren, leicht erdig, malzige Noten, leichte Schärfe im Abgang, sehr kräftiger Körper, Geschmack mittellang anhaltend</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Seinen Ursprung hat der Kaffee Mundo Espresso im Bergland Mittelamerikas und Mexikos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kleinbäuerinnen und -bauern des Kaffee Mundo Espresso stammen aus unterschiedlichen Teilen Mittelamerikas und Mexikos. Sie haben unterschiedliche Hintergründe, jedoch auch einige Gemeinsamkeiten. Alle sind in Kooperativen zusammengeschlossen um eine gemeinsame, stärkere Stimme zu haben und mitbestimmen zu können. Außerdem profitieren sie durch den Zusammenschluss von technischen Schulungen und Beratungen sowie einer gemeinschaftlichen Verarbeitung und Vermarktung ihres Kaffees.</p>	25	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
 34	de	<p>Gefriergetrockneter Löskaffee</p>	<ul>\n\t<li>Hergestellt in Lateinamerika</li>\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Verpackt in einem hochwertigen Kunstoffbehälter</li>\n\t<li>Aromatisches Gefriertrocknungsverfahren</li>\n</ul>	<p>Reine Arabica Hochlandsorten aus Lateinamerika bilden die Basis für Latino Löskaffee. Mit großer Sorgfalt pflegen Kleinbäuerinnen und -bauern die Kaffesträucher und ernten die reifen Kirschen. Ihr Wissen über den biologischen Anbau und ihre Erfahrung im achtsamen Umgang mit der Natur gewährleisten eine hohe Qualität der Bohne. Durch faire Bezahlung und garantierte Prämien können sie auch bei niedrigen Weltmarktpreisen ihre Kosten decken und ihre Lebensbedingungen verbessern. In Europa wird der wertvolle Rohstoff weiterverarbeitet. Das schonende Verfahren der Gefriertrocknung ergibt aromatischen, grobkörnigen Löskaffee. Sein feines Aroma verbindet Genuss mit der Achtung der Menschen, die ihn kultivieren und der Natur, in der er gedeiht. Daraus erwächst Kaffeekultur mit Zukunft.</p>	35	<p><strong>Zutaten:</strong><br>\nGefriergetrockneter Löskaffee</p>
+80	de	<p>Zartbitterschokolade</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit mindestens 72% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	81	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nKakaobutter <br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>603</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.500</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>47</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>29</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>32</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>27</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
+82	de	<p>Vollmilch &amp; Mocca</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit würzigem Mocca</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay und den Philippinen. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	83	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nKakaobutter <br>\nVollmilchpulver<br>\nKakaomasse <br>\nKaffee (2,5%)<br>\nHaselnüsse<br>\nMagermilchpulver<br>\nButterreinfett<br>\nVollrohrzucker<br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>564</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.350</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>37</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>22</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>49</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>48</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,18</td>\n\t\t</tr>\n\t</tbody>\n</table>
 9	de	<p>Kaffee Espresso Organico</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Kräftige Französische Espresso Röstung: Stärke 4 von 5</li>\n\t<li>Aromen nach Rohkakao und Bitterschokolade, leicht herb, Nuancen von der Dörrpflaume, langanhaltend im Abgang</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuerinnen und -bauern gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	10	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
 13	de	<p>Kaffee Organico mild</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 2 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen Kleinbäuerinnen und -bauern gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	14	<p><strong>Zutaten:</strong><br>\nKaffee geröstet &amp; gemahlen</p>
 14	de	<p>Kaffee Organico entkoffeiniert</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besonders milder Kaffee aus Mexico</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 1 von 5</li>\n\t<li>Würzig feines Mandel-Karamell Aroma mit Nuancen von Sternfrucht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Die Entkoffeinierung erfolgt mit natürlicher Quellkohlensäure und reinem Wasser. Alle wertvollen Geschmacksbestandteile bleiben dadurch enthalten. Dieses Verfahren (CR3) kommt im Vergleich zu anderen völlig ohne Chemie aus und ist daher für biologischen Kaffee zulässig.</p>\n\n<p>Das südliche Bergland Mexikos ist Heimat des Kaffee Orgánicos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kaffeegärten werden sorgfältig von indianischen <span style=""><span style="line-height: 100%;">Kleinbäuerinnen und -bauern</span></span> gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>	15	<p><strong>Zutaten:</strong><br>\nKaffee geröstet, gemahlen &amp; entkoffeiniert</p>
@@ -8647,9 +8837,11 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 64	de	<p>Geröstet in Italien</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Vollmundige Mischung aus Lateinamerika und Afrika</li>\n\t<li>Kräftige italienische Espresso Röstung: Stärke 4 von 5</li>\n\t<li>Aromen nach Tabak, Bittermandel und Malz, leichte anhaltende Schärfe, langanhaltender Abgang</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Verpackt in hochwertiger Kaffeedose</li>\n</ul>	<p>Aus vier verschiedenen Ländern und zwei unterschiedlichen Kontinenten setzte sich die anspruchsvolle Espresso Italiano Arabica-Mischung zusammen. Verarbeitet wird 100 Prozent Arabica Hochland-Kaffee von höchster Qualität. Die Kaffeebäuerinnen und -bauern des Kaffee Espresso Italiano haben unterschiedliche kulturelle Hintergründe. Indianische Kleinbäuerinnen und -bauern aus Mexiko und Guatemala geben ihre wertvollen Bohnen zusammen mit peruanischen Kaffeebauernfamilien und Angehörige unterschiedlicher Volksgruppen aus Uganda für die Espresso Italiano Mischung. Gemeinsam möchten Sie ihren Kaffee zu fairen Bedingungen vermarkten.</p>	65	<p><strong>Zutaten:</strong><br>\nKaffee geröstet &amp; gemahlen</p>
 52	de	<p>Rotbuschtee</p>	<ul>\n\t<li>Fruchtiger Rotbuschtee aus Südafrika</li>\n\t<li>Besonders aromatischer Tee aus kontrolliert biologischem Anbau</li>\n\t<li>Von Hand gepflückt im Winterregengebiet des südafrikanischen Kaplandes</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n</ul>	<p>Der einzige Ort der Erde, an dem Rotbusch (Rooibos) gedeiht, ist das Winterregengebiet des südafrikanischen Kaplandes. Kleinbäuerinnen und -bauern aus der Region Wupperthal pflegen das immergrüne Gebüsch nach den Kriterien des kontrolliert biologischen Landbaus und ernten die feinen nadelartigen Blätter. Vor Ort werden sie sorgfältig weiterverarbeitet - getrocknet, fermentiert und zerkleinert. Fertig ist die Basis für einen köstlichen Durstlöscher, der den Menschen und der Natur gut tut.</p>\n\n<p>Bei den heutigen 62 Mitgliedern (davon 23 Frauen) der Kooperative handelt es sich um Kleinproduzent*innen, die vor allem vom Anbau des Rotbuschtees leben. Dieser stellt das Haupteinkommen der Familien sicher. Zusätzlich begannen einige Mitglieder mit dem Anbau von Bio-Kräutern, um auf diese Weise ihre Produktion und Einkommen zu diversifizieren. Neben Rotbusch und Kräutern werden Produkte für den Eigenbedarf (Gemüse, Obst) angebaut und einige Schafe und Ziegen gehalten.</p>	53	<p><strong>Zutaten:</strong><br>\nRotbusch</p>
 58	de	<p>stark entöltes Kakaopulver</p>	<ul>\n\t<li>Aromatisch feine lateinamerikanische Mischung aus kontrolliert biologischem Anbau</li>\n\t<li>Die Standardtemperatur zum Rösten der Kakaobohnen liegt zwischen 115 und 130 Grad</li>\n\t<li>Ohne Zusatz von Zucker oder anderen Süßungsmittel</li>\n\t<li>Kakaobuttergehalt von 10-12%</li>\n\t<li>Nachhaltige Papierverpackung</li>\n</ul>	<p>Mit Sorgfalt, Erfahrung und mit Cariño - Zuneigung - kultivieren die Kleinbäuerinnen und -bauern in Lateinamerika ihre Kakaobäume. Durch Fairen Handel haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Faire Bezahlung und eine verlässliche Zusammenarbeit geben ihnen und ihren Kindern eine Zukuft und sichern die hohe Qualität ihrer Ernte.</p>	59	<p><strong>Zutaten:</strong><br>\nKakaopulver stark entölt<br>\nSäureregulator: Kaliumcarbonat</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<thead>\n\t\t<tr>\n\t\t\t<th style="text-align: left;">Nährwerte:<br>\n\t\t\tBeschreibung</th>\n\t\t\t<th style="text-align: left;"><br>\n\t\t\tWert</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.289</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>310</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>0,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>23,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>14</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>11</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>6,9</td>\n\t\t</tr>\n\t</tbody>\n</table>
+77	de	<p>Vollmilch &amp; Honig Krokant</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit süßem Honig Krokant</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	78	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVollmilchpulver<br>\nHoniggranulat (10%) (Honig, Reismehl)<br>\nKakaomasse<br>\nMandeln (5%)<br>\nHaselnüsse<br>\nMagermilchpulver<br>\nButterreinfett<br>\nVanilleschoten<br>\n </p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>551</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.296</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>19</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>53</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>49</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,16</td>\n\t\t</tr>\n\t</tbody>\n</table>
+78	de	<p>Weiße Schokolade &amp; Mandelkrokant</p>	<ul>\n\t<li>Feinste Weiße Schokolade mit knusprigem Mandelkrokant</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	79	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVollmilchpulver<br>\nMandelkrokant (5%) (Rohrzucker, Mandeln)<br>\nMandeln (5%)<br>\nMagermilchpulver<br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>572</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.380</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,23</td>\n\t\t</tr>\n\t</tbody>\n</table>
 42	de	<p>Kräftig-erdig</p>	<ul class="stwul">\n\t<li>Ergiebiger Schwarztee aus Tanzania</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Biologisch nachhaltig bewirtschafteter Anbau</li>\n\t<li>Nachhaltige Verpackung</li>\n\t<li>Ideal zum Frühstück - harmoniert mit Milch</li>\n\t<li>Kräftig-erdig im Geschmack</li>\n\t<li>Dunkle, rötliche Tasse</li>\n</ul>	<p>Die Wurzeln dieses kräftigen Schwarztees liegen im südlichen Hochland Tanzanias, an den Hängen des Mount Rungwe. In den hochgelegenen Teegärten finden die Pflanzen, was sie zum Gedeihen brauchen: Die perfekten klimatischen Bedingungen und einen biologisch bewirtschafteten Boden. Sorgfältig gepflegt und geerntet von Kleinbäuerinnen und -bauern wird das Blattgut in der nahegelegenen Teefabrik, an der die Kleinbauernorganisation beteiligt ist, weiterverarbeitet und in Österreich abgefüllt.</p>	43	<p><strong>Zutaten:</strong><br>\nSchwarztee</p>
 67	de	<p>Vollmilchschokolade</p>	<ul>\n\t<li>Zartschmelzende Mascao Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Besonders lange und schonend conchiert</li>\n\t<li>Frei von Sojalezithin, Emulgatoren und ohne Einsatz von Fremdfetten</li>\n\t<li>Nachhaltig und aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Lateinamerika treffen in MASCAO auf naturbelassenen Vollrohrzucker aus den Philippinen. Kleinbäuerinnen und -bauern sichern die hohe Qualität der biologischen Zutaten. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Faire Bezahlung und verlässliche Zusammenarbeit gibt ihnen und ihren Kindern eine Zukunft.</p>\n\n<p>Beim Schweizer Chocolatier Bernrain werden die Zutaten nach besonderer Rezeptur und extra langem Conchieren miteinander verschmolzen. Die Verarbeitung Rohrzuckers bedarf besonders sorgfältiger und aufwändiger Produktionsschritte. Auf Beigabe künstlicher Aromastoffe und Emulgatoren wird verzichtet. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht eine Minimierung des Energieverbrauchs.</p>	68	<p><strong>Zutaten:</strong><br>\nVollrohrzucker <br>\nKakaobutter <br>\nVollmilchpulver <br>\nKakaomasse <br>\nHaselnüsse gemahlen<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln  </p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>542</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.260</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>20</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>51</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
-77	de	<p>Vollmilch &amp; Honig Krokant</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit süßem Honig Krokant</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	78	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVollmilchpulver<br>\nHoniggranulat (10% Honig, 60% Reismehl)<br>\nKakaomasse<br>\nMandeln (5%)<br>\nHaselnüsse<br>\nMagermilchpulver<br>\nButterreinfett<br>\nVanilleschoten<br>\n </p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>551</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.296</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>19</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>53</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>49</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,16</td>\n\t\t</tr>\n\t</tbody>\n</table>
+81	de	<p>Zartbitter &amp; Ingwer &amp; Zitrone</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit würzigem Ingwer &amp; Zitrone</li>\n\t<li>mindestens 54% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	82	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nKakaomasse <br>\nKakaobutter <br>\nZitronencrisp (10%) (Rohrzucker, natürliches Aroma (Zitrone))<br>\nIngwer gemahlen (1,5%)<br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>553</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.300</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>35</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>52</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,01</td>\n\t\t</tr>\n\t</tbody>\n</table>
 71	de	<p>Zartbitter &amp; Granatapfel</p>	<ul>\n\t<li>Feinste Mascao Bio-Zartbitterschokolade mit fruchtigem Granatapfel</li>\n\t<li>Mindestens 60% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Besonders lange und schonend conchiert</li>\n\t<li>Frei von Sojalezithin und ohne Einsatz von Fremdfetten</li>\n\t<li>Nachhaltig und aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in MASCAO auf naturbelassenen Vollrohrzucker aus Paraguay. Kleinbäuerinnen und -bauern sichern die hohe Qualität der biologischen Zutaten. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Faire Bezahlung und verlässliche Zusammenarbeit gibt ihnen und ihren Kindern eine Zukunft.</p>\n\n<p>Beim Schweizer Chocolatier Bernrain werden die Zutaten nach besonderer Rezeptur und extra langem Conchieren miteinander verschmolzen. Die Verarbeitung Rohrzuckers bedarf besonders sorgfältiger und aufwändiger Produktionsschritte. Auf Beigabe künstlicher Aromastoffe und Emulgatoren wird verzichtet. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht eine Minimierung des Energieverbrauchs.</p>	72	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nGranatapfelzubereitung 12% (Granatapfel, Apfelsaftkonzentrat, Reismehl, Verdickungsmittel E440 Pektin)<br>\nKakaobutter <br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>525</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.190</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>33</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>20</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>40</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
 63	de	<p>Kaffee Pueblo aromareich</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Aromareicher Kaffee aus Guatemala und Honduras</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 3 von 5</li>\n\t<li>Aromen von Malz mit Nuancen von der Vollmilchschokolade, blumig, weicher langanhaltender Abgang</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Das südlich-östliche Bergland Guatemalas und des nordwestlichen Honduras ist Heimat des Kaffee Pueblo. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.200 bis 1.600 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kleinbäuerinnen und -bauern haben im durchschnittlich 1 bis 2 Hektar Kaffeegärten. Durch den Zusammenschluss in Kooperativen haben sie Zugang zu biologischen Düngemitteln, technischen Beratungen und günstigen Krediten. In den Kaffeegärten wachsen neben Kaffee auch Mais, Bohnen, Obst und Gemüse - hauptsächlich für den Eigenbedarf. Einige haben auch Hühner, Schweine, Vieh oder Bienen. Die Kleinbäuerinnen und -bauern aus Guatemala sind Nachfahren indigener Völker Chortí, Maya Popti und Mam, die auch heute noch ihre eigenen Sprachen sprechen.</p>	64	<p><strong>Zutaten:</strong><br>\nKaffee geröstet &amp; gemahlen</p>
 26	de	<p>Spezialität aus Äthiopien</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Besondere Mischung aus Äthiopien</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 3,5 von 5</li>\n\t<li>Sehr angenehmer und weicher süffiger Körper, harmonische Aromen nach Oolong Tee mit Nuancen nach Vanille</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Der Südwesten Äthiopiens gilt als Ursprung des Arabica-Kaffees. Die günstigen klimatischen Bedingungen prägen sein besonderes Aroma. Oromia ist der Name der größten Provinz Äthiopiens im südlichen und südwestlichen Äthiopien. Aus dem Bergland Sidamos, einer Provinz Oromias, stammt unser Kaffee Abessa. In Oromia lebt rund ein Viertel der Bevölkerung vom Kaffeeanbau. Sie produzieren mehr als die Hälfte des äthiopischen Kaffees in überwiegend kleinbäuerlicher Produktion. Die Kleinbäuerinnen und -bauern des Kaffee Abessa sind im Dachverband der Oromia Union vereinigt. Sie sind allesamt Kleinproduzent*innen mit durchschnittlich 0,5 bis 2 Hektar Land. Die Kaffeeanbauflächen befinden sich auf einer Höhe von 1.500 – 2.000 m in unmittelbarer Nähe der letzten Bergwälder. Kaffee ist die wichtigste Einnahmequelle und gedeiht meist in Mischanbau mit Bananen und anderen Obstbäumen, die den Kaffeepflanzen als Schattenspender dienen. Zusätzlich werden Gewürze, Getreide, Mais, Hirse und Bohnen angebaut, die vor allem der Grundversorgung der Familien dienen.</p>	27	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
@@ -8664,6 +8856,9 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 53	de	<p>Rotbusch, Apfel &amp; Zimt</p>	<ul>\n\t<li>Fruchtiger Rotbuschtee aus Südafrika</li>\n\t<li>Vollmundige Gewürze aus Vietnam</li>\n\t<li>Besonders aromatischer Tee aus kontrolliert biologischem Anbau</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n</ul>	<p>Der einzige Ort der Erde, an dem Rotbusch (Rooibos) gedeiht, ist das Winterregengebiet des südafrikanischen Kaplandes. Kleinbäuerinnen und -bauern aus der Region Wupperthal pflegen das immergrüne Gebüsch und ernten die feinen nadelartigen Blätter. Sie achten auf die Natur und arbeiten im Einklang mit den Kriterien des biologischen Landbaus - genauso wie die Kleinbauernfamilien in Vietnam, die mit ihrem Bio-Zimt für eine warme Note sorgen. Dazu noch eine Prise Apfel und etwas Nelke - fertig ist die Basis für einen köstlichen Durstlöscher, der den Menschen und der Natur gut tut.</p>	54	<p><strong>Zutaten: </strong><br>\nRotbusch<br>\nApfel<br>\nCassia Zimt<br>\nNelken</p>
 68	de	<p>Vollmilch &amp; Kokos</p>	<ul>\n\t<li>Zartschmelzende Mascao Bio-Vollmilchschokolade mit feiner Kokosfüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Besonders lange und schonend conchiert</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Nachhaltig und aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Lateinamerika treffen in MASCAO auf naturbelassenen Vollrohrzucker aus den Philippinen. Kleinbäuerinnen und -bauern sichern die hohe Qualität der biologischen Zutaten. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Faire Bezahlung und verlässliche Zusammenarbeit gibt ihnen und ihren Kindern eine Zukunft.</p>\n\n<p>Beim Schweizer Chocolatier Bernrain werden die Zutaten nach besonderer Rezeptur und extra langem Conchieren miteinander verschmolzen. Die Verarbeitung Rohrzuckers bedarf besonders sorgfältiger und aufwändiger Produktionsschritte. Auf Beigabe künstlicher Aromastoffe und Emulgatoren wird verzichtet. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht eine Minimierung des Energieverbrauchs.</p>	69	<p><strong>Zutaten:</strong><br>\nVollrohrzucker <br>\nKakaobutter <br>\nKokosraspeln<br>\nVollmilchpulver <br>\nRohrzucker<br>\nKakaomasse<br>\nMagermilchpulver<br>\nHaselnüsse gemahlen<br>\nButterreinfett<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln  </p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>570</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.370</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>25</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>46</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,21</td>\n\t\t</tr>\n\t</tbody>\n</table>
 69	de	<p>Vollmilch &amp; ganze Haselnüsse</p>	<ul>\n\t<li>Zartschmelzende Mascao Bio-Vollmilchschokolade mit ganzen Haselnüssen</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Besonders lange und schonend conchiert</li>\n\t<li>Frei von Sojalezithin, Emulgatoren und ohne Einsatz von Fremdfetten</li>\n\t<li>Nachhaltig und aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Lateinamerika treffen in MASCAO auf naturbelassenen Vollrohrzucker aus den Philippinen. Kleinbäuerinnen und -bauern sichern die hohe Qualität der biologischen Zutaten. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Faire Bezahlung und verlässliche Zusammenarbeit gibt ihnen und ihren Kindern eine Zukunft.</p>\n\n<p>Beim Schweizer Chocolatier Bernrain werden die Zutaten nach besonderer Rezeptur und extra langem Conchieren miteinander verschmolzen. Die Verarbeitung Rohrzuckers bedarf besonders sorgfältiger und aufwändiger Produktionsschritte. Auf Beigabe künstlicher Aromastoffe und Emulgatoren wird verzichtet. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht eine Minimierung des Energieverbrauchs.</p>	70	<p><strong>Zutaten:</strong><br>\nVollrohrzucker <br>\nHaselnüsse 23%<br>\nKakaobutter <br>\nVollmilchpulver <br>\nKakaomasse <br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln </p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>579</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.410</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>41</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>16</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>42</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>39</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+79	de	<p>Vollmilch &amp; Haselnuss</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit Haselnüssen</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	80	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVollmilchpulver<br>\nHaselnüsse (10%)<br>\nKakaomasse<br>\nMagermilchpulver<br>\nButterreinfett<br>\nVanilleschoten</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>572</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.380</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>20</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>47</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>46</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,17</td>\n\t\t</tr>\n\t</tbody>\n</table>
+83	de	<p>mit Kokosmilch</p>	<ul>\n\t<li>Feinste Bio-Schokolade mit exotischer Kokosnuss</li>\n\t<li>Besondere Rezeptur - mit Kokosmilch und Kokosblütenzucker</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Lateinamerika treffen in COMPAÑERA auf naturbelassenen Kokosblütenzucker aus Indonesien. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	84	<p><strong>Zutaten:</strong><br>\nKokosblütenzucker<br>\nKakaomasse <br>\nKokosraspel gemahlen (15%)<br>\nKakaobutter <br>\nKokosnussmilchpulver (5%) (Kokosnussmilch, Maltodextrin)<br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>563</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.340</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>27</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>43</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>38</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,16</td>\n\t\t</tr>\n\t</tbody>\n</table>
+84	de	<p>Vollmilch &amp; Orange</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit fruchtiger Orange</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	85	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nKakaobutter <br>\nVollmilchpulver<br>\nKakaomasse <br>\nHaselnüsse<br>\nMagermilchpulver<br>\nButterreinfett<br>\nnatürliches Aroma (Orange)<br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>565</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.350</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>37</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>22</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>51</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,19</td>\n\t\t</tr>\n\t</tbody>\n</table>
 \.
 
 
@@ -8699,7 +8894,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_user_id_seq', 11, true);
+SELECT pg_catalog.setval('public.auth_user_id_seq', 12, true);
 
 
 --
@@ -8853,7 +9048,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 678, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 691, true);
 
 
 --
@@ -8881,14 +9076,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 85, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 92, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 739, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 806, true);
 
 
 --
@@ -8916,7 +9111,7 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 282, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 289, true);
 
 
 --
@@ -8944,7 +9139,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 107, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 110, true);
 
 
 --
@@ -9014,14 +9209,14 @@ SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 3, true);
 -- Name: weltladen_cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 7, true);
+SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 8, true);
 
 
 --
 -- Name: weltladen_cartitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 13, true);
+SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 15, true);
 
 
 --
@@ -9049,7 +9244,7 @@ SELECT pg_catalog.setval('public.weltladen_locations_id_seq', 1, true);
 -- Name: weltladen_manufacturer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 49, true);
+SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 51, true);
 
 
 --
@@ -9077,14 +9272,14 @@ SELECT pg_catalog.setval('public.weltladen_orderpayment_id_seq', 1, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 77, true);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 84, true);
 
 
 --
 -- Name: weltladen_productpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 115, true);
+SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 122, true);
 
 
 --
@@ -9105,21 +9300,21 @@ SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 2, true);
 -- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 274, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 330, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 78, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 85, true);
 
 
 --
 -- Name: weltladen_weltladenproducttranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 77, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 84, true);
 
 
 --
