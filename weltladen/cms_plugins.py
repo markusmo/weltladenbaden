@@ -18,6 +18,6 @@ class ContactUsPlugin(CascadePluginBase):
         context['form_name'] = ContactUsForm.form_name
         context[ContactUsForm.form_name] = ContactUsForm()
         context['proceed_with'] = ''
-        return self.super().render(context, instance, placeholder)
+        return super().render(context, instance, placeholder)
 
 plugin_pool.register_plugin(ContactUsPlugin)
