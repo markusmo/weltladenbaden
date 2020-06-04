@@ -23,7 +23,7 @@ class ContactUsForm(NgModelFormMixin, Bootstrap3Form):
 
     def __init__(self, *args, **kwargs):
         kwargs.update(scope_prefix=self.scope_prefix)
-        super(ContactUsForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     email = fields.EmailField(
         label=_("Your e-mail address"),
