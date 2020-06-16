@@ -3726,6 +3726,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 11	!hRhQ0JyetX3vFiPZnOTEBzLoG2kSq2p6fv9riueH	\N	f	6j3TdFYz9FhuS5uyZ5LT8@deNufb			markus.mo@gmx.net	f	f	2020-05-06 22:02:43.087829+02
 4	pbkdf2_sha256$150000$l8ruPs8DuMkn$Dd+OJblLFtibKWDMqgF6CMSHsktTNhBxcvODxM5FQyw=	2020-05-12 22:02:25.918352+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 12	!vrxxGrlvmPUCPuGzKm473uGVwXA29iBxBVZNJqnu	\N	f	84jLT.wKpmd@6ouyM3pVA43jKMx4				f	f	2020-05-30 18:25:16.132496+02
+13	!NTjVmvcD93WsgO6JuE8bxSxmsw4k1nrbMAxAxcWe	\N	f	4b2xahdpSlvYEDD74bd7rAk8rTVr				f	f	2020-06-04 20:35:31.385574+02
 \.
 
 
@@ -6360,6 +6361,12 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 689	2020-05-31 23:54:26.822178+02	84	COMPAÑERA Kokos 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (83)"}}]	135	10
 690	2020-06-01 00:48:10.175354+02	84	COMPAÑERA Kokos 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
 691	2020-06-01 01:07:13.705985+02	85	COMPAÑERA Orange 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (84)"}}]	135	10
+692	2020-06-11 14:50:15.055334+02	86	SONRISA Mandel 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (85)"}}]	135	10
+693	2020-06-11 14:57:59.541123+02	86	SONRISA Mandel 80g	2	[{"changed": {"fields": ["Short Description", "Description", "Gluten free", "Ingredients"]}}]	135	10
+694	2020-06-11 15:03:15.209172+02	87	SONRISA Kardamom 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (86)"}}]	135	10
+695	2020-06-11 15:13:43.038432+02	88	SONRISA Noir 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (87)"}}]	135	10
+696	2020-06-11 15:21:42.075729+02	89	SONRISA Minze 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (88)"}}]	135	10
+697	2020-06-11 15:28:25.85146+02	90	SONRISA Orange 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (89)"}}]	135	10
 \.
 
 
@@ -6658,10 +6665,11 @@ rp1jwmqdujpkerc35c9zo4pidjd9szxo	YzM3ZDdjZGExYmUwMzUzMWQzZTllNGFmZjEwYzBhMWIwNzg
 58zxrocg7zmflbgwff3qf8xdqbqxo8ar	ODcwNmIyYjk3NmE4Y2MwYjI3MGMwYmYyYjRmMGUzNDVkMzc1MTQ3Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIn0=	2020-05-16 15:36:09.141381+02
 syd5hf3q9fppblwcdaxbu5tbgd9iddmk	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-15 23:20:34.755113+02
 qtpszskiuwrbjclmszl3culhwnddpz2c	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-06-14 11:57:41.26403+02
+f7p2drnoeyywzd2s36o1y7hr32fowohh	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-06-18 20:54:49.543913+02
 umlq4gqgw7arkw2jl0264667xh89znj3	ODM2MzJhOGM2ODQ0ZWY5OTZhNjE1OWZmZjBkYzNkZmI2YTU0ZmQ0Mjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWV9	2020-05-26 22:03:35.532141+02
+h3wx0i70osbi24wnppfophpxaacx0682	YzgzNDk5ZjFkZjM2OGQzZjI0MGQ2Y2UzYzhjYTVjNzg4NjQzYzA2ZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZX0=	2020-06-25 21:17:03.652507+02
 o37wug4iv9mvnnwy8i515n19gif0qybi	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-31 21:14:58.566445+02
 btkkvd10sl8663eakzadyxbu5c399gz8	MDNiYTI4YjIyMzE1YTNmODBmMDEzNTlhOGQ1MjZlNzk0MmJhMDgyMjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3IjpmYWxzZSwiY21zX2xvZ19sYXRlc3QiOjMwN30=	2020-05-16 16:40:07.084549+02
-h3wx0i70osbi24wnppfophpxaacx0682	YzgzNDk5ZjFkZjM2OGQzZjI0MGQ2Y2UzYzhjYTVjNzg4NjQzYzA2ZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZX0=	2020-06-15 01:07:29.338514+02
 \.
 
 
@@ -6744,6 +6752,7 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 41	f9bde26a1556cd667f742bd34ec7c55e	filer_public/0d/5f/0d5fcd7e-08db-4882-9942-a119cbdc145b/89805.jpg	2020-05-06 16:44:02.754151+02
 38	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c5/f7/c5f7e709-559a-4da1-99fe-5a4a08865801/81044.jpg	2020-05-20 15:33:32.466173+02
 30	f9bde26a1556cd667f742bd34ec7c55e	filer_public/1b/c0/1bc04a77-6e65-4100-8e29-43ac86e68acc/90700.jpg	2020-05-06 11:44:02.41603+02
+48	f9bde26a1556cd667f742bd34ec7c55e	filer_public/84/ac/84ac8314-8b01-4af3-ab2f-bb88145199d6/87034.jpg	2020-06-08 09:33:21.73134+02
 25	f9bde26a1556cd667f742bd34ec7c55e	filer_public/01/9d/019dc4fd-34ff-4e1e-90d0-67bc7b448233/91022.jpg	2020-05-05 19:19:39.955891+02
 32	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b9/e9/b9e94fba-0409-42a6-be23-391336676b9f/90712.jpg	2020-05-18 10:51:39.095418+02
 35	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d3/1a/d31a1b01-2f94-4d88-bc36-d66650f2d37b/90332.jpg	2020-05-06 15:12:42.591626+02
@@ -6754,7 +6763,6 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 27	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5d/e6/5de6de3d-20b8-49b6-b063-d7d2e412b1b8/90555.jpg	2020-05-06 14:02:42.967805+02
 39	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f3/6f/f36fbac6-e2d6-48aa-8536-b48b14749ed4/89800.jpg	2020-05-06 16:26:15.46268+02
 36	f9bde26a1556cd667f742bd34ec7c55e	filer_public/68/48/6848948b-aaab-4097-a32f-6837503ed04c/81013.jpg	2020-05-06 15:30:31.549522+02
-48	f9bde26a1556cd667f742bd34ec7c55e	filer_public/84/ac/84ac8314-8b01-4af3-ab2f-bb88145199d6/87034.jpg	2020-05-06 18:03:55.420555+02
 42	f9bde26a1556cd667f742bd34ec7c55e	filer_public/62/6f/626ffeea-c0aa-4be4-bc3b-b19650f2d2d8/89806.jpg	2020-05-06 16:43:00.621855+02
 47	f9bde26a1556cd667f742bd34ec7c55e	filer_public/6d/7a/6d7a052a-5042-4345-a29e-0333aa701575/87033.jpg	2020-05-06 17:52:52.440055+02
 44	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f2/6c/f26ca56d-451e-4276-baf0-8e4ea4cc052b/coffee-filtersno-4_rgb_lr.jpg	2020-05-06 16:56:37.953572+02
@@ -6799,6 +6807,8 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 68	f9bde26a1556cd667f742bd34ec7c55e	filer_public/74/53/7453bd66-bd92-4010-bd81-d3c1822b9490/97135.jpg	2020-05-16 21:02:14.341621+02
 80	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c0/a7/c0a797a7-47da-4caf-a01e-4bbca1251779/97350.jpg	2020-05-26 10:50:12.536095+02
 75	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/2f/452fcf54-8016-4d3b-8745-e9bc41505101/97311.jpg	2020-05-25 14:12:33.175564+02
+96	f9bde26a1556cd667f742bd34ec7c55e	filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg	2020-06-11 15:21:58.497395+02
+93	f9bde26a1556cd667f742bd34ec7c55e	filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg	2020-06-11 14:50:31.922865+02
 81	f9bde26a1556cd667f742bd34ec7c55e	filer_public/43/50/43507b96-a4b1-445c-a8bf-806e5fae950a/97355.jpg	2020-05-26 11:18:27.328068+02
 76	f9bde26a1556cd667f742bd34ec7c55e	filer_public/1d/d0/1dd0f9fb-aa7f-4116-a0e2-24e84a544002/97313.jpg	2020-05-25 14:51:33.557032+02
 86	f9bde26a1556cd667f742bd34ec7c55e	filer_public/13/71/13712d48-a665-433f-98bb-4b525bc6275a/97215.jpg	2020-05-28 10:53:48.039412+02
@@ -6806,7 +6816,10 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 90	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg	2020-05-31 16:56:35.267634+02
 87	f9bde26a1556cd667f742bd34ec7c55e	filer_public/da/63/da633c1e-5ecc-4397-9892-f895d20c1bb3/97220.jpg	2020-05-28 11:07:57.481064+02
 91	f9bde26a1556cd667f742bd34ec7c55e	filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg	2020-06-01 00:47:35.152251+02
+94	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg	2020-06-11 15:03:30.605944+02
+97	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg	2020-06-11 15:28:41.059686+02
 92	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg	2020-06-01 01:07:28.463267+02
+95	f9bde26a1556cd667f742bd34ec7c55e	filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg	2020-06-11 15:14:01.125715+02
 \.
 
 
@@ -7609,6 +7622,52 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 804	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-01 01:07:23.987012+02	92
 805	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-01 01:07:24.039363+02	92
 806	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-01 01:07:28.471517+02	92
+807	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/84/ac/84ac8314-8b01-4af3-ab2f-bb88145199d6/87034.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-08 09:33:21.762026+02	48
+808	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-11 14:44:45.076472+02	93
+809	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-11 14:44:45.114189+02	93
+810	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-11 14:44:45.141553+02	93
+811	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-11 14:44:45.172352+02	93
+812	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-11 14:44:45.20267+02	93
+813	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-11 14:44:45.237994+02	93
+814	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-11 14:50:27.060618+02	93
+815	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-11 14:50:27.129339+02	93
+816	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-11 14:50:31.931768+02	93
+817	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:03:12.332098+02	94
+818	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:03:12.367648+02	94
+819	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:03:12.392378+02	94
+820	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:03:12.418105+02	94
+821	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:03:12.45295+02	94
+822	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:03:12.48401+02	94
+823	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-11 15:03:26.55972+02	94
+824	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-11 15:03:26.617678+02	94
+825	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-11 15:03:30.615478+02	94
+826	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:13:36.770487+02	95
+827	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:13:36.809178+02	95
+828	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:13:36.839997+02	95
+829	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:13:36.868122+02	95
+830	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:13:36.901385+02	95
+831	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:13:36.938204+02	95
+832	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-11 15:13:57.981761+02	95
+833	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-11 15:13:58.038431+02	95
+834	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-11 15:14:01.133831+02	95
+835	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:21:39.491814+02	96
+836	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:21:39.530942+02	96
+837	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:21:39.561324+02	96
+838	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:21:39.588056+02	96
+839	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:21:39.620214+02	96
+840	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:21:39.653629+02	96
+841	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-11 15:21:56.804081+02	96
+842	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-11 15:21:56.860552+02	96
+843	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-11 15:21:58.506831+02	96
+844	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:28:23.591544+02	97
+845	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:28:23.629676+02	97
+846	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:28:23.661962+02	97
+847	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:28:23.695681+02	97
+848	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:28:23.726356+02	97
+849	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-11 15:28:23.762577+02	97
+850	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-11 15:28:37.725277+02	97
+851	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-11 15:28:37.791337+02	97
+852	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-11 15:28:41.072314+02	97
 \.
 
 
@@ -7736,6 +7795,11 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 287	filer_public/c0/b9/c0b96199-d545-4393-9444-b90854d2b889/97235.jpg	136781	6eb0c26a90f84d77f56ce6dbd3924439e422aace	f	97235.jpg		\N	2020-05-31 16:56:15.157264+02	2020-05-31 16:56:15.157289+02	t	8	10	106
 288	filer_public/40/83/40830e44-4926-4017-83ce-64bc0117234b/97240.jpg	131216	7af2476aa4da091b349a1c3c75d77b7751b8680c	f	97240.jpg		\N	2020-05-31 23:53:30.600531+02	2020-05-31 23:53:30.600567+02	t	8	10	106
 289	filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg	155055	f48ad6b0c277c7de2b2c7e60b53302ba995c5efe	f	97266.jpg		\N	2020-06-01 01:06:37.146363+02	2020-06-01 01:06:37.146381+02	t	8	10	106
+290	filer_public/dd/b3/ddb39320-e8fa-4398-aa8c-ac452be4fc8c/97142.jpg	188300	5016d83116b19128dec609215744932188574644	f	97142.jpg		\N	2020-06-11 14:44:44.968265+02	2020-06-11 14:44:44.968415+02	t	8	10	106
+291	filer_public/5b/9b/5b9b034d-6719-40f1-a354-9fbbcd3fd8c4/97152.jpg	159963	83fcb05c60f2384247ab62fd2858ec564bd21425	f	97152.jpg		\N	2020-06-11 15:03:12.29715+02	2020-06-11 15:03:12.29717+02	t	8	10	106
+292	filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg	183518	fe595b51ee7e9a6dc752c2271fa0bbf3768f8e61	f	97162.jpg		\N	2020-06-11 15:13:36.731584+02	2020-06-11 15:13:36.73161+02	t	8	10	106
+293	filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg	162889	32def92a440406d94bb01fafc14fa50c2562c889	f	97175.jpg		\N	2020-06-11 15:21:39.455481+02	2020-06-11 15:21:39.455499+02	t	8	10	106
+294	filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg	169153	da9c04da3bfd7ad3b2e7d9e35e96092397365050	f	97182.jpg		\N	2020-06-11 15:28:23.551568+02	2020-06-11 15:28:23.551596+02	t	8	10	106
 \.
 
 
@@ -7859,6 +7923,11 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 287	752	662	2020-05-31 16:56:15.121487+02	\N	\N	\N	f	f	
 288	752	662	2020-05-31 23:53:30.5888+02	\N	\N	\N	f	f	
 289	752	662	2020-06-01 01:06:37.138219+02	\N	\N	\N	f	f	
+290	752	662	2020-06-11 14:44:44.924114+02	\N	\N	\N	f	f	
+291	752	662	2020-06-11 15:03:12.286529+02	\N	\N	\N	f	f	
+292	752	662	2020-06-11 15:13:36.723049+02	\N	\N	\N	f	f	
+293	752	662	2020-06-11 15:21:39.447195+02	\N	\N	\N	f	f	
+294	752	662	2020-06-11 15:28:23.540565+02	\N	\N	\N	f	f	
 \.
 
 
@@ -7974,6 +8043,7 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 1	2020-04-26 20:36:28.808627+02	2020-04-30 19:52:59.589927+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	1
 6	2020-05-01 12:21:00.288425+02	2020-05-01 12:21:00.288449+02	{}	\N	10	\N
 8	2020-05-30 18:25:16.153109+02	2020-05-30 18:54:58.126773+02	{}	\N	12	\N
+9	2020-06-04 20:35:31.407522+02	2020-06-04 20:35:31.416448+02	{}	\N	13	\N
 \.
 
 
@@ -7983,6 +8053,7 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 
 COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, cart_id, product_id) FROM stdin;
 14	83010	2020-05-30 18:54:58.125377+02	{}	1	8	7
+16	90321	2020-06-04 20:35:31.415312+02	{}	0	9	32
 \.
 
 
@@ -8195,6 +8266,11 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 82	1	287	83
 83	1	288	84
 84	1	289	85
+85	1	290	86
+86	1	291	87
+87	1	292	88
+88	1	293	89
+89	1	294	90
 \.
 
 
@@ -8316,6 +8392,11 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 120	16	83
 121	16	84
 122	16	85
+123	16	86
+124	16	87
+125	16	88
+126	16	89
+127	16	90
 \.
 
 
@@ -8343,10 +8424,11 @@ COPY public.weltladen_supplier (id, name) FROM stdin;
 --
 
 COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra, number, phonenumber, salutation) FROM stdin;
+13	0	2020-06-04 20:54:49.255673+02	{}	\N	\N	
 11	1	2020-05-12 22:02:10.818315+02	{}	2	\N	
 4	2	2020-05-17 21:14:58.217244+02	{}	1	+43 676 3239108	mr
 12	0	2020-05-31 11:57:40.706449+02	{}	\N	\N	
-10	2	2020-06-01 01:07:28.568326+02	{}	\N	\N	
+10	2	2020-06-11 21:17:02.390744+02	{}	\N	\N	
 \.
 
 
@@ -8396,6 +8478,9 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 77	2020-05-26 13:24:49.294532+02	2020-05-27 15:00:33.287932+02	t	MASCAO Kuvertüre Noir 200g	mascao-kuverture-noir-200g	76	4.990	97315	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
 83	2020-05-31 16:56:19.376252+02	2020-05-31 16:56:19.376329+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	82	1.590	97235	45	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE,PH
 85	2020-06-01 01:07:13.694673+02	2020-06-01 01:07:13.694692+02	t	COMPAÑERA Orange 50g	companera-orange-50g	84	1.790	97266	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
+86	2020-06-11 14:50:15.020673+02	2020-06-11 14:57:59.536583+02	t	SONRISA Mandel 80g	sonrisa-mandel-80g	85	2.190	97142	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
+88	2020-06-11 15:13:43.022226+02	2020-06-11 15:13:43.022247+02	t	SONRISA Noir 80g	sonrisa-noir-80g	87	2.190	97162	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+90	2020-06-11 15:28:25.835455+02	2020-06-11 15:28:25.835478+02	t	SONRISA Orange 80g	sonrisa-orange-80g	89	2.190	97182	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
 38	2020-05-06 16:43:24.308003+02	2020-05-25 13:32:36.709934+02	t	Kaffeekapsel Set - Espresso	kaffeekapsel-set-espresso	40	9.990	89805	28	135	2	t	f	f	f	f	\N	
 57	2020-05-08 14:55:03.099947+02	2020-05-08 15:42:15.122162+02	t	Teenetz klein	teenetz-klein	60	1.700	89809	28	135	2	t	f	f	f	f	\N	
 49	2020-05-07 15:03:05.821184+02	2020-05-20 15:43:50.728959+02	t	DARJEELING Grüntee lose 100g	darjeeling-gruntee-lose-100g	52	5.489	86085	32	135	2	t	t	t	t	t	2	IN
@@ -8409,6 +8494,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 76	2020-05-26 11:40:45.927426+02	2020-05-27 14:59:46.703887+02	t	MASCAO Noir 100g	mascao-noir-100g	75	2.990	97388	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
 24	2020-05-05 19:19:19.574164+02	2020-05-27 13:09:11.40655+02	t	MUNDO Vakuum 500g	mundo-vakuum-500g	24	8.990	90533	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
 25	2020-05-06 11:10:18.653798+02	2020-05-27 13:10:19.097042+02	t	MUNDO ESPRESSO Bohne 500g	mundo-espresso-bohne-500g	25	8.990	90555	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
+89	2020-06-11 15:21:42.057889+02	2020-06-11 15:21:42.057933+02	t	SONRISA Minze 80g	sonrisa-minze-80g	88	2.290	97175	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
 29	2020-05-06 11:53:17.235208+02	2020-05-18 10:50:40.156668+02	t	ADELANTE Bohne 250g	adelante-bohne-250g	29	5.490	90733	22	135	2	t	t	t	t	t	2	HN,PE
 30	2020-05-06 11:55:30.566591+02	2020-05-18 10:51:28.384732+02	t	ADELANTE Bohne 1kg	adelante-bohne-1kg	30	20.990	90712	22	135	2	t	t	t	t	t	2	HN,PE
 26	2020-05-06 11:14:13.759445+02	2020-05-27 13:11:01.489272+02	t	MUNDO Bohne 1kg	mundo-bohne-1kg	26	17.990	90527	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
@@ -8434,6 +8520,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 80	2020-05-28 11:07:34.957162+02	2020-05-28 11:07:34.957185+02	t	COMPAÑERA Noisette 50g	companera-noisette-50g	79	1.690	97220	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
 82	2020-05-28 14:33:00.313556+02	2020-05-28 14:33:00.313576+02	t	COMPAÑERA Ingwer-Zitrone 50g	companera-ingwer-zitrone-50g	81	1.690	97230	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
 84	2020-05-31 23:54:26.806277+02	2020-06-01 00:48:10.167166+02	t	COMPAÑERA Kokos 50g	companera-kokos-50g	83	1.790	97240	45	135	2	f	t	t	t	t	2	BO,DO,ID,PE
+87	2020-06-11 15:03:15.193618+02	2020-06-11 15:03:15.193639+02	t	SONRISA Kardamom 80g	sonrisa-kardamom-80g	86	2.290	97152	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
 \.
 
 
@@ -8772,6 +8859,36 @@ COPY public.weltladen_weltladenproduct_additional_manufacturers (id, weltladenpr
 328	85	49
 329	85	50
 330	85	24
+331	86	48
+332	86	40
+333	86	24
+334	86	42
+335	86	43
+336	86	47
+337	87	48
+338	87	40
+339	87	24
+340	87	42
+341	87	43
+342	87	47
+343	88	48
+344	88	40
+345	88	24
+346	88	42
+347	88	43
+348	88	47
+349	89	48
+350	89	40
+351	89	24
+352	89	42
+353	89	43
+354	89	47
+355	90	48
+356	90	40
+357	90	24
+358	90	42
+359	90	43
+360	90	47
 \.
 
 
@@ -8859,6 +8976,11 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 79	de	<p>Vollmilch &amp; Haselnuss</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit Haselnüssen</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	80	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVollmilchpulver<br>\nHaselnüsse (10%)<br>\nKakaomasse<br>\nMagermilchpulver<br>\nButterreinfett<br>\nVanilleschoten</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>572</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.380</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>20</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>47</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>46</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,17</td>\n\t\t</tr>\n\t</tbody>\n</table>
 83	de	<p>mit Kokosmilch</p>	<ul>\n\t<li>Feinste Bio-Schokolade mit exotischer Kokosnuss</li>\n\t<li>Besondere Rezeptur - mit Kokosmilch und Kokosblütenzucker</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Lateinamerika treffen in COMPAÑERA auf naturbelassenen Kokosblütenzucker aus Indonesien. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	84	<p><strong>Zutaten:</strong><br>\nKokosblütenzucker<br>\nKakaomasse <br>\nKokosraspel gemahlen (15%)<br>\nKakaobutter <br>\nKokosnussmilchpulver (5%) (Kokosnussmilch, Maltodextrin)<br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>563</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.340</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>27</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>43</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>38</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,16</td>\n\t\t</tr>\n\t</tbody>\n</table>
 84	de	<p>Vollmilch &amp; Orange</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit fruchtiger Orange</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, Ecuador, der Dominikanischen Republik und Peru treffen in COMPAÑERA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet Conpañera die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	85	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nKakaobutter <br>\nVollmilchpulver<br>\nKakaomasse <br>\nHaselnüsse<br>\nMagermilchpulver<br>\nButterreinfett<br>\nnatürliches Aroma (Orange)<br>\nVanilleschoten<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>565</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.350</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>37</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>22</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>51</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,19</td>\n\t\t</tr>\n\t</tbody>\n</table>
+85	de	<p>Vollmilch &amp; Mandel</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit Mandeln</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	86	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVollmilchpulver<br>\nMandeln (10%)<br>\nKakaomasse<br>\nHaselnüsse<br>\n </p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>563</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.350</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>37</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>19</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,19</td>\n\t\t</tr>\n\t</tbody>\n</table>
+86	de	<p>Vollmilch &amp; Kardamom</p>	<ul>\n\t<li>Feinste Bio-Vollmilchschokolade mit aromatischem Kardamom</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	87	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVollmilchpulver<br>\nKakaomasse<br>\nHaselnüsse<br>\nKardamom<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>555</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.310</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>35</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>20</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>52</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>51</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,19</td>\n\t\t</tr>\n\t</tbody>\n</table>
+87	de	<p>Zartbitterschokolade</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit mindestens 58% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	88	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nKakaobutter <br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>538</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.240</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>40</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
+88	de	<p>Zartbitter &amp; Minze</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit erfrischender Minze</li>\n\t<li>Mindestens 58% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	89	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nKakaobutter <br>\nnatürliches Aroma (Pfefferminze)<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>537</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.233</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>40</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
+89	de	<p>Zartbitter &amp; Orange</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit fruchtiger Orange</li>\n\t<li>Mindestens 58% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	90	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nKakaobutter <br>\nnatürliches Aroma (Orange)<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>538</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.240</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>40</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
 \.
 
 
@@ -8894,7 +9016,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_user_id_seq', 12, true);
+SELECT pg_catalog.setval('public.auth_user_id_seq', 13, true);
 
 
 --
@@ -9048,7 +9170,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 691, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 697, true);
 
 
 --
@@ -9076,14 +9198,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 92, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 97, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 806, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 852, true);
 
 
 --
@@ -9111,7 +9233,7 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 289, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 294, true);
 
 
 --
@@ -9209,14 +9331,14 @@ SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 3, true);
 -- Name: weltladen_cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 8, true);
+SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 9, true);
 
 
 --
 -- Name: weltladen_cartitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 15, true);
+SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 16, true);
 
 
 --
@@ -9272,14 +9394,14 @@ SELECT pg_catalog.setval('public.weltladen_orderpayment_id_seq', 1, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 84, true);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 89, true);
 
 
 --
 -- Name: weltladen_productpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 122, true);
+SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 127, true);
 
 
 --
@@ -9300,21 +9422,21 @@ SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 2, true);
 -- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 330, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 360, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 85, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 90, true);
 
 
 --
 -- Name: weltladen_weltladenproducttranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 84, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 89, true);
 
 
 --
