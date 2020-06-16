@@ -10,8 +10,10 @@ from shop.admin.defaults.order import OrderAdmin
 from shop.models.defaults.order import Order
 from shop.admin.delivery import DeliveryOrderAdminMixin
 from adminsortable2.admin import SortableAdminMixin
-from shop.admin.product import CMSPageAsCategoryMixin, UnitPriceMixin, ProductImageInline, InvalidateProductCacheMixin
-from weltladen.models import Manufacturer, Supplier, BioQualityLabel, WeltladenProduct, WeltladenCustomer
+from shop.admin.product import (CMSPageAsCategoryMixin, UnitPriceMixin, 
+                                ProductImageInline, InvalidateProductCacheMixin)
+from weltladen.models import (Manufacturer, Supplier, BioQualityLabel,
+                              WeltladenProduct, WeltladenCustomer)
 
 
 admin.site.site_header = "Weltladen Administration"
