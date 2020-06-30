@@ -36,3 +36,4 @@ django-shop-workdir_*
 .config/
 __pycache__/
 staticfiles/
+settings_local.py
