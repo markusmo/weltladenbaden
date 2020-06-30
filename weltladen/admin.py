@@ -9,6 +9,7 @@ from shop.admin.defaults import customer
 from shop.admin.defaults.order import OrderAdmin
 from shop.models.defaults.order import Order
 from shop.admin.delivery import DeliveryOrderAdminMixin
+from shop_sendcloud.admin import SendCloudOrderAdminMixin
 from adminsortable2.admin import SortableAdminMixin
 from shop.admin.product import (CMSPageAsCategoryMixin, UnitPriceMixin, 
                                 ProductImageInline, InvalidateProductCacheMixin)
@@ -21,7 +22,7 @@ admin.site.unregister(ThumbnailOption)
 
 
 @admin.register(Order)
-class OrderAdmin(DeliveryOrderAdminMixin, OrderAdmin):
+class OrderAdmin(DeliveryOrderAdminMixin, SendCloudOrderAdminMixin, OrderAdmin):
     pass
 
 
