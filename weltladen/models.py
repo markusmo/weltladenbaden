@@ -20,7 +20,8 @@ from shop.models.defaults.delivery import Delivery
 from shop.models.defaults.delivery_item import DeliveryItem
 from shop.models.defaults.order import Order
 from shop.models.defaults.mapping import ProductPage, ProductImage
-from shop.models.defaults.address import BillingAddress, ShippingAddress
+from shop_sendcloud.models.address import BillingAddress, ShippingAddress
+#from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
 from shop.models import address
 from shop.conf import app_settings
@@ -54,6 +55,12 @@ class WeltladenCustomer(BaseCustomer):
         max_length=5,
         choices=SALUTATION,
     )
+
+    @classmethod
+    def reorder_form_fields(self, field_order):
+        field_order.insert(0, 'salutation')
+        field_order.append('phone_number')
+        return field_order
 
     def get_number(self):
         return self.number
