@@ -1965,6 +1965,59 @@ ALTER SEQUENCE public.shop_notificationattachment_id_seq OWNED BY public.shop_no
 
 
 --
+-- Name: shop_sendcloud_shippingdestination; Type: TABLE; Schema: public; Owner: djangouser
+--
+
+CREATE TABLE public.shop_sendcloud_shippingdestination (
+    id integer NOT NULL,
+    country character varying(3) NOT NULL,
+    price numeric(30,2) NOT NULL,
+    shipping_method_id integer NOT NULL
+);
+
+
+ALTER TABLE public.shop_sendcloud_shippingdestination OWNER TO djangouser;
+
+--
+-- Name: shop_sendcloud_shippingdestination_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
+--
+
+CREATE SEQUENCE public.shop_sendcloud_shippingdestination_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_sendcloud_shippingdestination_id_seq OWNER TO djangouser;
+
+--
+-- Name: shop_sendcloud_shippingdestination_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
+--
+
+ALTER SEQUENCE public.shop_sendcloud_shippingdestination_id_seq OWNED BY public.shop_sendcloud_shippingdestination.id;
+
+
+--
+-- Name: shop_sendcloud_shippingmethod; Type: TABLE; Schema: public; Owner: djangouser
+--
+
+CREATE TABLE public.shop_sendcloud_shippingmethod (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    carrier character varying(32) NOT NULL,
+    min_weight numeric(6,3) NOT NULL,
+    max_weight numeric(8,3) NOT NULL,
+    updated_at timestamp with time zone NOT NULL,
+    CONSTRAINT shop_sendcloud_shippingmethod_id_check CHECK ((id >= 0))
+);
+
+
+ALTER TABLE public.shop_sendcloud_shippingmethod OWNER TO djangouser;
+
+--
 -- Name: weltladen_billingaddress; Type: TABLE; Schema: public; Owner: djangouser
 --
 
@@ -3014,6 +3067,13 @@ ALTER TABLE ONLY public.shop_notificationattachment ALTER COLUMN id SET DEFAULT 
 
 
 --
+-- Name: shop_sendcloud_shippingdestination id; Type: DEFAULT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.shop_sendcloud_shippingdestination ALTER COLUMN id SET DEFAULT nextval('public.shop_sendcloud_shippingdestination_id_seq'::regclass);
+
+
+--
 -- Name: weltladen_billingaddress id; Type: DEFAULT; Schema: public; Owner: djangouser
 --
 
@@ -3712,6 +3772,14 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 550	Can change bio quality label	139	change_bioqualitylabel
 551	Can delete bio quality label	139	delete_bioqualitylabel
 552	Can view bio quality label	139	view_bioqualitylabel
+553	Can add Shipping Destination	140	add_shippingdestination
+554	Can change Shipping Destination	140	change_shippingdestination
+555	Can delete Shipping Destination	140	delete_shippingdestination
+556	Can view Shipping Destination	140	view_shippingdestination
+557	Can add Shipping Method	141	add_shippingmethod
+558	Can change Shipping Method	141	change_shippingmethod
+559	Can delete Shipping Method	141	delete_shippingmethod
+560	Can view Shipping Method	141	view_shippingmethod
 \.
 
 
@@ -3724,9 +3792,9 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 2	!qIyv4xYdiE292blenyXr9eduHxBYU3k5EhvpGwyK	\N	f	9OmKacig9RrdWbzpDJH9KHFxkCE2			guest@somewhere.net	f	f	2016-01-20 12:49:10.545+01
 10	pbkdf2_sha256$150000$6lzHOKBrALS7$Qzc5V3VN1iaZGg0DBT4e4U4Z3hvAqnndFIk6KcctvLQ=	2020-05-01 12:37:51.926729+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
 11	!hRhQ0JyetX3vFiPZnOTEBzLoG2kSq2p6fv9riueH	\N	f	6j3TdFYz9FhuS5uyZ5LT8@deNufb			markus.mo@gmx.net	f	f	2020-05-06 22:02:43.087829+02
-4	pbkdf2_sha256$150000$l8ruPs8DuMkn$Dd+OJblLFtibKWDMqgF6CMSHsktTNhBxcvODxM5FQyw=	2020-05-12 22:02:25.918352+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 12	!vrxxGrlvmPUCPuGzKm473uGVwXA29iBxBVZNJqnu	\N	f	84jLT.wKpmd@6ouyM3pVA43jKMx4				f	f	2020-05-30 18:25:16.132496+02
 13	!NTjVmvcD93WsgO6JuE8bxSxmsw4k1nrbMAxAxcWe	\N	f	4b2xahdpSlvYEDD74bd7rAk8rTVr				f	f	2020-06-04 20:35:31.385574+02
+4	pbkdf2_sha256$180000$M4xZ2rIRLxiR$K+/CdniEMwF6ndVMdbNfwvj/ITZi6HYXpkvXKaTOfcg=	2020-06-17 23:00:01.826003+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 \.
 
 
@@ -4357,7 +4425,6 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 736	0	de	BootstrapColumnPlugin	2020-04-27 21:29:13.789115+02	2020-04-27 21:29:13.798059+02	735	12	3	2	003O00010001
 829	0	de	BootstrapColumnPlugin	2020-04-28 20:27:17.954588+02	2020-04-28 20:37:22.14227+02	828	101	3	1	003W00010001
 445	1	de	ProcessStepPlugin	2020-04-26 19:50:10.066481+02	2020-04-30 19:48:10.922742+02	437	80	6	4	002V00010001000100010002
-865	0	de	BreadcrumbPlugin	2020-04-26 19:50:05.311082+02	2020-04-29 20:25:46.552326+02	\N	33	1	0	0041
 1140	0	de	BreadcrumbPlugin	2020-04-26 19:50:07.085316+02	2020-04-30 19:54:39.985272+02	\N	49	1	0	004H
 738	1	de	TextPlugin	2020-04-27 21:29:27.970935+02	2020-04-27 21:32:24.861272+02	736	12	4	0	003O000100010002
 1141	0	de	BootstrapContainerPlugin	2020-04-26 19:50:06.904016+02	2020-04-30 19:54:40.046883+02	\N	50	1	1	004I
@@ -4374,13 +4441,8 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 1143	0	de	BootstrapColumnPlugin	2020-04-26 19:50:06.924874+02	2020-04-30 19:54:40.061767+02	1142	50	3	2	004I00010001
 770	0	de	HeadingPlugin	2020-04-27 21:40:16.544974+02	2020-04-27 21:40:16.550479+02	769	87	4	0	003R000100010001
 1147	0	de	ShopLeftExtension	2020-04-26 19:50:06.977494+02	2020-04-30 19:54:40.09487+02	1146	50	5	1	004I0001000100020001
-866	0	de	BootstrapContainerPlugin	2020-04-26 19:50:05.238092+02	2020-04-29 20:25:46.575532+02	\N	34	1	1	0042
-867	0	de	BootstrapRowPlugin	2020-04-26 19:50:05.244066+02	2020-04-29 20:25:46.581165+02	866	34	2	1	00420001
 772	2	de	TextPlugin	2020-04-27 21:45:23.452806+02	2020-04-27 21:49:32.292311+02	769	87	4	0	003R000100010003
 771	1	de	LeafletPlugin	2020-04-27 21:44:41.975959+02	2020-04-27 21:45:12.425404+02	769	87	4	0	003R000100010002
-870	1	de	ShopCatalogPlugin	2020-04-26 19:50:05.299093+02	2020-04-29 20:25:46.600588+02	868	34	4	0	0042000100010002
-868	0	de	BootstrapColumnPlugin	2020-04-26 19:50:05.255836+02	2020-04-29 20:25:46.587303+02	867	34	3	2	004200010001
-869	0	de	TextPlugin	2020-04-26 19:50:05.269796+02	2020-04-29 20:25:46.608979+02	868	34	4	0	0042000100010001
 769	0	de	BootstrapColumnPlugin	2020-04-27 21:40:03.18244+02	2020-04-27 21:40:03.192774+02	768	87	3	3	003R00010001
 1150	0	de	HeadingPlugin	2020-04-26 19:50:07.010388+02	2020-04-30 19:54:40.115886+02	1149	50	8	0	004I0001000100020001000100010001
 1149	0	de	BootstrapCardHeaderPlugin	2020-04-26 19:50:06.999243+02	2020-04-30 19:54:40.109259+02	1148	50	7	1	004I000100010002000100010001
@@ -4433,6 +4495,14 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 1179	2	de	BootstrapJumbotronPlugin	2020-04-29 20:58:31.177955+02	2020-05-02 16:03:30.064042+02	1175	6	2	0	004J0002
 1175	0	de	BootstrapContainerPlugin	2020-04-26 19:50:03.777868+02	2020-05-02 16:03:30.047474+02	\N	6	1	3	004J
 1178	0	de	TextPlugin	2020-04-29 21:00:10.104613+02	2020-05-02 16:03:30.084331+02	1177	6	4	0	004J000100010001
+1208	0	de	BreadcrumbPlugin	2020-04-26 19:50:05.311082+02	2020-06-17 23:00:30.869837+02	\N	33	1	0	004K
+1209	0	de	BootstrapContainerPlugin	2020-04-26 19:50:05.238092+02	2020-06-17 23:00:30.887066+02	\N	34	1	1	004L
+1210	0	de	BootstrapRowPlugin	2020-04-26 19:50:05.244066+02	2020-06-17 23:00:30.890619+02	1209	34	2	1	004L0001
+1213	1	de	ShopCatalogPlugin	2020-04-26 19:50:05.299093+02	2020-06-17 23:00:30.90631+02	1211	34	4	0	004L000100010002
+1211	0	de	BootstrapColumnPlugin	2020-04-26 19:50:05.255836+02	2020-06-17 23:00:30.895534+02	1210	34	3	2	004L00010001
+1212	0	de	TextPlugin	2020-04-26 19:50:05.269796+02	2020-06-17 23:00:30.911442+02	1211	34	4	0	004L000100010001
+1214	0	de	BreadcrumbPlugin	2020-06-17 23:00:56.275154+02	2020-06-17 23:00:56.280441+02	\N	111	1	0	004M
+1215	0	de	BreadcrumbPlugin	2020-06-17 23:00:56.275154+02	2020-06-17 23:00:59.120063+02	\N	113	1	0	004N
 \.
 
 
@@ -4495,16 +4565,34 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 44	markus	markus	2020-04-27 21:37:29.656057+02	2020-04-27 21:37:29.656073+02	2020-04-27 21:37:29.655846+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	43	f	22
 42	markus	markus	2020-04-27 21:37:07.016402+02	2020-04-27 21:49:35.043752+02	2020-04-27 21:37:07.016193+02	\N	t	t	id-contact	\N	weltladen/pages/default.html	f	\N	f		\N	f	de	0	41	f	21
 41	markus	markus	2020-04-27 21:36:39.515616+02	2020-04-27 21:39:01.16847+02	2020-04-27 21:37:07.016193+02	\N	t	t	id-contact	\N	weltladen/pages/default.html	f	\N	f		\N	t	de	0	42	f	21
-16	script	markus	2020-04-26 19:50:05.419778+02	2020-04-29 20:33:15.041114+02	2020-04-26 19:50:05.41956+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	f	de,en	0	15	f	8
-15	script	markus	2020-04-26 19:50:05.202321+02	2020-04-29 20:25:37.815794+02	2020-04-26 19:50:05.41956+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	t	de,en	0	16	f	8
 48	markus	markus	2020-04-27 21:58:50.255009+02	2020-04-28 20:37:22.082836+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	47	f	24
 36	script	markus	2020-04-26 19:50:09.380301+02	2020-04-29 21:18:47.023887+02	2020-04-26 19:50:09.380083+02	\N	f	f	password-reset-confirm	\N	weltladen/pages/default.html	f	\N	f	PasswordResetApp	\N	f	de,en	0	35	f	18
 47	markus	markus	2020-04-27 21:58:46.314331+02	2020-04-27 21:59:45.019561+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	48	f	24
 35	script	markus	2020-04-26 19:50:09.22055+02	2020-04-26 19:50:09.220573+02	2020-04-26 19:50:09.380083+02	\N	f	f	password-reset-confirm	\N	weltladen/pages/default.html	f	\N	f	PasswordResetApp	\N	t	de,en	0	36	f	18
 2	script	markus	2020-04-26 19:50:04.386148+02	2020-05-02 16:03:29.971688+02	2020-04-26 19:50:04.385884+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	f	de,en	0	1	f	1
 1	script	markus	2020-04-26 19:50:03.722639+02	2020-04-29 20:02:43.506516+02	2020-04-26 19:50:04.385884+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	t	de,en	0	2	f	1
-54	markus	markus	2020-05-02 16:33:13.182361+02	2020-05-02 16:33:13.182377+02	2020-05-02 16:33:13.182128+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	53	f	27
+54	markus	markus	2020-05-02 16:33:13.182361+02	2020-06-17 23:00:59.101918+02	2020-05-02 16:33:13.182128+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	53	f	27
+16	script	markus	2020-04-26 19:50:05.419778+02	2020-06-17 23:00:30.813104+02	2020-04-26 19:50:05.41956+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	f	de,en	0	15	f	8
+15	script	markus	2020-04-26 19:50:05.202321+02	2020-06-17 23:00:26.982484+02	2020-04-26 19:50:05.41956+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	t	de,en	0	16	f	8
 53	markus	markus	2020-05-02 16:33:01.786145+02	2020-05-02 16:33:07.045071+02	2020-05-02 16:33:13.182128+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	54	f	27
+57	marija	marija	2020-06-18 09:35:22.119027+02	2020-06-18 09:35:32.568474+02	2020-06-18 09:39:28.764661+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	66	f	30
+55	marija	marija	2020-06-18 09:34:15.675865+02	2020-06-18 09:34:30.650396+02	2020-06-18 09:39:21.720401+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	64	f	28
+56	marija	marija	2020-06-18 09:34:52.025171+02	2020-06-18 09:36:33.377518+02	2020-06-18 09:39:25.379519+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	65	f	29
+58	marija	marija	2020-06-18 09:35:57.131145+02	2020-06-18 09:36:07.6874+02	2020-06-18 09:39:31.936878+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	67	f	31
+64	marija	marija	2020-06-18 09:39:21.720673+02	2020-06-18 09:39:21.720688+02	2020-06-18 09:39:21.720401+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	55	f	28
+65	marija	marija	2020-06-18 09:39:25.379799+02	2020-06-18 09:39:25.379815+02	2020-06-18 09:39:25.379519+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	56	f	29
+66	marija	marija	2020-06-18 09:39:28.764945+02	2020-06-18 09:39:28.764962+02	2020-06-18 09:39:28.764661+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	57	f	30
+67	marija	marija	2020-06-18 09:39:31.937191+02	2020-06-18 09:39:31.937209+02	2020-06-18 09:39:31.936878+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	58	f	31
+68	marija	marija	2020-06-18 09:39:35.421899+02	2020-06-18 09:39:35.421914+02	2020-06-18 09:39:35.421625+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	59	f	32
+59	marija	marija	2020-06-18 09:36:57.641821+02	2020-06-18 09:37:07.275961+02	2020-06-18 09:39:35.421625+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	68	f	32
+69	marija	marija	2020-06-18 09:39:38.800069+02	2020-06-18 09:39:38.800087+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	60	f	33
+60	marija	marija	2020-06-18 09:37:24.260681+02	2020-06-18 09:37:35.533928+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	69	f	33
+70	marija	marija	2020-06-18 09:39:42.077354+02	2020-06-18 09:39:42.077372+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	61	f	34
+61	marija	marija	2020-06-18 09:37:53.857531+02	2020-06-18 09:38:10.349017+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	70	f	34
+71	marija	marija	2020-06-18 09:39:45.149761+02	2020-06-18 09:39:45.149777+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	62	f	35
+62	marija	marija	2020-06-18 09:38:30.923605+02	2020-06-18 09:38:40.352436+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	71	f	35
+72	marija	marija	2020-06-18 09:39:49.244545+02	2020-06-18 09:39:49.244561+02	2020-06-18 09:39:49.244276+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	63	f	36
+63	marija	marija	2020-06-18 09:38:55.804579+02	2020-06-18 09:39:06.258025+02	2020-06-18 09:39:49.244276+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	72	f	36
 \.
 
 
@@ -4609,6 +4697,42 @@ COPY public.cms_page_placeholders (id, page_id, placeholder_id) FROM stdin;
 106	53	112
 107	54	113
 108	54	114
+109	55	115
+110	55	116
+111	56	117
+112	56	118
+113	57	119
+114	57	120
+115	58	121
+116	58	122
+117	59	123
+118	59	124
+119	60	125
+120	60	126
+121	61	127
+122	61	128
+123	62	129
+124	62	130
+125	63	131
+126	63	132
+127	64	133
+128	64	134
+129	65	135
+130	65	136
+131	66	137
+132	66	138
+133	67	139
+134	67	140
+135	68	141
+136	68	142
+137	69	143
+138	69	144
+139	70	145
+140	70	146
+141	71	147
+142	71	148
+143	72	149
+144	72	150
 \.
 
 
@@ -4743,6 +4867,42 @@ COPY public.cms_placeholder (id, slot, default_width) FROM stdin;
 112	Main Content	\N
 113	Breadcrumb	\N
 114	Main Content	\N
+115	Breadcrumb	\N
+116	Main Content	\N
+117	Breadcrumb	\N
+118	Main Content	\N
+119	Breadcrumb	\N
+120	Main Content	\N
+121	Breadcrumb	\N
+122	Main Content	\N
+123	Breadcrumb	\N
+124	Main Content	\N
+125	Breadcrumb	\N
+126	Main Content	\N
+127	Breadcrumb	\N
+128	Main Content	\N
+129	Breadcrumb	\N
+130	Main Content	\N
+131	Breadcrumb	\N
+132	Main Content	\N
+133	Breadcrumb	\N
+134	Main Content	\N
+135	Breadcrumb	\N
+136	Main Content	\N
+137	Breadcrumb	\N
+138	Main Content	\N
+139	Breadcrumb	\N
+140	Main Content	\N
+141	Breadcrumb	\N
+142	Main Content	\N
+143	Breadcrumb	\N
+144	Main Content	\N
+145	Breadcrumb	\N
+146	Main Content	\N
+147	Breadcrumb	\N
+148	Main Content	\N
+149	Breadcrumb	\N
+150	Main Content	\N
 \.
 
 
@@ -4786,8 +4946,6 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 14	en	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-26 19:50:04.872651+02	t	t	1	7	16
 38	en	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-26 19:50:06.068966+02	t	t	1	19	40
 37	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-26 19:50:05.886282+02	t	t	0	19	39
-31	de	Onlineshop				onlineshop	onlineshop	f	\N	2020-04-26 19:50:05.231449+02	t	f	0	16	29
-29	de	Onlineshop				onlineshop	onlineshop	f	\N	2020-04-26 19:50:05.231449+02	t	t	0	15	31
 23	de	Personal Pages	\N	\N	\N	personal-pages	personal-pages	f	\N	2020-04-26 19:50:05.049653+02	t	f	0	12	21
 21	de	Personal Pages	\N	\N	\N	personal-pages	personal-pages	f	\N	2020-04-26 19:50:05.049653+02	t	t	0	11	23
 39	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-26 19:50:05.886282+02	t	f	0	20	37
@@ -4842,6 +5000,7 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 17	de	Datenschutzvereinbarung				datenschutz	legal/datenschutz	f	\N	2020-04-26 19:50:04.957671+02	t	t	0	9	19
 3	de	Home	\N	\N	\N	home		f	\N	2020-04-26 19:50:03.767495+02	t	f	0	2	1
 83	de	Kontakt				kontakt	kontakt/kontakt	f	\N	2020-04-27 21:37:23.204577+02	t	t	0	43	84
+31	de	Lebensmittel				lebensmittel	lebensmittel	f	\N	2020-04-26 19:50:05.231449+02	t	f	0	16	29
 88	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	f	0	48	87
 87	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	t	0	47	88
 16	en	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-26 19:50:04.872651+02	f	f	0	8	14
@@ -4855,8 +5014,27 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 79	de	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-26 19:50:09.916396+02	t	f	0	40	77
 77	de	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-26 19:50:09.916396+02	t	t	0	39	79
 1	de	Home	\N	\N	\N	home		f	\N	2020-04-26 19:50:03.767495+02	t	t	0	1	3
-94	de	Kaffee				kaffee	onlineshop/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	f	0	54	93
-93	de	Kaffee				kaffee	onlineshop/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	t	0	53	94
+29	de	Lebensmittel				lebensmittel	lebensmittel	f	\N	2020-04-26 19:50:05.231449+02	t	t	0	15	31
+94	de	Kaffee				kaffee	catalog/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	f	0	54	93
+93	de	Kaffee				kaffee	catalog/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	t	0	53	94
+104	de	Tee				tee	lebensmittel/tee	f	\N	2020-06-18 09:34:15.683346+02	t	f	0	64	95
+95	de	Tee				tee	lebensmittel/tee	f	\N	2020-06-18 09:34:15.683346+02	t	t	0	55	104
+105	de	Kakao & Zucker				kakao-zucker	lebensmittel/kakao-zucker	f	\N	2020-06-18 09:34:52.027003+02	t	f	0	65	96
+96	de	Kakao & Zucker				kakao-zucker	lebensmittel/kakao-zucker	f	\N	2020-06-18 09:34:52.027003+02	t	t	0	56	105
+106	de	Schokolade				schokolade	lebensmittel/schokolade	f	\N	2020-06-18 09:35:22.120237+02	t	f	0	66	97
+97	de	Schokolade				schokolade	lebensmittel/schokolade	f	\N	2020-06-18 09:35:22.120237+02	t	t	0	57	106
+107	de	Snacks				snacks	lebensmittel/snacks	f	\N	2020-06-18 09:35:57.13237+02	t	f	0	67	98
+98	de	Snacks				snacks	lebensmittel/snacks	f	\N	2020-06-18 09:35:57.13237+02	t	t	0	58	107
+108	de	Honig & Aufstrich				honig-aufstrich	lebensmittel/honig-aufstrich	f	\N	2020-06-18 09:36:57.642938+02	t	f	0	68	99
+99	de	Honig & Aufstrich				honig-aufstrich	lebensmittel/honig-aufstrich	f	\N	2020-06-18 09:36:57.642938+02	t	t	0	59	108
+109	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	f	0	69	100
+100	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	t	0	60	109
+110	de	Saucen & Öle				saucen-ole	lebensmittel/saucen-ole	f	\N	2020-06-18 09:37:53.858792+02	t	f	0	70	101
+101	de	Saucen & Öle				saucen-ole	lebensmittel/saucen-ole	f	\N	2020-06-18 09:37:53.858792+02	t	t	0	61	110
+111	de	Getreide & Müsli				getreide-musli	lebensmittel/getreide-musli	f	\N	2020-06-18 09:38:30.924778+02	t	f	0	71	102
+102	de	Getreide & Müsli				getreide-musli	lebensmittel/getreide-musli	f	\N	2020-06-18 09:38:30.924778+02	t	t	0	62	111
+112	de	Getränke				getranke	lebensmittel/getranke	f	\N	2020-06-18 09:38:55.80579+02	t	f	0	72	103
+103	de	Getränke				getranke	lebensmittel/getranke	f	\N	2020-06-18 09:38:55.80579+02	t	t	0	63	112
 \.
 
 
@@ -4888,7 +5066,16 @@ COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM st
 24	00030002	2	0	21	1
 21	0003	1	2	\N	1
 27	00070001	2	0	8	1
-8	0007	1	1	\N	1
+28	00070002	2	0	8	1
+29	00070003	2	0	8	1
+30	00070004	2	0	8	1
+31	00070005	2	0	8	1
+32	00070006	2	0	8	1
+33	00070007	2	0	8	1
+34	00070008	2	0	8	1
+35	00070009	2	0	8	1
+36	0007000A	2	0	8	1
+8	0007	1	10	\N	1
 \.
 
 
@@ -4897,7 +5084,7 @@ COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM st
 --
 
 COPY public.cms_urlconfrevision (id, revision) FROM stdin;
-1	4000d4b4-ecbc-4941-8391-3ce52aec5125
+1	94ddabd0-7873-46d8-9c54-6e6c9a912562
 \.
 
 
@@ -4944,11 +5131,6 @@ COPY public.cmsplugin_cascade_cascadeclipboard (id, identifier, data, created_at
 --
 
 COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossary_id) FROM stdin;
-865	{\n    "render_type": "catalog"\n}	\N
-866	{\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": "",\n    "background_and_color": "",\n    "hide_plugin": "",\n    "container_max_widths": {\n        "xs": 750,\n        "md": 970,\n        "sm": 750,\n        "lg": 1170\n    },\n    "media_queries": {\n        "xs": [\n            "(max-width: 768px)"\n        ],\n        "md": [\n            "(min-width: 992px)",\n            "(max-width: 1200px)"\n        ],\n        "sm": [\n            "(min-width: 768px)",\n            "(max-width: 992px)"\n        ],\n        "lg": [\n            "(min-width: 1200px)"\n        ]\n    }\n}	\N
-867	{}	\N
-868	{\n    "xs-column-width": "col",\n    "sm-column-width": "",\n    "md-column-width": "",\n    "lg-column-width": "",\n    "xs-column-offset": "",\n    "sm-column-offset": "",\n    "md-column-offset": "",\n    "lg-column-offset": "",\n    "xs-column-ordering": "",\n    "sm-column-ordering": "",\n    "md-column-ordering": "",\n    "lg-column-ordering": "",\n    "xs-responsive-utils": "",\n    "sm-responsive-utils": "",\n    "md-responsive-utils": "",\n    "lg-responsive-utils": "",\n    "hide_plugin": "",\n    "container_max_widths": {\n        "xs": 720,\n        "md": 940,\n        "sm": 720,\n        "lg": 1140\n    }\n}	\N
-870	{\n    "pagination": "auto",\n    "hide_plugin": ""\n}	\N
 924	{\n    "render_type": "soft-root"\n}	\N
 925	{\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": "",\n    "hide_plugin": "",\n    "container_max_widths": {\n        "xs": 750,\n        "md": 970,\n        "sm": 750,\n        "lg": 1170\n    },\n    "media_queries": {\n        "xs": [\n            "(max-width: 768px)"\n        ],\n        "md": [\n            "(min-width: 992px)",\n            "(max-width: 1200px)"\n        ],\n        "sm": [\n            "(min-width: 768px)",\n            "(max-width: 992px)"\n        ],\n        "lg": [\n            "(min-width: 1200px)"\n        ]\n    }\n}	\N
 926	{}	\N
@@ -5062,6 +5244,7 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 197	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h2",\n    "content": "Danke für Ihre Bestellung"\n}	\N
 202	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h5",\n    "content": "Anmerkungen zu Bestellung"\n}	\N
 266	{"content": "Sie m\\u00fcssen angemeldet sein, um Ihre Details \\u00e4ndern zu k\\u00f6nnen", "element_id": "", "tag_type": "h3"}	\N
+808	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h4",\n    "content": "Social Media"\n}	\N
 206	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "float_xs": "float-left",\n    "float_sm": "",\n    "float_md": "",\n    "float_lg": "",\n    "float_xl": "",\n    "icon_font": {\n        "model": "cmsplugin_cascade.iconfont",\n        "pk": 1\n    },\n    "symbol": "cart-arrow-down",\n    "link_content": "Erneut bestellen",\n    "button_type": "btn-success",\n    "button_size": "",\n    "button_options": [],\n    "icon_align": "icon-right",\n    "stretched_link": false\n}	\N
 207	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "float_xs": "float-right",\n    "float_sm": "",\n    "float_md": "",\n    "float_lg": "",\n    "float_xl": "",\n    "icon_font": {\n        "model": "cmsplugin_cascade.iconfont",\n        "pk": 1\n    },\n    "symbol": "cancel-circled",\n    "link_content": "Bestellung abbrechen",\n    "button_type": "btn-outline-warning",\n    "button_size": "",\n    "button_options": [],\n    "icon_align": "icon-right",\n    "stretched_link": false\n}	\N
 193	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
@@ -5550,7 +5733,6 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 805	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h4",\n    "content": "Kontakt"\n}	\N
 806	{\n    "hide_plugin": false,\n    "render_template": "cascade/bootstrap4/secmenu-unstyled-list.html",\n    "page_id": "id-contact",\n    "offset": 0,\n    "limit": 100\n}	\N
 807	{\n    "xs-column-width": "col-12",\n    "sm-column-width": "",\n    "md-column-width": "col-md",\n    "lg-column-width": "",\n    "xl-column-width": "",\n    "xs-column-offset": "",\n    "sm-column-offset": "",\n    "md-column-offset": "",\n    "lg-column-offset": "",\n    "xl-column-offset": "",\n    "xs-column-ordering": "",\n    "sm-column-ordering": "",\n    "md-column-ordering": "",\n    "lg-column-ordering": "",\n    "xl-column-ordering": "",\n    "xs-responsive-utils": "",\n    "sm-responsive-utils": "",\n    "md-responsive-utils": "",\n    "lg-responsive-utils": "",\n    "xl-responsive-utils": "",\n    "hide_plugin": "",\n    "container_max_widths": {\n        "xs": 157.5,\n        "md": 212.5,\n        "sm": 157.5,\n        "lg": 262.5\n    }\n}	\N
-808	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h4",\n    "content": "Social Media"\n}	\N
 810	{\n    "xs-column-width": "col-12",\n    "sm-column-width": "",\n    "md-column-width": "col-md",\n    "lg-column-width": "",\n    "xl-column-width": "",\n    "xs-column-offset": "",\n    "sm-column-offset": "",\n    "md-column-offset": "",\n    "lg-column-offset": "",\n    "xl-column-offset": "",\n    "xs-column-ordering": "",\n    "sm-column-ordering": "",\n    "md-column-ordering": "",\n    "lg-column-ordering": "",\n    "xl-column-ordering": "",\n    "xs-responsive-utils": "",\n    "sm-responsive-utils": "",\n    "md-responsive-utils": "",\n    "lg-responsive-utils": "",\n    "xl-responsive-utils": "",\n    "hide_plugin": "",\n    "container_max_widths": {\n        "xs": 157.5,\n        "md": 212.5,\n        "sm": 157.5,\n        "lg": 262.5\n    }\n}	\N
 811	{\n    "open_tag": "if",\n    "condition": "user.is_anonymous"\n}	\N
 812	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h4",\n    "content": "Mitmachen"\n}	\N
@@ -5578,6 +5760,13 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 1180	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
 1181	{\n    "xs-column-width": "col"\n}	\N
 1182	{\n    "hide_plugin": false\n}	\N
+1208	{"render_type": "catalog"}	\N
+1209	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "background_and_color": "", "hide_plugin": "", "container_max_widths": {"xs": 750, "md": 970, "sm": 750, "lg": 1170}, "media_queries": {"xs": ["(max-width: 768px)"], "md": ["(min-width: 992px)", "(max-width: 1200px)"], "sm": ["(min-width: 768px)", "(max-width: 992px)"], "lg": ["(min-width: 1200px)"]}}	\N
+1210	{}	\N
+1211	{"xs-column-width": "col", "sm-column-width": "", "md-column-width": "", "lg-column-width": "", "xs-column-offset": "", "sm-column-offset": "", "md-column-offset": "", "lg-column-offset": "", "xs-column-ordering": "", "sm-column-ordering": "", "md-column-ordering": "", "lg-column-ordering": "", "xs-responsive-utils": "", "sm-responsive-utils": "", "md-responsive-utils": "", "lg-responsive-utils": "", "hide_plugin": "", "container_max_widths": {"xs": 720, "md": 940, "sm": 720, "lg": 1140}}	\N
+1213	{"pagination": "auto", "hide_plugin": ""}	\N
+1214	{\n    "hide_plugin": false,\n    "render_type": "catalog"\n}	\N
+1215	{\n    "hide_plugin": false,\n    "render_type": "catalog"\n}	\N
 \.
 
 
@@ -6367,6 +6556,102 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 695	2020-06-11 15:13:43.038432+02	88	SONRISA Noir 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (87)"}}]	135	10
 696	2020-06-11 15:21:42.075729+02	89	SONRISA Minze 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (88)"}}]	135	10
 697	2020-06-11 15:28:25.85146+02	90	SONRISA Orange 80g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (89)"}}]	135	10
+698	2020-06-17 23:00:26.984702+02	15	Catalog	2	[{"changed": {"fields": ["Title", "Slug"]}}]	2	4
+699	2020-06-17 23:00:30.940129+02	15	Lebensmittel	2		2	4
+700	2020-06-17 23:00:59.133843+02	53	Kaffee	2		2	4
+701	2020-06-18 09:34:15.732287+02	55	Tee	1	[{"added": {}}]	2	10
+702	2020-06-18 09:34:30.653182+02	55	Tee	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+703	2020-06-18 09:34:52.091251+02	56	Kakao & Zucker	1	[{"added": {}}]	2	10
+704	2020-06-18 09:35:02.569019+02	56	Kakao & Zucker	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+705	2020-06-18 09:35:22.159557+02	57	Schokolade	1	[{"added": {}}]	2	10
+706	2020-06-18 09:35:32.570044+02	57	Schokolade	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+707	2020-06-18 09:35:57.169773+02	58	Snacks	1	[{"added": {}}]	2	10
+708	2020-06-18 09:36:07.689087+02	58	Snacks	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+709	2020-06-18 09:36:33.379922+02	56	Kakao & Zucker	2	[{"changed": {"fields": ["Slug"]}}]	2	10
+710	2020-06-18 09:36:57.691953+02	59	Honig & Aufstrich	1	[{"added": {}}]	2	10
+711	2020-06-18 09:37:07.277493+02	59	Honig & Aufstrich	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+712	2020-06-18 09:37:24.299863+02	60	Gewürze	1	[{"added": {}}]	2	10
+713	2020-06-18 09:37:35.535555+02	60	Gewürze	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+714	2020-06-18 09:37:53.895493+02	61	Saucen & Öle	1	[{"added": {}}]	2	10
+715	2020-06-18 09:38:02.972265+02	61	Saucen & Öle	2	[]	2	10
+716	2020-06-18 09:38:10.350746+02	61	Saucen & Öle	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+717	2020-06-18 09:38:30.960991+02	62	Getreide & Müsli	1	[{"added": {}}]	2	10
+718	2020-06-18 09:38:40.354211+02	62	Getreide & Müsli	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+719	2020-06-18 09:38:55.842599+02	63	Getränke	1	[{"added": {}}]	2	10
+720	2020-06-18 09:39:06.259747+02	63	Getränke	2	[{"changed": {"fields": ["Application", "X Frame Options"]}}]	2	10
+721	2020-06-18 09:39:21.746831+02	55	Tee	2		2	10
+722	2020-06-18 09:39:25.403354+02	56	Kakao & Zucker	2		2	10
+723	2020-06-18 09:39:28.790585+02	57	Schokolade	2		2	10
+724	2020-06-18 09:39:31.960706+02	58	Snacks	2		2	10
+725	2020-06-18 09:39:35.446807+02	59	Honig & Aufstrich	2		2	10
+726	2020-06-18 09:39:38.825633+02	60	Gewürze	2		2	10
+727	2020-06-18 09:39:42.103121+02	61	Saucen & Öle	2		2	10
+728	2020-06-18 09:39:45.174499+02	62	Getreide & Müsli	2		2	10
+729	2020-06-18 09:39:49.268778+02	63	Getränke	2		2	10
+730	2020-06-18 09:44:58.337988+02	37	Kaffeekapsel Set - milde Röstung	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "cms_pages"]}}]	135	10
+731	2020-06-18 09:45:28.832576+02	38	Kaffeekapsel Set - Espresso	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "cms_pages"]}}]	135	10
+732	2020-06-18 09:46:02.535604+02	39	Kaffeefilter Nr. 4 - 100 Stk.	2	[{"changed": {"fields": ["Short Description", "Description", "cms_pages"]}}]	135	10
+733	2020-06-18 09:57:31.431484+02	40	TANZANIA Schwarztee Teebeutel 40x2g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+734	2020-06-18 09:57:51.509123+02	41	CEYLON-DARJEELING Teebeutel 24x2g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+735	2020-06-18 09:58:08.798231+02	42	EARL GREY Teebeutel 24x2g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+736	2020-06-18 09:58:33.37158+02	43	AFRICAN DREAM Schwarztee lose 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+737	2020-06-18 09:58:52.115566+02	44	DARJEELING Schwarztee lose 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+738	2020-06-18 09:59:16.692447+02	45	ASSAM Schwarztee lose 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+739	2020-06-18 09:59:32.669462+02	46	CEYLON Schwarztee lose 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+740	2020-06-18 09:59:49.532989+02	47	INGWER CHAI Teebeutel 24x1,75g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+741	2020-06-18 10:00:07.37999+02	48	CEYLON-DARJEELING Grün Teebeutel 24x2g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+742	2020-06-18 10:00:25.919756+02	49	DARJEELING Grüntee lose 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+743	2020-06-18 10:02:10.575137+02	50	DARJEELING OOLONG Tee lose 75g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+744	2020-06-18 10:02:25.216816+02	51	CARCADE Hibiskustee lose 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+745	2020-06-18 10:02:40.474812+02	52	CARCADE CITRONELLA Teebeutel 20x2g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+746	2020-06-18 10:03:03.107007+02	53	VIEL PUR Teebeutel 20x1,5g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+747	2020-06-18 10:03:28.302881+02	54	VIEL GUT Teebeutel 20x1,5g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+748	2020-06-18 10:03:56.458745+02	55	VIEL FRISCH Teebeutel 20x1,5g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+749	2020-06-18 10:04:49.912784+02	56	Teefilter Papier 100 Stk.	2	[{"changed": {"fields": ["Short Description", "Description", "cms_pages"]}}]	135	10
+750	2020-06-18 10:05:05.263069+02	57	Teenetz klein	2	[{"changed": {"fields": ["Short Description", "Description", "cms_pages"]}}]	135	10
+751	2020-06-18 10:05:21.9691+02	58	Teenetz groß	2	[{"changed": {"fields": ["Short Description", "Description", "cms_pages"]}}]	135	10
+752	2020-06-18 10:05:40.764547+02	59	Kakao CARIÑO 125g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+753	2020-06-18 10:05:57.916963+02	60	EQUITA Trinkschokolade 375g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+754	2020-06-18 10:06:13.989681+02	61	MASCOBADO 1kg	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+755	2020-06-18 10:06:33.954488+02	62	Zuckersticks 1000 x 4g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+756	2020-06-18 10:06:52.996353+02	63	50 Schoko-Naps à 4,5g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+757	2020-06-18 10:07:15.114024+02	68	MASCAO Vollmilch 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+758	2020-06-18 10:07:28.42863+02	69	MASCAO Kokos 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+759	2020-06-18 10:07:49.824347+02	70	MASCAO Haselnuss 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+760	2020-06-18 10:09:06.931783+02	71	MASCAO Praliné 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+761	2020-06-18 10:09:29.163737+02	72	MASCAO Granatapfel 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+762	2020-06-18 10:09:48.00225+02	73	MASCAO Caramel 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+763	2020-06-18 10:10:10.525791+02	74	MASCAO Cappuccino 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+764	2020-06-18 10:10:27.22022+02	75	MASCAO Rum Trüffel 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+765	2020-06-18 10:10:44.113122+02	76	MASCAO Noir 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+766	2020-06-18 10:11:01.833095+02	77	MASCAO Kuvertüre Noir 200g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+767	2020-06-18 10:11:20.064532+02	78	COMPAÑERA Honig Krokant 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+768	2020-06-18 10:12:28.770619+02	79	COMPAÑERA Crispy 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+769	2020-06-18 10:12:41.058597+02	80	COMPAÑERA Noisette 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+770	2020-06-18 10:12:51.809632+02	81	COMPAÑERA Noir 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+771	2020-06-18 10:13:14.393652+02	82	COMPAÑERA Ingwer-Zitrone 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+772	2020-06-18 10:13:31.33768+02	83	COMPAÑERA Mocca 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+773	2020-06-18 10:13:53.764542+02	84	COMPAÑERA Kokos 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+774	2020-06-18 10:14:14.962908+02	85	COMPAÑERA Orange 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+775	2020-06-18 10:14:29.39715+02	86	SONRISA Mandel 80g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+776	2020-06-18 10:14:41.072895+02	87	SONRISA Kardamom 80g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+777	2020-06-18 10:15:01.758486+02	88	SONRISA Noir 80g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+778	2020-06-18 10:15:22.449179+02	89	SONRISA Minze 80g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+779	2020-06-18 10:15:37.861428+02	90	SONRISA Orange 80g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients", "cms_pages"]}}]	135	10
+780	2020-06-18 14:17:08.491806+02	91	Cremeschokolade Milch 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (90)"}}]	135	10
+781	2020-06-18 14:37:14.170349+02	91	Cremeschokolade Milch 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Gluten free", "Ingredients"]}}]	135	10
+782	2020-06-18 15:26:54.656935+02	92	Cremeschokolade Banane 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (91)"}}]	135	10
+783	2020-06-18 21:30:05.649111+02	93	Cremeschokolade Erdbeere 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (92)"}}]	135	10
+784	2020-06-19 22:00:07.905593+02	52	MIFRUTA	1	[{"added": {}}]	122	10
+785	2020-06-19 22:09:30.409033+02	94	Schoko-Rosinen 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (93)"}}]	135	10
+786	2020-06-19 22:11:37.796329+02	94	Schoko-Rosinen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+787	2020-06-19 22:15:56.848509+02	94	Schoko-Rosinen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+788	2020-06-19 22:17:44.047553+02	94	Schoko-Rosinen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+789	2020-06-19 22:34:11.964349+02	94	Schoko-Rosinen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+790	2020-06-22 10:59:33.945486+02	53	Candela	1	[{"added": {}}]	122	10
+791	2020-06-22 11:02:09.654554+02	95	Schoko-Paranüsse 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (94)"}}]	135	10
+792	2020-06-22 11:53:52.712593+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description"]}}]	135	10
+793	2020-06-22 11:55:00.299926+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description"]}}]	135	10
 \.
 
 
@@ -6514,6 +6799,8 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 137	weltladen	locations
 138	cmsplugin_cascade	contactuspluginmodel
 139	weltladen	bioqualitylabel
+140	shop_sendcloud	shippingdestination
+141	shop_sendcloud	shippingmethod
 \.
 
 
@@ -6649,6 +6936,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 128	cmsplugin_cascade	0028_cascade_clipboard	2020-05-17 20:18:12.770734+02
 129	weltladen	0012_auto_20200517_2018	2020-05-17 20:18:12.849145+02
 130	weltladen	0013_remove_weltladenproduct_country_of_origin	2020-05-17 21:18:16.445279+02
+131	shop_sendcloud	0001_initial	2020-06-30 21:29:15.076413+02
 \.
 
 
@@ -6667,9 +6955,10 @@ syd5hf3q9fppblwcdaxbu5tbgd9iddmk	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDd
 qtpszskiuwrbjclmszl3culhwnddpz2c	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-06-14 11:57:41.26403+02
 f7p2drnoeyywzd2s36o1y7hr32fowohh	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-06-18 20:54:49.543913+02
 umlq4gqgw7arkw2jl0264667xh89znj3	ODM2MzJhOGM2ODQ0ZWY5OTZhNjE1OWZmZjBkYzNkZmI2YTU0ZmQ0Mjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWV9	2020-05-26 22:03:35.532141+02
-h3wx0i70osbi24wnppfophpxaacx0682	YzgzNDk5ZjFkZjM2OGQzZjI0MGQ2Y2UzYzhjYTVjNzg4NjQzYzA2ZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZX0=	2020-06-25 21:17:03.652507+02
 o37wug4iv9mvnnwy8i515n19gif0qybi	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-31 21:14:58.566445+02
 btkkvd10sl8663eakzadyxbu5c399gz8	MDNiYTI4YjIyMzE1YTNmODBmMDEzNTlhOGQ1MjZlNzk0MmJhMDgyMjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3IjpmYWxzZSwiY21zX2xvZ19sYXRlc3QiOjMwN30=	2020-05-16 16:40:07.084549+02
+h3wx0i70osbi24wnppfophpxaacx0682	MGM4ZmViNGEyMjUxYzMzNjgxYTQxNDU1MGQ1Yzc5MjRmMjI5ZWE5Mzp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZSwiY21zX2xvZ19sYXRlc3QiOjc5M30=	2020-07-06 11:55:02.502364+02
+gnh4he5cptb8uamfzvcogzf8k3kxtvmd	YmMyODQ2ZDU1ZGFiYjk5MmFmZWM0NzNiNzJmZGQ5NDJlM2ZmMzQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-07-14 21:34:28.602558+02
 \.
 
 
@@ -6707,7 +6996,6 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 791	<div><a href="https://www.instagram.com/weltladenbaden/" target="_blank">Instagram</a><br>\n<a href="https://www.facebook.com/Weltladen-Baden-1618306061749181/" target="_blank">Facebook</a></div>
 748	<p class="adsimple-221124081">Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.</p>\n\n<p class="adsimple-221124081">Balance Global<br>\n<strong>ZVR:</strong> <span class="blob-code-inner blob-code-marker" data-code-marker="-">819231948</span></p>\n\n<p class="adsimple-221124081">Hauptplatz 9-13,<br>\n2500 Baden,<br>\nÖsterreich</p>\n\n<p class="adsimple-221124081"><strong>Organschaftliche Vertreter</strong><br>\nObmann/Obfrau: Jutta Enzersdorfer<br>\nObmann/Obfrau Stellvertreter: Jasmine Bachmann</p>\n\n<p class="adsimple-221124081"><strong>Vereinssitz:</strong> 2500 Baden<br>\n<strong>Tel.:</strong> +43 2252 45236<br>\n<strong>E-Mail:</strong> <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a></p>\n\n<p class="adsimple-221124081"><strong>Vereinszweck:</strong><br>\nZweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen. Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/impressum-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Impressum Generator von firmenwebseiten.at">Impressum Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc/behandlung/oberlidstraffung-obere-blepharoplastik-schlupflider-wien/" rel="follow" style="text-decoration: none;" target="_blank" title="Oberlidkorrektur (obere Blepharoplastik) Wien bei Dr. Wallentin">Dr. Wallentin</a></p>\n\n<h2 class="adsimple-221124081">EU-Streitschlichtung</h2>\n\n<p>Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten (ODR-Verordnung) möchten wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform) informieren.<br>\nVerbraucher haben die Möglichkeit, Beschwerden an die Online Streitbeilegungsplattform der Europäischen Kommission unter <a class="adsimple-221124081" href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=DE" rel="nofollow" target="_blank">http://ec.europa.eu/odr?tid=221124081</a> zu richten. Die dafür notwendigen Kontaktdaten finden Sie oberhalb in unserem Impressum.</p>\n\n<p>Wir möchten Sie jedoch darauf hinweisen, dass wir nicht bereit oder verpflichtet sind, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n\n<h2 class="adsimple-221124081">Haftung für Inhalte dieser Webseite</h2>\n\n<p>Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns korrekte und aktuelle Informationen bereitzustellen. Leider können wir keine Haftung für die Korrektheit aller Inhalte auf dieser Webseite übernehmen, speziell für jene die seitens Dritter bereitgestellt wurden.</p>\n\n<p>Sollten Ihnen problematische oder rechtswidrige Inhalte auffallen, bitten wir Sie uns umgehend zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Haftung für Links auf dieser Webseite</h2>\n\n<p>Unsere Webseite enthält Links zu anderen Webseiten für deren Inhalt wir nicht verantwortlich sind. Haftung für verlinkte Websites besteht laut <a class="adsimple-221124081" href="https://www.ris.bka.gv.at/Dokument.wxe?Abfrage=Bundesnormen&amp;Dokumentnummer=NOR40025813&amp;tid=221124081" rel="noopener nofollow" target="_blank">§ 17 ECG</a> für uns nicht, da wir keine Kenntnis rechtswidriger Tätigkeiten hatten und haben, uns solche Rechtswidrigkeiten auch bisher nicht aufgefallen sind und wir Links sofort entfernen würden, wenn uns Rechtswidrigkeiten bekannt werden.</p>\n\n<p>Wenn Ihnen rechtswidrige Links auf unserer Website auffallen, bitten wir Sie uns zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Urheberrechtshinweis</h2>\n\n<p>Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos) unterliegen dem Urheberrecht. Falls notwendig, werden wir die unerlaubte Nutzung von Teilen der Inhalte unserer Seite rechtlich verfolgen.</p>\n\n<h2 class="adsimple-221124081">Bildernachweis</h2>\n\n<p>Die Bilder, Fotos und Grafiken auf dieser Webseite sind urheberrechtlich geschützt.</p>\n\n<p>Die Bilderrechte liegen bei den folgenden Fotografen und Unternehmen:</p>\n\n<ul class="adsimple-221124081">\n\t<li class="adsimple-221124081">TODO</li>\n</ul>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.aboutbusiness.at" rel="follow" style="text-decoration: none;" target="_blank" title="">aboutbusiness.at</a></p>
 809	<div><a href="https://www.instagram.com/weltladenbaden/" target="_blank">Instagram</a><br>\n<a href="https://www.facebook.com/Weltladen-Baden-1618306061749181/" target="_blank">Facebook</a></div>
-869	<h2>Our Catalog List View</h2>\n
 882	<h1 style="text-align: center;">Willkommen auf unserer Homepage</h1>
 910	<p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 917	<h2><strong>§ 1 Grundlegende Bestimmungen</strong></h2>\n\n<div>1) Die nachstehenden Geschäftsbedingungen gelten für Verträge die über https://www.weltladen-baden.at geschlossen werden. Soweit nicht anders vereinbart, wird eigens von Ihnen verwendeten Bedingungen widersprochen.</div>\n\n<div>2) Verbraucher im Sinne dieser Regelung ist jede natürliche Person, die ein Rechtsgeschäft mit privaten Anliegen abschließt. Unternehmer ist jede natürliche oder juristische Person, die bei Abschluss des Rechtsgeschäfts im Sinne ihrer beruflichen oder gewerblichen Interessen handelt.</div>\n\n<h2><strong>§ 2 Zustandekommen des Vertrages</strong></h2>\n\n<div>1) Vertragsgegenstand ist der Verkauf von Waren.</div>\n\n<div>2) Mit der Bereitstellung eines Produktes in unserem Shop unterbreiten wir unseren Kunden ein verbindliches Angebot zum Abschluss eines Kaufvertrages.</div>\n\n<div>3) Alle zum Kauf beabsichtigten Produkte werden vom Kunden im „Warenkorb“ abgelegt. Nach Eingabe der persönlichen Daten und Zahlungsinformationen hat der Kunde die Möglichkeit alle eingegebenen Informationen zu überprüfen. Mit dem Absenden der Bestellung durch Klick auf die dafür vorgesehene Schaltfläche erklärt der Kunde rechtsverbindlich die Annahme des Angebotes. Damit ist der Kaufvertrag zustande gekommen.</div>\n\n<div>4) Die Übermittlung aller Informationen im Zusammenhang mit dem Vertragsschluss erfolgt automatisiert per E-Mail. Der Kunde hat daher sicherzustellen, dass die bei uns hinterlegte E-Mail-Adresse erreichbar ist.</div>\n\n<h2><strong>§ 3 Eigentumsvorbehalt un</strong><strong>d </strong><strong>Zurückbehaltungsrecht</strong></h2>\n\n<div>1) Ein Zurückbehaltungsrecht kann vom Kunden nur dann ausgeübt werden, sofern es nicht Forderungen aus selbigem Vertragsverhältnis sind.</div>\n\n<div>2) Bis zur vollständigen Zahlung des Kaufpreises bleibt die Ware Eigentum des Shop-Betreibers.</div>\n\n<h2><strong>§ 4 Bestimmungen zur Haftung</strong></h2>\n\n<div>1) Für Schäden an Körper oder der Gesundheit haften wir uneingeschränkt, sowie in Fällen des Vorsatzes und grober Fahrlässigkeit. Weiterhin bei arglistigem Verschweigen eines Mangels und in allen anderen gesetzlich geregelten Fällen. Die Haftung für Mängel im Rahmen der gesetzlichen Gewährleistung ist der entsprechenden Regelung in unseren Kundeninformationen zu entnehmen.</div>\n\n<div>2) Sofern wesentliche Vertragspflichten nicht erfüllt werden, ist die Haftung des Onlineshops bei leichter Fahrlässigkeit auf den vorhersehbaren, vertragstypischen Schaden beschränkt.</div>\n\n<div>3) Bei der Verletzung unwesentlicher Pflichten die aus dem Vertrag hervorgehen, ist die Haftung bei leicht fahrlässigen Pflichtverletzungen ausgeschlossen.</div>\n\n<div>4) Es erfolgt keine Haftung für die stetige Verfügbarkeit dieser Website und der darauf angebotenen Waren.</div>\n\n<h2><strong>§ 5 Rechtswahl</strong></h2>\n\n<div>1) Es gilt österreichisches Recht. Die Bestimmungen des UN-Kaufrechts finden ausdrücklich keine Anwendung.</div>\n\n<h2><strong>§ 6 Streitbeilegung</strong></h2>\n\n<div>1) Die Europäische Kommission stellt für die außergerichtliche Online-Streitbeilegung eine Plattform bereit (OS-Plattform), die unter <a href="http://ec.europa.eu/odr">http://ec.europa.eu/odr</a> abrufbar ist.</div>\n\n<h2><strong>§ 7 Vertragssprache, Vertragstextspeicherung</strong></h2>\n\n<div>1) Vertragssprache ist deutsch.</div>\n\n<div>2) Der vollständige Vertragstext wird von uns nicht gespeichert. Kunden können dies vor Absenden der Bestellung über die Druckfunktion des Browsers elektronisch sichern.</div>\n\n<h2><strong>§ 8 Preise und Zahlungsmodalitäten Merkmale der Waren</strong></h2>\n\n<div>1) Die ausgewiesenen Preise sowie die Versandkosten stellen Brutto-Preise dar.</div>\n\n<div>2) Versandkosten sind nicht im Kaufpreis enthalten. Sie sind explizit gekennzeichnet oder werden im Laufe des Bestellvorganges gesondert ausgewiesen und sind vom Kunden zusätzlich zu tragen, soweit nicht eine kostenfreie Lieferung zugesagt ist.</div>\n\n<div>3) Die zur Verfügung stehenden Zahlungsmethoden sind auf unserer Webseite oder in der jeweiligen Artikelbeschreibung ausgewiesen, spätestens aber im abschließenden Bestellprozess an der „Bezahlmethoden“ genannt. Soweit nicht anders angegeben, sind die Zahlungsansprüche aus dem Vertrag unmittelbar zur Zahlung fällig.</div>\n\n<div>4) Die wesentlichen Merkmale der Ware und/oder Dienstleistung finden sich in der Artikelbeschreibung und den ergänzenden Angaben auf unserer Internetseite.</div>\n\n<h2><strong>§ 9 Lieferbedingungen</strong></h2>\n\n<div>1) Lieferbedingungen, Lieferzeit sowie ggf. bestehende Beschränkungen zur Lieferung finden sich unter dem entsprechend bezeichneten Link in unserem Onlineshop oder in der jeweiligen Artikelbeschreibung.</div>\n\n<div>2) Für Verbraucher gilt, dass die Gefahr des zufälligen Untergangs oder der Verschlechterung der verkauften Ware während der Versendung erst mit der Übergabe der Ware an den Kunden übergeht. Die Regelung gilt unabhängig davon, ob die Versendung versichert oder unversichert erfolgt.</div>\n\n<h2><strong>§ 10 Gesetzliches Mängelhaftungsrecht</strong></h2>\n\n<div>1) Die gesetzlichen Mängelhaftungsrechte haben bestand.</div>\n\n<div>2) Verbraucher werden gebeten, die Ware bei Lieferung auf Vollständigkeit, offensichtliche Mängel und Transportschäden zu überprüfen und dem Shop-Betreiber schnellstmöglich mitzuteilen. Wird dem nicht vom Kunden nachgekommen hat dies keine Auswirkung auf seine gesetzlichen Gewährleistungsansprüche.</div>\n\n<address> </address>\n\n<address><b>Quelle:</b> Diese AGB und Kundeninformationen für Onlineshops wurden mit der Vorlage von <a href="https://website-tutor.com/agb-muster/" target="_blank">Website-Tutor.com</a> erstellt.</address>\n\n<div><br>\n </div>
@@ -6717,6 +7005,7 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 987	<p>Ich habe die <cms-plugin alt="Link - Datenschutzvereinbarung " title="Link - Datenschutzvereinbarung" id="988"></cms-plugin> gelesen.</p>
 1128	<p>Ich habe die <cms-plugin alt="Link - AGBs " title="Link - AGBs" id="1129"></cms-plugin> gelesen und verstanden.</p>
 1178	<h1 style="text-align: center;">Willkommen auf unserer Homepage</h1>
+1212	<h2>Our Catalog List View</h2>\n
 \.
 
 
@@ -6820,6 +7109,11 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 97	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg	2020-06-11 15:28:41.059686+02
 92	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg	2020-06-01 01:07:28.463267+02
 95	f9bde26a1556cd667f742bd34ec7c55e	filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg	2020-06-11 15:14:01.125715+02
+98	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg	2020-06-18 14:37:30.811912+02
+101	f9bde26a1556cd667f742bd34ec7c55e	filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg	2020-06-19 22:09:58.470373+02
+99	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg	2020-06-18 15:27:15.193055+02
+102	f9bde26a1556cd667f742bd34ec7c55e	filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg	2020-06-22 11:01:35.059435+02
+100	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg	2020-06-18 21:30:17.235267+02
 \.
 
 
@@ -7668,6 +7962,48 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 850	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-11 15:28:37.725277+02	97
 851	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-11 15:28:37.791337+02	97
 852	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-11 15:28:41.072314+02	97
+853	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-18 14:17:03.478405+02	98
+854	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-18 14:17:03.518831+02	98
+855	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-18 14:17:03.544818+02	98
+856	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-18 14:17:03.574376+02	98
+857	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-18 14:17:03.609196+02	98
+858	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-18 14:17:03.641675+02	98
+859	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-18 14:37:26.153996+02	98
+860	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-18 14:37:26.207686+02	98
+861	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-18 14:37:30.81983+02	98
+862	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-18 15:26:52.423898+02	99
+863	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-18 15:26:52.452584+02	99
+864	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-18 15:26:52.478815+02	99
+865	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-18 15:26:52.506586+02	99
+866	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-18 15:26:52.536967+02	99
+867	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-18 15:26:52.567892+02	99
+868	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-18 15:27:11.155221+02	99
+869	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-18 15:27:11.203505+02	99
+870	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-18 15:27:15.201738+02	99
+871	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-18 21:27:19.837581+02	100
+872	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-18 21:27:19.865685+02	100
+873	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-18 21:27:19.887571+02	100
+874	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-18 21:27:19.914926+02	100
+875	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-18 21:27:19.94411+02	100
+876	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-18 21:27:19.975721+02	100
+877	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-18 21:30:11.012159+02	100
+878	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-18 21:30:11.071536+02	100
+879	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-18 21:30:17.243407+02	100
+880	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-19 22:09:06.660648+02	101
+881	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-19 22:09:06.699833+02	101
+882	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-19 22:09:06.725409+02	101
+883	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-19 22:09:06.751473+02	101
+884	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-19 22:09:06.786524+02	101
+885	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-19 22:09:06.815649+02	101
+886	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__244x244_q85_crop_subsampling-2.jpg	2020-06-19 22:09:41.448558+02	101
+887	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__488x488_q85_crop_subsampling-2.jpg	2020-06-19 22:09:41.497806+02	101
+888	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg__250x250_q85_crop_subsampling-2.jpg	2020-06-19 22:09:58.479362+02	101
+889	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.067275+02	102
+890	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.106828+02	102
+891	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.13214+02	102
+892	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.157683+02	102
+893	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.186651+02	102
+894	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.223385+02	102
 \.
 
 
@@ -7800,6 +8136,11 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 292	filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg	183518	fe595b51ee7e9a6dc752c2271fa0bbf3768f8e61	f	97162.jpg		\N	2020-06-11 15:13:36.731584+02	2020-06-11 15:13:36.73161+02	t	8	10	106
 293	filer_public/1d/7d/1d7dc8f4-c12a-4ab0-a0ec-cbc3fcb37d2c/97175.jpg	162889	32def92a440406d94bb01fafc14fa50c2562c889	f	97175.jpg		\N	2020-06-11 15:21:39.455481+02	2020-06-11 15:21:39.455499+02	t	8	10	106
 294	filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg	169153	da9c04da3bfd7ad3b2e7d9e35e96092397365050	f	97182.jpg		\N	2020-06-11 15:28:23.551568+02	2020-06-11 15:28:23.551596+02	t	8	10	106
+295	filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg	206054	8d0359075aa9cb000bb3c19173feb7377836a7cc	f	97165.jpg		\N	2020-06-18 14:17:03.397003+02	2020-06-18 14:17:03.39703+02	t	8	10	106
+296	filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg	208628	ff02578c62bf5e290ba69a21f098c775d0df8866	f	97185.jpg		\N	2020-06-18 15:26:52.38781+02	2020-06-18 15:26:52.387841+02	t	8	10	106
+297	filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg	232960	9100e9b452ea50634ed2eb91abd8c6c515d5f775	f	97195.jpg		\N	2020-06-18 21:27:19.78024+02	2020-06-18 21:27:19.780267+02	t	8	10	106
+298	filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg	123758	10843f426df2d302cc519dde33da637e97c88eb9	f	97601.jpg		\N	2020-06-19 22:09:06.620637+02	2020-06-19 22:09:06.620654+02	t	8	10	106
+299	filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg	108580	21f91ced44b124c475d26722897f03e0d1535d90	f	97616.jpg		\N	2020-06-22 11:01:35.015742+02	2020-06-22 11:01:35.015774+02	t	8	10	106
 \.
 
 
@@ -7928,6 +8269,11 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 292	752	662	2020-06-11 15:13:36.723049+02	\N	\N	\N	f	f	
 293	752	662	2020-06-11 15:21:39.447195+02	\N	\N	\N	f	f	
 294	752	662	2020-06-11 15:28:23.540565+02	\N	\N	\N	f	f	
+295	752	662	2020-06-18 14:17:03.364755+02	\N	\N	\N	f	f	
+296	752	662	2020-06-18 15:26:52.361664+02	\N	\N	\N	f	f	
+297	752	662	2020-06-18 21:27:19.768985+02	\N	\N	\N	f	f	
+298	752	662	2020-06-19 22:09:06.614888+02	\N	\N	\N	f	f	
+299	752	662	2020-06-22 11:01:34.995032+02	\N	\N	\N	f	f	
 \.
 
 
@@ -7944,13 +8290,10 @@ COPY public.filer_thumbnailoption (id, name, width, height, crop, upscale) FROM 
 --
 
 COPY public.menus_cachekey (id, language, site, key) FROM stdin;
-104	de	1	cms_3.7.2_menu_nodes_de_1_10_user:draft
-105	de	1	cms_3.7.2_menu_nodes_de_1:public
-106	de	1	cms_3.7.2_menu_nodes_de_1_4_user:draft
-107	de	1	cms_3.7.2_menu_nodes_de_1_4_user:public
-108	de	1	cms_3.7.3_menu_nodes_de_1:public
-109	de	1	cms_3.7.3_menu_nodes_de_1_10_user:draft
-110	de	1	cms_3.7.3_menu_nodes_de_1_10_user:public
+115	de	1	cms_3.7.3_menu_nodes_de_1_10_user:draft
+116	de	1	cms_3.7.3_menu_nodes_de_1:public
+117	de	1	cms_3.7.3_menu_nodes_de_1_10_user:public
+118	de	1	cms_3.7.3_menu_nodes_de_1_4_user:public
 \.
 
 
@@ -8018,6 +8361,1386 @@ COPY public.shop_notificationattachment (id, attachment_id, notification_id) FRO
 
 
 --
+-- Data for Name: shop_sendcloud_shippingdestination; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.shop_sendcloud_shippingdestination (id, country, price, shipping_method_id) FROM stdin;
+1	AT	5.00	247
+2	AT	4.40	248
+3	AT	4.40	300
+4	AT	5.00	301
+5	AF	27.35	334
+6	AL	18.70	334
+7	DZ	18.70	334
+8	AD	18.70	334
+9	AO	27.35	334
+10	AI	27.35	334
+11	AG	27.35	334
+12	AR	27.35	334
+13	AM	18.70	334
+14	AW	27.35	334
+15	AU	31.05	334
+16	AZ	18.70	334
+17	BS	27.35	334
+18	BH	23.65	334
+19	BD	27.35	334
+20	BB	27.35	334
+21	BY	18.70	334
+22	BE	17.45	334
+23	BZ	27.35	334
+24	BJ	23.65	334
+25	BM	27.35	334
+26	BT	27.35	334
+27	BO	27.35	334
+28	BA	18.70	334
+29	BW	27.35	334
+30	BR	27.35	334
+31	BN	27.35	334
+32	BG	17.45	334
+33	BF	23.65	334
+34	BI	27.35	334
+35	CV	23.65	334
+36	KH	27.35	334
+37	CM	23.65	334
+38	CA	23.65	334
+39	KY	27.35	334
+40	CF	23.65	334
+41	TD	23.65	334
+42	CL	27.35	334
+43	CN	27.35	334
+44	CO	27.35	334
+45	KM	27.35	334
+46	CG	27.35	334
+47	CD	27.35	334
+48	CK	31.05	334
+49	CR	27.35	334
+50	HR	17.45	334
+51	CU	27.35	334
+52	CW	27.35	334
+53	CY	17.45	334
+54	CZ	17.45	334
+55	CI	23.65	334
+56	DK	17.45	334
+57	DJ	23.65	334
+58	DM	27.35	334
+59	DO	27.35	334
+60	EC	27.35	334
+61	EG	18.70	334
+62	SV	27.35	334
+63	GQ	27.35	334
+64	ER	23.65	334
+65	EE	17.45	334
+66	ET	23.65	334
+67	FK	27.35	334
+68	FO	18.70	334
+69	FJ	31.05	334
+70	FI	17.45	334
+71	FR	13.05	334
+72	GF	27.35	334
+73	PF	31.05	334
+74	GA	27.35	334
+75	GM	23.65	334
+76	GE	18.70	334
+77	DE	7.70	334
+78	GH	23.65	334
+79	GI	18.70	334
+80	GL	18.70	334
+81	GD	27.35	334
+82	GP	27.35	334
+83	GT	27.35	334
+84	GG	18.70	334
+85	GN	23.65	334
+86	GW	23.65	334
+87	GY	27.35	334
+88	HT	27.35	334
+89	VA	18.70	334
+90	HN	27.35	334
+91	HK	27.35	334
+92	HU	17.45	334
+93	IS	18.70	334
+94	IN	27.35	334
+95	ID	27.35	334
+96	IR	23.65	334
+97	IQ	23.65	334
+98	IE	17.45	334
+99	IL	18.70	334
+100	IT	15.80	334
+101	JM	27.35	334
+102	JP	27.35	334
+103	JE	18.70	334
+104	JO	23.65	334
+105	KZ	23.65	334
+106	KE	27.35	334
+107	KI	31.05	334
+108	KP	27.35	334
+109	KR	27.35	334
+110	KW	23.65	334
+111	KG	23.65	334
+112	LA	27.35	334
+113	LV	17.45	334
+114	LB	18.70	334
+115	LS	27.35	334
+116	LR	23.65	334
+117	LY	18.70	334
+118	LI	18.70	334
+119	LT	17.45	334
+120	LU	17.45	334
+121	MO	27.35	334
+122	MK	18.70	334
+123	MG	27.35	334
+124	MW	27.35	334
+125	MY	27.35	334
+126	MV	27.35	334
+127	ML	23.65	334
+128	MT	17.45	334
+129	MH	23.65	334
+130	MQ	27.35	334
+131	MR	23.65	334
+132	MU	27.35	334
+133	YT	27.35	334
+134	MX	27.35	334
+135	FM	23.65	334
+136	MD	18.70	334
+137	MC	17.45	334
+138	MN	27.35	334
+139	ME	18.70	334
+140	MS	27.35	334
+141	MA	18.70	334
+142	MZ	27.35	334
+143	MM	27.35	334
+144	NA	27.35	334
+145	NR	31.05	334
+146	NP	27.35	334
+147	NL	14.45	334
+148	NC	31.05	334
+149	NZ	31.05	334
+150	NI	27.35	334
+151	NE	23.65	334
+152	NG	23.65	334
+153	NU	31.05	334
+154	NO	18.70	334
+155	OM	23.65	334
+156	PK	27.35	334
+157	PW	23.65	334
+158	PS	18.70	334
+159	PA	27.35	334
+160	PG	31.05	334
+161	PY	27.35	334
+162	PE	27.35	334
+163	PH	27.35	334
+164	PN	31.05	334
+165	PL	17.45	334
+166	PT	17.45	334
+167	QA	23.65	334
+168	RO	17.45	334
+169	RU	18.70	334
+170	RW	27.35	334
+171	RE	27.35	334
+172	SH	27.35	334
+173	KN	27.35	334
+174	LC	27.35	334
+175	PM	27.35	334
+176	VC	27.35	334
+177	WS	31.05	334
+178	SM	18.70	334
+179	ST	27.35	334
+180	SA	23.65	334
+181	SN	23.65	334
+182	RS	18.70	334
+183	SC	27.35	334
+184	SL	23.65	334
+185	SG	27.35	334
+186	SX	27.35	334
+187	SK	17.45	334
+188	SI	17.45	334
+189	SB	31.05	334
+190	SO	23.65	334
+191	ZA	27.35	334
+192	SS	23.65	334
+193	ES	17.45	334
+194	LK	27.35	334
+195	SD	23.65	334
+196	SR	27.35	334
+197	SZ	27.35	334
+198	SE	17.45	334
+199	CH	18.70	334
+200	SY	18.70	334
+201	TW	27.35	334
+202	TJ	23.65	334
+203	TZ	27.35	334
+204	TH	27.35	334
+205	TL	27.35	334
+206	TG	23.65	334
+207	TK	31.05	334
+208	TO	31.05	334
+209	TT	27.35	334
+210	TN	18.70	334
+211	TR	18.70	334
+212	TM	23.65	334
+213	TC	27.35	334
+214	TV	31.05	334
+215	UG	27.35	334
+216	UA	18.70	334
+217	AE	23.65	334
+218	GB	16.85	334
+219	US	23.65	334
+220	UY	27.35	334
+221	UZ	23.65	334
+222	VU	31.05	334
+223	VE	27.35	334
+224	VN	27.35	334
+225	VG	27.35	334
+226	WF	31.05	334
+227	YE	23.65	334
+228	ZM	27.35	334
+229	ZW	27.35	334
+230	AF	37.90	335
+231	AL	25.70	335
+232	DZ	25.70	335
+233	AD	25.70	335
+234	AO	37.90	335
+235	AI	37.90	335
+236	AG	37.90	335
+237	AR	37.90	335
+238	AM	25.70	335
+239	AW	37.90	335
+240	AU	50.65	335
+241	AZ	25.70	335
+242	BS	37.90	335
+243	BH	31.50	335
+244	BD	37.90	335
+245	BB	37.90	335
+246	BY	25.70	335
+247	BE	19.10	335
+248	BZ	37.90	335
+249	BJ	31.50	335
+250	BM	37.90	335
+251	BT	37.90	335
+252	BO	37.90	335
+253	BA	25.70	335
+254	BW	37.90	335
+255	BR	37.90	335
+256	BN	37.90	335
+257	BG	19.10	335
+258	BF	31.50	335
+259	BI	37.90	335
+260	CV	31.50	335
+261	KH	37.90	335
+262	CM	31.50	335
+263	CA	31.50	335
+264	KY	37.90	335
+265	CF	31.50	335
+266	TD	31.50	335
+267	CL	37.90	335
+268	CN	37.90	335
+269	CO	37.90	335
+270	KM	37.90	335
+271	CG	37.90	335
+272	CD	37.90	335
+273	CK	50.65	335
+274	CR	37.90	335
+275	HR	19.10	335
+276	CU	37.90	335
+277	CW	37.90	335
+278	CY	19.10	335
+279	CZ	19.10	335
+280	CI	31.50	335
+281	DK	19.10	335
+282	DJ	31.50	335
+283	DM	37.90	335
+284	DO	37.90	335
+285	EC	37.90	335
+286	EG	25.70	335
+287	SV	37.90	335
+288	GQ	37.90	335
+289	ER	31.50	335
+290	EE	19.10	335
+291	ET	31.50	335
+292	FK	37.90	335
+293	FO	25.70	335
+294	FJ	50.65	335
+295	FI	19.10	335
+296	FR	13.05	335
+297	GF	37.90	335
+298	PF	50.65	335
+299	GA	37.90	335
+300	GM	31.50	335
+301	GE	25.70	335
+302	DE	7.70	335
+303	GH	31.50	335
+304	GI	25.70	335
+305	GL	25.70	335
+306	GD	37.90	335
+307	GP	37.90	335
+308	GT	37.90	335
+309	GG	25.70	335
+310	GN	31.50	335
+311	GW	31.50	335
+312	GY	37.90	335
+313	HT	37.90	335
+314	VA	25.70	335
+315	HN	37.90	335
+316	HK	37.90	335
+317	HU	19.10	335
+318	IS	25.70	335
+319	IN	37.90	335
+320	ID	37.90	335
+321	IR	31.50	335
+322	IQ	31.50	335
+323	IE	19.10	335
+324	IL	25.70	335
+325	IT	15.80	335
+326	JM	37.90	335
+327	JP	37.90	335
+328	JE	25.70	335
+329	JO	31.50	335
+330	KZ	31.50	335
+331	KE	37.90	335
+332	KI	50.65	335
+333	KP	37.90	335
+334	KR	37.90	335
+335	KW	31.50	335
+336	KG	31.50	335
+337	LA	37.90	335
+338	LV	19.10	335
+339	LB	25.70	335
+340	LS	37.90	335
+341	LR	31.50	335
+342	LY	25.70	335
+343	LI	25.70	335
+344	LT	19.10	335
+345	LU	19.10	335
+346	MO	37.90	335
+347	MK	25.70	335
+348	MG	37.90	335
+349	MW	37.90	335
+350	MY	37.90	335
+351	MV	37.90	335
+352	ML	31.50	335
+353	MT	19.10	335
+354	MH	31.50	335
+355	MQ	37.90	335
+356	MR	31.50	335
+357	MU	37.90	335
+358	YT	37.90	335
+359	MX	37.90	335
+360	FM	31.50	335
+361	MD	25.70	335
+362	MC	19.10	335
+363	MN	37.90	335
+364	ME	25.70	335
+365	MS	37.90	335
+366	MA	25.70	335
+367	MZ	37.90	335
+368	MM	37.90	335
+369	NA	37.90	335
+370	NR	50.65	335
+371	NP	37.90	335
+372	NL	14.45	335
+373	NC	50.65	335
+374	NZ	50.65	335
+375	NI	37.90	335
+376	NE	31.50	335
+377	NG	31.50	335
+378	NU	50.65	335
+379	NO	25.70	335
+380	OM	31.50	335
+381	PK	37.90	335
+382	PW	31.50	335
+383	PS	25.70	335
+384	PA	37.90	335
+385	PG	50.65	335
+386	PY	37.90	335
+387	PE	37.90	335
+388	PH	37.90	335
+389	PN	50.65	335
+390	PL	19.10	335
+391	PT	19.10	335
+392	QA	31.50	335
+393	RO	19.10	335
+394	RU	25.70	335
+395	RW	37.90	335
+396	RE	37.90	335
+397	SH	37.90	335
+398	KN	37.90	335
+399	LC	37.90	335
+400	PM	37.90	335
+401	VC	37.90	335
+402	WS	50.65	335
+403	SM	25.70	335
+404	ST	37.90	335
+405	SA	31.50	335
+406	SN	31.50	335
+407	RS	25.70	335
+408	SC	37.90	335
+409	SL	31.50	335
+410	SG	37.90	335
+411	SX	37.90	335
+412	SK	19.10	335
+413	SI	19.10	335
+414	SB	50.65	335
+415	SO	31.50	335
+416	ZA	37.90	335
+417	SS	31.50	335
+418	ES	19.10	335
+419	LK	37.90	335
+420	SD	31.50	335
+421	SR	37.90	335
+422	SZ	37.90	335
+423	SE	19.10	335
+424	CH	25.70	335
+425	SY	25.70	335
+426	TW	37.90	335
+427	TJ	31.50	335
+428	TZ	37.90	335
+429	TH	37.90	335
+430	TL	37.90	335
+431	TG	31.50	335
+432	TK	50.65	335
+433	TO	50.65	335
+434	TT	37.90	335
+435	TN	25.70	335
+436	TR	25.70	335
+437	TM	31.50	335
+438	TC	37.90	335
+439	TV	50.65	335
+440	UG	37.90	335
+441	UA	25.70	335
+442	AE	31.50	335
+443	GB	16.85	335
+444	US	31.50	335
+445	UY	37.90	335
+446	UZ	31.50	335
+447	VU	50.65	335
+448	VE	37.90	335
+449	VN	37.90	335
+450	VG	37.90	335
+451	WF	50.65	335
+452	YE	31.50	335
+453	ZM	37.90	335
+454	ZW	37.90	335
+455	AF	50.65	336
+456	AL	31.25	336
+457	DZ	31.25	336
+458	AD	31.25	336
+459	AO	50.65	336
+460	AI	50.65	336
+461	AG	50.65	336
+462	AR	50.65	336
+463	AM	31.25	336
+464	AW	50.65	336
+465	AU	76.15	336
+466	AZ	31.25	336
+467	BS	50.65	336
+468	BH	41.10	336
+469	BD	50.65	336
+470	BB	50.65	336
+471	BY	31.25	336
+472	BE	24.05	336
+473	BZ	50.65	336
+474	BJ	41.10	336
+475	BM	50.65	336
+476	BT	50.65	336
+477	BO	50.65	336
+478	BA	31.25	336
+479	BW	50.65	336
+480	BR	50.65	336
+481	BN	50.65	336
+482	BG	24.05	336
+483	BF	41.10	336
+484	BI	50.65	336
+485	CV	41.10	336
+486	KH	50.65	336
+487	CM	41.10	336
+488	CA	41.10	336
+489	KY	50.65	336
+490	CF	41.10	336
+491	TD	41.10	336
+492	CL	50.65	336
+493	CN	50.65	336
+494	CO	50.65	336
+495	KM	50.65	336
+496	CG	50.65	336
+497	CD	50.65	336
+498	CK	76.15	336
+499	CR	50.65	336
+500	HR	24.05	336
+501	CU	50.65	336
+502	CW	50.65	336
+503	CY	24.05	336
+504	CZ	24.05	336
+505	CI	41.10	336
+506	DK	24.05	336
+507	DJ	41.10	336
+508	DM	50.65	336
+509	DO	50.65	336
+510	EC	50.65	336
+511	EG	31.25	336
+512	SV	50.65	336
+513	GQ	50.65	336
+514	ER	41.10	336
+515	EE	24.05	336
+516	ET	41.10	336
+517	FK	50.65	336
+518	FO	31.25	336
+519	FJ	76.15	336
+520	FI	24.05	336
+521	FR	13.05	336
+522	GF	50.65	336
+523	PF	76.15	336
+524	GA	50.65	336
+525	GM	41.10	336
+526	GE	31.25	336
+527	DE	7.70	336
+528	GH	41.10	336
+529	GI	31.25	336
+530	GL	31.25	336
+531	GD	50.65	336
+532	GP	50.65	336
+533	GT	50.65	336
+534	GG	31.25	336
+535	GN	41.10	336
+536	GW	41.10	336
+537	GY	50.65	336
+538	HT	50.65	336
+539	VA	31.25	336
+540	HN	50.65	336
+541	HK	50.65	336
+542	HU	24.05	336
+543	IS	31.25	336
+544	IN	50.65	336
+545	ID	50.65	336
+546	IR	41.10	336
+547	IQ	41.10	336
+548	IE	24.05	336
+549	IL	31.25	336
+550	IT	15.80	336
+551	JM	50.65	336
+552	JP	50.65	336
+553	JE	31.25	336
+554	JO	41.10	336
+555	KZ	41.10	336
+556	KE	50.65	336
+557	KI	76.15	336
+558	KP	50.65	336
+559	KR	50.65	336
+560	KW	41.10	336
+561	KG	41.10	336
+562	LA	50.65	336
+563	LV	24.05	336
+564	LB	31.25	336
+565	LS	50.65	336
+566	LR	41.10	336
+567	LY	31.25	336
+568	LI	31.25	336
+569	LT	24.05	336
+570	LU	24.05	336
+571	MO	50.65	336
+572	MK	31.25	336
+573	MG	50.65	336
+574	MW	50.65	336
+575	MY	50.65	336
+576	MV	50.65	336
+577	ML	41.10	336
+578	MT	24.05	336
+579	MH	41.10	336
+580	MQ	50.65	336
+581	MR	41.10	336
+582	MU	50.65	336
+583	YT	50.65	336
+584	MX	50.65	336
+585	FM	41.10	336
+586	MD	31.25	336
+587	MC	24.05	336
+588	MN	50.65	336
+589	ME	31.25	336
+590	MS	50.65	336
+591	MA	31.25	336
+592	MZ	50.65	336
+593	MM	50.65	336
+594	NA	50.65	336
+595	NR	76.15	336
+596	NP	50.65	336
+597	NL	14.45	336
+598	NC	76.15	336
+599	NZ	76.15	336
+600	NI	50.65	336
+601	NE	41.10	336
+602	NG	41.10	336
+603	NU	76.15	336
+604	NO	31.25	336
+605	OM	41.10	336
+606	PK	50.65	336
+607	PW	41.10	336
+608	PS	31.25	336
+609	PA	50.65	336
+610	PG	76.15	336
+611	PY	50.65	336
+612	PE	50.65	336
+613	PH	50.65	336
+614	PN	76.15	336
+615	PL	24.05	336
+616	PT	24.05	336
+617	QA	41.10	336
+618	RO	24.05	336
+619	RU	31.25	336
+620	RW	50.65	336
+621	RE	50.65	336
+622	SH	50.65	336
+623	KN	50.65	336
+624	LC	50.65	336
+625	PM	50.65	336
+626	VC	50.65	336
+627	WS	76.15	336
+628	SM	31.25	336
+629	ST	50.65	336
+630	SA	41.10	336
+631	SN	41.10	336
+632	RS	31.25	336
+633	SC	50.65	336
+634	SL	41.10	336
+635	SG	50.65	336
+636	SX	50.65	336
+637	SK	24.05	336
+638	SI	24.05	336
+639	SB	76.15	336
+640	SO	41.10	336
+641	ZA	50.65	336
+642	SS	41.10	336
+643	ES	24.05	336
+644	LK	50.65	336
+645	SD	41.10	336
+646	SR	50.65	336
+647	SZ	50.65	336
+648	SE	24.05	336
+649	CH	31.25	336
+650	SY	31.25	336
+651	TW	50.65	336
+652	TJ	41.10	336
+653	TZ	50.65	336
+654	TH	50.65	336
+655	TL	50.65	336
+656	TG	41.10	336
+657	TK	76.15	336
+658	TO	76.15	336
+659	TT	50.65	336
+660	TN	31.25	336
+661	TR	31.25	336
+662	TM	41.10	336
+663	TC	50.65	336
+664	TV	76.15	336
+665	UG	50.65	336
+666	UA	31.25	336
+667	AE	41.10	336
+668	GB	16.85	336
+669	US	41.10	336
+670	UY	50.65	336
+671	UZ	41.10	336
+672	VU	76.15	336
+673	VE	50.65	336
+674	VN	50.65	336
+675	VG	50.65	336
+676	WF	76.15	336
+677	YE	41.10	336
+678	ZM	50.65	336
+679	ZW	50.65	336
+680	AF	95.30	337
+681	AL	49.20	337
+682	DZ	49.20	337
+683	AD	49.20	337
+684	AO	95.30	337
+685	AI	95.30	337
+686	AG	95.30	337
+687	AR	95.30	337
+688	AM	49.20	337
+689	AW	95.30	337
+690	AU	139.95	337
+691	AZ	49.20	337
+692	BS	95.30	337
+693	BH	69.80	337
+694	BD	95.30	337
+695	BB	95.30	337
+696	BY	49.20	337
+697	BE	27.25	337
+698	BZ	95.30	337
+699	BJ	69.80	337
+700	BM	95.30	337
+701	BT	95.30	337
+702	BO	95.30	337
+703	BA	49.20	337
+704	BW	95.30	337
+705	BR	95.30	337
+706	BN	95.30	337
+707	BG	27.25	337
+708	BF	69.80	337
+709	BI	95.30	337
+710	CV	69.80	337
+711	KH	95.30	337
+712	CM	69.80	337
+713	CA	69.80	337
+714	KY	95.30	337
+715	CF	69.80	337
+716	TD	69.80	337
+717	CL	95.30	337
+718	CN	95.30	337
+719	CO	95.30	337
+720	KM	95.30	337
+721	CG	95.30	337
+722	CD	95.30	337
+723	CK	139.95	337
+724	CR	95.30	337
+725	HR	27.25	337
+726	CU	95.30	337
+727	CW	95.30	337
+728	CY	27.25	337
+729	CZ	27.25	337
+730	CI	69.80	337
+731	DK	27.25	337
+732	DJ	69.80	337
+733	DM	95.30	337
+734	DO	95.30	337
+735	EC	95.30	337
+736	EG	49.20	337
+737	SV	95.30	337
+738	GQ	95.30	337
+739	ER	69.80	337
+740	EE	27.25	337
+741	ET	69.80	337
+742	FK	95.30	337
+743	FO	49.20	337
+744	FJ	139.95	337
+745	FI	27.25	337
+746	FR	13.05	337
+747	GF	95.30	337
+748	PF	139.95	337
+749	GA	95.30	337
+750	GM	69.80	337
+751	GE	49.20	337
+752	DE	7.70	337
+753	GH	69.80	337
+754	GI	49.20	337
+755	GL	49.20	337
+756	GD	95.30	337
+757	GP	95.30	337
+758	GT	95.30	337
+759	GG	49.20	337
+760	GN	69.80	337
+761	GW	69.80	337
+762	GY	95.30	337
+763	HT	95.30	337
+764	VA	49.20	337
+765	HN	95.30	337
+766	HK	95.30	337
+767	HU	27.25	337
+768	IS	49.20	337
+769	IN	95.30	337
+770	ID	95.30	337
+771	IR	69.80	337
+772	IQ	69.80	337
+773	IE	27.25	337
+774	IL	49.20	337
+775	IT	15.80	337
+776	JM	95.30	337
+777	JP	95.30	337
+778	JE	49.20	337
+779	JO	69.80	337
+780	KZ	69.80	337
+781	KE	95.30	337
+782	KI	139.95	337
+783	KP	95.30	337
+784	KR	95.30	337
+785	KW	69.80	337
+786	KG	69.80	337
+787	LA	95.30	337
+788	LV	27.25	337
+789	LB	49.20	337
+790	LS	95.30	337
+791	LR	69.80	337
+792	LY	49.20	337
+793	LI	49.20	337
+794	LT	27.25	337
+795	LU	27.25	337
+796	MO	95.30	337
+797	MK	49.20	337
+798	MG	95.30	337
+799	MW	95.30	337
+800	MY	95.30	337
+801	MV	95.30	337
+802	ML	69.80	337
+803	MT	27.25	337
+804	MH	69.80	337
+805	MQ	95.30	337
+806	MR	69.80	337
+807	MU	95.30	337
+808	YT	95.30	337
+809	MX	95.30	337
+810	FM	69.80	337
+811	MD	49.20	337
+812	MC	27.25	337
+813	MN	95.30	337
+814	ME	49.20	337
+815	MS	95.30	337
+816	MA	49.20	337
+817	MZ	95.30	337
+818	MM	95.30	337
+819	NA	95.30	337
+820	NR	139.95	337
+821	NP	95.30	337
+822	NL	14.45	337
+823	NC	139.95	337
+824	NZ	139.95	337
+825	NI	95.30	337
+826	NE	69.80	337
+827	NG	69.80	337
+828	NU	139.95	337
+829	NO	49.20	337
+830	OM	69.80	337
+831	PK	95.30	337
+832	PW	69.80	337
+833	PS	49.20	337
+834	PA	95.30	337
+835	PG	139.95	337
+836	PY	95.30	337
+837	PE	95.30	337
+838	PH	95.30	337
+839	PN	139.95	337
+840	PL	27.25	337
+841	PT	27.25	337
+842	QA	69.80	337
+843	RO	27.25	337
+844	RU	49.20	337
+845	RW	95.30	337
+846	RE	95.30	337
+847	SH	95.30	337
+848	KN	95.30	337
+849	LC	95.30	337
+850	PM	95.30	337
+851	VC	95.30	337
+852	WS	139.95	337
+853	SM	49.20	337
+854	ST	95.30	337
+855	SA	69.80	337
+856	SN	69.80	337
+857	RS	49.20	337
+858	SC	95.30	337
+859	SL	69.80	337
+860	SG	95.30	337
+861	SX	95.30	337
+862	SK	27.25	337
+863	SI	27.25	337
+864	SB	139.95	337
+865	SO	69.80	337
+866	ZA	95.30	337
+867	SS	69.80	337
+868	ES	27.25	337
+869	LK	95.30	337
+870	SD	69.80	337
+871	SR	95.30	337
+872	SZ	95.30	337
+873	SE	27.25	337
+874	CH	49.20	337
+875	SY	49.20	337
+876	TW	95.30	337
+877	TJ	69.80	337
+878	TZ	95.30	337
+879	TH	95.30	337
+880	TL	95.30	337
+881	TG	69.80	337
+882	TK	139.95	337
+883	TO	139.95	337
+884	TT	95.30	337
+885	TN	49.20	337
+886	TR	49.20	337
+887	TM	69.80	337
+888	TC	95.30	337
+889	TV	139.95	337
+890	UG	95.30	337
+891	UA	49.20	337
+892	AE	69.80	337
+893	GB	16.85	337
+894	US	69.80	337
+895	UY	95.30	337
+896	UZ	69.80	337
+897	VU	139.95	337
+898	VE	95.30	337
+899	VN	95.30	337
+900	VG	95.30	337
+901	WF	139.95	337
+902	YE	69.80	337
+903	ZM	95.30	337
+904	ZW	95.30	337
+905	AF	127.20	338
+906	AL	61.60	338
+907	DZ	61.60	338
+908	AD	61.60	338
+909	AO	127.20	338
+910	AI	127.20	338
+911	AG	127.20	338
+912	AR	127.20	338
+913	AM	61.60	338
+914	AW	127.20	338
+915	AU	178.25	338
+916	AZ	61.60	338
+917	BS	127.20	338
+918	BH	88.95	338
+919	BD	127.20	338
+920	BB	127.20	338
+921	BY	61.60	338
+922	BE	30.45	338
+923	BZ	127.20	338
+924	BJ	88.95	338
+925	BM	127.20	338
+926	BT	127.20	338
+927	BO	127.20	338
+928	BA	61.60	338
+929	BW	127.20	338
+930	BR	127.20	338
+931	BN	127.20	338
+932	BG	30.45	338
+933	BF	88.95	338
+934	BI	127.20	338
+935	CV	88.95	338
+936	KH	127.20	338
+937	CM	88.95	338
+938	CA	88.95	338
+939	KY	127.20	338
+940	CF	88.95	338
+941	TD	88.95	338
+942	CL	127.20	338
+943	CN	127.20	338
+944	CO	127.20	338
+945	KM	127.20	338
+946	CG	127.20	338
+947	CD	127.20	338
+948	CK	178.25	338
+949	CR	127.20	338
+950	HR	30.45	338
+951	CU	127.20	338
+952	CW	127.20	338
+953	CY	30.45	338
+954	CZ	30.45	338
+955	CI	88.95	338
+956	DK	30.45	338
+957	DJ	88.95	338
+958	DM	127.20	338
+959	DO	127.20	338
+960	EC	127.20	338
+961	EG	61.60	338
+962	SV	127.20	338
+963	GQ	127.20	338
+964	ER	88.95	338
+965	EE	30.45	338
+966	ET	88.95	338
+967	FK	127.20	338
+968	FO	61.60	338
+969	FJ	178.25	338
+970	FI	30.45	338
+971	FR	13.05	338
+972	GF	127.20	338
+973	PF	178.25	338
+974	GA	127.20	338
+975	GM	88.95	338
+976	GE	61.60	338
+977	DE	7.70	338
+978	GH	88.95	338
+979	GI	61.60	338
+980	GL	61.60	338
+981	GD	127.20	338
+982	GP	127.20	338
+983	GT	127.20	338
+984	GG	61.60	338
+985	GN	88.95	338
+986	GW	88.95	338
+987	GY	127.20	338
+988	HT	127.20	338
+989	VA	61.60	338
+990	HN	127.20	338
+991	HK	127.20	338
+992	HU	30.45	338
+993	IS	61.60	338
+994	IN	127.20	338
+995	ID	127.20	338
+996	IR	88.95	338
+997	IQ	88.95	338
+998	IE	30.45	338
+999	IL	61.60	338
+1000	IT	15.80	338
+1001	JM	127.20	338
+1002	JP	127.20	338
+1003	JE	61.60	338
+1004	JO	88.95	338
+1005	KZ	88.95	338
+1006	KE	127.20	338
+1007	KI	178.25	338
+1008	KP	127.20	338
+1009	KR	127.20	338
+1010	KW	88.95	338
+1011	KG	88.95	338
+1012	LA	127.20	338
+1013	LV	30.45	338
+1014	LB	61.60	338
+1015	LS	127.20	338
+1016	LR	88.95	338
+1017	LY	61.60	338
+1018	LI	61.60	338
+1019	LT	30.45	338
+1020	LU	30.45	338
+1021	MO	127.20	338
+1022	MK	61.60	338
+1023	MG	127.20	338
+1024	MW	127.20	338
+1025	MY	127.20	338
+1026	MV	127.20	338
+1027	ML	88.95	338
+1028	MT	30.45	338
+1029	MH	88.95	338
+1030	MQ	127.20	338
+1031	MR	88.95	338
+1032	MU	127.20	338
+1033	YT	127.20	338
+1034	MX	127.20	338
+1035	FM	88.95	338
+1036	MD	61.60	338
+1037	MC	30.45	338
+1038	MN	127.20	338
+1039	ME	61.60	338
+1040	MS	127.20	338
+1041	MA	61.60	338
+1042	MZ	127.20	338
+1043	MM	127.20	338
+1044	NA	127.20	338
+1045	NR	178.25	338
+1046	NP	127.20	338
+1047	NL	14.45	338
+1048	NC	178.25	338
+1049	NZ	178.25	338
+1050	NI	127.20	338
+1051	NE	88.95	338
+1052	NG	88.95	338
+1053	NU	178.25	338
+1054	NO	61.60	338
+1055	OM	88.95	338
+1056	PK	127.20	338
+1057	PW	88.95	338
+1058	PS	61.60	338
+1059	PA	127.20	338
+1060	PG	178.25	338
+1061	PY	127.20	338
+1062	PE	127.20	338
+1063	PH	127.20	338
+1064	PN	178.25	338
+1065	PL	30.45	338
+1066	PT	30.45	338
+1067	QA	88.95	338
+1068	RO	30.45	338
+1069	RU	61.60	338
+1070	RW	127.20	338
+1071	RE	127.20	338
+1072	SH	127.20	338
+1073	KN	127.20	338
+1074	LC	127.20	338
+1075	PM	127.20	338
+1076	VC	127.20	338
+1077	WS	178.25	338
+1078	SM	61.60	338
+1079	ST	127.20	338
+1080	SA	88.95	338
+1081	SN	88.95	338
+1082	RS	61.60	338
+1083	SC	127.20	338
+1084	SL	88.95	338
+1085	SG	127.20	338
+1086	SX	127.20	338
+1087	SK	30.45	338
+1088	SI	30.45	338
+1089	SB	178.25	338
+1090	SO	88.95	338
+1091	ZA	127.20	338
+1092	SS	88.95	338
+1093	ES	30.45	338
+1094	LK	127.20	338
+1095	SD	88.95	338
+1096	SR	127.20	338
+1097	SZ	127.20	338
+1098	SE	30.45	338
+1099	CH	61.60	338
+1100	SY	61.60	338
+1101	TW	127.20	338
+1102	TJ	88.95	338
+1103	TZ	127.20	338
+1104	TH	127.20	338
+1105	TL	127.20	338
+1106	TG	88.95	338
+1107	TK	178.25	338
+1108	TO	178.25	338
+1109	TT	127.20	338
+1110	TN	61.60	338
+1111	TR	61.60	338
+1112	TM	88.95	338
+1113	TC	127.20	338
+1114	TV	178.25	338
+1115	UG	127.20	338
+1116	UA	61.60	338
+1117	AE	88.95	338
+1118	GB	16.85	338
+1119	US	88.95	338
+1120	UY	127.20	338
+1121	UZ	88.95	338
+1122	VU	178.25	338
+1123	VE	127.20	338
+1124	VN	127.20	338
+1125	VG	127.20	338
+1126	WF	178.25	338
+1127	YE	88.95	338
+1128	ZM	127.20	338
+1129	ZW	127.20	338
+1130	AF	191.00	339
+1131	AL	86.40	339
+1132	DZ	86.40	339
+1133	AD	86.40	339
+1134	AO	191.00	339
+1135	AI	191.00	339
+1136	AG	191.00	339
+1137	AR	191.00	339
+1138	AM	86.40	339
+1139	AW	191.00	339
+1140	AU	254.80	339
+1141	AZ	86.40	339
+1142	BS	191.00	339
+1143	BH	127.20	339
+1144	BD	191.00	339
+1145	BB	191.00	339
+1146	BY	86.40	339
+1147	BE	40.85	339
+1148	BZ	191.00	339
+1149	BJ	127.20	339
+1150	BM	191.00	339
+1151	BT	191.00	339
+1152	BO	191.00	339
+1153	BA	86.40	339
+1154	BW	191.00	339
+1155	BR	191.00	339
+1156	BN	191.00	339
+1157	BG	40.85	339
+1158	BF	127.20	339
+1159	BI	191.00	339
+1160	CV	127.20	339
+1161	KH	191.00	339
+1162	CM	127.20	339
+1163	CA	127.20	339
+1164	KY	191.00	339
+1165	CF	127.20	339
+1166	TD	127.20	339
+1167	CL	191.00	339
+1168	CN	191.00	339
+1169	CO	191.00	339
+1170	KM	191.00	339
+1171	CG	191.00	339
+1172	CD	191.00	339
+1173	CK	254.80	339
+1174	CR	191.00	339
+1175	HR	40.85	339
+1176	CU	191.00	339
+1177	CW	191.00	339
+1178	CY	40.85	339
+1179	CZ	40.85	339
+1180	CI	127.20	339
+1181	DK	40.85	339
+1182	DJ	127.20	339
+1183	DM	191.00	339
+1184	DO	191.00	339
+1185	EC	191.00	339
+1186	EG	86.40	339
+1187	SV	191.00	339
+1188	GQ	191.00	339
+1189	ER	127.20	339
+1190	EE	40.85	339
+1191	ET	127.20	339
+1192	FK	191.00	339
+1193	FO	86.40	339
+1194	FJ	254.80	339
+1195	FI	40.85	339
+1196	FR	13.05	339
+1197	GF	191.00	339
+1198	PF	254.80	339
+1199	GA	191.00	339
+1200	GM	127.20	339
+1201	GE	86.40	339
+1202	DE	7.70	339
+1203	GH	127.20	339
+1204	GI	86.40	339
+1205	GL	86.40	339
+1206	GD	191.00	339
+1207	GP	191.00	339
+1208	GT	191.00	339
+1209	GG	86.40	339
+1210	GN	127.20	339
+1211	GW	127.20	339
+1212	GY	191.00	339
+1213	HT	191.00	339
+1214	VA	86.40	339
+1215	HN	191.00	339
+1216	HK	191.00	339
+1217	HU	40.85	339
+1218	IS	86.40	339
+1219	IN	191.00	339
+1220	ID	191.00	339
+1221	IR	127.20	339
+1222	IQ	127.20	339
+1223	IE	40.85	339
+1224	IL	86.40	339
+1225	IT	15.80	339
+1226	JM	191.00	339
+1227	JP	191.00	339
+1228	JE	86.40	339
+1229	JO	127.20	339
+1230	KZ	127.20	339
+1231	KE	191.00	339
+1232	KI	254.80	339
+1233	KP	191.00	339
+1234	KR	191.00	339
+1235	KW	127.20	339
+1236	KG	127.20	339
+1237	LA	191.00	339
+1238	LV	40.85	339
+1239	LB	86.40	339
+1240	LS	191.00	339
+1241	LR	127.20	339
+1242	LY	86.40	339
+1243	LI	86.40	339
+1244	LT	40.85	339
+1245	LU	40.85	339
+1246	MO	191.00	339
+1247	MK	86.40	339
+1248	MG	191.00	339
+1249	MW	191.00	339
+1250	MY	191.00	339
+1251	MV	191.00	339
+1252	ML	127.20	339
+1253	MT	40.85	339
+1254	MH	127.20	339
+1255	MQ	191.00	339
+1256	MR	127.20	339
+1257	MU	191.00	339
+1258	YT	191.00	339
+1259	MX	191.00	339
+1260	FM	127.20	339
+1261	MD	86.40	339
+1262	MC	40.85	339
+1263	MN	191.00	339
+1264	ME	86.40	339
+1265	MS	191.00	339
+1266	MA	86.40	339
+1267	MZ	191.00	339
+1268	MM	191.00	339
+1269	NA	191.00	339
+1270	NR	254.80	339
+1271	NP	191.00	339
+1272	NL	14.45	339
+1273	NC	254.80	339
+1274	NZ	254.80	339
+1275	NI	191.00	339
+1276	NE	127.20	339
+1277	NG	127.20	339
+1278	NU	254.80	339
+1279	NO	86.40	339
+1280	OM	127.20	339
+1281	PK	191.00	339
+1282	PW	127.20	339
+1283	PS	86.40	339
+1284	PA	191.00	339
+1285	PG	254.80	339
+1286	PY	191.00	339
+1287	PE	191.00	339
+1288	PH	191.00	339
+1289	PN	254.80	339
+1290	PL	40.85	339
+1291	PT	40.85	339
+1292	QA	127.20	339
+1293	RO	40.85	339
+1294	RU	86.40	339
+1295	RW	191.00	339
+1296	RE	191.00	339
+1297	SH	191.00	339
+1298	KN	191.00	339
+1299	LC	191.00	339
+1300	PM	191.00	339
+1301	VC	191.00	339
+1302	WS	254.80	339
+1303	SM	86.40	339
+1304	ST	191.00	339
+1305	SA	127.20	339
+1306	SN	127.20	339
+1307	RS	86.40	339
+1308	SC	191.00	339
+1309	SL	127.20	339
+1310	SG	191.00	339
+1311	SX	191.00	339
+1312	SK	40.85	339
+1313	SI	40.85	339
+1314	SB	254.80	339
+1315	SO	127.20	339
+1316	ZA	191.00	339
+1317	SS	127.20	339
+1318	ES	40.85	339
+1319	LK	191.00	339
+1320	SD	127.20	339
+1321	SR	191.00	339
+1322	SZ	191.00	339
+1323	SE	40.85	339
+1324	CH	86.40	339
+1325	SY	86.40	339
+1326	TW	191.00	339
+1327	TJ	127.20	339
+1328	TZ	191.00	339
+1329	TH	191.00	339
+1330	TL	191.00	339
+1331	TG	127.20	339
+1332	TK	254.80	339
+1333	TO	254.80	339
+1334	TT	191.00	339
+1335	TN	86.40	339
+1336	TR	86.40	339
+1337	TM	127.20	339
+1338	TC	191.00	339
+1339	TV	254.80	339
+1340	UG	191.00	339
+1341	UA	86.40	339
+1342	AE	127.20	339
+1343	GB	16.85	339
+1344	US	127.20	339
+1345	UY	191.00	339
+1346	UZ	127.20	339
+1347	VU	254.80	339
+1348	VE	191.00	339
+1349	VN	191.00	339
+1350	VG	191.00	339
+1351	WF	254.80	339
+1352	YE	127.20	339
+1353	ZM	191.00	339
+1354	ZW	191.00	339
+\.
+
+
+--
+-- Data for Name: shop_sendcloud_shippingmethod; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.shop_sendcloud_shippingmethod (id, name, carrier, min_weight, max_weight, updated_at) FROM stdin;
+247	Post AT home 4-31,5kg	postat	4.000	31.500	2020-06-30 21:33:24.646075+02
+248	Post AT home 0-4kg	postat	0.001	4.000	2020-06-30 21:33:24.665832+02
+300	Post AT service point 0-4kg	postat	0.001	4.000	2020-06-30 21:33:24.675772+02
+301	Post AT service point 4-31,5kg	postat	4.000	31.500	2020-06-30 21:33:24.680816+02
+334	PostAT Paket Light International non boxable Outbound 0-2kg	postat	0.001	2.000	2020-06-30 21:33:24.685667+02
+335	PostAT Paket Light International non boxable Outbound 2-4kg	postat	2.000	4.000	2020-06-30 21:33:25.245082+02
+336	PostAT Paket Light International non boxable Outbound 4-8kg	postat	4.000	8.000	2020-06-30 21:33:25.872221+02
+337	PostAT Paket Light International non boxable Outbound 8-12kg	postat	8.000	12.000	2020-06-30 21:33:26.423935+02
+338	PostAT Paket Light International non boxable Outbound 12-20kg	postat	12.000	20.000	2020-06-30 21:33:26.975922+02
+339	PostAT Paket Light International non boxable Outbound 20-31.5kg	postat	20.000	31.500	2020-06-30 21:33:27.613495+02
+\.
+
+
+--
 -- Data for Name: weltladen_billingaddress; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
@@ -8040,10 +9763,10 @@ COPY public.weltladen_bioqualitylabel (id, name, logo_id) FROM stdin;
 --
 
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
-1	2020-04-26 20:36:28.808627+02	2020-04-30 19:52:59.589927+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	1
 6	2020-05-01 12:21:00.288425+02	2020-05-01 12:21:00.288449+02	{}	\N	10	\N
 8	2020-05-30 18:25:16.153109+02	2020-05-30 18:54:58.126773+02	{}	\N	12	\N
 9	2020-06-04 20:35:31.407522+02	2020-06-04 20:35:31.416448+02	{}	\N	13	\N
+1	2020-04-26 20:36:28.808627+02	2020-06-30 21:34:26.883716+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	1
 \.
 
 
@@ -8054,6 +9777,7 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, cart_id, product_id) FROM stdin;
 14	83010	2020-05-30 18:54:58.125377+02	{}	1	8	7
 16	90321	2020-06-04 20:35:31.415312+02	{}	0	9	32
+17	83077	2020-06-30 21:34:26.881272+02	{}	1	1	11
 \.
 
 
@@ -8141,6 +9865,8 @@ COPY public.weltladen_manufacturer (id, name) FROM stdin;
 2	Indianische Kleinbäuerinnen und -bauern aus Mexico
 50	Apovinces
 51	PT Mega Inovasi Organik
+52	MIFRUTA
+53	Candela
 \.
 
 
@@ -8271,6 +9997,11 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 87	1	292	88
 88	1	293	89
 89	1	294	90
+90	1	295	91
+91	1	296	92
+92	1	297	93
+93	1	298	94
+94	1	299	95
 \.
 
 
@@ -8397,6 +10128,66 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 125	16	88
 126	16	89
 127	16	90
+128	54	37
+129	54	38
+130	54	39
+131	64	40
+132	64	41
+133	64	42
+134	64	43
+135	64	44
+136	64	45
+137	64	46
+138	64	47
+139	64	48
+140	64	49
+141	64	50
+142	64	51
+143	64	52
+144	64	53
+145	64	54
+146	64	55
+147	64	56
+148	64	57
+149	64	58
+150	65	59
+151	65	60
+152	65	61
+153	65	62
+154	66	63
+155	66	68
+156	66	69
+157	66	70
+158	66	71
+159	66	72
+160	66	73
+161	66	74
+162	66	75
+163	66	76
+164	66	77
+165	66	78
+166	66	79
+167	66	80
+168	66	81
+169	66	82
+170	66	83
+171	66	84
+172	66	85
+173	66	86
+174	66	87
+175	66	88
+176	66	89
+177	66	90
+178	16	91
+179	66	91
+180	16	92
+181	66	92
+182	16	93
+183	66	93
+184	16	94
+185	66	94
+186	16	95
+187	66	95
 \.
 
 
@@ -8426,9 +10217,9 @@ COPY public.weltladen_supplier (id, name) FROM stdin;
 COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra, number, phonenumber, salutation) FROM stdin;
 13	0	2020-06-04 20:54:49.255673+02	{}	\N	\N	
 11	1	2020-05-12 22:02:10.818315+02	{}	2	\N	
-4	2	2020-05-17 21:14:58.217244+02	{}	1	+43 676 3239108	mr
 12	0	2020-05-31 11:57:40.706449+02	{}	\N	\N	
-10	2	2020-06-11 21:17:02.390744+02	{}	\N	\N	
+10	2	2020-06-22 11:55:00.584994+02	{}	\N	\N	
+4	2	2020-06-30 21:34:28.278823+02	{}	1	+43 676 3239108	mr
 \.
 
 
@@ -8437,19 +10228,10 @@ COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra
 --
 
 COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, product_name, slug, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, supplier_id, tax_switch, vegan, fairtrade, gluten_free, lactose_free, bio_quality_label_id, origin_countries) FROM stdin;
-56	2020-05-07 16:54:12.235753+02	2020-05-07 16:56:29.542997+02	t	Teefilter Papier 100 Stk.	teefilter-papier-100-stk	59	3.550	89812	29	135	2	t	f	f	f	f	\N	DE
-48	2020-05-07 14:30:47.506207+02	2020-05-20 15:42:46.922171+02	t	CEYLON-DARJEELING Grün Teebeutel 24x2g	ceylon-darjeeling-grun-teebeutel-24x2g	51	2.990	87032	31	135	2	t	t	t	t	t	2	IN,LK
-58	2020-05-08 15:39:41.911293+02	2020-05-08 15:41:55.346486+02	t	Teenetz groß	teenetz-gross	61	1.800	89811	28	135	2	t	f	f	f	f	\N	
-39	2020-05-06 16:56:22.203489+02	2020-05-06 17:08:55.098267+02	t	Kaffeefilter Nr. 4 - 100 Stk.	kaffeefilter-nr-4-100-stk	42	2.200	89706	29	135	2	t	f	f	f	f	3	DE
-41	2020-05-06 17:52:33.317853+02	2020-05-20 15:35:32.62219+02	t	CEYLON-DARJEELING Teebeutel 24x2g	ceylon-darjeeling-teebeutel-24x2g	44	2.990	87033	31	135	2	t	t	t	t	t	2	IN,LK
-44	2020-05-07 10:25:20.827322+02	2020-05-20 15:38:06.046182+02	t	DARJEELING Schwarztee lose 100g	darjeeling-schwarztee-lose-100g	47	5.690	86050	32	135	2	t	t	t	t	t	2	IN
 19	2020-05-05 15:27:49.780894+02	2020-05-18 10:23:27.939876+02	t	NICA Vakuum 1kg	nica-vakuum-1kg	19	17.990	82033	17	135	2	t	t	t	t	t	2	NI
 67	2020-05-25 13:39:05.007286+02	2020-05-25 13:41:01.037358+02	t	Kaffeekapsel Membran - Espresso	kaffeekapsel-membran-espresso	41	2.990	89806	\N	135	2	t	f	f	f	f	\N	
 11	2020-05-01 20:53:58.436741+02	2020-05-27 10:35:51.673985+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	10	8.990	83077	2	135	2	t	t	t	t	t	2	MX
-37	2020-05-06 16:22:40.017131+02	2020-05-25 13:26:58.060312+02	t	Kaffeekapsel Set - milde Röstung	kaffeekapsel-set-milde-rostung	38	9.990	89800	\N	135	2	t	f	f	f	f	\N	
 20	2020-05-05 15:44:41.117401+02	2020-05-18 10:23:57.121612+02	t	NICA Bohne 1kg	nica-bohne-1kg	20	17.990	82017	17	135	2	t	t	t	t	t	2	NI
-79	2020-05-28 10:53:29.644663+02	2020-05-28 11:09:07.341064+02	t	COMPAÑERA Crispy 50g	companera-crispy-50g	78	1.690	97215	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
-81	2020-05-28 14:02:56.684837+02	2020-05-28 14:02:56.684857+02	t	COMPAÑERA Noir 50g	companera-noir-50g	80	1.590	97225	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
 8	2020-05-01 20:31:41.660464+02	2020-05-27 10:32:50.435202+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	7	17.990	83017	2	135	2	t	t	t	t	t	2	MX
 9	2020-05-01 20:37:02.640044+02	2020-05-27 10:33:42.260083+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	8	17.990	83022	2	135	2	t	t	t	t	t	2	MX
 12	2020-05-01 21:03:24.276724+02	2020-05-27 10:37:24.562685+02	t	ESPRESSO ORGANICO 18 Pads 125g	espresso-organico-18-pads-125g	11	4.990	83088	2	135	2	t	t	t	t	t	2	MX
@@ -8459,42 +10241,47 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 15	2020-05-01 21:56:08.654616+02	2020-05-27 10:40:47.206858+02	t	ORGANICO entkoffeiniert Vakuum 250g	organico-entkoffeiniert-vakuum-250g	14	5.490	83900	2	135	2	t	t	t	t	t	2	MX
 16	2020-05-01 21:59:22.717934+02	2020-05-27 10:41:39.023866+02	t	ORGANICO entkoffeiniert Bohne 500g	organico-entkoffeiniert-bohne-500g	15	10.590	83917	2	135	2	t	t	t	t	t	2	MX
 17	2020-05-05 15:14:13.121455+02	2020-05-27 10:43:40.260773+02	t	PUEBLO Bohne 1kg	pueblo-bohne-1kg	16	17.990	80011	13	135	2	t	t	t	t	t	2	GT,HN
-42	2020-05-06 17:59:32.75411+02	2020-05-27 13:23:44.994617+02	t	EARL GREY Teebeutel 24x2g	earl-grey-teebeutel-24x2g	45	2.990	87034	33	135	2	t	t	t	t	t	2	LK
 18	2020-05-05 15:21:07.846301+02	2020-05-27 10:46:33.704159+02	t	NICA Vakuum 250g	nica-vakuum-250g	18	4.990	82012	17	135	2	t	t	t	t	t	2	NI
 22	2020-05-05 18:59:01.161041+02	2020-05-27 10:48:37.224664+02	t	JAMBO Bohne 500g	jambo-bohne-500g	22	8.790	91018	18	135	2	t	t	t	t	t	2	UG
 23	2020-05-05 19:07:00.51228+02	2020-05-27 10:48:58.938907+02	t	JAMBO Bohne 1kg	jambo-bohne-1kg	23	17.990	91022	18	135	2	t	t	t	t	t	2	UG
 65	2020-05-25 11:13:28.348834+02	2020-05-27 13:15:21.282561+02	t	ESPRESSO ITALIANO gemahlen 250g	espresso-italiano-gemahlen-250g	32	7.490	90134	23	135	2	t	t	t	t	t	2	GT,MX,PE,UG
-40	2020-05-06 17:36:55.192577+02	2020-05-27 13:22:52.159102+02	t	TANZANIA Schwarztee Teebeutel 40x2g	tanzania-schwarztee-teebeutel-40x2g	43	3.490	85015	30	135	2	t	t	t	t	t	\N	TZ
-43	2020-05-07 10:07:22.042505+02	2020-05-27 13:24:18.785471+02	t	AFRICAN DREAM Schwarztee lose 100g	african-dream-schwarztee-lose-100g	46	3.290	85025	30	135	2	t	t	t	t	t	\N	TZ
-45	2020-05-07 11:36:29.754358+02	2020-05-27 13:43:37.961843+02	t	ASSAM Schwarztee lose 100g	assam-schwarztee-lose-100g	48	4.990	86090	32	135	2	t	t	t	t	t	2	IN
-46	2020-05-07 14:12:45.63375+02	2020-05-27 13:44:21.286016+02	t	CEYLON Schwarztee lose 100g	ceylon-schwarztee-lose-100g	49	3.950	87035	33	135	2	t	t	t	t	t	2	LK
-47	2020-05-07 14:25:50.491212+02	2020-05-27 13:45:37.267479+02	t	INGWER CHAI Teebeutel 24x1,75g	ingwer-chai-teebeutel-24x175g	50	2.990	86045	33	135	2	t	t	t	t	t	2	LK
-54	2020-05-07 16:28:46.723186+02	2020-05-27 13:50:37.915407+02	t	VIEL GUT Teebeutel 20x1,5g	viel-gut-teebeutel-20x15g	57	3.490	84138	36	135	2	t	t	t	t	t	2	ZA,VN
-55	2020-05-07 16:35:15.470428+02	2020-05-27 13:51:13.958722+02	t	VIEL FRISCH Teebeutel 20x1,5g	viel-frisch-teebeutel-20x15g	58	3.490	84137	36	135	2	t	t	t	t	t	2	EG,ZA,VN
-69	2020-05-25 14:47:28.642464+02	2020-05-27 14:26:16.88668+02	t	MASCAO Kokos 100g	mascao-kokos-100g	68	2.990	97313	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-71	2020-05-25 16:01:54.479596+02	2020-05-27 14:34:08.443517+02	t	MASCAO Praliné 100g	mascao-praline-100g	70	3.290	97333	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-73	2020-05-26 10:49:40.475089+02	2020-05-27 14:36:40.510841+02	t	MASCAO Caramel 100g	mascao-caramel-100g	72	2.990	97350	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-75	2020-05-26 11:30:07.773077+02	2020-05-27 14:58:41.271107+02	t	MASCAO Rum Trüffel 100g	mascao-rum-truffel-100g	74	3.290	97366	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-77	2020-05-26 13:24:49.294532+02	2020-05-27 15:00:33.287932+02	t	MASCAO Kuvertüre Noir 200g	mascao-kuverture-noir-200g	76	4.990	97315	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-83	2020-05-31 16:56:19.376252+02	2020-05-31 16:56:19.376329+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	82	1.590	97235	45	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE,PH
-85	2020-06-01 01:07:13.694673+02	2020-06-01 01:07:13.694692+02	t	COMPAÑERA Orange 50g	companera-orange-50g	84	1.790	97266	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
-86	2020-06-11 14:50:15.020673+02	2020-06-11 14:57:59.536583+02	t	SONRISA Mandel 80g	sonrisa-mandel-80g	85	2.190	97142	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
-88	2020-06-11 15:13:43.022226+02	2020-06-11 15:13:43.022247+02	t	SONRISA Noir 80g	sonrisa-noir-80g	87	2.190	97162	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-90	2020-06-11 15:28:25.835455+02	2020-06-11 15:28:25.835478+02	t	SONRISA Orange 80g	sonrisa-orange-80g	89	2.190	97182	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-38	2020-05-06 16:43:24.308003+02	2020-05-25 13:32:36.709934+02	t	Kaffeekapsel Set - Espresso	kaffeekapsel-set-espresso	40	9.990	89805	28	135	2	t	f	f	f	f	\N	
-57	2020-05-08 14:55:03.099947+02	2020-05-08 15:42:15.122162+02	t	Teenetz klein	teenetz-klein	60	1.700	89809	28	135	2	t	f	f	f	f	\N	
-49	2020-05-07 15:03:05.821184+02	2020-05-20 15:43:50.728959+02	t	DARJEELING Grüntee lose 100g	darjeeling-gruntee-lose-100g	52	5.489	86085	32	135	2	t	t	t	t	t	2	IN
 21	2020-05-05 15:53:04.598381+02	2020-05-27 10:48:08.034018+02	t	JAMBO Vakuum 250g	jambo-vakuum-250g	21	4.990	91011	18	135	2	t	t	t	t	t	2	UG
-50	2020-05-07 15:18:02.018024+02	2020-05-20 15:45:31.91301+02	t	DARJEELING OOLONG Tee lose 75g	darjeeling-oolong-tee-lose-75g	53	3.990	87077	32	135	2	t	t	t	t	t	2	IN
 33	2020-05-06 15:11:00.118519+02	2020-05-20 15:27:21.529006+02	t	COFFEE FOR FUTURE Bohne 1kg	coffee-future-bohne-1kg	34	19.990	90332	23	135	2	t	t	t	t	t	2	MX,UG
 32	2020-05-06 14:27:39.282029+02	2020-05-20 15:26:12.724586+02	t	COFFEE FOR FUTURE Vakuum 500g	coffee-future-vakuum-500g	33	9.590	90321	23	135	2	t	t	t	t	t	2	MX,UG
+38	2020-05-06 16:43:24.308003+02	2020-06-18 09:45:28.82707+02	t	Kaffeekapsel Set - Espresso	kaffeekapsel-set-espresso	40	9.990	89805	28	135	2	t	f	f	f	f	\N	
+39	2020-05-06 16:56:22.203489+02	2020-06-18 09:46:02.520214+02	t	Kaffeefilter Nr. 4 - 100 Stk.	kaffeefilter-nr-4-100-stk	42	2.200	89706	29	135	2	t	f	f	f	f	3	DE
+40	2020-05-06 17:36:55.192577+02	2020-06-18 09:57:31.42449+02	t	TANZANIA Schwarztee Teebeutel 40x2g	tanzania-schwarztee-teebeutel-40x2g	43	3.490	85015	30	135	2	t	t	t	t	t	\N	TZ
+41	2020-05-06 17:52:33.317853+02	2020-06-18 09:57:51.502705+02	t	CEYLON-DARJEELING Teebeutel 24x2g	ceylon-darjeeling-teebeutel-24x2g	44	2.990	87033	31	135	2	t	t	t	t	t	2	IN,LK
+42	2020-05-06 17:59:32.75411+02	2020-06-18 09:58:08.792822+02	t	EARL GREY Teebeutel 24x2g	earl-grey-teebeutel-24x2g	45	2.990	87034	33	135	2	t	t	t	t	t	2	LK
+43	2020-05-07 10:07:22.042505+02	2020-06-18 09:58:33.365781+02	t	AFRICAN DREAM Schwarztee lose 100g	african-dream-schwarztee-lose-100g	46	3.290	85025	30	135	2	t	t	t	t	t	\N	TZ
+44	2020-05-07 10:25:20.827322+02	2020-06-18 09:58:52.109963+02	t	DARJEELING Schwarztee lose 100g	darjeeling-schwarztee-lose-100g	47	5.690	86050	32	135	2	t	t	t	t	t	2	IN
+45	2020-05-07 11:36:29.754358+02	2020-06-18 09:59:16.68677+02	t	ASSAM Schwarztee lose 100g	assam-schwarztee-lose-100g	48	4.990	86090	32	135	2	t	t	t	t	t	2	IN
+46	2020-05-07 14:12:45.63375+02	2020-06-18 09:59:32.663869+02	t	CEYLON Schwarztee lose 100g	ceylon-schwarztee-lose-100g	49	3.950	87035	33	135	2	t	t	t	t	t	2	LK
+47	2020-05-07 14:25:50.491212+02	2020-06-18 09:59:49.527336+02	t	INGWER CHAI Teebeutel 24x1,75g	ingwer-chai-teebeutel-24x175g	50	2.990	86045	33	135	2	t	t	t	t	t	2	LK
+48	2020-05-07 14:30:47.506207+02	2020-06-18 10:00:07.374717+02	t	CEYLON-DARJEELING Grün Teebeutel 24x2g	ceylon-darjeeling-grun-teebeutel-24x2g	51	2.990	87032	31	135	2	t	t	t	t	t	2	IN,LK
+49	2020-05-07 15:03:05.821184+02	2020-06-18 10:00:25.91263+02	t	DARJEELING Grüntee lose 100g	darjeeling-gruntee-lose-100g	52	5.489	86085	32	135	2	t	t	t	t	t	2	IN
+50	2020-05-07 15:18:02.018024+02	2020-06-18 10:02:10.569502+02	t	DARJEELING OOLONG Tee lose 75g	darjeeling-oolong-tee-lose-75g	53	3.990	87077	32	135	2	t	t	t	t	t	2	IN
+54	2020-05-07 16:28:46.723186+02	2020-06-18 10:03:28.297398+02	t	VIEL GUT Teebeutel 20x1,5g	viel-gut-teebeutel-20x15g	57	3.490	84138	36	135	2	t	t	t	t	t	2	ZA,VN
+55	2020-05-07 16:35:15.470428+02	2020-06-18 10:03:56.453484+02	t	VIEL FRISCH Teebeutel 20x1,5g	viel-frisch-teebeutel-20x15g	58	3.490	84137	36	135	2	t	t	t	t	t	2	EG,ZA,VN
+56	2020-05-07 16:54:12.235753+02	2020-06-18 10:04:49.906472+02	t	Teefilter Papier 100 Stk.	teefilter-papier-100-stk	59	3.550	89812	29	135	2	t	f	f	f	f	\N	DE
+57	2020-05-08 14:55:03.099947+02	2020-06-18 10:05:05.256308+02	t	Teenetz klein	teenetz-klein	60	1.700	89809	28	135	2	t	f	f	f	f	\N	
+58	2020-05-08 15:39:41.911293+02	2020-06-18 10:05:21.962987+02	t	Teenetz groß	teenetz-gross	61	1.800	89811	28	135	2	t	f	f	f	f	\N	
+69	2020-05-25 14:47:28.642464+02	2020-06-18 10:07:28.423315+02	t	MASCAO Kokos 100g	mascao-kokos-100g	68	2.990	97313	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+71	2020-05-25 16:01:54.479596+02	2020-06-18 10:09:06.926352+02	t	MASCAO Praliné 100g	mascao-praline-100g	70	3.290	97333	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+73	2020-05-26 10:49:40.475089+02	2020-06-18 10:09:47.996934+02	t	MASCAO Caramel 100g	mascao-caramel-100g	72	2.990	97350	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+75	2020-05-26 11:30:07.773077+02	2020-06-18 10:10:27.214871+02	t	MASCAO Rum Trüffel 100g	mascao-rum-truffel-100g	74	3.290	97366	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+77	2020-05-26 13:24:49.294532+02	2020-06-18 10:11:01.827734+02	t	MASCAO Kuvertüre Noir 200g	mascao-kuverture-noir-200g	76	4.990	97315	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+79	2020-05-28 10:53:29.644663+02	2020-06-18 10:12:28.765234+02	t	COMPAÑERA Crispy 50g	companera-crispy-50g	78	1.690	97215	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
+81	2020-05-28 14:02:56.684837+02	2020-06-18 10:12:51.804288+02	t	COMPAÑERA Noir 50g	companera-noir-50g	80	1.590	97225	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
+83	2020-05-31 16:56:19.376252+02	2020-06-18 10:13:31.332334+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	82	1.590	97235	45	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE,PH
+85	2020-06-01 01:07:13.694673+02	2020-06-18 10:14:14.957569+02	t	COMPAÑERA Orange 50g	companera-orange-50g	84	1.790	97266	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
+86	2020-06-11 14:50:15.020673+02	2020-06-18 10:14:29.391821+02	t	SONRISA Mandel 80g	sonrisa-mandel-80g	85	2.190	97142	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
+88	2020-06-11 15:13:43.022226+02	2020-06-18 10:15:01.752778+02	t	SONRISA Noir 80g	sonrisa-noir-80g	87	2.190	97162	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+90	2020-06-11 15:28:25.835455+02	2020-06-18 10:15:37.850138+02	t	SONRISA Orange 80g	sonrisa-orange-80g	89	2.190	97182	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
 66	2020-05-25 13:26:44.74592+02	2020-05-25 13:41:14.347578+02	t	Kaffeekapsel Membran -  milde Röstung	kaffeekapsel-membran-milde-rostung	39	2.990	89801	\N	135	2	t	f	f	f	f	\N	
 28	2020-05-06 11:43:55.37933+02	2020-05-18 10:49:28.160978+02	t	ADELANTE gemahlen 250g	adelante-gemahlen-250g	28	5.490	90700	22	135	2	t	t	t	t	t	2	HN,PE
-74	2020-05-26 11:18:11.663106+02	2020-05-27 14:56:17.840157+02	t	MASCAO Cappuccino 100g	mascao-cappuccino-100g	73	3.290	97355	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-76	2020-05-26 11:40:45.927426+02	2020-05-27 14:59:46.703887+02	t	MASCAO Noir 100g	mascao-noir-100g	75	2.990	97388	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
 24	2020-05-05 19:19:19.574164+02	2020-05-27 13:09:11.40655+02	t	MUNDO Vakuum 500g	mundo-vakuum-500g	24	8.990	90533	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
 25	2020-05-06 11:10:18.653798+02	2020-05-27 13:10:19.097042+02	t	MUNDO ESPRESSO Bohne 500g	mundo-espresso-bohne-500g	25	8.990	90555	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
-89	2020-06-11 15:21:42.057889+02	2020-06-11 15:21:42.057933+02	t	SONRISA Minze 80g	sonrisa-minze-80g	88	2.290	97175	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
 29	2020-05-06 11:53:17.235208+02	2020-05-18 10:50:40.156668+02	t	ADELANTE Bohne 250g	adelante-bohne-250g	29	5.490	90733	22	135	2	t	t	t	t	t	2	HN,PE
 30	2020-05-06 11:55:30.566591+02	2020-05-18 10:51:28.384732+02	t	ADELANTE Bohne 1kg	adelante-bohne-1kg	30	20.990	90712	22	135	2	t	t	t	t	t	2	HN,PE
 26	2020-05-06 11:14:13.759445+02	2020-05-27 13:11:01.489272+02	t	MUNDO Bohne 1kg	mundo-bohne-1kg	26	17.990	90527	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
@@ -8505,22 +10292,31 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 34	2020-05-06 15:29:33.732075+02	2020-05-27 13:18:16.89776+02	t	AFRICAFE Löskaffee 100g	africafe-loskaffee-100g	35	6.490	81013	26	135	2	t	t	t	t	t	2	TZ
 35	2020-05-06 15:46:34.662559+02	2020-05-27 13:20:22.031983+02	t	LATINO Löskaffee 100g	latino-loskaffee-100g	36	8.990	81033	27	135	2	t	t	t	t	t	2	MX,NI
 36	2020-05-06 15:51:41.976545+02	2020-05-27 13:21:36.370514+02	t	LATINO Löskaffee entkoffeiniert 100g	latino-loskaffee-entkoffeiniert-100g	37	8.990	81044	27	135	2	t	t	t	t	t	2	MX,NI
-51	2020-05-07 15:32:59.067737+02	2020-05-27 13:47:59.196523+02	t	CARCADE Hibiskustee lose 50g	carcade-hibiskustee-lose-50g	54	2.690	84011	34	135	2	t	t	t	t	t	2	KE
-52	2020-05-07 15:43:04.802807+02	2020-05-27 13:49:02.376445+02	t	CARCADE CITRONELLA Teebeutel 20x2g	carcade-citronella-teebeutel-20x2g	55	2.890	84022	34	135	2	t	t	t	t	t	2	KE
-53	2020-05-07 16:07:32.301104+02	2020-05-27 13:49:54.403823+02	t	VIEL PUR Teebeutel 20x1,5g	viel-pur-teebeutel-20x15g	56	2.990	84142	35	135	2	t	t	t	t	t	2	ZA
-59	2020-05-08 16:22:41.509798+02	2020-05-27 14:11:16.050726+02	t	Kakao CARIÑO 125g	kakao-carino-125g	62	2.990	94033	27	135	2	f	t	t	t	t	2	DO,CO,NI,PE,ST
-60	2020-05-16 19:33:15.475806+02	2020-05-27 14:13:09.207697+02	t	EQUITA Trinkschokolade 375g	equita-trinkschokolade-375g	63	5.990	94111	27	135	2	f	t	t	f	t	2	DO,PY
-61	2020-05-16 21:02:03.464749+02	2020-05-27 14:14:33.583235+02	t	MASCOBADO 1kg	mascobado-1kg	64	6.290	97135	44	135	2	f	t	f	t	t	2	PH
-62	2020-05-16 22:18:59.634269+02	2020-05-27 14:19:17.856998+02	t	Zuckersticks 1000 x 4g	zuckersticks-1000-x-4g	65	34.100	97198	43	135	2	f	t	f	t	t	2	PY
-63	2020-05-17 11:55:17.186328+02	2020-05-27 14:20:29.439547+02	t	50 Schoko-Naps à 4,5g	50-schoko-naps-45g	66	8.990	97299	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-68	2020-05-25 14:12:10.055323+02	2020-05-27 14:22:14.091384+02	t	MASCAO Vollmilch 100g	mascao-vollmilch-100g	67	2.990	97311	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-70	2020-05-25 14:59:32.726729+02	2020-05-27 14:33:03.212086+02	t	MASCAO Haselnuss 100g	mascao-haselnuss-100g	69	3.290	97322	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-72	2020-05-25 16:18:13.850489+02	2020-05-27 14:34:46.333412+02	t	MASCAO Granatapfel 100g	mascao-granatapfel-100g	71	2.990	97345	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-78	2020-05-26 15:29:42.763982+02	2020-05-28 10:42:25.801592+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	77	1.690	97205	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
-80	2020-05-28 11:07:34.957162+02	2020-05-28 11:07:34.957185+02	t	COMPAÑERA Noisette 50g	companera-noisette-50g	79	1.690	97220	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
-82	2020-05-28 14:33:00.313556+02	2020-05-28 14:33:00.313576+02	t	COMPAÑERA Ingwer-Zitrone 50g	companera-ingwer-zitrone-50g	81	1.690	97230	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
-84	2020-05-31 23:54:26.806277+02	2020-06-01 00:48:10.167166+02	t	COMPAÑERA Kokos 50g	companera-kokos-50g	83	1.790	97240	45	135	2	f	t	t	t	t	2	BO,DO,ID,PE
-87	2020-06-11 15:03:15.193618+02	2020-06-11 15:03:15.193639+02	t	SONRISA Kardamom 80g	sonrisa-kardamom-80g	86	2.290	97152	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
+37	2020-05-06 16:22:40.017131+02	2020-06-18 09:44:58.325003+02	t	Kaffeekapsel Set - milde Röstung	kaffeekapsel-set-milde-rostung	38	9.990	89800	\N	135	2	t	f	f	f	f	\N	
+51	2020-05-07 15:32:59.067737+02	2020-06-18 10:02:25.211196+02	t	CARCADE Hibiskustee lose 50g	carcade-hibiskustee-lose-50g	54	2.690	84011	34	135	2	t	t	t	t	t	2	KE
+52	2020-05-07 15:43:04.802807+02	2020-06-18 10:02:40.469147+02	t	CARCADE CITRONELLA Teebeutel 20x2g	carcade-citronella-teebeutel-20x2g	55	2.890	84022	34	135	2	t	t	t	t	t	2	KE
+53	2020-05-07 16:07:32.301104+02	2020-06-18 10:03:03.101556+02	t	VIEL PUR Teebeutel 20x1,5g	viel-pur-teebeutel-20x15g	56	2.990	84142	35	135	2	t	t	t	t	t	2	ZA
+59	2020-05-08 16:22:41.509798+02	2020-06-18 10:05:40.755268+02	t	Kakao CARIÑO 125g	kakao-carino-125g	62	2.990	94033	27	135	2	f	t	t	t	t	2	DO,CO,NI,PE,ST
+60	2020-05-16 19:33:15.475806+02	2020-06-18 10:05:57.911627+02	t	EQUITA Trinkschokolade 375g	equita-trinkschokolade-375g	63	5.990	94111	27	135	2	f	t	t	f	t	2	DO,PY
+61	2020-05-16 21:02:03.464749+02	2020-06-18 10:06:13.984259+02	t	MASCOBADO 1kg	mascobado-1kg	64	6.290	97135	44	135	2	f	t	f	t	t	2	PH
+62	2020-05-16 22:18:59.634269+02	2020-06-18 10:06:33.946429+02	t	Zuckersticks 1000 x 4g	zuckersticks-1000-x-4g	65	34.100	97198	43	135	2	f	t	f	t	t	2	PY
+63	2020-05-17 11:55:17.186328+02	2020-06-18 10:06:52.991239+02	t	50 Schoko-Naps à 4,5g	50-schoko-naps-45g	66	8.990	97299	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+68	2020-05-25 14:12:10.055323+02	2020-06-18 10:07:15.108708+02	t	MASCAO Vollmilch 100g	mascao-vollmilch-100g	67	2.990	97311	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+70	2020-05-25 14:59:32.726729+02	2020-06-18 10:07:49.818976+02	t	MASCAO Haselnuss 100g	mascao-haselnuss-100g	69	3.290	97322	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+72	2020-05-25 16:18:13.850489+02	2020-06-18 10:09:29.158396+02	t	MASCAO Granatapfel 100g	mascao-granatapfel-100g	71	2.990	97345	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+74	2020-05-26 11:18:11.663106+02	2020-06-18 10:10:10.520477+02	t	MASCAO Cappuccino 100g	mascao-cappuccino-100g	73	3.290	97355	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
+76	2020-05-26 11:40:45.927426+02	2020-06-18 10:10:44.107761+02	t	MASCAO Noir 100g	mascao-noir-100g	75	2.990	97388	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+78	2020-05-26 15:29:42.763982+02	2020-06-18 10:11:20.059216+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	77	1.690	97205	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
+80	2020-05-28 11:07:34.957162+02	2020-06-18 10:12:41.053259+02	t	COMPAÑERA Noisette 50g	companera-noisette-50g	79	1.690	97220	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
+82	2020-05-28 14:33:00.313556+02	2020-06-18 10:13:14.388286+02	t	COMPAÑERA Ingwer-Zitrone 50g	companera-ingwer-zitrone-50g	81	1.690	97230	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
+84	2020-05-31 23:54:26.806277+02	2020-06-18 10:13:53.759341+02	t	COMPAÑERA Kokos 50g	companera-kokos-50g	83	1.790	97240	45	135	2	f	t	t	t	t	2	BO,DO,ID,PE
+87	2020-06-11 15:03:15.193618+02	2020-06-18 10:14:41.067537+02	t	SONRISA Kardamom 80g	sonrisa-kardamom-80g	86	2.290	97152	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
+89	2020-06-11 15:21:42.057889+02	2020-06-18 10:15:22.443876+02	t	SONRISA Minze 80g	sonrisa-minze-80g	88	2.290	97175	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
+91	2020-06-18 14:17:08.477095+02	2020-06-18 14:37:14.163231+02	t	Cremeschokolade Milch 100g	cremeschokolade-milch-100g	90	2.190	97165	27	135	2	f	f	t	t	f	2	DO,PY
+92	2020-06-18 15:26:54.645267+02	2020-06-18 15:26:54.645288+02	t	Cremeschokolade Banane 100g	cremeschokolade-banane-100g	91	2.190	97185	27	135	2	f	f	t	t	f	2	DO,PY
+93	2020-06-18 21:30:05.628732+02	2020-06-18 21:30:05.628754+02	t	Cremeschokolade Erdbeere 100g	cremeschokolade-erdbeere-100g	92	2.190	97195	27	135	2	f	f	t	t	f	2	DO,PY
+94	2020-06-19 22:09:30.395646+02	2020-06-19 22:34:11.957753+02	t	Schoko-Rosinen 100g	schoko-rosinen-100g	93	3.290	97601	27	135	2	f	f	t	t	f	\N	CL,DO,PY,PE
+95	2020-06-22 11:02:09.631372+02	2020-06-22 11:55:00.293588+02	t	Schoko-Paranüsse 100g	schoko-paranusse-100g	94	3.990	97616	45	135	2	f	f	t	t	f	2	DO,CO,NI,PY,PE,PH
 \.
 
 
@@ -8889,6 +10685,22 @@ COPY public.weltladen_weltladenproduct_additional_manufacturers (id, weltladenpr
 358	90	42
 359	90	43
 360	90	47
+361	91	40
+362	91	43
+363	92	40
+364	92	43
+365	93	40
+366	93	43
+367	94	40
+368	94	24
+369	94	43
+370	94	52
+371	95	53
+372	95	38
+373	95	40
+374	95	41
+375	95	43
+376	95	46
 \.
 
 
@@ -8914,7 +10726,6 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 31	de	<p>Klimakaffee</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Klimaprämie fördert Wiederaufforstung (Mexiko) &amp; die Errichtung von Holzsparöfen (Uganda)</li>\n\t<li>Klimakaffee aus Mexiko und Uganda</li>\n\t<li>CO2-neutral geröstet: Stärke 3 von 5</li>\n\t<li>Voller Geschmack mit fruchtiger Note und kräftigem Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Der COFFEE FOR FUTURE verbindet biofairen Arabica Hochlandkaffee von Kleinbauerngenossenschaften in Mexiko und Uganda mit zusätzlichen Klimaschutzmaßnahmen, die aus einer EZA-Klimaschutzprämie finanziert werden.</p>\n\n<p>Die Mitglieder der mexikanischen Kleinbauernorganisation SPOSEL kultivieren ihre Kaffeesträucher unter Schattenbäumen, eingebettet in die natürliche Umgebung der Selva Lacandona, einem artenreichen Urwaldgebiet. Die Kleinbauernfamilien stärken die Artenvielfalt durch sorgfältige Pflege ihrer Bio-Kaffeeparzellen und durch Wiederaufforstung. Sie tragen so zum Schutz des sensiblen Ökosystems bei.</p>\n\n<p>Auch die Genossenschaft BOCU aus Uganda am Fuß des Rwenzori-Gebirges setzt sich für einen achtsamen Umgang mit den natürlichen Ressourcen ein. Bio-Landbau ist dafür die Basis. Zusätzlich engagiert sich die Kooperative für den Bau von Holzsparöfen. Das nützt besonders Frauen und Kindern. Zum Kochen wird dadurch deutlich weniger Holz benötigt und es entsteht weniger Rauch. Das ist nicht nur besser fürs Klima, sondern schützt auch die Gesundheit der Keinbauernfamilien.Beide hochwertigen Kaffeesorten ergeben zusammen COFFEE FOR FUTURE: biologisch angebaut, fair gehandelt und von EZA Fairer Handel direkt importiert. Durch die direkte Zusammenarbeit mit EZA Fairer Handel profitieren die Kooperativen von Preisen, die mehr als doppelt so hoch sind wie der aktuelle Weltmarktpreis für Arabica-Hochlandkaffeees.</p>	32	<p><strong>Zutaten:</strong><br>\nKaffee geröstet &amp; gemahlen</p>
 32	de	<p>Klimakaffee</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Klimaprämie fördert Wiederaufforstung (Mexiko) &amp; die Errichtung von Holzsparöfen (Uganda)</li>\n\t<li>Klimakaffee aus Mexiko und Uganda</li>\n\t<li>CO2-neutral geröstet: Stärke 3 von 5</li>\n\t<li>Voller Geschmack mit fruchtiger Note und kräftigem Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Der COFFEE FOR FUTURE verbindet biofairen Arabica Hochlandkaffee von Kleinbauerngenossenschaften in Mexiko und Uganda mit zusätzlichen Klimaschutzmaßnahmen, die aus einer EZA-Klimaschutzprämie finanziert werden.</p>\n\n<p>Die Mitglieder der mexikanischen Kleinbauernorganisation SPOSEL kultivieren ihre Kaffeesträucher unter Schattenbäumen, eingebettet in die natürliche Umgebung der Selva Lacandona, einem artenreichen Urwaldgebiet. Die Kleinbauernfamilien stärken die Artenvielfalt durch sorgfältige Pflege ihrer Bio-Kaffeeparzellen und durch Wiederaufforstung. Sie tragen so zum Schutz des sensiblen Ökosystems bei.</p>\n\n<p>Auch die Genossenschaft BOCU aus Uganda am Fuß des Rwenzori-Gebirges setzt sich für einen achtsamen Umgang mit den natürlichen Ressourcen ein. Bio-Landbau ist dafür die Basis. Zusätzlich engagiert sich die Kooperative für den Bau von Holzsparöfen. Das nützt besonders Frauen und Kindern. Zum Kochen wird dadurch deutlich weniger Holz benötigt und es entsteht weniger Rauch. Das ist nicht nur besser fürs Klima, sondern schützt auch die Gesundheit der Keinbauernfamilien.Beide hochwertigen Kaffeesorten ergeben zusammen COFFEE FOR FUTURE: biologisch angebaut, fair gehandelt und von EZA Fairer Handel direkt importiert. Durch die direkte Zusammenarbeit mit EZA Fairer Handel profitieren die Kooperativen von Preisen, die mehr als doppelt so hoch sind wie der aktuelle Weltmarktpreis für Arabica-Hochlandkaffeees.</p>	33	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
 40	de	<p>Schwarztee</p>	<ul class="stwul">\n\t<li>Schwarzteemischung mit Tee aus Indien und Sri Lanka</li>\n\t<li>Im Verhältnis 60% Darjeeling und 40% Ceylon</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Kontrolliert biologischer Anbau</li>\n\t<li>Nachhaltige Verpackung</li>\n</ul>	<p>Die Wurzeln dieses aromatischen Hochlandtees liegen in ausgewählten Bio-Teegärten der Zentralregion Sri Lankas und im nordindischen Darjeeling. Er entsteht im Zusammenspiel von Boden und Klima, sorgfältiger Pflege der Büsche, behutsamer Ernte der Blätter sowie erfahrener Weiterverarbeitung und Mischung. Fairer Handel leistet einen Beitrag, dass sich die Lebens- und Arbeitsbedingungen der Kleinbauernfamilien, Teepflücker*innen und Teearbeiter*innen verbessern. So verbindet sich die Achtung der Menschen und der Natur zu echtem Teegenuss.</p>	41	<p><strong>Zutaten:</strong><br>\nSchwarztee</p>
-38	de	<p>aus nachhaltiger Forstwirtschaft</p>	<ul>\n\t<li>Ungebleichte Kaffeefilter aus Papier, welches aus nachhaltiger Forstwirtschaft stammt</li>\n\t<li>Papier aus natürlicher und biologisch abbaubarer Zellulose,</li>\n\t<li>Absolut geschmacksneutral, da ohne zusätzliche Klebe- oder Bindestoffe</li>\n\t<li>Standardgröße Nr. 4: 19,6cm Höhe und 12,8cm Breite</li>\n\t<li>Geeignet für alle gängigen Filtermaschinen mit passender Größe und für das Aufbrühen im Handfilter (Pour-Over)</li>\n</ul>\n\n<p> </p>	<p>Ungebleichte Kaffeefilter für gemahlenen Kaffee, hergestellt in Deutschland aus 100% Zellulose, biologisch abbaubar. Ohne Zusatz von Klebstoff oder anderen Bindemitteln. Die Filter bestehen aus FSC®-zertifizierten Papier.</p>	39	\N
 36	de	<p>Wiederbefüllbare Kaffeekapsel</p>	<ul>\n\t<li>Wiederbefüllbare Kaffeekapsel für alle Nespresso-Kaffeemaschinen ab 2003</li>\n\t<li>Geeignet für grob gemahlene Kaffeesorten (Filterkaffeesorten)</li>\n\t<li>Perfekt für einen Kaffee Lungo oder Verlängerten</li>\n\t<li>Frei von Aluminium</li>\n\t<li>Spülmaschinenfest</li>\n</ul>\n\n<p>Mit dem Kaffeekapsel Set - milde Röstung von EZA entlasten Sie enorm die Umwelt da nur der Kaffeesatz zu entsorgen ist. Dazu können Sie Ihren Lieblingskaffee trinken und nebenbei eine Menge Geld sparen.</p>	<p><strong>Wie kann ich testen ob die EZA Kapsel mit meiner Maschine funktioniert?</strong><br>\nDer Test funktioniert ganz einfach! Machen Sie wie gewohnt einen Kaffee mit einer originalen Nespresso Kaffeekapsel. Danach entnehmen Sie die Kapsel aus dem Auffangbehälter. Auf der runden Seite der Kapsel sollten nun ein oder drei Einstichlöcher zu sehen sein (Ein-Pin-oder Drei-Pin-System). Wenn die Kapsel drei Einstichlöcher hat, dann kann die EZA KAPSEL verwendet werden.</p>\n\n<p><strong>Für das Kaffeekapsel Set - milde Röstung empfehlen wir:</strong></p>\n\n<ul>\n\t<li>Kaffee Organico Mild</li>\n\t<li>Kaffee Pueblo</li>\n\t<li>Kaffee Nica</li>\n\t<li>Kaffee Mundo</li>\n\t<li>Kaffee Abessa</li>\n\t<li>COFFEE FOR FUTURE</li>\n</ul>\n\n<p> </p>	37	
 35	de	<p>Gefriergetrockneter Löskaffee</p>	<ul>\n\t<li>Hergestellt in Lateinamerika</li>\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Verpackt in einem hochwertigen Kunstoffbehälter</li>\n\t<li>Aromatisches Gefriertrocknungsverfahren</li>\n</ul>	<p>Reine Arabica Hochlandsorten aus Lateinamerika bilden die Basis für Latino Löskaffee. Mit großer Sorgfalt pflegen Kleinbäuerinnen und -bauern die Kaffesträucher und ernten die reifen Kirschen. Ihr Wissen über den biologischen Anbau und ihre Erfahrung im achtsamen Umgang mit der Natur gewährleisten eine hohe Qualität der Bohne. Durch faire Bezahlung und garantierte Prämien können sie auch bei niedrigen Weltmarktpreisen ihre Kosten decken und ihre Lebensbedingungen verbessern. In Europa wird der wertvolle Rohstoff weiterverarbeitet. Das schonende Verfahren der Gefriertrocknung ergibt aromatischen, grobkörnigen Löskaffee. Sein feines Aroma verbindet Genuss mit der Achtung der Menschen, die ihn kultivieren und der Natur, in der er gedeiht. Daraus erwächst Kaffeekultur mit Zukunft.</p>	36	<p><strong>Zutaten:</strong><br>\nGefriergetrockneter Löskaffee entkoffeiniert</p>
 37	de	<p>Wiederbefüllbare Kaffeekapsel</p>	<ul>\n\t<li>Wiederbefüllbare Kaffeekapsel für alle Nespresso-Kaffeemaschinen ab 2003</li>\n\t<li>Geeignet für ein gemahlenen Kaffeesorten (Espressokaffeesorten)</li>\n\t<li>Perfekt für einen Kaffee Espresso</li>\n\t<li>Frei von Aluminium</li>\n\t<li>Spülmaschinenfest</li>\n</ul>\n\n<p>Mit dem Kaffeekapsel Set - milde Röstung von EZA entlasten Sie enorm die Umwelt da nur der Kaffeesatz zu entsorgen ist. Dazu können Sie Ihren Lieblingskaffee trinken und nebenbei eine Menge Geld sparen.</p>	<p><strong>Wie kann ich testen ob die EZA Kapsel mit meiner Maschine funktioniert?</strong><br>\nDer Test funktioniert ganz einfach! Machen Sie wie gewohnt einen Kaffee mit einer originalen Nespresso Kaffeekapsel. Danach entnehmen Sie die Kapsel aus dem Auffangbehälter. Auf der runden Seite der Kapsel sollten nun ein oder drei Einstichlöcher zu sehen sein (Ein-Pin-oder Drei-Pin-System). Wenn die Kapsel drei Einstichlöcher hat, dann kann die EZA KAPSEL verwendet werden.</p>\n\n<p><strong>Für das Kaffeekapsel Set - Espresso empfehlen wir:</strong></p>\n\n<ul>\n\t<li>Kaffee Jambo</li>\n\t<li>Kaffee Adelante</li>\n\t<li>Kaffee Espresso Italiano</li>\n</ul>\n\n<p> </p>	38	
@@ -8929,9 +10740,8 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 48	de	<p>blumig-fein</p>	<ul>\n\t<li>Besonders feiner, aromatischer Darjeeling-Grüntee aus kontrolliert biologischem Anbau</li>\n\t<li>Von Hand gepflückt im Samaboeng-Teegarten in Nordindien an den südlichen Ausläufern des Himalaya</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Blumig, feiner Hochlandtee</li>\n\t<li>Erfrischt Körper und Geist</li>\n\t<li>Tassenfarbe: Gelb-Grün</li>\n\t<li>Verpackung: Handgeschöpftes Papier</li>\n</ul>	<p>Die Wurzeln dieses blumigen, feinen Grüntees liegen an den südlichen Ausläufern des Himalaya im nordindischen Darjeeling. Auf der Samabeong Plantage finden die Pflanzen, was sie zum Gedeihen brauchen: Das besondere Klima für Hochlandtee, einen fruchtbaren, biologisch bewirtschafteten Boden und sorgfältige Pflege. Die behutsame Ernte sowie die erfahrener Weiterverarbeitung der frischen Blätter in der Teemanufaktur von Tea Promoters India auf Samabeong versprechen wohltuenden Genuss. Der Faire Handel garantiert, dass sich die Lebens- und Arbeitsbedingungen der Teepflücker*innen und Teearbeiter*innen verbessern. Sie bestimmen über die Verwendung der Prämie aus Fairem Handel mit. So werden Vorhaben verwirklicht, die den Familien auf Samabeong direkt zugute kommen.</p>	49	<p><strong>Zutaten:</strong><br>\nGrüner Tee</p>
 45	de	<p>Broken Orange Pekoe</p>	<ul>\n\t<li>Besonders aromatischer Hochlandtee aus kontrolliert biologischem Anbau</li>\n\t<li>Hergestellt und abgefüllt im Ursprungsland Sri Lanka</li>\n\t<li>Verpackt in von Hand geflochtenen Palmblätter-Körbchen aus lokaler Produktion</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Vollmundiger würziger Geschmack</li>\n\t<li>Broken Orange Pekoe</li>\n\t<li>Tassenfarbe: Rot-Braun</li>\n</ul>\n\n<p> </p>\n\n<p>Dieser hochwertige Ceylon Bio-Schwarztee besticht daher durch seinen würzig, frischen Geschmack mit süßlichem Abgang und intensivem Duft nach Früchten und Blumen. Broken Orange Pekoe bezeichnet die Blattgröße des Tees. Beim Broken Orange Pekoe handelt es sich nicht um ganze Teeblätter, sondern um Stücke des zerkleinerten Blatts.</p>\n\n<p> </p>	<p>Die Wurzeln dieses aromatischen Hochlandtees liegen in der Zentralregion Sri Lankas, in den Teegärten der Small Organic Farmers Association. Die Kleinbäuerinnen und -bauern haben sich für biologischen Landbau entschieden. Das Zusammenspiel von Boden und Klima, die sorgfältige Pflege der Büsche, die behutsame Ernte der Blätter sowie die erfahrene Weiterverarbeitung des frischen Blattguts in der Teefabrik von Bio-Foods, ein Unternehmen, das sich für eine ökologisch und sozial tragfähige Form der Landwirtschaft einsetzt, sichern die hohe Qualität dieses Ceylon Bio-Tees. Auch die originelle Verpackung aus Palmblättern entsteht im Ursprungsland. Die handgeflochtenen Körbchen schaffen ein wichtiges Zusatzeinkommen für die Familien der Kleinbauernorganisation.</p>	46	<p><strong>Zutaten:</strong><br>\nSchwarztee</p>
 54	de	<p>Rotbusch, Hibiskus &amp; Minze</p>	<ul>\n\t<li>Fruchtiger Rotbuschtee aus Südafrika</li>\n\t<li>Hibiskus, Pfefferminze, Zimt und Zitronengras aus Vietnam &amp; Ägypten</li>\n\t<li>Besonders aromatischer Tee aus kontrolliert biologischem Anbau</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n</ul>	<p>Der einzige Ort der Erde, an dem Rotbusch (Rooibos) gedeiht, ist das Winterregengebiet des südafrikanischen Kaplandes. Kleinbäuerinnen und -bauern aus der Region Wupperthal pflegen das immergrüne Gebüsch und ernten die feinen nadelartigen Blätter. Sie achten auf die Natur und arbeiten im Einklang mit den Kriterien des biologischen Landbaus - genauso wie die Kleinbauernfamilien in Vietnam und Ägypten, die mit Hibiskus, Pfefferminze, Zimt und Zitronengras für eine harmonisch frische Note sorgen. So entsteht ein köstlicher Durstlöscher, der den Menschen und der Natur gut tut.</p>	55	<p><strong>Zutaten:</strong><br>\nHibiskusblüten<br>\nRotbusch<br>\nZitronengras<br>\nPfefferminze<br>\nCassia Zimt</p>
-55	de	<p>biologisch abbaubar</p>	<ul>\n\t<li>Ungebleichte Teefilter aus Manilahanf, Cellulose und Siegelfasern</li>\n\t<li>Absolut geschmacksneutral, da ohne zusätzliche Klebestoffe</li>\n\t<li>Ideal für Becher und Teekannen bis zu 2 Liter</li>\n\t<li>Biologisch abbaubares Papier</li>\n\t<li>Hergestellt in Deutschland</li>\n\t<li>Länge inkl. Einfüll-Lasche: 188 mm</li>\n\t<li>Weite: 79 mm</li>\n\t<li>Größe L</li>\n</ul>	<p>Die Einfüll-Lasche ermöglicht ein unkompliziertes Befüllen. Dank der doppelten Bodenfalte haben die Teeblätter genug Raum, ihr volle Aroma zu entfalten. Durch die große Öffnung der Schachtel können die Filter ganz leicht entnommen werden. Die Packung ist wieder verschließbar.</p>	56	\N
-56	de	<p>9cm Durchmesser</p>	<ul>\n\t<li>Teenetz aus ungebleichter reiner Baumwolle</li>\n\t<li>Wiederverwendbar und langlebig</li>\n\t<li>Großzügiger Durchmesser von 9cm</li>\n\t<li>Ideal für Becher und Teekannen bis zu 2 Liter</li>\n\t<li>Absolut geschmacksneutral</li>\n</ul>	<p>In einem Teenetz aus Baumwolle hat Ihr Tee besonders viel Platz, um schonend sein Aroma zu entfalten. Es weist einen Durchmesser von 9 Zentimetern auf, was das Einfüllen des Tees besonders einfach gestaltet. Diese Größe eignet sich für Tassen sowie für kleine bis mittelgroße Kannen. Das Baumwollnetz lässt sich sehr einfach mit heißem Wasser reinigen und ist durch seine Wiederverwendbarkeit sehr umweltfreundlich. Wenn Sie regelmäßig verschiedene Tees genießen, empfehlen wir eigene Filter für jede Teesorte, wie Schwarz- oder Grüntee, zu verwenden.</p>\n\n<p>Zum Reinigen des Baumwoll Teefilters sollte möglichst heißes Wasser verwendet werden und keine scharfen Reinigungsmittel dafür genutzt werden. Wenn doch, dann bitte sehr gut auswaschen, damit das Reinigungsmittel nicht den Geschmack beeinflusst.</p>\n\n<p> </p>	57	\N
-57	de	<p>11cm Durchmesser</p>	<ul>\n\t<li>Teenetz aus ungebleichter reiner Baumwolle</li>\n\t<li>Wiederverwendbar und langlebig</li>\n\t<li>Großzügiger Durchmesser von 11cm</li>\n\t<li>Ideal für Teekannen</li>\n\t<li>Absolut geschmacksneutral</li>\n</ul>	<p>In einem Teenetz aus Baumwolle hat Ihr Tee besonders viel Platz, um schonend sein Aroma zu entfalten. Es weist einen Durchmesser von 11 Zentimetern auf, was das Einfüllen des Tees besonders einfach gestaltet. Diese Größe eignet sich für kleine und große Kannen. Das Baumwollnetz lässt sich sehr einfach mit heißem Wasser reinigen und ist durch seine Wiederverwendbarkeit sehr umweltfreundlich. Wenn Sie regelmäßig verschiedene Tees genießen, empfehlen wir eigene Filter für jede Teesorte, wie Schwarz- oder Grüntee, zu verwenden.</p>\n\n<p>Zum Reinigen des Baumwoll Teefilters sollte möglichst heißes Wasser verwendet werden und keine scharfen Reinigungsmittel dafür genutzt werden. Wenn doch, dann bitte sehr gut auswaschen, damit das Reinigungsmittel nicht den Geschmack beeinflusst.</p>	58	\N
+55	de	<p>biologisch abbaubar</p>	<ul>\n\t<li>Ungebleichte Teefilter aus Manilahanf, Cellulose und Siegelfasern</li>\n\t<li>Absolut geschmacksneutral, da ohne zusätzliche Klebestoffe</li>\n\t<li>Ideal für Becher und Teekannen bis zu 2 Liter</li>\n\t<li>Biologisch abbaubares Papier</li>\n\t<li>Hergestellt in Deutschland</li>\n\t<li>Länge inkl. Einfüll-Lasche: 188 mm</li>\n\t<li>Weite: 79 mm</li>\n\t<li>Größe L</li>\n</ul>	<p>Die Einfüll-Lasche ermöglicht ein unkompliziertes Befüllen. Dank der doppelten Bodenfalte haben die Teeblätter genug Raum, ihr volle Aroma zu entfalten. Durch die große Öffnung der Schachtel können die Filter ganz leicht entnommen werden. Die Packung ist wieder verschließbar.</p>	56	
+57	de	<p>11cm Durchmesser</p>	<ul>\n\t<li>Teenetz aus ungebleichter reiner Baumwolle</li>\n\t<li>Wiederverwendbar und langlebig</li>\n\t<li>Großzügiger Durchmesser von 11cm</li>\n\t<li>Ideal für Teekannen</li>\n\t<li>Absolut geschmacksneutral</li>\n</ul>	<p>In einem Teenetz aus Baumwolle hat Ihr Tee besonders viel Platz, um schonend sein Aroma zu entfalten. Es weist einen Durchmesser von 11 Zentimetern auf, was das Einfüllen des Tees besonders einfach gestaltet. Diese Größe eignet sich für kleine und große Kannen. Das Baumwollnetz lässt sich sehr einfach mit heißem Wasser reinigen und ist durch seine Wiederverwendbarkeit sehr umweltfreundlich. Wenn Sie regelmäßig verschiedene Tees genießen, empfehlen wir eigene Filter für jede Teesorte, wie Schwarz- oder Grüntee, zu verwenden.</p>\n\n<p>Zum Reinigen des Baumwoll Teefilters sollte möglichst heißes Wasser verwendet werden und keine scharfen Reinigungsmittel dafür genutzt werden. Wenn doch, dann bitte sehr gut auswaschen, damit das Reinigungsmittel nicht den Geschmack beeinflusst.</p>	58	
 62	de	<p>Vollmilch</p>	<ul>\n\t<li>50 zartschmelzende Schokotäfelchen aus feinster Mascao Bio-Milchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Besonders lange und schonend conchiert</li>\n\t<li>Frei von Sojalezithin, Emulgatoren und ohne Einsatz von Fremdfetten</li>\n</ul>	<p>Beste Kakaobohnen und wertvolle Kakaobutter aus Lateinamerika treffen in diesen Schoko-Naps auf naturbelassenen Vollrohrzucker aus den Philippinen. Kleinbäuerinnen und -bauern sichern die hohe Qualität der biologischen Zutaten. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Faire Bezahlung und verlässliche Zusammenarbeit gibt ihnen und ihren Kindern eine Zukunft.</p>\n\n<p>Beim Schweizer Chocolatier Bernrain werden die Zutaten nach besonderer Rezeptur und extra langem Conchieren miteinander verschmolzen. Die Verarbeitung Rohrzuckers bedarf besonders sorgfältiger und aufwändiger Produktionsschritte. Auf Beigabe künstlicher Aromastoffe und Emulgatoren wird verzichtet. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht eine Minimierung des Energieverbrauchs.</p>	63	<p><strong>Zutaten:</strong><br>\nVollrohrzucker <br>\nKakaobutter <br>\nVollmilchpulver <br>\nKakaomasse <br>\nHaselnüsse gemahlen<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Mandeln  </p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<thead>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>561</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.340</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>37</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>22</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>49</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>48</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,19</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p> </p>
 59	de	<p>Magerkakaopulver &amp; Rohrzucker</p>	<ul>\n\t<li>Aromatisch feine lateinamerikanische Mischung aus kontrolliert biologischem Anbau</li>\n\t<li>Mit Magerkakaopulver &amp; Rohrzucker</li>\n\t<li>Nachhaltige Papierverpackung</li>\n</ul>\n\n<p>Zubereitung: Einfach 2 bis 3 gehäufte Teelöffel in einem Glas Milch auflösen, umrühren und genießen. Ideal mit kalter oder warmer Milch sowie in Getreidedrinks, Sojadrinks, Reisdrinks und Mandeldrinks.</p>	<p>Die Süße des Rohrzuckers von unseren Produzenten Manduvirá aus Paraguay verbindet sich in der EZA Equita Trinkschokoladenmischung mit dem feinen Aroma von Kakaobohnen von unseren beiden Produzenten CONACADO und COOPROAGRO aus der Dominikanischen Republik. Die Zutaten stammen von Kleinbäuerinnen und -bauern, die mit viel Erfahrung die hohe Qualität der Zutaten sichern. Dass sie sich für biologischen Anbau entschieden haben, kommt nicht nur der Natur zugute, sondern allen Menschen, die mit dem Produkt zu tun haben: Den Kakaopflanzer*innen ebenso wie den Zuckerrohrbäuerinnen und -bauern bis hin zu den kleinen und großen Genießer*innen des Löskakaos.</p>\n\n<p>Die Mitglieder von COOPROAGRO profitieren durch den Fairen Handel von zahlreichen Vorteilen wie dem Zugang zu technischer Beratung, Unterstützung bei der Qualitätssicherung, Mitbestimmung bei der Verwendung der FAIRTRADE-Prämie und Zugang zu sozialen Projekten und Programmen sowie Kredit- und Sparprogramme und einen Nothilfefonds. Mit den FAIRTRADE-Prämien wurden in der Vergangenheit vor allem Infrastrukturprojekte finanziert – Straßen- und Brückenbauten, die Stromversorgung in einem der Dörfer, eine Schule saniert bzw. ein Vereinshaus gebaut. Auch der Bau eines Krankenhauses konnte mitunterstützt werden. Aktuell will man mit den Prämien vor allem die Verarbeitungsanlagen verbessern und Maßnahmen zur Qualitätssicherung setzen.</p>\n\n<p>Das Zuckerrohr von Manduvirá stammt ausschließlich aus kontrolliert biologischem Anbau und die Bäuerinnen und Bauern leben die Prinzipien der Nachhaltigkeit. Um den Boden vital und fruchtbar zu halten werden Kuh- oder Hühnerdung ausgetragen und stickstoffbindende Pflanzen wie Bohnen gepflanzt. Mindestens 7% der Fläche jedes Mitglieds müssen Schutzgebiete bleiben und dürfen nicht bepflanzt werden. Die Mitglieder der Kooperative können zusätzlich ein breites Angebot an Dienstleistungen in Anspruch nehmen: technische Beratung und Schulungen, günstige Kredite, Sparfonds, Vorauszahlungen und kostengünstige medizinische Versorgung.</p>	60	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nMagerkakaopulver</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Eiern<br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Lupinen<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchte (Nüssen)<br>\nSpuren von Schwefeldioxid und Sulphiten<br>\nSpuren von Sellerie<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<thead>\n\t\t<tr>\n\t\t\t<th style="text-align: left;">Nährwerte:<br>\n\t\t\tBeschreibung</th>\n\t\t\t<th style="text-align: left;"><br>\n\t\t\tWert</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.590</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>376</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>2,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>1,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>74,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>5,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,01</td>\n\t\t</tr>\n\t</tbody>\n</table>
 61	de	<p>Rohrohzucker</p>	<ul>\n\t<li>Rohrohzucker aus kontrolliert biologischem Anbau</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zur Produzent*innenorganisation</li>\n\t<li>Nachhaltige Verpackung aus Papier</li>\n\t<li>Aus fairem Handel</li>\n</ul>\n\n<p>Die Weltladen Zuckersticks enthalten jeweils 4g Bio Rohrohrzucker. Das bedeutet, dass der Zucker nur ein einziges Mal raffiniert wird. Die natürliche bräunliche Färbung nimmt dadurch leicht ab, bleibt jedoch erhalten. Die Portionen sind ideal für unterwegs oder praktisch als Beigabe zu Heißgetränken für Ihre Gäste und sehen neben jeder Tasse richtig gut aus.</p>	<p>Das Zuckerrohr von Manduvirá stammt ausschließlich aus kontrolliert biologischem Anbau und die Bäuerinnen und Bauern leben die Prinzipien der Nachhaltigkeit. Um den Boden vital und fruchtbar zu halten werden Kuh- oder Hühnerdung ausgetragen und stickstoffbindende Pflanzen wie Bohnen gepflanzt. Mindestens 7% der Fläche jedes Mitglieds müssen Schutzgebiete bleiben und dürfen nicht bepflanzt werden. Die Mitglieder der Kooperative können zusätzlich ein breites Angebot an Dienstleistungen in Anspruch nehmen: technische Beratung und Schulungen, günstige Kredite, Sparfonds, Vorauszahlungen und kostengünstige medizinische Versorgung.</p>\n\n<p>"Unsere Vision ist es, als Genossenschaft qualitativ hochwertige Dienstleistungen für Kleinerzeuger zu bieten, um ihre Lebensqualität und den Wohlstand der ganzen Gemeinschaft zu verbessern, und die führende Kooperative in der Produktion und Verarbeitung von Bio-Rohrzucker zu sein. Unsere Mission ist die Förderung der ganzheitlichen Entwicklung. Wir bieten eine Reihe von Dienstleistungen und eine ehrliche, transparente und effiziente Verwaltung für das wirtschaftliche und soziale Wohlergehen unserer Mitglieder und der ganzen Gemeindschaft." - Andrés González Aguilera, Geschäftsführer der Manduvirá Cooperative Ltd.</p>	62	<p><strong>Zutaten:</strong><br>\nRohrohrzucker</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung </strong></td>\n\t\t\t<td><strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>399</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.695</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>99,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>99,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
@@ -8981,6 +10791,13 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 87	de	<p>Zartbitterschokolade</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit mindestens 58% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	88	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nKakaobutter <br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>538</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.240</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>40</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
 88	de	<p>Zartbitter &amp; Minze</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit erfrischender Minze</li>\n\t<li>Mindestens 58% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	89	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nKakaobutter <br>\nnatürliches Aroma (Pfefferminze)<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>537</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.233</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>40</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
 89	de	<p>Zartbitter &amp; Orange</p>	<ul>\n\t<li>Feinste Bio-Zartbitterschokolade mit fruchtiger Orange</li>\n\t<li>Mindestens 58% Kakaoanteil</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Umweltfreundlich und Ressourcen schonend hergestellt</li>\n\t<li>Veredelt vom Schweizer Chocolatier Bernrain</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Mit SONRISA – einem Lächeln – geht die Sonne auf! Beste Kakaobohnen und wertvolle Kakaobutter aus Bolivien, der Dominikanischen Republik und Peru treffen in SONRISA auf naturbelassenen Vollrohrzucker aus Paraguay. In ihr liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Der erfahrene Schweizer Chocolatier Bernrain sorgt durch eine besondere Rezeptur und langes Conchieren dafür, dass die Zutaten der Kleinbauern und Kleinbäuerinnen aus den verschiedenen Kulturen harmonisch miteinander verschmelzen. Das umfassend ressourcenschonende und nachhaltige Produktionssystem des Chocolatiers ermöglicht zudem eine Minimierung des Energieverbrauchs. Auch hier sind es Sorgfalt und Zeit, die ihre Wirkung tun.</p>\n\n<p>So verbindet SONRISA die Achtung der Menschen und der Natur mit der Kunst der Veredelung zu purem Schokoladenglück.</p>	90	<p><strong>Zutaten:</strong><br>\nKakaomasse <br>\nRohrzucker <br>\nKakaobutter <br>\nnatürliches Aroma (Orange)<br>\n<br>\n<strong>Zusatzinfo:</strong><br>\nSpuren von Haselnüssen<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>538</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.240</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>34</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>40</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
+38	de	<p>aus nachhaltiger Forstwirtschaft</p>	<ul>\n\t<li>Ungebleichte Kaffeefilter aus Papier, welches aus nachhaltiger Forstwirtschaft stammt</li>\n\t<li>Papier aus natürlicher und biologisch abbaubarer Zellulose,</li>\n\t<li>Absolut geschmacksneutral, da ohne zusätzliche Klebe- oder Bindestoffe</li>\n\t<li>Standardgröße Nr. 4: 19,6cm Höhe und 12,8cm Breite</li>\n\t<li>Geeignet für alle gängigen Filtermaschinen mit passender Größe und für das Aufbrühen im Handfilter (Pour-Over)</li>\n</ul>\n\n<p> </p>	<p>Ungebleichte Kaffeefilter für gemahlenen Kaffee, hergestellt in Deutschland aus 100% Zellulose, biologisch abbaubar. Ohne Zusatz von Klebstoff oder anderen Bindemitteln. Die Filter bestehen aus FSC®-zertifizierten Papier.</p>	39	
+56	de	<p>9cm Durchmesser</p>	<ul>\n\t<li>Teenetz aus ungebleichter reiner Baumwolle</li>\n\t<li>Wiederverwendbar und langlebig</li>\n\t<li>Großzügiger Durchmesser von 9cm</li>\n\t<li>Ideal für Becher und Teekannen bis zu 2 Liter</li>\n\t<li>Absolut geschmacksneutral</li>\n</ul>	<p>In einem Teenetz aus Baumwolle hat Ihr Tee besonders viel Platz, um schonend sein Aroma zu entfalten. Es weist einen Durchmesser von 9 Zentimetern auf, was das Einfüllen des Tees besonders einfach gestaltet. Diese Größe eignet sich für Tassen sowie für kleine bis mittelgroße Kannen. Das Baumwollnetz lässt sich sehr einfach mit heißem Wasser reinigen und ist durch seine Wiederverwendbarkeit sehr umweltfreundlich. Wenn Sie regelmäßig verschiedene Tees genießen, empfehlen wir eigene Filter für jede Teesorte, wie Schwarz- oder Grüntee, zu verwenden.</p>\n\n<p>Zum Reinigen des Baumwoll Teefilters sollte möglichst heißes Wasser verwendet werden und keine scharfen Reinigungsmittel dafür genutzt werden. Wenn doch, dann bitte sehr gut auswaschen, damit das Reinigungsmittel nicht den Geschmack beeinflusst.</p>\n\n<p> </p>	57	
+90	de	<p>Milchcreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit süßer Milchcremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Bean-to-bar - edle Kakaobohnen werden direkt zu Schokolade verarbeitet</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Hey, habt ihr gewusst? Wir sind Bean to Bär, sagt der bunte Vogel. Nein! Das heißt Bean to Bar!," sagt der Erklärbär. Die Kakaobohnen werden direkt im Schokoladenwerk zu Kakaomasse verarbeitet und dann zu Tafelschokolade. Das ist schon ziemlich besonders. So macht das fast keiner mehr!</p>\n\n<p>Die Verarbeitung von Kakaobohnen zu Kakaomasse findet heute meist außerhalb der Schokoladenfabriken statt. Die meisten Schokofabriken kaufen nurmehr Kakaomasse an und verarbeiten diese dann zu Tafelschokolade weiter.</p>\n\n<p>Der <strong>Bean-to-Bar</strong>-Hersteller der EZA Cremeschokolade verfügt über das Know-How und die Maschinenausstattung, alle Produktionsschritte wie Rösten, Walzen, Conchieren, Tafelfertigung und Verpacken im eigenen Werk zu machen. In dieser Schokolade steckt höchste Bio-Qualität aus einer Hand und natürlich fair!<br>\n<br>\nBeste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik treffen auf naturbelassenen Vollrohrzucker aus Paraguay. In den Zutaten liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Mit den FAIRTRADE-Prämien wurden bei den Kleinproduzent*innen von COOPROAGRO vor allem Infrastrukturprojekte finanziert – Straßen- und Brückenbauten, die Stromversorgung in einem der Dörfer, eine Schule saniert bzw. ein Vereinshaus gebaut. Auch der Bau eines Krankenhauses konnte mitunterstützt werden.</p>	91	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nVollmilchpulver (23%)<br>\nKakaobutter <br>\nKokosfett<br>\nKakaomasse<br>\nBourbon-Vanille<br>\nEmulgator: Lezithine (Bio-Sonnenblumenlezithin)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>579</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.406</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>26,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,22</td>\n\t\t</tr>\n\t</tbody>\n</table>
+91	de	<p>Bananencreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit fruchtiger Bananencremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Bean-to-bar - edle Kakaobohnen werden direkt zu Schokolade verarbeitet</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Hey, habt ihr gewusst? Wir sind Bean to Bär, sagt der bunte Vogel. Nein! Das heißt Bean to Bar!," sagt der Erklärbär. Die Kakaobohnen werden direkt im Schokoladenwerk zu Kakaomasse verarbeitet und dann zu Tafelschokolade. Das ist schon ziemlich besonders. So macht das fast keiner mehr!</p>\n\n<p>Die Verarbeitung von Kakaobohnen zu Kakaomasse findet heute meist außerhalb der Schokoladenfabriken statt. Die meisten Schokofabriken kaufen nurmehr Kakaomasse an und verarbeiten diese dann zu Tafelschokolade weiter.</p>\n\n<p>Der <strong>Bean-to-Bar</strong>-Hersteller der EZA Cremeschokolade verfügt über das Know-How und die Maschinenausstattung, alle Produktionsschritte wie Rösten, Walzen, Conchieren, Tafelfertigung und Verpacken im eigenen Werk zu machen. In dieser Schokolade steckt höchste Bio-Qualität aus einer Hand und natürlich fair!<br>\n<br>\nBeste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik treffen auf naturbelassenen Vollrohrzucker aus Paraguay. In den Zutaten liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Mit den FAIRTRADE-Prämien wurden bei den Kleinproduzent*innen von COOPROAGRO vor allem Infrastrukturprojekte finanziert – Straßen- und Brückenbauten, die Stromversorgung in einem der Dörfer, eine Schule saniert bzw. ein Vereinshaus gebaut. Auch der Bau eines Krankenhauses konnte mitunterstützt werden.</p>	92	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nVollmilchpulver (23%)<br>\nKakaobutter <br>\nKokosfett<br>\nKakaomasse<br>\nBananenpulver gefriergetrocknet (0,6%)<br>\nBourbon-Vanille<br>\nEmulgator: Lezithine (Bio-Sonnenblumenlezithin)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>577</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.400</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>26,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,22</td>\n\t\t</tr>\n\t</tbody>\n</table>
+92	de	<p>Erdbeercreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit fruchtiger Erdbeercremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Bean-to-bar - edle Kakaobohnen werden direkt zu Schokolade verarbeitet</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Hey, habt ihr gewusst? Wir sind Bean to Bär, sagt der bunte Vogel. Nein! Das heißt Bean to Bar!," sagt der Erklärbär. Die Kakaobohnen werden direkt im Schokoladenwerk zu Kakaomasse verarbeitet und dann zu Tafelschokolade. Das ist schon ziemlich besonders. So macht das fast keiner mehr!</p>\n\n<p>Die Verarbeitung von Kakaobohnen zu Kakaomasse findet heute meist außerhalb der Schokoladenfabriken statt. Die meisten Schokofabriken kaufen nurmehr Kakaomasse an und verarbeiten diese dann zu Tafelschokolade weiter.</p>\n\n<p>Der <strong>Bean-to-Bar</strong>-Hersteller der EZA Cremeschokolade verfügt über das Know-How und die Maschinenausstattung, alle Produktionsschritte wie Rösten, Walzen, Conchieren, Tafelfertigung und Verpacken im eigenen Werk zu machen. In dieser Schokolade steckt höchste Bio-Qualität aus einer Hand und natürlich fair!<br>\n<br>\nBeste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik treffen auf naturbelassenen Vollrohrzucker aus Paraguay. In den Zutaten liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Mit den FAIRTRADE-Prämien wurden bei den Kleinproduzent*innen von COOPROAGRO vor allem Infrastrukturprojekte finanziert – Straßen- und Brückenbauten, die Stromversorgung in einem der Dörfer, eine Schule saniert bzw. ein Vereinshaus gebaut. Auch der Bau eines Krankenhauses konnte mitunterstützt werden.</p>	93	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nVollmilchpulver (23%)<br>\nKakaobutter <br>\nKokosfett<br>\nKakaomasse<br>\nErdbeerpulver gefriergetrocknet (0,6%)<br>\nnatürliche Aromastoffe<br>\nBourbon-Vanille<br>\nEmulgator: Lezithine (Bio-Sonnenblumenlezithin)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>577</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.400</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>26,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,22</td>\n\t\t</tr>\n\t</tbody>\n</table>
+93	de	<p>Rosinen &amp; Vollmilch</p>	<ul>\n\t<li>Fruchtige Rosinen umhüllt von zartschmelzender Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Schonendes Sonnentrocknungsverfahren</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Im Acongaguatal, rund 100km nördlich von Santiago de Chile, ist das Klima ideal für die Traubenproduktion. Kleinproduzent*innen haben sich zur Organisation MIFRUTA zusammengetan, um ihre Ernte gemeinsam und zu fairen Bedingungen zu vermarkten. Die Rosinen von MIFRUTA der Sorten „Flame“ und „Thomson“ (kernlos) sind besonders groß, saftig und aromatisch. Für die Verarbeitung werden die Trauben 12 bis 15 Tage an der Sonne getrocknet, dann gereinigt, sortiert und verpackt.</p>\n\n<p>Die Preise für die fair gehandelten Rosinen von MIFRUTA, liegen zwischen 80 und 100 Prozent über den lokalen Preisen. Wichtig ist auch, dass die Kleinproduzent*innen sofort bezahlt werden und nicht – wie sonst üblich – mehrere Monate auf ihre Bezahlung warten müssen. Mit den Prämiengeldern des Fairen Handels konnten Sozialleistungen für die Kleinproduzent*innen finanziert werden. Darüber hinaus werden mit den Prämiengeldern regionale Institutionen wie z.B. Kindergärten unterstützt.</p>\n\n<p>Bei der verwendeten Bio-Vollmilch treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	94	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nVollmilchpulver<br>\nKakaobutter<br>\nKakaomasse<br>\nVanilleextrakt<br>\nRosinen 34% (enthalten Sonnenblumenöl)<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nBio-Anteil: 66%, Kontrollstelle: DE-ÖKO-005<br>\nFairtrade Anteil: 83,4%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>473</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.980</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>21,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>64,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>60,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>5,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,13</td>\n\t\t</tr>\n\t</tbody>\n</table>
+94	de	<p>Paranüsse &amp; Vollmilch</p>	<ul>\n\t<li>Knackige Paranüsse umhüllt von zartschmelzender Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Nachhaltige Wildsammlung im Amazonasgebiet</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Die Paranuss ist eine natürlich vorkommende Nuss des artenreichen Amazonas-Regenwaldes. Candela widmet ihr ganzes Schaffen der Biodiversität und dem nachhaltigen Konsum in Peru und in der Welt. Gesammelt und verarbeitet werden die Nüsse von den in der Region siedelnden indigenen Familien. Durch den Fairen Handel können die Kleinbauern und Kleinbäuerinnen für den Erhalt der Artenvielfalt sorgen und bekommen dafür eine faire Entlohnung und eine gesicherte Lebensgrundlage.</p>\n\n<p>Bei der verwendeten Bio-Vollmilch treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	95	
 \.
 
 
@@ -9002,7 +10819,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 552, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 560, true);
 
 
 --
@@ -9030,7 +10847,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: cms_cmsplugin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1207, true);
+SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1215, true);
 
 
 --
@@ -9051,14 +10868,14 @@ SELECT pg_catalog.setval('public.cms_globalpagepermission_sites_id_seq', 1, fals
 -- Name: cms_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_id_seq', 54, true);
+SELECT pg_catalog.setval('public.cms_page_id_seq', 72, true);
 
 
 --
 -- Name: cms_page_placeholders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 108, true);
+SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 144, true);
 
 
 --
@@ -9072,7 +10889,7 @@ SELECT pg_catalog.setval('public.cms_pagepermission_id_seq', 1, false);
 -- Name: cms_placeholder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 114, true);
+SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 150, true);
 
 
 --
@@ -9086,14 +10903,14 @@ SELECT pg_catalog.setval('public.cms_staticplaceholder_id_seq', 2, true);
 -- Name: cms_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_title_id_seq', 94, true);
+SELECT pg_catalog.setval('public.cms_title_id_seq', 112, true);
 
 
 --
 -- Name: cms_treenode_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_treenode_id_seq', 27, true);
+SELECT pg_catalog.setval('public.cms_treenode_id_seq', 36, true);
 
 
 --
@@ -9170,21 +10987,21 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 697, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 793, true);
 
 
 --
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 139, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 141, true);
 
 
 --
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 130, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 131, true);
 
 
 --
@@ -9198,14 +11015,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 97, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 102, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 852, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 894, true);
 
 
 --
@@ -9233,7 +11050,7 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 294, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 299, true);
 
 
 --
@@ -9261,7 +11078,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 110, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 118, true);
 
 
 --
@@ -9314,6 +11131,13 @@ SELECT pg_catalog.setval('public.shop_notificationattachment_id_seq', 1, false);
 
 
 --
+-- Name: shop_sendcloud_shippingdestination_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
+--
+
+SELECT pg_catalog.setval('public.shop_sendcloud_shippingdestination_id_seq', 1354, true);
+
+
+--
 -- Name: weltladen_billingaddress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
@@ -9338,7 +11162,7 @@ SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 9, true);
 -- Name: weltladen_cartitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 16, true);
+SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 17, true);
 
 
 --
@@ -9366,7 +11190,7 @@ SELECT pg_catalog.setval('public.weltladen_locations_id_seq', 1, true);
 -- Name: weltladen_manufacturer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 51, true);
+SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 53, true);
 
 
 --
@@ -9394,14 +11218,14 @@ SELECT pg_catalog.setval('public.weltladen_orderpayment_id_seq', 1, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 89, true);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 94, true);
 
 
 --
 -- Name: weltladen_productpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 127, true);
+SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 187, true);
 
 
 --
@@ -9422,21 +11246,21 @@ SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 2, true);
 -- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 360, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 376, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 90, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 95, true);
 
 
 --
 -- Name: weltladen_weltladenproducttranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 89, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 94, true);
 
 
 --
@@ -10141,6 +11965,30 @@ ALTER TABLE ONLY public.shop_notification
 
 ALTER TABLE ONLY public.shop_notificationattachment
     ADD CONSTRAINT shop_notificationattachment_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_sendcloud_shippingdestination shop_sendcloud_shippingd_country_shipping_method__0fbf2e1c_uniq; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.shop_sendcloud_shippingdestination
+    ADD CONSTRAINT shop_sendcloud_shippingd_country_shipping_method__0fbf2e1c_uniq UNIQUE (country, shipping_method_id);
+
+
+--
+-- Name: shop_sendcloud_shippingdestination shop_sendcloud_shippingdestination_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.shop_sendcloud_shippingdestination
+    ADD CONSTRAINT shop_sendcloud_shippingdestination_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_sendcloud_shippingmethod shop_sendcloud_shippingmethod_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.shop_sendcloud_shippingmethod
+    ADD CONSTRAINT shop_sendcloud_shippingmethod_pkey PRIMARY KEY (id);
 
 
 --
@@ -11217,6 +13065,13 @@ CREATE INDEX shop_notificationattachment_notification_id_d30cc951 ON public.shop
 
 
 --
+-- Name: shop_sendcloud_shippingdestination_shipping_method_id_6a734774; Type: INDEX; Schema: public; Owner: djangouser
+--
+
+CREATE INDEX shop_sendcloud_shippingdestination_shipping_method_id_6a734774 ON public.shop_sendcloud_shippingdestination USING btree (shipping_method_id);
+
+
+--
 -- Name: weltladen_billingaddress_customer_id_c631e62a; Type: INDEX; Schema: public; Owner: djangouser
 --
 
@@ -12066,6 +13921,14 @@ ALTER TABLE ONLY public.shop_notificationattachment
 
 ALTER TABLE ONLY public.shop_notificationattachment
     ADD CONSTRAINT shop_notificationatt_notification_id_d30cc951_fk_shop_noti FOREIGN KEY (notification_id) REFERENCES public.shop_notification(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_sendcloud_shippingdestination shop_sendcloud_shipp_shipping_method_id_6a734774_fk_shop_send; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.shop_sendcloud_shippingdestination
+    ADD CONSTRAINT shop_sendcloud_shipp_shipping_method_id_6a734774_fk_shop_send FOREIGN KEY (shipping_method_id) REFERENCES public.shop_sendcloud_shippingmethod(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
