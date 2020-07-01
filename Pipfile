@@ -35,6 +35,7 @@ django-elasticsearch-dsl = "*"
 elasticsearch-dsl = ">=7"
 django-extensions = "*"
 werkzeug = "*"
+djangoshop-sendcloud = "*"
 
 [dev-packages]
 tox = "*"
