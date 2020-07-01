@@ -88,10 +88,10 @@ class ClimateNeutralShippingModifier(ShippingModifier):
     def is_disabled(self, cart):
         #geolocate address of customer
         if cart.shipping_address:
-            zip_code = cart.shipping_address.zip_code
+            postal_code = cart.shipping_address.postal_code
             city = cart.shipping_address.city
             country = cart.shipping_address.country
-            distance = checkdistance(zip_code, city, country)
+            distance = checkdistance(postal_code, city, country)
             if distance > WELTLADEN_SHIPPING_DISTANCE:
                 return True
         else:

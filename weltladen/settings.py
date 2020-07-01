@@ -117,6 +117,7 @@ INSTALLED_APPS = [
     'post_office',
     'django_countries',
     'shop',
+    'shop_sendcloud',
     'weltladen',
 ]
 if DEBUG:
@@ -616,6 +617,8 @@ SHOP_EDITCART_NG_MODEL_OPTIONS = "{updateOn: 'default blur', debounce: {'default
 
 SHOP_CART_MODIFIERS = [
     'shop.modifiers.defaults.DefaultCartModifier',
+    'shop_sendcloud.modifiers.SendcloudShippingModifiers',
+    'shop.modifiers.defaults.WeightedCartModifier',
     'weltladen.modifiers.CartExcludedTaxModifier',
     'weltladen.modifiers.PostalShippingModifier',
     'weltladen.modifiers.ClimateNeutralShippingModifier',
@@ -627,6 +630,7 @@ SHOP_ORDER_WORKFLOWS = [
     'shop.payment.workflows.ManualPaymentWorkflowMixin',
     'weltladen.workflows.DeliveryNotePaymentWorkflowMixin',
     'shop.payment.workflows.CancelOrderWorkflowMixin',
+    'shop_sendcloud.workflows.SendclouldWorkflowMixin',
     'shop.shipping.workflows.CommissionGoodsWorkflowMixin',
 ]
 
@@ -641,3 +645,8 @@ WELTLADEN_SHIPPING_DISTANCE = 5
 WELTLADEN_EMAIL_ADDRESS = 'baden@weltladen.at'
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'
+
+try:
+    from .settings_local import SHOP_SENDCLOUD
+except ImportError:
+    print('setttings_local.py is missing')
