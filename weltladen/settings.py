@@ -620,7 +620,7 @@ SHOP_CART_MODIFIERS = [
     'shop_sendcloud.modifiers.SendcloudShippingModifiers',
     'shop.modifiers.defaults.WeightedCartModifier',
     'weltladen.modifiers.CartExcludedTaxModifier',
-    'weltladen.modifiers.PostalShippingModifier',
+    #'weltladen.modifiers.PostalShippingModifier',
     'weltladen.modifiers.ClimateNeutralShippingModifier',
     'weltladen.modifiers.DeliveryNotePaymentModifier',
     'shop.shipping.modifiers.SelfCollectionModifier',
@@ -641,7 +641,7 @@ SHOP_CASCADE_FORMS = {
 
 #Weltladen settings
 WELTLADEN_BADEN_LOCATION = (48.0083297, 16.2340982)
-WELTLADEN_SHIPPING_DISTANCE = 5
+WELTLADEN_SHIPPING_DISTANCE = 5 #in km
 WELTLADEN_EMAIL_ADDRESS = 'baden@weltladen.at'
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'

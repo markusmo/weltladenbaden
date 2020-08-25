@@ -12,6 +12,14 @@ details.pretty-manufacturer {
     max-width: 390px;
 }
 
+div.pretty-supplier {
+    max-width: 390px;
+}
+
+div.pretty-countries {
+    max-width: 390px;
+}
+
 @media only screen and (max-width: 600px) {
     table.bestandteile{
         width: 100% !important;
@@ -22,6 +30,10 @@ details.pretty-manufacturer {
     }
 
     div.pretty-countries{
+        width: 2em;
+    }
+
+    div.pretty-supplier {
         width: 2em;
     }
 }

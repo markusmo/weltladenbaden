@@ -61,7 +61,9 @@
 			<ul class="list-group mb-3">
 				<li class="list-group-item d-flex">
 					<div class="w-50">{% trans "Supplier" %}:</div>
-					<strong>{{ product.supplier }}</strong>
+					<div class="pretty-supplier">
+						<strong>{{ product.supplier }}</strong>
+					</div>
 				</li>
 				{% if product.origin_countries %}
 				<li class="list-group-item d-flex">
