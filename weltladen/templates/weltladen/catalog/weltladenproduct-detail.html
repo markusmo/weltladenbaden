@@ -8,7 +8,7 @@
 {% include "shop/catalog/bsp-scrollpanel.tmpl.html" %}
 {% include "weltladen/catalog/modal-image-view.html"%}
 {% thumbnail product.images.first 250x250 crop as thumb %}
-{% thumbnail product.bio_quality_label.logo 124x200 as biothumb %}
+{% thumbnail product.quality_labels.first.logo 124x200 as qualitythumb %}
 <div class="container">
 	<div class="row">
 		<div class="col col-md-10 offset-sm-1" style="margin-bottom:1em;">
@@ -37,12 +37,11 @@
 		<div class="col col-md-10 offset-md-1">
 			<p>{{ product.short_description|safe }}</p>
 
-			<div style="margin-top: 3em; margin-bottom:2em;">
-			{% if product.fairtrade %}
-			<img width="82px" alt="Fairtrade logo" src={% static 'weltladen/fairtrade_logo.svg' %}/>
-			{% endif %}
-			{% if product.bio_quality_label %}
-			<img width="{{ biothumb.width }}" height="{{ biothumb.height }}" src="{{ biothumb.url }}"/>
+			<div class="quality-label" style="margin-top: 3em; margin-bottom:2em;">
+			{% if product.quality_labels.all %}
+				{% for label in product.ordered_quality_labels %}
+					<img height="{{ qualitythumb.height }}" src="{{ label.logo.url }}" alt="{{ label.name }}" />
+				{% endfor %}
 			{% endif %}
 			</div>
 

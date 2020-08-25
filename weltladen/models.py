@@ -113,9 +113,15 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
-class BioQualityLabel(models.Model):
+class QualityLabel(models.Model):
+
+    ordering = models.PositiveIntegerField(
+        _("Ordering"),
+        default=10
+    )
+
     name = models.CharField(
-        _("Bio Quality Label"),
+        _("Quality Label"),
         max_length=150,
         unique=True
     )
@@ -174,12 +180,11 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         on_delete=models.CASCADE
     )
 
-    bio_quality_label = models.ForeignKey( #many to many
-        BioQualityLabel,
-        on_delete=models.CASCADE,
-        verbose_name=_("Bio Quality Label"),
+    quality_labels = models.ManyToManyField(
+        QualityLabel,
         blank=True,
-        null=True
+        verbose_name=_("Quality labels"),
+        related_name="quality_labels"
     )
 
     origin_countries = CountryField(
@@ -227,11 +232,6 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         default=False
     )
 
-    fairtrade = models.BooleanField(
-        _("Fairtrade"),
-        default=True
-    )
-
     tax_switch = models.BooleanField(
         _("Switch Tax"),
         default=True,
@@ -259,6 +259,10 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
 
     def __str__(self):
         return self.product_name
+
+    @property
+    def ordered_quality_labels(self):
+        return self.quality_labels.all().order_by('ordering')
 
     @property
     def sample_image(self):

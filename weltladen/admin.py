@@ -12,10 +12,40 @@ from shop.admin.delivery import DeliveryOrderAdminMixin
 from shop_sendcloud.admin import SendCloudOrderAdminMixin
 from adminsortable2.admin import SortableAdminMixin
 from shop.admin.product import (CMSPageAsCategoryMixin, UnitPriceMixin, 
-                                ProductImageInline, InvalidateProductCacheMixin)
-from weltladen.models import (Manufacturer, Supplier, BioQualityLabel,
+                                ProductImageInline, InvalidateProductCacheMixin,
+                                SearchProductIndexMixin)
+from weltladen.models import (Manufacturer, Supplier, QualityLabel,
                               WeltladenProduct, WeltladenCustomer)
 
+class BooleanDefaultNoFilter(admin.SimpleListFilter):
+    def lookups(self, request, model_admin):
+        return (
+            ('all', 'All'),
+            (1, '20% sales tax'),
+            (None, '10% sales Tax')
+        )
+
+    def choices(self, changelist):
+        for lookup, title in self.lookup_choices:
+            yield {
+                'selected': self.value() == (str(lookup) if lookup else lookup),
+                'query_string': changelist.get_query_string({self.parameter_name: lookup}, []),
+                'display': title,
+            }
+
+    def queryset(self, request, queryset):
+        if self.value():
+            if self.value() == 'all':
+                return queryset
+            else:
+                return queryset.filter(**{self.parameter_name: self.value()})
+
+        elif self.value() == None:
+            return queryset.filter(**{self.parameter_name: False})
+
+class TaxSwitchFilter(BooleanDefaultNoFilter):
+    title = _('Sales Tax')
+    parameter_name = 'tax_switch'
 
 admin.site.site_header = "Weltladen Administration"
 admin.site.unregister(ThumbnailOption)
@@ -28,7 +58,7 @@ class OrderAdmin(DeliveryOrderAdminMixin, SendCloudOrderAdminMixin, OrderAdmin):
 
 admin.site.register(Manufacturer, admin.ModelAdmin)
 admin.site.register(Supplier, admin.ModelAdmin)
-admin.site.register(BioQualityLabel, admin.ModelAdmin)
+admin.site.register(QualityLabel, admin.ModelAdmin)
 
 __all__ = ['customer']
 
@@ -48,7 +78,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             'fields': ['caption', 'short_description' ,'description'],
         }),
         (_("Properties"), {
-            'fields': ['bio_quality_label', 'fairtrade','manufacturer', 'additional_manufacturers',
+            'fields': ['quality_labels','manufacturer', 'additional_manufacturers',
                        'supplier', 'origin_countries', 'vegan', 'lactose_free', 'gluten_free'],
         }),
         (_("Ingredients"), {
@@ -60,3 +90,5 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
     prepopulated_fields = {'slug': ['product_name']}
     list_display = ['product_name', 'product_code', 'get_unit_price', 'active']
     search_fields = ['product_name']
+    filter_horizontal = ['quality_labels', 'additional_manufacturers']
+    list_filter = [TaxSwitchFilter,]

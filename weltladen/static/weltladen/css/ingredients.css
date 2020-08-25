@@ -20,6 +20,10 @@ div.pretty-countries {
     max-width: 390px;
 }
 
+div.quality-label > img{
+    padding-right: 5px;
+}
+
 @media only screen and (max-width: 600px) {
     table.bestandteile{
         width: 100% !important;
