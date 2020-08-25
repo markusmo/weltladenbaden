@@ -4,23 +4,23 @@
   "description": "Weltladen Baden Onlineshop",
   "private": true,
   "dependencies": {
-    "angular": "^1.7.8",
-    "angular-animate": "^1.7.8",
+    "angular": "^1.8.0",
+    "angular-animate": "^1.8.0",
     "angular-bootstrap-plus": "^0.8.1",
-    "angular-i18n": "^1.7.8",
-    "angular-inview": "^3.0.0",
-    "angular-sanitize": "^1.7.8",
+    "angular-i18n": "^1.7.9",
+    "angular-inview": "^3.1.0",
+    "angular-sanitize": "^1.8.0",
     "angular-ui-bootstrap": "~2.5.6",
     "autoprefixer": "^8.0.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.5.2",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.3.1",
-    "leaflet": "^1.1.0",
-    "leaflet-easybutton": "^2.2.0",
+    "jquery": "^3.5.1",
+    "leaflet": "^1.6.0",
+    "leaflet-easybutton": "^2.4.0",
     "popper.js": "^1.16.1",
     "postcss": "^6.0.23",
     "postcss-cli": "^5.0.0",
     "select2": "~4.0.3",
-    "ui-bootstrap4": "^3.0.5"
+    "ui-bootstrap4": "^3.0.6"
   }
 }
