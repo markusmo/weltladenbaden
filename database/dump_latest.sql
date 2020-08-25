@@ -2025,12 +2025,13 @@ CREATE TABLE public.weltladen_billingaddress (
     id integer NOT NULL,
     priority smallint NOT NULL,
     name character varying(1024) NOT NULL,
-    address1 character varying(1024) NOT NULL,
-    address2 character varying(1024),
-    zip_code character varying(12) NOT NULL,
+    postal_code character varying(12) NOT NULL,
     city character varying(1024) NOT NULL,
     country character varying(3) NOT NULL,
-    customer_id integer NOT NULL
+    customer_id integer NOT NULL,
+    address character varying(1024) NOT NULL,
+    company_name character varying(1024),
+    house_number character varying(12) NOT NULL
 );
 
 
@@ -2059,17 +2060,19 @@ ALTER SEQUENCE public.weltladen_billingaddress_id_seq OWNED BY public.weltladen_
 
 
 --
--- Name: weltladen_bioqualitylabel; Type: TABLE; Schema: public; Owner: djangouser
+-- Name: weltladen_qualitylabel; Type: TABLE; Schema: public; Owner: djangouser
 --
 
-CREATE TABLE public.weltladen_bioqualitylabel (
+CREATE TABLE public.weltladen_qualitylabel (
     id integer NOT NULL,
     name character varying(150) NOT NULL,
-    logo_id integer NOT NULL
+    logo_id integer NOT NULL,
+    ordering integer NOT NULL,
+    CONSTRAINT weltladen_qualitylabel_ordering_check CHECK ((ordering >= 0))
 );
 
 
-ALTER TABLE public.weltladen_bioqualitylabel OWNER TO djangouser;
+ALTER TABLE public.weltladen_qualitylabel OWNER TO djangouser;
 
 --
 -- Name: weltladen_bioqualitylabel_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
@@ -2090,7 +2093,7 @@ ALTER TABLE public.weltladen_bioqualitylabel_id_seq OWNER TO djangouser;
 -- Name: weltladen_bioqualitylabel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
 --
 
-ALTER SEQUENCE public.weltladen_bioqualitylabel_id_seq OWNED BY public.weltladen_bioqualitylabel.id;
+ALTER SEQUENCE public.weltladen_bioqualitylabel_id_seq OWNED BY public.weltladen_qualitylabel.id;
 
 
 --
@@ -2525,12 +2528,13 @@ CREATE TABLE public.weltladen_shippingaddress (
     id integer NOT NULL,
     priority smallint NOT NULL,
     name character varying(1024) NOT NULL,
-    address1 character varying(1024) NOT NULL,
-    address2 character varying(1024),
-    zip_code character varying(12) NOT NULL,
+    postal_code character varying(12) NOT NULL,
     city character varying(1024) NOT NULL,
     country character varying(3) NOT NULL,
-    customer_id integer NOT NULL
+    customer_id integer NOT NULL,
+    address character varying(1024) NOT NULL,
+    company_name character varying(1024),
+    house_number character varying(12) NOT NULL
 );
 
 
@@ -2630,10 +2634,8 @@ CREATE TABLE public.weltladen_weltladenproduct (
     supplier_id integer NOT NULL,
     tax_switch boolean NOT NULL,
     vegan boolean NOT NULL,
-    fairtrade boolean NOT NULL,
     gluten_free boolean NOT NULL,
     lactose_free boolean NOT NULL,
-    bio_quality_label_id integer,
     origin_countries character varying(746) NOT NULL,
     CONSTRAINT weltladen_weltladenproduct_order_check CHECK (("order" >= 0))
 );
@@ -2696,6 +2698,41 @@ ALTER TABLE public.weltladen_weltladenproduct_id_seq OWNER TO djangouser;
 --
 
 ALTER SEQUENCE public.weltladen_weltladenproduct_id_seq OWNED BY public.weltladen_weltladenproduct.id;
+
+
+--
+-- Name: weltladen_weltladenproduct_quality_labels; Type: TABLE; Schema: public; Owner: djangouser
+--
+
+CREATE TABLE public.weltladen_weltladenproduct_quality_labels (
+    id integer NOT NULL,
+    weltladenproduct_id integer NOT NULL,
+    qualitylabel_id integer NOT NULL
+);
+
+
+ALTER TABLE public.weltladen_weltladenproduct_quality_labels OWNER TO djangouser;
+
+--
+-- Name: weltladen_weltladenproduct_quality_labels_id_seq; Type: SEQUENCE; Schema: public; Owner: djangouser
+--
+
+CREATE SEQUENCE public.weltladen_weltladenproduct_quality_labels_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.weltladen_weltladenproduct_quality_labels_id_seq OWNER TO djangouser;
+
+--
+-- Name: weltladen_weltladenproduct_quality_labels_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: djangouser
+--
+
+ALTER SEQUENCE public.weltladen_weltladenproduct_quality_labels_id_seq OWNED BY public.weltladen_weltladenproduct_quality_labels.id;
 
 
 --
@@ -3081,13 +3118,6 @@ ALTER TABLE ONLY public.weltladen_billingaddress ALTER COLUMN id SET DEFAULT nex
 
 
 --
--- Name: weltladen_bioqualitylabel id; Type: DEFAULT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_bioqualitylabel ALTER COLUMN id SET DEFAULT nextval('public.weltladen_bioqualitylabel_id_seq'::regclass);
-
-
---
 -- Name: weltladen_cart id; Type: DEFAULT; Schema: public; Owner: djangouser
 --
 
@@ -3165,6 +3195,13 @@ ALTER TABLE ONLY public.weltladen_productpage ALTER COLUMN id SET DEFAULT nextva
 
 
 --
+-- Name: weltladen_qualitylabel id; Type: DEFAULT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_qualitylabel ALTER COLUMN id SET DEFAULT nextval('public.weltladen_bioqualitylabel_id_seq'::regclass);
+
+
+--
 -- Name: weltladen_shippingaddress id; Type: DEFAULT; Schema: public; Owner: djangouser
 --
 
@@ -3190,6 +3227,13 @@ ALTER TABLE ONLY public.weltladen_weltladenproduct ALTER COLUMN id SET DEFAULT n
 --
 
 ALTER TABLE ONLY public.weltladen_weltladenproduct_additional_manufacturers ALTER COLUMN id SET DEFAULT nextval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq'::regclass);
+
+
+--
+-- Name: weltladen_weltladenproduct_quality_labels id; Type: DEFAULT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_quality_labels ALTER COLUMN id SET DEFAULT nextval('public.weltladen_weltladenproduct_quality_labels_id_seq'::regclass);
 
 
 --
@@ -3780,6 +3824,10 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 558	Can change Shipping Method	141	change_shippingmethod
 559	Can delete Shipping Method	141	delete_shippingmethod
 560	Can view Shipping Method	141	view_shippingmethod
+561	Can add quality label	139	add_qualitylabel
+562	Can change quality label	139	change_qualitylabel
+563	Can delete quality label	139	delete_qualitylabel
+564	Can view quality label	139	view_qualitylabel
 \.
 
 
@@ -3790,11 +3838,11 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
 1	pbkdf2_sha256$36000$aW5f365D8NcY$t6ud/cxz3Ffjma/fn739Os2O/UtJZE/SyK3Fj2n8Quo=	2019-02-27 22:38:19.929+01	t	admin	Adam	De Mol	admin@example.com	t	t	2015-10-16 15:01:57.437+02
 2	!qIyv4xYdiE292blenyXr9eduHxBYU3k5EhvpGwyK	\N	f	9OmKacig9RrdWbzpDJH9KHFxkCE2			guest@somewhere.net	f	f	2016-01-20 12:49:10.545+01
-10	pbkdf2_sha256$150000$6lzHOKBrALS7$Qzc5V3VN1iaZGg0DBT4e4U4Z3hvAqnndFIk6KcctvLQ=	2020-05-01 12:37:51.926729+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
 11	!hRhQ0JyetX3vFiPZnOTEBzLoG2kSq2p6fv9riueH	\N	f	6j3TdFYz9FhuS5uyZ5LT8@deNufb			markus.mo@gmx.net	f	f	2020-05-06 22:02:43.087829+02
 12	!vrxxGrlvmPUCPuGzKm473uGVwXA29iBxBVZNJqnu	\N	f	84jLT.wKpmd@6ouyM3pVA43jKMx4				f	f	2020-05-30 18:25:16.132496+02
 13	!NTjVmvcD93WsgO6JuE8bxSxmsw4k1nrbMAxAxcWe	\N	f	4b2xahdpSlvYEDD74bd7rAk8rTVr				f	f	2020-06-04 20:35:31.385574+02
-4	pbkdf2_sha256$180000$M4xZ2rIRLxiR$K+/CdniEMwF6ndVMdbNfwvj/ITZi6HYXpkvXKaTOfcg=	2020-06-17 23:00:01.826003+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
+10	pbkdf2_sha256$180000$FTbDHaYB7Axu$dAQRg1NQrgKC8aTpsnOrwgHnTDX4DEg2SwLoaNHyJHI=	2020-08-17 16:37:51.580264+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
+4	pbkdf2_sha256$180000$M4xZ2rIRLxiR$K+/CdniEMwF6ndVMdbNfwvj/ITZi6HYXpkvXKaTOfcg=	2020-08-25 20:11:01.784599+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 \.
 
 
@@ -4354,8 +4402,6 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 618	0	en	BootstrapRowPlugin	2020-04-26 19:50:10.448387+02	2020-04-26 19:50:11.876451+02	617	82	3	3	002Y00020001
 613	8	en	AcceptConditionPlugin	2020-04-26 19:50:10.373352+02	2020-04-26 19:50:11.916855+02	602	82	7	1	002Y000100010001000100040009
 624	0	en	ShopAuthenticationPlugin	2020-04-26 19:50:10.521116+02	2020-04-26 19:50:11.908745+02	623	82	5	0	002Y0002000100030001
-826	0	de	ContactUsPlugin	2020-04-28 20:27:29.652117+02	2020-04-28 20:27:29.65596+02	825	99	4	0	003V000100010001
-825	0	de	BootstrapColumnPlugin	2020-04-28 20:27:17.954588+02	2020-04-28 20:27:17.970461+02	824	99	3	1	003V00010001
 936	1	de	BootstrapButtonPlugin	2020-04-26 19:50:06.026099+02	2020-04-30 19:47:34.735432+02	934	42	8	0	004F0001000100020001000100020002
 934	1	de	BootstrapCardBodyPlugin	2020-04-26 19:50:05.997891+02	2020-04-30 19:47:34.721578+02	931	42	7	2	004F000100010002000100010002
 929	1	de	ShopCartPlugin	2020-04-26 19:50:05.94154+02	2020-04-30 19:47:34.686464+02	927	42	4	2	004F000100010002
@@ -4379,7 +4425,6 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 844	0	de	BootstrapRowPlugin	2020-04-29 20:03:02.014463+02	2020-04-29 20:03:02.028189+02	837	2	2	1	003X0002
 632	0	de	SimpleIconPlugin	2020-04-26 19:50:12.025628+02	2020-04-26 22:12:57.231681+02	\N	83	1	0	0036
 646	0	de	SimpleIconPlugin	2020-04-26 19:50:12.025628+02	2020-04-26 22:13:55.414863+02	\N	84	1	0	0038
-827	0	de	BootstrapContainerPlugin	2020-04-28 20:27:09.959027+02	2020-04-28 20:37:22.12664+02	\N	101	1	1	003W
 681	0	de	BreadcrumbPlugin	2020-04-26 19:50:08.760351+02	2020-04-27 21:15:49.749764+02	\N	65	1	0	003C
 682	0	de	BootstrapContainerPlugin	2020-04-26 19:50:08.716078+02	2020-04-27 21:15:49.763527+02	\N	66	1	1	003D
 683	0	de	BootstrapRowPlugin	2020-04-26 19:50:08.723701+02	2020-04-27 21:15:49.766563+02	682	66	2	1	003D0001
@@ -4392,6 +4437,7 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 689	0	de	BootstrapColumnPlugin	2020-04-26 19:50:09.00267+02	2020-04-27 21:15:59.202738+02	688	70	3	1	003F00010001
 724	0	de	BootstrapContainerPlugin	2020-04-27 21:21:13.158221+02	2020-04-27 21:21:13.163137+02	\N	20	1	1	003M
 715	0	de	GuestFormPlugin	2020-04-26 19:50:07.694656+02	2020-04-27 21:17:22.091482+02	714	54	6	0	003J00010001000100020001
+826	0	de	ContactUsPlugin	2020-04-28 20:27:29.652117+02	2020-04-28 20:27:29.65596+02	825	99	4	0	003V000100010001
 714	1	de	SegmentPlugin	2020-04-26 19:50:07.682323+02	2020-04-27 21:17:22.087768+02	711	54	5	1	003J0001000100010002
 707	0	de	BreadcrumbPlugin	2020-04-26 19:50:07.751725+02	2020-04-27 21:17:22.030579+02	\N	53	1	0	003I
 708	0	de	BootstrapContainerPlugin	2020-04-26 19:50:07.610484+02	2020-04-27 21:17:22.059852+02	\N	54	1	1	003J
@@ -4418,12 +4464,9 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 731	0	de	BootstrapColumnPlugin	2020-04-27 21:21:21.813572+02	2020-04-27 21:22:18.71031+02	730	22	3	2	003N00010001
 733	1	de	TextPlugin	2020-04-27 21:21:51.013421+02	2020-04-27 21:22:18.736827+02	731	22	4	0	003N000100010002
 734	0	de	BootstrapContainerPlugin	2020-04-27 21:29:07.546362+02	2020-04-27 21:29:07.549348+02	\N	12	1	1	003O
-828	0	de	BootstrapRowPlugin	2020-04-28 20:27:17.932956+02	2020-04-28 20:37:22.135407+02	827	101	2	1	003W0001
 735	0	de	BootstrapRowPlugin	2020-04-27 21:29:13.780944+02	2020-04-27 21:29:13.784308+02	734	12	2	1	003O0001
 737	0	de	HeadingPlugin	2020-04-27 21:29:22.770801+02	2020-04-27 21:29:22.774436+02	736	12	4	0	003O000100010001
-830	0	de	ContactUsPlugin	2020-04-28 20:27:29.652117+02	2020-04-28 20:37:22.148339+02	829	101	4	0	003W000100010001
 736	0	de	BootstrapColumnPlugin	2020-04-27 21:29:13.789115+02	2020-04-27 21:29:13.798059+02	735	12	3	2	003O00010001
-829	0	de	BootstrapColumnPlugin	2020-04-28 20:27:17.954588+02	2020-04-28 20:37:22.14227+02	828	101	3	1	003W00010001
 445	1	de	ProcessStepPlugin	2020-04-26 19:50:10.066481+02	2020-04-30 19:48:10.922742+02	437	80	6	4	002V00010001000100010002
 1140	0	de	BreadcrumbPlugin	2020-04-26 19:50:07.085316+02	2020-04-30 19:54:39.985272+02	\N	49	1	0	004H
 738	1	de	TextPlugin	2020-04-27 21:29:27.970935+02	2020-04-27 21:32:24.861272+02	736	12	4	0	003O000100010002
@@ -4503,6 +4546,29 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 1212	0	de	TextPlugin	2020-04-26 19:50:05.269796+02	2020-06-17 23:00:30.911442+02	1211	34	4	0	004L000100010001
 1214	0	de	BreadcrumbPlugin	2020-06-17 23:00:56.275154+02	2020-06-17 23:00:56.280441+02	\N	111	1	0	004M
 1215	0	de	BreadcrumbPlugin	2020-06-17 23:00:56.275154+02	2020-06-17 23:00:59.120063+02	\N	113	1	0	004N
+825	0	de	BootstrapColumnPlugin	2020-04-28 20:27:17.954588+02	2020-07-01 22:23:22.784005+02	824	99	3	1	003V00010001
+1254	0	de	BootstrapContainerPlugin	2020-04-28 20:27:09.959027+02	2020-07-01 22:23:24.777164+02	\N	101	1	1	004O
+1255	0	de	BootstrapRowPlugin	2020-04-28 20:27:17.932956+02	2020-07-01 22:23:24.78142+02	1254	101	2	1	004O0001
+1257	0	de	ContactUsPlugin	2020-04-28 20:27:29.652117+02	2020-07-01 22:23:24.791048+02	1256	101	4	0	004O000100010001
+1256	0	de	BootstrapColumnPlugin	2020-04-28 20:27:17.954588+02	2020-07-01 22:23:24.786879+02	1255	101	3	1	004O00010001
+1258	0	de	BreadcrumbPlugin	2020-08-25 20:11:18.826152+02	2020-08-25 20:11:18.834502+02	\N	115	1	0	004P
+1259	0	de	BreadcrumbPlugin	2020-08-25 20:11:18.826152+02	2020-08-25 20:11:22.150567+02	\N	133	1	0	004Q
+1260	0	de	BreadcrumbPlugin	2020-08-25 20:11:33.688597+02	2020-08-25 20:11:33.692074+02	\N	117	1	0	004R
+1261	0	de	BreadcrumbPlugin	2020-08-25 20:11:33.688597+02	2020-08-25 20:11:35.724374+02	\N	135	1	0	004S
+1262	0	de	BreadcrumbPlugin	2020-08-25 20:11:48.11339+02	2020-08-25 20:11:48.116887+02	\N	119	1	0	004T
+1263	0	de	BreadcrumbPlugin	2020-08-25 20:11:48.11339+02	2020-08-25 20:11:49.968664+02	\N	137	1	0	004U
+1264	0	de	BreadcrumbPlugin	2020-08-25 20:12:01.583447+02	2020-08-25 20:12:01.592741+02	\N	121	1	0	004V
+1265	0	de	BreadcrumbPlugin	2020-08-25 20:12:01.583447+02	2020-08-25 20:12:03.349307+02	\N	139	1	0	004W
+1266	0	de	BreadcrumbPlugin	2020-08-25 20:12:15.553292+02	2020-08-25 20:12:15.556779+02	\N	123	1	0	004X
+1267	0	de	BreadcrumbPlugin	2020-08-25 20:12:15.553292+02	2020-08-25 20:12:17.417903+02	\N	141	1	0	004Y
+1268	0	de	BreadcrumbPlugin	2020-08-25 20:12:32.233916+02	2020-08-25 20:12:32.237566+02	\N	125	1	0	004Z
+1269	0	de	BreadcrumbPlugin	2020-08-25 20:12:32.233916+02	2020-08-25 20:12:33.5866+02	\N	143	1	0	0050
+1270	0	de	BreadcrumbPlugin	2020-08-25 20:12:44.407804+02	2020-08-25 20:12:44.412523+02	\N	127	1	0	0051
+1271	0	de	BreadcrumbPlugin	2020-08-25 20:12:44.407804+02	2020-08-25 20:12:46.227285+02	\N	145	1	0	0052
+1272	0	de	BreadcrumbPlugin	2020-08-25 20:12:57.382711+02	2020-08-25 20:12:57.387346+02	\N	129	1	0	0053
+1273	0	de	BreadcrumbPlugin	2020-08-25 20:12:57.382711+02	2020-08-25 20:12:59.758763+02	\N	147	1	0	0054
+1274	0	de	BreadcrumbPlugin	2020-08-25 20:13:09.658348+02	2020-08-25 20:13:09.661696+02	\N	131	1	0	0055
+1275	0	de	BreadcrumbPlugin	2020-08-25 20:13:09.658348+02	2020-08-25 20:13:11.247924+02	\N	149	1	0	0056
 \.
 
 
@@ -4565,9 +4631,7 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 44	markus	markus	2020-04-27 21:37:29.656057+02	2020-04-27 21:37:29.656073+02	2020-04-27 21:37:29.655846+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	43	f	22
 42	markus	markus	2020-04-27 21:37:07.016402+02	2020-04-27 21:49:35.043752+02	2020-04-27 21:37:07.016193+02	\N	t	t	id-contact	\N	weltladen/pages/default.html	f	\N	f		\N	f	de	0	41	f	21
 41	markus	markus	2020-04-27 21:36:39.515616+02	2020-04-27 21:39:01.16847+02	2020-04-27 21:37:07.016193+02	\N	t	t	id-contact	\N	weltladen/pages/default.html	f	\N	f		\N	t	de	0	42	f	21
-48	markus	markus	2020-04-27 21:58:50.255009+02	2020-04-28 20:37:22.082836+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	47	f	24
 36	script	markus	2020-04-26 19:50:09.380301+02	2020-04-29 21:18:47.023887+02	2020-04-26 19:50:09.380083+02	\N	f	f	password-reset-confirm	\N	weltladen/pages/default.html	f	\N	f	PasswordResetApp	\N	f	de,en	0	35	f	18
-47	markus	markus	2020-04-27 21:58:46.314331+02	2020-04-27 21:59:45.019561+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	48	f	24
 35	script	markus	2020-04-26 19:50:09.22055+02	2020-04-26 19:50:09.220573+02	2020-04-26 19:50:09.380083+02	\N	f	f	password-reset-confirm	\N	weltladen/pages/default.html	f	\N	f	PasswordResetApp	\N	t	de,en	0	36	f	18
 2	script	markus	2020-04-26 19:50:04.386148+02	2020-05-02 16:03:29.971688+02	2020-04-26 19:50:04.385884+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	f	de,en	0	1	f	1
 1	script	markus	2020-04-26 19:50:03.722639+02	2020-04-29 20:02:43.506516+02	2020-04-26 19:50:04.385884+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	t	\N	\N	t	de,en	0	2	f	1
@@ -4575,24 +4639,26 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 16	script	markus	2020-04-26 19:50:05.419778+02	2020-06-17 23:00:30.813104+02	2020-04-26 19:50:05.41956+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	f	de,en	0	15	f	8
 15	script	markus	2020-04-26 19:50:05.202321+02	2020-06-17 23:00:26.982484+02	2020-04-26 19:50:05.41956+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	CatalogListApp	\N	t	de,en	0	16	f	8
 53	markus	markus	2020-05-02 16:33:01.786145+02	2020-05-02 16:33:07.045071+02	2020-05-02 16:33:13.182128+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	54	f	27
-57	marija	marija	2020-06-18 09:35:22.119027+02	2020-06-18 09:35:32.568474+02	2020-06-18 09:39:28.764661+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	66	f	30
-55	marija	marija	2020-06-18 09:34:15.675865+02	2020-06-18 09:34:30.650396+02	2020-06-18 09:39:21.720401+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	64	f	28
-56	marija	marija	2020-06-18 09:34:52.025171+02	2020-06-18 09:36:33.377518+02	2020-06-18 09:39:25.379519+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	65	f	29
-58	marija	marija	2020-06-18 09:35:57.131145+02	2020-06-18 09:36:07.6874+02	2020-06-18 09:39:31.936878+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	67	f	31
-64	marija	marija	2020-06-18 09:39:21.720673+02	2020-06-18 09:39:21.720688+02	2020-06-18 09:39:21.720401+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	55	f	28
-65	marija	marija	2020-06-18 09:39:25.379799+02	2020-06-18 09:39:25.379815+02	2020-06-18 09:39:25.379519+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	56	f	29
-66	marija	marija	2020-06-18 09:39:28.764945+02	2020-06-18 09:39:28.764962+02	2020-06-18 09:39:28.764661+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	57	f	30
-67	marija	marija	2020-06-18 09:39:31.937191+02	2020-06-18 09:39:31.937209+02	2020-06-18 09:39:31.936878+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	58	f	31
-68	marija	marija	2020-06-18 09:39:35.421899+02	2020-06-18 09:39:35.421914+02	2020-06-18 09:39:35.421625+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	59	f	32
-59	marija	marija	2020-06-18 09:36:57.641821+02	2020-06-18 09:37:07.275961+02	2020-06-18 09:39:35.421625+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	68	f	32
-69	marija	marija	2020-06-18 09:39:38.800069+02	2020-06-18 09:39:38.800087+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	60	f	33
-60	marija	marija	2020-06-18 09:37:24.260681+02	2020-06-18 09:37:35.533928+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	69	f	33
-70	marija	marija	2020-06-18 09:39:42.077354+02	2020-06-18 09:39:42.077372+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	61	f	34
-61	marija	marija	2020-06-18 09:37:53.857531+02	2020-06-18 09:38:10.349017+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	70	f	34
-71	marija	marija	2020-06-18 09:39:45.149761+02	2020-06-18 09:39:45.149777+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	62	f	35
-62	marija	marija	2020-06-18 09:38:30.923605+02	2020-06-18 09:38:40.352436+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	71	f	35
-72	marija	marija	2020-06-18 09:39:49.244545+02	2020-06-18 09:39:49.244561+02	2020-06-18 09:39:49.244276+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	63	f	36
-63	marija	marija	2020-06-18 09:38:55.804579+02	2020-06-18 09:39:06.258025+02	2020-06-18 09:39:49.244276+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	72	f	36
+48	markus	markus	2020-04-27 21:58:50.255009+02	2020-07-01 22:23:24.719068+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	47	f	24
+55	marija	markus	2020-06-18 09:34:15.675865+02	2020-06-18 09:34:30.650396+02	2020-06-18 09:39:21.720401+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	64	f	28
+56	marija	markus	2020-06-18 09:34:52.025171+02	2020-06-18 09:36:33.377518+02	2020-06-18 09:39:25.379519+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	65	f	29
+57	marija	markus	2020-06-18 09:35:22.119027+02	2020-06-18 09:35:32.568474+02	2020-06-18 09:39:28.764661+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	66	f	30
+58	marija	markus	2020-06-18 09:35:57.131145+02	2020-06-18 09:36:07.6874+02	2020-06-18 09:39:31.936878+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	67	f	31
+61	marija	markus	2020-06-18 09:37:53.857531+02	2020-06-18 09:38:10.349017+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	70	f	34
+71	marija	markus	2020-06-18 09:39:45.149761+02	2020-08-25 20:12:59.742571+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	62	f	35
+62	marija	markus	2020-06-18 09:38:30.923605+02	2020-06-18 09:38:40.352436+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	71	f	35
+72	marija	markus	2020-06-18 09:39:49.244545+02	2020-08-25 20:13:11.231266+02	2020-06-18 09:39:49.244276+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	63	f	36
+63	marija	markus	2020-06-18 09:38:55.804579+02	2020-06-18 09:39:06.258025+02	2020-06-18 09:39:49.244276+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	72	f	36
+47	markus	markus	2020-04-27 21:58:46.314331+02	2020-04-27 21:59:45.019561+02	2020-04-27 21:58:50.254775+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	48	f	24
+64	marija	markus	2020-06-18 09:39:21.720673+02	2020-08-25 20:11:22.133035+02	2020-06-18 09:39:21.720401+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	55	f	28
+65	marija	markus	2020-06-18 09:39:25.379799+02	2020-08-25 20:11:35.7073+02	2020-06-18 09:39:25.379519+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	56	f	29
+66	marija	markus	2020-06-18 09:39:28.764945+02	2020-08-25 20:11:49.94999+02	2020-06-18 09:39:28.764661+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	57	f	30
+67	marija	markus	2020-06-18 09:39:31.937191+02	2020-08-25 20:12:03.32901+02	2020-06-18 09:39:31.936878+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	58	f	31
+68	marija	markus	2020-06-18 09:39:35.421899+02	2020-08-25 20:12:17.401426+02	2020-06-18 09:39:35.421625+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	59	f	32
+59	marija	markus	2020-06-18 09:36:57.641821+02	2020-06-18 09:37:07.275961+02	2020-06-18 09:39:35.421625+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	68	f	32
+69	marija	markus	2020-06-18 09:39:38.800069+02	2020-08-25 20:12:33.569437+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	60	f	33
+60	marija	markus	2020-06-18 09:37:24.260681+02	2020-06-18 09:37:35.533928+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	69	f	33
+70	marija	markus	2020-06-18 09:39:42.077354+02	2020-08-25 20:12:46.209664+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	61	f	34
 \.
 
 
@@ -5001,8 +5067,6 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 3	de	Home	\N	\N	\N	home		f	\N	2020-04-26 19:50:03.767495+02	t	f	0	2	1
 83	de	Kontakt				kontakt	kontakt/kontakt	f	\N	2020-04-27 21:37:23.204577+02	t	t	0	43	84
 31	de	Lebensmittel				lebensmittel	lebensmittel	f	\N	2020-04-26 19:50:05.231449+02	t	f	0	16	29
-88	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	f	0	48	87
-87	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	t	0	47	88
 16	en	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-26 19:50:04.872651+02	f	f	0	8	14
 20	en	Privacy Protection	\N	\N	\N	privacy-protection	legal/privacy-protection	f	\N	2020-04-26 19:50:04.965549+02	f	f	0	10	18
 52	en	Personal Details	\N	\N	\N	personal-details	personal-pages/personal-details	f	\N	2020-04-26 19:50:07.758389+02	f	f	0	26	50
@@ -5017,6 +5081,11 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 29	de	Lebensmittel				lebensmittel	lebensmittel	f	\N	2020-04-26 19:50:05.231449+02	t	t	0	15	31
 94	de	Kaffee				kaffee	catalog/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	f	0	54	93
 93	de	Kaffee				kaffee	catalog/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	t	0	53	94
+99	de	Honig & Aufstrich				honig-aufstrich	lebensmittel/honig-aufstrich	f	\N	2020-06-18 09:36:57.642938+02	t	t	0	59	108
+109	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	f	0	69	100
+100	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	t	0	60	109
+88	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	f	0	48	87
+87	de	Nachricht an uns				nachricht-uns	kontakt/nachricht-uns	f	\N	2020-04-27 21:58:46.315361+02	t	t	0	47	88
 104	de	Tee				tee	lebensmittel/tee	f	\N	2020-06-18 09:34:15.683346+02	t	f	0	64	95
 95	de	Tee				tee	lebensmittel/tee	f	\N	2020-06-18 09:34:15.683346+02	t	t	0	55	104
 105	de	Kakao & Zucker				kakao-zucker	lebensmittel/kakao-zucker	f	\N	2020-06-18 09:34:52.027003+02	t	f	0	65	96
@@ -5025,11 +5094,8 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 97	de	Schokolade				schokolade	lebensmittel/schokolade	f	\N	2020-06-18 09:35:22.120237+02	t	t	0	57	106
 107	de	Snacks				snacks	lebensmittel/snacks	f	\N	2020-06-18 09:35:57.13237+02	t	f	0	67	98
 98	de	Snacks				snacks	lebensmittel/snacks	f	\N	2020-06-18 09:35:57.13237+02	t	t	0	58	107
-108	de	Honig & Aufstrich				honig-aufstrich	lebensmittel/honig-aufstrich	f	\N	2020-06-18 09:36:57.642938+02	t	f	0	68	99
-99	de	Honig & Aufstrich				honig-aufstrich	lebensmittel/honig-aufstrich	f	\N	2020-06-18 09:36:57.642938+02	t	t	0	59	108
-109	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	f	0	69	100
-100	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	t	0	60	109
 110	de	Saucen & Öle				saucen-ole	lebensmittel/saucen-ole	f	\N	2020-06-18 09:37:53.858792+02	t	f	0	70	101
+108	de	Honig & Aufstrich				honig-aufstrich	lebensmittel/honig-aufstrich	f	\N	2020-06-18 09:36:57.642938+02	t	f	0	68	99
 101	de	Saucen & Öle				saucen-ole	lebensmittel/saucen-ole	f	\N	2020-06-18 09:37:53.858792+02	t	t	0	61	110
 111	de	Getreide & Müsli				getreide-musli	lebensmittel/getreide-musli	f	\N	2020-06-18 09:38:30.924778+02	t	f	0	71	102
 102	de	Getreide & Müsli				getreide-musli	lebensmittel/getreide-musli	f	\N	2020-06-18 09:38:30.924778+02	t	t	0	62	111
@@ -5044,11 +5110,6 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 
 COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM stdin;
 1	0001	1	0	\N	1
-3	00020001	2	0	2	1
-4	00020002	2	0	2	1
-5	00020003	2	0	2	1
-2	0002	1	3	\N	1
-22	00030001	2	0	21	1
 20	000D	1	0	\N	1
 19	000C	1	0	\N	1
 18	000B	1	0	\N	1
@@ -5063,8 +5124,6 @@ COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM st
 12	00050001	2	0	6	1
 13	00050002	2	0	6	1
 14	00050003	2	0	6	1
-24	00030002	2	0	21	1
-21	0003	1	2	\N	1
 27	00070001	2	0	8	1
 28	00070002	2	0	8	1
 29	00070003	2	0	8	1
@@ -5076,6 +5135,13 @@ COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM st
 35	00070009	2	0	8	1
 36	0007000A	2	0	8	1
 8	0007	1	10	\N	1
+22	00040001	2	0	21	1
+24	00040002	2	0	21	1
+21	0004	1	2	\N	1
+3	00030001	2	0	2	1
+4	00030002	2	0	2	1
+5	00030003	2	0	2	1
+2	0003	1	3	\N	1
 \.
 
 
@@ -5748,10 +5814,6 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 824	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
 825	{\n    "xs-column-width": "col"\n}	\N
 826	{\n    "hide_plugin": false\n}	\N
-827	{"hide_plugin": false, "breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": false}	\N
-828	{"hide_plugin": false, "padding_xs": "", "padding_sm": "", "padding_md": "", "padding_lg": "", "padding_xl": ""}	\N
-829	{"xs-column-width": "col"}	\N
-830	{"hide_plugin": false}	\N
 844	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
 837	{"breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": "", "background_and_color": "", "hide_plugin": ""}	\N
 845	{\n    "xs-column-width": "col"\n}	\N
@@ -5767,6 +5829,28 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 1213	{"pagination": "auto", "hide_plugin": ""}	\N
 1214	{\n    "hide_plugin": false,\n    "render_type": "catalog"\n}	\N
 1215	{\n    "hide_plugin": false,\n    "render_type": "catalog"\n}	\N
+1254	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1255	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1256	{\n    "xs-column-width": "col"\n}	\N
+1257	{\n    "hide_plugin": false\n}	\N
+1258	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1259	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1260	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1261	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1262	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1263	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1264	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1265	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1266	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1267	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1268	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1269	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1270	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1271	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1272	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1273	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1274	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1275	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
 \.
 
 
@@ -5808,6 +5892,8 @@ COPY public.cmsplugin_cascade_page (id, settings, glossary, extended_object_id, 
 12	{}	{\n    "element_ids": {\n        "459": ""\n    }\n}	40	\N	\N	\N
 13	{}	{\n    "element_ids": {\n        "197": "",\n        "202": ""\n    }\n}	23	14	\N	\N
 14	{}	{\n    "element_ids": {\n        "197": "",\n        "202": ""\n    }\n}	24	\N	\N	\N
+19	{}	{\n    "element_ids": {}\n}	47	20	\N	\N
+20	{}	{\n    "element_ids": {}\n}	48	\N	\N	\N
 \.
 
 
@@ -6652,6 +6738,147 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 791	2020-06-22 11:02:09.654554+02	95	Schoko-Paranüsse 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (94)"}}]	135	10
 792	2020-06-22 11:53:52.712593+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description"]}}]	135	10
 793	2020-06-22 11:55:00.299926+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description"]}}]	135	10
+794	2020-07-01 22:05:09.024513+02	73	Über uns	1	[{"added": {}}]	2	4
+795	2020-07-01 22:05:36.409607+02	73	Über uns	2		2	4
+796	2020-07-01 22:09:41.618042+02	1218	for Portrait Phones, Landscape Phones, Tablets, Laptops, Large Desktops	3		31	4
+797	2020-07-01 22:09:41.622872+02	1218	for Portrait Phones, Landscape Phones, Tablets, Laptops, Large Desktops	3		31	4
+798	2020-07-01 22:09:45.83702+02	1220	for Portrait Phones, Landscape Phones, Tablets, Laptops, Large Desktops	3		31	4
+799	2020-07-01 22:09:45.841828+02	1220	for Portrait Phones, Landscape Phones, Tablets, Laptops, Large Desktops	3		31	4
+800	2020-07-01 22:09:50.345652+02	1222	for Portrait Phones, Landscape Phones, Tablets, Laptops, Large Desktops	3		31	4
+801	2020-07-01 22:09:50.349476+02	1222	for Portrait Phones, Landscape Phones, Tablets, Laptops, Large Desktops	3		31	4
+802	2020-07-01 22:10:05.062455+02	73	Über uns	2		2	4
+803	2020-07-01 22:11:56.013185+02	73	Über uns	2		2	4
+804	2020-07-01 22:12:13.506777+02	75	Faircafé	1	[{"added": {}}]	2	4
+805	2020-07-01 22:13:30.041946+02	75	Faircafé	2		2	4
+806	2020-07-01 22:14:14.163774+02	77	Über den Weltladen	1	[{"added": {}}]	2	4
+807	2020-07-01 22:15:43.723866+02	77	Über den Weltladen	3		2	4
+808	2020-07-01 22:22:33.906895+02	73	Über uns	3		2	4
+809	2020-07-01 22:23:22.809812+02	1253	<code>h1</code>: Asaf	3		54	4
+810	2020-07-01 22:23:24.808349+02	47	Nachricht an uns	2		2	4
+811	2020-07-02 10:39:20.081278+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+812	2020-07-02 11:52:13.476673+02	96	Schoko-Kaffeebohnen 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (95)"}}]	135	10
+813	2020-07-02 11:55:50.576167+02	96	Schoko-Kaffeebohnen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+814	2020-07-02 11:57:44.137366+02	96	Schoko-Kaffeebohnen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+815	2020-07-02 11:58:52.750882+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+816	2020-07-02 15:16:05.208588+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+817	2020-07-02 15:22:07.596369+02	97	Schoko-Paranüsse Noir 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (96)"}}]	135	10
+818	2020-07-02 15:23:17.220092+02	94	Schoko-Rosinen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+819	2020-07-02 15:23:55.521641+02	96	Schoko-Kaffeebohnen 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+820	2020-07-02 15:26:25.024012+02	97	Schoko-Paranüsse Noir 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+821	2020-07-02 15:29:18.619778+02	95	Schoko-Paranüsse 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+822	2020-07-26 18:10:11.64354+02	98	Schoko-Rosinen Noir 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (97)"}}]	135	10
+823	2020-07-26 18:12:13.27893+02	97	Schoko-Paranüsse Noir 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+824	2020-07-26 18:12:44.712688+02	97	Schoko-Paranüsse Noir 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+825	2020-07-26 18:13:40.829617+02	98	Schoko-Rosinen Noir 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+826	2020-07-26 18:53:34.25605+02	54	La Sureñita	1	[{"added": {}}]	122	10
+827	2020-07-26 19:05:08.938163+02	99	Schoko-Cashew Noir 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (98)"}}]	135	10
+828	2020-07-26 19:07:26.362454+02	99	Schoko-Cashew Noir 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+829	2020-07-26 20:18:18.027502+02	100	Joghurt-Cashew 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (99)"}}]	135	10
+830	2020-07-26 20:19:43.219572+02	100	Joghurt-Cashew 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+831	2020-08-17 19:42:54.649572+02	101	Kaffeelikör Kugeln 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (100)"}}]	135	10
+832	2020-08-17 22:18:48.255752+02	102	Sahne-Kakao Madeln 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (101)"}}]	135	10
+833	2020-08-17 22:19:37.879394+02	102	Sahne-Kakao Madeln 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+834	2020-08-17 22:20:07.367271+02	102	Sahne-Kakao Madeln 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+835	2020-08-19 10:03:40.660001+02	55	ANAPQUI	1	[{"added": {}}]	122	10
+836	2020-08-19 10:04:20.073111+02	56	Green Net	1	[{"added": {}}]	122	10
+837	2020-08-19 10:11:07.619977+02	103	Bolitos 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (102)"}}]	135	10
+838	2020-08-19 10:13:14.384709+02	103	Bolitos 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+839	2020-08-19 17:08:21.6439+02	104	Eierlikörkugeln 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (103)"}}]	135	10
+840	2020-08-19 17:09:45.309922+02	104	Eierlikörkugeln 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+841	2020-08-19 18:30:19.359558+02	105	Fairetta Weiß 45g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (104)"}}]	135	10
+842	2020-08-19 18:32:17.545535+02	105	Fairetta Weiß 45g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+843	2020-08-20 10:07:19.995677+02	106	Fairetta Kokos 45g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (105)"}}]	135	10
+844	2020-08-20 11:05:29.560059+02	57	CoopeAgri	1	[{"added": {}}]	122	10
+845	2020-08-20 11:05:44.61154+02	58	KONAFCOOP	1	[{"added": {}}]	122	10
+846	2020-08-20 11:10:00.680935+02	107	Fairetta Black & White 45g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (106)"}}]	135	10
+847	2020-08-20 11:30:45.361143+02	105	Fairetta Weiß 45g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+848	2020-08-20 11:37:55.272578+02	108	Fairetta Honig-Mandel 45g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (107)"}}]	135	10
+849	2020-08-20 11:54:18.599133+02	109	Fairetta Quinua 45g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (108)"}}]	135	10
+850	2020-08-20 15:52:36.204537+02	59	Kleinproduzent*innen weltweit	1	[{"added": {}}]	122	10
+851	2020-08-20 15:53:27.303857+02	60	Serendipalm	1	[{"added": {}}]	122	10
+852	2020-08-20 16:11:27.267998+02	110	Fairetta Creamy Kids 37,5g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (109)"}}]	135	10
+853	2020-08-20 16:27:46.544922+02	111	Fairetta Creamy Kokos 37,5g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (110)"}}]	135	10
+854	2020-08-20 17:12:53.623819+02	112	Fairetta Creamy Caramel 40g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (111)"}}]	135	10
+855	2020-08-20 17:24:03.121706+02	113	Fairetta Creamy Praline 37,5g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (112)"}}]	135	10
+856	2020-08-20 17:54:31.049896+02	114	Belgische Trüffel 100g	1	[{"added": {}}]	135	10
+857	2020-08-21 10:47:07.969079+02	114	Belgische Trüffel 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Bio Quality Label", "Manufacturer", "Additional Manufacturers", "Origin countries", "Gluten free"]}}]	135	10
+858	2020-08-21 10:51:49.69417+02	114	Belgische Trüffel 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}, {"added": {"name": "Product Image", "object": "ProductImage object (113)"}}]	135	10
+859	2020-08-21 11:08:48.374418+02	114	Belgische Trüffel 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+860	2020-08-21 11:22:00.545272+02	115	Belgische Nougatmuscheln 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (114)"}}]	135	10
+861	2020-08-21 11:22:46.731867+02	115	Belgische Nougatmuscheln 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+862	2020-08-21 11:23:42.952293+02	115	Belgische Nougatmuscheln 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+863	2020-08-21 16:21:16.027679+02	61	Gebana Afrique	1	[{"added": {}}]	122	10
+864	2020-08-21 16:22:43.525877+02	116	Cashewnüsse 100g	1	[{"added": {}}]	135	10
+865	2020-08-21 16:26:30.457484+02	116	Cashewnüsse 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Manufacturer", "Ingredients"]}}, {"added": {"name": "Product Image", "object": "ProductImage object (115)"}}]	135	10
+866	2020-08-21 16:29:39.59136+02	116	Cashewnüsse 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+867	2020-08-21 17:02:28.094933+02	62	PODIE	1	[{"added": {}}]	122	10
+868	2020-08-21 17:05:39.23023+02	117	Cashewnüsse & Chili 70g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (116)"}}]	135	10
+869	2020-08-21 17:16:29.384827+02	117	Cashewnüsse & Chili 70g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+870	2020-08-24 09:13:06.00342+02	118	Gebrannte Cashewnüsse 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (117)"}}]	135	10
+871	2020-08-24 09:34:12.021178+02	118	Gebrannte Cashewnüsse 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+872	2020-08-24 09:36:59.039635+02	118	Gebrannte Cashewnüsse 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+873	2020-08-24 09:50:38.612014+02	63	Del Campo	1	[{"added": {}}]	122	10
+874	2020-08-24 09:53:30.27547+02	119	Erdnüsse 150g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (118)"}}]	135	10
+875	2020-08-24 11:13:40.073182+02	119	Erdnüsse 150g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+876	2020-08-24 11:24:33.264978+02	4	GEPA fair plus	1	[{"added": {}}]	139	10
+877	2020-08-24 11:37:57.703612+02	3	GEPA Gesellschaft zur Förderung der Partnerschaft mit der Dritten Welt mbH	1	[{"added": {}}]	133	10
+878	2020-08-24 11:42:23.371616+02	120	Barrita Sesamriegel 20g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (119)"}}]	135	10
+879	2020-08-24 11:42:53.101316+02	120	Barrita Sesamriegel 20g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+880	2020-08-24 11:45:02.956234+02	120	Barrita Sesamriegel 20g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+881	2020-08-24 16:08:17.527949+02	64	ISIK	1	[{"added": {}}]	122	10
+882	2020-08-24 16:08:27.563459+02	65	UPROMABIO	1	[{"added": {}}]	122	10
+883	2020-08-24 16:13:51.918632+02	121	Multi Power Fruchtriegel 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (120)"}}]	135	10
+884	2020-08-24 16:14:46.406317+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+885	2020-08-24 17:27:11.195234+02	122	Butterkekse mit Schokostücken 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (121)"}}]	135	10
+886	2020-08-24 17:28:35.069043+02	122	Butterkekse mit Schokostücken 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+887	2020-08-24 17:31:02.011184+02	122	Butterkekse mit Schokostücken 100g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+888	2020-08-24 19:13:14.159457+02	122	Butterkekse mit Schokostücken 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+889	2020-08-24 19:14:48.65862+02	122	Butterkekse mit Schokostücken 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Fairtrade", "Ingredients"]}}]	135	10
+890	2020-08-24 19:19:00.668673+02	123	Schokokekse mit Kokosflocken 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (122)"}}]	135	10
+891	2020-08-24 19:32:39.482252+02	122	Butterkekse mit Schokostücken 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+892	2020-08-24 19:36:58.542854+02	124	Spritzgebäck Stangerl 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (123)"}}]	135	10
+893	2020-08-24 20:52:03.702451+02	66	Naranjillo	1	[{"added": {}}]	122	10
+894	2020-08-24 20:52:22.753569+02	67	LA CORONILLA	1	[{"added": {}}]	122	10
+895	2020-08-24 20:52:55.00975+02	68	Miel Mexicana	1	[{"added": {}}]	122	10
+896	2020-08-24 20:59:22.550915+02	125	Doblito Doppelkeks 85g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (124)"}}, {"added": {"name": "Product Image", "object": "ProductImage object (125)"}}]	135	10
+897	2020-08-24 21:01:08.771705+02	125	Doblito Doppelkeks 85g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+898	2020-08-24 21:33:26.205691+02	126	Schoko-Orangen Kekse 125g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (126)"}}]	135	10
+899	2020-08-24 21:39:35.794368+02	126	Schoko-Orangen Kekse 125g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+900	2020-08-25 10:59:07.263501+02	69	Fruits of the Nile	1	[{"added": {}}]	122	10
+901	2020-08-25 11:01:53.717587+02	127	Ananas getrocknet 70g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (127)"}}]	135	10
+902	2020-08-25 11:31:56.312166+02	127	Ananas getrocknet 70g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+903	2020-08-25 15:36:29.050633+02	127	Ananas getrocknet 70g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+904	2020-08-25 15:38:53.232993+02	127	Ananas getrocknet 70g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+905	2020-08-25 15:42:44.771102+02	128	Mangos getrocknet 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (128)"}}]	135	10
+906	2020-08-25 15:43:18.114743+02	128	Mangos getrocknet 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+907	2020-08-25 15:46:45.913329+02	128	Mangos getrocknet 100g	2	[{"changed": {"fields": ["Switch Tax", "Short Description", "Description", "Ingredients"]}}]	135	10
+908	2020-08-25 16:03:21.886742+02	129	Rosinen 200g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (129)"}}]	135	10
+909	2020-08-25 16:04:00.983159+02	128	Mangos getrocknet 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+910	2020-08-25 16:04:21.898801+02	127	Ananas getrocknet 70g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+911	2020-08-25 16:04:46.038783+02	129	Rosinen 200g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+912	2020-08-25 16:05:17.410318+02	129	Rosinen 200g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+913	2020-08-25 16:39:56.626658+02	130	Kokosstreifen 70g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (130)"}}]	135	10
+914	2020-08-25 17:28:47.399924+02	70	Kleinproduzent*innen aus Afrika	1	[{"added": {}}]	122	10
+915	2020-08-25 17:31:51.329068+02	131	Wiffzack Studentenfutter 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (131)"}}]	135	10
+916	2020-08-25 17:32:34.654634+02	131	Wiffzack Studentenfutter 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+917	2020-08-25 17:44:17.054393+02	131	Wiffzack Studentenfutter 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+918	2020-08-25 17:46:29.402239+02	71	AgroAndino	1	[{"added": {}}]	122	10
+919	2020-08-25 17:50:12.588562+02	132	Blitzgscheit Studentenfutter 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (132)"}}]	135	10
+920	2020-08-25 17:51:41.276808+02	132	Blitzgscheit Studentenfutter 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+921	2020-08-25 17:52:02.987204+02	132	Blitzgscheit Studentenfutter 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+922	2020-08-25 19:28:33.092184+02	133	Bio Bärli 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (133)"}}]	135	10
+923	2020-08-25 19:37:29.435081+02	133	Bio Bärli 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+924	2020-08-25 19:42:53.151955+02	134	Bio Fruchtis 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (134)"}}]	135	10
+925	2020-08-25 20:11:22.164424+02	55	Tee	2		2	4
+926	2020-08-25 20:11:35.73645+02	56	Kakao & Zucker	2		2	4
+927	2020-08-25 20:11:49.980846+02	57	Schokolade	2		2	4
+928	2020-08-25 20:12:03.362168+02	58	Snacks	2		2	4
+929	2020-08-25 20:12:17.430126+02	59	Honig & Aufstrich	2		2	4
+930	2020-08-25 20:12:33.598359+02	60	Gewürze	2		2	4
+931	2020-08-25 20:12:46.24033+02	61	Saucen & Öle	2		2	4
+932	2020-08-25 20:12:59.771817+02	62	Getreide & Müsli	2		2	4
+933	2020-08-25 20:13:11.260471+02	63	Getränke	2		2	4
+934	2020-08-25 21:35:09.698023+02	5	Fairtrade	1	[{"added": {}}]	139	4
 \.
 
 
@@ -6798,9 +7025,9 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 136	weltladen	weltladenproducttranslation
 137	weltladen	locations
 138	cmsplugin_cascade	contactuspluginmodel
-139	weltladen	bioqualitylabel
 140	shop_sendcloud	shippingdestination
 141	shop_sendcloud	shippingmethod
+139	weltladen	qualitylabel
 \.
 
 
@@ -6937,6 +7164,13 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 129	weltladen	0012_auto_20200517_2018	2020-05-17 20:18:12.849145+02
 130	weltladen	0013_remove_weltladenproduct_country_of_origin	2020-05-17 21:18:16.445279+02
 131	shop_sendcloud	0001_initial	2020-06-30 21:29:15.076413+02
+132	weltladen	0014_auto_20200630_2138	2020-06-30 21:38:29.905117+02
+134	weltladen	0015_weltladenproduct_quality_lables	2020-08-25 20:30:35.90482+02
+135	weltladen	0016_auto_20200825_2028	2020-08-25 20:33:21.678131+02
+136	weltladen	0017_auto_20200825_2129	2020-08-25 21:29:37.955007+02
+137	weltladen	0018_auto_20200825_2130	2020-08-25 21:30:15.579424+02
+138	weltladen	0019_remove_weltladenproduct_fairtrade	2020-08-25 21:41:23.101587+02
+139	weltladen	0020_qualitylabel_ordering	2020-08-25 22:05:05.602749+02
 \.
 
 
@@ -6957,8 +7191,13 @@ f7p2drnoeyywzd2s36o1y7hr32fowohh	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWI
 umlq4gqgw7arkw2jl0264667xh89znj3	ODM2MzJhOGM2ODQ0ZWY5OTZhNjE1OWZmZjBkYzNkZmI2YTU0ZmQ0Mjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWV9	2020-05-26 22:03:35.532141+02
 o37wug4iv9mvnnwy8i515n19gif0qybi	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-31 21:14:58.566445+02
 btkkvd10sl8663eakzadyxbu5c399gz8	MDNiYTI4YjIyMzE1YTNmODBmMDEzNTlhOGQ1MjZlNzk0MmJhMDgyMjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3IjpmYWxzZSwiY21zX2xvZ19sYXRlc3QiOjMwN30=	2020-05-16 16:40:07.084549+02
-h3wx0i70osbi24wnppfophpxaacx0682	MGM4ZmViNGEyMjUxYzMzNjgxYTQxNDU1MGQ1Yzc5MjRmMjI5ZWE5Mzp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZSwiY21zX2xvZ19sYXRlc3QiOjc5M30=	2020-07-06 11:55:02.502364+02
-gnh4he5cptb8uamfzvcogzf8k3kxtvmd	YmMyODQ2ZDU1ZGFiYjk5MmFmZWM0NzNiNzJmZGQ5NDJlM2ZmMzQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-07-14 21:34:28.602558+02
+ehl0uc29cwwbc9veigup0vst3hizcpdo	YTU5MjNlNWFjOWIzOTM5YWY0ZWU4MjU4ZjE5NmQxMWM2ZGNlNzFhZjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIn0=	2020-08-09 12:50:40.589089+02
+gnh4he5cptb8uamfzvcogzf8k3kxtvmd	MTkyOWFmZTNjYTU1MTAwY2VhZjgwMzUzOGYxNTE2MmZkZDQ4Y2Q1NDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlLCJ3aXphcmRfd2l6YXJkX2NyZWF0ZV92aWV3Ijp7InN0ZXAiOiIwIiwic3RlcF9kYXRhIjp7fSwic3RlcF9maWxlcyI6e30sImV4dHJhX2RhdGEiOnt9fX0=	2020-07-15 22:23:29.415802+02
+h3wx0i70osbi24wnppfophpxaacx0682	YzgzNDk5ZjFkZjM2OGQzZjI0MGQ2Y2UzYzhjYTVjNzg4NjQzYzA2ZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZX0=	2020-07-16 15:30:48.226576+02
+8rtm5clg2vd50ox4boo7c2k543vdm4iw	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-08-09 20:22:42.456243+02
+wmhwxc7eu7jyc90zj4u3qe4u89oqinj7	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-09-08 20:05:16.830515+02
+anu946dojvcgkp6oei3a2zxv3v0sw1ir	OWIxZmRhZmQ0YzBmY2IyZjk2YjNkZjcyMmI1MzU5ZTc4MzNmYzlhNTp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-08-09 20:21:18.671512+02
+eewqt3vvdwlb18iy02i07ussbbxqpi6o	YjZjMzg1NmM3MmQ4ODg5ZDNhMzAzMmFiZWYzYWQzNjcxZTkyNTc1YTp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOmZhbHNlLCJmaWxlcl9sYXN0X2ZvbGRlcl9pZCI6IjEyIn0=	2020-09-08 22:12:58.403279+02
 \.
 
 
@@ -7026,7 +7265,6 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 13	f9bde26a1556cd667f742bd34ec7c55e	filer_public/27/57/27575b33-02e2-4d5b-887b-0c721666014e/83511.jpg	2020-05-01 21:59:59.515606+02
 10	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ff/76/ff768988-8c66-4b5d-9924-1985e9406c9a/83066.jpg	2020-05-01 22:00:32.58131+02
 9	f9bde26a1556cd667f742bd34ec7c55e	filer_public/dd/3b/dd3be7a7-54d2-4d6b-a611-db8c410985e3/83022.jpg	2020-05-01 22:00:38.951239+02
-18	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png	2020-05-02 15:32:03.164469+02
 33	f9bde26a1556cd667f742bd34ec7c55e	filer_public/16/39/1639b95c-b218-481a-a8c5-7be85ce9a8fc/90100.jpg	2020-05-06 14:10:19.928032+02
 19	f9bde26a1556cd667f742bd34ec7c55e	filer_public/3f/55/3f55e3f4-80e8-4fdc-9e97-43d4a65e52a0/80011.jpg	2020-05-05 15:14:32.650687+02
 8	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b2/a7/b2a7b54a-cc60-458d-bd70-ff63ea4e5035/83017.jpg	2020-05-06 22:02:43.475192+02
@@ -7109,11 +7347,54 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 97	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ca/cf/cacf24fc-4a74-4876-a789-bf3d9f6a2099/97182.jpg	2020-06-11 15:28:41.059686+02
 92	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4f/c2/4fc27f62-42b7-481b-bbf5-ea446c112fa9/97266.jpg	2020-06-01 01:07:28.463267+02
 95	f9bde26a1556cd667f742bd34ec7c55e	filer_public/08/fc/08fceede-165d-4df1-8c43-fba1e63b9f8f/97162.jpg	2020-06-11 15:14:01.125715+02
+106	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg	2020-07-26 19:05:31.126798+02
 98	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d6/8c/d68c88b9-f033-4c87-8ca4-a6a078e9ff67/97165.jpg	2020-06-18 14:37:30.811912+02
+103	f9bde26a1556cd667f742bd34ec7c55e	filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg	2020-07-02 11:56:02.216222+02
 101	f9bde26a1556cd667f742bd34ec7c55e	filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg	2020-06-19 22:09:58.470373+02
 99	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e9/be/e9be2b1f-72f9-413f-acb0-eb9ce8e7a829/97185.jpg	2020-06-18 15:27:15.193055+02
-102	f9bde26a1556cd667f742bd34ec7c55e	filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg	2020-06-22 11:01:35.059435+02
+105	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg	2020-07-26 18:10:54.210027+02
 100	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg	2020-06-18 21:30:17.235267+02
+102	f9bde26a1556cd667f742bd34ec7c55e	filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg	2020-07-02 10:39:33.128932+02
+107	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg	2020-07-26 20:18:50.748737+02
+104	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg	2020-07-02 15:24:09.219818+02
+108	f9bde26a1556cd667f742bd34ec7c55e	filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg	2020-08-17 19:43:24.026208+02
+109	f9bde26a1556cd667f742bd34ec7c55e	filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg	2020-08-17 22:19:05.251171+02
+110	f9bde26a1556cd667f742bd34ec7c55e	filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg	2020-08-19 10:11:37.546665+02
+111	f9bde26a1556cd667f742bd34ec7c55e	filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg	2020-08-19 17:09:04.785701+02
+112	f9bde26a1556cd667f742bd34ec7c55e	filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg	2020-08-19 18:30:38.522684+02
+113	f9bde26a1556cd667f742bd34ec7c55e	filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg	2020-08-20 10:07:36.189734+02
+114	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg	2020-08-20 11:10:23.742623+02
+115	f9bde26a1556cd667f742bd34ec7c55e	filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg	2020-08-20 11:38:14.724909+02
+126	f9bde26a1556cd667f742bd34ec7c55e	filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg	2020-08-24 11:13:53.007413+02
+116	f9bde26a1556cd667f742bd34ec7c55e	filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg	2020-08-20 11:54:38.904587+02
+127	f9bde26a1556cd667f742bd34ec7c55e	filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg	2020-08-24 11:24:18.947036+02
+117	f9bde26a1556cd667f742bd34ec7c55e	filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg	2020-08-20 16:11:40.213332+02
+142	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg	2020-08-25 19:28:50.597133+02
+128	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg	2020-08-24 11:43:02.528717+02
+118	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg	2020-08-20 16:28:03.470982+02
+136	f9bde26a1556cd667f742bd34ec7c55e	filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg	2020-08-25 11:32:04.416482+02
+119	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg	2020-08-20 17:13:11.364934+02
+129	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg	2020-08-24 16:14:02.601982+02
+120	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg	2020-08-20 17:24:16.558875+02
+137	f9bde26a1556cd667f742bd34ec7c55e	filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg	2020-08-25 15:43:23.941854+02
+121	f9bde26a1556cd667f742bd34ec7c55e	filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg	2020-08-21 10:52:01.593835+02
+130	f9bde26a1556cd667f742bd34ec7c55e	filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg	2020-08-24 17:27:21.465864+02
+122	f9bde26a1556cd667f742bd34ec7c55e	filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg	2020-08-21 11:22:15.73506+02
+143	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg	2020-08-25 19:43:11.712975+02
+131	f9bde26a1556cd667f742bd34ec7c55e	filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg	2020-08-24 19:19:11.009011+02
+123	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg	2020-08-21 16:26:39.923806+02
+138	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg	2020-08-25 16:04:32.04165+02
+124	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg	2020-08-21 17:16:41.293122+02
+132	f9bde26a1556cd667f742bd34ec7c55e	filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg	2020-08-24 19:37:24.112977+02
+125	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg	2020-08-24 09:34:30.280341+02
+18	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png	2020-08-25 21:50:37.32388+02
+134	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg	2020-08-24 20:59:18.335579+02
+144	f9bde26a1556cd667f742bd34ec7c55e	filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png	2020-08-25 22:11:44.313298+02
+139	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg	2020-08-25 16:40:08.504345+02
+133	f9bde26a1556cd667f742bd34ec7c55e	filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg	2020-08-24 20:59:54.289445+02
+135	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg	2020-08-24 21:33:35.044882+02
+140	f9bde26a1556cd667f742bd34ec7c55e	filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg	2020-08-25 17:32:03.58388+02
+141	f9bde26a1556cd667f742bd34ec7c55e	filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg	2020-08-25 17:50:26.958019+02
 \.
 
 
@@ -8004,6 +8285,380 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 892	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.157683+02	102
 893	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.186651+02	102
 894	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-06-22 11:01:35.223385+02	102
+895	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__244x244_q85_crop_subsampling-2.jpg	2020-07-02 10:39:30.392592+02	102
+896	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__488x488_q85_crop_subsampling-2.jpg	2020-07-02 10:39:30.444749+02	102
+897	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg__250x250_q85_crop_subsampling-2.jpg	2020-07-02 10:39:33.137315+02	102
+898	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-07-02 11:52:10.30026+02	103
+899	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-07-02 11:52:10.334945+02	103
+900	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-07-02 11:52:10.364867+02	103
+901	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-07-02 11:52:10.401588+02	103
+902	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-07-02 11:52:10.441078+02	103
+903	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-07-02 11:52:10.472912+02	103
+904	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__244x244_q85_crop_subsampling-2.jpg	2020-07-02 11:55:59.175684+02	103
+905	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__488x488_q85_crop_subsampling-2.jpg	2020-07-02 11:55:59.237809+02	103
+906	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg__250x250_q85_crop_subsampling-2.jpg	2020-07-02 11:56:02.225536+02	103
+907	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-07-02 15:22:04.925969+02	104
+908	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-07-02 15:22:04.967982+02	104
+909	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-07-02 15:22:04.994958+02	104
+910	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-07-02 15:22:05.022898+02	104
+911	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-07-02 15:22:05.05127+02	104
+912	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-07-02 15:22:05.081002+02	104
+913	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__244x244_q85_crop_subsampling-2.jpg	2020-07-02 15:24:04.444717+02	104
+914	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__488x488_q85_crop_subsampling-2.jpg	2020-07-02 15:24:04.506741+02	104
+915	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg__250x250_q85_crop_subsampling-2.jpg	2020-07-02 15:24:09.227949+02	104
+916	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-07-26 18:10:08.629952+02	105
+917	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-07-26 18:10:08.662975+02	105
+918	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-07-26 18:10:08.688317+02	105
+919	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-07-26 18:10:08.719491+02	105
+920	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-07-26 18:10:08.756364+02	105
+921	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-07-26 18:10:08.788976+02	105
+922	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__244x244_q85_crop_subsampling-2.jpg	2020-07-26 18:10:41.573221+02	105
+923	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__488x488_q85_crop_subsampling-2.jpg	2020-07-26 18:10:41.633602+02	105
+924	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg__250x250_q85_crop_subsampling-2.jpg	2020-07-26 18:10:54.218579+02	105
+925	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-07-26 19:05:05.954077+02	106
+926	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-07-26 19:05:05.989374+02	106
+927	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-07-26 19:05:06.01785+02	106
+928	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-07-26 19:05:06.048009+02	106
+929	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-07-26 19:05:06.074879+02	106
+930	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-07-26 19:05:06.113642+02	106
+931	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__244x244_q85_crop_subsampling-2.jpg	2020-07-26 19:05:27.255305+02	106
+932	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__488x488_q85_crop_subsampling-2.jpg	2020-07-26 19:05:27.321383+02	106
+933	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg__250x250_q85_crop_subsampling-2.jpg	2020-07-26 19:05:31.135835+02	106
+934	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-07-26 20:18:14.845389+02	107
+935	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-07-26 20:18:14.877672+02	107
+936	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-07-26 20:18:14.899334+02	107
+937	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-07-26 20:18:14.920985+02	107
+938	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-07-26 20:18:14.949577+02	107
+939	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-07-26 20:18:14.97673+02	107
+940	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__244x244_q85_crop_subsampling-2.jpg	2020-07-26 20:18:41.877055+02	107
+941	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__488x488_q85_crop_subsampling-2.jpg	2020-07-26 20:18:41.929587+02	107
+942	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg__250x250_q85_crop_subsampling-2.jpg	2020-07-26 20:18:50.756916+02	107
+943	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-17 19:42:49.692711+02	108
+944	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-17 19:42:49.746137+02	108
+945	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-17 19:42:49.771236+02	108
+946	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-17 19:42:49.797467+02	108
+947	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-17 19:42:49.830162+02	108
+948	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-17 19:42:49.860008+02	108
+949	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-17 19:43:16.530687+02	108
+950	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-17 19:43:16.58539+02	108
+951	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-17 19:43:24.034598+02	108
+952	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-17 22:18:45.774774+02	109
+953	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-17 22:18:45.802604+02	109
+954	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-17 22:18:45.828654+02	109
+955	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-17 22:18:45.855268+02	109
+956	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-17 22:18:45.883357+02	109
+957	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-17 22:18:45.910547+02	109
+958	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-17 22:19:00.303975+02	109
+959	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-17 22:19:00.359014+02	109
+960	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-17 22:19:05.259261+02	109
+961	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-19 10:11:02.407829+02	110
+962	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-19 10:11:02.446869+02	110
+963	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-19 10:11:02.472414+02	110
+964	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-19 10:11:02.497875+02	110
+965	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-19 10:11:02.530771+02	110
+966	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-19 10:11:02.555479+02	110
+967	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-19 10:11:30.778348+02	110
+968	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-19 10:11:30.834167+02	110
+969	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-19 10:11:37.554632+02	110
+970	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-19 17:08:17.308772+02	111
+971	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-19 17:08:17.348131+02	111
+972	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-19 17:08:17.375223+02	111
+973	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-19 17:08:17.402572+02	111
+974	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-19 17:08:17.431769+02	111
+975	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-19 17:08:17.463836+02	111
+976	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-19 17:09:02.307804+02	111
+977	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-19 17:09:02.358125+02	111
+978	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-19 17:09:04.79406+02	111
+979	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-19 18:30:16.868831+02	112
+980	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-19 18:30:16.906642+02	112
+981	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-19 18:30:16.931811+02	112
+982	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-19 18:30:16.957064+02	112
+983	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-19 18:30:16.990036+02	112
+984	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-19 18:30:17.018372+02	112
+985	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-19 18:30:35.423749+02	112
+986	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-19 18:30:35.480596+02	112
+987	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-19 18:30:38.530285+02	112
+988	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 10:07:17.913719+02	113
+989	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 10:07:17.946543+02	113
+990	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 10:07:17.972213+02	113
+991	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 10:07:17.998609+02	113
+992	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 10:07:18.025767+02	113
+993	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 10:07:18.054869+02	113
+994	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 10:07:26.968732+02	113
+995	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 10:07:27.020437+02	113
+996	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 10:07:36.200249+02	113
+997	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:09:57.708796+02	114
+998	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:09:57.746839+02	114
+999	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:09:57.771338+02	114
+1000	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:09:57.796166+02	114
+1001	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:09:57.825399+02	114
+1002	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:09:57.854351+02	114
+1003	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 11:10:18.419807+02	114
+1004	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 11:10:18.465343+02	114
+1005	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 11:10:23.75169+02	114
+1006	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:37:53.187571+02	115
+1007	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:37:53.216667+02	115
+1008	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:37:53.236258+02	115
+1009	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:37:53.256012+02	115
+1010	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:37:53.282081+02	115
+1011	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:37:53.310646+02	115
+1012	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 11:38:05.098419+02	115
+1013	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 11:38:05.149834+02	115
+1014	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 11:38:14.733862+02	115
+1015	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:54:16.568569+02	116
+1016	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:54:16.59314+02	116
+1017	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:54:16.617774+02	116
+1018	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:54:16.642913+02	116
+1019	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:54:16.669561+02	116
+1020	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 11:54:16.698205+02	116
+1021	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 11:54:31.32674+02	116
+1022	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 11:54:31.378602+02	116
+1023	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 11:54:38.91282+02	116
+1024	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:11:24.514786+02	117
+1025	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:11:24.553649+02	117
+1026	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:11:24.579703+02	117
+1027	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:11:24.6057+02	117
+1028	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:11:24.632615+02	117
+1029	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:11:24.665301+02	117
+1030	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 16:11:37.143436+02	117
+1031	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 16:11:37.195259+02	117
+1032	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 16:11:40.22124+02	117
+1033	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:27:43.611816+02	118
+1034	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:27:43.645055+02	118
+1035	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:27:43.669852+02	118
+1036	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:27:43.695013+02	118
+1037	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:27:43.722472+02	118
+1038	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 16:27:43.752838+02	118
+1039	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 16:27:59.131173+02	118
+1040	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 16:27:59.1802+02	118
+1041	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 16:28:03.479222+02	118
+1042	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:12:51.463066+02	119
+1043	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:12:51.498963+02	119
+1044	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:12:51.523473+02	119
+1045	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:12:51.54945+02	119
+1046	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:12:51.577026+02	119
+1047	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:12:51.601603+02	119
+1048	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 17:13:01.76621+02	119
+1049	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 17:13:01.818017+02	119
+1050	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 17:13:11.376078+02	119
+1051	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:24:00.809579+02	120
+1052	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:24:00.833519+02	120
+1053	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:24:00.853598+02	120
+1054	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:24:00.874813+02	120
+1055	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:24:00.902111+02	120
+1056	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-20 17:24:00.935289+02	120
+1057	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-20 17:24:09.485707+02	120
+1058	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-20 17:24:09.537423+02	120
+1059	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-20 17:24:16.567447+02	120
+1060	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-21 10:51:47.460117+02	121
+1061	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-21 10:51:47.487554+02	121
+1062	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-21 10:51:47.513057+02	121
+1063	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-21 10:51:47.539809+02	121
+1064	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-21 10:51:47.567839+02	121
+1065	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-21 10:51:47.598068+02	121
+1066	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-21 10:51:58.203673+02	121
+1067	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-21 10:51:58.261793+02	121
+1068	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-21 10:52:01.601782+02	121
+1069	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-21 11:21:58.44758+02	122
+1070	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-21 11:21:58.478108+02	122
+1071	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-21 11:21:58.505491+02	122
+1072	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-21 11:21:58.535173+02	122
+1073	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-21 11:21:58.566547+02	122
+1074	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-21 11:21:58.601209+02	122
+1075	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-21 11:22:12.938057+02	122
+1076	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-21 11:22:12.993826+02	122
+1077	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-21 11:22:15.743406+02	122
+1078	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-21 16:26:27.303507+02	123
+1079	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-21 16:26:27.343806+02	123
+1080	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-21 16:26:27.371081+02	123
+1081	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-21 16:26:27.39869+02	123
+1082	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-21 16:26:27.428053+02	123
+1083	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-21 16:26:27.455289+02	123
+1084	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-21 16:26:35.879933+02	123
+1085	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-21 16:26:35.936479+02	123
+1086	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-21 16:26:39.932134+02	123
+1087	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-21 17:05:36.985451+02	124
+1088	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-21 17:05:37.014941+02	124
+1089	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-21 17:05:37.042185+02	124
+1090	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-21 17:05:37.074764+02	124
+1091	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-21 17:05:37.103759+02	124
+1092	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-21 17:05:37.130396+02	124
+1093	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-21 17:16:33.682627+02	124
+1094	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-21 17:16:33.73856+02	124
+1095	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-21 17:16:41.301769+02	124
+1096	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:13:02.370567+02	125
+1097	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:13:02.400811+02	125
+1098	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:13:02.42883+02	125
+1099	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:13:02.457031+02	125
+1100	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:13:02.487228+02	125
+1101	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:13:02.51959+02	125
+1102	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 09:34:16.970514+02	125
+1103	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 09:34:17.032734+02	125
+1104	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 09:34:30.288893+02	125
+1105	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:53:20.168612+02	126
+1106	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:53:20.192492+02	126
+1107	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:53:20.219098+02	126
+1108	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:53:20.246191+02	126
+1109	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:53:20.274808+02	126
+1110	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 09:53:20.305585+02	126
+1111	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 11:13:50.26425+02	126
+1112	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 11:13:50.317649+02	126
+1113	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 11:13:53.015362+02	126
+1114	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:24:18.954539+02	127
+1115	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:24:19.003415+02	127
+1116	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:24:19.043062+02	127
+1117	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:24:19.084206+02	127
+1118	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:24:19.126465+02	127
+1119	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:24:19.171385+02	127
+1120	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:42:00.791706+02	128
+1121	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:42:00.830719+02	128
+1122	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:42:00.854241+02	128
+1123	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:42:00.881269+02	128
+1124	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:42:00.904484+02	128
+1125	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 11:42:00.929346+02	128
+1126	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 11:42:57.011587+02	128
+1127	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 11:42:57.062864+02	128
+1128	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 11:43:02.537938+02	128
+1129	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 16:13:49.367129+02	129
+1130	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 16:13:49.40372+02	129
+1131	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 16:13:49.424365+02	129
+1132	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 16:13:49.449863+02	129
+1133	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 16:13:49.48296+02	129
+1134	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 16:13:49.512407+02	129
+1135	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 16:13:58.076491+02	129
+1136	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 16:13:58.128211+02	129
+1137	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 16:14:02.610403+02	129
+1138	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 17:27:08.017388+02	130
+1139	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 17:27:08.050199+02	130
+1140	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 17:27:08.075847+02	130
+1141	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 17:27:08.101351+02	130
+1142	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 17:27:08.128151+02	130
+1143	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 17:27:08.157448+02	130
+1144	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 17:27:17.252309+02	130
+1145	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 17:27:17.300988+02	130
+1146	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 17:27:21.474122+02	130
+1147	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:18:57.820797+02	131
+1148	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:18:57.858119+02	131
+1149	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:18:57.885363+02	131
+1150	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:18:57.911816+02	131
+1151	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:18:57.945177+02	131
+1152	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:18:57.993546+02	131
+1153	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 19:19:07.550276+02	131
+1154	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 19:19:07.604301+02	131
+1155	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 19:19:11.019907+02	131
+1156	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:36:56.784686+02	132
+1157	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:36:56.816159+02	132
+1158	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:36:56.847052+02	132
+1159	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:36:56.877011+02	132
+1160	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:36:56.902628+02	132
+1161	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 19:36:56.928839+02	132
+1162	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 19:37:16.576042+02	132
+1163	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 19:37:16.628214+02	132
+1164	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 19:37:24.123319+02	132
+1165	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:09.645993+02	133
+1166	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:09.675497+02	133
+1167	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:09.700005+02	133
+1168	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:09.726387+02	133
+1169	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:09.750624+02	133
+1170	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:09.784514+02	133
+1171	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:18.343305+02	134
+1172	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:18.385283+02	134
+1173	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:18.415233+02	134
+1174	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:18.447813+02	134
+1175	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:18.482065+02	134
+1176	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 20:59:18.518389+02	134
+1177	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 20:59:51.397296+02	133
+1178	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 20:59:51.454694+02	133
+1179	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 20:59:54.299712+02	133
+1180	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-24 21:33:23.201135+02	135
+1181	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-24 21:33:23.236793+02	135
+1182	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-24 21:33:23.265701+02	135
+1183	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-24 21:33:23.294278+02	135
+1184	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-24 21:33:23.324389+02	135
+1185	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-24 21:33:23.357041+02	135
+1186	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-24 21:33:31.85866+02	135
+1187	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-24 21:33:31.915177+02	135
+1188	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-24 21:33:35.053091+02	135
+1189	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 11:01:18.231953+02	136
+1190	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 11:01:18.260834+02	136
+1191	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 11:01:18.287765+02	136
+1192	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 11:01:18.310495+02	136
+1193	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 11:01:18.35773+02	136
+1194	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 11:01:18.387805+02	136
+1195	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 11:32:00.507475+02	136
+1196	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 11:32:00.571634+02	136
+1197	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 11:32:04.42568+02	136
+1198	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 15:42:09.277356+02	137
+1199	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 15:42:09.306898+02	137
+1200	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 15:42:09.333866+02	137
+1201	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 15:42:09.361824+02	137
+1202	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 15:42:09.391094+02	137
+1203	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 15:42:09.417869+02	137
+1204	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 15:43:21.546492+02	137
+1205	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 15:43:21.598723+02	137
+1206	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 15:43:23.949995+02	137
+1207	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:03:18.779007+02	138
+1208	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:03:18.808461+02	138
+1209	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:03:18.833311+02	138
+1210	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:03:18.861114+02	138
+1211	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:03:18.892894+02	138
+1212	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:03:18.924535+02	138
+1213	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 16:04:29.296547+02	138
+1214	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 16:04:29.354628+02	138
+1215	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 16:04:32.050016+02	138
+1216	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:39:54.495575+02	139
+1217	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:39:54.525184+02	139
+1218	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:39:54.552673+02	139
+1219	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:39:54.580792+02	139
+1220	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:39:54.610416+02	139
+1221	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 16:39:54.641798+02	139
+1222	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 16:40:04.26512+02	139
+1223	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 16:40:04.32314+02	139
+1224	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 16:40:08.513018+02	139
+1225	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:31:48.72527+02	140
+1226	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:31:48.765458+02	140
+1227	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:31:48.793435+02	140
+1228	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:31:48.818045+02	140
+1229	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:31:48.848411+02	140
+1230	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:31:48.881263+02	140
+1231	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 17:31:59.30528+02	140
+1232	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 17:31:59.362219+02	140
+1233	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 17:32:03.592284+02	140
+1234	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:50:10.453495+02	141
+1235	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:50:10.482567+02	141
+1236	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:50:10.509297+02	141
+1237	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:50:10.537289+02	141
+1238	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:50:10.567035+02	141
+1239	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 17:50:10.595513+02	141
+1240	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 17:50:25.079088+02	141
+1241	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 17:50:25.134999+02	141
+1242	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 17:50:26.96632+02	141
+1243	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:28:30.850413+02	142
+1244	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:28:30.884237+02	142
+1245	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:28:30.912516+02	142
+1246	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:28:30.938236+02	142
+1247	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:28:30.969871+02	142
+1248	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:28:31.0041+02	142
+1249	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 19:28:46.218156+02	142
+1250	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 19:28:46.27651+02	142
+1251	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 19:28:50.605185+02	142
+1252	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:42:48.426532+02	143
+1253	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:42:48.455365+02	143
+1254	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:42:48.48666+02	143
+1255	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:42:48.517162+02	143
+1256	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:42:48.561615+02	143
+1257	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-25 19:42:48.592592+02	143
+1258	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-25 19:43:08.186602+02	143
+1259	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-25 19:43:08.244356+02	143
+1260	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-25 19:43:11.721526+02	143
+1261	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__16x16_q85_crop_subsampling-2_upscale.png	2020-08-25 21:34:58.154196+02	144
+1262	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__32x32_q85_crop_subsampling-2_upscale.png	2020-08-25 21:34:58.166246+02	144
+1263	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__48x48_q85_crop_subsampling-2_upscale.png	2020-08-25 21:34:58.179406+02	144
+1264	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__80x80_q85_crop_subsampling-2_upscale.png	2020-08-25 21:34:58.193475+02	144
+1265	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__128x128_q85_crop_subsampling-2_upscale.png	2020-08-25 21:34:58.212079+02	144
+1266	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__180x180_q85_crop_subsampling-2_upscale.png	2020-08-25 21:34:58.231607+02	144
+1267	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__124x200_q85_crop_subsampling-2.png	2020-08-25 21:50:37.335631+02	18
+1268	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__124x200_q85_subsampling-2.png	2020-08-25 22:11:44.324449+02	144
 \.
 
 
@@ -8141,6 +8796,48 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 297	filer_public/4b/38/4b389a15-0c11-4bd3-917b-992360f93732/97195.jpg	232960	9100e9b452ea50634ed2eb91abd8c6c515d5f775	f	97195.jpg		\N	2020-06-18 21:27:19.78024+02	2020-06-18 21:27:19.780267+02	t	8	10	106
 298	filer_public/2c/b1/2cb18ca2-c794-414e-82b1-58f918f72ae7/97601.jpg	123758	10843f426df2d302cc519dde33da637e97c88eb9	f	97601.jpg		\N	2020-06-19 22:09:06.620637+02	2020-06-19 22:09:06.620654+02	t	8	10	106
 299	filer_public/aa/38/aa381be7-e264-403e-a45a-d3a486e4d149/97616.jpg	108580	21f91ced44b124c475d26722897f03e0d1535d90	f	97616.jpg		\N	2020-06-22 11:01:35.015742+02	2020-06-22 11:01:35.015774+02	t	8	10	106
+300	filer_public/18/48/1848bad3-587a-4f0a-96a3-843d356667cc/97626.jpg	262476	dc42360b8a8ea2fe1a8183a614d67952400a8192	f	97626.jpg		\N	2020-07-02 11:52:10.267291+02	2020-07-02 11:52:10.267319+02	t	8	10	106
+301	filer_public/d9/04/d904a3a9-0cab-4933-bda3-d3f771b6e9fc/97612.jpg	224588	8d71fc2be2a231840067659b26f87e54730a498b	f	97612.jpg		\N	2020-07-02 15:22:04.88922+02	2020-07-02 15:22:04.889261+02	t	8	10	106
+302	filer_public/c4/0c/c40c257d-b000-4d79-8ea0-f61d485084a8/97623.jpg	222942	d4a869dfc22464b0f5389692f9a4ed8a32f3e25c	f	97623.jpg		\N	2020-07-26 18:10:08.518082+02	2020-07-26 18:10:08.518117+02	t	\N	10	106
+303	filer_public/8b/01/8b014190-3eca-4a4c-b97e-425502bfedab/97634.jpg	114017	6aed7bf48de659ae01c2e3bc1b95ac5de79c9183	f	97634.jpg		\N	2020-07-26 19:05:05.913031+02	2020-07-26 19:05:05.913054+02	t	\N	10	106
+304	filer_public/e2/51/e2512f8f-b4ef-44ec-a674-70fdfa8e5cc5/97637.jpg	120032	4d4f39c0c2ed32a21606b14bd564e19335c38f06	f	97637.jpg		\N	2020-07-26 20:18:14.813165+02	2020-07-26 20:18:14.813193+02	t	\N	10	106
+305	filer_public/3b/c7/3bc74506-63a2-4d54-8e28-e50268583903/97668.jpg	142793	b77bf9857d98cc341cc5b847cdcdf9486f012781	f	97668.jpg		\N	2020-08-17 19:42:49.593728+02	2020-08-17 19:42:49.59375+02	t	\N	10	106
+306	filer_public/3c/31/3c31653a-db79-4024-9a27-de0f0c37f8b3/97676.jpg	192585	8a6f7d82e5e0d9d59dfc93094789b39827d14672	f	97676.jpg		\N	2020-08-17 22:18:45.739859+02	2020-08-17 22:18:45.73989+02	t	\N	10	106
+307	filer_public/7d/c3/7dc39156-9090-47d5-95b1-572aaca3b7ca/97679.jpg	125766	9e2f040f99ba5a83f7819637d5e0a3502b3474d9	f	97679.jpg		\N	2020-08-19 10:11:02.367503+02	2020-08-19 10:11:02.367535+02	t	\N	10	106
+308	filer_public/27/3c/273c909b-b721-453f-a7b9-17d7ac6706ee/97687.jpg	247060	685e9041358cb016cb072d07cf64e18dc2b47819	f	97687.jpg		\N	2020-08-19 17:08:17.277158+02	2020-08-19 17:08:17.277176+02	t	\N	10	106
+309	filer_public/07/58/075802e2-a7ba-4eb1-81db-828209543849/97525.jpg	180001	79190461f50715c125ff453ffc1a63dbbf444b18	f	97525.jpg		\N	2020-08-19 18:30:16.837319+02	2020-08-19 18:30:16.837338+02	t	\N	10	106
+310	filer_public/74/ef/74ef39a1-9612-48e9-9993-796568c6c145/97534.jpg	167698	3ce6960acdb78335305c46000ee63532fa8c2fa3	f	97534.jpg		\N	2020-08-20 10:07:17.858954+02	2020-08-20 10:07:17.858985+02	t	\N	10	106
+311	filer_public/f1/92/f192bfdb-f787-4c7c-be8a-6953323a64a4/97566.jpg	165240	6db16a6e276e3b6dc6c9d23135facb0eccb07e0d	f	97566.jpg		\N	2020-08-20 11:09:57.678763+02	2020-08-20 11:09:57.678786+02	t	\N	10	106
+312	filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg	176810	fc07a08962b27d138b30c4a59ccd40511a215d7e	f	97572.jpg		\N	2020-08-20 11:37:53.157981+02	2020-08-20 11:37:53.158+02	t	\N	10	106
+313	filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg	189236	7258427f61c24df9f210d4c1609c1b1d6c92b0bc	f	97588.jpg		\N	2020-08-20 11:54:16.524719+02	2020-08-20 11:54:16.524738+02	t	\N	10	106
+314	filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg	170548	ba28b0a548c00edbc29112a4923f9151c21c7e48	f	97708.jpg		\N	2020-08-20 16:11:24.483173+02	2020-08-20 16:11:24.483189+02	t	\N	10	106
+315	filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg	153077	5e0bac6c9edf23b3d48ca4d41ebd8f867fee4107	f	97717.jpg		\N	2020-08-20 16:27:43.568878+02	2020-08-20 16:27:43.568896+02	t	\N	10	106
+316	filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg	158939	2f3bd7b5ae090d5574d7b17ef627c26ac820bec0	f	97723.jpg		\N	2020-08-20 17:12:51.433575+02	2020-08-20 17:12:51.433591+02	t	\N	10	106
+317	filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg	158548	618903d2a9223430a90d5ad5e060a8dc2d4b2213	f	97746.jpg		\N	2020-08-20 17:24:00.778275+02	2020-08-20 17:24:00.778297+02	t	\N	10	106
+318	filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg	150741	3747487a6100e2e5c27e1c348a19fb1d1e11a11c	f	97541.jpg		\N	2020-08-21 10:51:47.39969+02	2020-08-21 10:51:47.399709+02	t	\N	10	106
+319	filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg	267621	fe40b19c9a3bb60f44523e206f4e2403fd3c3ea6	f	97545.jpg		\N	2020-08-21 11:21:58.410807+02	2020-08-21 11:21:58.410829+02	t	\N	10	106
+320	filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg	286541	67527dd3e6001dc547b94983ce950f18e12a0635	f	97011.jpg		\N	2020-08-21 16:26:27.271296+02	2020-08-21 16:26:27.271318+02	t	\N	10	106
+321	filer_public/f0/35/f0356a47-17d7-4fb4-bd1f-b0c25c3031fc/97013.jpg	281161	7d9ba6130ab3a4e4f5620cea43c38df3d8e4eb08	f	97013.jpg		\N	2020-08-21 17:05:36.954401+02	2020-08-21 17:05:36.954421+02	t	\N	10	106
+322	filer_public/8f/7f/8f7fb62a-c97f-4dee-a410-1a33c5240ee9/97055.jpg	287476	8cc363d660290d8b7436a61de089ceacac971a99	f	97055.jpg		\N	2020-08-24 09:13:02.316019+02	2020-08-24 09:13:02.316045+02	t	\N	10	106
+323	filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg	284086	9bad79fa67416b61850cb9ec539cfe7d9aedabff	f	97020.jpg		\N	2020-08-24 09:53:20.132053+02	2020-08-24 09:53:20.132072+02	t	\N	10	106
+324	filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg	294659	9579c1bb5f72367518ba98c8b95cce8c05db0556	f	GEPA_Fair_plus_Zeichen.jpg		\N	2020-08-24 11:24:18.906043+02	2020-08-24 11:24:18.906062+02	t	\N	10	106
+325	filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg	214313	326d999cf9ce1c2eafbcdb58634e60825742f6fc	f	99111.jpg		\N	2020-08-24 11:42:00.756643+02	2020-08-24 11:42:00.756661+02	t	\N	10	106
+326	filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg	132369	a2235ce489030e63217feb6d107df86b9a3e2caa	f	99168.jpg		\N	2020-08-24 16:13:49.336549+02	2020-08-24 16:13:49.336571+02	t	\N	10	106
+327	filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg	122297	f54aea2f65c7ce29cd4fce619531fd80ce05e604	f	99142.jpg		\N	2020-08-24 17:27:07.98397+02	2020-08-24 17:27:07.983987+02	t	\N	10	106
+328	filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg	123240	690cb0c32e1d2be1a397d5f92efb9a304a964fb6	f	99152.jpg		\N	2020-08-24 19:18:57.732749+02	2020-08-24 19:18:57.732767+02	t	\N	10	106
+329	filer_public/53/8b/538b1f93-049f-4112-ba79-4326a57a5692/99162.jpg	122277	c44a992632f29c224cbe5c84151dd5cd08f44892	f	99162.jpg		\N	2020-08-24 19:36:56.751897+02	2020-08-24 19:36:56.751917+02	t	\N	10	106
+330	filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg	53488	456a8c94e82df7b67c1afcc5b971aa16d19bb043	f	8911925_neu.jpg		\N	2020-08-24 20:59:09.609636+02	2020-08-24 20:59:09.609657+02	t	\N	10	106
+331	filer_public/ef/5a/ef5a0001-fc7c-4f9b-8118-ed1cd6f02011/8911925_quer.jpg	52522	b811897fabaac1dbe6d655d45c5f3724ab56e2d8	f	8911925_quer.jpg		\N	2020-08-24 20:59:18.310044+02	2020-08-24 20:59:18.310065+02	t	\N	10	106
+332	filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg	347794	4f01d6beb76935522c972a1f79c0ef0d576b5ded	f	99179.jpg		\N	2020-08-24 21:33:23.167423+02	2020-08-24 21:33:23.167441+02	t	\N	10	106
+333	filer_public/6e/8b/6e8b3c0a-0688-47ae-93c7-7c10527772c8/97415.jpg	266647	bc0ca8bfd2f51ac18b4bbfd84c8fa1efc09f1586	f	97415.jpg		\N	2020-08-25 11:01:18.184927+02	2020-08-25 11:01:18.184946+02	t	\N	10	106
+334	filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg	270888	f0bbe2dd5f6db5ec7228b15583c4d8d83ddd4269	f	97423.jpg		\N	2020-08-25 15:42:09.242335+02	2020-08-25 15:42:09.24236+02	t	\N	10	106
+335	filer_public/bd/bf/bdbfc8dd-f388-438e-a784-1572c653e4ff/97435.jpg	283457	1ed1dfd8895fcb4c07819cc82b89adfd57c014fa	f	97435.jpg		\N	2020-08-25 16:03:18.745288+02	2020-08-25 16:03:18.745306+02	t	\N	10	106
+336	filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg	263210	47f0f86ae97feb1ab3dc3a59f5e597394724f3d8	f	97443.jpg		\N	2020-08-25 16:39:54.463834+02	2020-08-25 16:39:54.463856+02	t	\N	10	106
+337	filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg	267937	7053a92a4e751ac7792ae0212e0d933f1a9e5c8c	f	97451.jpg		\N	2020-08-25 17:31:48.690311+02	2020-08-25 17:31:48.690333+02	t	\N	10	106
+338	filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg	251292	05000ce75345405764bda15caa430f91d4081a5d	f	97452.jpg		\N	2020-08-25 17:50:10.412549+02	2020-08-25 17:50:10.412568+02	t	\N	10	106
+339	filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg	303282	676e36675504f5d024a4234681e45008ebfd2432	f	97757.jpg		\N	2020-08-25 19:28:30.81291+02	2020-08-25 19:28:30.812958+02	t	\N	10	106
+340	filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg	348465	db98717cda04e18cddd15be1a7046dd491fd3038	f	97760.jpg		\N	2020-08-25 19:42:48.333614+02	2020-08-25 19:42:48.333635+02	t	\N	10	106
+341	filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png	4667	7c99f7456ee71d34d48e131457271187401efaa0	f	fairtrade_logo.png		\N	2020-08-25 21:34:58.108935+02	2020-08-25 21:34:58.108954+02	t	12	4	106
 \.
 
 
@@ -8154,8 +8851,9 @@ COPY public.filer_folder (id, name, uploaded_at, created_at, modified_at, lft, r
 10	Website	2020-04-30 19:58:57.877327+02	2020-04-30 19:58:57.87736+02	2020-04-30 19:58:57.877379+02	1	4	8	0	4	\N
 8	Produkte	2020-04-26 21:08:40.143532+02	2020-04-26 21:08:40.143575+02	2020-04-26 21:08:40.143602+02	2	3	7	1	4	7
 9	fotos	2020-04-29 20:58:12.209216+02	2020-04-29 20:58:12.209249+02	2020-04-30 19:59:07.912471+02	2	3	8	1	4	10
-7	Shop	2020-04-26 21:08:34.382838+02	2020-04-26 21:08:34.382871+02	2020-04-30 19:58:16.590839+02	1	6	7	0	4	\N
 11	Bio Siegel	2020-05-02 15:30:35.122911+02	2020-05-02 15:30:35.122938+02	2020-05-02 15:30:35.122949+02	4	5	7	1	4	7
+7	Shop	2020-04-26 21:08:34.382838+02	2020-04-26 21:08:34.382871+02	2020-04-30 19:58:16.590839+02	1	8	7	0	4	\N
+12	Faire Siegel	2020-08-25 21:32:01.044703+02	2020-08-25 21:32:01.044726+02	2020-08-25 21:32:01.044735+02	6	7	7	1	4	7
 \.
 
 
@@ -8274,6 +8972,48 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 297	752	662	2020-06-18 21:27:19.768985+02	\N	\N	\N	f	f	
 298	752	662	2020-06-19 22:09:06.614888+02	\N	\N	\N	f	f	
 299	752	662	2020-06-22 11:01:34.995032+02	\N	\N	\N	f	f	
+300	752	662	2020-07-02 11:52:10.23541+02	\N	\N	\N	f	f	
+301	752	662	2020-07-02 15:22:04.879613+02	\N	\N	\N	f	f	
+302	752	662	2020-07-26 18:10:08.468463+02	\N	\N	\N	f	f	
+303	752	662	2020-07-26 19:05:05.897071+02	\N	\N	\N	f	f	
+304	752	662	2020-07-26 20:18:14.793534+02	\N	\N	\N	f	f	
+305	752	662	2020-08-17 19:42:49.550896+02	\N	\N	\N	f	f	
+306	752	662	2020-08-17 22:18:45.719706+02	\N	\N	\N	f	f	
+307	752	662	2020-08-19 10:11:02.3428+02	\N	\N	\N	f	f	
+308	752	662	2020-08-19 17:08:17.269287+02	\N	\N	\N	f	f	
+309	752	662	2020-08-19 18:30:16.82484+02	\N	\N	\N	f	f	
+310	752	662	2020-08-20 10:07:17.850419+02	\N	\N	\N	f	f	
+311	752	662	2020-08-20 11:09:57.665764+02	\N	\N	\N	f	f	
+312	752	662	2020-08-20 11:37:53.146+02	\N	\N	\N	f	f	
+313	752	662	2020-08-20 11:54:16.519958+02	\N	\N	\N	f	f	
+314	752	662	2020-08-20 16:11:24.478805+02	\N	\N	\N	f	f	
+315	752	662	2020-08-20 16:27:43.564128+02	\N	\N	\N	f	f	
+316	752	662	2020-08-20 17:12:51.429338+02	\N	\N	\N	f	f	
+317	752	662	2020-08-20 17:24:00.766179+02	\N	\N	\N	f	f	
+318	752	662	2020-08-21 10:51:47.392724+02	\N	\N	\N	f	f	
+319	752	662	2020-08-21 11:21:58.398627+02	\N	\N	\N	f	f	
+320	752	662	2020-08-21 16:26:27.258453+02	\N	\N	\N	f	f	
+321	752	662	2020-08-21 17:05:36.948086+02	\N	\N	\N	f	f	
+322	752	662	2020-08-24 09:13:02.300228+02	\N	\N	\N	f	f	
+323	752	662	2020-08-24 09:53:20.126858+02	\N	\N	\N	f	f	
+324	1107	1188	2020-08-24 11:24:18.898767+02	\N	\N	\N	f	f	
+325	752	662	2020-08-24 11:42:00.751716+02	\N	\N	\N	f	f	
+326	752	662	2020-08-24 16:13:49.328791+02	\N	\N	\N	f	f	
+327	752	662	2020-08-24 17:27:07.979389+02	\N	\N	\N	f	f	
+328	752	662	2020-08-24 19:18:57.724987+02	\N	\N	\N	f	f	
+329	752	662	2020-08-24 19:36:56.737628+02	\N	\N	\N	f	f	
+330	700	700	2020-08-24 20:59:09.59644+02	\N	\N	\N	f	f	
+331	700	700	2020-08-24 20:59:18.295561+02	\N	\N	\N	f	f	
+332	752	662	2020-08-24 21:33:23.162363+02	\N	\N	\N	f	f	
+333	752	662	2020-08-25 11:01:18.175945+02	\N	\N	\N	f	f	
+334	752	662	2020-08-25 15:42:09.222055+02	\N	\N	\N	f	f	
+335	752	662	2020-08-25 16:03:18.740314+02	\N	\N	\N	f	f	
+336	752	662	2020-08-25 16:39:54.451082+02	\N	\N	\N	f	f	
+337	752	662	2020-08-25 17:31:48.677439+02	\N	\N	\N	f	f	
+338	752	662	2020-08-25 17:50:10.406478+02	\N	\N	\N	f	f	
+339	752	662	2020-08-25 19:28:30.806357+02	\N	\N	\N	f	f	
+340	752	662	2020-08-25 19:42:48.32598+02	\N	\N	\N	f	f	
+341	135	135	2020-08-25 21:34:58.10349+02	\N	\N	\N	f	f	
 \.
 
 
@@ -8290,10 +9030,7 @@ COPY public.filer_thumbnailoption (id, name, width, height, crop, upscale) FROM 
 --
 
 COPY public.menus_cachekey (id, language, site, key) FROM stdin;
-115	de	1	cms_3.7.3_menu_nodes_de_1_10_user:draft
-116	de	1	cms_3.7.3_menu_nodes_de_1:public
-117	de	1	cms_3.7.3_menu_nodes_de_1_10_user:public
-118	de	1	cms_3.7.3_menu_nodes_de_1_4_user:public
+146	de	1	cms_3.7.4_menu_nodes_de_1_4_user:draft
 \.
 
 
@@ -9744,17 +10481,7 @@ COPY public.shop_sendcloud_shippingmethod (id, name, carrier, min_weight, max_we
 -- Data for Name: weltladen_billingaddress; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
-COPY public.weltladen_billingaddress (id, priority, name, address1, address2, zip_code, city, country, customer_id) FROM stdin;
-\.
-
-
---
--- Data for Name: weltladen_bioqualitylabel; Type: TABLE DATA; Schema: public; Owner: djangouser
---
-
-COPY public.weltladen_bioqualitylabel (id, name, logo_id) FROM stdin;
-2	Europäisches Biosiegel	215
-3	FSC	242
+COPY public.weltladen_billingaddress (id, priority, name, postal_code, city, country, customer_id, address, company_name, house_number) FROM stdin;
 \.
 
 
@@ -9763,10 +10490,8 @@ COPY public.weltladen_bioqualitylabel (id, name, logo_id) FROM stdin;
 --
 
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
-6	2020-05-01 12:21:00.288425+02	2020-05-01 12:21:00.288449+02	{}	\N	10	\N
-8	2020-05-30 18:25:16.153109+02	2020-05-30 18:54:58.126773+02	{}	\N	12	\N
-9	2020-06-04 20:35:31.407522+02	2020-06-04 20:35:31.416448+02	{}	\N	13	\N
-1	2020-04-26 20:36:28.808627+02	2020-06-30 21:34:26.883716+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	\N	4	1
+10	2020-06-30 22:32:48.12073+02	2020-07-01 22:00:01.309953+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "self-collection", "payment_extra_data": {}}	\N	4	1
+11	2020-07-02 10:17:19.686767+02	2020-07-02 10:17:19.68679+02	{}	\N	10	\N
 \.
 
 
@@ -9775,9 +10500,6 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 --
 
 COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, cart_id, product_id) FROM stdin;
-14	83010	2020-05-30 18:54:58.125377+02	{}	1	8	7
-16	90321	2020-06-04 20:35:31.415312+02	{}	0	9	32
-17	83077	2020-06-30 21:34:26.881272+02	{}	1	1	11
 \.
 
 
@@ -9867,6 +10589,24 @@ COPY public.weltladen_manufacturer (id, name) FROM stdin;
 51	PT Mega Inovasi Organik
 52	MIFRUTA
 53	Candela
+54	La Sureñita
+55	ANAPQUI
+56	Green Net
+57	CoopeAgri
+58	KONAFCOOP
+59	Kleinproduzent*innen weltweit
+60	Serendipalm
+61	Gebana Afrique
+62	PODIE
+63	Del Campo
+64	ISIK
+65	UPROMABIO
+66	Naranjillo
+67	LA CORONILLA
+68	Miel Mexicana
+69	Fruits of the Nile
+70	Kleinproduzent*innen aus Afrika
+71	AgroAndino
 \.
 
 
@@ -9883,6 +10623,7 @@ COPY public.weltladen_order (id, status, currency, _subtotal, _total, created_at
 9	ready_for_delivery	EUR	5.99	10.99	2020-04-26 23:35:26.648034+02	2020-04-30 20:01:52.225337+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000006	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	18acc2e40eea7622c59b041bfe11bca0496fe4df	4
 7	order_canceled	EUR	0.00	5.00	2020-04-26 23:26:54.864607+02	2020-04-30 19:55:05.218086+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 0,00"}], ["postal-shipping", {"label": "Shipping costs", "amount": "€ 5,00"}]], "addendum": [], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "postal-shipping", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:76.0) Gecko/20100101 Firefox/76.0", "absolute_base_uri": "http://localhost:8000/"}	202000004	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	Markus Mohanty\nHintschiggasse 3/3/17\n1100 Wien\nAustria\n	9fe6ef18b6294f1c84c4ed38227bca1204b13f20	4
 11	pick_goods	EUR	17.99	17.99	2020-05-06 22:03:41.91133+02	2020-05-06 22:03:41.936835+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 3,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "self-collection", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:77.0) Gecko/20100101 Firefox/77.0", "absolute_base_uri": "http://localhost:8000/"}	202000008	Hans Zimmer\nSuperstraße 1123\n1100 Wien\nAustria\n	Hans Zimmer\nSuperstraße 1123\n1100 Wien\nAustria\n	fc886b2fdea59fb3a3bb881e3509c1e3525c4793	11
+12	pick_goods	EUR	17.99	17.99	2020-07-01 22:00:01.323927+02	2020-07-01 22:00:01.344251+02	{"rows": [["taxes10", {"label": "inkl. 10% MWSt.", "amount": "€ 0,00"}], ["taxes20", {"label": "inkl. 20% MWSt.", "amount": "€ 3,00"}]], "annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "self-collection", "payment_extra_data": {}}	{"language": "de", "remote_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:79.0) Gecko/20100101 Firefox/79.0", "absolute_base_uri": "http://localhost:8000/"}	202000009	Markus Mohanty\nHintschiggasse 3\n1100 Wien\nÖsterreich\n	Markus Mohanty\nHintschiggasse 3\n1100 Wien\nÖsterreich\n	b2001d34e73c76149af0feef36e4fdf8bdf0a7da	4
 \.
 
 
@@ -9895,6 +10636,7 @@ COPY public.weltladen_orderitem (id, product_name, product_code, _unit_price, _l
 5	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	9	\N
 6	Schokoeier	12314121	5.99	5.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 1,00"}]]}	1	f	10	\N
 7	ORGANICO Bohne 1kg	83017	17.99	17.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 3,00"}]]}	1	f	11	8
+8	ORGANICO Bohne 1kg	83017	17.99	17.99	{"rows": [["taxes", {"label": "inkl. 20% MWSt.", "amount": "€ 3,00"}]]}	1	f	12	8
 \.
 
 
@@ -10002,6 +10744,46 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 92	1	297	93
 93	1	298	94
 94	1	299	95
+95	1	300	96
+96	1	301	97
+97	1	302	98
+98	1	303	99
+99	1	304	100
+100	1	305	101
+101	1	306	102
+102	1	307	103
+103	1	308	104
+104	1	309	105
+105	1	310	106
+106	1	311	107
+107	1	312	108
+108	1	313	109
+109	1	314	110
+110	1	315	111
+111	1	316	112
+112	1	317	113
+113	1	318	114
+114	1	319	115
+115	1	320	116
+116	1	321	117
+117	1	322	118
+118	1	323	119
+119	1	325	120
+120	1	326	121
+121	1	327	122
+122	1	328	123
+123	1	329	124
+124	1	330	125
+125	2	331	125
+126	1	332	126
+127	1	333	127
+128	1	334	128
+129	1	335	129
+130	1	336	130
+131	1	337	131
+132	1	338	132
+133	1	339	133
+134	1	340	134
 \.
 
 
@@ -10188,6 +10970,96 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 185	66	94
 186	16	95
 187	66	95
+188	16	96
+189	66	96
+190	16	97
+191	66	97
+192	16	98
+193	66	98
+194	16	99
+195	66	99
+196	16	100
+197	66	100
+198	16	101
+199	66	101
+200	16	102
+201	66	102
+202	16	103
+203	66	103
+204	16	104
+205	66	104
+206	16	105
+207	66	105
+208	16	106
+209	66	106
+210	16	107
+211	66	107
+212	16	108
+213	66	108
+214	16	109
+215	66	109
+216	16	110
+217	66	110
+218	16	111
+219	66	111
+220	16	112
+221	66	112
+222	16	113
+223	66	113
+224	16	114
+225	66	114
+226	16	115
+227	66	115
+228	16	116
+229	67	116
+230	16	117
+231	67	117
+232	16	118
+233	67	118
+234	16	119
+235	67	119
+236	16	120
+237	67	120
+238	16	121
+239	67	121
+240	16	122
+241	67	122
+242	16	123
+243	67	123
+244	16	124
+245	67	124
+246	16	125
+247	67	125
+248	16	126
+249	67	126
+250	16	127
+251	67	127
+252	16	128
+253	67	128
+254	16	129
+255	67	129
+256	16	130
+257	67	130
+258	16	131
+259	67	131
+260	16	132
+261	67	132
+262	16	133
+263	67	133
+264	16	134
+265	67	134
+\.
+
+
+--
+-- Data for Name: weltladen_qualitylabel; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.weltladen_qualitylabel (id, name, logo_id, ordering) FROM stdin;
+2	Europäisches Biosiegel	215	10
+3	FSC	242	10
+4	GEPA fair plus	324	10
+5	Fairtrade	341	1
 \.
 
 
@@ -10195,9 +11067,9 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 -- Data for Name: weltladen_shippingaddress; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
-COPY public.weltladen_shippingaddress (id, priority, name, address1, address2, zip_code, city, country, customer_id) FROM stdin;
-1	1	Markus Mohanty	Hintschiggasse 3/3/17	\N	1100	Wien	AT	4
-2	1	Hans Zimmer	Superstraße 1123	\N	1100	Wien	AT	11
+COPY public.weltladen_shippingaddress (id, priority, name, postal_code, city, country, customer_id, address, company_name, house_number) FROM stdin;
+2	1	Hans Zimmer	1100	Wien	AT	11	Hintschiggasse	\N	3
+1	1	Markus Mohanty	1100	Wien	AT	4	Hintschiggasse	\N	3
 \.
 
 
@@ -10207,6 +11079,7 @@ COPY public.weltladen_shippingaddress (id, priority, name, address1, address2, z
 
 COPY public.weltladen_supplier (id, name) FROM stdin;
 2	EZA Fairer Handel GmbH
+3	GEPA Gesellschaft zur Förderung der Partnerschaft mit der Dritten Welt mbH
 \.
 
 
@@ -10218,8 +11091,8 @@ COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra
 13	0	2020-06-04 20:54:49.255673+02	{}	\N	\N	
 11	1	2020-05-12 22:02:10.818315+02	{}	2	\N	
 12	0	2020-05-31 11:57:40.706449+02	{}	\N	\N	
-10	2	2020-06-22 11:55:00.584994+02	{}	\N	\N	
-4	2	2020-06-30 21:34:28.278823+02	{}	1	+43 676 3239108	mr
+4	2	2020-08-25 22:12:57.889262+02	{}	1	+43 676 3239108	mr
+10	2	2020-08-25 20:05:16.682851+02	{}	\N	\N	
 \.
 
 
@@ -10227,96 +11100,135 @@ COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra
 -- Data for Name: weltladen_weltladenproduct; Type: TABLE DATA; Schema: public; Owner: djangouser
 --
 
-COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, product_name, slug, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, supplier_id, tax_switch, vegan, fairtrade, gluten_free, lactose_free, bio_quality_label_id, origin_countries) FROM stdin;
-19	2020-05-05 15:27:49.780894+02	2020-05-18 10:23:27.939876+02	t	NICA Vakuum 1kg	nica-vakuum-1kg	19	17.990	82033	17	135	2	t	t	t	t	t	2	NI
-67	2020-05-25 13:39:05.007286+02	2020-05-25 13:41:01.037358+02	t	Kaffeekapsel Membran - Espresso	kaffeekapsel-membran-espresso	41	2.990	89806	\N	135	2	t	f	f	f	f	\N	
-11	2020-05-01 20:53:58.436741+02	2020-05-27 10:35:51.673985+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	10	8.990	83077	2	135	2	t	t	t	t	t	2	MX
-20	2020-05-05 15:44:41.117401+02	2020-05-18 10:23:57.121612+02	t	NICA Bohne 1kg	nica-bohne-1kg	20	17.990	82017	17	135	2	t	t	t	t	t	2	NI
-8	2020-05-01 20:31:41.660464+02	2020-05-27 10:32:50.435202+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	7	17.990	83017	2	135	2	t	t	t	t	t	2	MX
-9	2020-05-01 20:37:02.640044+02	2020-05-27 10:33:42.260083+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	8	17.990	83022	2	135	2	t	t	t	t	t	2	MX
-12	2020-05-01 21:03:24.276724+02	2020-05-27 10:37:24.562685+02	t	ESPRESSO ORGANICO 18 Pads 125g	espresso-organico-18-pads-125g	11	4.990	83088	2	135	2	t	t	t	t	t	2	MX
-13	2020-05-01 21:09:57.047411+02	2020-05-27 10:38:42.893256+02	t	ORGANICO Bohne 500g	organico-bohne-500g	12	8.990	83511	2	135	2	t	t	t	t	t	2	MX
-10	2020-05-01 20:47:40.68414+02	2020-05-27 10:34:46.360889+02	t	ESPRESSO ORGANICO Bohne 1kg	espresso-organico-bohne-1kg	9	17.990	83066	2	135	2	t	t	t	t	t	2	MX
-14	2020-05-01 21:12:58.251966+02	2020-05-27 10:39:18.531977+02	t	ORGANICO Vakuum 500g	organico-vakuum-500g	13	8.990	83550	2	135	2	t	t	t	t	t	2	MX
-15	2020-05-01 21:56:08.654616+02	2020-05-27 10:40:47.206858+02	t	ORGANICO entkoffeiniert Vakuum 250g	organico-entkoffeiniert-vakuum-250g	14	5.490	83900	2	135	2	t	t	t	t	t	2	MX
-16	2020-05-01 21:59:22.717934+02	2020-05-27 10:41:39.023866+02	t	ORGANICO entkoffeiniert Bohne 500g	organico-entkoffeiniert-bohne-500g	15	10.590	83917	2	135	2	t	t	t	t	t	2	MX
-17	2020-05-05 15:14:13.121455+02	2020-05-27 10:43:40.260773+02	t	PUEBLO Bohne 1kg	pueblo-bohne-1kg	16	17.990	80011	13	135	2	t	t	t	t	t	2	GT,HN
-18	2020-05-05 15:21:07.846301+02	2020-05-27 10:46:33.704159+02	t	NICA Vakuum 250g	nica-vakuum-250g	18	4.990	82012	17	135	2	t	t	t	t	t	2	NI
-22	2020-05-05 18:59:01.161041+02	2020-05-27 10:48:37.224664+02	t	JAMBO Bohne 500g	jambo-bohne-500g	22	8.790	91018	18	135	2	t	t	t	t	t	2	UG
-23	2020-05-05 19:07:00.51228+02	2020-05-27 10:48:58.938907+02	t	JAMBO Bohne 1kg	jambo-bohne-1kg	23	17.990	91022	18	135	2	t	t	t	t	t	2	UG
-65	2020-05-25 11:13:28.348834+02	2020-05-27 13:15:21.282561+02	t	ESPRESSO ITALIANO gemahlen 250g	espresso-italiano-gemahlen-250g	32	7.490	90134	23	135	2	t	t	t	t	t	2	GT,MX,PE,UG
-21	2020-05-05 15:53:04.598381+02	2020-05-27 10:48:08.034018+02	t	JAMBO Vakuum 250g	jambo-vakuum-250g	21	4.990	91011	18	135	2	t	t	t	t	t	2	UG
-33	2020-05-06 15:11:00.118519+02	2020-05-20 15:27:21.529006+02	t	COFFEE FOR FUTURE Bohne 1kg	coffee-future-bohne-1kg	34	19.990	90332	23	135	2	t	t	t	t	t	2	MX,UG
-32	2020-05-06 14:27:39.282029+02	2020-05-20 15:26:12.724586+02	t	COFFEE FOR FUTURE Vakuum 500g	coffee-future-vakuum-500g	33	9.590	90321	23	135	2	t	t	t	t	t	2	MX,UG
-38	2020-05-06 16:43:24.308003+02	2020-06-18 09:45:28.82707+02	t	Kaffeekapsel Set - Espresso	kaffeekapsel-set-espresso	40	9.990	89805	28	135	2	t	f	f	f	f	\N	
-39	2020-05-06 16:56:22.203489+02	2020-06-18 09:46:02.520214+02	t	Kaffeefilter Nr. 4 - 100 Stk.	kaffeefilter-nr-4-100-stk	42	2.200	89706	29	135	2	t	f	f	f	f	3	DE
-40	2020-05-06 17:36:55.192577+02	2020-06-18 09:57:31.42449+02	t	TANZANIA Schwarztee Teebeutel 40x2g	tanzania-schwarztee-teebeutel-40x2g	43	3.490	85015	30	135	2	t	t	t	t	t	\N	TZ
-41	2020-05-06 17:52:33.317853+02	2020-06-18 09:57:51.502705+02	t	CEYLON-DARJEELING Teebeutel 24x2g	ceylon-darjeeling-teebeutel-24x2g	44	2.990	87033	31	135	2	t	t	t	t	t	2	IN,LK
-42	2020-05-06 17:59:32.75411+02	2020-06-18 09:58:08.792822+02	t	EARL GREY Teebeutel 24x2g	earl-grey-teebeutel-24x2g	45	2.990	87034	33	135	2	t	t	t	t	t	2	LK
-43	2020-05-07 10:07:22.042505+02	2020-06-18 09:58:33.365781+02	t	AFRICAN DREAM Schwarztee lose 100g	african-dream-schwarztee-lose-100g	46	3.290	85025	30	135	2	t	t	t	t	t	\N	TZ
-44	2020-05-07 10:25:20.827322+02	2020-06-18 09:58:52.109963+02	t	DARJEELING Schwarztee lose 100g	darjeeling-schwarztee-lose-100g	47	5.690	86050	32	135	2	t	t	t	t	t	2	IN
-45	2020-05-07 11:36:29.754358+02	2020-06-18 09:59:16.68677+02	t	ASSAM Schwarztee lose 100g	assam-schwarztee-lose-100g	48	4.990	86090	32	135	2	t	t	t	t	t	2	IN
-46	2020-05-07 14:12:45.63375+02	2020-06-18 09:59:32.663869+02	t	CEYLON Schwarztee lose 100g	ceylon-schwarztee-lose-100g	49	3.950	87035	33	135	2	t	t	t	t	t	2	LK
-47	2020-05-07 14:25:50.491212+02	2020-06-18 09:59:49.527336+02	t	INGWER CHAI Teebeutel 24x1,75g	ingwer-chai-teebeutel-24x175g	50	2.990	86045	33	135	2	t	t	t	t	t	2	LK
-48	2020-05-07 14:30:47.506207+02	2020-06-18 10:00:07.374717+02	t	CEYLON-DARJEELING Grün Teebeutel 24x2g	ceylon-darjeeling-grun-teebeutel-24x2g	51	2.990	87032	31	135	2	t	t	t	t	t	2	IN,LK
-49	2020-05-07 15:03:05.821184+02	2020-06-18 10:00:25.91263+02	t	DARJEELING Grüntee lose 100g	darjeeling-gruntee-lose-100g	52	5.489	86085	32	135	2	t	t	t	t	t	2	IN
-50	2020-05-07 15:18:02.018024+02	2020-06-18 10:02:10.569502+02	t	DARJEELING OOLONG Tee lose 75g	darjeeling-oolong-tee-lose-75g	53	3.990	87077	32	135	2	t	t	t	t	t	2	IN
-54	2020-05-07 16:28:46.723186+02	2020-06-18 10:03:28.297398+02	t	VIEL GUT Teebeutel 20x1,5g	viel-gut-teebeutel-20x15g	57	3.490	84138	36	135	2	t	t	t	t	t	2	ZA,VN
-55	2020-05-07 16:35:15.470428+02	2020-06-18 10:03:56.453484+02	t	VIEL FRISCH Teebeutel 20x1,5g	viel-frisch-teebeutel-20x15g	58	3.490	84137	36	135	2	t	t	t	t	t	2	EG,ZA,VN
-56	2020-05-07 16:54:12.235753+02	2020-06-18 10:04:49.906472+02	t	Teefilter Papier 100 Stk.	teefilter-papier-100-stk	59	3.550	89812	29	135	2	t	f	f	f	f	\N	DE
-57	2020-05-08 14:55:03.099947+02	2020-06-18 10:05:05.256308+02	t	Teenetz klein	teenetz-klein	60	1.700	89809	28	135	2	t	f	f	f	f	\N	
-58	2020-05-08 15:39:41.911293+02	2020-06-18 10:05:21.962987+02	t	Teenetz groß	teenetz-gross	61	1.800	89811	28	135	2	t	f	f	f	f	\N	
-69	2020-05-25 14:47:28.642464+02	2020-06-18 10:07:28.423315+02	t	MASCAO Kokos 100g	mascao-kokos-100g	68	2.990	97313	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-71	2020-05-25 16:01:54.479596+02	2020-06-18 10:09:06.926352+02	t	MASCAO Praliné 100g	mascao-praline-100g	70	3.290	97333	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-73	2020-05-26 10:49:40.475089+02	2020-06-18 10:09:47.996934+02	t	MASCAO Caramel 100g	mascao-caramel-100g	72	2.990	97350	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-75	2020-05-26 11:30:07.773077+02	2020-06-18 10:10:27.214871+02	t	MASCAO Rum Trüffel 100g	mascao-rum-truffel-100g	74	3.290	97366	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-77	2020-05-26 13:24:49.294532+02	2020-06-18 10:11:01.827734+02	t	MASCAO Kuvertüre Noir 200g	mascao-kuverture-noir-200g	76	4.990	97315	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-79	2020-05-28 10:53:29.644663+02	2020-06-18 10:12:28.765234+02	t	COMPAÑERA Crispy 50g	companera-crispy-50g	78	1.690	97215	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
-81	2020-05-28 14:02:56.684837+02	2020-06-18 10:12:51.804288+02	t	COMPAÑERA Noir 50g	companera-noir-50g	80	1.590	97225	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
-83	2020-05-31 16:56:19.376252+02	2020-06-18 10:13:31.332334+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	82	1.590	97235	45	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE,PH
-85	2020-06-01 01:07:13.694673+02	2020-06-18 10:14:14.957569+02	t	COMPAÑERA Orange 50g	companera-orange-50g	84	1.790	97266	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
-86	2020-06-11 14:50:15.020673+02	2020-06-18 10:14:29.391821+02	t	SONRISA Mandel 80g	sonrisa-mandel-80g	85	2.190	97142	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
-88	2020-06-11 15:13:43.022226+02	2020-06-18 10:15:01.752778+02	t	SONRISA Noir 80g	sonrisa-noir-80g	87	2.190	97162	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-90	2020-06-11 15:28:25.835455+02	2020-06-18 10:15:37.850138+02	t	SONRISA Orange 80g	sonrisa-orange-80g	89	2.190	97182	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-66	2020-05-25 13:26:44.74592+02	2020-05-25 13:41:14.347578+02	t	Kaffeekapsel Membran -  milde Röstung	kaffeekapsel-membran-milde-rostung	39	2.990	89801	\N	135	2	t	f	f	f	f	\N	
-28	2020-05-06 11:43:55.37933+02	2020-05-18 10:49:28.160978+02	t	ADELANTE gemahlen 250g	adelante-gemahlen-250g	28	5.490	90700	22	135	2	t	t	t	t	t	2	HN,PE
-24	2020-05-05 19:19:19.574164+02	2020-05-27 13:09:11.40655+02	t	MUNDO Vakuum 500g	mundo-vakuum-500g	24	8.990	90533	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
-25	2020-05-06 11:10:18.653798+02	2020-05-27 13:10:19.097042+02	t	MUNDO ESPRESSO Bohne 500g	mundo-espresso-bohne-500g	25	8.990	90555	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
-29	2020-05-06 11:53:17.235208+02	2020-05-18 10:50:40.156668+02	t	ADELANTE Bohne 250g	adelante-bohne-250g	29	5.490	90733	22	135	2	t	t	t	t	t	2	HN,PE
-30	2020-05-06 11:55:30.566591+02	2020-05-18 10:51:28.384732+02	t	ADELANTE Bohne 1kg	adelante-bohne-1kg	30	20.990	90712	22	135	2	t	t	t	t	t	2	HN,PE
-26	2020-05-06 11:14:13.759445+02	2020-05-27 13:11:01.489272+02	t	MUNDO Bohne 1kg	mundo-bohne-1kg	26	17.990	90527	13	135	2	t	t	t	t	t	2	GT,HN,MX,NI
-7	2020-05-01 14:05:09.569673+02	2020-05-27 10:31:16.754135+02	t	ORGANICO Vakuum 250g	organico-vakuum-250g	6	4.990	83010	2	135	2	t	t	t	t	t	2	MX
-64	2020-05-25 10:59:34.087385+02	2020-05-27 10:44:57.780049+02	t	PUEBLO Vakuum 500g	pueblo-vakuum-500g	17	8.990	80013	13	135	2	t	t	t	t	t	2	GT,HN
-27	2020-05-06 11:22:16.50646+02	2020-05-27 13:12:08.469533+02	t	ABESSA Bohne 1kg	abessa-bohne-1kg	27	23.990	90255	19	135	2	t	t	t	t	t	2	ET
-31	2020-05-06 14:10:08.218781+02	2020-05-27 13:14:23.538463+02	t	ESPRESSO ITALIANO Bohne 1kg	espresso-italiano-bohne-1kg	31	21.990	90100	23	135	2	t	t	t	t	t	2	GT,MX,PE,UG
-34	2020-05-06 15:29:33.732075+02	2020-05-27 13:18:16.89776+02	t	AFRICAFE Löskaffee 100g	africafe-loskaffee-100g	35	6.490	81013	26	135	2	t	t	t	t	t	2	TZ
-35	2020-05-06 15:46:34.662559+02	2020-05-27 13:20:22.031983+02	t	LATINO Löskaffee 100g	latino-loskaffee-100g	36	8.990	81033	27	135	2	t	t	t	t	t	2	MX,NI
-36	2020-05-06 15:51:41.976545+02	2020-05-27 13:21:36.370514+02	t	LATINO Löskaffee entkoffeiniert 100g	latino-loskaffee-entkoffeiniert-100g	37	8.990	81044	27	135	2	t	t	t	t	t	2	MX,NI
-37	2020-05-06 16:22:40.017131+02	2020-06-18 09:44:58.325003+02	t	Kaffeekapsel Set - milde Röstung	kaffeekapsel-set-milde-rostung	38	9.990	89800	\N	135	2	t	f	f	f	f	\N	
-51	2020-05-07 15:32:59.067737+02	2020-06-18 10:02:25.211196+02	t	CARCADE Hibiskustee lose 50g	carcade-hibiskustee-lose-50g	54	2.690	84011	34	135	2	t	t	t	t	t	2	KE
-52	2020-05-07 15:43:04.802807+02	2020-06-18 10:02:40.469147+02	t	CARCADE CITRONELLA Teebeutel 20x2g	carcade-citronella-teebeutel-20x2g	55	2.890	84022	34	135	2	t	t	t	t	t	2	KE
-53	2020-05-07 16:07:32.301104+02	2020-06-18 10:03:03.101556+02	t	VIEL PUR Teebeutel 20x1,5g	viel-pur-teebeutel-20x15g	56	2.990	84142	35	135	2	t	t	t	t	t	2	ZA
-59	2020-05-08 16:22:41.509798+02	2020-06-18 10:05:40.755268+02	t	Kakao CARIÑO 125g	kakao-carino-125g	62	2.990	94033	27	135	2	f	t	t	t	t	2	DO,CO,NI,PE,ST
-60	2020-05-16 19:33:15.475806+02	2020-06-18 10:05:57.911627+02	t	EQUITA Trinkschokolade 375g	equita-trinkschokolade-375g	63	5.990	94111	27	135	2	f	t	t	f	t	2	DO,PY
-61	2020-05-16 21:02:03.464749+02	2020-06-18 10:06:13.984259+02	t	MASCOBADO 1kg	mascobado-1kg	64	6.290	97135	44	135	2	f	t	f	t	t	2	PH
-62	2020-05-16 22:18:59.634269+02	2020-06-18 10:06:33.946429+02	t	Zuckersticks 1000 x 4g	zuckersticks-1000-x-4g	65	34.100	97198	43	135	2	f	t	f	t	t	2	PY
-63	2020-05-17 11:55:17.186328+02	2020-06-18 10:06:52.991239+02	t	50 Schoko-Naps à 4,5g	50-schoko-naps-45g	66	8.990	97299	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-68	2020-05-25 14:12:10.055323+02	2020-06-18 10:07:15.108708+02	t	MASCAO Vollmilch 100g	mascao-vollmilch-100g	67	2.990	97311	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-70	2020-05-25 14:59:32.726729+02	2020-06-18 10:07:49.818976+02	t	MASCAO Haselnuss 100g	mascao-haselnuss-100g	69	3.290	97322	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-72	2020-05-25 16:18:13.850489+02	2020-06-18 10:09:29.158396+02	t	MASCAO Granatapfel 100g	mascao-granatapfel-100g	71	2.990	97345	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-74	2020-05-26 11:18:11.663106+02	2020-06-18 10:10:10.520477+02	t	MASCAO Cappuccino 100g	mascao-cappuccino-100g	73	3.290	97355	45	135	2	f	f	t	t	f	2	BO,DO,PE,PH
-76	2020-05-26 11:40:45.927426+02	2020-06-18 10:10:44.107761+02	t	MASCAO Noir 100g	mascao-noir-100g	75	2.990	97388	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-78	2020-05-26 15:29:42.763982+02	2020-06-18 10:11:20.059216+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	77	1.690	97205	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
-80	2020-05-28 11:07:34.957162+02	2020-06-18 10:12:41.053259+02	t	COMPAÑERA Noisette 50g	companera-noisette-50g	79	1.690	97220	27	135	2	f	f	t	t	f	2	BO,DO,EC,PY,PE
-82	2020-05-28 14:33:00.313556+02	2020-06-18 10:13:14.388286+02	t	COMPAÑERA Ingwer-Zitrone 50g	companera-ingwer-zitrone-50g	81	1.690	97230	27	135	2	f	t	t	t	t	2	BO,DO,EC,PY,PE
-84	2020-05-31 23:54:26.806277+02	2020-06-18 10:13:53.759341+02	t	COMPAÑERA Kokos 50g	companera-kokos-50g	83	1.790	97240	45	135	2	f	t	t	t	t	2	BO,DO,ID,PE
-87	2020-06-11 15:03:15.193618+02	2020-06-18 10:14:41.067537+02	t	SONRISA Kardamom 80g	sonrisa-kardamom-80g	86	2.290	97152	27	135	2	f	f	t	t	f	2	BO,DO,PY,PE
-89	2020-06-11 15:21:42.057889+02	2020-06-18 10:15:22.443876+02	t	SONRISA Minze 80g	sonrisa-minze-80g	88	2.290	97175	27	135	2	f	t	t	t	t	2	BO,DO,PY,PE
-91	2020-06-18 14:17:08.477095+02	2020-06-18 14:37:14.163231+02	t	Cremeschokolade Milch 100g	cremeschokolade-milch-100g	90	2.190	97165	27	135	2	f	f	t	t	f	2	DO,PY
-92	2020-06-18 15:26:54.645267+02	2020-06-18 15:26:54.645288+02	t	Cremeschokolade Banane 100g	cremeschokolade-banane-100g	91	2.190	97185	27	135	2	f	f	t	t	f	2	DO,PY
-93	2020-06-18 21:30:05.628732+02	2020-06-18 21:30:05.628754+02	t	Cremeschokolade Erdbeere 100g	cremeschokolade-erdbeere-100g	92	2.190	97195	27	135	2	f	f	t	t	f	2	DO,PY
-94	2020-06-19 22:09:30.395646+02	2020-06-19 22:34:11.957753+02	t	Schoko-Rosinen 100g	schoko-rosinen-100g	93	3.290	97601	27	135	2	f	f	t	t	f	\N	CL,DO,PY,PE
-95	2020-06-22 11:02:09.631372+02	2020-06-22 11:55:00.293588+02	t	Schoko-Paranüsse 100g	schoko-paranusse-100g	94	3.990	97616	45	135	2	f	f	t	t	f	2	DO,CO,NI,PY,PE,PH
+COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, product_name, slug, "order", unit_price, product_code, manufacturer_id, polymorphic_ctype_id, supplier_id, tax_switch, vegan, gluten_free, lactose_free, origin_countries) FROM stdin;
+19	2020-05-05 15:27:49.780894+02	2020-05-18 10:23:27.939876+02	t	NICA Vakuum 1kg	nica-vakuum-1kg	19	17.990	82033	17	135	2	t	t	t	t	NI
+67	2020-05-25 13:39:05.007286+02	2020-05-25 13:41:01.037358+02	t	Kaffeekapsel Membran - Espresso	kaffeekapsel-membran-espresso	41	2.990	89806	\N	135	2	t	f	f	f	
+11	2020-05-01 20:53:58.436741+02	2020-05-27 10:35:51.673985+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	10	8.990	83077	2	135	2	t	t	t	t	MX
+20	2020-05-05 15:44:41.117401+02	2020-05-18 10:23:57.121612+02	t	NICA Bohne 1kg	nica-bohne-1kg	20	17.990	82017	17	135	2	t	t	t	t	NI
+101	2020-08-17 19:42:54.614881+02	2020-08-17 19:42:54.614907+02	t	Kaffeelikör Kugeln 100g	kaffeelikor-kugeln-100g	102	3.490	97668	27	135	2	f	f	f	f	DO,MX,NI,PY,PE
+8	2020-05-01 20:31:41.660464+02	2020-05-27 10:32:50.435202+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	7	17.990	83017	2	135	2	t	t	t	t	MX
+9	2020-05-01 20:37:02.640044+02	2020-05-27 10:33:42.260083+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	8	17.990	83022	2	135	2	t	t	t	t	MX
+12	2020-05-01 21:03:24.276724+02	2020-05-27 10:37:24.562685+02	t	ESPRESSO ORGANICO 18 Pads 125g	espresso-organico-18-pads-125g	11	4.990	83088	2	135	2	t	t	t	t	MX
+13	2020-05-01 21:09:57.047411+02	2020-05-27 10:38:42.893256+02	t	ORGANICO Bohne 500g	organico-bohne-500g	12	8.990	83511	2	135	2	t	t	t	t	MX
+10	2020-05-01 20:47:40.68414+02	2020-05-27 10:34:46.360889+02	t	ESPRESSO ORGANICO Bohne 1kg	espresso-organico-bohne-1kg	9	17.990	83066	2	135	2	t	t	t	t	MX
+14	2020-05-01 21:12:58.251966+02	2020-05-27 10:39:18.531977+02	t	ORGANICO Vakuum 500g	organico-vakuum-500g	13	8.990	83550	2	135	2	t	t	t	t	MX
+15	2020-05-01 21:56:08.654616+02	2020-05-27 10:40:47.206858+02	t	ORGANICO entkoffeiniert Vakuum 250g	organico-entkoffeiniert-vakuum-250g	14	5.490	83900	2	135	2	t	t	t	t	MX
+16	2020-05-01 21:59:22.717934+02	2020-05-27 10:41:39.023866+02	t	ORGANICO entkoffeiniert Bohne 500g	organico-entkoffeiniert-bohne-500g	15	10.590	83917	2	135	2	t	t	t	t	MX
+17	2020-05-05 15:14:13.121455+02	2020-05-27 10:43:40.260773+02	t	PUEBLO Bohne 1kg	pueblo-bohne-1kg	16	17.990	80011	13	135	2	t	t	t	t	GT,HN
+18	2020-05-05 15:21:07.846301+02	2020-05-27 10:46:33.704159+02	t	NICA Vakuum 250g	nica-vakuum-250g	18	4.990	82012	17	135	2	t	t	t	t	NI
+22	2020-05-05 18:59:01.161041+02	2020-05-27 10:48:37.224664+02	t	JAMBO Bohne 500g	jambo-bohne-500g	22	8.790	91018	18	135	2	t	t	t	t	UG
+23	2020-05-05 19:07:00.51228+02	2020-05-27 10:48:58.938907+02	t	JAMBO Bohne 1kg	jambo-bohne-1kg	23	17.990	91022	18	135	2	t	t	t	t	UG
+65	2020-05-25 11:13:28.348834+02	2020-05-27 13:15:21.282561+02	t	ESPRESSO ITALIANO gemahlen 250g	espresso-italiano-gemahlen-250g	32	7.490	90134	23	135	2	t	t	t	t	GT,MX,PE,UG
+102	2020-08-17 22:18:48.236571+02	2020-08-17 22:20:07.361922+02	t	Sahne-Kakao Madeln 100g	sahne-kakao-madeln-100g	103	4.390	97676	27	135	2	f	f	t	f	DO,NI,PY,PE,ST
+98	2020-07-26 18:10:11.61273+02	2020-07-26 18:13:40.820948+02	t	Schoko-Rosinen Noir 100g	schoko-rosinen-noir-100g	96	3.290	97623	27	135	2	f	f	t	t	CL,DO,PY,PE
+95	2020-06-22 11:02:09.631372+02	2020-07-02 15:29:18.610895+02	t	Schoko-Paranüsse 100g	schoko-paranusse-100g	97	3.990	97616	45	135	2	f	f	t	f	DO,CO,NI,PY,PE,PH
+21	2020-05-05 15:53:04.598381+02	2020-05-27 10:48:08.034018+02	t	JAMBO Vakuum 250g	jambo-vakuum-250g	21	4.990	91011	18	135	2	t	t	t	t	UG
+33	2020-05-06 15:11:00.118519+02	2020-05-20 15:27:21.529006+02	t	COFFEE FOR FUTURE Bohne 1kg	coffee-future-bohne-1kg	34	19.990	90332	23	135	2	t	t	t	t	MX,UG
+32	2020-05-06 14:27:39.282029+02	2020-05-20 15:26:12.724586+02	t	COFFEE FOR FUTURE Vakuum 500g	coffee-future-vakuum-500g	33	9.590	90321	23	135	2	t	t	t	t	MX,UG
+38	2020-05-06 16:43:24.308003+02	2020-06-18 09:45:28.82707+02	t	Kaffeekapsel Set - Espresso	kaffeekapsel-set-espresso	40	9.990	89805	28	135	2	t	f	f	f	
+39	2020-05-06 16:56:22.203489+02	2020-06-18 09:46:02.520214+02	t	Kaffeefilter Nr. 4 - 100 Stk.	kaffeefilter-nr-4-100-stk	42	2.200	89706	29	135	2	t	f	f	f	DE
+40	2020-05-06 17:36:55.192577+02	2020-06-18 09:57:31.42449+02	t	TANZANIA Schwarztee Teebeutel 40x2g	tanzania-schwarztee-teebeutel-40x2g	43	3.490	85015	30	135	2	t	t	t	t	TZ
+41	2020-05-06 17:52:33.317853+02	2020-06-18 09:57:51.502705+02	t	CEYLON-DARJEELING Teebeutel 24x2g	ceylon-darjeeling-teebeutel-24x2g	44	2.990	87033	31	135	2	t	t	t	t	IN,LK
+42	2020-05-06 17:59:32.75411+02	2020-06-18 09:58:08.792822+02	t	EARL GREY Teebeutel 24x2g	earl-grey-teebeutel-24x2g	45	2.990	87034	33	135	2	t	t	t	t	LK
+43	2020-05-07 10:07:22.042505+02	2020-06-18 09:58:33.365781+02	t	AFRICAN DREAM Schwarztee lose 100g	african-dream-schwarztee-lose-100g	46	3.290	85025	30	135	2	t	t	t	t	TZ
+44	2020-05-07 10:25:20.827322+02	2020-06-18 09:58:52.109963+02	t	DARJEELING Schwarztee lose 100g	darjeeling-schwarztee-lose-100g	47	5.690	86050	32	135	2	t	t	t	t	IN
+45	2020-05-07 11:36:29.754358+02	2020-06-18 09:59:16.68677+02	t	ASSAM Schwarztee lose 100g	assam-schwarztee-lose-100g	48	4.990	86090	32	135	2	t	t	t	t	IN
+46	2020-05-07 14:12:45.63375+02	2020-06-18 09:59:32.663869+02	t	CEYLON Schwarztee lose 100g	ceylon-schwarztee-lose-100g	49	3.950	87035	33	135	2	t	t	t	t	LK
+47	2020-05-07 14:25:50.491212+02	2020-06-18 09:59:49.527336+02	t	INGWER CHAI Teebeutel 24x1,75g	ingwer-chai-teebeutel-24x175g	50	2.990	86045	33	135	2	t	t	t	t	LK
+48	2020-05-07 14:30:47.506207+02	2020-06-18 10:00:07.374717+02	t	CEYLON-DARJEELING Grün Teebeutel 24x2g	ceylon-darjeeling-grun-teebeutel-24x2g	51	2.990	87032	31	135	2	t	t	t	t	IN,LK
+49	2020-05-07 15:03:05.821184+02	2020-06-18 10:00:25.91263+02	t	DARJEELING Grüntee lose 100g	darjeeling-gruntee-lose-100g	52	5.489	86085	32	135	2	t	t	t	t	IN
+50	2020-05-07 15:18:02.018024+02	2020-06-18 10:02:10.569502+02	t	DARJEELING OOLONG Tee lose 75g	darjeeling-oolong-tee-lose-75g	53	3.990	87077	32	135	2	t	t	t	t	IN
+54	2020-05-07 16:28:46.723186+02	2020-06-18 10:03:28.297398+02	t	VIEL GUT Teebeutel 20x1,5g	viel-gut-teebeutel-20x15g	57	3.490	84138	36	135	2	t	t	t	t	ZA,VN
+55	2020-05-07 16:35:15.470428+02	2020-06-18 10:03:56.453484+02	t	VIEL FRISCH Teebeutel 20x1,5g	viel-frisch-teebeutel-20x15g	58	3.490	84137	36	135	2	t	t	t	t	EG,ZA,VN
+56	2020-05-07 16:54:12.235753+02	2020-06-18 10:04:49.906472+02	t	Teefilter Papier 100 Stk.	teefilter-papier-100-stk	59	3.550	89812	29	135	2	t	f	f	f	DE
+57	2020-05-08 14:55:03.099947+02	2020-06-18 10:05:05.256308+02	t	Teenetz klein	teenetz-klein	60	1.700	89809	28	135	2	t	f	f	f	
+58	2020-05-08 15:39:41.911293+02	2020-06-18 10:05:21.962987+02	t	Teenetz groß	teenetz-gross	61	1.800	89811	28	135	2	t	f	f	f	
+116	2020-08-21 16:22:43.507591+02	2020-08-21 16:29:39.584927+02	t	Cashewnüsse 100g	cashewnusse-100g	120	3.290	97011	61	135	2	f	t	t	t	BF
+127	2020-08-25 11:01:53.704155+02	2020-08-25 16:04:21.89268+02	t	Ananas getrocknet 70g	ananas-getrocknet-70g	124	3.290	97415	69	135	2	f	t	t	t	UG
+131	2020-08-25 17:31:51.304124+02	2020-08-25 17:44:17.049171+02	t	Wiffzack Studentenfutter 100g	wiffzack-studentenfutter-100g	128	3.990	97451	70	135	2	t	t	t	t	BF,UG
+85	2020-06-01 01:07:13.694673+02	2020-06-18 10:14:14.957569+02	t	COMPAÑERA Orange 50g	companera-orange-50g	93	1.790	97266	27	135	2	f	f	t	f	BO,DO,EC,PY,PE
+91	2020-06-18 14:17:08.477095+02	2020-06-18 14:37:14.163231+02	t	Cremeschokolade Milch 100g	cremeschokolade-milch-100g	73	2.190	97165	27	135	2	f	f	t	f	DO,PY
+68	2020-05-25 14:12:10.055323+02	2020-06-18 10:07:15.108708+02	t	MASCAO Vollmilch 100g	mascao-vollmilch-100g	76	2.990	97311	45	135	2	f	f	t	f	BO,DO,PE,PH
+77	2020-05-26 13:24:49.294532+02	2020-06-18 10:11:01.827734+02	t	MASCAO Kuvertüre Noir 200g	mascao-kuverture-noir-200g	85	4.990	97315	27	135	2	f	t	t	t	BO,DO,PY,PE
+66	2020-05-25 13:26:44.74592+02	2020-05-25 13:41:14.347578+02	t	Kaffeekapsel Membran -  milde Röstung	kaffeekapsel-membran-milde-rostung	39	2.990	89801	\N	135	2	t	f	f	f	
+28	2020-05-06 11:43:55.37933+02	2020-05-18 10:49:28.160978+02	t	ADELANTE gemahlen 250g	adelante-gemahlen-250g	28	5.490	90700	22	135	2	t	t	t	t	HN,PE
+84	2020-05-31 23:54:26.806277+02	2020-06-18 10:13:53.759341+02	t	COMPAÑERA Kokos 50g	companera-kokos-50g	92	1.790	97240	45	135	2	f	t	t	t	BO,DO,ID,PE
+82	2020-05-28 14:33:00.313556+02	2020-06-18 10:13:14.388286+02	t	COMPAÑERA Ingwer-Zitrone 50g	companera-ingwer-zitrone-50g	90	1.690	97230	27	135	2	f	t	t	t	BO,DO,EC,PY,PE
+24	2020-05-05 19:19:19.574164+02	2020-05-27 13:09:11.40655+02	t	MUNDO Vakuum 500g	mundo-vakuum-500g	24	8.990	90533	13	135	2	t	t	t	t	GT,HN,MX,NI
+25	2020-05-06 11:10:18.653798+02	2020-05-27 13:10:19.097042+02	t	MUNDO ESPRESSO Bohne 500g	mundo-espresso-bohne-500g	25	8.990	90555	13	135	2	t	t	t	t	GT,HN,MX,NI
+29	2020-05-06 11:53:17.235208+02	2020-05-18 10:50:40.156668+02	t	ADELANTE Bohne 250g	adelante-bohne-250g	29	5.490	90733	22	135	2	t	t	t	t	HN,PE
+30	2020-05-06 11:55:30.566591+02	2020-05-18 10:51:28.384732+02	t	ADELANTE Bohne 1kg	adelante-bohne-1kg	30	20.990	90712	22	135	2	t	t	t	t	HN,PE
+26	2020-05-06 11:14:13.759445+02	2020-05-27 13:11:01.489272+02	t	MUNDO Bohne 1kg	mundo-bohne-1kg	26	17.990	90527	13	135	2	t	t	t	t	GT,HN,MX,NI
+7	2020-05-01 14:05:09.569673+02	2020-05-27 10:31:16.754135+02	t	ORGANICO Vakuum 250g	organico-vakuum-250g	6	4.990	83010	2	135	2	t	t	t	t	MX
+64	2020-05-25 10:59:34.087385+02	2020-05-27 10:44:57.780049+02	t	PUEBLO Vakuum 500g	pueblo-vakuum-500g	17	8.990	80013	13	135	2	t	t	t	t	GT,HN
+27	2020-05-06 11:22:16.50646+02	2020-05-27 13:12:08.469533+02	t	ABESSA Bohne 1kg	abessa-bohne-1kg	27	23.990	90255	19	135	2	t	t	t	t	ET
+31	2020-05-06 14:10:08.218781+02	2020-05-27 13:14:23.538463+02	t	ESPRESSO ITALIANO Bohne 1kg	espresso-italiano-bohne-1kg	31	21.990	90100	23	135	2	t	t	t	t	GT,MX,PE,UG
+34	2020-05-06 15:29:33.732075+02	2020-05-27 13:18:16.89776+02	t	AFRICAFE Löskaffee 100g	africafe-loskaffee-100g	35	6.490	81013	26	135	2	t	t	t	t	TZ
+35	2020-05-06 15:46:34.662559+02	2020-05-27 13:20:22.031983+02	t	LATINO Löskaffee 100g	latino-loskaffee-100g	36	8.990	81033	27	135	2	t	t	t	t	MX,NI
+36	2020-05-06 15:51:41.976545+02	2020-05-27 13:21:36.370514+02	t	LATINO Löskaffee entkoffeiniert 100g	latino-loskaffee-entkoffeiniert-100g	37	8.990	81044	27	135	2	t	t	t	t	MX,NI
+103	2020-08-19 10:11:07.599382+02	2020-08-19 10:13:14.378971+02	t	Bolitos 100g	bolitos-100g	104	3.490	97679	45	135	2	f	f	t	f	BO,DO,NI,PY,PH,TH
+37	2020-05-06 16:22:40.017131+02	2020-06-18 09:44:58.325003+02	t	Kaffeekapsel Set - milde Röstung	kaffeekapsel-set-milde-rostung	38	9.990	89800	\N	135	2	t	f	f	f	
+51	2020-05-07 15:32:59.067737+02	2020-06-18 10:02:25.211196+02	t	CARCADE Hibiskustee lose 50g	carcade-hibiskustee-lose-50g	54	2.690	84011	34	135	2	t	t	t	t	KE
+52	2020-05-07 15:43:04.802807+02	2020-06-18 10:02:40.469147+02	t	CARCADE CITRONELLA Teebeutel 20x2g	carcade-citronella-teebeutel-20x2g	55	2.890	84022	34	135	2	t	t	t	t	KE
+53	2020-05-07 16:07:32.301104+02	2020-06-18 10:03:03.101556+02	t	VIEL PUR Teebeutel 20x1,5g	viel-pur-teebeutel-20x15g	56	2.990	84142	35	135	2	t	t	t	t	ZA
+59	2020-05-08 16:22:41.509798+02	2020-06-18 10:05:40.755268+02	t	Kakao CARIÑO 125g	kakao-carino-125g	62	2.990	94033	27	135	2	f	t	t	t	DO,CO,NI,PE,ST
+60	2020-05-16 19:33:15.475806+02	2020-06-18 10:05:57.911627+02	t	EQUITA Trinkschokolade 375g	equita-trinkschokolade-375g	63	5.990	94111	27	135	2	f	t	f	t	DO,PY
+61	2020-05-16 21:02:03.464749+02	2020-06-18 10:06:13.984259+02	t	MASCOBADO 1kg	mascobado-1kg	64	6.290	97135	44	135	2	f	t	t	t	PH
+62	2020-05-16 22:18:59.634269+02	2020-06-18 10:06:33.946429+02	t	Zuckersticks 1000 x 4g	zuckersticks-1000-x-4g	65	34.100	97198	43	135	2	f	t	t	t	PY
+63	2020-05-17 11:55:17.186328+02	2020-06-18 10:06:52.991239+02	t	50 Schoko-Naps à 4,5g	50-schoko-naps-45g	94	8.990	97299	45	135	2	f	f	t	f	BO,DO,PE,PH
+97	2020-07-02 15:22:07.576397+02	2020-07-26 18:12:44.704303+02	t	Schoko-Paranüsse Noir 100g	schoko-paranusse-noir-100g	98	3.990	97612	45	135	2	f	f	t	t	DO,NI,PY,PE,PH
+124	2020-08-24 19:36:58.52857+02	2020-08-24 19:36:58.528589+02	t	Spritzgebäck Stangerl 100g	spritzgeback-stangerl-100g	117	2.990	99162	43	135	2	f	f	t	f	PY
+117	2020-08-21 17:05:39.21902+02	2020-08-21 17:16:29.379007+02	t	Cashewnüsse & Chili 70g	cashewnusse-chili-70g	121	2.990	97013	36	135	2	f	t	t	t	BF,LK
+128	2020-08-25 15:42:44.748865+02	2020-08-25 16:04:00.977371+02	t	Mangos getrocknet 100g	mangos-getrocknet-100g	125	3.290	97423	61	135	2	f	t	t	t	BF
+120	2020-08-24 11:42:23.36107+02	2020-08-24 11:45:02.950352+02	t	Barrita Sesamriegel 20g	barrita-sesamriegel-20g	132	0.490	99111	43	135	3	f	t	t	t	PY
+132	2020-08-25 17:50:12.5769+02	2020-08-25 17:52:02.981431+02	t	Blitzgscheit Studentenfutter 100g	blitzgscheit-studentenfutter-100g	129	3.990	97452	59	135	2	f	t	t	t	BF,PE,LK
+121	2020-08-24 16:13:51.907164+02	2020-08-24 16:14:46.400771+02	t	Multi Power Fruchtriegel 30g	multi-power-fruchtriegel-30g	133	1.690	99168	59	135	3	f	f	t	t	BF,HN,TR
+69	2020-05-25 14:47:28.642464+02	2020-06-18 10:07:28.423315+02	t	MASCAO Kokos 100g	mascao-kokos-100g	77	2.990	97313	45	135	2	f	f	t	f	BO,DO,PE,PH
+87	2020-06-11 15:03:15.193618+02	2020-06-18 10:14:41.067537+02	t	SONRISA Kardamom 80g	sonrisa-kardamom-80g	69	2.290	97152	27	135	2	f	f	t	f	BO,DO,PY,PE
+89	2020-06-11 15:21:42.057889+02	2020-06-18 10:15:22.443876+02	t	SONRISA Minze 80g	sonrisa-minze-80g	71	2.290	97175	27	135	2	f	t	t	t	BO,DO,PY,PE
+70	2020-05-25 14:59:32.726729+02	2020-06-18 10:07:49.818976+02	t	MASCAO Haselnuss 100g	mascao-haselnuss-100g	78	3.290	97322	45	135	2	f	f	t	f	BO,DO,PE,PH
+72	2020-05-25 16:18:13.850489+02	2020-06-18 10:09:29.158396+02	t	MASCAO Granatapfel 100g	mascao-granatapfel-100g	80	2.990	97345	27	135	2	f	t	t	t	BO,DO,PY,PE
+74	2020-05-26 11:18:11.663106+02	2020-06-18 10:10:10.520477+02	t	MASCAO Cappuccino 100g	mascao-cappuccino-100g	82	3.290	97355	45	135	2	f	f	t	f	BO,DO,PE,PH
+76	2020-05-26 11:40:45.927426+02	2020-06-18 10:10:44.107761+02	t	MASCAO Noir 100g	mascao-noir-100g	84	2.990	97388	27	135	2	f	t	t	t	BO,DO,PY,PE
+78	2020-05-26 15:29:42.763982+02	2020-06-18 10:11:20.059216+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	86	1.690	97205	27	135	2	f	f	t	f	BO,DO,PY,PE
+83	2020-05-31 16:56:19.376252+02	2020-06-18 10:13:31.332334+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	91	1.590	97235	45	135	2	f	f	t	f	BO,DO,EC,PY,PE,PH
+104	2020-08-19 17:08:21.624041+02	2020-08-19 17:09:45.304244+02	t	Eierlikörkugeln 100g	eierlikorkugeln-100g	105	3.990	97687	27	135	2	f	f	f	f	DO,PY,PE,ST
+106	2020-08-20 10:07:19.974778+02	2020-08-20 10:07:19.974801+02	t	Fairetta Kokos 45g	fairetta-kokos-45g	107	1.190	97534	45	135	2	f	f	t	f	BO,DO,PY,PE,LK
+107	2020-08-20 11:10:00.660789+02	2020-08-20 11:10:00.660811+02	t	Fairetta Black & White 45g	fairetta-black-white-45g	108	1.190	97566	23	135	2	f	f	t	f	CR,CM
+129	2020-08-25 16:03:21.876276+02	2020-08-25 16:05:17.403902+02	t	Rosinen 200g	rosinen-200g	126	2.390	97435	52	135	2	f	t	t	t	CL
+105	2020-08-19 18:30:19.347572+02	2020-08-20 11:30:45.354675+02	t	Fairetta Weiß 45g	fairetta-weiss-45g	106	1.190	97525	27	135	2	f	f	f	f	DO,PY,ST
+108	2020-08-20 11:37:55.26125+02	2020-08-20 11:37:55.261273+02	t	Fairetta Honig-Mandel 45g	fairetta-honig-mandel-45g	109	1.190	97572	45	135	2	f	f	t	f	BO,DO,PY,PH,ST
+109	2020-08-20 11:54:18.587058+02	2020-08-20 11:54:18.587079+02	t	Fairetta Quinua 45g	fairetta-quinua-45g	110	1.190	97588	45	135	2	f	f	t	f	BO,DO,PY,PH
+122	2020-08-24 17:27:11.185187+02	2020-08-24 19:32:39.47424+02	t	Butterkekse mit Schokostücken 100g	butterkekse-mit-schokostucken-100g	115	2.990	99142	43	135	2	f	f	f	f	PY
+133	2020-08-25 19:28:33.082632+02	2020-08-25 19:37:29.427242+02	t	Bio Bärli 100g	bio-barli-100g	130	1.990	97757	43	135	2	f	f	t	t	PY
+118	2020-08-24 09:13:05.983011+02	2020-08-24 09:36:59.03347+02	t	Gebrannte Cashewnüsse 100g	gebrannte-cashewnusse-100g	122	3.990	97055	59	135	2	f	t	t	t	BF,PY,LK
+125	2020-08-24 20:59:22.526422+02	2020-08-24 21:01:08.760241+02	t	Doblito Doppelkeks 85g	doblito-doppelkeks-85g	119	1.590	99170	23	135	3	f	f	f	t	BO,DO,GH,MX,PY,PE
+110	2020-08-20 16:11:27.255808+02	2020-08-20 16:11:27.25583+02	t	Fairetta Creamy Kids 37,5g	fairetta-creamy-kids-375g	111	1.190	97708	59	135	2	f	f	t	f	DO,GH,CO,NI,PY,PE,PH
+111	2020-08-20 16:27:46.532024+02	2020-08-20 16:27:46.532047+02	t	Fairetta Creamy Kokos 37,5g	fairetta-creamy-kokos-375g	112	1.190	97717	59	135	2	f	f	t	f	DO,GH,CO,NI,PY,PE,PH,LK
+112	2020-08-20 17:12:53.611831+02	2020-08-20 17:12:53.611855+02	t	Fairetta Creamy Caramel 40g	fairetta-creamy-caramel-40g	113	1.190	97723	45	135	2	f	f	t	f	DO,CO,NI,PY,PE,PH
+113	2020-08-20 17:24:03.110273+02	2020-08-20 17:24:03.110295+02	t	Fairetta Creamy Praline 37,5g	fairetta-creamy-praline-375g	114	1.190	97746	45	135	2	f	f	t	f	DO,CO,NI,PY,PH
+99	2020-07-26 19:05:08.920651+02	2020-07-26 19:07:26.354771+02	t	Schoko-Cashew Noir 100g	schoko-cashew-noir-100g	100	3.990	97634	45	135	2	f	f	t	t	DO,HN,CO,NI,PH
+96	2020-07-02 11:52:13.455677+02	2020-07-02 15:23:55.514287+02	t	Schoko-Kaffeebohnen 100g	schoko-kaffeebohnen-100g	99	3.290	97626	45	135	2	f	f	t	f	DO,CO,MX,NI,PY,PH,ST
+100	2020-07-26 20:18:18.012457+02	2020-07-26 20:19:43.214032+02	t	Joghurt-Cashew 100g	joghurt-cashew-100g	101	3.990	97637	45	135	2	f	f	t	f	DO,HN,CO,NI,PY,PE
+94	2020-06-19 22:09:30.395646+02	2020-07-02 15:23:17.211419+02	t	Schoko-Rosinen 100g	schoko-rosinen-100g	95	3.290	97601	27	135	2	f	f	t	f	CL,DO,PY,PE
+86	2020-06-11 14:50:15.020673+02	2020-06-18 10:14:29.391821+02	t	SONRISA Mandel 80g	sonrisa-mandel-80g	68	2.190	97142	27	135	2	f	f	t	f	BO,DO,PY,PE
+88	2020-06-11 15:13:43.022226+02	2020-06-18 10:15:01.752778+02	t	SONRISA Noir 80g	sonrisa-noir-80g	70	2.190	97162	27	135	2	f	t	t	t	BO,DO,PY,PE
+115	2020-08-21 11:22:00.533962+02	2020-08-21 11:23:42.946613+02	t	Belgische Nougatmuscheln 100g	belgische-nougatmuscheln-100g	67	6.590	97545	27	135	2	f	f	t	f	PY,PE
+114	2020-08-20 17:54:31.041893+02	2020-08-21 11:08:48.368976+02	t	Belgische Trüffel 100g	belgische-truffel-100g	66	5.990	97541	27	135	2	f	f	t	f	DO,PY,PE
+90	2020-06-11 15:28:25.835455+02	2020-06-18 10:15:37.850138+02	t	SONRISA Orange 80g	sonrisa-orange-80g	72	2.190	97182	27	135	2	f	t	t	t	BO,DO,PY,PE
+92	2020-06-18 15:26:54.645267+02	2020-06-18 15:26:54.645288+02	t	Cremeschokolade Banane 100g	cremeschokolade-banane-100g	74	2.190	97185	27	135	2	f	f	t	f	DO,PY
+93	2020-06-18 21:30:05.628732+02	2020-06-18 21:30:05.628754+02	t	Cremeschokolade Erdbeere 100g	cremeschokolade-erdbeere-100g	75	2.190	97195	27	135	2	f	f	t	f	DO,PY
+79	2020-05-28 10:53:29.644663+02	2020-06-18 10:12:28.765234+02	t	COMPAÑERA Crispy 50g	companera-crispy-50g	87	1.690	97215	27	135	2	f	f	t	f	BO,DO,EC,PY,PE
+81	2020-05-28 14:02:56.684837+02	2020-06-18 10:12:51.804288+02	t	COMPAÑERA Noir 50g	companera-noir-50g	89	1.590	97225	27	135	2	f	t	t	t	BO,DO,EC,PY,PE
+123	2020-08-24 19:19:00.651248+02	2020-08-24 19:19:00.65127+02	t	Schokokekse mit Kokosflocken 100g	schokokekse-mit-kokosflocken-100g	116	2.990	99152	45	135	2	f	f	f	f	PY,LK
+80	2020-05-28 11:07:34.957162+02	2020-06-18 10:12:41.053259+02	t	COMPAÑERA Noisette 50g	companera-noisette-50g	88	1.690	97220	27	135	2	f	f	t	f	BO,DO,EC,PY,PE
+119	2020-08-24 09:53:30.265742+02	2020-08-24 11:13:40.06726+02	t	Erdnüsse 150g	erdnusse-150g	123	2.190	97020	63	135	2	f	t	t	t	NI
+126	2020-08-24 21:33:26.192884+02	2020-08-24 21:39:35.788411+02	t	Schoko-Orangen Kekse 125g	schoko-orangen-kekse-125g	118	2.990	99179	59	135	2	f	t	f	t	BO,DO,GH,PE,PH
+130	2020-08-25 16:39:56.616825+02	2020-08-25 16:39:56.616846+02	t	Kokosstreifen 70g	kokosstreifen-70g	127	3.590	97443	33	135	2	f	t	t	t	LK
+134	2020-08-25 19:42:53.141272+02	2020-08-25 19:42:53.141293+02	t	Bio Fruchtis 100g	bio-fruchtis-100g	131	1.990	97760	43	135	2	f	f	t	t	PY
+71	2020-05-25 16:01:54.479596+02	2020-06-18 10:09:06.926352+02	t	MASCAO Praliné 100g	mascao-praline-100g	79	3.290	97333	45	135	2	f	f	t	f	BO,DO,PE,PH
+73	2020-05-26 10:49:40.475089+02	2020-06-18 10:09:47.996934+02	t	MASCAO Caramel 100g	mascao-caramel-100g	81	2.990	97350	45	135	2	f	f	t	f	BO,DO,PE,PH
+75	2020-05-26 11:30:07.773077+02	2020-06-18 10:10:27.214871+02	t	MASCAO Rum Trüffel 100g	mascao-rum-truffel-100g	83	3.290	97366	45	135	2	f	f	t	f	BO,DO,PE,PH
 \.
 
 
@@ -10701,6 +11613,361 @@ COPY public.weltladen_weltladenproduct_additional_manufacturers (id, weltladenpr
 374	95	41
 375	95	43
 376	95	46
+377	96	38
+378	96	39
+379	96	40
+380	96	41
+381	96	10
+382	96	43
+383	96	46
+384	97	53
+385	97	40
+386	97	41
+387	97	43
+388	97	46
+389	98	40
+390	98	24
+391	98	43
+392	98	52
+393	99	38
+394	99	54
+395	99	40
+396	99	41
+397	99	46
+398	100	38
+399	100	54
+400	100	40
+401	100	41
+402	100	43
+403	100	24
+404	101	40
+405	101	41
+406	101	10
+407	101	43
+408	101	24
+409	102	39
+410	102	40
+411	102	41
+412	102	43
+413	102	24
+414	103	55
+415	103	40
+416	103	41
+417	103	56
+418	103	43
+419	103	46
+420	103	47
+421	104	40
+422	104	24
+423	104	43
+424	104	39
+425	105	40
+426	105	43
+427	105	39
+428	106	33
+429	106	40
+430	106	24
+431	106	43
+432	106	47
+433	107	57
+434	107	58
+435	108	39
+436	108	40
+437	108	43
+438	108	46
+439	108	47
+440	109	55
+441	109	40
+442	109	43
+443	109	46
+444	109	47
+445	110	38
+446	110	24
+447	110	40
+448	110	41
+449	110	43
+450	110	60
+451	110	46
+452	111	33
+453	111	38
+454	111	40
+455	111	41
+456	111	43
+457	111	46
+458	111	24
+459	111	60
+460	112	38
+461	112	24
+462	112	40
+463	112	41
+464	112	43
+465	112	46
+466	113	38
+467	113	40
+468	113	41
+469	113	43
+470	113	46
+471	114	24
+472	114	42
+473	114	43
+474	115	48
+475	115	49
+476	115	43
+477	117	61
+478	117	62
+479	118	43
+480	118	61
+481	118	62
+482	121	64
+483	121	65
+484	121	54
+485	123	33
+486	123	43
+487	125	66
+488	125	67
+489	125	68
+490	125	40
+491	125	43
+492	125	60
+493	126	55
+494	126	40
+495	126	24
+496	126	60
+497	126	46
+498	126	47
+499	131	61
+500	131	69
+501	132	33
+502	132	61
+503	132	71
+\.
+
+
+--
+-- Data for Name: weltladen_weltladenproduct_quality_labels; Type: TABLE DATA; Schema: public; Owner: djangouser
+--
+
+COPY public.weltladen_weltladenproduct_quality_labels (id, weltladenproduct_id, qualitylabel_id) FROM stdin;
+34	7	2
+35	8	2
+36	9	2
+37	10	2
+38	11	2
+39	12	2
+40	13	2
+41	14	2
+42	15	2
+43	16	2
+44	17	2
+45	64	2
+46	18	2
+47	19	2
+48	20	2
+49	21	2
+50	22	2
+51	23	2
+52	24	2
+53	25	2
+54	26	2
+55	27	2
+56	28	2
+57	29	2
+58	30	2
+59	31	2
+60	65	2
+61	32	2
+62	33	2
+63	34	2
+64	35	2
+65	36	2
+66	39	3
+67	41	2
+68	42	2
+69	44	2
+70	45	2
+71	46	2
+72	47	2
+73	48	2
+74	49	2
+75	50	2
+76	51	2
+77	52	2
+78	53	2
+79	54	2
+80	55	2
+81	59	2
+82	60	2
+83	61	2
+84	62	2
+85	114	2
+86	115	2
+87	86	2
+88	87	2
+89	88	2
+90	89	2
+91	90	2
+92	91	2
+93	92	2
+94	93	2
+95	68	2
+96	69	2
+97	70	2
+98	71	2
+99	72	2
+100	73	2
+101	74	2
+102	75	2
+103	76	2
+104	77	2
+105	78	2
+106	79	2
+107	80	2
+108	81	2
+109	82	2
+110	83	2
+111	84	2
+112	85	2
+113	63	2
+114	95	2
+115	97	2
+116	96	2
+117	99	2
+118	100	2
+119	103	2
+120	105	2
+121	106	2
+122	108	2
+123	109	2
+124	110	2
+125	111	2
+126	112	2
+127	113	2
+128	122	2
+129	123	2
+130	124	2
+131	126	2
+132	125	2
+133	116	2
+134	117	2
+135	118	2
+136	127	2
+137	128	2
+138	130	2
+139	131	2
+140	132	2
+141	133	2
+142	134	2
+143	120	2
+144	121	2
+145	7	5
+146	8	5
+147	9	5
+148	10	5
+149	11	5
+150	12	5
+151	13	5
+152	14	5
+153	15	5
+154	16	5
+155	17	5
+156	64	5
+157	18	5
+158	19	5
+159	20	5
+160	21	5
+161	22	5
+162	23	5
+163	24	5
+164	25	5
+165	26	5
+166	27	5
+167	28	5
+168	29	5
+169	30	5
+170	31	5
+171	65	5
+172	32	5
+173	33	5
+174	34	5
+175	35	5
+176	36	5
+177	40	5
+178	41	5
+179	42	5
+180	43	5
+181	44	5
+182	45	5
+183	46	5
+184	47	5
+185	48	5
+186	49	5
+187	50	5
+188	51	5
+189	52	5
+190	53	5
+191	54	5
+192	55	5
+193	59	5
+194	60	5
+195	114	5
+196	115	5
+197	86	5
+198	87	5
+199	88	5
+200	89	5
+201	90	5
+202	91	5
+203	92	5
+204	93	5
+205	68	5
+206	69	5
+207	70	5
+208	71	5
+209	72	5
+210	73	5
+211	74	5
+212	75	5
+213	76	5
+214	77	5
+215	78	5
+216	79	5
+217	80	5
+218	81	5
+219	82	5
+220	83	5
+221	84	5
+222	85	5
+223	63	5
+224	94	5
+225	98	5
+226	95	5
+227	97	5
+228	96	5
+229	99	5
+230	100	5
+231	101	5
+232	102	5
+233	103	5
+234	104	5
+235	105	5
+236	106	5
+237	107	5
+238	108	5
+239	109	5
+240	110	5
+241	111	5
+242	112	5
+243	113	5
+244	116	5
+245	117	5
+246	118	5
+247	119	5
+248	128	5
+249	129	5
+250	131	5
+251	133	5
+252	134	5
+253	121	5
 \.
 
 
@@ -10796,8 +12063,47 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 90	de	<p>Milchcreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit süßer Milchcremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Bean-to-bar - edle Kakaobohnen werden direkt zu Schokolade verarbeitet</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Hey, habt ihr gewusst? Wir sind Bean to Bär, sagt der bunte Vogel. Nein! Das heißt Bean to Bar!," sagt der Erklärbär. Die Kakaobohnen werden direkt im Schokoladenwerk zu Kakaomasse verarbeitet und dann zu Tafelschokolade. Das ist schon ziemlich besonders. So macht das fast keiner mehr!</p>\n\n<p>Die Verarbeitung von Kakaobohnen zu Kakaomasse findet heute meist außerhalb der Schokoladenfabriken statt. Die meisten Schokofabriken kaufen nurmehr Kakaomasse an und verarbeiten diese dann zu Tafelschokolade weiter.</p>\n\n<p>Der <strong>Bean-to-Bar</strong>-Hersteller der EZA Cremeschokolade verfügt über das Know-How und die Maschinenausstattung, alle Produktionsschritte wie Rösten, Walzen, Conchieren, Tafelfertigung und Verpacken im eigenen Werk zu machen. In dieser Schokolade steckt höchste Bio-Qualität aus einer Hand und natürlich fair!<br>\n<br>\nBeste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik treffen auf naturbelassenen Vollrohrzucker aus Paraguay. In den Zutaten liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Mit den FAIRTRADE-Prämien wurden bei den Kleinproduzent*innen von COOPROAGRO vor allem Infrastrukturprojekte finanziert – Straßen- und Brückenbauten, die Stromversorgung in einem der Dörfer, eine Schule saniert bzw. ein Vereinshaus gebaut. Auch der Bau eines Krankenhauses konnte mitunterstützt werden.</p>	91	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nVollmilchpulver (23%)<br>\nKakaobutter <br>\nKokosfett<br>\nKakaomasse<br>\nBourbon-Vanille<br>\nEmulgator: Lezithine (Bio-Sonnenblumenlezithin)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>579</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.406</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>26,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,22</td>\n\t\t</tr>\n\t</tbody>\n</table>
 91	de	<p>Bananencreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit fruchtiger Bananencremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Bean-to-bar - edle Kakaobohnen werden direkt zu Schokolade verarbeitet</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Hey, habt ihr gewusst? Wir sind Bean to Bär, sagt der bunte Vogel. Nein! Das heißt Bean to Bar!," sagt der Erklärbär. Die Kakaobohnen werden direkt im Schokoladenwerk zu Kakaomasse verarbeitet und dann zu Tafelschokolade. Das ist schon ziemlich besonders. So macht das fast keiner mehr!</p>\n\n<p>Die Verarbeitung von Kakaobohnen zu Kakaomasse findet heute meist außerhalb der Schokoladenfabriken statt. Die meisten Schokofabriken kaufen nurmehr Kakaomasse an und verarbeiten diese dann zu Tafelschokolade weiter.</p>\n\n<p>Der <strong>Bean-to-Bar</strong>-Hersteller der EZA Cremeschokolade verfügt über das Know-How und die Maschinenausstattung, alle Produktionsschritte wie Rösten, Walzen, Conchieren, Tafelfertigung und Verpacken im eigenen Werk zu machen. In dieser Schokolade steckt höchste Bio-Qualität aus einer Hand und natürlich fair!<br>\n<br>\nBeste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik treffen auf naturbelassenen Vollrohrzucker aus Paraguay. In den Zutaten liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Mit den FAIRTRADE-Prämien wurden bei den Kleinproduzent*innen von COOPROAGRO vor allem Infrastrukturprojekte finanziert – Straßen- und Brückenbauten, die Stromversorgung in einem der Dörfer, eine Schule saniert bzw. ein Vereinshaus gebaut. Auch der Bau eines Krankenhauses konnte mitunterstützt werden.</p>	92	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nVollmilchpulver (23%)<br>\nKakaobutter <br>\nKokosfett<br>\nKakaomasse<br>\nBananenpulver gefriergetrocknet (0,6%)<br>\nBourbon-Vanille<br>\nEmulgator: Lezithine (Bio-Sonnenblumenlezithin)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>577</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.400</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>26,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,22</td>\n\t\t</tr>\n\t</tbody>\n</table>
 92	de	<p>Erdbeercreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit fruchtiger Erdbeercremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Bean-to-bar - edle Kakaobohnen werden direkt zu Schokolade verarbeitet</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Aluminiumfrei verpackt</li>\n</ul>	<p>Hey, habt ihr gewusst? Wir sind Bean to Bär, sagt der bunte Vogel. Nein! Das heißt Bean to Bar!," sagt der Erklärbär. Die Kakaobohnen werden direkt im Schokoladenwerk zu Kakaomasse verarbeitet und dann zu Tafelschokolade. Das ist schon ziemlich besonders. So macht das fast keiner mehr!</p>\n\n<p>Die Verarbeitung von Kakaobohnen zu Kakaomasse findet heute meist außerhalb der Schokoladenfabriken statt. Die meisten Schokofabriken kaufen nurmehr Kakaomasse an und verarbeiten diese dann zu Tafelschokolade weiter.</p>\n\n<p>Der <strong>Bean-to-Bar</strong>-Hersteller der EZA Cremeschokolade verfügt über das Know-How und die Maschinenausstattung, alle Produktionsschritte wie Rösten, Walzen, Conchieren, Tafelfertigung und Verpacken im eigenen Werk zu machen. In dieser Schokolade steckt höchste Bio-Qualität aus einer Hand und natürlich fair!<br>\n<br>\nBeste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik treffen auf naturbelassenen Vollrohrzucker aus Paraguay. In den Zutaten liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Mit dem Fairen Handel als Partner haben die Produzent*innen die Gewissheit, dass sich ihr Aufwand lohnt. Mit den FAIRTRADE-Prämien wurden bei den Kleinproduzent*innen von COOPROAGRO vor allem Infrastrukturprojekte finanziert – Straßen- und Brückenbauten, die Stromversorgung in einem der Dörfer, eine Schule saniert bzw. ein Vereinshaus gebaut. Auch der Bau eines Krankenhauses konnte mitunterstützt werden.</p>	93	<p><strong>Zutaten:</strong><br>\nRohrzucker <br>\nVollmilchpulver (23%)<br>\nKakaobutter <br>\nKokosfett<br>\nKakaomasse<br>\nErdbeerpulver gefriergetrocknet (0,6%)<br>\nnatürliche Aromastoffe<br>\nBourbon-Vanille<br>\nEmulgator: Lezithine (Bio-Sonnenblumenlezithin)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>577</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.400</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>26,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,22</td>\n\t\t</tr>\n\t</tbody>\n</table>
-93	de	<p>Rosinen &amp; Vollmilch</p>	<ul>\n\t<li>Fruchtige Rosinen umhüllt von zartschmelzender Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Schonendes Sonnentrocknungsverfahren</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Im Acongaguatal, rund 100km nördlich von Santiago de Chile, ist das Klima ideal für die Traubenproduktion. Kleinproduzent*innen haben sich zur Organisation MIFRUTA zusammengetan, um ihre Ernte gemeinsam und zu fairen Bedingungen zu vermarkten. Die Rosinen von MIFRUTA der Sorten „Flame“ und „Thomson“ (kernlos) sind besonders groß, saftig und aromatisch. Für die Verarbeitung werden die Trauben 12 bis 15 Tage an der Sonne getrocknet, dann gereinigt, sortiert und verpackt.</p>\n\n<p>Die Preise für die fair gehandelten Rosinen von MIFRUTA, liegen zwischen 80 und 100 Prozent über den lokalen Preisen. Wichtig ist auch, dass die Kleinproduzent*innen sofort bezahlt werden und nicht – wie sonst üblich – mehrere Monate auf ihre Bezahlung warten müssen. Mit den Prämiengeldern des Fairen Handels konnten Sozialleistungen für die Kleinproduzent*innen finanziert werden. Darüber hinaus werden mit den Prämiengeldern regionale Institutionen wie z.B. Kindergärten unterstützt.</p>\n\n<p>Bei der verwendeten Bio-Vollmilch treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	94	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nVollmilchpulver<br>\nKakaobutter<br>\nKakaomasse<br>\nVanilleextrakt<br>\nRosinen 34% (enthalten Sonnenblumenöl)<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nBio-Anteil: 66%, Kontrollstelle: DE-ÖKO-005<br>\nFairtrade Anteil: 83,4%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>473</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.980</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>21,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>64,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>60,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>5,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,13</td>\n\t\t</tr>\n\t</tbody>\n</table>
-94	de	<p>Paranüsse &amp; Vollmilch</p>	<ul>\n\t<li>Knackige Paranüsse umhüllt von zartschmelzender Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Nachhaltige Wildsammlung im Amazonasgebiet</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Die Paranuss ist eine natürlich vorkommende Nuss des artenreichen Amazonas-Regenwaldes. Candela widmet ihr ganzes Schaffen der Biodiversität und dem nachhaltigen Konsum in Peru und in der Welt. Gesammelt und verarbeitet werden die Nüsse von den in der Region siedelnden indigenen Familien. Durch den Fairen Handel können die Kleinbauern und Kleinbäuerinnen für den Erhalt der Artenvielfalt sorgen und bekommen dafür eine faire Entlohnung und eine gesicherte Lebensgrundlage.</p>\n\n<p>Bei der verwendeten Bio-Vollmilch treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	95	
+112	de	<p>Nougatcreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit köstlicher Nougatcremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – ein verführerisches Genussduett aus feinster Bio-Vollmilchschokolade und leckerer Nougatcremefüllung. Zartschmelzender Genuss sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Kolumbien und Nicaragua auf naturbelassenen Rohrzucker aus Paraguay und aus den Philippinen. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	113	<p><strong>Zutaten:</strong><br>\nNougatfüllung (50%): HASELNUSSPASTE, Mascobado-Vollrohrzucker, Kakaobutter, Rohrohrzucker, VOLLMILCHPULVER, Aroma: Vanilleextrakt<br>\nWeiße Schokolade (30%): Rohrohrzucker, Kakaobutter, VOLLMILCHPULVER, Aroma: Vanilleextrakt<br>\nVOLLMILCHPULVER<br>\nKakaobutter<br>\nMascobado-Vollrohrzucker<br>\nKakaomasse<br>\nRohrohrzucker<br>\nAroma: Vanilleextrakt</p>\n\n<p>Fairtrade Anteil: 58%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>576</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.401</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>17,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>46</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t</tbody>\n</table>
+93	de	<p>Rosinen &amp; Vollmilch</p>	<ul>\n\t<li>Fruchtige Rosinen umhüllt von zartschmelzender Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Schonendes Sonnentrocknungsverfahren</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Im Acongaguatal, rund 100km nördlich von Santiago de Chile, ist das Klima ideal für die Traubenproduktion. Kleinproduzent*innen haben sich zur Organisation MIFRUTA zusammengetan, um ihre Ernte gemeinsam und zu fairen Bedingungen zu vermarkten. Die Rosinen von MIFRUTA der Sorten „Flame“ und „Thomson“ (kernlos) sind besonders groß, saftig und aromatisch. Für die Verarbeitung werden die Trauben 12 bis 15 Tage an der Sonne getrocknet, dann gereinigt, sortiert und verpackt.</p>\n\n<p>Die Preise für die fair gehandelten Rosinen von MIFRUTA, liegen zwischen 80 und 100 Prozent über den lokalen Preisen. Wichtig ist auch, dass die Kleinproduzent*innen sofort bezahlt werden und nicht – wie sonst üblich – mehrere Monate auf ihre Bezahlung warten müssen. Mit den Prämiengeldern des Fairen Handels konnten Sozialleistungen für die Kleinproduzent*innen finanziert werden. Darüber hinaus werden mit den Prämiengeldern regionale Institutionen wie z.B. Kindergärten unterstützt.</p>\n\n<p>Bei der verwendeten Bio-Vollmilchschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	94	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nVollmilchpulver<br>\nKakaobutter<br>\nKakaomasse<br>\nVanilleextrakt<br>\nRosinen 34% (enthalten Sonnenblumenöl)<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nBio-Anteil: 66%, Kontrollstelle: DE-ÖKO-005<br>\nFairtrade Anteil: 83,4%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>473</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.980</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>21,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>64,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>60,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>5,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,13</td>\n\t\t</tr>\n\t</tbody>\n</table>
+110	de	<p>Kokoscreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit köstlicher Kokoscremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – ein verführerisches Genussduett aus feinster Bio-Vollmilchschokolade und leckerer Kokoscremefüllung. Zartschmelzender Genuss sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Kolumbien, Nicaragua und Peru auf naturbelassenen Rohrzucker aus Paraguay und aus den Philippinen sowie auf nachhaltiges Palmöl aus Ghana und hochwertige Kokosraspeln aus Sri Lanka. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	111	<p><strong>Zutaten:</strong><br>\nVollmilchschokolade (50%): VOLLMILCHPULVER(26%), Kakaobutter, Vollrohrzucker, Kakaomasse, Rohrohrzucker, Vanilleextrakt<br>\nKokosfüllung (50%): Palmfett, Rohrohrzucker, VOLLMILCHPULVER, Kokosflocken (8%), Vanilleextrakt, Kokosaroma</p>\n\n<p>Fairtrade Anteil: 57%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>599</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.493</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>43</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>25,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>44,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>43,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,24</td>\n\t\t</tr>\n\t</tbody>\n</table>
+96	de	<p>Paranüsse &amp; Zartbitter</p>	<ul>\n\t<li>Knackige Paranüsse umhüllt von feinster Bio-Zartbitterschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Nachhaltige Wildsammlung im Amazonasgebiet</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Die Paranuss ist eine natürlich vorkommende Nuss des artenreichen Amazonas-Regenwaldes. Der Verein Candela widmet sein ganzes Schaffen der Biodiversität und dem nachhaltigen Konsum in Peru und in der Welt. Gesammelt und verarbeitet werden die Nüsse von den in der Region siedelnden indigenen Familien. Zu Beginn der Regenzeit fallen die reifen Früchte von den wildwachsenden Paranussbäumen und werden geerntet, mit Äxten geöffnet und zu den Sammelstellen gebracht. Durch den Fairen Handel können die Kleinbauern und Kleinbäuerinnen für den Erhalt der Artenvielfalt sorgen und bekommen dafür eine faire Entlohnung und eine gesicherte Lebensgrundlage.</p>\n\n<p>Bei der verwendeten Bio-Zartbitterschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Nicaragua auf naturbelassenen Vollrohrzucker aus den Philippinen und Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	97	<p><strong>Zutaten:</strong><br>\nKakaomasse<br>\nVollrohrzucker<br>\nKakaobutter<br>\nKakaopulver<br>\nParanüsse 38%<br>\nRohrohrzucker<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nFairtrade Anteil: 99,5%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>619</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.563</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>50,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>24,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>23,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>20,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>11,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,03</td>\n\t\t</tr>\n\t</tbody>\n</table>
+95	de	<p>Kaffeebohnen &amp; Vollmilch</p>	<ul>\n\t<li>Geröstete Kaffeebohnen umhüllt von zartschmelzender Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Die Bio-Kaffee Produzent*innen von UCIRI sind schon seit 1988 EZA Partner*innen. UCIRI gilt als die erste Kleinbauerngenossenschaft, die es ihren Mitgliedern - allesamt indigene Kleinproduzent*innen - ermöglichte, ihren Kaffee unter fairen Bedingungen zu vermarkten. Zudem sind sie Pioniere im Bio-Kaffeeanbau - durchgehende Biozertifizierung seit 1985 - und Mitbegründer des Max Havelaar Gütesiegels für Fairen Handel (heute FAIRTRADE). Die Kaffeegärten im Bergland Mexikos werden sorgfältig von indigenen Kleinbäuerinnen und -bauern gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>\n\n<p>Bei der verwendeten Bio-Vollmilchschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Vollrohrzucker aus den Philippinen. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	96	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nVollmilchpulver<br>\nKakaobutter<br>\nKakaomasse<br>\nHaselnusspaste<br>\nVanilleextrakt<br>\ngeröstete Kaffeebohnen (10%)<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nFairtrade Anteil: 82,35%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Soja</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>515</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.153</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>27,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>17,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>57,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>54,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,13</td>\n\t\t</tr>\n\t</tbody>\n</table>
+98	de	<p>Cashew &amp; Zartbitter</p>	<ul>\n\t<li>Geröstete Cashewkerne umhüllt von feinster Bio-Zartbitterschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>\n\n<p>Nachhaltige Cashewkerne aus Frauenhand - Kleinbäuerinnen, die sich für Selbstbestimmung und Geschlechtergerechtigkeit einsetzen, werden mit Ihrem Kauf gestärkt.</p>	<p>Der in den Tropenregionen Lateinamerikas beheimatete Cashewbaum wird zehn bis fünfzehn Meter hoch und trägt dichtes Laub. Jeder Apfel eines Cashewbaums liefert nur einen einzigen Kern – diesen aber von allerbester Qualität. Die Mitglieder der Frauenorganisation La Sureñita  aus der Provinz Choluteca im Südosten von Honduras verwenden sehr viel Liebe und Sorgfalt bei der Verarbeitung ihrer Bio Cashewnüsse. Hauptzielgruppe der Organisation sind benachteiligte Fauen ohne Landbesitz und Kleinproduzentinnen, die am Existenzminimum leben und wirtschaften. Die Mitglieder von La Sureñita übernehmen mittlerweile alle Aufgaben innerhalb ihrer Organisation – von der Verarbeitung bis zum Export. Sie wurden zum Vorbild für Frauen in der gesamten Region.</p>\n\n<p>Bei der verwendeten Bio-Zartbitterschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Kolumbien und Nicaragua auf naturbelassenen Vollrohrzucker aus den Philippinen. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	99	<p><strong>Zutaten:</strong><br>\nKakaomasse<br>\nVollrohrzucker<br>\nKakaobutter<br>\nKakaopulver<br>\ngeröstete Cashewkerne (36%)<br>\nRohrohrzucker<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n </p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>562</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.332</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>18,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>34,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>27</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>11,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,03</td>\n\t\t</tr>\n\t</tbody>\n</table>
+94	de	<p>Paranüsse &amp; Vollmilch</p>	<ul>\n\t<li>Knackige Paranüsse umhüllt von zartschmelzender Bio-Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Nachhaltige Wildsammlung im Amazonasgebiet</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Die Paranuss ist eine natürlich vorkommende Nuss des artenreichen Amazonas-Regenwaldes. Der Verein Candela widmet sein ganzes Schaffen der Biodiversität und dem nachhaltigen Konsum in Peru und in der Welt. Gesammelt und verarbeitet werden die Nüsse von den in der Region siedelnden indigenen Familien. Zu Beginn der Regenzeit fallen die reifen Früchte von den wildwachsenden Paranussbäumen und werden geerntet, mit Äxten geöffnet und zu den Sammelstellen gebracht. Durch den Fairen Handel können die Kleinbauern und Kleinbäuerinnen für den Erhalt der Artenvielfalt sorgen und bekommen dafür eine faire Entlohnung und eine gesicherte Lebensgrundlage.</p>\n\n<p>Bei der verwendeten Bio-Vollmilchschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Kolumbien und Nicaragua auf naturbelassenen Vollrohrzucker aus den Philippinen und Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	95	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nVollmilchpulver<br>\nKakaobutter<br>\nKakaomasse<br>\nVanilleextrakt<br>\nParanüsse 38%<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nFairtrade Anteil: 83%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>580</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.415</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>46,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>29,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>29,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>9,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,08</td>\n\t\t</tr>\n\t</tbody>\n</table>
+97	de	<p>Rosinen &amp; Zartbitter</p>	<ul>\n\t<li>Fruchtige Rosinen umhüllt von feinster Zartbitterschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Schonendes Sonnentrocknungsverfahren</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Im Acongaguatal, rund 100km nördlich von Santiago de Chile, ist das Klima ideal für die Traubenproduktion. Kleinproduzent*innen haben sich zur Organisation MIFRUTA zusammengetan, um ihre Ernte gemeinsam und zu fairen Bedingungen zu vermarkten. Die Rosinen von MIFRUTA der Sorten „Flame“ und „Thomson“ (kernlos) sind besonders groß, saftig und aromatisch. Für die Verarbeitung werden die Trauben 12 bis 15 Tage an der Sonne getrocknet, dann gereinigt, sortiert und verpackt.</p>\n\n<p>Die Preise für die fair gehandelten Rosinen von MIFRUTA, liegen zwischen 80 und 100 Prozent über den lokalen Preisen. Wichtig ist auch, dass die Kleinproduzent*innen sofort bezahlt werden und nicht – wie sonst üblich – mehrere Monate auf ihre Bezahlung warten müssen. Mit den Prämiengeldern des Fairen Handels konnten Sozialleistungen für die Kleinproduzent*innen finanziert werden. Darüber hinaus werden mit den Prämiengeldern regionale Institutionen wie z.B. Kindergärten unterstützt.</p>\n\n<p>Bei der verwendeten Zartbitterschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	98	<p><strong>Zutaten:</strong><br>\nKakaomasse<br>\nVollrohrzucker<br>\nKakaobutter<br>\nKakaopulver<br>\nRosinen 34% (enthalten Sonnenblumenöl)<br>\nRohrohrzucker<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nBio-Anteil: 66%<br>\nFairtrade Anteil: 99,5%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>467</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.955</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>24,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>15,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>52,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>50,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>15,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,04</td>\n\t\t</tr>\n\t</tbody>\n</table>
+99	de	<p>Cashew &amp; Joghurt</p>	<ul>\n\t<li>Geröstete Cashewkerne umhüllt von Joghurt &amp; feinster Weißer Bio-Schokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>\n\n<p>Nachhaltige Cashewkerne aus Frauenhand - Kleinbäuerinnen, die sich für Selbstbestimmung und Geschlechtergerechtigkeit einsetzen, werden mit Ihrem Kauf gestärkt.</p>	<p>Der in den Tropenregionen Lateinamerikas beheimatete Cashewbaum wird zehn bis fünfzehn Meter hoch und trägt dichtes Laub. Jeder Apfel eines Cashewbaums liefert nur einen einzigen Kern – diesen aber von allerbester Qualität. Die Mitglieder der Frauenorganisation La Sureñita  aus der Provinz Choluteca im Südosten von Honduras verwenden sehr viel Liebe und Sorgfalt bei der Verarbeitung ihrer Bio Cashewnüsse. Hauptzielgruppe der Organisation sind benachteiligte Fauen ohne Landbesitz und Kleinproduzentinnen, die am Existenzminimum leben und wirtschaften. Die Mitglieder von La Sureñita übernehmen mittlerweile alle Aufgaben innerhalb ihrer Organisation – von der Verarbeitung bis zum Export. Sie wurden zum Vorbild für Frauen in der gesamten Region.</p>\n\n<p>Bei der verwendeten Bio-Schokolade trifft wertvolle Kakaobutter aus der Dominikanischen Republik, Kolumbien, Peru und Nicaragua auf naturbelassenen Vollrohrzucker aus den Philippinen und Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	100	<p><strong>Zutaten:</strong><br>\nKakaobutter<br>\nRohrohrzucker<br>\nMagermilchpulver<br>\nMagermilchjoghurtpulver 8%<br>\nSahnepulver<br>\nSüßmolkepulver<br>\ngeröstete Cashewkerne (36%)<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>565</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.348</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>18,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>39,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>29,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>11,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,25</td>\n\t\t</tr>\n\t</tbody>\n</table>
+100	de	<p>Kaffeelikör &amp; Vollmilch</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit feinstem Kaffeelikör</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Die Bio-Kaffee Produzent*innen von UCIRI sind schon seit 1988 EZA Partner*innen. UCIRI gilt als die erste Kleinbauerngenossenschaft, die es ihren Mitgliedern - allesamt indigene Kleinproduzent*innen - ermöglichte, ihren Kaffee unter fairen Bedingungen zu vermarkten. Zudem sind sie Pioniere im Bio-Kaffeeanbau - durchgehende Biozertifizierung seit 1985 - und Mitbegründer des Max Havelaar Gütesiegels für Fairen Handel (heute FAIRTRADE). Die Kaffeegärten im Bergland Mexikos werden sorgfältig von indigenen Kleinbäuerinnen und -bauern gepflegt. Ihr Wissen über den biologischen Anbau und ihr erfahrener, achtsamer Umgang mit der Natur lassen Besonderes reifen: Feuerrote Kirschen - von Hand geerntet, gewaschen, vom Fruchtfleisch befreit, an der Sonne getrocknet, Bohne für Bohne verlesen.</p>\n\n<p>Bei der verwendeten Bio-Vollmilchschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Nicaragua und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	101	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nVollmilchpulver<br>\nKakaobutter<br>\nKakaomasse<br>\nVanilleextrakt<br>\nRübenzucker<br>\nKaffeelikör* 5% (enthält Bio-Ei)<br>\nAlkohol 2%<br>\nLaktose<br>\nHaselnuss- und Mandelstücke<br>\nCornflakes (Mais, Zucker, Salz, Gerstenmalz)<br>\nVerdickungsmittel: Gummi arabicum<br>\nNatürliches Aroma<br>\nHonig<br>\n<br>\nBio-Anteil: 74%, Kontrollstelle: DE-ÖKO-005<br>\nFairtrade Anteil: 52,1%</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>487</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.037</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>25,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>14,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>57</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>56,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>5,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,15</td>\n\t\t</tr>\n\t</tbody>\n</table>
+102	de	<p>Schoko &amp; Knusper</p>	<ul>\n\t<li>Knusprige Getreidekugeln umhüllt von feinster Vollmilch- und Weißer Schokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Fairer Knusperspaß - Die Bio Bolitos sind marmorierte Getreide Schoko Dragees aus Amaranth, Reis und Quinua ummantelt mit feinster Vollmilch- und Weißer Schokolade. Zartschmelzender Genuss mit dem richtigen Crunch-Faktor sorgt hierbei für unvergleichlichen Naschspaß.</p>\n\n<p>Die hochwertigen Hauptzutaten für die köstlichen Bolitos stammen aus FAIRTRADE-zertifizierten lateinamerikanischen und asiatischen Kleinbauernkooperativen. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	103	<p><strong>Zutaten:</strong><br>\nVollmilchpulver<br>\nKakaobutter<br>\nRohrohrzucker<br>\nGetreidekugeln (Amaranth, Reis, Quinua, Maisstärke, Magermilchpulver)<br>\nMascobado-Vollrohrzucker<br>\nKakaomasse<br>\nKakaopulver<br>\nVanilleextrakt<br>\nVerdickungsmittel: Gummi arabicum<br>\nHonig<br>\n<br>\nFairtrade Anteil: 69%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>544</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.323</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>35,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>22,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>48,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>38,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,09</td>\n\t\t</tr>\n\t</tbody>\n</table>
+101	de	<p>Mandeln &amp; Noisette</p>	<ul>\n\t<li>Geröstete Mandeln umhüllt von feinster Sahne-Noisette Schokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Eine cremig-knackige Komposition: Aromatisch geröstete Mandeln, ummantelt von einer zartschmelzenden Sahne-Noisette Schokolade und bedeckt mit Kakao – perfekt als fairer Powersnack oder als kleine Überraschung für jede*n Schokoliebhaber*in.</p>\n\n<p>Bei der verwendeten Sahne-Noisette Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Sao Tomé &amp; Principe sowie Peru und Nicaragua auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	102	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nKakaobutter<br>\nHaselnusspaste<br>\nSahnepulver<br>\nKakaomasse<br>\nVanilleextrakt<br>\ngeröstete Mandeln (27%)<br>\nfettarmes Kakaopulver</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>588</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.465</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>42,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>15,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>41,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>38,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>10,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,08</td>\n\t\t</tr>\n\t</tbody>\n</table>
+111	de	<p>Caramelcreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit köstlicher Caramelcremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – ein verführerisches Genussduett aus feinster Bio-Vollmilchschokolade und leckerer Caramelcremefüllung. Zartschmelzender Genuss sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Kolumbien, Nicaragua und Peru auf naturbelassenen Rohrzucker aus Paraguay und aus den Philippinen. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	112	<p><strong>Zutaten:</strong><br>\nVollmilchschokolade (50%): VOLLMILCHPULVER (26%), Kakaobutter, Vollrohrzucker, Kakaomasse, Rohrohrzucker, Vanilleextrakt<br>\nKaramellfüllung (35%): Rohrohrzucker, Glukosesirup, VOLLMILCHPULVER, Kakaobutter, BUTTER, Vollrohrzucker, Kakaomasse, SAHNE, Salz, Karamellsirup, Emulgator: Lezithin, Vanilleextrakt</p>\n\n<p>Fairtrade Anteil: 65%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>529</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.205</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>33,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>20,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>49,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>47,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,43</td>\n\t\t</tr>\n\t</tbody>\n</table>
+121	de	<p>Knusper &amp; Schoko</p>	<ul>\n\t<li>Köstliche Butterkekse mit knackigen Schokostücken</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Sorgfältig hergestellt und verpackt in einem Projekt der Sozialwirtschaft</li>\n\t<li>Palmölfrei</li>\n</ul>	<p>Die knusprigen Schoko-Cookies mit leckeren Schokoladenstücken sind eine raffiniert vollmundige Knabberei zum Kaffee, Tee oder einfach für zwischendurch. Bester Rohrzucker von Manduvirá aus Paraguay mit mit feinen Karamellnoten gibt den Keksen eine delikate Süße. Echte Butter, Eier und feinste Schokolade sorgen für ein köstliches Genusserlebnis. Ihr intensiv-schokoladiger Geschmack und die hochwertigen Zutaten aus biologischer Landwirtschaft &amp; aus fairem Handel machen die Kekse zu etwas ganz Besonderem.</p>\n\n<p>Das Zuckerrohr von Manduvirá stammt ausschließlich aus kontrolliert biologischem Anbau und die Bäuerinnen und Bauern leben die Prinzipien der Nachhaltigkeit. Um den Boden vital und fruchtbar zu halten werden Kuh- oder Hühnerdung ausgetragen und stickstoffbindende Pflanzen wie Bohnen gepflanzt. Mindestens 7% der Fläche jedes Mitglieds müssen Schutzgebiete bleiben und dürfen nicht bepflanzt werden. Die Mitglieder der Kooperative können zusätzlich ein breites Angebot an Dienstleistungen in Anspruch nehmen: technische Beratung und Schulungen, günstige Kredite, Sparfonds, Vorauszahlungen und kostengünstige medizinische Versorgung.</p>\n\n<p>"Unsere Vision ist es, als Genossenschaft qualitativ hochwertige Dienstleistungen für Kleinerzeuger zu bieten, um ihre Lebensqualität und den Wohlstand der ganzen Gemeinschaft zu verbessern, und die führende Kooperative in der Produktion und Verarbeitung von Bio-Rohrzucker zu sein. Unsere Mission ist die Förderung der ganzheitlichen Entwicklung. Wir bieten eine Reihe von Dienstleistungen und eine ehrliche, transparente und effiziente Verwaltung für das wirtschaftliche und soziale Wohlergehen unserer Mitglieder und der ganzen Gemeindschaft." - Andrés González Aguilera, Geschäftsführer der Manduvirá Cooperative Ltd.</p>	122	<p><strong>Zutaten:</strong><br>\nReismehl<br>\nBUTTER (25,6%)<br>\nRohrzucker<br>\nWEIZENMEHL<br>\nSchokoladenstückchen (Rohrzucker, Kakaomasse, Kakaobutter, Emulgator: SOJAlecithin, Vanilleextrakt (Kakao: 45% mindestens)) (9,5%)<br>\nEI<br>\nBacktriebmittel: Natriumhydrogencarbonat<br>\nMaisstärke<br>\nSäureregulator: Citronensäure</p>\n\n<p>Fairtrade Anteil: 54,5%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Lupinen<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>465</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.943</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>24,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>16,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>55,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>21,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+103	de	<p>Eierlikör &amp; Weiße Schokolade</p>	<ul>\n\t<li>Knusprige Dragees gefüllt mit feinstem Eierlikör und umhüllt von zartschmelzender Weißer Schokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Dragiert im traditionellen Kupferkessel</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Fairer Knusperspaß - Die Eierlikörkugeln sind leckere Dragees gefüllt mit cremigem Eierlikör und ummantelt mit feinster Weißer Schokolade. Zartschmelzender Genuss mit dem richtigen Crunch-Faktor sorgt hierbei für unvergleichlichen Naschspaß.</p>\n\n<p>Bei der verwendeten Weißen Schokolade trifft wertvolle Kakaobutter aus der Dominikanischen Republik, Sao Tomé &amp; Principe und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	104	<p><strong>Zutaten:</strong><br>\nWeisse Schokolade 69% (Rohrohrzucker, Kakaobutter, MagerMILCHpulver, BUTTERreinfett, MOLKENerzeugnis, Vanilleextrakt)<br>\nRübenzucker<br>\nEierlikör 5% (enthält BIO-EI)<br>\nAlkohol 2%<br>\nLAKTOSE<br>\nHASELNUSS- und MANDELstücke<br>\nCornflakes (Mais, Zucker, Salz, GERSTENMALZ)<br>\nVerdickungsmittel: Gummi arabicum<br>\nnatürliches Aroma<br>\nHonig</p>\n\n<p>Fairtrade Anteil: 51,1%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>483</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.020</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>23,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>15</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>63,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>63</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>3,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,13</td>\n\t\t</tr>\n\t</tbody>\n</table>
+108	de	<p>Vollmilch &amp; Knusper</p>	<ul>\n\t<li>Köstliche Quinua-Pops umhüllt von zartschmelzender Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Frei von Emulgatoren und ohne Einsatz von Fremdfetten</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – feinste Vollmilchschokolade mit knusprigen Quinua-Pops. Zartschmelzender Genuss mit dem richtigen Crunch-Faktor sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Bolivien auf naturbelassenen Vollrohrzucker aus Paraguay und aus den Philippinen sowie auf besten Quinua aus Bolivien. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	109	<p><strong>Zutaten:</strong><br>\nVOLLMILCHPULVER (24,5%)<br>\nKakaobutter<br>\nMascobado-Vollrohrzucker<br>\nKakaomasse<br>\nRohohrzucker<br>\nQuinua-Crispies 5% (Reis, Quinua 30%, Rohrzucker)<br>\nAroma: Vanilleextrakt</p>\n\n<p>Fairtrade Anteil: 75%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>566</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.357</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>36,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>23,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>49</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>43</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,23</td>\n\t\t</tr>\n\t</tbody>\n</table>
+105	de	<p>Vollmilch &amp; Kokos</p>	<ul>\n\t<li>Köstliche Kokosflocken umhüllt von zartschmelzender Bio-Schokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Frei von Emulgatoren und ohne Einsatz von Fremdfetten</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – feinste Bio-Schokolade mit exotischen Kokosflocken. Zartschmelzender Genuss mit sommerlichem Urlaubsfeeling sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Bolivien und Peru auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	106	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\n23% Vollmilchpulver<br>\nKakaobutter<br>\n10 % Kokosflocken<br>\nKakaomasse<br>\nHaselnussmasse<br>\nnatürliches Vanille-Aroma</p>\n\n<p>Fairtrade Anteil: 76%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>577</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.400</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>26,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>46,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>44,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,22</td>\n\t\t</tr>\n\t</tbody>\n</table>
+106	de	<p>Vollmilch &amp; Joghurt</p>	<ul>\n\t<li>Zartschmelzende Vollmilchschokolade kombiniert mit weißer Joghurt-Schokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Frei von Emulgatoren und ohne Einsatz von Fremdfetten</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – ein verführerisches Genussduett aus feiner Joghurt- und Vollmilch-Schokolade. Zartschmelzender Genuss sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus Kamerun auf naturbelassenen Rohrzucker aus Costa Rica. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	107	<p><strong>Zutaten:</strong><br>\nVollmilchschokolade (50%): Rohrzucker, VOLLMILCHPULVER, Kakaobutter, Kakaomasse, Aroma: Vanilleextrakt<br>\nWeiße Schokolade (50%): Rohrzucker, Kakaobutter, SAHNEPULVER, MAGERMILCHPULVER, MAGERMILCHJOGHURTPULVER (8%), MOLKENERZEUGNIS</p>\n\n<p>Fairtrade Anteil: 71%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>574</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.393</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>37,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>23,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>50,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>49,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,36</td>\n\t\t</tr>\n\t</tbody>\n</table>
+104	de	<p>Weiße Schokolade &amp; Knusper</p>	<ul>\n\t<li>Köstliche Knusper-Crispies umhüllt von zartschmelzender Weißer Schokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Frei von Emulgatoren und ohne Einsatz von Fremdfetten</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – feinste Weiße Schokolade mit knusprigen Reis-Crispies. Zartschmelzender Genuss mit dem richtigen Crunch-Faktor sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Weißen Schokolade trifft wertvolle Kakaobutter aus der Dominikanischen Republik sowie Sao Tomé &amp; Principe auf naturbelassenen Vollrohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	105	<p><strong>Zutaten:</strong><br>\nKakaobutter<br>\nRohrohrzucker<br>\nMAGERMILCHPULVER<br>\nMAGERMILCHJOGHURTPULVER<br>\nSAHNEPULVER<br>\nReiscrispies 5% (Reismehl, GERSTENMALZMEHL, Meersalz)<br>\nMOLKENERZEUGNIS</p>\n\n<p>Fairtrade Anteil: 64%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>569</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.372</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>36,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>22,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>51,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>46,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>8,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,59</td>\n\t\t</tr>\n\t</tbody>\n</table>
+107	de	<p>Vollmilch &amp; Krokant</p>	<ul>\n\t<li>Knuspriger Honig-Mandel Krokant umhüllt von zartschmelzender Vollmilchschokolade</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Frei von Emulgatoren und ohne Einsatz von Fremdfetten</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – feinste Vollmilchschokolade mit knusprigen Honig-Mandel Krokant. Zartschmelzender Genuss mit dem richtigen Crunch-Faktor sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Vollmilchschokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Bolivien sowie Sao Tomé &amp; Principe auf naturbelassenen Vollrohrzucker aus Paraguay und den Philippinen. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	108	<p><strong>Zutaten:</strong><br>\nVOLLMILCHPULVER 22%<br>\nKakaobutter<br>\nMascobado-Vollrohrzucker<br>\nKakaomasse<br>\nRohrohrzucker<br>\nHonig-MANDELkrokant (8%): MANDELN, Honig<br>\nHonigpulver (5%): Honig, Maltodextrin [Mais], Verdickungsmittel: Natriumalginat<br>\nAroma: Vanilleextrakt</p>\n\n<p>Fairtrade Anteil: 67,7%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>576</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.397</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>21,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>47,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>43,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>9,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,23</td>\n\t\t</tr>\n\t</tbody>\n</table>
+109	de	<p>Milchcreme</p>	<ul>\n\t<li>Zartschmelzende Bio-Vollmilchschokolade mit köstlicher Milchcremefüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Innenwickel aus kompostierbarer NatureFlex-Folie</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Einfach köstlich fair – ein verführerisches Genussduett aus feinster Bio-Vollmilchschokolade und leckerer Milchcremefüllung. Zartschmelzender Genuss sorgt hierbei für unvergleichlichen Naschspaß. Die Fairetta-Schokoladenreihe besteht aus einer Vielzahl an Riegeln mit verschiedenen Geschmacksrichtungen aus fairem Handel. Der ideale Schokogenuss für den kleinen Hunger und die Pause zwischendurch! Entdecken Sie Ihren persönlichen Fairetta Favoriten!</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Kolumbien, Nicaragua und Peru auf naturbelassenen Rohrzucker aus Paraguay und aus den Philippinen sowie auf nachhaltiges Palmöl aus Ghana. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	110	<p><strong>Zutaten:</strong><br>\nVollmilchschokolade (50%): VOLLMILCHPULVER(26%), Kakaobutter, Vollrohrzucker, Kakaomasse, Rohrohrzucker, Vanilleextrakt<br>\nMilchcremefüllung (50%): Palmfett, Rohrohrzucker, VOLLMILCHPULVER (27%), Vanilleextrakt</p>\n\n<p>Fairtrade Anteil: 54%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>598</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.488</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>42,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>18,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>46</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>45,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t</tbody>\n</table>
+113	de	<p>Vollmilch &amp; Haselnuss</p>	<ul>\n\t<li>Beste belgische Bio-Trüffel mit cremiger Haselnussfüllung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Frei von Sojalezithin und Emulgatoren</li>\n</ul>	<p>Ein Genuss für die Sinne - Samtiges Kakaopulver und ein feinherber Mantel in Zartbitter umhüllen das schokoladig nussige Innenleben der köstlichen belgischen Trüffel. Beschenken Sie sich und Ihre Liebsten mit edlen Bio-Pralinen, die den Gaumen nach allen Regeln der Kunst verwöhnen. Ideal zum Verschenken oder selber genießen.</p>\n\n<p>Bei der verwendeten Schokolade treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik und Peru auf naturbelassenen Rohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	114	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nHASELNÜSSE (17%)<br>\nKakaomasse<br>\nKakaobutter<br>\nVOLLMILCHPULVER<br>\nKakaopulver<br>\nBUTTERREINFETT<br>\nGlukosesirup<br>\nWasser<br>\nVanille</p>\n\n<p>Fairtrade Anteil: 70%<br>\nKakaoanteil: 37% mindestens in der Milchschokolade, 72% in der Zartbitterschokolade</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>564</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.357</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>38</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>17</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>45</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>43</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,06</td>\n\t\t</tr>\n\t</tbody>\n</table>
+114	de	<p>Weiße Schokolade &amp; Haselnuss</p>	<ul>\n\t<li>Handwerklich gefertigte Schokoladen-Meeresfrüchte mit einem zartschmelzenden Kern aus Nougat</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Beste belgische Qualität</li>\n</ul>	<p>Ein Genuss für die Sinne - Ein Hauch Kakaopulver und ein feinsüßer Mantel aus Weißer Schokolade umhüllen das nussige Innenleben der köstlichen Belgischen Nougatmuscheln. Beschenken Sie sich und Ihre Liebsten mit edlen Bio-Pralinen, die den Gaumen nach allen Regeln der Kunst verwöhnen. Ideal zum Verschenken oder selber genießen.</p>\n\n<p>In den Bio-Kakaobohnen der Kleinbauerngenossenschaften Acopagro und Oro verde (Grünes Gold) aus Peru schlummern eine Portion tropische Wärme. Rohrzucker aus Paraguay von Manduvirá sorgt für biofaire Süße, italienische Haselnüsse für den feinen Nougatkern. Meisterliche belgische Pralinentradition verbindet die edlen Zutaten.</p>\n\n<p>In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	115	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nKakaobutter<br>\nVOLLMILCHPULVER<br>\nHASELNÜSSE (17%)<br>\nKokosbutter<br>\nKakaomasse<br>\nEmulgator: SOJALECITHIN</p>\n\n<p>Fairtrade Anteil: 64%<br>\nKakaoanteil: 24 % mindestens in der weißen Schokolade</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>579</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.419</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>20</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,16</td>\n\t\t</tr>\n\t</tbody>\n</table>
+115	de	<p>naturbelassen</p>	<ul>\n\t<li>Knackige Bio-Cashewkerne aus Burkina Faso</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Der in Burkina Faso beheimatete Cashewbaum wird zehn bis fünfzehn Meter hoch und trägt dichtes Laub. Jeder Apfel eines Cashewbaums liefert nur einen einzigen Kern – diesen aber von allerbester Qualität. Die naturbelassenen Cashewnüsse bewahren ihren ursprünglichen, cremig-milden Geschmack. Sie eignen sich als gesunder Snack für Zwischendurch und sind in der Küche vielseitig einsetzbar: Als Beigabe in Müesli und Gebäck, in Saucen oder leicht angeröstet über Salaten und exotischen Gerichten.</p>\n\n<p>Die Mitglieder*innen der Organisation Gebana Afrique verwenden sehr viel Liebe und Sorgfalt bei der Verarbeitung ihrer Bio Cashewnüsse. Dank des fairen Handels erhalten die Kleinbauern und Kleinbäuerinnen zu der Bezahlung des FAIRTRADE-Mindestpreises und -Prämie eine verlässliche Vorfinanzierung, die den Lebensunterhalt während der Zeit, in der nicht geerntet wird, sichert. Zudem können die Produzierenden zinsfreie Darlehen aufnehmen und somit in bessere Infrastruktur und in die Bildung ihrer Kinder investieren.</p>\n\n<p>Auch die Angestellten in den Verarbeitungsanlagen von Gebana Afrique profitieren vom Fairen Handel. Für ungelerntes Personal wird mindestens 50% über dem Mindestlohn bezahlt, bei qualifiziertem Personal reicht das Gehalt vom 3 bis 20-fachem des gesetzlichen Mindestlohns. Zudem werden den Angestellten und ihren Familien eine Gesundheitsvorsorge und Schulungen wie beispielsweise Sprachkurse angeboten. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	116	<p><strong>Zutaten:</strong><br>\nCashewkerne</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>590</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.453</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>42,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>8,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>30,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>9,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>20,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+116	de	<p>geröstet &amp; gesalzen</p>	<ul>\n\t<li>Geröstete Cashewkerne mit Chili &amp; Salz</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Ohne Fremdfett geröstet</li>\n\t<li>Knackig und würzig</li>\n</ul>	<p>Der in Burkina Faso beheimatete Cashewbaum wird zehn bis fünfzehn Meter hoch und trägt dichtes Laub. Jeder Apfel eines Cashewbaums liefert nur einen einzigen Kern – diesen aber von allerbester Qualität. Das Chili aus Sri Lanka gibt diesen gerösteten Cashews eine kräftige Schärfe und macht sie zu einem herrlich pikanten Apéro-Snack. Der optimale Cashew-Genuss für alle, die es gleichzeitig mild, vollmundig und leicht scharf mögen.</p>\n\n<p>Die Mitglieder*innen der Organisation Gebana Afrique verwenden sehr viel Liebe und Sorgfalt bei der Verarbeitung ihrer Bio Cashewnüsse. Dank des fairen Handels erhalten die Kleinbauern und Kleinbäuerinnen zu der Bezahlung des FAIRTRADE-Mindestpreises und -Prämie eine verlässliche Vorfinanzierung, die den Lebensunterhalt während der Zeit, in der nicht geerntet wird, sichert. Zudem können die Produzierenden zinsfreie Darlehen aufnehmen und somit in bessere Infrastruktur und in die Bildung ihrer Kinder investieren.</p>\n\n<p>Auch die Angestellten in den Verarbeitungsanlagen von Gebana Afrique profitieren vom Fairen Handel. Für ungelerntes Personal wird mindestens 50% über dem Mindestlohn bezahlt, bei qualifiziertem Personal reicht das Gehalt vom 3 bis 20-fachem des gesetzlichen Mindestlohns. Zudem werden den Angestellten und ihren Familien eine Gesundheitsvorsorge und Schulungen wie beispielsweise Sprachkurse angeboten. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>\n\n<p>Das hochwertige Chili wird von Kleinbauern und Kleinbäuerinnen der Organisation Podie in Sri Lanka biologisch angebaut und gibt den gerösteten Cashewkernen die richtige Würze. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*Innen-, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>	117	<p><strong>Zutaten:</strong><br>\nCashewkerne geröstet und gesalzen<br>\nChili (1%)<br>\nSalz (1%)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>581</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.416</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>41,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>8,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>30</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>20</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>1</td>\n\t\t</tr>\n\t</tbody>\n</table>
+117	de	<p>karamellisiert</p>	<ul>\n\t<li>Geröstete Cashewkerne mit Karamellüberzug und feiner Zimt- &amp; Vanillenote</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Knackig und köstlich knusprig</li>\n\t<li>Ohne Fremdfett geröstet</li>\n\t<li>Handverlesene Qualität</li>\n</ul>	<p>Gebrannte Köstlichkeiten wie vom Jahrmarkt - Genießen Sie knackige Cashews und die besondere Kombination aus cremiger Nuss mit würzig-süßem Mantel. Die Kerne sind behutsam karamellisiert und haben dadurch einen krossig knusprigen Mantel mit besonders aromatischer Würze. Ein Geschmackserlebnis, welches Herz und Seele erwärmt.</p>\n\n<p>Für dieses Genussprodukt treffen beste Cashewkerne aus Burkina Faso auf naturbelassenen Vollrohrzucker aus Paraguay und fein aromatischen Zimt &amp; Vanille aus Sri Lanka. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	118	<p><strong>Zutaten:</strong><br>\nCashewkerne<br>\nRohrzucker<br>\nZimt<br>\nVanille</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>537</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.243</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>31</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>6,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>49</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>44</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>14</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+118	de	<p>geröstet &amp; gesalzen</p>	<ul>\n\t<li>Geröstete Erdnüsse mit Salz</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Knackig und würzig</li>\n</ul>	<p>Sorgfältig ausgewählte, fein geröstete und gesalzene Erdnüsse aus Nicaragua von Del Campo stellen den idealen Kraftspender für zwischendurch dar. Sie eignen sich als gesunder Snack für Zwischendurch und sind zudem in der Küche vielseitig einsetzbar: Als Beigabe in Saucen oder nochmals leicht angeröstet über Salaten und in exotischen Gerichten.</p>\n\n<p>Durch garantierte Mindestpreise, langfristige Handelsbeziehungen, finanzieller und technischer Unterstützung bei der Produktentwicklung ist es Del Campo möglich, die Erzeugnisse seiner Mitglieder*innen international zu fairen Preisen zu vermarkten. Gleichzeitig wird dadurch die kooperative Struktur Del Campos und die Dienstleistungen für deren Mitglieder*innen (Beratungsleistungen, Zugang zu Sozialfonds, etc.) gefördert.</p>\n\n<p>"Indem wir uns den Solidaritätsbemühungen von Frauen und Männern anschließen, stärken wir die Einheit unserer Genossenschaften und ihre Fortschritte. Wir entwickeln faire Marketingbeziehungen durch geschäftliche und organisatorische Allianzen mit denen, die unsere Werte teilen. Ein würdiges Leben für Bauernfamilien und die Verbesserung der Umwelt werden das Ergebnis unserer Bemühungen sein." - Mission Del Campo</p>	119	<p><strong>Zutaten:</strong><br>\nGeröstete Erdnüsse<br>\nErdnussöl<br>\nSonnenblumenöl<br>\nSalz</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>639</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.647</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>53</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>12</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>26</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,8</td>\n\t\t</tr>\n\t</tbody>\n</table>
+122	de	<p>Schoko &amp; Kokos</p>	<ul>\n\t<li>Knusprige Schokokekse mit exotischen Kokosflocken</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Sorgfältig hergestellt und verpackt in einem Projekt der Sozialwirtschaft</li>\n\t<li>Palmölfrei</li>\n</ul>	<p>Die knusprigen Schoko-Cookies mit exotischen Kokosflocken sind eine raffiniert vollmundige Knabberei für den kleinen Hunger zwischendurch oder zum Teilen mit Freund*Innen. Ihr intensiv-schokoladiger Geschmack und die hochwertigen Zutaten aus biologischer Landwirtschaft &amp; aus fairem Handel machen die Kekse zu etwas ganz Besonderem.</p>\n\n<p>Bester Rohrzucker von Manduvirá aus Paraguay mit einem hohen Anteil feinster Kokosraspel von Bio Foods &amp; SOFA aus Sri Lanka geben den Keksen eine sommerlich-süße Note. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	123	<p><strong>Zutaten:</strong><br>\nWEIZENMEHL<br>\nBUTTER<br>\nRohrzucker<br>\nReismehl<br>\nKokosöl<br>\nKokosflocken (9%)<br>\nSchokoladenstückchen (Rohrzucker, Kakaomasse, Kakaobutter, Emulgator: SOJAlecithin, Vanilleextrakt (Kakao: 45% mindestens)) (5%)<br>\nEI<br>\nKakaopulver<br>\nBacktriebmittel: Natriumhydrogencarbonat<br>\nMaisstärke<br>\nSäureregulator: Citronensäure</p>\n\n<p>Fairtrade Anteil: 54,8%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Lupinen<br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>499</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.081</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>31,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>23,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>47,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>18,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+119	de	<p>fair &amp; knackig</p>	<ul>\n\t<li>Knusprig knackiger Energieriegel mit Sesam</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Perfekt für Schule, Büro &amp; unterwegs</li>\n</ul>	<p>Der knusprige Barrita Sesamriegel ist ein köstliche Knabberei für zwischendurch für Naschkatzen mit Biss. Der knackig-süße Riegel eignet sich optimal für den kleinen Powerschub zwischendurch. Sesam ist zudem reich an Kalzium, Eisen und wertvollen sekundären Pflanzenstoffen.</p>\n\n<p>Der Sesam und das Zuckerrohr von Manduvirá stammen ausschließlich aus kontrolliert biologischem Anbau und die Bäuerinnen und Bauern leben die Prinzipien der Nachhaltigkeit. Um den Boden vital und fruchtbar zu halten werden Kuh- oder Hühnerdung ausgetragen und stickstoffbindende Pflanzen wie Bohnen gepflanzt. Mindestens 7% der Fläche jedes Mitglieds müssen Schutzgebiete bleiben und dürfen nicht bepflanzt werden. Die Mitglieder der Kooperative können zusätzlich ein breites Angebot an Dienstleistungen in Anspruch nehmen: technische Beratung und Schulungen, günstige Kredite, Sparfonds, Vorauszahlungen und kostengünstige medizinische Versorgung.</p>\n\n<p>"Unsere Vision ist es, als Genossenschaft qualitativ hochwertige Dienstleistungen für Kleinerzeuger zu bieten, um ihre Lebensqualität und den Wohlstand der ganzen Gemeinschaft zu verbessern, und die führende Kooperative in der Produktion und Verarbeitung von Bio-Rohrzucker zu sein. Unsere Mission ist die Förderung der ganzheitlichen Entwicklung. Wir bieten eine Reihe von Dienstleistungen und eine ehrliche, transparente und effiziente Verwaltung für das wirtschaftliche und soziale Wohlergehen unserer Mitglieder und der ganzen Gemeindschaft." - Andrés González Aguilera, Geschäftsführer der Manduvirá Cooperative Ltd.</p>	120	<p><strong>Zutaten:</strong><br>\nSesam<br>\nGlukose (aus Mais)<br>\nRohrohrzucker</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>529</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.205</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>32,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>4,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>47,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>27</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>16,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,11</td>\n\t\t</tr>\n\t</tbody>\n</table>
+120	de	<p>Früchte, Cashew &amp; Honigmarzipan</p>	<ul>\n\t<li>Fruchtiger Energieriegel mit Mango, Cashewkernen, Rosinen und Honigmarzipan</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Perfekt für Sport &amp; unterwegs</li>\n</ul>	<p>Ein fruchtiger Bio Energy-Riegel für Sport und unterwegs sowie praktisch verpackt und geschützt vor „Wind und Wetter“. Die Bio Fruchtriegel sind in jeder Tasche und in jedem Rucksack immer gut unterzubringen.</p>\n\n<p>Hier drin steckt die geballte Energie aus vielen gesunden, köstlich süßen Mangos aus Burkina Faso, abgerundet durch aromatische Rosinen aus der Türkei, knackige Cashew aus Honduras und echtes Honigmarzipan. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	121	<p><strong>Zutaten:</strong><br>\nRosinen<br>\nMangos<br>\nCASHEWKERNE<br>\nMangoflocken<br>\nHONIGMARZIPAN (MANDELN, Honig, Wasser)</p>\n\n<p>Fairtrade Anteil: 90%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>375</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.576</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>12,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>2,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>57</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>53,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,05</td>\n\t\t</tr>\n\t</tbody>\n</table>
+123	de	<p>Knusperspaß</p>	<ul>\n\t<li>Köstliche Spritzgebäck Stangerl nach traditioneller Art gebacken</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Sorgfältig hergestellt und verpackt in einem Projekt der Sozialwirtschaft</li>\n\t<li>Palmölfrei</li>\n</ul>	<p>Die knusprigen Spritzgebäck Stangerl nach traditioneller Art sind eine raffiniert vollmundige Knabberei zum Kaffee, Tee oder einfach für zwischendurch. Bester Rohrzucker von Manduvirá aus Paraguay mit mit feinen Karamellnoten gibt den Keksen eine delikate Süße. Echte Butter, Eier und feinste Kakaobutter sorgen für ein köstliches Genusserlebnis. Ihr harmonisch-süßer Geschmack und die hochwertigen Zutaten aus biologischer Landwirtschaft &amp; aus fairem Handel machen die Kekse zu etwas ganz Besonderem.</p>\n\n<p>Das Zuckerrohr von Manduvirá stammt ausschließlich aus kontrolliert biologischem Anbau und die Bäuerinnen und Bauern leben die Prinzipien der Nachhaltigkeit. Um den Boden vital und fruchtbar zu halten werden Kuh- oder Hühnerdung ausgetragen und stickstoffbindende Pflanzen wie Bohnen gepflanzt. Mindestens 7% der Fläche jedes Mitglieds müssen Schutzgebiete bleiben und dürfen nicht bepflanzt werden. Die Mitglieder der Kooperative können zusätzlich ein breites Angebot an Dienstleistungen in Anspruch nehmen: technische Beratung und Schulungen, günstige Kredite, Sparfonds, Vorauszahlungen und kostengünstige medizinische Versorgung.</p>\n\n<p>"Unsere Vision ist es, als Genossenschaft qualitativ hochwertige Dienstleistungen für Kleinerzeuger zu bieten, um ihre Lebensqualität und den Wohlstand der ganzen Gemeinschaft zu verbessern, und die führende Kooperative in der Produktion und Verarbeitung von Bio-Rohrzucker zu sein. Unsere Mission ist die Förderung der ganzheitlichen Entwicklung. Wir bieten eine Reihe von Dienstleistungen und eine ehrliche, transparente und effiziente Verwaltung für das wirtschaftliche und soziale Wohlergehen unserer Mitglieder und der ganzen Gemeindschaft." - Andrés González Aguilera, Geschäftsführer der Manduvirá Cooperative Ltd.</p>	124	<p><strong>Zutaten:</strong><br>\nReismehl<br>\nMaismehl<br>\nRohrzucker<br>\nEI<br>\nKakaobutter<br>\nBUTTER<br>\nBacktriebmittel: Natriumhydrogencarbonat<br>\nMaisstärke<br>\nSäureregulator: Citronensäure</p>\n\n<p>Fairtrade Anteil: 52,7%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltiges Getreide<br>\nSpuren von Lupinen<br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>417</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.748</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>19,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>11,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>55,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>18,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+124	de	<p>Kakaocreme</p>	<ul>\n\t<li>Knuspriger Doppelkeks mit Quinua-Crispies</li>\n\t<li>Füllung aus feinster Kakaocreme mit besonders hohem Kakaoanteil</li>\n\t<li>Mit aromatischen Paranüssen und Bienenhonig</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>In der praktischen 85g Packung - ideal für unterwegs</li>\n</ul>	<p>Doblito ist ein Bio-Doppelkeks, der es in sich hat: Besonders aromatische Kakaocreme zwischen zwei knusprigen Quinua-Keksen. Die kleinen Bio Doppelkekse sind in der optimalen Größe für unterwegs abgepackt und sorgen für gute Laune auf langen Autofahrten oder Wanderungen.</p>\n\n<p>In den Bio-Kakaobohnen - der Kleinbauerngenossenschaften COOPROAGRO aus der Dominikanischen Republik und Naranjillo aus Peru - schlummern eine Portion tropische Wärme. Rohrzucker aus Paraguay von Manduvirá und Honig von Miel Mexicana aus Mexico sorgen für biofaire Süße, Quinua-Crispies von Coronilla aus Bolivien und nachhaltiges Palmöl von Serendipalm aus Ghana für den knusprigen Genuss.</p>\n\n<p>In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	125	<p><strong>Zutaten:</strong><br>\nGebäck (75%): WEIZENMEHL, Rohrohrzucker, Palmfett, Quinua Crispies 10% (Reis, Quinua 25%), PARANÜSSE, Honig, Backtriebmittel: Natriumhydrogencarbonat, Ammoniumhydrogencarbonat, Meersalz,Vanille*<br>\nKakaocreme (25%): Rohrohrzucker, Kakaopulver stark entölt 24%, Palmfett, Kakaobutter, Honig</p>\n\n<p>Fairtrade Anteil: 63%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Eiern<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sesamsamen<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>488</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.045</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>22</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>64</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>29</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,75</td>\n\t\t</tr>\n\t</tbody>\n</table>
+133	de	<p>Fruchtgummi</p>	<ul>\n\t<li>Beste Bio-Fruchti Gummibonbons mit leckerem Bio-Fruchtsaftkonzentrat</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit nachhaltiger Bio-Gelatine</li>\n\t<li>Tropische Früchte zum Naschen</li>\n</ul>	<p>Goldbrauner Rohrohrzucker aus Fairem Handel gibt den Gummibärchen die Süße und der Saft von Holunderbeeren verleiht ihnen eine frische Note. Die sorgfältige Verarbeitungen der Bio-Zutaten erfolgt in einem österreichischen Traditionsbetrieb.</p>\n\n<p>Die Kleinbäuerinnen und Kleinbauern der Zuckerkooperative Manduvirá in Paraguay haben sich für biologischen Anbau entschieden. Das nützt den Menschen und der Natur.</p>\n\n<p>Mit EZA Fairer Handel GmbH als Partnerin haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können die Mitglieder*innen ihre Kosten decken und ihre Lebensbedingungen verbessern. Garantierte Prämien ermöglichen Vorhaben, die die Kooperative sozial und wirtschaftlich stärken. So wurde etwa eine Gesundheitsstation eingerichtet, Häuser ans öffentliche Stromnetz angeschlossen und der Zugang zu Trinkwasser erleichtert. Langfristige und verlässliche Zusammenarbeit eröffnet den Familien von Manduvirá eine Zukunftsperspektive.</p>	134	<p><strong>Zutaten:</strong><br>\nGlukosesirup<br>\nRohrohrzucker<br>\nGelatine<br>\nSäuerungsmittel: Zitronensäure<br>\nFruchtsaftkonzentrat: Holunderbeere<br>\nnatürliche Aromen<br>\nCurcumaextrakt<br>\nAlgenextrakt</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>338</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.437</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>64</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+125	de	<p>mit Paranüssen</p>	<ul>\n\t<li>Knusprige Schokokekse mit knackigen Paranüssen und exotischer Orangennote</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Gesüßt mit wertvollem Mascobadozucker</li>\n\t<li>Mit Bio-Palmfett aus fairem Handel</li>\n</ul>	<p>Diese Schoko-Orangen-Kekse sind eine ideale Ergänzung zu Kaffee, Kakao oder Tee aus Fairem Handel. Eine gelungene Komposition aus Schokolade, Keks und fruchtigem Orangen-Aroma. Ihr intensiv-schokoladiger Geschmack und die hochwertigen Zutaten aus biologischer Landwirtschaft &amp; aus fairem Handel machen die Kekse zu etwas ganz Besonderem.</p>\n\n<p>Bei der verwendeten Zutaten treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Bolivien und Peru auf naturbelassenen Vollrohrzucker aus den Philippinen sowie auf besten Quinua aus Bolivien und nachhaltiges Palmöl aus Ghana. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	126	<p><strong>Zutaten:</strong><br>\nWeizenmehl<br>\nVollrohrzucker (19.4%)<br>\nQuinuamehl (15%)<br>\nPalmfett ungehärtet<br>\nSchokoladenstücke (Kakaomasse, Vollrohrzucker, Kakaobutter, Kakaopulver) (10,2%)<br>\nParanüsse<br>\nBacktriebmittel: Natriumhydrogencarbonat, Monokaliumtartrate<br>\nOrangenöl<br>\nMeersalz</p>\n\n<p>Fairtrade Anteil: 52,2%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Eiern<br>\nSpuren von Erdnüssen<br>\nSpuren von Glutenhaltiges Getreide<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten<br>\nSpuren von anderen Nüsse<br>\nSpuren von Sesamsamen<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>484</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.031</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>22,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>9,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>61,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>25</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,4</td>\n\t\t</tr>\n\t</tbody>\n</table>
+128	de	<p>ungezuckert</p>	<ul>\n\t<li>Fruchtig aromatische Rosinen aus Chile</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Trennmittel: Sonnenblumenöl</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Schöne große Früchte</li>\n</ul>	<p>Die ungeschwefelten Rosinen sind mehr als der Klassiker unter den Trockenfrüchten. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern von MIFRUTA in Burkina Faso. Die sorgfältig getrockneten Beeren der Weinrebe haben einen süß-aromatischen Geschmack und passen in Müsli, Süßspeisen und Backwaren. Fleisch- und Reisgerichten sowie Salaten verleihen sie eine besondere Note.</p>\n\n<p>Die 26 Mitglieder MIFRUTAs besitzen insgesamt über rund 100 Hektar Land. In der Regel bebaut jedes Mitglied rund vier Hektar Land und zählt damit zu den klassischen Kleinproduzent*innen in Chile, die unter der neoliberalen Ausrichtung der Agrarpolitik (massive Exportförderung und Förderung der exportorientierten Großbetriebe – meist riesige Plantagen in Monokultur) immer mehr unter Bedrängnis geraten. Angebaut werden Trauben der Sorten Flame und Thomson (kernlos), Superior, u.a.m. Getrocknet werden die Trauben an der Sonne. Nach 12 – 15 Tagen sind die Rosinen fertig für die weitere Verarbeitung (Reinigung, Selektion, Verpackung).</p>\n\n<p>Die Preise für die fair gehandelten Rosinen von MIFRUTA, liegen zwischen 80 und 100 Prozent über den lokalen Preisen. Wichtig ist auch, dass die Kleinproduzent*innen sofort bezahlt werden und nicht – wie sonst üblich – mehrere Monate auf ihre Bezahlung warten müssen. Mit den Prämiengeldern des Fairen Handels konnten Sozialleistungen für die Kleinproduzent*innen finanziert werden. Darüber hinaus werden mit den Prämiengeldern regionale Institutionen wie z.B. Kindergärten unterstützt.</p>	129	<p><strong>Zutaten:</strong><br>\nRosinen<br>\nTrennmittel: Sonnenblumenöl</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sesamsamen<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>326</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.385</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>75,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>68,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t</tbody>\n</table>
+129	de	<p>ungezuckert</p>	<ul>\n\t<li>Exotische Kokosstreifen aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Knackig und saftig</li>\n</ul>	<p>Die knackigen Kokosstreifen sind 100 % naturbelassen und aus der frischen Kokosnuss hergestellt. Mit Sorgfalt werden sie handgeschnitten und unterliegen einem schonenden Trocknungsprozess. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern in Sri Lanka. Ein natürlicher und fruchtiger Snack für zwischendurch mit zahlreichen wertvollen Inhaltsstoffen und die perfekte Ergänzung im morgendlichen Müsli, einem exotischen Smoothie oder einer reichhaltigen Bowl.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	130	<p><strong>Zutaten:</strong><br>\nGetrocknete Kokosstreifen</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>647</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.709</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>63,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>55,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>6,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+127	de	<p>ungezuckert</p>	<ul>\n\t<li>Sorgfältig getrocknete Bio-Mangos aus Burkina Faso</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Fruchtig aromatisch</li>\n</ul>	<p>Die getrockneten Mangos sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern in Burkina Faso. Ein natürlicher und fruchtiger Snack für zwischendurch mit zahlreichen wertvollen Inhaltsstoffen und die perfekte Ergänzung im morgendlichen Müsli, einem exotischen Smoothie oder einer reichhaltigen Bowl.</p>\n\n<p>Die Mitglieder*innen der Organisation Gebana Afrique verwenden sehr viel Liebe und Sorgfalt bei der Verarbeitung ihrer Bio Cashewnüsse. Dank des fairen Handels erhalten die Kleinbauern und Kleinbäuerinnen zu der Bezahlung des FAIRTRADE-Mindestpreises und -Prämie eine verlässliche Vorfinanzierung, die den Lebensunterhalt während der Zeit, in der nicht geerntet wird, sichert. Zudem können die Produzierenden zinsfreie Darlehen aufnehmen und somit in bessere Infrastruktur und in die Bildung ihrer Kinder investieren.</p>\n\n<p>Auch die Angestellten in den Verarbeitungsanlagen von Gebana Afrique profitieren vom Fairen Handel. Für ungelerntes Personal wird mindestens 50% über dem Mindestlohn bezahlt, bei qualifiziertem Personal reicht das Gehalt vom 3 bis 20-fachem des gesetzlichen Mindestlohns. Zudem werden den Angestellten und ihren Familien eine Gesundheitsvorsorge und Schulungen wie beispielsweise Sprachkurse angeboten. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	128	<p><strong>Zutaten:</strong><br>\nGetrocknete Mangos</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>269</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.139</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>56,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>56,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,055</td>\n\t\t</tr>\n\t</tbody>\n</table>
+126	de	<p>ungezuckert</p>	<ul>\n\t<li>Sorgfältig getrocknete Bio-Ananas aus Uganda</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Fruchtig aromatisch</li>\n</ul>	<p>Die getrockneten Ananas sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern in Uganda. Ein natürlicher und fruchtiger Snack für zwischendurch mit zahlreichen wertvollen Inhaltsstoffen und die perfekte Ergänzung im morgendlichen Müsli, einem exotischen Smoothie oder einer reichhaltigen Bowl.</p>\n\n<p>Die Mitglieder*innen von Fruit of the Nile sind allesamt KleinproduzentInnen mit 1 – 5 Hektar Land. Sie leben verteilt auf mehrere Gemeinschaften im südlichen und zentralen Uganda. Durch Fairen Handel können sie ihre Lebensbedingungen verbessern. Fruit of the Nile wurde als Unternehmen mit einer sozialen Mission gegründet. Ziele sind die Förderung der ländlichen Region und die Schulung von Bauern, Frauen und der Jugend, so dass diese in die Lage versetzt werden, kleine Verarbeitungsbetriebe zu gründen und zu leiten und davon langfristig profitieren zu können.</p>\n\n<p>"Wir fühlen uns folgenden Anliegen verpflichtet: erneuerbarer Energie, nachhaltigem Unternehmertum, ländlichen Gemeinschaften, Fairem Handel, biologischem Landbau und der Entwicklung Ugandas." - Fruit of the Nile</p>	127	<p><strong>Zutaten:</strong><br>\nGetrocknete Ananas</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>336</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.425</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>1,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+132	de	<p>Fruchtgummi</p>	<ul>\n\t<li>Beste Bio-Bärchen Gummibonbons mit leckeren Bio-Fruchtsaftkonzentraten</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit nachhaltiger Bio-Gelatine</li>\n\t<li>Bunte Bären zum Naschen</li>\n</ul>	<p>Goldbrauner Rohrohrzucker aus Fairem Handel gibt den Gummibärchen die Süße. Der Saft von Äpfeln, Holunder, schwarzen Johannisbeeren und Himbeeren macht sie fantastisch fruchtig im Geschmack. Die sorgfältige Verarbeitungen der Bio-Zutaten erfolgt in einem österreichischen Traditionsbetrieb.</p>\n\n<p>Die Kleinbäuerinnen und Kleinbauern der Zuckerkooperative Manduvirá in Paraguay haben sich für biologischen Anbau entschieden. Das nützt den Menschen und der Natur.</p>\n\n<p>Mit EZA Fairer Handel GmbH als Partnerin haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können die Mitglieder*innen ihre Kosten decken und ihre Lebensbedingungen verbessern. Garantierte Prämien ermöglichen Vorhaben, die die Kooperative sozial und wirtschaftlich stärken. So wurde etwa eine Gesundheitsstation eingerichtet, Häuser ans öffentliche Stromnetz angeschlossen und der Zugang zu Trinkwasser erleichtert. Langfristige und verlässliche Zusammenarbeit eröffnet den Familien von Manduvirá eine Zukunftsperspektive.</p>	133	<p><strong>Zutaten:</strong><br>\nGlukosesirup<br>\nRohrohrzucker<br>\nGelatine<br>\nFruchtsaftkonzentrat: Apfel, Holunder, schwarze Johannisbeere, Himbeere<br>\nSäuerungsmittel: Zitronensäure<br>\nFruchtaromen<br>\nCurcumaextrakt<br>\nAlgenextrakt</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>334</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.435</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>60</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,01</td>\n\t\t</tr>\n\t</tbody>\n</table>
+130	de	<p>fruchtig</p>	<ul>\n\t<li>Bestes Bio-Student*innenfutter mit knackigen Cashews, getrockneten Mangos &amp; Ananas</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Fruchtig aromatisch</li>\n</ul>	<p>Das fruchtige Wiffzack Student*innenfutter mit Cashews, Mangos, und Ananas stärkt Körper und Geist. Die hochwertige Mischung sorgt unterwegs oder zwischendurch immer für den richtigen Energiekick. Diese Zutaten sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und --bauern aus dem westafrikanischen Burkina Faso und Uganda.</p>\n\n<p>Für diesen Powersnack treffen beste Cashewkerne und fruchtige Mangos aus Burkina Faso auf aromatische Ananas aus Uganda. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	131	<p><strong>Zutaten:</strong><br>\nCashewnüsse (40%)<br>\nGetrocknete Mangos (35%)<br>\nGetrocknete Ananas (25%)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>429</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.798</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>17,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>3,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>51,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>42,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>11,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
+131	de	<p>nussig</p>	<ul>\n\t<li>Bestes Bio-Student*innenfutter mit knackigen Cashews und exotischen Kokosstreifen</li>\n\t<li>Fruchtig ergänzt durch aromatische Physalis und saftig süße Mangos</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Nussig-süßer-Mix</li>\n</ul>	<p>Das nussige Blitzgscheit Student*innenfutter mit Cashews, Kokosstreifen, Physalis und Mangos stärkt Körper und Geist. Die hochwertige Mischung sorgt unterwegs oder zwischendurch immer für den richtigen Energiekick. Diese Zutaten sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und --bauern weltweit.</p>\n\n<p>Für diesen Powersnack treffen beste Cashewkerne und fruchtige Mangos aus Burkina Faso auf nussige Kokosraspeln aus Sri Lanka und aromatische Physalis aus Peru. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	132	<p><strong>Zutaten:</strong><br>\nCashewnüsse (60%)<br>\nGetrocknete Kokosstreifen (15%)<br>\nGetrocknete Physalis (15%)<br>\nGetrocknete Mangos (10%)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>534</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.222</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>35,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>34,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>20,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>15,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,05</td>\n\t\t</tr>\n\t</tbody>\n</table>
 \.
 
 
@@ -10819,7 +12125,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 560, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 564, true);
 
 
 --
@@ -10847,7 +12153,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: cms_cmsplugin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1215, true);
+SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1275, true);
 
 
 --
@@ -10868,14 +12174,14 @@ SELECT pg_catalog.setval('public.cms_globalpagepermission_sites_id_seq', 1, fals
 -- Name: cms_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_id_seq', 72, true);
+SELECT pg_catalog.setval('public.cms_page_id_seq', 77, true);
 
 
 --
 -- Name: cms_page_placeholders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 144, true);
+SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 154, true);
 
 
 --
@@ -10889,7 +12195,7 @@ SELECT pg_catalog.setval('public.cms_pagepermission_id_seq', 1, false);
 -- Name: cms_placeholder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 150, true);
+SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 160, true);
 
 
 --
@@ -10903,14 +12209,14 @@ SELECT pg_catalog.setval('public.cms_staticplaceholder_id_seq', 2, true);
 -- Name: cms_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_title_id_seq', 112, true);
+SELECT pg_catalog.setval('public.cms_title_id_seq', 117, true);
 
 
 --
 -- Name: cms_treenode_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_treenode_id_seq', 36, true);
+SELECT pg_catalog.setval('public.cms_treenode_id_seq', 39, true);
 
 
 --
@@ -10952,7 +12258,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_inline_id_seq', 4, true);
 -- Name: cmsplugin_cascade_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cmsplugin_cascade_page_id_seq', 14, true);
+SELECT pg_catalog.setval('public.cmsplugin_cascade_page_id_seq', 20, true);
 
 
 --
@@ -10987,7 +12293,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 793, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 934, true);
 
 
 --
@@ -11001,7 +12307,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 141, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 131, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 139, true);
 
 
 --
@@ -11015,14 +12321,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 102, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 144, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 894, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 1268, true);
 
 
 --
@@ -11050,14 +12356,14 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 299, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 341, true);
 
 
 --
 -- Name: filer_folder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_folder_id_seq', 11, true);
+SELECT pg_catalog.setval('public.filer_folder_id_seq', 12, true);
 
 
 --
@@ -11078,7 +12384,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 118, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 146, true);
 
 
 --
@@ -11148,21 +12454,21 @@ SELECT pg_catalog.setval('public.weltladen_billingaddress_id_seq', 1, false);
 -- Name: weltladen_bioqualitylabel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 3, true);
+SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 5, true);
 
 
 --
 -- Name: weltladen_cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 9, true);
+SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 11, true);
 
 
 --
 -- Name: weltladen_cartitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 17, true);
+SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 19, true);
 
 
 --
@@ -11190,21 +12496,21 @@ SELECT pg_catalog.setval('public.weltladen_locations_id_seq', 1, true);
 -- Name: weltladen_manufacturer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 53, true);
+SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 71, true);
 
 
 --
 -- Name: weltladen_order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_order_id_seq', 11, true);
+SELECT pg_catalog.setval('public.weltladen_order_id_seq', 12, true);
 
 
 --
 -- Name: weltladen_orderitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_orderitem_id_seq', 7, true);
+SELECT pg_catalog.setval('public.weltladen_orderitem_id_seq', 8, true);
 
 
 --
@@ -11218,14 +12524,14 @@ SELECT pg_catalog.setval('public.weltladen_orderpayment_id_seq', 1, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 94, true);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 134, true);
 
 
 --
 -- Name: weltladen_productpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 187, true);
+SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 265, true);
 
 
 --
@@ -11239,28 +12545,35 @@ SELECT pg_catalog.setval('public.weltladen_shippingaddress_id_seq', 2, true);
 -- Name: weltladen_supplier_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 2, true);
+SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 3, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 376, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 503, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 95, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 134, true);
+
+
+--
+-- Name: weltladen_weltladenproduct_quality_labels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
+--
+
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_quality_labels_id_seq', 253, true);
 
 
 --
 -- Name: weltladen_weltladenproducttranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 94, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 133, true);
 
 
 --
@@ -12000,18 +13313,18 @@ ALTER TABLE ONLY public.weltladen_billingaddress
 
 
 --
--- Name: weltladen_bioqualitylabel weltladen_bioqualitylabel_name_key; Type: CONSTRAINT; Schema: public; Owner: djangouser
+-- Name: weltladen_qualitylabel weltladen_bioqualitylabel_name_key; Type: CONSTRAINT; Schema: public; Owner: djangouser
 --
 
-ALTER TABLE ONLY public.weltladen_bioqualitylabel
+ALTER TABLE ONLY public.weltladen_qualitylabel
     ADD CONSTRAINT weltladen_bioqualitylabel_name_key UNIQUE (name);
 
 
 --
--- Name: weltladen_bioqualitylabel weltladen_bioqualitylabel_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+-- Name: weltladen_qualitylabel weltladen_bioqualitylabel_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
 --
 
-ALTER TABLE ONLY public.weltladen_bioqualitylabel
+ALTER TABLE ONLY public.weltladen_qualitylabel
     ADD CONSTRAINT weltladen_bioqualitylabel_pkey PRIMARY KEY (id);
 
 
@@ -12192,6 +13505,14 @@ ALTER TABLE ONLY public.weltladen_weltladenproducttranslation
 
 
 --
+-- Name: weltladen_weltladenproduct_quality_labels weltladen_weltladenprodu_weltladenproduct_id_bioq_87fee329_uniq; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_quality_labels
+    ADD CONSTRAINT weltladen_weltladenprodu_weltladenproduct_id_bioq_87fee329_uniq UNIQUE (weltladenproduct_id, qualitylabel_id);
+
+
+--
 -- Name: weltladen_weltladenproduct_additional_manufacturers weltladen_weltladenprodu_weltladenproduct_id_manu_b34e6b8f_uniq; Type: CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -12221,6 +13542,14 @@ ALTER TABLE ONLY public.weltladen_weltladenproduct
 
 ALTER TABLE ONLY public.weltladen_weltladenproduct
     ADD CONSTRAINT weltladen_weltladenproduct_product_code_key UNIQUE (product_code);
+
+
+--
+-- Name: weltladen_weltladenproduct_quality_labels weltladen_weltladenproduct_quality_labels_pkey; Type: CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_quality_labels
+    ADD CONSTRAINT weltladen_weltladenproduct_quality_labels_pkey PRIMARY KEY (id);
 
 
 --
@@ -13089,14 +14418,14 @@ CREATE INDEX weltladen_billingaddress_priority_ceefcb31 ON public.weltladen_bill
 -- Name: weltladen_bioqualitylabel_logo_id_da20c5c1; Type: INDEX; Schema: public; Owner: djangouser
 --
 
-CREATE INDEX weltladen_bioqualitylabel_logo_id_da20c5c1 ON public.weltladen_bioqualitylabel USING btree (logo_id);
+CREATE INDEX weltladen_bioqualitylabel_logo_id_da20c5c1 ON public.weltladen_qualitylabel USING btree (logo_id);
 
 
 --
 -- Name: weltladen_bioqualitylabel_name_b466ed58_like; Type: INDEX; Schema: public; Owner: djangouser
 --
 
-CREATE INDEX weltladen_bioqualitylabel_name_b466ed58_like ON public.weltladen_bioqualitylabel USING btree (name varchar_pattern_ops);
+CREATE INDEX weltladen_bioqualitylabel_name_b466ed58_like ON public.weltladen_qualitylabel USING btree (name varchar_pattern_ops);
 
 
 --
@@ -13240,10 +14569,10 @@ CREATE INDEX weltladen_weltladenprodu_language_code_f772ccfc_like ON public.welt
 
 
 --
--- Name: weltladen_weltladenproduct_bio_quality_label_id_6ba3273f; Type: INDEX; Schema: public; Owner: djangouser
+-- Name: weltladen_weltladenproduct_bioqualitylabel_id_ae1ff897; Type: INDEX; Schema: public; Owner: djangouser
 --
 
-CREATE INDEX weltladen_weltladenproduct_bio_quality_label_id_6ba3273f ON public.weltladen_weltladenproduct USING btree (bio_quality_label_id);
+CREATE INDEX weltladen_weltladenproduct_bioqualitylabel_id_ae1ff897 ON public.weltladen_weltladenproduct_quality_labels USING btree (qualitylabel_id);
 
 
 --
@@ -13307,6 +14636,13 @@ CREATE INDEX weltladen_weltladenproduct_supplier_id_2029c477 ON public.weltladen
 --
 
 CREATE INDEX weltladen_weltladenproduct_weltladenproduct_id_6c6f6955 ON public.weltladen_weltladenproduct_additional_manufacturers USING btree (weltladenproduct_id);
+
+
+--
+-- Name: weltladen_weltladenproduct_weltladenproduct_id_f0b9c8e4; Type: INDEX; Schema: public; Owner: djangouser
+--
+
+CREATE INDEX weltladen_weltladenproduct_weltladenproduct_id_f0b9c8e4 ON public.weltladen_weltladenproduct_quality_labels USING btree (weltladenproduct_id);
 
 
 --
@@ -13940,10 +15276,10 @@ ALTER TABLE ONLY public.weltladen_billingaddress
 
 
 --
--- Name: weltladen_bioqualitylabel weltladen_bioquality_logo_id_da20c5c1_fk_filer_ima; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+-- Name: weltladen_qualitylabel weltladen_bioquality_logo_id_da20c5c1_fk_filer_ima; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
 --
 
-ALTER TABLE ONLY public.weltladen_bioqualitylabel
+ALTER TABLE ONLY public.weltladen_qualitylabel
     ADD CONSTRAINT weltladen_bioquality_logo_id_da20c5c1_fk_filer_ima FOREIGN KEY (logo_id) REFERENCES public.filer_image(file_ptr_id) DEFERRABLE INITIALLY DEFERRED;
 
 
@@ -14092,14 +15428,6 @@ ALTER TABLE ONLY public.weltladen_weltladencustomer
 
 
 --
--- Name: weltladen_weltladenproduct weltladen_weltladenp_bio_quality_label_id_6ba3273f_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
---
-
-ALTER TABLE ONLY public.weltladen_weltladenproduct
-    ADD CONSTRAINT weltladen_weltladenp_bio_quality_label_id_6ba3273f_fk_weltladen FOREIGN KEY (bio_quality_label_id) REFERENCES public.weltladen_bioqualitylabel(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
 -- Name: weltladen_weltladenproduct_additional_manufacturers weltladen_weltladenp_manufacturer_id_3172b313_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -14132,6 +15460,14 @@ ALTER TABLE ONLY public.weltladen_weltladenproduct
 
 
 --
+-- Name: weltladen_weltladenproduct_quality_labels weltladen_weltladenp_qualitylabel_id_42f86d99_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_quality_labels
+    ADD CONSTRAINT weltladen_weltladenp_qualitylabel_id_42f86d99_fk_weltladen FOREIGN KEY (qualitylabel_id) REFERENCES public.weltladen_qualitylabel(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: weltladen_weltladenproduct weltladen_weltladenp_supplier_id_2029c477_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
 --
 
@@ -14145,6 +15481,14 @@ ALTER TABLE ONLY public.weltladen_weltladenproduct
 
 ALTER TABLE ONLY public.weltladen_weltladenproduct_additional_manufacturers
     ADD CONSTRAINT weltladen_weltladenp_weltladenproduct_id_6c6f6955_fk_weltladen FOREIGN KEY (weltladenproduct_id) REFERENCES public.weltladen_weltladenproduct(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: weltladen_weltladenproduct_quality_labels weltladen_weltladenp_weltladenproduct_id_f0b9c8e4_fk_weltladen; Type: FK CONSTRAINT; Schema: public; Owner: djangouser
+--
+
+ALTER TABLE ONLY public.weltladen_weltladenproduct_quality_labels
+    ADD CONSTRAINT weltladen_weltladenp_weltladenproduct_id_f0b9c8e4_fk_weltladen FOREIGN KEY (weltladenproduct_id) REFERENCES public.weltladen_weltladenproduct(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
