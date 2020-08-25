@@ -174,7 +174,7 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         on_delete=models.CASCADE
     )
 
-    bio_quality_label = models.ForeignKey(
+    bio_quality_label = models.ForeignKey( #many to many
         BioQualityLabel,
         on_delete=models.CASCADE,
         verbose_name=_("Bio Quality Label"),
