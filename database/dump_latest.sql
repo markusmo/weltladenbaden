@@ -3842,7 +3842,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 12	!vrxxGrlvmPUCPuGzKm473uGVwXA29iBxBVZNJqnu	\N	f	84jLT.wKpmd@6ouyM3pVA43jKMx4				f	f	2020-05-30 18:25:16.132496+02
 13	!NTjVmvcD93WsgO6JuE8bxSxmsw4k1nrbMAxAxcWe	\N	f	4b2xahdpSlvYEDD74bd7rAk8rTVr				f	f	2020-06-04 20:35:31.385574+02
 10	pbkdf2_sha256$180000$FTbDHaYB7Axu$dAQRg1NQrgKC8aTpsnOrwgHnTDX4DEg2SwLoaNHyJHI=	2020-08-17 16:37:51.580264+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
-4	pbkdf2_sha256$180000$M4xZ2rIRLxiR$K+/CdniEMwF6ndVMdbNfwvj/ITZi6HYXpkvXKaTOfcg=	2020-08-25 20:11:01.784599+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
+4	pbkdf2_sha256$180000$M4xZ2rIRLxiR$K+/CdniEMwF6ndVMdbNfwvj/ITZi6HYXpkvXKaTOfcg=	2020-08-26 19:06:17.568547+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 \.
 
 
@@ -4569,6 +4569,30 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 1273	0	de	BreadcrumbPlugin	2020-08-25 20:12:57.382711+02	2020-08-25 20:12:59.758763+02	\N	147	1	0	0054
 1274	0	de	BreadcrumbPlugin	2020-08-25 20:13:09.658348+02	2020-08-25 20:13:09.661696+02	\N	131	1	0	0055
 1275	0	de	BreadcrumbPlugin	2020-08-25 20:13:09.658348+02	2020-08-25 20:13:11.247924+02	\N	149	1	0	0056
+1276	0	de	BootstrapContainerPlugin	2020-08-26 19:09:14.143784+02	2020-08-26 19:09:14.148127+02	\N	162	1	1	0057
+1277	0	de	BootstrapRowPlugin	2020-08-26 19:09:22.134755+02	2020-08-26 19:09:22.144719+02	1276	162	2	1	00570001
+1281	0	de	TextPlugin	2020-08-26 19:09:48.637524+02	2020-08-26 19:27:24.087647+02	1278	162	4	0	0057000100010002
+1321	0	de	BootstrapContainerPlugin	2020-08-26 19:09:14.143784+02	2020-08-26 19:27:27.778819+02	\N	164	1	1	005D
+1278	0	de	BootstrapColumnPlugin	2020-08-26 19:09:22.150447+02	2020-08-26 19:10:50.606412+02	1277	162	3	1	005700010001
+1322	0	de	BootstrapRowPlugin	2020-08-26 19:09:22.134755+02	2020-08-26 19:27:27.782584+02	1321	164	2	1	005D0001
+1323	0	de	BootstrapColumnPlugin	2020-08-26 19:09:22.150447+02	2020-08-26 19:27:27.787239+02	1322	164	3	1	005D00010001
+1324	0	de	TextPlugin	2020-08-26 19:09:48.637524+02	2020-08-26 19:27:27.798287+02	1323	164	4	0	005D000100010001
+1302	0	de	BootstrapContainerPlugin	2020-08-26 19:24:33.854212+02	2020-08-26 19:24:55.887388+02	\N	170	1	1	005B
+1303	0	de	BootstrapRowPlugin	2020-08-26 19:24:40.447292+02	2020-08-26 19:24:40.450868+02	1302	170	2	1	005B0001
+1305	0	de	BootstrapColumnPlugin	2020-08-26 19:24:40.459435+02	2020-08-26 19:24:40.469484+02	1303	170	3	1	005B00010001
+1294	0	de	BootstrapContainerPlugin	2020-08-26 19:12:36.745124+02	2020-08-26 19:12:36.749668+02	\N	166	1	1	0059
+1295	0	de	BootstrapRowPlugin	2020-08-26 19:12:44.799714+02	2020-08-26 19:12:44.80323+02	1294	166	2	1	00590001
+1296	0	de	BootstrapColumnPlugin	2020-08-26 19:12:44.808437+02	2020-08-26 19:12:44.81799+02	1295	166	3	1	005900010001
+1297	0	de	TextPlugin	2020-08-26 19:12:49.725124+02	2020-08-26 19:13:24.463807+02	1296	166	4	0	0059000100010001
+1298	0	de	BootstrapContainerPlugin	2020-08-26 19:12:36.745124+02	2020-08-26 19:13:30.077665+02	\N	168	1	1	005A
+1299	0	de	BootstrapRowPlugin	2020-08-26 19:12:44.799714+02	2020-08-26 19:13:30.08227+02	1298	168	2	1	005A0001
+1300	0	de	BootstrapColumnPlugin	2020-08-26 19:12:44.808437+02	2020-08-26 19:13:30.086437+02	1299	168	3	1	005A00010001
+1301	0	de	TextPlugin	2020-08-26 19:12:49.725124+02	2020-08-26 19:13:30.095448+02	1300	168	4	0	005A000100010001
+1308	0	de	TextPlugin	2020-08-26 19:25:00.999017+02	2020-08-26 19:26:53.161274+02	1305	170	4	0	005B000100010001
+1317	0	de	BootstrapContainerPlugin	2020-08-26 19:24:33.854212+02	2020-08-26 19:26:55.404758+02	\N	172	1	1	005C
+1318	0	de	BootstrapRowPlugin	2020-08-26 19:24:40.447292+02	2020-08-26 19:26:55.408009+02	1317	172	2	1	005C0001
+1319	0	de	BootstrapColumnPlugin	2020-08-26 19:24:40.459435+02	2020-08-26 19:26:55.41274+02	1318	172	3	1	005C00010001
+1320	0	de	TextPlugin	2020-08-26 19:25:00.999017+02	2020-08-26 19:26:55.422815+02	1319	172	4	0	005C000100010001
 \.
 
 
@@ -4659,6 +4683,12 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 69	marija	markus	2020-06-18 09:39:38.800069+02	2020-08-25 20:12:33.569437+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	60	f	33
 60	marija	markus	2020-06-18 09:37:24.260681+02	2020-06-18 09:37:35.533928+02	2020-06-18 09:39:38.799758+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	69	f	33
 70	marija	markus	2020-06-18 09:39:42.077354+02	2020-08-25 20:12:46.209664+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	61	f	34
+81	markus	markus	2020-08-26 19:08:42.050101+02	2020-08-26 19:13:30.051018+02	2020-08-26 19:08:42.049832+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	80	f	41
+80	markus	markus	2020-08-26 19:08:28.436126+02	2020-08-26 19:08:28.475802+02	2020-08-26 19:08:42.049832+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	81	f	41
+83	markus	markus	2020-08-26 19:26:03.347884+02	2020-08-26 19:26:55.347395+02	2020-08-26 19:26:03.347621+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	82	f	42
+82	markus	markus	2020-08-26 19:24:00.607134+02	2020-08-26 19:24:05.961747+02	2020-08-26 19:26:03.347621+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	83	f	42
+79	markus	markus	2020-08-26 19:07:33.88636+02	2020-08-26 19:27:27.720132+02	2020-08-26 19:07:33.886036+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de	0	78	f	40
+78	markus	markus	2020-08-26 19:07:03.632022+02	2020-08-26 19:07:30.810536+02	2020-08-26 19:07:33.886036+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de	0	79	f	40
 \.
 
 
@@ -4799,6 +4829,18 @@ COPY public.cms_page_placeholders (id, page_id, placeholder_id) FROM stdin;
 142	71	148
 143	72	149
 144	72	150
+155	78	161
+156	78	162
+157	79	163
+158	79	164
+159	80	165
+160	80	166
+161	81	167
+162	81	168
+163	82	169
+164	82	170
+165	83	171
+166	83	172
 \.
 
 
@@ -4969,6 +5011,18 @@ COPY public.cms_placeholder (id, slot, default_width) FROM stdin;
 148	Main Content	\N
 149	Breadcrumb	\N
 150	Main Content	\N
+161	Breadcrumb	\N
+162	Main Content	\N
+163	Breadcrumb	\N
+164	Main Content	\N
+165	Breadcrumb	\N
+166	Main Content	\N
+167	Breadcrumb	\N
+168	Main Content	\N
+169	Breadcrumb	\N
+170	Main Content	\N
+171	Breadcrumb	\N
+172	Main Content	\N
 \.
 
 
@@ -5101,6 +5155,12 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 102	de	Getreide & Müsli				getreide-musli	lebensmittel/getreide-musli	f	\N	2020-06-18 09:38:30.924778+02	t	t	0	62	111
 112	de	Getränke				getranke	lebensmittel/getranke	f	\N	2020-06-18 09:38:55.80579+02	t	f	0	72	103
 103	de	Getränke				getranke	lebensmittel/getranke	f	\N	2020-06-18 09:38:55.80579+02	t	t	0	63	112
+120	de	Faircafé				faircafe	about-weltladen/faircafe	f	\N	2020-08-26 19:08:28.437457+02	t	t	0	80	121
+122	de	Verein Balance Global				verein-balance-global	about-weltladen/verein-balance-global	f	\N	2020-08-26 19:24:00.608663+02	t	t	0	82	123
+119	de	about-weltladen	Über uns	Über uns		about-weltladen	about-weltladen	f	\N	2020-08-26 19:07:03.642233+02	t	f	0	79	118
+118	de	about-weltladen	Über uns	Über uns		about-weltladen	about-weltladen	f	\N	2020-08-26 19:07:03.642233+02	t	t	0	78	119
+121	de	Faircafé				faircafe	about-weltladen/faircafe	f	\N	2020-08-26 19:08:28.437457+02	t	f	0	81	120
+123	de	Verein Balance Global				verein-balance-global	about-weltladen/verein-balance-global	f	\N	2020-08-26 19:24:00.608663+02	t	f	0	83	122
 \.
 
 
@@ -5110,38 +5170,41 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 
 COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM stdin;
 1	0001	1	0	\N	1
-20	000D	1	0	\N	1
-19	000C	1	0	\N	1
-18	000B	1	0	\N	1
-11	000A	1	0	\N	1
-10	0009	1	0	\N	1
-9	0008	1	0	\N	1
-7	0006	1	3	\N	1
-15	00060001	2	0	7	1
-16	00060002	2	0	7	1
-17	00060003	2	0	7	1
-6	0005	1	3	\N	1
-12	00050001	2	0	6	1
-13	00050002	2	0	6	1
-14	00050003	2	0	6	1
-27	00070001	2	0	8	1
-28	00070002	2	0	8	1
-29	00070003	2	0	8	1
-30	00070004	2	0	8	1
-31	00070005	2	0	8	1
-32	00070006	2	0	8	1
-33	00070007	2	0	8	1
-34	00070008	2	0	8	1
-35	00070009	2	0	8	1
-36	0007000A	2	0	8	1
-8	0007	1	10	\N	1
-22	00040001	2	0	21	1
-24	00040002	2	0	21	1
-21	0004	1	2	\N	1
-3	00030001	2	0	2	1
-4	00030002	2	0	2	1
-5	00030003	2	0	2	1
-2	0003	1	3	\N	1
+41	00030001	2	0	40	1
+42	00030002	2	0	40	1
+40	0003	1	2	\N	1
+20	000E	1	0	\N	1
+19	000D	1	0	\N	1
+18	000C	1	0	\N	1
+11	000B	1	0	\N	1
+10	000A	1	0	\N	1
+9	0009	1	0	\N	1
+27	00080001	2	0	8	1
+28	00080002	2	0	8	1
+29	00080003	2	0	8	1
+30	00080004	2	0	8	1
+31	00080005	2	0	8	1
+32	00080006	2	0	8	1
+33	00080007	2	0	8	1
+34	00080008	2	0	8	1
+35	00080009	2	0	8	1
+36	0008000A	2	0	8	1
+8	0008	1	10	\N	1
+7	0007	1	3	\N	1
+15	00070001	2	0	7	1
+16	00070002	2	0	7	1
+17	00070003	2	0	7	1
+6	0006	1	3	\N	1
+12	00060001	2	0	6	1
+13	00060002	2	0	6	1
+14	00060003	2	0	6	1
+22	00050001	2	0	21	1
+24	00050002	2	0	21	1
+21	0005	1	2	\N	1
+3	00040001	2	0	2	1
+4	00040002	2	0	2	1
+5	00040003	2	0	2	1
+2	0004	1	3	\N	1
 \.
 
 
@@ -5851,6 +5914,24 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 1273	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
 1274	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
 1275	{\n    "hide_plugin": false,\n    "render_type": "default"\n}	\N
+1276	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1277	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1278	{\n    "xs-column-width": "col"\n}	\N
+1294	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1295	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1296	{\n    "xs-column-width": "col"\n}	\N
+1298	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1299	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1300	{\n    "xs-column-width": "col"\n}	\N
+1302	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1303	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1305	{\n    "xs-column-width": "col"\n}	\N
+1317	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1318	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1319	{\n    "xs-column-width": "col"\n}	\N
+1321	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1322	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1323	{\n    "xs-column-width": "col"\n}	\N
 \.
 
 
@@ -5894,6 +5975,8 @@ COPY public.cmsplugin_cascade_page (id, settings, glossary, extended_object_id, 
 14	{}	{\n    "element_ids": {\n        "197": "",\n        "202": ""\n    }\n}	24	\N	\N	\N
 19	{}	{\n    "element_ids": {}\n}	47	20	\N	\N
 20	{}	{\n    "element_ids": {}\n}	48	\N	\N	\N
+21	{}	{\n    "element_ids": {}\n}	78	22	\N	\N
+22	{}	{\n    "element_ids": {}\n}	79	\N	\N	\N
 \.
 
 
@@ -6315,6 +6398,7 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 366	2020-05-06 11:41:33.606193+02	20	APROLMA	1	[{"added": {}}]	122	10
 367	2020-05-06 11:41:43.33854+02	21	UNICAFEC	1	[{"added": {}}]	122	10
 368	2020-05-06 11:43:07.814724+02	22	Frauenkooperativen aus Honduras & Peru	1	[{"added": {}}]	122	10
+1000	2020-08-26 21:08:39.767692+02	4	Imkerei Potz	1	[{"added": {}}]	133	10
 369	2020-05-06 11:43:55.408865+02	28	ADELANTE gemahlen 250g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (25)"}}]	135	10
 370	2020-05-06 11:53:17.248747+02	29	ADELANTE Bohne 250g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (26)"}}]	135	10
 371	2020-05-06 11:55:30.582064+02	30	ADELANTE Bohne 1kg	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (27)"}}]	135	10
@@ -6879,6 +6963,125 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 932	2020-08-25 20:12:59.771817+02	62	Getreide & Müsli	2		2	4
 933	2020-08-25 20:13:11.260471+02	63	Getränke	2		2	4
 934	2020-08-25 21:35:09.698023+02	5	Fairtrade	1	[{"added": {}}]	139	4
+935	2020-08-26 08:59:14.113676+02	131	Wiffzack Studentenfutter 100g	2	[{"changed": {"fields": ["Switch Tax", "Short Description", "Description", "Ingredients"]}}]	135	10
+936	2020-08-26 09:20:39.713251+02	125	Doblito Doppelkeks 85g	2	[{"changed": {"fields": ["Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+937	2020-08-26 09:21:21.284346+02	125	Doblito Doppelkeks 85g	2	[{"changed": {"fields": ["Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+938	2020-08-26 09:21:35.723722+02	125	Doblito Doppelkeks 85g	2	[{"changed": {"fields": ["Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+939	2020-08-26 09:22:30.183128+02	120	Barrita Sesamriegel 20g	2	[{"changed": {"fields": ["Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+940	2020-08-26 09:22:44.734802+02	120	Barrita Sesamriegel 20g	2	[{"changed": {"fields": ["Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+941	2020-08-26 09:22:55.958742+02	120	Barrita Sesamriegel 20g	2	[{"changed": {"fields": ["Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+942	2020-08-26 09:23:59.385181+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+943	2020-08-26 09:24:09.626033+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+944	2020-08-26 09:24:30.819523+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+945	2020-08-26 09:24:43.312164+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+946	2020-08-26 09:25:14.035058+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+947	2020-08-26 09:25:30.210756+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+948	2020-08-26 09:25:48.267751+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+949	2020-08-26 09:26:00.730618+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+950	2020-08-26 09:26:14.655475+02	121	Multi Power Fruchtriegel 30g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Quality labels", "Ingredients"]}}]	135	10
+951	2020-08-26 09:35:20.554943+02	134	Bio Fruchtis 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+952	2020-08-26 09:40:09.539899+02	135	Bio-Zoo 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (135)"}}]	135	10
+953	2020-08-26 10:24:45.46275+02	136	Bio-Geleefrüchte 100g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (136)"}}]	135	10
+954	2020-08-26 10:25:41.592092+02	136	Bio-Geleefrüchte 100g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+955	2020-08-26 11:25:01.98426+02	137	Selva Blütenhonig 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (137)"}}]	135	10
+956	2020-08-26 11:25:51.848168+02	137	Selva Blütenhonig 500g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+957	2020-08-26 11:27:05.780717+02	137	Selva Blütenhonig 500g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+958	2020-08-26 11:27:51.346838+02	137	Selva Blütenhonig 500g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+959	2020-08-26 11:28:17.356549+02	137	Selva Blütenhonig 500g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+960	2020-08-26 15:43:28.790528+02	29	ADELANTE Bohne 250g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+961	2020-08-26 15:52:37.10084+02	2	Indigene Kleinbäuerinnen und -bauern aus Mexico	2	[{"changed": {"fields": ["Name"]}}]	122	10
+962	2020-08-26 15:53:10.278638+02	72	Mieles del Sur	1	[{"added": {}}]	122	10
+963	2020-08-26 15:53:31.37853+02	73	Tzeltal Tzotzil	1	[{"added": {}}]	122	10
+964	2020-08-26 15:54:56.645239+02	138	Canela Gewürzhonig 250g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (138)"}}]	135	10
+965	2020-08-26 15:55:51.002268+02	138	Canela Gewürzhonig 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+966	2020-08-26 15:56:46.614638+02	138	Canela Gewürzhonig 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+967	2020-08-26 15:57:52.244102+02	138	Canela Gewürzhonig 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+968	2020-08-26 15:58:53.679575+02	138	Canela Gewürzhonig 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+969	2020-08-26 15:59:49.902284+02	138	Canela Gewürzhonig 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+970	2020-08-26 16:00:18.270267+02	138	Canela Gewürzhonig 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+971	2020-08-26 17:18:57.57059+02	74	Pueblo Apicola	1	[{"added": {}}]	122	10
+972	2020-08-26 17:21:41.469882+02	139	Honigtrio 3x125g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (139)"}}]	135	10
+973	2020-08-26 18:20:52.996348+02	75	Coopecañera	1	[{"added": {}}]	122	10
+974	2020-08-26 18:21:12.1437+02	76	ECOOKIM	1	[{"added": {}}]	122	10
+975	2020-08-26 18:25:49.813889+02	140	Equita Schokoaufstrich 400g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (140)"}}]	135	10
+976	2020-08-26 18:26:59.853849+02	140	Equita Schokoaufstrich 400g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+977	2020-08-26 18:50:41.905385+02	4	GEPA fair plus	2	[{"changed": {"fields": ["Ordering"]}}]	139	10
+978	2020-08-26 19:07:03.696559+02	78	Über uns	1	[{"added": {}}]	2	4
+979	2020-08-26 19:07:30.812895+02	78	Über uns	2	[]	2	4
+980	2020-08-26 19:07:33.914872+02	78	about-weltladen	2		2	4
+981	2020-08-26 19:08:28.479079+02	80	Faircafé	1	[{"added": {}}]	2	4
+982	2020-08-26 19:08:42.078466+02	80	Faircafé	2		2	4
+983	2020-08-26 19:10:50.634719+02	1279	<code>h1</code>: Weltladen Baden	3		54	4
+984	2020-08-26 19:11:06.273216+02	78	about-weltladen	2		2	4
+985	2020-08-26 19:11:19.429635+02	141	Cocoba Aufstrich 400g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (141)"}}]	135	10
+986	2020-08-26 19:11:44.520264+02	78	about-weltladen	2		2	4
+987	2020-08-26 19:12:12.030098+02	78	about-weltladen	2		2	4
+988	2020-08-26 19:12:28.144426+02	141	Cocoba Aufstrich 400g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+989	2020-08-26 19:12:59.79415+02	141	Cocoba Aufstrich 400g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+990	2020-08-26 19:13:30.108282+02	80	Faircafé	2		2	4
+991	2020-08-26 19:14:20.571272+02	140	Equita Schokoaufstrich 400g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+992	2020-08-26 19:24:00.650504+02	82	Verein Balance Global	1	[{"added": {}}]	2	4
+993	2020-08-26 19:24:05.963974+02	82	Verein Balance Global	2	[]	2	4
+994	2020-08-26 19:24:55.925613+02	1306	with 1 column	3		36	4
+995	2020-08-26 19:26:03.411334+02	82	Verein Balance Global	2		2	4
+996	2020-08-26 19:26:38.230358+02	82	Verein Balance Global	2		2	4
+997	2020-08-26 19:26:55.434056+02	82	Verein Balance Global	2		2	4
+998	2020-08-26 19:27:27.841755+02	78	about-weltladen	2		2	4
+999	2020-08-26 21:07:07.903456+02	77	Imkerei Potz	1	[{"added": {}}]	122	10
+1001	2020-08-26 21:08:43.919069+02	142	Blütenhonig 960g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (142)"}}]	135	10
+1002	2020-08-26 21:15:49.495435+02	143	Honig mit Chili 315g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (143)"}}]	135	10
+1003	2020-08-26 21:16:36.918666+02	143	Honig mit Chili 315g	2	[{"changed": {"fields": ["Short Description", "Description", "Origin countries"]}}]	135	10
+1004	2020-08-26 21:21:39.597332+02	144	Cremehonig mit Graumohn 315g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (144)"}}]	135	10
+1005	2020-08-26 21:22:25.901246+02	144	Cremehonig mit Graumohn 315g	2	[{"changed": {"fields": ["Short Description", "Description"]}}]	135	10
+1006	2020-08-26 21:26:46.697296+02	145	Honig mit Kakao 315g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (145)"}}]	135	10
+1007	2020-08-28 09:39:41.556015+02	146	Zitronengras 20g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (146)"}}]	135	10
+1008	2020-08-28 10:34:27.039055+02	78	Österreichische Bergkräutergenossenschaft	1	[{"added": {}}]	122	10
+1009	2020-08-28 10:35:24.022984+02	147	Kümmel 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (147)"}}]	135	10
+1010	2020-08-28 10:42:45.46278+02	148	Kümmel gemahlen 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (148)"}}]	135	10
+1011	2020-08-28 11:21:26.160618+02	149	Oregano 20g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (149)"}}]	135	10
+1012	2020-08-28 15:46:43.899573+02	150	Thymian 25g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (150)"}}]	135	10
+1013	2020-08-28 15:54:10.378724+02	146	Zitronengras 20g	2	[{"changed": {"fields": ["Switch Tax", "Short Description", "Description", "Ingredients"]}}]	135	10
+1014	2020-08-28 16:18:43.02154+02	151	Koriander 40g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (151)"}}]	135	10
+1015	2020-08-28 16:19:39.980849+02	151	Koriander 40g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1016	2020-08-29 08:20:29.324636+02	152	Fenchel 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (152)"}}]	135	10
+1017	2020-08-29 08:33:30.731056+02	153	Paprika edelsüß 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (153)"}}]	135	10
+1018	2020-08-29 08:35:02.6936+02	153	Paprika edelsüß 50g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1019	2020-08-29 09:04:19.799414+02	154	Majoran 20g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (154)"}}]	135	10
+1020	2020-09-01 09:52:45.119746+02	155	Muskatnuss ganz 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (155)"}}]	135	10
+1021	2020-09-01 09:53:47.802039+02	155	Muskatnuss ganz 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1022	2020-09-01 11:23:23.956116+02	156	Nelken 25g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (156)"}}]	135	10
+1023	2020-09-01 14:56:48.813248+02	157	Pfeffer weiß 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (157)"}}]	135	10
+1024	2020-09-01 14:57:39.921594+02	157	Pfeffer weiß 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1025	2020-09-01 15:03:56.327595+02	158	Pfeffer weiß gemahlen 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (158)"}}]	135	10
+1026	2020-09-01 15:46:03.081601+02	159	Pfeffer schwarz 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (159)"}}]	135	10
+1027	2020-09-01 15:50:02.292536+02	160	Pfeffer schwarz gemahlen 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (160)"}}]	135	10
+1028	2020-09-01 16:20:33.018193+02	161	Ceylon Zimt 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (161)"}}]	135	10
+1029	2020-09-01 16:28:47.74652+02	162	Ceylon Zimtrinde 25g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (162)"}}]	135	10
+1030	2020-09-01 16:33:25.749285+02	163	Muskatnuss 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (163)"}}]	135	10
+1031	2020-09-01 16:34:46.984901+02	163	Muskatnuss gemahlen 30g	2	[{"changed": {"fields": ["Product Name", "Short Description", "Description", "Ingredients"]}}]	135	10
+1032	2020-09-01 16:35:03.238475+02	155	Muskatnuss 30g	2	[{"changed": {"fields": ["Product Name", "Short Description", "Description", "Ingredients"]}}]	135	10
+1033	2020-09-01 16:38:48.208743+02	164	Nelken gemahlen 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (164)"}}]	135	10
+1034	2020-09-01 16:39:57.22714+02	164	Nelken gemahlen 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1035	2020-09-01 16:59:14.761601+02	165	Ingwer gemahlen 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (165)"}}]	135	10
+1036	2020-09-01 17:00:00.232589+02	165	Ingwer gemahlen 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1037	2020-09-01 17:00:19.382365+02	165	Ingwer gemahlen 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1038	2020-09-01 17:00:42.003224+02	165	Ingwer gemahlen 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1039	2020-09-01 17:01:27.167365+02	165	Ingwer gemahlen 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1040	2020-09-02 09:34:05.101014+02	166	Kurkuma (Gelbwurz) 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (166)"}}]	135	10
+1041	2020-09-02 09:34:31.41608+02	166	Kurkuma (Gelbwurz) 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1042	2020-09-02 10:13:08.230631+02	167	Muskatblüte 15g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (167)"}}]	135	10
+1043	2020-09-02 10:14:42.806935+02	167	Muskatblüte 15g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1044	2020-09-02 10:54:52.65562+02	168	Curryblätter 5g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (168)"}}]	135	10
+1045	2020-09-02 14:54:58.673239+02	169	Sternanis 25g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (169)"}}]	135	10
+1046	2020-09-02 15:51:17.088353+02	170	Bratkartoffelgewürz 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (170)"}}]	135	10
+1047	2020-09-03 11:00:21.098362+02	170	Bratkartoffelgewürz 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1048	2020-09-03 11:49:13.542913+02	171	Kräuter-Gemüsesuppe 250g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (171)"}}]	135	10
+1049	2020-09-03 11:49:54.709227+02	171	Kräuter-Gemüsesuppe 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1050	2020-09-03 11:50:40.893991+02	171	Kräuter-Gemüsesuppe 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1051	2020-09-03 11:51:27.356128+02	171	Kräuter-Gemüsesuppe 250g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1052	2020-09-03 13:55:44.724535+02	172	Salatgewürz 25g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (172)"}}]	135	10
+1053	2020-09-03 14:35:51.064499+02	172	Salatgewürz 25g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1054	2020-09-03 18:47:52.333422+02	173	Curry mild 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (173)"}}]	135	10
 \.
 
 
@@ -7195,9 +7398,10 @@ ehl0uc29cwwbc9veigup0vst3hizcpdo	YTU5MjNlNWFjOWIzOTM5YWY0ZWU4MjU4ZjE5NmQxMWM2ZGN
 gnh4he5cptb8uamfzvcogzf8k3kxtvmd	MTkyOWFmZTNjYTU1MTAwY2VhZjgwMzUzOGYxNTE2MmZkZDQ4Y2Q1NDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlLCJ3aXphcmRfd2l6YXJkX2NyZWF0ZV92aWV3Ijp7InN0ZXAiOiIwIiwic3RlcF9kYXRhIjp7fSwic3RlcF9maWxlcyI6e30sImV4dHJhX2RhdGEiOnt9fX0=	2020-07-15 22:23:29.415802+02
 h3wx0i70osbi24wnppfophpxaacx0682	YzgzNDk5ZjFkZjM2OGQzZjI0MGQ2Y2UzYzhjYTVjNzg4NjQzYzA2ZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZX0=	2020-07-16 15:30:48.226576+02
 8rtm5clg2vd50ox4boo7c2k543vdm4iw	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-08-09 20:22:42.456243+02
-wmhwxc7eu7jyc90zj4u3qe4u89oqinj7	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-09-08 20:05:16.830515+02
+0omqjkorscsojyxtr5ukgte6hf5ehjjt	YmMyODQ2ZDU1ZGFiYjk5MmFmZWM0NzNiNzJmZGQ5NDJlM2ZmMzQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-09-17 21:13:05.799282+02
 anu946dojvcgkp6oei3a2zxv3v0sw1ir	OWIxZmRhZmQ0YzBmY2IyZjk2YjNkZjcyMmI1MzU5ZTc4MzNmYzlhNTp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-08-09 20:21:18.671512+02
 eewqt3vvdwlb18iy02i07ussbbxqpi6o	YjZjMzg1NmM3MmQ4ODg5ZDNhMzAzMmFiZWYzYWQzNjcxZTkyNTc1YTp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOmZhbHNlLCJmaWxlcl9sYXN0X2ZvbGRlcl9pZCI6IjEyIn0=	2020-09-08 22:12:58.403279+02
+wmhwxc7eu7jyc90zj4u3qe4u89oqinj7	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-09-17 18:48:13.184978+02
 \.
 
 
@@ -7245,6 +7449,12 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 1128	<p>Ich habe die <cms-plugin alt="Link - AGBs " title="Link - AGBs" id="1129"></cms-plugin> gelesen und verstanden.</p>
 1178	<h1 style="text-align: center;">Willkommen auf unserer Homepage</h1>
 1212	<h2>Our Catalog List View</h2>\n
+1297	<h1>Faircafé</h1>\n\n<p>Bei uns können Sie frisch gebraute Kaffeeköstlichkeiten sowie verschiedene Teesorten und Säfte genießen. Gerne servieren wir Ihnen dazu auch köstliche Kekse zum fairnaschen. Sie können sowohl drinnen in unserer gemütlichen Sitzecke oder am Stehtisch, als auch draußen auf unseren Sitzgelegenheiten in der ruhigen Passage Ihre faire Tasse genießen. Zudem finden Sie in unserer Sitzecke täglich die neuesten Zeitungen und zahlreiche Kinderbücher für Ihre lieben Kleinen. Für ganz Eilige gibt es natürlich auch immer einen Coffee to Go im Recycling Papierbecher.</p>\n\n<p>Wir freuen uns sehr darauf, Sie in unserem Geschäft und Faircafé begrüßen zu dürfen!</p>
+1308	<h1>Verein Global Balance</h1>\n\n<p>Der Verein Balance Global ist der Trägerverein des Weltladens in Baden. Der Zweck ergibt sich aus dem §2 der Vereinsstatuten wie folgt: „Zweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen.</p>\n\n<p>Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.“ Die Obfrau des Vereins ist zur Zeit Jutta Enzersdorfer.</p>\n\n<p>Der Vereinsvorstand entwickelt laufend Projekte zum Thema Öffentlichkeitsarbeit, organisiert Veranstaltungen und unterstützt das Ladenteam. Unsere kontinuierliche Bildungsarbeit richtet sich sowohl an Kinder und Jugendliche an Badener Schulen als auch an die breite Öffentlichkeit. Daraus ergibt sich eine enge Zusammenarbeit mit der Klimabündnis- und Fair Trade Gemeinde Baden.</p>
+1301	<h1>Faircafé</h1>\n\n<p>Bei uns können Sie frisch gebraute Kaffeeköstlichkeiten sowie verschiedene Teesorten und Säfte genießen. Gerne servieren wir Ihnen dazu auch köstliche Kekse zum fairnaschen. Sie können sowohl drinnen in unserer gemütlichen Sitzecke oder am Stehtisch, als auch draußen auf unseren Sitzgelegenheiten in der ruhigen Passage Ihre faire Tasse genießen. Zudem finden Sie in unserer Sitzecke täglich die neuesten Zeitungen und zahlreiche Kinderbücher für Ihre lieben Kleinen. Für ganz Eilige gibt es natürlich auch immer einen Coffee to Go im Recycling Papierbecher.</p>\n\n<p>Wir freuen uns sehr darauf, Sie in unserem Geschäft und Faircafé begrüßen zu dürfen!</p>
+1320	<h1>Verein Global Balance</h1>\n\n<p>Der Verein Balance Global ist der Trägerverein des Weltladens in Baden. Der Zweck ergibt sich aus dem §2 der Vereinsstatuten wie folgt: „Zweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen.</p>\n\n<p>Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.“ Die Obfrau des Vereins ist zur Zeit Jutta Enzersdorfer.</p>\n\n<p>Der Vereinsvorstand entwickelt laufend Projekte zum Thema Öffentlichkeitsarbeit, organisiert Veranstaltungen und unterstützt das Ladenteam. Unsere kontinuierliche Bildungsarbeit richtet sich sowohl an Kinder und Jugendliche an Badener Schulen als auch an die breite Öffentlichkeit. Daraus ergibt sich eine enge Zusammenarbeit mit der Klimabündnis- und Fair Trade Gemeinde Baden.</p>
+1281	<h1>Weltladen Baden</h1>\n\n<p>Seit dem Jahre 1988 gibt es unseren Weltladen in Baden – Ihr Fachgeschäft für den fairen Handel. Im November 2005 übersiedelten wir ins Zentrum der Stadt an unseren aktuellen Standort am Hauptplatz 9 – 12. Unser Sortiment umfasst ein ausgewähltes Angebot an biologischen, fair gehandelten und regionalen Produkten. Unsere Mitarbeiter*innen beraten Sie gerne und bieten auch Hintergrundinformationen zu den sozialen &amp; nachhaltigen Projekten unserer Produkte. Entdecken Sie bei einer köstlichen Tasse Kaffee in unserem integrierten FAIRCAFÉ unsere Auswahl an Fairtrade Produkten. Gerne können Sie auch länger mit Ihren Lieben in unserer Sitzecke verweilen und den Fairen Handel für sich entdecken.</p>\n\n<h3>Sortiment</h3>\n\n<ul>\n\t<li>Biologische, faire und regionale Lebensmittel</li>\n\t<li>Vegane Bio-Kosmetik aus Salzburg</li>\n\t<li>Bad- &amp; Pflegeprodukte</li>\n\t<li>Keramik- Holz- &amp; Glasartikeln</li>\n\t<li>Wohndekor für drinnen &amp; draußen</li>\n\t<li>Frauen- &amp; Männerbekleidung GOTS zertifiziert</li>\n\t<li>Modeaccessoires wie Schmuck und Schals</li>\n\t<li>Lederwaren, Ökoledertaschen und Geldbörsen</li>\n\t<li>Kinder- &amp; Babymode</li>\n\t<li>Spielzeug</li>\n\t<li>Musikinstrumente</li>\n\t<li>Papier- &amp; Geschenkutensilien</li>\n\t<li>Bücher &amp; CDs</li>\n</ul>\n\n<p><strong>Tipp: Wenn Sie unsere Arbeit über Ihren Einkauf hinaus unterstützen wollen, dann können Sie dies jederzeit gerne als Mitglied unseres Trägervereins Balance Global und/oder als ehrenamtliche Mitarbeiter*in im Weltladen tun. Schreiben Sie uns einfach eine E-Mail an <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a> oder rufen Sie an unter <a rel="noreferrer" target="_blank">+43 2252 45236</a>. Weitere Informationen zu unserem Trägerverein finden Sie weiter unten.</strong></p>
+1324	<h1>Weltladen Baden</h1>\n\n<p>Seit dem Jahre 1988 gibt es unseren Weltladen in Baden – Ihr Fachgeschäft für den fairen Handel. Im November 2005 übersiedelten wir ins Zentrum der Stadt an unseren aktuellen Standort am Hauptplatz 9 – 12. Unser Sortiment umfasst ein ausgewähltes Angebot an biologischen, fair gehandelten und regionalen Produkten. Unsere Mitarbeiter*innen beraten Sie gerne und bieten auch Hintergrundinformationen zu den sozialen &amp; nachhaltigen Projekten unserer Produkte. Entdecken Sie bei einer köstlichen Tasse Kaffee in unserem integrierten FAIRCAFÉ unsere Auswahl an Fairtrade Produkten. Gerne können Sie auch länger mit Ihren Lieben in unserer Sitzecke verweilen und den Fairen Handel für sich entdecken.</p>\n\n<h3>Sortiment</h3>\n\n<ul>\n\t<li>Biologische, faire und regionale Lebensmittel</li>\n\t<li>Vegane Bio-Kosmetik aus Salzburg</li>\n\t<li>Bad- &amp; Pflegeprodukte</li>\n\t<li>Keramik- Holz- &amp; Glasartikeln</li>\n\t<li>Wohndekor für drinnen &amp; draußen</li>\n\t<li>Frauen- &amp; Männerbekleidung GOTS zertifiziert</li>\n\t<li>Modeaccessoires wie Schmuck und Schals</li>\n\t<li>Lederwaren, Ökoledertaschen und Geldbörsen</li>\n\t<li>Kinder- &amp; Babymode</li>\n\t<li>Spielzeug</li>\n\t<li>Musikinstrumente</li>\n\t<li>Papier- &amp; Geschenkutensilien</li>\n\t<li>Bücher &amp; CDs</li>\n</ul>\n\n<p><strong>Tipp: Wenn Sie unsere Arbeit über Ihren Einkauf hinaus unterstützen wollen, dann können Sie dies jederzeit gerne als Mitglied unseres Trägervereins Balance Global und/oder als ehrenamtliche Mitarbeiter*in im Weltladen tun. Schreiben Sie uns einfach eine E-Mail an <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a> oder rufen Sie an unter <a rel="noreferrer" target="_blank">+43 2252 45236</a>. Weitere Informationen zu unserem Trägerverein finden Sie weiter unten.</strong></p>
 \.
 
 
@@ -7284,7 +7494,6 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 32	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b9/e9/b9e94fba-0409-42a6-be23-391336676b9f/90712.jpg	2020-05-18 10:51:39.095418+02
 35	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d3/1a/d31a1b01-2f94-4d88-bc36-d66650f2d37b/90332.jpg	2020-05-06 15:12:42.591626+02
 56	f9bde26a1556cd667f742bd34ec7c55e	filer_public/43/4d/434d790f-909b-4b34-a369-f4ed27fcf7c5/87077.jpg	2020-05-20 15:45:08.557504+02
-31	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5a/dd/5addddb5-3729-434c-9e0b-3d8e092a5934/90733.jpg	2020-05-06 11:55:40.404451+02
 45	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a6/af/a6afc2a5-44b6-4bf0-a523-bf9e918f11f8/forest_stewardship_council_logo.jpg	2020-05-06 17:08:58.740298+02
 37	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f1/73/f1738d0d-ad9b-4e52-81ec-1c39e9321be0/81033.jpg	2020-05-20 15:29:30.816818+02
 27	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5d/e6/5de6de3d-20b8-49b6-b063-d7d2e412b1b8/90555.jpg	2020-05-06 14:02:42.967805+02
@@ -7309,6 +7518,7 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 6	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bf/f9/bff9e48e-b1a5-4f51-b450-cca5e5dfdd7d/83010.jpg	2020-05-30 18:54:58.518851+02
 88	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8f/f9/8ff98646-b315-418a-8434-443aae80829e/97225.jpg	2020-05-28 14:03:24.008736+02
 83	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ce/e2/cee2c3b3-b217-45b6-a1ed-77a16b99699b/97388.jpg	2020-05-26 11:40:59.876952+02
+31	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5a/dd/5addddb5-3729-434c-9e0b-3d8e092a5934/90733.jpg	2020-08-26 15:55:06.904074+02
 69	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e7/9f/e79f91df-4f4d-412c-b617-c0769b85ba71/97198.jpg	2020-05-16 22:19:44.772584+02
 59	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4d/37/4d37cd10-0e80-47be-b147-26449480a022/84142.jpg	2020-05-07 16:07:42.171961+02
 77	f9bde26a1556cd667f742bd34ec7c55e	filer_public/95/75/9575169a-273f-47ad-b2d5-b7720e4e1669/97322.jpg	2020-05-25 15:03:27.907188+02
@@ -7367,8 +7577,10 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 115	f9bde26a1556cd667f742bd34ec7c55e	filer_public/89/74/8974954a-bc91-4d7e-b9a2-17ddc00da7fa/97572.jpg	2020-08-20 11:38:14.724909+02
 126	f9bde26a1556cd667f742bd34ec7c55e	filer_public/90/54/90545b12-c71b-40cb-9bb1-0e019942c55c/97020.jpg	2020-08-24 11:13:53.007413+02
 116	f9bde26a1556cd667f742bd34ec7c55e	filer_public/86/fb/86fb9343-ca5f-4039-90c3-1bb2332d7198/97588.jpg	2020-08-20 11:54:38.904587+02
-127	f9bde26a1556cd667f742bd34ec7c55e	filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg	2020-08-24 11:24:18.947036+02
+160	f9bde26a1556cd667f742bd34ec7c55e	filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg	2020-08-28 15:46:57.435965+02
+159	f9bde26a1556cd667f742bd34ec7c55e	filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg	2020-08-28 11:22:35.870505+02
 117	f9bde26a1556cd667f742bd34ec7c55e	filer_public/92/a0/92a0928a-9bcd-4df1-bbe4-8443d4de87f1/97708.jpg	2020-08-20 16:11:40.213332+02
+147	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg	2020-08-26 11:25:14.665008+02
 142	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg	2020-08-25 19:28:50.597133+02
 128	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b3/9b/b39b2264-c1a2-4c9e-a61c-97e193c92d97/99111.jpg	2020-08-24 11:43:02.528717+02
 118	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f9/5e/f95e7837-91bf-42b7-9d03-15bc40be567f/97717.jpg	2020-08-20 16:28:03.470982+02
@@ -7376,10 +7588,12 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 119	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4c/24/4c24f89f-a2dd-4fb3-b79f-b58bf4596f64/97723.jpg	2020-08-20 17:13:11.364934+02
 129	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d5/c3/d5c300f9-eb11-4683-a1a7-da0ac4ff3e33/99168.jpg	2020-08-24 16:14:02.601982+02
 120	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f3/29/f3297c73-7cd6-4a58-89e8-d5839f774d21/97746.jpg	2020-08-20 17:24:16.558875+02
+156	f9bde26a1556cd667f742bd34ec7c55e	filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg	2020-08-28 09:40:53.612765+02
 137	f9bde26a1556cd667f742bd34ec7c55e	filer_public/40/43/4043d8fb-132a-4a71-a4fe-ac4fedbd9d7f/97423.jpg	2020-08-25 15:43:23.941854+02
 121	f9bde26a1556cd667f742bd34ec7c55e	filer_public/3b/ec/3becc5dc-57b2-40b8-9bcb-5340f898738c/97541.jpg	2020-08-21 10:52:01.593835+02
 130	f9bde26a1556cd667f742bd34ec7c55e	filer_public/51/8b/518b242b-8d0e-4485-94c1-c95d51afcfbe/99142.jpg	2020-08-24 17:27:21.465864+02
 122	f9bde26a1556cd667f742bd34ec7c55e	filer_public/28/46/284651e9-fba7-4241-b64e-f7e5daa26b74/97545.jpg	2020-08-21 11:22:15.73506+02
+151	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg	2020-08-26 19:11:39.742187+02
 143	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg	2020-08-25 19:43:11.712975+02
 131	f9bde26a1556cd667f742bd34ec7c55e	filer_public/65/f4/65f4cbae-e5e7-4af6-bf34-95f67c629dc0/99152.jpg	2020-08-24 19:19:11.009011+02
 123	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bf/b9/bfb933fd-31df-4090-a698-375ffd307d5b/97011.jpg	2020-08-21 16:26:39.923806+02
@@ -7392,9 +7606,44 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 144	f9bde26a1556cd667f742bd34ec7c55e	filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png	2020-08-25 22:11:44.313298+02
 139	f9bde26a1556cd667f742bd34ec7c55e	filer_public/b7/3a/b73a8c0b-1feb-4562-9e72-8a0ee6d60994/97443.jpg	2020-08-25 16:40:08.504345+02
 133	f9bde26a1556cd667f742bd34ec7c55e	filer_public/68/48/6848971b-9784-4202-870d-47fd0fded97b/8911925_neu.jpg	2020-08-24 20:59:54.289445+02
+127	f9bde26a1556cd667f742bd34ec7c55e	filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg	2020-08-26 09:21:24.375566+02
 135	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ab/e9/abe9fe5a-a74d-4db8-9130-4b54aea83cb1/99179.jpg	2020-08-24 21:33:35.044882+02
+148	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg	2020-08-26 15:55:42.528412+02
 140	f9bde26a1556cd667f742bd34ec7c55e	filer_public/cd/4b/cd4bc65b-5b09-4f2c-a47e-b7b3cc210c1a/97451.jpg	2020-08-25 17:32:03.58388+02
+154	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg	2020-08-26 21:21:50.015101+02
+145	f9bde26a1556cd667f742bd34ec7c55e	filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg	2020-08-26 09:40:19.516739+02
 141	f9bde26a1556cd667f742bd34ec7c55e	filer_public/76/ef/76ef4ea2-8847-456a-9267-c3f020c23683/97452.jpg	2020-08-25 17:50:26.958019+02
+149	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg	2020-08-26 17:21:50.508501+02
+146	f9bde26a1556cd667f742bd34ec7c55e	filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg	2020-08-26 10:25:08.228436+02
+152	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg	2020-08-26 21:15:03.191251+02
+158	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg	2020-08-28 10:42:54.826506+02
+150	f9bde26a1556cd667f742bd34ec7c55e	filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg	2020-08-26 18:26:06.731908+02
+155	f9bde26a1556cd667f742bd34ec7c55e	filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg	2020-08-26 21:27:35.743096+02
+153	f9bde26a1556cd667f742bd34ec7c55e	filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg	2020-08-26 21:15:56.619108+02
+157	f9bde26a1556cd667f742bd34ec7c55e	filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg	2020-08-28 10:35:33.437468+02
+161	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg	2020-08-28 16:18:57.324959+02
+162	f9bde26a1556cd667f742bd34ec7c55e	filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg	2020-08-29 08:20:37.561057+02
+163	f9bde26a1556cd667f742bd34ec7c55e	filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg	2020-08-29 08:34:25.565362+02
+164	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg	2020-08-29 09:04:31.483632+02
+165	f9bde26a1556cd667f742bd34ec7c55e	filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg	2020-09-01 09:52:57.06411+02
+166	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg	2020-09-01 11:23:44.389141+02
+167	f9bde26a1556cd667f742bd34ec7c55e	filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg	2020-09-01 14:56:56.718706+02
+168	f9bde26a1556cd667f742bd34ec7c55e	filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg	2020-09-01 15:04:05.658398+02
+169	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg	2020-09-01 15:46:25.774266+02
+170	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg	2020-09-01 15:50:55.486754+02
+181	f9bde26a1556cd667f742bd34ec7c55e	filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg	2020-09-03 11:49:31.600644+02
+171	f9bde26a1556cd667f742bd34ec7c55e	filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg	2020-09-01 16:20:53.855038+02
+172	f9bde26a1556cd667f742bd34ec7c55e	filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg	2020-09-01 16:29:03.047975+02
+182	f9bde26a1556cd667f742bd34ec7c55e	filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg	2020-09-03 14:36:02.094473+02
+173	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg	2020-09-01 16:33:52.973318+02
+174	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg	2020-09-01 16:39:17.134302+02
+183	f9bde26a1556cd667f742bd34ec7c55e	filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg	2020-09-03 18:48:12.370629+02
+175	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg	2020-09-01 16:59:30.958455+02
+176	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg	2020-09-02 09:34:15.671931+02
+177	f9bde26a1556cd667f742bd34ec7c55e	filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg	2020-09-02 10:13:55.276095+02
+178	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg	2020-09-02 10:55:04.582105+02
+179	f9bde26a1556cd667f742bd34ec7c55e	filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg	2020-09-02 14:55:10.690448+02
+180	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg	2020-09-03 10:59:55.451191+02
 \.
 
 
@@ -8659,6 +8908,358 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 1266	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__180x180_q85_crop_subsampling-2_upscale.png	2020-08-25 21:34:58.231607+02	144
 1267	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/0d/450d1b3d-cf82-40e1-80dd-5e86b3923ed4/organic-logo.png__124x200_q85_crop_subsampling-2.png	2020-08-25 21:50:37.335631+02	18
 1268	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png__124x200_q85_subsampling-2.png	2020-08-25 22:11:44.324449+02	144
+1269	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/80/64/8064e492-7ee8-4fba-9c51-352709037cea/gepa_fair_plus_zeichen.jpg__124x200_q85_subsampling-2.jpg	2020-08-26 09:21:24.408235+02	127
+1270	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 09:40:07.933629+02	145
+1271	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 09:40:07.966679+02	145
+1272	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 09:40:07.991016+02	145
+1273	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 09:40:08.01862+02	145
+1274	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 09:40:08.047832+02	145
+1275	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 09:40:08.081068+02	145
+1276	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 09:40:16.13285+02	145
+1277	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 09:40:16.184682+02	145
+1278	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 09:40:19.525069+02	145
+1279	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 10:24:42.623358+02	146
+1280	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 10:24:42.662806+02	146
+1281	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 10:24:42.683747+02	146
+1282	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 10:24:42.705001+02	146
+1283	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 10:24:42.733974+02	146
+1284	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 10:24:42.764196+02	146
+1285	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 10:25:02.68491+02	146
+1286	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 10:25:02.735199+02	146
+1287	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 10:25:08.236686+02	146
+1288	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 11:25:00.237135+02	147
+1289	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 11:25:00.273742+02	147
+1290	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 11:25:00.299822+02	147
+1291	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 11:25:00.321111+02	147
+1292	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 11:25:00.349927+02	147
+1293	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 11:25:00.381828+02	147
+1294	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 11:25:09.84708+02	147
+1295	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 11:25:09.901429+02	147
+1296	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 11:25:14.673402+02	147
+1297	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 15:54:54.749413+02	148
+1298	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 15:54:54.783897+02	148
+1299	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 15:54:54.815747+02	148
+1300	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 15:54:54.84534+02	148
+1301	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 15:54:54.871169+02	148
+1302	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 15:54:54.901095+02	148
+1303	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/dd/5addddb5-3729-434c-9e0b-3d8e092a5934/90733.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 15:55:06.912322+02	31
+1304	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 15:55:29.597839+02	148
+1305	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 15:55:29.656889+02	148
+1306	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 15:55:42.536776+02	148
+1307	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 17:20:47.203309+02	149
+1308	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 17:20:47.243708+02	149
+1309	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 17:20:47.2653+02	149
+1310	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 17:20:47.287025+02	149
+1311	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 17:20:47.315271+02	149
+1312	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 17:20:47.346219+02	149
+1313	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 17:21:44.745728+02	149
+1314	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 17:21:44.802077+02	149
+1315	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 17:21:50.517489+02	149
+1316	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 18:25:46.62268+02	150
+1317	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 18:25:46.661023+02	150
+1318	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 18:25:46.685758+02	150
+1319	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 18:25:46.70976+02	150
+1320	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 18:25:46.736763+02	150
+1321	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 18:25:46.765891+02	150
+1322	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 18:26:01.803722+02	150
+1323	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 18:26:01.851249+02	150
+1324	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 18:26:06.740313+02	150
+1325	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 19:11:15.618551+02	151
+1326	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 19:11:15.652042+02	151
+1327	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 19:11:15.680563+02	151
+1328	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 19:11:15.710234+02	151
+1329	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 19:11:15.745721+02	151
+1330	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 19:11:15.779751+02	151
+1331	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 19:11:31.717262+02	151
+1332	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 19:11:31.777975+02	151
+1333	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 19:11:39.749966+02	151
+1334	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:07:44.067516+02	152
+1335	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:07:44.148327+02	152
+1336	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:07:44.239092+02	152
+1337	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:07:44.326596+02	152
+1338	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:07:44.421242+02	152
+1339	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:07:44.533275+02	152
+1340	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 21:08:50.863117+02	152
+1341	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 21:08:50.99657+02	152
+1342	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:14:55.48686+02	153
+1343	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:14:55.589696+02	153
+1344	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:14:55.680445+02	153
+1345	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:14:55.771497+02	153
+1346	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:14:55.868313+02	153
+1347	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:14:55.961982+02	153
+1348	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 21:15:03.201504+02	152
+1349	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 21:15:53.894932+02	153
+1350	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 21:15:54.027237+02	153
+1351	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 21:15:56.627225+02	153
+1352	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:21:36.964466+02	154
+1353	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:21:37.0523+02	154
+1354	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:21:37.141831+02	154
+1355	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:21:37.233835+02	154
+1356	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:21:37.326746+02	154
+1357	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:21:37.424912+02	154
+1358	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 21:21:45.039254+02	154
+1359	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 21:21:45.17083+02	154
+1360	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 21:21:50.028033+02	154
+1361	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:26:46.034122+02	155
+1362	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:26:46.123375+02	155
+1363	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:26:46.207216+02	155
+1364	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:26:46.293952+02	155
+1365	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:26:46.379026+02	155
+1366	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-26 21:26:46.479298+02	155
+1367	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-26 21:27:11.38421+02	155
+1368	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-26 21:27:11.517534+02	155
+1369	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-26 21:27:35.751089+02	155
+1370	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-28 09:39:39.124491+02	156
+1371	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-28 09:39:39.157425+02	156
+1372	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-28 09:39:39.18217+02	156
+1373	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-28 09:39:39.220631+02	156
+1374	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-28 09:39:39.249536+02	156
+1375	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-28 09:39:39.275934+02	156
+1376	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-28 09:39:49.445162+02	156
+1377	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-28 09:39:49.50306+02	156
+1378	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-28 09:40:53.620852+02	156
+1379	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:35:21.637219+02	157
+1380	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:35:21.670695+02	157
+1381	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:35:21.696442+02	157
+1382	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:35:21.7232+02	157
+1383	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:35:21.750296+02	157
+1384	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:35:21.779919+02	157
+1385	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-28 10:35:30.064769+02	157
+1386	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-28 10:35:30.118426+02	157
+1387	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-28 10:35:33.446176+02	157
+1388	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:42:17.017536+02	158
+1389	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:42:17.050885+02	158
+1390	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:42:17.077206+02	158
+1391	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:42:17.101865+02	158
+1392	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:42:17.129447+02	158
+1393	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-28 10:42:17.156727+02	158
+1394	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-28 10:42:49.258403+02	158
+1395	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-28 10:42:49.313959+02	158
+1396	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-28 10:42:54.834855+02	158
+1397	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-28 11:21:23.612654+02	159
+1398	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-28 11:21:23.640888+02	159
+1399	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-28 11:21:23.66704+02	159
+1400	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-28 11:21:23.694492+02	159
+1401	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-28 11:21:23.72336+02	159
+1402	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-28 11:21:23.754353+02	159
+1403	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-28 11:21:51.673732+02	159
+1404	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-28 11:21:51.726071+02	159
+1405	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-28 11:22:35.878951+02	159
+1406	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-28 15:46:41.769294+02	160
+1407	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-28 15:46:41.809706+02	160
+1408	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-28 15:46:41.836084+02	160
+1409	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-28 15:46:41.858919+02	160
+1410	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-28 15:46:41.886915+02	160
+1411	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-28 15:46:41.917364+02	160
+1412	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-28 15:46:53.748196+02	160
+1413	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-28 15:46:53.799787+02	160
+1414	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-28 15:46:57.443767+02	160
+1415	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-28 16:18:40.925782+02	161
+1416	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-28 16:18:40.959574+02	161
+1417	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-28 16:18:40.986437+02	161
+1418	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-28 16:18:41.009384+02	161
+1419	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-28 16:18:41.037166+02	161
+1420	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-28 16:18:41.065569+02	161
+1421	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-28 16:18:51.872503+02	161
+1422	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-28 16:18:51.926266+02	161
+1423	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-28 16:18:57.332931+02	161
+1424	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:20:27.218536+02	162
+1425	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:20:27.256911+02	162
+1426	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:20:27.284243+02	162
+1427	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:20:27.320619+02	162
+1428	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:20:27.350157+02	162
+1429	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:20:27.381846+02	162
+1430	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-29 08:20:34.574844+02	162
+1431	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-29 08:20:34.634641+02	162
+1432	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-29 08:20:37.56914+02	162
+1433	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:33:25.733133+02	163
+1434	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:33:25.765806+02	163
+1435	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:33:25.792014+02	163
+1436	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:33:25.81955+02	163
+1437	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:33:25.848209+02	163
+1438	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-29 08:33:25.879047+02	163
+1439	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-29 08:34:22.271282+02	163
+1440	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-29 08:34:22.338646+02	163
+1441	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-29 08:34:25.57371+02	163
+1442	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-08-29 09:04:16.614126+02	164
+1443	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-08-29 09:04:16.641029+02	164
+1444	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-08-29 09:04:16.6659+02	164
+1445	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-08-29 09:04:16.692382+02	164
+1446	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-08-29 09:04:16.724737+02	164
+1447	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-08-29 09:04:16.759005+02	164
+1448	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__244x244_q85_crop_subsampling-2.jpg	2020-08-29 09:04:25.349604+02	164
+1449	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__488x488_q85_crop_subsampling-2.jpg	2020-08-29 09:04:25.40244+02	164
+1450	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg__250x250_q85_crop_subsampling-2.jpg	2020-08-29 09:04:31.491964+02	164
+1451	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 09:52:42.991086+02	165
+1452	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 09:52:43.018403+02	165
+1453	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 09:52:43.048136+02	165
+1454	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 09:52:43.073119+02	165
+1455	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 09:52:43.100824+02	165
+1456	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 09:52:43.134401+02	165
+1457	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 09:52:53.252897+02	165
+1458	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 09:52:53.313214+02	165
+1459	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 09:52:57.071949+02	165
+1460	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 11:23:22.308485+02	166
+1461	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 11:23:22.348684+02	166
+1462	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 11:23:22.372843+02	166
+1463	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 11:23:22.398393+02	166
+1464	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 11:23:22.425154+02	166
+1465	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 11:23:22.454524+02	166
+1466	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 11:23:32.373982+02	166
+1467	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 11:23:32.427759+02	166
+1468	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 11:23:44.397508+02	166
+1469	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 14:56:45.440062+02	167
+1470	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 14:56:45.467078+02	167
+1471	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 14:56:45.489478+02	167
+1472	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 14:56:45.518882+02	167
+1473	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 14:56:45.546442+02	167
+1474	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 14:56:45.573813+02	167
+1475	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 14:56:52.742916+02	167
+1476	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 14:56:52.794219+02	167
+1477	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 14:56:56.727001+02	167
+1478	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:03:52.655945+02	168
+1479	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:03:52.687251+02	168
+1480	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:03:52.712395+02	168
+1481	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:03:52.73843+02	168
+1482	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:03:52.766476+02	168
+1483	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:03:52.797253+02	168
+1484	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 15:04:02.213447+02	168
+1485	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 15:04:02.264662+02	168
+1486	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 15:04:05.666865+02	168
+1487	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:45:58.682983+02	169
+1488	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:45:58.716616+02	169
+1489	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:45:58.74134+02	169
+1490	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:45:58.76833+02	169
+1491	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:45:58.79371+02	169
+1492	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:45:58.824302+02	169
+1493	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 15:46:19.41919+02	169
+1494	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 15:46:19.474495+02	169
+1495	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 15:46:25.782128+02	169
+1496	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:50:00.755679+02	170
+1497	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:50:00.782917+02	170
+1498	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:50:00.808038+02	170
+1499	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:50:00.84039+02	170
+1500	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:50:00.867564+02	170
+1501	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 15:50:00.897459+02	170
+1502	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 15:50:26.706966+02	170
+1503	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 15:50:26.768101+02	170
+1504	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 15:50:55.494571+02	170
+1505	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:20:29.995203+02	171
+1506	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:20:30.021829+02	171
+1507	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:20:30.046833+02	171
+1508	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:20:30.071899+02	171
+1509	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:20:30.099297+02	171
+1510	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:20:30.128712+02	171
+1511	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 16:20:44.236741+02	171
+1512	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 16:20:44.289263+02	171
+1513	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 16:20:53.863097+02	171
+1514	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:28:46.409438+02	172
+1515	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:28:46.43742+02	172
+1516	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:28:46.462501+02	172
+1517	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:28:46.487977+02	172
+1518	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:28:46.514749+02	172
+1519	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:28:46.549529+02	172
+1520	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 16:28:55.11014+02	172
+1521	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 16:28:55.163171+02	172
+1522	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 16:29:03.05584+02	172
+1523	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:33:23.389367+02	173
+1524	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:33:23.421891+02	173
+1525	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:33:23.44282+02	173
+1526	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:33:23.467443+02	173
+1527	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:33:23.495925+02	173
+1528	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:33:23.525489+02	173
+1529	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 16:33:52.929066+02	173
+1530	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 16:33:52.980688+02	173
+1531	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:38:46.670891+02	174
+1532	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:38:46.697621+02	174
+1533	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:38:46.722962+02	174
+1534	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:38:46.744009+02	174
+1535	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:38:46.766551+02	174
+1536	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:38:46.796739+02	174
+1537	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 16:39:09.756429+02	174
+1538	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 16:39:09.804148+02	174
+1539	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 16:39:17.142711+02	174
+1540	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:59:13.019871+02	175
+1541	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:59:13.056878+02	175
+1542	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:59:13.08145+02	175
+1543	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:59:13.106581+02	175
+1544	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:59:13.133986+02	175
+1545	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-01 16:59:13.163284+02	175
+1546	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-01 16:59:28.182983+02	175
+1547	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-01 16:59:28.235035+02	175
+1548	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-01 16:59:30.966944+02	175
+1549	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-02 09:34:03.386304+02	176
+1550	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-02 09:34:03.418075+02	176
+1551	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-02 09:34:03.442908+02	176
+1552	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-02 09:34:03.46842+02	176
+1553	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-02 09:34:03.496759+02	176
+1554	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-02 09:34:03.522157+02	176
+1555	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-02 09:34:10.231361+02	176
+1556	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-02 09:34:10.306205+02	176
+1557	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-02 09:34:15.681173+02	176
+1558	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:13:04.243225+02	177
+1559	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:13:04.283549+02	177
+1560	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:13:04.30831+02	177
+1561	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:13:04.33393+02	177
+1562	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:13:04.360927+02	177
+1563	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:13:04.391283+02	177
+1564	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-02 10:13:37.020284+02	177
+1565	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-02 10:13:37.071737+02	177
+1566	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-02 10:13:55.283843+02	177
+1567	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:54:50.81856+02	178
+1568	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:54:50.852778+02	178
+1569	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:54:50.878505+02	178
+1570	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:54:50.91711+02	178
+1571	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:54:50.944917+02	178
+1572	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-02 10:54:50.969886+02	178
+1573	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-02 10:55:00.873256+02	178
+1574	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-02 10:55:00.924895+02	178
+1575	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-02 10:55:04.590427+02	178
+1576	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-02 14:54:56.908781+02	179
+1577	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-02 14:54:56.950016+02	179
+1578	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-02 14:54:56.977222+02	179
+1579	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-02 14:54:57.004356+02	179
+1580	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-02 14:54:57.03277+02	179
+1581	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-02 14:54:57.063794+02	179
+1582	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-02 14:55:04.456685+02	179
+1583	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-02 14:55:04.51325+02	179
+1584	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-02 14:55:10.698739+02	179
+1585	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-02 15:39:29.612685+02	180
+1586	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-02 15:39:29.653334+02	180
+1587	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-02 15:39:29.679598+02	180
+1588	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-02 15:39:29.706154+02	180
+1589	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-02 15:39:29.734341+02	180
+1590	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-02 15:39:29.764286+02	180
+1591	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-03 10:59:52.911771+02	180
+1592	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-03 10:59:52.976143+02	180
+1593	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-03 10:59:55.459283+02	180
+1594	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-03 11:49:11.030858+02	181
+1595	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-03 11:49:11.068911+02	181
+1596	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-03 11:49:11.09671+02	181
+1597	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-03 11:49:11.124717+02	181
+1598	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-03 11:49:11.153782+02	181
+1599	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-03 11:49:11.185375+02	181
+1600	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-03 11:49:27.002409+02	181
+1601	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-03 11:49:27.058259+02	181
+1602	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-03 11:49:31.608573+02	181
+1603	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-03 13:55:42.798242+02	182
+1604	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-03 13:55:42.833985+02	182
+1605	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-03 13:55:42.856142+02	182
+1606	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-03 13:55:42.87854+02	182
+1607	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-03 13:55:42.92589+02	182
+1608	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-03 13:55:42.95716+02	182
+1609	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-03 14:35:57.753245+02	182
+1610	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-03 14:35:57.807621+02	182
+1611	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-03 14:36:02.102846+02	182
+1612	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-03 18:47:47.950388+02	183
+1613	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-03 18:47:47.989063+02	183
+1614	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-03 18:47:48.012381+02	183
+1615	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-03 18:47:48.056859+02	183
+1616	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-03 18:47:48.081523+02	183
+1617	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-03 18:47:48.112283+02	183
+1618	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-03 18:48:07.471257+02	183
+1619	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-03 18:48:07.525158+02	183
+1620	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-03 18:48:12.378764+02	183
 \.
 
 
@@ -8838,6 +9439,45 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 339	filer_public/c9/28/c92842f7-4570-482c-962c-acf61d5391f0/97757.jpg	303282	676e36675504f5d024a4234681e45008ebfd2432	f	97757.jpg		\N	2020-08-25 19:28:30.81291+02	2020-08-25 19:28:30.812958+02	t	\N	10	106
 340	filer_public/bc/95/bc95617c-d6aa-4b62-8da9-16e88e407479/97760.jpg	348465	db98717cda04e18cddd15be1a7046dd491fd3038	f	97760.jpg		\N	2020-08-25 19:42:48.333614+02	2020-08-25 19:42:48.333635+02	t	\N	10	106
 341	filer_public/65/a8/65a8054a-8c45-4c98-9be6-e8e862b7517d/fairtrade_logo.png	4667	7c99f7456ee71d34d48e131457271187401efaa0	f	fairtrade_logo.png		\N	2020-08-25 21:34:58.108935+02	2020-08-25 21:34:58.108954+02	t	12	4	106
+342	filer_public/81/34/81347798-a2e7-4b97-b637-32c030d45d8f/97762.jpg	289216	bd675283e386d3dd256ddceeb7e2c352a214deaf	f	97762.jpg		\N	2020-08-26 09:40:07.899839+02	2020-08-26 09:40:07.899867+02	t	\N	10	106
+343	filer_public/24/09/24094a47-46d2-46d6-ba4c-8a7a3b7ac05d/97765.jpg	170982	753c9c9c5478f2f329d84fccc33be465b0ef5062	f	97765.jpg		\N	2020-08-26 10:24:42.597094+02	2020-08-26 10:24:42.597124+02	t	\N	10	106
+344	filer_public/a1/2a/a12ab19f-1010-45ea-93e8-506e88b3db32/95015.jpg	155131	a5606784062f203b992e6990a1f0edaed8e37fc5	f	95015.jpg		\N	2020-08-26 11:25:00.203291+02	2020-08-26 11:25:00.203311+02	t	\N	10	106
+345	filer_public/d6/56/d6560f5c-d0f2-47c3-88cd-7798f639eb12/92333.jpg	399309	d5183c319fb13b47b9e3eea37a99fb840cc10588	f	92333.jpg		\N	2020-08-26 15:54:54.710008+02	2020-08-26 15:54:54.710034+02	t	\N	10	106
+346	filer_public/a7/6f/a76fe8d7-020a-4616-b508-e3707816f6d8/92402.jpg	262320	08b4f4bfa97a01e1caf9619721374942e1fbd4e6	f	92402.jpg		\N	2020-08-26 17:20:47.169561+02	2020-08-26 17:20:47.169579+02	t	\N	10	106
+347	filer_public/19/05/19059a62-ad4b-4c2a-8b95-6bec1bbc19f3/94200.jpg	122954	202cc22fe98e3730a9f48080f50c1d5bcbab6065	f	94200.jpg		\N	2020-08-26 18:25:46.590574+02	2020-08-26 18:25:46.59059+02	t	\N	10	106
+348	filer_public/5f/74/5f741342-83e6-4bcb-9fcd-9d6167118fe4/94222.jpg	279421	bad18509adcf06d0b6780440adf28b2331f1acdc	f	94222.jpg		\N	2020-08-26 19:11:15.586819+02	2020-08-26 19:11:15.586835+02	t	\N	10	106
+349	filer_public/5e/1f/5e1fe633-459b-4222-bdfa-80b1f3a00b77/b6.jpg	711749	4fcc65e0cf788ff2d85861091a1fdb3a52b858ae	f	b6.jpg		\N	2020-08-26 21:07:43.968921+02	2020-08-26 21:07:43.968938+02	t	\N	10	106
+350	filer_public/93/94/93944e5b-19b2-4a83-b86f-27d16037450a/b3.jpg	756955	54ac806c43fa87f727ae496f6a77b1bf3fb2f4be	f	b3.jpg		\N	2020-08-26 21:14:55.39265+02	2020-08-26 21:14:55.392674+02	t	\N	10	106
+351	filer_public/a0/e2/a0e2ccd1-52c1-4fc4-a8ce-e495b6846f94/b9.jpg	879665	28a2c036590043b84165f77be2c5303b493bb64c	f	b9.jpg		\N	2020-08-26 21:21:36.8582+02	2020-08-26 21:21:36.858219+02	t	\N	10	106
+352	filer_public/9c/2b/9c2b550d-1f7c-4e24-b9d9-2892de32239a/kakaohon.jpg	751628	9bd5230fe157ce4f82daa3b2e42e5d4523500d46	f	kakaohon.JPG		\N	2020-08-26 21:26:45.93436+02	2020-08-26 21:26:45.934381+02	t	\N	10	106
+353	filer_public/82/8a/828a98cf-cc6b-443b-890a-1292f6b999bf/88110.jpg	93840	8832ffe8b7416d7e04e77ee204d35608d75f1b1f	f	88110.jpg		\N	2020-08-28 09:39:39.076466+02	2020-08-28 09:39:39.076492+02	t	\N	10	106
+354	filer_public/30/2a/302a9d6a-39bf-4d9a-b235-ab200483c4c9/89506.jpg	226430	1eea76161b31760efa833d6fe99995fadaeecde6	f	89506.jpg		\N	2020-08-28 10:35:21.590387+02	2020-08-28 10:35:21.590412+02	t	\N	10	106
+355	filer_public/a4/8b/a48bba4f-0436-4d86-8f4a-186225c20856/89507.jpg	186946	caf2e5f6f91ba8d0bc345c545adf36ba39177852	f	89507.jpg		\N	2020-08-28 10:42:16.982234+02	2020-08-28 10:42:16.982255+02	t	\N	10	106
+356	filer_public/2d/f2/2df23d7f-ea00-47c3-9ba8-91a142bb4988/89509.jpg	257972	8b74ea9031e11d5cbb143a06f1551e70c295e2de	f	89509.jpg		\N	2020-08-28 11:21:23.581101+02	2020-08-28 11:21:23.581124+02	t	\N	10	106
+357	filer_public/09/fe/09fedb96-8233-49e6-b486-b08724d84542/89510.jpg	225981	51a878993f39b20e70a52ee5977383a1674e820a	f	89510.jpg		\N	2020-08-28 15:46:41.736716+02	2020-08-28 15:46:41.736735+02	t	\N	10	106
+358	filer_public/ec/e6/ece6c77b-526d-429a-94d2-a18bc6b7132b/89513.jpg	217869	1ff9209bd1e88d4456e9cda485fe682ed31d435c	f	89513.jpg		\N	2020-08-28 16:18:40.897166+02	2020-08-28 16:18:40.897189+02	t	\N	10	106
+359	filer_public/eb/98/eb981e76-5d29-43a6-8fdc-8a9a5a3511f1/89514.jpg	232331	0c253cca7c90501fe663e8c24b17562a239d8d8d	f	89514.jpg		\N	2020-08-29 08:20:27.165827+02	2020-08-29 08:20:27.165852+02	t	\N	10	106
+360	filer_public/c3/ab/c3ab8b97-2954-404f-b5c2-c311f3d23028/89515.jpg	212553	7fb2fc991252945e4909f469f72d71ab9049ea7d	f	89515.jpg		\N	2020-08-29 08:33:25.695567+02	2020-08-29 08:33:25.695588+02	t	\N	10	106
+361	filer_public/a9/52/a952a5a5-ca2d-4c04-a29a-d18596ec801d/89518.jpg	103881	2d231558ac7d537252235ce7b8aaff30e20b7c68	f	89518.jpg		\N	2020-08-29 09:04:16.58238+02	2020-08-29 09:04:16.582396+02	t	\N	10	106
+362	filer_public/81/cf/81cf059d-e081-4951-8548-4ffea45b70ff/93022.jpg	221145	558f6e5889b32b61a3ccf7aaf8810ff5d6228673	f	93022.jpg		\N	2020-09-01 09:52:42.946088+02	2020-09-01 09:52:42.946109+02	t	\N	10	106
+363	filer_public/4c/38/4c38b4f2-c8cd-4aa8-9457-0733f040f696/93102.jpg	113225	e7769420a27fba87fea924efb21eb12adcd3c39a	f	93102.jpg		\N	2020-09-01 11:23:22.279317+02	2020-09-01 11:23:22.279334+02	t	\N	10	106
+364	filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg	121423	253bd63c4a6df45b9494c1863509c43e0fdde4a4	f	93104.jpg		\N	2020-09-01 14:56:45.407958+02	2020-09-01 14:56:45.407979+02	t	\N	10	106
+365	filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg	114906	8271ddd7f56f520220d1d6721d59ba77215f1603	f	93103.jpg		\N	2020-09-01 15:03:52.62466+02	2020-09-01 15:03:52.624678+02	t	\N	10	106
+366	filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg	225585	e6aa43accdccbe0c16efa525275d5ec58033e050	f	93105.jpg		\N	2020-09-01 15:45:58.651738+02	2020-09-01 15:45:58.651755+02	t	\N	10	106
+367	filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg	123399	1cc458731f5e1f992f0b24f8da67d08b97875952	f	93106.jpg		\N	2020-09-01 15:50:00.71561+02	2020-09-01 15:50:00.715629+02	t	\N	10	106
+368	filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg	112657	3be0575a930baf654f5e9302f1c7428f67ac969b	f	93111.jpg		\N	2020-09-01 16:20:29.96557+02	2020-09-01 16:20:29.965592+02	t	\N	10	106
+369	filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg	113701	262ce660c1647fc93bf4273784ac54916d8a316b	f	93112.jpg		\N	2020-09-01 16:28:46.379226+02	2020-09-01 16:28:46.379249+02	t	\N	10	106
+370	filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg	117976	245856ded8d456d359f9c6e82317d5a509b5da02	f	93263.jpg		\N	2020-09-01 16:33:23.357694+02	2020-09-01 16:33:23.357711+02	t	\N	10	106
+371	filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg	114017	0525b938a9de1beaa79acb258333a440f73a57aa	f	93126.jpg		\N	2020-09-01 16:38:46.641345+02	2020-09-01 16:38:46.641364+02	t	\N	10	106
+372	filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg	97800	be0271c2f3aa896a828658e4cd2ce25523be9953	f	93113.jpg		\N	2020-09-01 16:59:12.991159+02	2020-09-01 16:59:12.991181+02	t	\N	10	106
+373	filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg	111303	873c81ce01cb781950ed80c5daa7b6a5310097f3	f	93117.jpg		\N	2020-09-02 09:34:03.334448+02	2020-09-02 09:34:03.334474+02	t	\N	10	106
+374	filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg	116802	af385794766e56928279e560ad55ca65ba14b00c	f	93130.jpg		\N	2020-09-02 10:13:04.214453+02	2020-09-02 10:13:04.214475+02	t	\N	10	106
+375	filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg	122867	86d89b0dc8c031b0fa3b89715fb7634d551a68cd	f	93278.jpg		\N	2020-09-02 10:54:50.787286+02	2020-09-02 10:54:50.787305+02	t	\N	10	106
+376	filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg	266355	6f71689350cde15aeed2a3a484ac811e84997ff5	f	93223.jpg		\N	2020-09-02 14:54:56.876333+02	2020-09-02 14:54:56.876351+02	t	\N	10	106
+377	filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg	212125	fab9f6abb4c27fbd182704d60732655f2951765e	f	89512.jpg		\N	2020-09-02 15:39:29.582792+02	2020-09-02 15:39:29.58281+02	t	\N	10	106
+378	filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg	235918	3b2c60553719dfef085d0fec98ac1acfb4719ea8	f	89519.jpg		\N	2020-09-03 11:49:10.997487+02	2020-09-03 11:49:10.997511+02	t	\N	10	106
+379	filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg	258625	da4fee80d2f8e1cd698950af504bcefa7568a0d2	f	89602.jpg		\N	2020-09-03 13:55:42.767791+02	2020-09-03 13:55:42.767813+02	t	\N	10	106
+380	filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg	127434	ab09ba2df0b7ba299092b224f00c8e8791ead786	f	93108.jpg		\N	2020-09-03 18:47:47.902713+02	2020-09-03 18:47:47.902735+02	t	\N	10	106
 \.
 
 
@@ -9014,6 +9654,45 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 339	752	662	2020-08-25 19:28:30.806357+02	\N	\N	\N	f	f	
 340	752	662	2020-08-25 19:42:48.32598+02	\N	\N	\N	f	f	
 341	135	135	2020-08-25 21:34:58.10349+02	\N	\N	\N	f	f	
+342	752	662	2020-08-26 09:40:07.865497+02	\N	\N	\N	f	f	
+343	752	662	2020-08-26 10:24:42.563949+02	\N	\N	\N	f	f	
+344	752	662	2020-08-26 11:25:00.198521+02	\N	\N	\N	f	f	
+345	752	662	2020-08-26 15:54:54.702296+02	\N	\N	\N	f	f	
+346	752	662	2020-08-26 17:20:47.164852+02	\N	\N	\N	f	f	
+347	752	662	2020-08-26 18:25:46.586275+02	\N	\N	\N	f	f	
+348	752	662	2020-08-26 19:11:15.582306+02	\N	\N	\N	f	f	
+349	2048	1536	2020-08-26 21:07:43.963026+02	\N	\N	\N	f	f	
+350	2048	1536	2020-08-26 21:14:55.384066+02	\N	\N	\N	f	f	
+351	2048	1536	2020-08-26 21:21:36.847678+02	\N	\N	\N	f	f	
+352	2048	1536	2020-08-26 21:26:45.927938+02	\N	\N	\N	f	f	
+353	752	662	2020-08-28 09:39:39.049447+02	\N	\N	\N	f	f	
+354	752	662	2020-08-28 10:35:21.57652+02	\N	\N	\N	f	f	
+355	752	662	2020-08-28 10:42:16.96917+02	\N	\N	\N	f	f	
+356	752	662	2020-08-28 11:21:23.568801+02	\N	\N	\N	f	f	
+357	752	662	2020-08-28 15:46:41.73151+02	\N	\N	\N	f	f	
+358	752	662	2020-08-28 16:18:40.873084+02	\N	\N	\N	f	f	
+359	752	662	2020-08-29 08:20:27.145597+02	\N	\N	\N	f	f	
+360	752	662	2020-08-29 08:33:25.683356+02	\N	\N	\N	f	f	
+361	752	662	2020-08-29 09:04:16.578134+02	\N	\N	\N	f	f	
+362	752	662	2020-09-01 09:52:42.928828+02	\N	\N	\N	f	f	
+363	752	662	2020-09-01 11:23:22.267035+02	\N	\N	\N	f	f	
+364	752	662	2020-09-01 14:56:45.395128+02	\N	\N	\N	f	f	
+365	752	662	2020-09-01 15:03:52.606621+02	\N	\N	\N	f	f	
+366	752	662	2020-09-01 15:45:58.647374+02	\N	\N	\N	f	f	
+367	752	662	2020-09-01 15:50:00.709878+02	\N	\N	\N	f	f	
+368	752	662	2020-09-01 16:20:29.953507+02	\N	\N	\N	f	f	
+369	752	662	2020-09-01 16:28:46.367169+02	\N	\N	\N	f	f	
+370	752	662	2020-09-01 16:33:23.353217+02	\N	\N	\N	f	f	
+371	752	662	2020-09-01 16:38:46.628399+02	\N	\N	\N	f	f	
+372	752	662	2020-09-01 16:59:12.978786+02	\N	\N	\N	f	f	
+373	752	662	2020-09-02 09:34:03.318656+02	\N	\N	\N	f	f	
+374	752	662	2020-09-02 10:13:04.200925+02	\N	\N	\N	f	f	
+375	752	662	2020-09-02 10:54:50.770533+02	\N	\N	\N	f	f	
+376	752	662	2020-09-02 14:54:56.868296+02	\N	\N	\N	f	f	
+377	752	662	2020-09-02 15:39:29.570662+02	\N	\N	\N	f	f	
+378	752	662	2020-09-03 11:49:10.988686+02	\N	\N	\N	f	f	
+379	752	662	2020-09-03 13:55:42.755127+02	\N	\N	\N	f	f	
+380	752	662	2020-09-03 18:47:47.888438+02	\N	\N	\N	f	f	
 \.
 
 
@@ -9030,7 +9709,8 @@ COPY public.filer_thumbnailoption (id, name, width, height, crop, upscale) FROM 
 --
 
 COPY public.menus_cachekey (id, language, site, key) FROM stdin;
-146	de	1	cms_3.7.4_menu_nodes_de_1_4_user:draft
+168	de	1	cms_3.7.4_menu_nodes_de_1_4_user:public
+169	de	1	cms_3.7.4_menu_nodes_de_1_10_user:draft
 \.
 
 
@@ -10584,7 +11264,6 @@ COPY public.weltladen_manufacturer (id, name) FROM stdin;
 47	El Ceibo
 48	Oro Verde
 49	Acopagro
-2	Indianische Kleinbäuerinnen und -bauern aus Mexico
 50	Apovinces
 51	PT Mega Inovasi Organik
 52	MIFRUTA
@@ -10607,6 +11286,14 @@ COPY public.weltladen_manufacturer (id, name) FROM stdin;
 69	Fruits of the Nile
 70	Kleinproduzent*innen aus Afrika
 71	AgroAndino
+2	Indigene Kleinbäuerinnen und -bauern aus Mexico
+72	Mieles del Sur
+73	Tzeltal Tzotzil
+74	Pueblo Apicola
+75	Coopecañera
+76	ECOOKIM
+77	Imkerei Potz
+78	Österreichische Bergkräutergenossenschaft
 \.
 
 
@@ -10784,6 +11471,45 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 132	1	338	132
 133	1	339	133
 134	1	340	134
+135	1	342	135
+136	1	343	136
+137	1	344	137
+138	1	345	138
+139	1	346	139
+140	1	347	140
+141	1	348	141
+142	1	349	142
+143	1	350	143
+144	1	351	144
+145	1	352	145
+146	1	353	146
+147	1	354	147
+148	1	355	148
+149	1	356	149
+150	1	357	150
+151	1	358	151
+152	1	359	152
+153	1	360	153
+154	1	361	154
+155	1	362	155
+156	1	363	156
+157	1	364	157
+158	1	365	158
+159	1	366	159
+160	1	367	160
+161	1	368	161
+162	1	369	162
+163	1	370	163
+164	1	371	164
+165	1	372	165
+166	1	373	166
+167	1	374	167
+168	1	375	168
+169	1	376	169
+170	1	377	170
+171	1	378	171
+172	1	379	172
+173	1	380	173
 \.
 
 
@@ -11048,6 +11774,84 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 263	67	133
 264	16	134
 265	67	134
+266	16	135
+267	67	135
+268	16	136
+269	67	136
+270	16	137
+271	68	137
+272	16	138
+273	68	138
+274	16	139
+275	68	139
+276	16	140
+277	68	140
+278	16	141
+279	68	141
+280	16	142
+281	68	142
+282	16	143
+283	68	143
+284	16	144
+285	68	144
+286	16	145
+287	68	145
+288	16	146
+289	69	146
+290	16	147
+291	69	147
+292	16	148
+293	69	148
+294	16	149
+295	69	149
+296	16	150
+297	69	150
+298	16	151
+299	69	151
+300	16	152
+301	69	152
+302	16	153
+303	69	153
+304	16	154
+305	69	154
+306	16	155
+307	69	155
+308	16	156
+309	69	156
+310	16	157
+311	69	157
+312	16	158
+313	69	158
+314	16	159
+315	69	159
+316	16	160
+317	69	160
+318	16	161
+319	69	161
+320	16	162
+321	69	162
+322	16	163
+323	69	163
+324	16	164
+325	69	164
+326	16	165
+327	69	165
+328	16	166
+329	69	166
+330	16	167
+331	69	167
+332	16	168
+333	69	168
+334	16	169
+335	69	169
+336	16	170
+337	69	170
+338	16	171
+339	69	171
+340	16	172
+341	69	172
+342	16	173
+343	69	173
 \.
 
 
@@ -11058,8 +11862,8 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 COPY public.weltladen_qualitylabel (id, name, logo_id, ordering) FROM stdin;
 2	Europäisches Biosiegel	215	10
 3	FSC	242	10
-4	GEPA fair plus	324	10
 5	Fairtrade	341	1
+4	GEPA fair plus	324	2
 \.
 
 
@@ -11080,6 +11884,7 @@ COPY public.weltladen_shippingaddress (id, priority, name, postal_code, city, co
 COPY public.weltladen_supplier (id, name) FROM stdin;
 2	EZA Fairer Handel GmbH
 3	GEPA Gesellschaft zur Förderung der Partnerschaft mit der Dritten Welt mbH
+4	Imkerei Potz
 \.
 
 
@@ -11091,8 +11896,8 @@ COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra
 13	0	2020-06-04 20:54:49.255673+02	{}	\N	\N	
 11	1	2020-05-12 22:02:10.818315+02	{}	2	\N	
 12	0	2020-05-31 11:57:40.706449+02	{}	\N	\N	
-4	2	2020-08-25 22:12:57.889262+02	{}	1	+43 676 3239108	mr
-10	2	2020-08-25 20:05:16.682851+02	{}	\N	\N	
+10	2	2020-09-03 18:48:12.493993+02	{}	\N	\N	
+4	2	2020-09-03 21:13:05.689278+02	{}	1	+43 676 3239108	mr
 \.
 
 
@@ -11105,6 +11910,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 67	2020-05-25 13:39:05.007286+02	2020-05-25 13:41:01.037358+02	t	Kaffeekapsel Membran - Espresso	kaffeekapsel-membran-espresso	41	2.990	89806	\N	135	2	t	f	f	f	
 11	2020-05-01 20:53:58.436741+02	2020-05-27 10:35:51.673985+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	10	8.990	83077	2	135	2	t	t	t	t	MX
 20	2020-05-05 15:44:41.117401+02	2020-05-18 10:23:57.121612+02	t	NICA Bohne 1kg	nica-bohne-1kg	20	17.990	82017	17	135	2	t	t	t	t	NI
+169	2020-09-02 14:54:58.660142+02	2020-09-02 14:54:58.660164+02	t	Sternanis 25g	sternanis-25g	168	2.390	93223	37	135	2	f	t	t	t	VN
 101	2020-08-17 19:42:54.614881+02	2020-08-17 19:42:54.614907+02	t	Kaffeelikör Kugeln 100g	kaffeelikor-kugeln-100g	102	3.490	97668	27	135	2	f	f	f	f	DO,MX,NI,PY,PE
 8	2020-05-01 20:31:41.660464+02	2020-05-27 10:32:50.435202+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	7	17.990	83017	2	135	2	t	t	t	t	MX
 9	2020-05-01 20:37:02.640044+02	2020-05-27 10:33:42.260083+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	8	17.990	83022	2	135	2	t	t	t	t	MX
@@ -11145,8 +11951,8 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 58	2020-05-08 15:39:41.911293+02	2020-06-18 10:05:21.962987+02	t	Teenetz groß	teenetz-gross	61	1.800	89811	28	135	2	t	f	f	f	
 116	2020-08-21 16:22:43.507591+02	2020-08-21 16:29:39.584927+02	t	Cashewnüsse 100g	cashewnusse-100g	120	3.290	97011	61	135	2	f	t	t	t	BF
 127	2020-08-25 11:01:53.704155+02	2020-08-25 16:04:21.89268+02	t	Ananas getrocknet 70g	ananas-getrocknet-70g	124	3.290	97415	69	135	2	f	t	t	t	UG
-131	2020-08-25 17:31:51.304124+02	2020-08-25 17:44:17.049171+02	t	Wiffzack Studentenfutter 100g	wiffzack-studentenfutter-100g	128	3.990	97451	70	135	2	t	t	t	t	BF,UG
 85	2020-06-01 01:07:13.694673+02	2020-06-18 10:14:14.957569+02	t	COMPAÑERA Orange 50g	companera-orange-50g	93	1.790	97266	27	135	2	f	f	t	f	BO,DO,EC,PY,PE
+131	2020-08-25 17:31:51.304124+02	2020-08-26 08:59:14.105004+02	t	Wiffzack Studentenfutter 100g	wiffzack-studentenfutter-100g	128	3.990	97451	70	135	2	f	t	t	t	BF,UG
 91	2020-06-18 14:17:08.477095+02	2020-06-18 14:37:14.163231+02	t	Cremeschokolade Milch 100g	cremeschokolade-milch-100g	73	2.190	97165	27	135	2	f	f	t	f	DO,PY
 68	2020-05-25 14:12:10.055323+02	2020-06-18 10:07:15.108708+02	t	MASCAO Vollmilch 100g	mascao-vollmilch-100g	76	2.990	97311	45	135	2	f	f	t	f	BO,DO,PE,PH
 77	2020-05-26 13:24:49.294532+02	2020-06-18 10:11:01.827734+02	t	MASCAO Kuvertüre Noir 200g	mascao-kuverture-noir-200g	85	4.990	97315	27	135	2	f	t	t	t	BO,DO,PY,PE
@@ -11156,7 +11962,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 82	2020-05-28 14:33:00.313556+02	2020-06-18 10:13:14.388286+02	t	COMPAÑERA Ingwer-Zitrone 50g	companera-ingwer-zitrone-50g	90	1.690	97230	27	135	2	f	t	t	t	BO,DO,EC,PY,PE
 24	2020-05-05 19:19:19.574164+02	2020-05-27 13:09:11.40655+02	t	MUNDO Vakuum 500g	mundo-vakuum-500g	24	8.990	90533	13	135	2	t	t	t	t	GT,HN,MX,NI
 25	2020-05-06 11:10:18.653798+02	2020-05-27 13:10:19.097042+02	t	MUNDO ESPRESSO Bohne 500g	mundo-espresso-bohne-500g	25	8.990	90555	13	135	2	t	t	t	t	GT,HN,MX,NI
-29	2020-05-06 11:53:17.235208+02	2020-05-18 10:50:40.156668+02	t	ADELANTE Bohne 250g	adelante-bohne-250g	29	5.490	90733	22	135	2	t	t	t	t	HN,PE
+29	2020-05-06 11:53:17.235208+02	2020-08-26 15:43:28.783957+02	t	ADELANTE Bohne 250g	adelante-bohne-250g	29	5.490	90733	22	135	2	t	t	t	t	HN,PE
 30	2020-05-06 11:55:30.566591+02	2020-05-18 10:51:28.384732+02	t	ADELANTE Bohne 1kg	adelante-bohne-1kg	30	20.990	90712	22	135	2	t	t	t	t	HN,PE
 26	2020-05-06 11:14:13.759445+02	2020-05-27 13:11:01.489272+02	t	MUNDO Bohne 1kg	mundo-bohne-1kg	26	17.990	90527	13	135	2	t	t	t	t	GT,HN,MX,NI
 7	2020-05-01 14:05:09.569673+02	2020-05-27 10:31:16.754135+02	t	ORGANICO Vakuum 250g	organico-vakuum-250g	6	4.990	83010	2	135	2	t	t	t	t	MX
@@ -11166,7 +11972,10 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 34	2020-05-06 15:29:33.732075+02	2020-05-27 13:18:16.89776+02	t	AFRICAFE Löskaffee 100g	africafe-loskaffee-100g	35	6.490	81013	26	135	2	t	t	t	t	TZ
 35	2020-05-06 15:46:34.662559+02	2020-05-27 13:20:22.031983+02	t	LATINO Löskaffee 100g	latino-loskaffee-100g	36	8.990	81033	27	135	2	t	t	t	t	MX,NI
 36	2020-05-06 15:51:41.976545+02	2020-05-27 13:21:36.370514+02	t	LATINO Löskaffee entkoffeiniert 100g	latino-loskaffee-entkoffeiniert-100g	37	8.990	81044	27	135	2	t	t	t	t	MX,NI
+120	2020-08-24 11:42:23.36107+02	2020-08-26 09:22:55.949601+02	t	Barrita Sesamriegel 20g	barrita-sesamriegel-20g	134	0.490	99111	43	135	3	f	t	t	t	PY
+164	2020-09-01 16:38:48.194216+02	2020-09-01 16:39:57.220582+02	t	Nelken gemahlen 30g	nelken-gemahlen-30g	165	2.590	93126	62	135	2	f	t	t	t	LK
 103	2020-08-19 10:11:07.599382+02	2020-08-19 10:13:14.378971+02	t	Bolitos 100g	bolitos-100g	104	3.490	97679	45	135	2	f	f	t	f	BO,DO,NI,PY,PH,TH
+121	2020-08-24 16:13:51.907164+02	2020-08-26 09:26:14.647894+02	t	Multi Power Fruchtriegel 30g	multi-power-fruchtriegel-30g	135	1.690	99168	59	135	3	f	f	t	t	BF,HN,TR
 37	2020-05-06 16:22:40.017131+02	2020-06-18 09:44:58.325003+02	t	Kaffeekapsel Set - milde Röstung	kaffeekapsel-set-milde-rostung	38	9.990	89800	\N	135	2	t	f	f	f	
 51	2020-05-07 15:32:59.067737+02	2020-06-18 10:02:25.211196+02	t	CARCADE Hibiskustee lose 50g	carcade-hibiskustee-lose-50g	54	2.690	84011	34	135	2	t	t	t	t	KE
 52	2020-05-07 15:43:04.802807+02	2020-06-18 10:02:40.469147+02	t	CARCADE CITRONELLA Teebeutel 20x2g	carcade-citronella-teebeutel-20x2g	55	2.890	84022	34	135	2	t	t	t	t	KE
@@ -11177,12 +11986,18 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 62	2020-05-16 22:18:59.634269+02	2020-06-18 10:06:33.946429+02	t	Zuckersticks 1000 x 4g	zuckersticks-1000-x-4g	65	34.100	97198	43	135	2	f	t	t	t	PY
 63	2020-05-17 11:55:17.186328+02	2020-06-18 10:06:52.991239+02	t	50 Schoko-Naps à 4,5g	50-schoko-naps-45g	94	8.990	97299	45	135	2	f	f	t	f	BO,DO,PE,PH
 97	2020-07-02 15:22:07.576397+02	2020-07-26 18:12:44.704303+02	t	Schoko-Paranüsse Noir 100g	schoko-paranusse-noir-100g	98	3.990	97612	45	135	2	f	f	t	t	DO,NI,PY,PE,PH
+172	2020-09-03 13:55:44.710473+02	2020-09-03 14:35:51.057945+02	t	Salatgewürz 25g	salatgewurz-25g	171	3.290	89602	78	135	2	f	t	t	t	AT
 124	2020-08-24 19:36:58.52857+02	2020-08-24 19:36:58.528589+02	t	Spritzgebäck Stangerl 100g	spritzgeback-stangerl-100g	117	2.990	99162	43	135	2	f	f	t	f	PY
+144	2020-08-26 21:21:39.583667+02	2020-08-26 21:22:25.892074+02	t	Cremehonig mit Graumohn 315g	cremehonig-mit-graumohn-315g	138	7.000	002	77	135	4	f	f	t	t	AT
 117	2020-08-21 17:05:39.21902+02	2020-08-21 17:16:29.379007+02	t	Cashewnüsse & Chili 70g	cashewnusse-chili-70g	121	2.990	97013	36	135	2	f	t	t	t	BF,LK
+141	2020-08-26 19:11:19.40138+02	2020-08-26 19:12:59.785865+02	t	Cocoba Aufstrich 400g	cocoba-aufstrich-400g	144	5.490	94222	27	135	2	f	f	t	f	DO,PY
+138	2020-08-26 15:54:56.618313+02	2020-08-26 16:00:18.263041+02	t	Canela Gewürzhonig 250g	canela-gewurzhonig-250g	141	4.390	92333	2	135	2	f	f	t	t	MX
 128	2020-08-25 15:42:44.748865+02	2020-08-25 16:04:00.977371+02	t	Mangos getrocknet 100g	mangos-getrocknet-100g	125	3.290	97423	61	135	2	f	t	t	t	BF
-120	2020-08-24 11:42:23.36107+02	2020-08-24 11:45:02.950352+02	t	Barrita Sesamriegel 20g	barrita-sesamriegel-20g	132	0.490	99111	43	135	3	f	t	t	t	PY
+151	2020-08-28 16:18:43.00902+02	2020-08-28 16:19:39.973075+02	t	Koriander 40g	koriander-40g	150	2.390	89513	78	135	2	f	t	t	t	AT
+154	2020-08-29 09:04:19.786318+02	2020-08-29 09:04:19.78634+02	t	Majoran 20g	majoran-20g	146	2.990	89518	78	135	2	f	t	t	t	AT
+148	2020-08-28 10:42:45.448198+02	2020-08-28 10:42:45.448234+02	t	Kümmel gemahlen 50g	kummel-gemahlen-50g	149	2.990	89507	78	135	2	f	t	t	t	AT
 132	2020-08-25 17:50:12.5769+02	2020-08-25 17:52:02.981431+02	t	Blitzgscheit Studentenfutter 100g	blitzgscheit-studentenfutter-100g	129	3.990	97452	59	135	2	f	t	t	t	BF,PE,LK
-121	2020-08-24 16:13:51.907164+02	2020-08-24 16:14:46.400771+02	t	Multi Power Fruchtriegel 30g	multi-power-fruchtriegel-30g	133	1.690	99168	59	135	3	f	f	t	t	BF,HN,TR
+135	2020-08-26 09:40:09.51173+02	2020-08-26 09:40:09.511757+02	t	Bio-Zoo 100g	bio-zoo-100g	132	1.990	97762	43	135	2	f	f	t	t	PY
 69	2020-05-25 14:47:28.642464+02	2020-06-18 10:07:28.423315+02	t	MASCAO Kokos 100g	mascao-kokos-100g	77	2.990	97313	45	135	2	f	f	t	f	BO,DO,PE,PH
 87	2020-06-11 15:03:15.193618+02	2020-06-18 10:14:41.067537+02	t	SONRISA Kardamom 80g	sonrisa-kardamom-80g	69	2.290	97152	27	135	2	f	f	t	f	BO,DO,PY,PE
 89	2020-06-11 15:21:42.057889+02	2020-06-18 10:15:22.443876+02	t	SONRISA Minze 80g	sonrisa-minze-80g	71	2.290	97175	27	135	2	f	t	t	t	BO,DO,PY,PE
@@ -11192,6 +12007,8 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 76	2020-05-26 11:40:45.927426+02	2020-06-18 10:10:44.107761+02	t	MASCAO Noir 100g	mascao-noir-100g	84	2.990	97388	27	135	2	f	t	t	t	BO,DO,PY,PE
 78	2020-05-26 15:29:42.763982+02	2020-06-18 10:11:20.059216+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	86	1.690	97205	27	135	2	f	f	t	f	BO,DO,PY,PE
 83	2020-05-31 16:56:19.376252+02	2020-06-18 10:13:31.332334+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	91	1.590	97235	45	135	2	f	f	t	f	BO,DO,EC,PY,PE,PH
+136	2020-08-26 10:24:45.449671+02	2020-08-26 10:25:41.584159+02	t	Bio-Geleefrüchte 100g	bio-geleefruchte-100g	133	1.990	97765	43	135	2	f	t	t	t	PY
+142	2020-08-26 21:08:43.902007+02	2020-08-26 21:08:43.902027+02	t	Blütenhonig 960g	blutenhonig-960g	136	12.000	000	77	135	4	f	f	t	t	AT
 104	2020-08-19 17:08:21.624041+02	2020-08-19 17:09:45.304244+02	t	Eierlikörkugeln 100g	eierlikorkugeln-100g	105	3.990	97687	27	135	2	f	f	f	f	DO,PY,PE,ST
 106	2020-08-20 10:07:19.974778+02	2020-08-20 10:07:19.974801+02	t	Fairetta Kokos 45g	fairetta-kokos-45g	107	1.190	97534	45	135	2	f	f	t	f	BO,DO,PY,PE,LK
 107	2020-08-20 11:10:00.660789+02	2020-08-20 11:10:00.660811+02	t	Fairetta Black & White 45g	fairetta-black-white-45g	108	1.190	97566	23	135	2	f	f	t	f	CR,CM
@@ -11199,18 +12016,30 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 105	2020-08-19 18:30:19.347572+02	2020-08-20 11:30:45.354675+02	t	Fairetta Weiß 45g	fairetta-weiss-45g	106	1.190	97525	27	135	2	f	f	f	f	DO,PY,ST
 108	2020-08-20 11:37:55.26125+02	2020-08-20 11:37:55.261273+02	t	Fairetta Honig-Mandel 45g	fairetta-honig-mandel-45g	109	1.190	97572	45	135	2	f	f	t	f	BO,DO,PY,PH,ST
 109	2020-08-20 11:54:18.587058+02	2020-08-20 11:54:18.587079+02	t	Fairetta Quinua 45g	fairetta-quinua-45g	110	1.190	97588	45	135	2	f	f	t	f	BO,DO,PY,PH
+163	2020-09-01 16:33:25.735711+02	2020-09-01 16:34:46.97904+02	t	Muskatnuss gemahlen 30g	muskatnuss-30g	162	2.490	93263	62	135	2	f	t	t	t	LK
 122	2020-08-24 17:27:11.185187+02	2020-08-24 19:32:39.47424+02	t	Butterkekse mit Schokostücken 100g	butterkekse-mit-schokostucken-100g	115	2.990	99142	43	135	2	f	f	f	f	PY
+139	2020-08-26 17:21:41.454224+02	2020-08-26 17:21:41.454246+02	t	Honigtrio 3x125g	honigtrio-3x125g	142	6.990	92402	27	135	2	f	f	t	t	MX,UY
+145	2020-08-26 21:26:46.682413+02	2020-08-26 21:26:46.68252+02	t	Honig mit Kakao 315g	honig-mit-kakao-315g	139	7.000	003	77	135	4	f	f	t	t	AT
 133	2020-08-25 19:28:33.082632+02	2020-08-25 19:37:29.427242+02	t	Bio Bärli 100g	bio-barli-100g	130	1.990	97757	43	135	2	f	f	t	t	PY
+165	2020-09-01 16:59:14.747352+02	2020-09-01 17:01:27.16102+02	t	Ingwer gemahlen 30g	ingwer-gemahlen-30g	159	2.390	93113	33	135	2	f	t	t	t	LK
 118	2020-08-24 09:13:05.983011+02	2020-08-24 09:36:59.03347+02	t	Gebrannte Cashewnüsse 100g	gebrannte-cashewnusse-100g	122	3.990	97055	59	135	2	f	t	t	t	BF,PY,LK
-125	2020-08-24 20:59:22.526422+02	2020-08-24 21:01:08.760241+02	t	Doblito Doppelkeks 85g	doblito-doppelkeks-85g	119	1.590	99170	23	135	3	f	f	f	t	BO,DO,GH,MX,PY,PE
 110	2020-08-20 16:11:27.255808+02	2020-08-20 16:11:27.25583+02	t	Fairetta Creamy Kids 37,5g	fairetta-creamy-kids-375g	111	1.190	97708	59	135	2	f	f	t	f	DO,GH,CO,NI,PY,PE,PH
+168	2020-09-02 10:54:52.642205+02	2020-09-02 10:54:52.642243+02	t	Curryblätter 5g	curryblatter-5g	157	1.390	93278	62	135	2	f	t	t	t	LK
+170	2020-09-02 15:51:17.073972+02	2020-09-03 11:00:21.083076+02	t	Bratkartoffelgewürz 50g	bratkartoffelgewurz-50g	169	3.490	89512	78	135	2	f	t	t	t	AT
+125	2020-08-24 20:59:22.526422+02	2020-08-26 09:21:35.715444+02	t	Doblito Doppelkeks 85g	doblito-doppelkeks-85g	119	1.590	99170	23	135	3	f	f	f	t	BO,DO,GH,MX,PY,PE
+173	2020-09-03 18:47:52.311091+02	2020-09-03 18:47:52.311113+02	t	Curry mild 30g	curry-mild-30g	172	2.390	93108	62	135	2	f	t	t	t	LK
+149	2020-08-28 11:21:26.146638+02	2020-08-28 11:21:26.146661+02	t	Oregano 20g	oregano-20g	145	2.590	89509	78	135	2	f	t	t	t	AT
+152	2020-08-29 08:20:29.298588+02	2020-08-29 08:20:29.298641+02	t	Fenchel 50g	fenchel-50g	151	2.990	89514	78	135	2	f	t	t	t	AT
+147	2020-08-28 10:35:24.00903+02	2020-08-28 10:35:24.009074+02	t	Kümmel 50g	kummel-50g	148	2.890	89506	78	135	2	f	t	t	t	AT
 111	2020-08-20 16:27:46.532024+02	2020-08-20 16:27:46.532047+02	t	Fairetta Creamy Kokos 37,5g	fairetta-creamy-kokos-375g	112	1.190	97717	59	135	2	f	f	t	f	DO,GH,CO,NI,PY,PE,PH,LK
 112	2020-08-20 17:12:53.611831+02	2020-08-20 17:12:53.611855+02	t	Fairetta Creamy Caramel 40g	fairetta-creamy-caramel-40g	113	1.190	97723	45	135	2	f	f	t	f	DO,CO,NI,PY,PE,PH
 113	2020-08-20 17:24:03.110273+02	2020-08-20 17:24:03.110295+02	t	Fairetta Creamy Praline 37,5g	fairetta-creamy-praline-375g	114	1.190	97746	45	135	2	f	f	t	f	DO,CO,NI,PY,PH
 99	2020-07-26 19:05:08.920651+02	2020-07-26 19:07:26.354771+02	t	Schoko-Cashew Noir 100g	schoko-cashew-noir-100g	100	3.990	97634	45	135	2	f	f	t	t	DO,HN,CO,NI,PH
 96	2020-07-02 11:52:13.455677+02	2020-07-02 15:23:55.514287+02	t	Schoko-Kaffeebohnen 100g	schoko-kaffeebohnen-100g	99	3.290	97626	45	135	2	f	f	t	f	DO,CO,MX,NI,PY,PH,ST
 100	2020-07-26 20:18:18.012457+02	2020-07-26 20:19:43.214032+02	t	Joghurt-Cashew 100g	joghurt-cashew-100g	101	3.990	97637	45	135	2	f	f	t	f	DO,HN,CO,NI,PY,PE
+160	2020-09-01 15:50:02.279526+02	2020-09-01 15:50:02.279545+02	t	Pfeffer schwarz gemahlen 30g	pfeffer-schwarz-gemahlen-30g	154	2.390	93106	33	135	2	f	t	t	t	LK
 94	2020-06-19 22:09:30.395646+02	2020-07-02 15:23:17.211419+02	t	Schoko-Rosinen 100g	schoko-rosinen-100g	95	3.290	97601	27	135	2	f	f	t	f	CL,DO,PY,PE
+157	2020-09-01 14:56:48.800372+02	2020-09-01 14:57:39.914252+02	t	Pfeffer weiß 30g	pfeffer-weiss-30g	155	2.690	93104	33	135	2	f	t	t	t	LK
 86	2020-06-11 14:50:15.020673+02	2020-06-18 10:14:29.391821+02	t	SONRISA Mandel 80g	sonrisa-mandel-80g	68	2.190	97142	27	135	2	f	f	t	f	BO,DO,PY,PE
 88	2020-06-11 15:13:43.022226+02	2020-06-18 10:15:01.752778+02	t	SONRISA Noir 80g	sonrisa-noir-80g	70	2.190	97162	27	135	2	f	t	t	t	BO,DO,PY,PE
 115	2020-08-21 11:22:00.533962+02	2020-08-21 11:23:42.946613+02	t	Belgische Nougatmuscheln 100g	belgische-nougatmuscheln-100g	67	6.590	97545	27	135	2	f	f	t	f	PY,PE
@@ -11225,10 +12054,25 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 119	2020-08-24 09:53:30.265742+02	2020-08-24 11:13:40.06726+02	t	Erdnüsse 150g	erdnusse-150g	123	2.190	97020	63	135	2	f	t	t	t	NI
 126	2020-08-24 21:33:26.192884+02	2020-08-24 21:39:35.788411+02	t	Schoko-Orangen Kekse 125g	schoko-orangen-kekse-125g	118	2.990	99179	59	135	2	f	t	f	t	BO,DO,GH,PE,PH
 130	2020-08-25 16:39:56.616825+02	2020-08-25 16:39:56.616846+02	t	Kokosstreifen 70g	kokosstreifen-70g	127	3.590	97443	33	135	2	f	t	t	t	LK
-134	2020-08-25 19:42:53.141272+02	2020-08-25 19:42:53.141293+02	t	Bio Fruchtis 100g	bio-fruchtis-100g	131	1.990	97760	43	135	2	f	f	t	t	PY
+134	2020-08-25 19:42:53.141272+02	2020-08-26 09:35:20.539109+02	t	Bio Fruchtis 100g	bio-fruchtis-100g	131	1.990	97760	43	135	2	f	f	t	t	PY
+143	2020-08-26 21:15:49.478142+02	2020-08-26 21:16:36.910325+02	t	Honig mit Chili 315g	honig-mit-chili-315g	137	7.000	001	77	135	4	f	f	t	t	AT
+137	2020-08-26 11:25:01.957482+02	2020-08-26 11:28:17.34895+02	t	Selva Blütenhonig 500g	selva-blutenhonig-500g	140	6.490	95015	16	135	2	f	f	t	t	GT
+140	2020-08-26 18:25:49.797656+02	2020-08-26 19:14:20.562545+02	t	Equita Schokoaufstrich 400g	equita-schokoaufstrich-400g	143	4.490	94200	23	135	2	f	f	t	f	CR,CI,GH
+167	2020-09-02 10:13:08.215816+02	2020-09-02 10:14:42.799894+02	t	Muskatblüte 15g	muskatblute-15g	163	2.790	93130	62	135	2	f	t	t	t	LK
+155	2020-09-01 09:52:45.106956+02	2020-09-01 16:35:03.232698+02	t	Muskatnuss 30g	muskatnuss-ganz-30g	161	2.490	93022	62	135	2	f	t	t	t	LK
+162	2020-09-01 16:28:47.721251+02	2020-09-01 16:28:47.721274+02	t	Ceylon Zimtrinde 25g	ceylon-zimtrinde-25g	167	2.790	93112	62	135	2	f	t	t	t	LK
+161	2020-09-01 16:20:33.003681+02	2020-09-01 16:20:33.003706+02	t	Ceylon Zimt 30g	ceylon-zimt-30g	166	2.490	93111	62	135	2	f	t	t	t	LK
+156	2020-09-01 11:23:23.942934+02	2020-09-01 11:23:23.942954+02	t	Nelken 25g	nelken-25g	164	2.290	93102	62	135	2	f	t	t	t	LK
 71	2020-05-25 16:01:54.479596+02	2020-06-18 10:09:06.926352+02	t	MASCAO Praliné 100g	mascao-praline-100g	79	3.290	97333	45	135	2	f	f	t	f	BO,DO,PE,PH
 73	2020-05-26 10:49:40.475089+02	2020-06-18 10:09:47.996934+02	t	MASCAO Caramel 100g	mascao-caramel-100g	81	2.990	97350	45	135	2	f	f	t	f	BO,DO,PE,PH
 75	2020-05-26 11:30:07.773077+02	2020-06-18 10:10:27.214871+02	t	MASCAO Rum Trüffel 100g	mascao-rum-truffel-100g	83	3.290	97366	45	135	2	f	f	t	f	BO,DO,PE,PH
+166	2020-09-02 09:34:05.078095+02	2020-09-02 09:34:31.408206+02	t	Kurkuma (Gelbwurz) 30g	kurkuma-gelbwurz-30g	160	2.490	93117	33	135	2	f	t	t	t	LK
+153	2020-08-29 08:33:30.718755+02	2020-08-29 08:35:02.6868+02	t	Paprika edelsüß 50g	paprika-edelsuss-50g	152	4.990	89515	78	135	2	f	t	t	t	AT
+146	2020-08-28 09:39:41.534081+02	2020-08-28 15:54:10.371255+02	t	Zitronengras 20g	zitronengras-20g	158	1.790	88110	33	135	2	f	t	t	t	LK
+150	2020-08-28 15:46:43.886208+02	2020-08-28 15:46:43.886232+02	t	Thymian 25g	thymian-25g	147	2.990	89510	78	135	2	f	t	t	t	AT
+171	2020-09-03 11:49:13.53009+02	2020-09-03 11:51:27.348384+02	t	Kräuter-Gemüsesuppe 250g	krauter-gemusesuppe-250g	170	9.990	89519	78	135	2	f	t	t	t	AT
+159	2020-09-01 15:46:03.067695+02	2020-09-01 15:46:03.067717+02	t	Pfeffer schwarz 30g	pfeffer-schwarz-30g	153	2.290	93105	33	135	2	f	t	t	t	LK
+158	2020-09-01 15:03:56.313729+02	2020-09-01 15:03:56.313753+02	t	Pfeffer weiß gemahlen 30g	pfeffer-weiss-gemahlen-30g	156	2.690	93103	62	135	2	f	t	t	t	LK
 \.
 
 
@@ -11740,6 +12584,16 @@ COPY public.weltladen_weltladenproduct_additional_manufacturers (id, weltladenpr
 501	132	33
 502	132	61
 503	132	71
+504	138	72
+505	138	73
+506	138	68
+507	139	74
+508	139	68
+509	140	75
+510	140	76
+511	140	60
+512	141	40
+513	141	43
 \.
 
 
@@ -11846,7 +12700,6 @@ COPY public.weltladen_weltladenproduct_quality_labels (id, weltladenproduct_id, 
 129	123	2
 130	124	2
 131	126	2
-132	125	2
 133	116	2
 134	117	2
 135	118	2
@@ -11857,8 +12710,6 @@ COPY public.weltladen_weltladenproduct_quality_labels (id, weltladenproduct_id, 
 140	132	2
 141	133	2
 142	134	2
-143	120	2
-144	121	2
 145	7	5
 146	8	5
 147	9	5
@@ -11967,7 +12818,53 @@ COPY public.weltladen_weltladenproduct_quality_labels (id, weltladenproduct_id, 
 250	131	5
 251	133	5
 252	134	5
-253	121	5
+254	125	4
+255	125	2
+256	120	4
+257	120	2
+262	121	4
+263	121	2
+264	135	2
+265	135	5
+266	136	2
+267	136	5
+268	137	2
+269	137	5
+270	138	2
+271	138	5
+272	139	2
+273	139	5
+274	140	5
+275	141	2
+276	141	5
+277	146	2
+278	147	2
+279	148	2
+280	149	2
+281	150	2
+282	151	2
+283	152	2
+284	153	2
+285	154	2
+286	155	2
+287	156	2
+288	157	2
+289	158	2
+290	159	2
+291	160	2
+292	161	2
+293	162	2
+294	163	2
+295	164	2
+296	165	2
+297	166	2
+298	167	2
+299	168	2
+300	169	2
+301	170	2
+302	171	2
+303	172	2
+304	173	2
 \.
 
 
@@ -11988,7 +12885,6 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 23	de	<p>Kaffee Mundo edel</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Edle Mischung aus Mittelamerika</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 3 von 5</li>\n\t<li>Am Gaumen leichte Honignoten, mit Nuancen von Getreide und Nougart, mittlerer Körper, langanhaltender Abgang</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Seinen Ursprung hat der Kaffee Mundo im Bergland Mittelamerikas und Mexikos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kleinbäuerinnen und -bauern des Kaffee Mundo stammen aus unterschiedlichen Teilen Mittelamerikas und Mexikos. Sie haben unterschiedliche Hintergründe, jedoch auch einige Gemeinsamkeiten. Alle sind in Kooperativen zusammengeschlossen um eine gemeinsame, stärkere Stimme zu haben und mitbestimmen zu können. Außerdem profitieren sie durch den Zusammenschluss von technischen Schulungen und Beratungen sowie einer gemeinschaftlichen Verarbeitung und Vermarktung ihres Kaffees.</p>	24	<p><strong>Zutaten:</strong><br>\nKaffee geröstet &amp; gemahlen</p>
 25	de	<p>Kaffee Mundo edel</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Edle Mischung aus Mittelamerika</li>\n\t<li>Milde feinaromatische Wiener Röstung: Stärke 3 von 5</li>\n\t<li>Am Gaumen leichte Honignoten, mit Nuancen von Getreide und Nougart, mittlerer Körper, langanhaltender Abgang</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Seinen Ursprung hat der Kaffee Mundo im Bergland Mittelamerikas und Mexikos. Die Kaffeesträucher wachsen auf einer Höhe von rund 1.500 Metern unter Schattenbäumen, in Verbindung mit einer reichhaltigen Pflanzenwelt. Die Kleinbäuerinnen und -bauern des Kaffee Mundo stammen aus unterschiedlichen Teilen Mittelamerikas und Mexikos. Sie haben unterschiedliche Hintergründe, jedoch auch einige Gemeinsamkeiten. Alle sind in Kooperativen zusammengeschlossen um eine gemeinsame, stärkere Stimme zu haben und mitbestimmen zu können. Außerdem profitieren sie durch den Zusammenschluss von technischen Schulungen und Beratungen sowie einer gemeinschaftlichen Verarbeitung und Vermarktung ihres Kaffees.</p>	26	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
 27	de	<p>Kaffe aus Frauenhand</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Frauenkaffeemischung aus Honduras und Peru</li>\n\t<li>Schonende feinaromatische Italienische Röstung: Stärke 3,5 von 5</li>\n\t<li>Aromen nach schwarzem Tee, Zimt und Jostabeere, sehr langanhaltender Abgang und kräftiger Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzentinnenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>\n\n<p>Kaffee Adelante ist der erste Kaffee aus Frauenhand. Kleinbäuerinnen, die sich für Selbstbestimmung und Geschlechtergerechtigkeit einsetzen, werden dadurch gestärkt.</p>	<p>Der Ursprung des Kaffee Adelante liegt in Honduras und Peru. Das Umland von Marcala ist die Kaffeeanbauregion in Honduras und produziert den international anerkannten Hochlandkaffee, bekannt als „Café de Origen Marcala“. Marcala liegt circa 150 km von der Hauptstadt Tegucigalpa entfernt inmitten der Berge im Departement La Paz auf ungefähr 1.300 m Seehöhe. Mit Kaffeebohnen aus dem Bezirk San Ignacio in der Provinz Cajamarca im Norden Perus kommt es zu einer einzigartigen Mischung. Auf einer Höhe von circa 1.400 m inmitten von Nebelwäldern gedeihen aromareiche Kaffeekirschen. Kaffee Adelante wird von Kleinbäuerinnen bezogen, die die Kontrolle über Produktion und Vermarktung des Bio-Kaffees in die eigene Hand genommen haben. Sie setzen sich dafür ein, dass sie anerkannt werden: als Kaffeeproduzentinnen, als gleichberechtigte Partnerinnen in den Familien und als Bürgerinnen in ihrer Gesellschaft.</p>\n\n<p><strong>Dolores Benitez Espinoza</strong> ist Kaffeebäuerin und Mitglied der Frauenkooperative APROLMA in Honduras, deren Kaffee im Kaffee ADELANTE steckt: „Es geht zunächst darum, den Frauen zu vermitteln, dass die Arbeit, die sie verrichten – im Haushalt oder auf dem Feld – einen Wert hat. Sie müssen sich selbst achten und wertschätzen. Dann braucht es die Bereitstellung und den Erwerb von Wissen, um eine starke Organisation aufzubauen. Aber Engagement im sozialen Bereich reicht nicht. Wir müssen auch eine wirtschaftliche Grundlage schaffen. Wir wollen keine Umkehr des Rollenverständnisses zwischen Mann und Frau. Wir wollen, dass Frauen eine faire Chance bekommen, sich am wirtschaftlichen, politischen und sozialen Leben gleichberechtigt zu beteiligen! Dafür setzen wir uns ein.“</p>	28	<p><strong>Zutaten:</strong><br>\nKaffee geröstet &amp; gemahlen</p>
-28	de	<p>Kaffe aus Frauenhand</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Frauenkaffeemischung aus Honduras und Peru</li>\n\t<li>Schonende feinaromatische Italienische Röstung: Stärke 3,5 von 5</li>\n\t<li>Aromen nach schwarzem Tee, Zimt und Jostabeere, sehr langanhaltender Abgang und kräftiger Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzentinnenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>\n\n<p>Kaffee Adelante ist der erste Kaffee aus Frauenhand. Kleinbäuerinnen, die sich für Selbstbestimmung und Geschlechtergerechtigkeit einsetzen, werden dadurch gestärkt.</p>	<p>Der Ursprung des Kaffee Adelante liegt in Honduras und Peru. Das Umland von Marcala ist die Kaffeeanbauregion in Honduras und produziert den international anerkannten Hochlandkaffee, bekannt als „Café de Origen Marcala“. Marcala liegt circa 150 km von der Hauptstadt Tegucigalpa entfernt inmitten der Berge im Departement La Paz auf ungefähr 1.300 m Seehöhe. Mit Kaffeebohnen aus dem Bezirk San Ignacio in der Provinz Cajamarca im Norden Perus kommt es zu einer einzigartigen Mischung. Auf einer Höhe von circa 1.400 m inmitten von Nebelwäldern gedeihen aromareiche Kaffeekirschen. Kaffee Adelante wird von Kleinbäuerinnen bezogen, die die Kontrolle über Produktion und Vermarktung des Bio-Kaffees in die eigene Hand genommen haben. Sie setzen sich dafür ein, dass sie anerkannt werden: als Kaffeeproduzentinnen, als gleichberechtigte Partnerinnen in den Familien und als Bürgerinnen in ihrer Gesellschaft.<strong>Dolores Benitez Espinoza</strong> ist Kaffeebäuerin und Mitglied der Frauenkooperative APROLMA in Honduras, deren Kaffee im Kaffee ADELANTE steckt: „Es geht zunächst darum, den Frauen zu vermitteln, dass die Arbeit, die sie verrichten – im Haushalt oder auf dem Feld – einen Wert hat. Sie müssen sich selbst achten und wertschätzen. Dann braucht es die Bereitstellung und den Erwerb von Wissen, um eine starke Organisation aufzubauen. Aber Engagement im sozialen Bereich reicht nicht. Wir müssen auch eine wirtschaftliche Grundlage schaffen. Wir wollen keine Umkehr des Rollenverständnisses zwischen Mann und Frau. Wir wollen, dass Frauen eine faire Chance bekommen, sich am wirtschaftlichen, politischen und sozialen Leben gleichberechtigt zu beteiligen! Dafür setzen wir uns ein.“</p>	29	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
 29	de	<p>Kaffe aus Frauenhand</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Frauenkaffeemischung aus Honduras und Peru</li>\n\t<li>Schonende feinaromatische Italienische Röstung: Stärke 3,5 von 5</li>\n\t<li>Aromen nach schwarzem Tee, Zimt und Jostabeere, sehr langanhaltender Abgang und kräftiger Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzentinnenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>\n\n<p>Kaffee Adelante ist der erste Kaffee aus Frauenhand. Kleinbäuerinnen, die sich für Selbstbestimmung und Geschlechtergerechtigkeit einsetzen, werden dadurch gestärkt.</p>	<p>Der Ursprung des Kaffee Adelante liegt in Honduras und Peru. Das Umland von Marcala ist die Kaffeeanbauregion in Honduras und produziert den international anerkannten Hochlandkaffee, bekannt als „Café de Origen Marcala“. Marcala liegt circa 150 km von der Hauptstadt Tegucigalpa entfernt inmitten der Berge im Departement La Paz auf ungefähr 1.300 m Seehöhe. Mit Kaffeebohnen aus dem Bezirk San Ignacio in der Provinz Cajamarca im Norden Perus kommt es zu einer einzigartigen Mischung. Auf einer Höhe von circa 1.400 m inmitten von Nebelwäldern gedeihen aromareiche Kaffeekirschen. Kaffee Adelante wird von Kleinbäuerinnen bezogen, die die Kontrolle über Produktion und Vermarktung des Bio-Kaffees in die eigene Hand genommen haben. Sie setzen sich dafür ein, dass sie anerkannt werden: als Kaffeeproduzentinnen, als gleichberechtigte Partnerinnen in den Familien und als Bürgerinnen in ihrer Gesellschaft.<strong> </strong></p>\n\n<p><strong>Dolores Benitez Espinoza</strong> ist Kaffeebäuerin und Mitglied der Frauenkooperative APROLMA in Honduras, deren Kaffee im Kaffee ADELANTE steckt: „Es geht zunächst darum, den Frauen zu vermitteln, dass die Arbeit, die sie verrichten – im Haushalt oder auf dem Feld – einen Wert hat. Sie müssen sich selbst achten und wertschätzen. Dann braucht es die Bereitstellung und den Erwerb von Wissen, um eine starke Organisation aufzubauen. Aber Engagement im sozialen Bereich reicht nicht. Wir müssen auch eine wirtschaftliche Grundlage schaffen. Wir wollen keine Umkehr des Rollenverständnisses zwischen Mann und Frau. Wir wollen, dass Frauen eine faire Chance bekommen, sich am wirtschaftlichen, politischen und sozialen Leben gleichberechtigt zu beteiligen! Dafür setzen wir uns ein.“</p>	30	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
 31	de	<p>Klimakaffee</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Klimaprämie fördert Wiederaufforstung (Mexiko) &amp; die Errichtung von Holzsparöfen (Uganda)</li>\n\t<li>Klimakaffee aus Mexiko und Uganda</li>\n\t<li>CO2-neutral geröstet: Stärke 3 von 5</li>\n\t<li>Voller Geschmack mit fruchtiger Note und kräftigem Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Der COFFEE FOR FUTURE verbindet biofairen Arabica Hochlandkaffee von Kleinbauerngenossenschaften in Mexiko und Uganda mit zusätzlichen Klimaschutzmaßnahmen, die aus einer EZA-Klimaschutzprämie finanziert werden.</p>\n\n<p>Die Mitglieder der mexikanischen Kleinbauernorganisation SPOSEL kultivieren ihre Kaffeesträucher unter Schattenbäumen, eingebettet in die natürliche Umgebung der Selva Lacandona, einem artenreichen Urwaldgebiet. Die Kleinbauernfamilien stärken die Artenvielfalt durch sorgfältige Pflege ihrer Bio-Kaffeeparzellen und durch Wiederaufforstung. Sie tragen so zum Schutz des sensiblen Ökosystems bei.</p>\n\n<p>Auch die Genossenschaft BOCU aus Uganda am Fuß des Rwenzori-Gebirges setzt sich für einen achtsamen Umgang mit den natürlichen Ressourcen ein. Bio-Landbau ist dafür die Basis. Zusätzlich engagiert sich die Kooperative für den Bau von Holzsparöfen. Das nützt besonders Frauen und Kindern. Zum Kochen wird dadurch deutlich weniger Holz benötigt und es entsteht weniger Rauch. Das ist nicht nur besser fürs Klima, sondern schützt auch die Gesundheit der Keinbauernfamilien.Beide hochwertigen Kaffeesorten ergeben zusammen COFFEE FOR FUTURE: biologisch angebaut, fair gehandelt und von EZA Fairer Handel direkt importiert. Durch die direkte Zusammenarbeit mit EZA Fairer Handel profitieren die Kooperativen von Preisen, die mehr als doppelt so hoch sind wie der aktuelle Weltmarktpreis für Arabica-Hochlandkaffeees.</p>	32	<p><strong>Zutaten:</strong><br>\nKaffee geröstet &amp; gemahlen</p>
 32	de	<p>Klimakaffee</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Klimaprämie fördert Wiederaufforstung (Mexiko) &amp; die Errichtung von Holzsparöfen (Uganda)</li>\n\t<li>Klimakaffee aus Mexiko und Uganda</li>\n\t<li>CO2-neutral geröstet: Stärke 3 von 5</li>\n\t<li>Voller Geschmack mit fruchtiger Note und kräftigem Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzent*innenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>	<p>Der COFFEE FOR FUTURE verbindet biofairen Arabica Hochlandkaffee von Kleinbauerngenossenschaften in Mexiko und Uganda mit zusätzlichen Klimaschutzmaßnahmen, die aus einer EZA-Klimaschutzprämie finanziert werden.</p>\n\n<p>Die Mitglieder der mexikanischen Kleinbauernorganisation SPOSEL kultivieren ihre Kaffeesträucher unter Schattenbäumen, eingebettet in die natürliche Umgebung der Selva Lacandona, einem artenreichen Urwaldgebiet. Die Kleinbauernfamilien stärken die Artenvielfalt durch sorgfältige Pflege ihrer Bio-Kaffeeparzellen und durch Wiederaufforstung. Sie tragen so zum Schutz des sensiblen Ökosystems bei.</p>\n\n<p>Auch die Genossenschaft BOCU aus Uganda am Fuß des Rwenzori-Gebirges setzt sich für einen achtsamen Umgang mit den natürlichen Ressourcen ein. Bio-Landbau ist dafür die Basis. Zusätzlich engagiert sich die Kooperative für den Bau von Holzsparöfen. Das nützt besonders Frauen und Kindern. Zum Kochen wird dadurch deutlich weniger Holz benötigt und es entsteht weniger Rauch. Das ist nicht nur besser fürs Klima, sondern schützt auch die Gesundheit der Keinbauernfamilien.Beide hochwertigen Kaffeesorten ergeben zusammen COFFEE FOR FUTURE: biologisch angebaut, fair gehandelt und von EZA Fairer Handel direkt importiert. Durch die direkte Zusammenarbeit mit EZA Fairer Handel profitieren die Kooperativen von Preisen, die mehr als doppelt so hoch sind wie der aktuelle Weltmarktpreis für Arabica-Hochlandkaffeees.</p>	33	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
@@ -12095,15 +12991,55 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 120	de	<p>Früchte, Cashew &amp; Honigmarzipan</p>	<ul>\n\t<li>Fruchtiger Energieriegel mit Mango, Cashewkernen, Rosinen und Honigmarzipan</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Perfekt für Sport &amp; unterwegs</li>\n</ul>	<p>Ein fruchtiger Bio Energy-Riegel für Sport und unterwegs sowie praktisch verpackt und geschützt vor „Wind und Wetter“. Die Bio Fruchtriegel sind in jeder Tasche und in jedem Rucksack immer gut unterzubringen.</p>\n\n<p>Hier drin steckt die geballte Energie aus vielen gesunden, köstlich süßen Mangos aus Burkina Faso, abgerundet durch aromatische Rosinen aus der Türkei, knackige Cashew aus Honduras und echtes Honigmarzipan. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	121	<p><strong>Zutaten:</strong><br>\nRosinen<br>\nMangos<br>\nCASHEWKERNE<br>\nMangoflocken<br>\nHONIGMARZIPAN (MANDELN, Honig, Wasser)</p>\n\n<p>Fairtrade Anteil: 90%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>375</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.576</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>12,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>2,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>57</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>53,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,05</td>\n\t\t</tr>\n\t</tbody>\n</table>
 123	de	<p>Knusperspaß</p>	<ul>\n\t<li>Köstliche Spritzgebäck Stangerl nach traditioneller Art gebacken</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Sorgfältig hergestellt und verpackt in einem Projekt der Sozialwirtschaft</li>\n\t<li>Palmölfrei</li>\n</ul>	<p>Die knusprigen Spritzgebäck Stangerl nach traditioneller Art sind eine raffiniert vollmundige Knabberei zum Kaffee, Tee oder einfach für zwischendurch. Bester Rohrzucker von Manduvirá aus Paraguay mit mit feinen Karamellnoten gibt den Keksen eine delikate Süße. Echte Butter, Eier und feinste Kakaobutter sorgen für ein köstliches Genusserlebnis. Ihr harmonisch-süßer Geschmack und die hochwertigen Zutaten aus biologischer Landwirtschaft &amp; aus fairem Handel machen die Kekse zu etwas ganz Besonderem.</p>\n\n<p>Das Zuckerrohr von Manduvirá stammt ausschließlich aus kontrolliert biologischem Anbau und die Bäuerinnen und Bauern leben die Prinzipien der Nachhaltigkeit. Um den Boden vital und fruchtbar zu halten werden Kuh- oder Hühnerdung ausgetragen und stickstoffbindende Pflanzen wie Bohnen gepflanzt. Mindestens 7% der Fläche jedes Mitglieds müssen Schutzgebiete bleiben und dürfen nicht bepflanzt werden. Die Mitglieder der Kooperative können zusätzlich ein breites Angebot an Dienstleistungen in Anspruch nehmen: technische Beratung und Schulungen, günstige Kredite, Sparfonds, Vorauszahlungen und kostengünstige medizinische Versorgung.</p>\n\n<p>"Unsere Vision ist es, als Genossenschaft qualitativ hochwertige Dienstleistungen für Kleinerzeuger zu bieten, um ihre Lebensqualität und den Wohlstand der ganzen Gemeinschaft zu verbessern, und die führende Kooperative in der Produktion und Verarbeitung von Bio-Rohrzucker zu sein. Unsere Mission ist die Förderung der ganzheitlichen Entwicklung. Wir bieten eine Reihe von Dienstleistungen und eine ehrliche, transparente und effiziente Verwaltung für das wirtschaftliche und soziale Wohlergehen unserer Mitglieder und der ganzen Gemeindschaft." - Andrés González Aguilera, Geschäftsführer der Manduvirá Cooperative Ltd.</p>	124	<p><strong>Zutaten:</strong><br>\nReismehl<br>\nMaismehl<br>\nRohrzucker<br>\nEI<br>\nKakaobutter<br>\nBUTTER<br>\nBacktriebmittel: Natriumhydrogencarbonat<br>\nMaisstärke<br>\nSäureregulator: Citronensäure</p>\n\n<p>Fairtrade Anteil: 52,7%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltiges Getreide<br>\nSpuren von Lupinen<br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>417</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.748</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>19,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>11,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>55,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>18,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
 124	de	<p>Kakaocreme</p>	<ul>\n\t<li>Knuspriger Doppelkeks mit Quinua-Crispies</li>\n\t<li>Füllung aus feinster Kakaocreme mit besonders hohem Kakaoanteil</li>\n\t<li>Mit aromatischen Paranüssen und Bienenhonig</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>In der praktischen 85g Packung - ideal für unterwegs</li>\n</ul>	<p>Doblito ist ein Bio-Doppelkeks, der es in sich hat: Besonders aromatische Kakaocreme zwischen zwei knusprigen Quinua-Keksen. Die kleinen Bio Doppelkekse sind in der optimalen Größe für unterwegs abgepackt und sorgen für gute Laune auf langen Autofahrten oder Wanderungen.</p>\n\n<p>In den Bio-Kakaobohnen - der Kleinbauerngenossenschaften COOPROAGRO aus der Dominikanischen Republik und Naranjillo aus Peru - schlummern eine Portion tropische Wärme. Rohrzucker aus Paraguay von Manduvirá und Honig von Miel Mexicana aus Mexico sorgen für biofaire Süße, Quinua-Crispies von Coronilla aus Bolivien und nachhaltiges Palmöl von Serendipalm aus Ghana für den knusprigen Genuss.</p>\n\n<p>In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	125	<p><strong>Zutaten:</strong><br>\nGebäck (75%): WEIZENMEHL, Rohrohrzucker, Palmfett, Quinua Crispies 10% (Reis, Quinua 25%), PARANÜSSE, Honig, Backtriebmittel: Natriumhydrogencarbonat, Ammoniumhydrogencarbonat, Meersalz,Vanille*<br>\nKakaocreme (25%): Rohrohrzucker, Kakaopulver stark entölt 24%, Palmfett, Kakaobutter, Honig</p>\n\n<p>Fairtrade Anteil: 63%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Eiern<br>\nSpuren von Milchprodukten<br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sesamsamen<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>488</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.045</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>22</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>64</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>29</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,75</td>\n\t\t</tr>\n\t</tbody>\n</table>
-133	de	<p>Fruchtgummi</p>	<ul>\n\t<li>Beste Bio-Fruchti Gummibonbons mit leckerem Bio-Fruchtsaftkonzentrat</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit nachhaltiger Bio-Gelatine</li>\n\t<li>Tropische Früchte zum Naschen</li>\n</ul>	<p>Goldbrauner Rohrohrzucker aus Fairem Handel gibt den Gummibärchen die Süße und der Saft von Holunderbeeren verleiht ihnen eine frische Note. Die sorgfältige Verarbeitungen der Bio-Zutaten erfolgt in einem österreichischen Traditionsbetrieb.</p>\n\n<p>Die Kleinbäuerinnen und Kleinbauern der Zuckerkooperative Manduvirá in Paraguay haben sich für biologischen Anbau entschieden. Das nützt den Menschen und der Natur.</p>\n\n<p>Mit EZA Fairer Handel GmbH als Partnerin haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können die Mitglieder*innen ihre Kosten decken und ihre Lebensbedingungen verbessern. Garantierte Prämien ermöglichen Vorhaben, die die Kooperative sozial und wirtschaftlich stärken. So wurde etwa eine Gesundheitsstation eingerichtet, Häuser ans öffentliche Stromnetz angeschlossen und der Zugang zu Trinkwasser erleichtert. Langfristige und verlässliche Zusammenarbeit eröffnet den Familien von Manduvirá eine Zukunftsperspektive.</p>	134	<p><strong>Zutaten:</strong><br>\nGlukosesirup<br>\nRohrohrzucker<br>\nGelatine<br>\nSäuerungsmittel: Zitronensäure<br>\nFruchtsaftkonzentrat: Holunderbeere<br>\nnatürliche Aromen<br>\nCurcumaextrakt<br>\nAlgenextrakt</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>338</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.437</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>64</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
 125	de	<p>mit Paranüssen</p>	<ul>\n\t<li>Knusprige Schokokekse mit knackigen Paranüssen und exotischer Orangennote</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Gesüßt mit wertvollem Mascobadozucker</li>\n\t<li>Mit Bio-Palmfett aus fairem Handel</li>\n</ul>	<p>Diese Schoko-Orangen-Kekse sind eine ideale Ergänzung zu Kaffee, Kakao oder Tee aus Fairem Handel. Eine gelungene Komposition aus Schokolade, Keks und fruchtigem Orangen-Aroma. Ihr intensiv-schokoladiger Geschmack und die hochwertigen Zutaten aus biologischer Landwirtschaft &amp; aus fairem Handel machen die Kekse zu etwas ganz Besonderem.</p>\n\n<p>Bei der verwendeten Zutaten treffen beste Kakaobohnen und wertvolle Kakaobutter aus der Dominikanischen Republik, Bolivien und Peru auf naturbelassenen Vollrohrzucker aus den Philippinen sowie auf besten Quinua aus Bolivien und nachhaltiges Palmöl aus Ghana. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	126	<p><strong>Zutaten:</strong><br>\nWeizenmehl<br>\nVollrohrzucker (19.4%)<br>\nQuinuamehl (15%)<br>\nPalmfett ungehärtet<br>\nSchokoladenstücke (Kakaomasse, Vollrohrzucker, Kakaobutter, Kakaopulver) (10,2%)<br>\nParanüsse<br>\nBacktriebmittel: Natriumhydrogencarbonat, Monokaliumtartrate<br>\nOrangenöl<br>\nMeersalz</p>\n\n<p>Fairtrade Anteil: 52,2%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Eiern<br>\nSpuren von Erdnüssen<br>\nSpuren von Glutenhaltiges Getreide<br>\nSpuren von Mandeln<br>\nSpuren von Milchprodukten<br>\nSpuren von anderen Nüsse<br>\nSpuren von Sesamsamen<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>484</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.031</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>22,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>9,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>61,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>25</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>7,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,4</td>\n\t\t</tr>\n\t</tbody>\n</table>
 128	de	<p>ungezuckert</p>	<ul>\n\t<li>Fruchtig aromatische Rosinen aus Chile</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Trennmittel: Sonnenblumenöl</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Schöne große Früchte</li>\n</ul>	<p>Die ungeschwefelten Rosinen sind mehr als der Klassiker unter den Trockenfrüchten. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern von MIFRUTA in Burkina Faso. Die sorgfältig getrockneten Beeren der Weinrebe haben einen süß-aromatischen Geschmack und passen in Müsli, Süßspeisen und Backwaren. Fleisch- und Reisgerichten sowie Salaten verleihen sie eine besondere Note.</p>\n\n<p>Die 26 Mitglieder MIFRUTAs besitzen insgesamt über rund 100 Hektar Land. In der Regel bebaut jedes Mitglied rund vier Hektar Land und zählt damit zu den klassischen Kleinproduzent*innen in Chile, die unter der neoliberalen Ausrichtung der Agrarpolitik (massive Exportförderung und Förderung der exportorientierten Großbetriebe – meist riesige Plantagen in Monokultur) immer mehr unter Bedrängnis geraten. Angebaut werden Trauben der Sorten Flame und Thomson (kernlos), Superior, u.a.m. Getrocknet werden die Trauben an der Sonne. Nach 12 – 15 Tagen sind die Rosinen fertig für die weitere Verarbeitung (Reinigung, Selektion, Verpackung).</p>\n\n<p>Die Preise für die fair gehandelten Rosinen von MIFRUTA, liegen zwischen 80 und 100 Prozent über den lokalen Preisen. Wichtig ist auch, dass die Kleinproduzent*innen sofort bezahlt werden und nicht – wie sonst üblich – mehrere Monate auf ihre Bezahlung warten müssen. Mit den Prämiengeldern des Fairen Handels konnten Sozialleistungen für die Kleinproduzent*innen finanziert werden. Darüber hinaus werden mit den Prämiengeldern regionale Institutionen wie z.B. Kindergärten unterstützt.</p>	129	<p><strong>Zutaten:</strong><br>\nRosinen<br>\nTrennmittel: Sonnenblumenöl</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sesamsamen<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>326</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.385</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>75,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>68,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t</tbody>\n</table>
 129	de	<p>ungezuckert</p>	<ul>\n\t<li>Exotische Kokosstreifen aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Knackig und saftig</li>\n</ul>	<p>Die knackigen Kokosstreifen sind 100 % naturbelassen und aus der frischen Kokosnuss hergestellt. Mit Sorgfalt werden sie handgeschnitten und unterliegen einem schonenden Trocknungsprozess. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern in Sri Lanka. Ein natürlicher und fruchtiger Snack für zwischendurch mit zahlreichen wertvollen Inhaltsstoffen und die perfekte Ergänzung im morgendlichen Müsli, einem exotischen Smoothie oder einer reichhaltigen Bowl.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	130	<p><strong>Zutaten:</strong><br>\nGetrocknete Kokosstreifen</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>647</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.709</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>63,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>55,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>6,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
 127	de	<p>ungezuckert</p>	<ul>\n\t<li>Sorgfältig getrocknete Bio-Mangos aus Burkina Faso</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Fruchtig aromatisch</li>\n</ul>	<p>Die getrockneten Mangos sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern in Burkina Faso. Ein natürlicher und fruchtiger Snack für zwischendurch mit zahlreichen wertvollen Inhaltsstoffen und die perfekte Ergänzung im morgendlichen Müsli, einem exotischen Smoothie oder einer reichhaltigen Bowl.</p>\n\n<p>Die Mitglieder*innen der Organisation Gebana Afrique verwenden sehr viel Liebe und Sorgfalt bei der Verarbeitung ihrer Bio Cashewnüsse. Dank des fairen Handels erhalten die Kleinbauern und Kleinbäuerinnen zu der Bezahlung des FAIRTRADE-Mindestpreises und -Prämie eine verlässliche Vorfinanzierung, die den Lebensunterhalt während der Zeit, in der nicht geerntet wird, sichert. Zudem können die Produzierenden zinsfreie Darlehen aufnehmen und somit in bessere Infrastruktur und in die Bildung ihrer Kinder investieren.</p>\n\n<p>Auch die Angestellten in den Verarbeitungsanlagen von Gebana Afrique profitieren vom Fairen Handel. Für ungelerntes Personal wird mindestens 50% über dem Mindestlohn bezahlt, bei qualifiziertem Personal reicht das Gehalt vom 3 bis 20-fachem des gesetzlichen Mindestlohns. Zudem werden den Angestellten und ihren Familien eine Gesundheitsvorsorge und Schulungen wie beispielsweise Sprachkurse angeboten. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	128	<p><strong>Zutaten:</strong><br>\nGetrocknete Mangos</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>269</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.139</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>56,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>56,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,055</td>\n\t\t</tr>\n\t</tbody>\n</table>
 126	de	<p>ungezuckert</p>	<ul>\n\t<li>Sorgfältig getrocknete Bio-Ananas aus Uganda</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Fruchtig aromatisch</li>\n</ul>	<p>Die getrockneten Ananas sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und Kleinbauern in Uganda. Ein natürlicher und fruchtiger Snack für zwischendurch mit zahlreichen wertvollen Inhaltsstoffen und die perfekte Ergänzung im morgendlichen Müsli, einem exotischen Smoothie oder einer reichhaltigen Bowl.</p>\n\n<p>Die Mitglieder*innen von Fruit of the Nile sind allesamt KleinproduzentInnen mit 1 – 5 Hektar Land. Sie leben verteilt auf mehrere Gemeinschaften im südlichen und zentralen Uganda. Durch Fairen Handel können sie ihre Lebensbedingungen verbessern. Fruit of the Nile wurde als Unternehmen mit einer sozialen Mission gegründet. Ziele sind die Förderung der ländlichen Region und die Schulung von Bauern, Frauen und der Jugend, so dass diese in die Lage versetzt werden, kleine Verarbeitungsbetriebe zu gründen und zu leiten und davon langfristig profitieren zu können.</p>\n\n<p>"Wir fühlen uns folgenden Anliegen verpflichtet: erneuerbarer Energie, nachhaltigem Unternehmertum, ländlichen Gemeinschaften, Fairem Handel, biologischem Landbau und der Entwicklung Ugandas." - Fruit of the Nile</p>	127	<p><strong>Zutaten:</strong><br>\nGetrocknete Ananas</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>336</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.425</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>1,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+143	de	<p>aus Tribuswinkel</p>	<ul>\n\t<li>Feinster Cremehonig mit Waldviertler Graumohn von der Imkerei Potz aus Tribuswinkel</li>\n\t<li>Echter österreichischer Bienenhonig</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n\t<li>Regionale Vielfalt</li>\n</ul>	<p>"Honig mit Graumohn - hier wird unser Blütenhonig mit echtem Waldviertler Graumohn zu einer köstlichen Einheit verschmolzen. Genossen wir er natürlich auf dem Gebäck ihrer Wahl oder auch zum Verfeinern von Torten, Strudeln und ein Tipp von uns rein ins Germknödel!" - Familie Potz</p>	144	
 132	de	<p>Fruchtgummi</p>	<ul>\n\t<li>Beste Bio-Bärchen Gummibonbons mit leckeren Bio-Fruchtsaftkonzentraten</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit nachhaltiger Bio-Gelatine</li>\n\t<li>Bunte Bären zum Naschen</li>\n</ul>	<p>Goldbrauner Rohrohrzucker aus Fairem Handel gibt den Gummibärchen die Süße. Der Saft von Äpfeln, Holunder, schwarzen Johannisbeeren und Himbeeren macht sie fantastisch fruchtig im Geschmack. Die sorgfältige Verarbeitungen der Bio-Zutaten erfolgt in einem österreichischen Traditionsbetrieb.</p>\n\n<p>Die Kleinbäuerinnen und Kleinbauern der Zuckerkooperative Manduvirá in Paraguay haben sich für biologischen Anbau entschieden. Das nützt den Menschen und der Natur.</p>\n\n<p>Mit EZA Fairer Handel GmbH als Partnerin haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können die Mitglieder*innen ihre Kosten decken und ihre Lebensbedingungen verbessern. Garantierte Prämien ermöglichen Vorhaben, die die Kooperative sozial und wirtschaftlich stärken. So wurde etwa eine Gesundheitsstation eingerichtet, Häuser ans öffentliche Stromnetz angeschlossen und der Zugang zu Trinkwasser erleichtert. Langfristige und verlässliche Zusammenarbeit eröffnet den Familien von Manduvirá eine Zukunftsperspektive.</p>	133	<p><strong>Zutaten:</strong><br>\nGlukosesirup<br>\nRohrohrzucker<br>\nGelatine<br>\nFruchtsaftkonzentrat: Apfel, Holunder, schwarze Johannisbeere, Himbeere<br>\nSäuerungsmittel: Zitronensäure<br>\nFruchtaromen<br>\nCurcumaextrakt<br>\nAlgenextrakt</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>334</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.435</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>60</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,01</td>\n\t\t</tr>\n\t</tbody>\n</table>
 130	de	<p>fruchtig</p>	<ul>\n\t<li>Bestes Bio-Student*innenfutter mit knackigen Cashews, getrockneten Mangos &amp; Ananas</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Fruchtig aromatisch</li>\n</ul>	<p>Das fruchtige Wiffzack Student*innenfutter mit Cashews, Mangos, und Ananas stärkt Körper und Geist. Die hochwertige Mischung sorgt unterwegs oder zwischendurch immer für den richtigen Energiekick. Diese Zutaten sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und --bauern aus dem westafrikanischen Burkina Faso und Uganda.</p>\n\n<p>Für diesen Powersnack treffen beste Cashewkerne und fruchtige Mangos aus Burkina Faso auf aromatische Ananas aus Uganda. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	131	<p><strong>Zutaten:</strong><br>\nCashewnüsse (40%)<br>\nGetrocknete Mangos (35%)<br>\nGetrocknete Ananas (25%)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>429</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.798</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>17,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>3,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>51,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>42,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>11,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
 131	de	<p>nussig</p>	<ul>\n\t<li>Bestes Bio-Student*innenfutter mit knackigen Cashews und exotischen Kokosstreifen</li>\n\t<li>Fruchtig ergänzt durch aromatische Physalis und saftig süße Mangos</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Naturbelassen, ohne Zusatz von Zucker oder Schwefel</li>\n\t<li>Handverlesene Qualität</li>\n\t<li>Nussig-süßer-Mix</li>\n</ul>	<p>Das nussige Blitzgscheit Student*innenfutter mit Cashews, Kokosstreifen, Physalis und Mangos stärkt Körper und Geist. Die hochwertige Mischung sorgt unterwegs oder zwischendurch immer für den richtigen Energiekick. Diese Zutaten sind mehr als ein Hauch von Exotik. Ihre köstlich fruchtige Energie birgt Zukunftsperspektiven für Kleinbäuerinnen und --bauern weltweit.</p>\n\n<p>Für diesen Powersnack treffen beste Cashewkerne und fruchtige Mangos aus Burkina Faso auf nussige Kokosraspeln aus Sri Lanka und aromatische Physalis aus Peru. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	132	<p><strong>Zutaten:</strong><br>\nCashewnüsse (60%)<br>\nGetrocknete Kokosstreifen (15%)<br>\nGetrocknete Physalis (15%)<br>\nGetrocknete Mangos (10%)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>534</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.222</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>35,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>34,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>20,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>15,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,05</td>\n\t\t</tr>\n\t</tbody>\n</table>
+133	de	<p>Fruchtgummi</p>	<ul>\n\t<li>Beste Bio-Fruchti Gummibonbons mit leckerem Bio-Fruchtsaftkonzentrat</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit nachhaltiger Bio-Gelatine</li>\n\t<li>Tropische Früchte zum Naschen</li>\n</ul>	<p>Goldbrauner Rohrohrzucker aus Fairem Handel gibt den Gummifruchtis die Süße und der Saft von Holunderbeeren verleiht ihnen eine frische Note. Die sorgfältige Verarbeitungen der Bio-Zutaten erfolgt in einem österreichischen Traditionsbetrieb.</p>\n\n<p>Die Kleinbäuerinnen und Kleinbauern der Zuckerkooperative Manduvirá in Paraguay haben sich für biologischen Anbau entschieden. Das nützt den Menschen und der Natur.</p>\n\n<p>Mit EZA Fairer Handel GmbH als Partnerin haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können die Mitglieder*innen ihre Kosten decken und ihre Lebensbedingungen verbessern. Garantierte Prämien ermöglichen Vorhaben, die die Kooperative sozial und wirtschaftlich stärken. So wurde etwa eine Gesundheitsstation eingerichtet, Häuser ans öffentliche Stromnetz angeschlossen und der Zugang zu Trinkwasser erleichtert. Langfristige und verlässliche Zusammenarbeit eröffnet den Familien von Manduvirá eine Zukunftsperspektive.</p>	134	<p><strong>Zutaten:</strong><br>\nGlukosesirup<br>\nRohrohrzucker<br>\nGelatine<br>\nSäuerungsmittel: Zitronensäure<br>\nFruchtsaftkonzentrat: Holunderbeere<br>\nnatürliche Aromen<br>\nCurcumaextrakt<br>\nAlgenextrakt</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>338</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.437</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>78</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>64</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+134	de	<p>Saure Fruchtgummis</p>	<ul>\n\t<li>Beste Bio-Zoo Gummibonbons mit leckerem Bio-Fruchtsaftkonzentrat</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit nachhaltiger Bio-Gelatine</li>\n\t<li>Sauer bezuckerte wilde Tiere zum Naschen</li>\n</ul>	<p>Sauer und süß zugleich schmecken die wilden Gummitierchen aus dem Bio-Zoo. Goldbrauner Rohrohrzucker aus Fairem Handel gibt den Gummitieren die Süße und der Saft von Holunderbeeren verleiht ihnen eine frische Note. Die sorgfältige Verarbeitungen der Bio-Zutaten erfolgt in einem österreichischen Traditionsbetrieb.</p>\n\n<p>Die Kleinbäuerinnen und Kleinbauern der Zuckerkooperative Manduvirá in Paraguay haben sich für biologischen Anbau entschieden. Das nützt den Menschen und der Natur.</p>\n\n<p>Mit EZA Fairer Handel GmbH als Partnerin haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können die Mitglieder*innen ihre Kosten decken und ihre Lebensbedingungen verbessern. Garantierte Prämien ermöglichen Vorhaben, die die Kooperative sozial und wirtschaftlich stärken. So wurde etwa eine Gesundheitsstation eingerichtet, Häuser ans öffentliche Stromnetz angeschlossen und der Zugang zu Trinkwasser erleichtert. Langfristige und verlässliche Zusammenarbeit eröffnet den Familien von Manduvirá eine Zukunftsperspektive.</p>\n\n<p> </p>	135	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nGlukosesirup<br>\nGelatine<br>\nWasser<br>\nStärke<br>\nSäuerungsmittel: Zitronensäure, Apfelsäure<br>\nFruchtsaftkonzentrat: Holunderbeere<br>\nnatürliche Aromen<br>\nCurcumaextrakt<br>\nKaramellzuckersirup<br>\nAlgenextrakt</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>341</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.451</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>77</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>61</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
+135	de	<p>Fruchtgummi</p>	<ul>\n\t<li>Beste Bio-Frucht Gummibonbons mit leckeren Bio Frucht- und Pflanzenkonzentraten</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Bunte Früchte zum Naschen</li>\n</ul>	<p>Goldbrauner Rohrohrzucker aus Fairem Handel gibt den Gummifrüchte die Süße. Der Saft von Äpfeln, Karotten, Cassis, Schwarzkarotten und Spirulinas macht sie fantastisch fruchtig im Geschmack. Die sorgfältige Verarbeitungen der Bio-Zutaten erfolgt in einem österreichischen Traditionsbetrieb.</p>\n\n<p>Die Kleinbäuerinnen und Kleinbauern der Zuckerkooperative Manduvirá in Paraguay haben sich für biologischen Anbau entschieden. Das nützt den Menschen und der Natur.</p>\n\n<p>Mit EZA Fairer Handel GmbH als Partnerin haben sie die Gewissheit, dass sich ihr Aufwand lohnt. Durch faire Bezahlung können die Mitglieder*innen ihre Kosten decken und ihre Lebensbedingungen verbessern. Garantierte Prämien ermöglichen Vorhaben, die die Kooperative sozial und wirtschaftlich stärken. So wurde etwa eine Gesundheitsstation eingerichtet, Häuser ans öffentliche Stromnetz angeschlossen und der Zugang zu Trinkwasser erleichtert. Langfristige und verlässliche Zusammenarbeit eröffnet den Familien von Manduvirá eine Zukunftsperspektive.</p>	136	<p><strong>Zutaten:</strong><br>\nGlukosesirup<br>\nRohrohrzucker<br>\nGeliermittel (Pektin)<br>\nSäuerungsmittel (Citronensäure)<br>\nSäureregulatoren (Natriumtartrate, Kaliumtartrate)<br>\nFrucht- und Pflanzenkonzentrate (Apfel, Kartotte, Cassis, Schwarzkarotte, Spirulina)<br>\nnatürliches Kurkumaaroma<br>\nnatürliches Grapefruitaroma mit anderen natürlichen Aromen<br>\nnatürliche Aromen<br>\nÜberzugsmittel (Carnaubawachs)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>298</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.271</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>75</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>58</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,2</td>\n\t\t</tr>\n\t</tbody>\n</table>
+136	de	<p>Dschungelhonig</p>	<ul>\n\t<li>Reichhaltiger Blütenhonig aus den Bergwäldern Guatemalas</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Kräftig-aromatischer Geschmack</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n</ul>	<p>Der Selva Blütenhonig von Guaya´b ist ein wunderbar kräftig-würziger Bio-Honig aus den Bergwäldern Guatemalas. Mit seiner edlen dunklen Farbe ist er ein beliebter Brotaufstrich, der sich zudem bestens zum Süßen von Getränken und Salatsaucen eignet.</p>\n\n<p>Die rund 500 Mitgliedsfamilien von Guaya´b sind vor allem Angehörige des Volkes der Maya Popti und Mam, die auch heute noch ihre eigenen Sprachen sprechen. Guaya'b ist ein Wort aus der indigenen Maya-Popti-Sprache, das "gegenseitige Unterstützung" bedeutet. Sie leben in kleinen Dörfern, verteilt auf acht Gemeinden, in den Bergen im Nordwesten Guatemalas (Departement Huehuetenango). Die Dörfer befinden sich auf bis zu 1.500 m und sind zum Teil nur über schlechte Schotterstraßen und auf Pfaden von der bis zu 25 km entfernten Stadt Jacaltenango erreichbar. Besondere Bedeutung hat neben dem Kaffee die Honigproduktion gewonnen. Im Durchschnitt besitzt jedes Mitglied rund 38 Bienenvölker.</p>\n\n<p>„Ich habe die ersten Bienenvölker mit dem Erlös aus einer Kaffee-Ernte Anfang der 1980er Jahre gekauft. Damals gab es noch keinen Markt für Honig. Ich wollte den Honig nur für den eigenen Bedarf produzieren. Eigentlich war es mein ureigenstes Interesse, weshalb ich mit der Bienenzucht begann. Als ich durch Guaya ́b die Möglichkeit bekam, den Honig zu vermarkten, steigerte ich die Produktion. Heute besitze ich 100 Bienenvölker und bin in der Lage ein kleines Stückchen Land für meine Söhne zu erwerben und so für ihre Zukunft vorzusorgen.“ - Santiago Camposeco, Kaffeebauer und Imker</p>	137	<p><strong>Zutaten:</strong><br>\nHonig</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>302</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.284</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>75</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>75</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+28	de	<p>Kaffe aus Frauenhand</p>	<ul class="stwul">\n\t<li>100% Arabica Hochlandkaffee aus kontrolliert biologischem Anbau</li>\n\t<li>Frauenkaffeemischung aus Honduras und Peru</li>\n\t<li>Schonende feinaromatische Italienische Röstung: Stärke 3,5 von 5</li>\n\t<li>Aromen nach schwarzem Tee, Zimt und Jostabeere, sehr langanhaltender Abgang und kräftiger Körper</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Produzentinnenorganisationen</li>\n\t<li>Aluminiumfreie Verpackung</li>\n</ul>\n\n<p>Kaffee Adelante ist der erste Kaffee aus Frauenhand. Kleinbäuerinnen, die sich für Selbstbestimmung und Geschlechtergerechtigkeit einsetzen, werden dadurch gestärkt.</p>	<p>Der Ursprung des Kaffee Adelante liegt in Honduras und Peru. Das Umland von Marcala ist die Kaffeeanbauregion in Honduras und produziert den international anerkannten Hochlandkaffee, bekannt als „Café de Origen Marcala“. Marcala liegt circa 150 km von der Hauptstadt Tegucigalpa entfernt inmitten der Berge im Departement La Paz auf ungefähr 1.300 m Seehöhe. Mit Kaffeebohnen aus dem Bezirk San Ignacio in der Provinz Cajamarca im Norden Perus kommt es zu einer einzigartigen Mischung. Auf einer Höhe von circa 1.400 m inmitten von Nebelwäldern gedeihen aromareiche Kaffeekirschen. Kaffee Adelante wird von Kleinbäuerinnen bezogen, die die Kontrolle über Produktion und Vermarktung des Bio-Kaffees in die eigene Hand genommen haben. Sie setzen sich dafür ein, dass sie anerkannt werden: als Kaffeeproduzentinnen, als gleichberechtigte Partnerinnen in den Familien und als Bürgerinnen in ihrer Gesellschaft.</p>\n\n<p><strong>Dolores Benitez Espinoza</strong> ist Kaffeebäuerin und Mitglied der Frauenkooperative APROLMA in Honduras, deren Kaffee im Kaffee ADELANTE steckt: „Es geht zunächst darum, den Frauen zu vermitteln, dass die Arbeit, die sie verrichten – im Haushalt oder auf dem Feld – einen Wert hat. Sie müssen sich selbst achten und wertschätzen. Dann braucht es die Bereitstellung und den Erwerb von Wissen, um eine starke Organisation aufzubauen. Aber Engagement im sozialen Bereich reicht nicht. Wir müssen auch eine wirtschaftliche Grundlage schaffen. Wir wollen keine Umkehr des Rollenverständnisses zwischen Mann und Frau. Wir wollen, dass Frauen eine faire Chance bekommen, sich am wirtschaftlichen, politischen und sozialen Leben gleichberechtigt zu beteiligen! Dafür setzen wir uns ein.“</p>	29	<p><strong>Zutaten:</strong><br>\nKaffeebohnen geröstet</p>
+137	de	<p>Wildblütenhonig</p>	<ul>\n\t<li>Cremiger Wildblütenhonig mit Zimtgewürzmischung</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Wärmend-aromatischer Geschmack</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n</ul>	<p>Beim köstlich cremigen BIO-Canela Honig verschmelzen die Aromen mexikanischer Wildblütenhonige und exotischer Gewürze zu einem harmonischen Ganzen. Mit seiner edlen dunklen Farbe und seiner Auswahl feinster Bio Gewürze - wie Zimt, Nelken, Kardamom und Muskat - wird das Frühstücksbrot zu einem ganz besonderen Geschmackserlebnis.</p>\n\n<p>Der reichhaltige Wildblütenhonig stammt von drei ganz besonderen indigenen Kooperationen aus Mexico: Miel Mexicana, Mieles del Sur und Tzeltal Tzotzil</p>\n\n<p>Die 87 überwiegend indigenen Mitglieder*innen von Miel Mexicana stammen aus verschiedenen Dorfgemeinschaften am Fuße des Vulkans Popocatepetl und praktizieren so genannte Wander-Bienenzucht. D.h. die Produzent*innen sammeln nicht nur im eigenen Siedlungsgebiet Honig, sondern transportieren die Bienenstöcke je nach Saison und gewünschter Honigart in verschiedene Gegenden. Der Bio-Honig stammt dadurch aus besonders geschützten Naturreservaten und den angrenzenden Pufferzonen von Nationalparks.</p>\n\n<p>Aktuell zählt Mieles del Sur rund 130 Mitglieder*innen. Sie alle gehören den indigenen Ethnien der Tzetales und Choles an und leben im südmexikanischen Bundesstaat Chiapas. Die Mehrheit der Imker*innen lebt bis heute unter sehr einfachen Bedingungen. Ihre Vision ist die einer Welt, die von den Grundsätzen und Werten des fairen Handels, der nachhaltigen Entwicklung, der Sozialwirtschaft und der Erklärung der Menschenrechte bestimmt wird.</p>\n\n<p>Die Mitglieder*innen der Kooperative Tzeltal Tzotzil gehören vor allem den beiden indigenen Ethnien der Tzeltales und Tzotziles (daher der Name) an. Diese fördert insbesondere indigene Frauen - 90% der Produzent*innen sind weiblich. Sie setzen sich dafür ein, dass sie anerkannt werden: als Produzentinnen, als gleichberechtigte Partnerinnen in den Familien und als Bürgerinnen in ihrer Gesellschaft.</p>	138	<p><strong>Zutaten:</strong><br>\nHonig<br>\nGewürze (0,4%): Zimt, Nelken, Kardamon, Muskat</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>306</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.284</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>75,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>75,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+138	de	<p>Honigspezialitäten</p>	<ul>\n\t<li>Acahual, Orangenblüten und Eukalyptus</li>\n\t<li>Drei verschiedene BIO-Honige in 125 g Gläsern</li>\n\t<li>Reichhaltiger Blütenhonig aus Uruguay und Mexico</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n</ul>	<p>Das Bio Honig Trio ist wunderbar geeignet zum selber Probieren und Verschenken. Das Set besteht aus drei verschiedenen Bio Sortenhonigen: Der Eukalyptushonig ist ein fein-würziger Honig aus Uruguay. Er ist etwas dunkler in der Farbe und hat eine cremige Konsistenz und einen malzig - würzigen Geschmack. Der Orangenblütenhonig aus Mexiko ist ein leichter, lieblicher Obsthonig, der den zarten Duft eines blühenden Orangenhains entfaltet. Der Flora-Crèmehonig aus dem Nektar der Flor de Acahual - auch aus Mexiko - zeichnet sich durch sein feines Aroma aus.</p>\n\n<p>In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	139	<p><strong>Zutaten:</strong><br>\nHonig</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>307</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.284</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>75,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>75,1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+141	de	<p>aus Tribuswinkel</p>	<ul>\n\t<li>Reichhaltiger Blütenhonig von der Imkerei Potz aus Tribuswinkel</li>\n\t<li>Echter österreichischer Bienenhonig</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n\t<li>Regionale Vielfalt</li>\n</ul>	<p>Blütenhonig heißt, dass der Honig nicht nur vom Nektar einer blühenden Pflanzensorte stammt. Er überzeugt durch sein süßes Aroma und eignet sich bestens zum süßen von Getränken, aber auch zum Backen und marinieren von Salaten, und vieles mehr. Alle Honigsorten kristallisieren unterschiedlich schnell je nach Verhältnis des Frucht- und Traubenzuckers schneller oder langsamer. Familie Potz rührt sehr schonend somit verhindern sie große Zuckerkristalle und der Honig wird besonders streichfähig und bleibt dort wo er sein soll am Brot oder Gebäck.</p>	142	
+139	de	<p>Kakao-Nuss Aufstrich</p>	<ul>\n\t<li>Zartschmelzender Kakao-Nuss Aufstrich mit aromatischen Haselnüssen</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n\t<li>Besonders cremig</li>\n</ul>	<p>Streichen oder Löffeln? Keine leichte Entscheidung für Naschkatzen! Der Equita Schokoaufstrich schmeckt wunderbar auf dem Frühstücksbrot. Er eignet sich bestens zum Verfeinern von Mehl- und Süßspeisen sowie Milchshakes und Eis. Zum Frühstück oder Zwischendurch - einfach immer ein zartcremig-schokoladiges Geschmackserlebnis!</p>\n\n<p>Für dieses Genussprodukt treffen bester Kakao aus der Côte d’Ivoire auf naturbelassenen Rohrzucker aus Costa Rica und nachhaltiges Bio-Palmöl aus Ghana. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	140	<p><strong>Zutaten:</strong><br>\nRohrzucker<br>\nPflanzliche Öle (Rapsöl, Palmöl° 4%)<br>\nHASELNÜSSE (12%)<br>\nMagerkakaopulver<br>\nMAGERMILCHPULVER<br>\nSÜßMOLKENPULVER (Milch)<br>\nEmulgator: SOJALEZITHIN (gentechnikfrei)</p>\n\n<p>°Aus Fairem Handel: 61%<br>\nFairtrade Anteil 57%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>559</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.330</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>36</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>6,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>53</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>51</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>4,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
+140	de	<p>Nuss-Nougat Creme</p>	<ul>\n\t<li>Zartschmelzender Nuss-Nougat Aufstrich mit aromatischen Haselnüssen und feinster Vanille</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n\t<li>Besonders cremig</li>\n</ul>	<p>Streichen oder Löffeln? Keine leichte Entscheidung für Naschkatzen! Die Cocoba Nuss-Nougat Creme schmeckt wunderbar als Brotaufstrich. Sie eignet sich bestens zum Verfeinern von Mehl- und Süßspeisen sowie Milchshakes und Eis. Zum Frühstück oder Zwischendurch - einfach immer ein zartcremig-schokoladiges Geschmackserlebnis!</p>\n\n<p>Für dieses Genussprodukt treffen bester Kakao aus der Dominikanischen Republik auf naturbelassenen Rohrzucker aus Paraguay. In diesen Rohstoffen liegen Sorgfalt und Zeit von Kleinbauern und Kleinbäuerinnen, die mit Erfahrung die hohe Qualität der Zutaten sichern. Durch faire Bezahlung können sie selbst bei niedrigen Weltmarktpreisen ihre Kosten decken, ihre Lebensbedingungen verbessern und Maßnahmen setzen, die die Bauerngemeinschaften sozial und wirtschaftlich stärken. Langfristige und verlässliche Zusammenarbeit eröffnen ihnen und ihren Kindern eine Zukunftsperspektive.</p>	141	<p><strong>Zutaten:</strong><br>\nRohrohrzucker<br>\nPflanzliche Öle (Sonnenblumen und Palmöl [14%])<br>\nHaselnüsse gemahlen<br>\nMagerkakaopulver<br>\nMagermilchpulver<br>\nVanille</p>\n\n<p>Fairtrade Anteil 51%</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Schalenfrüchten (Nüssen)<br>\nSpuren von Sojabohnen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>581</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>2.417</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>39,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>9,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>49</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>46,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>5,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,1</td>\n\t\t</tr>\n\t</tbody>\n</table>
+142	de	<p>aus Tribuswinkel</p>	<ul>\n\t<li>Fein würziger Cremehonig mit Chili von der Imkerei Potz aus Tribuswinkel</li>\n\t<li>Echter österreichischer Bienenhonig</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n\t<li>Regionale Vielfalt</li>\n</ul>	<p>"Honig mit Chili hier vermischen wir unseren feinen Cremehonig mit unseren Bio-Chili vom eigenen Garten zu einer scharfen Beziehung. Gerne zum Käse, Toast, Käsekrainer für Salatmarinaden auch gerne ins Apfelkompott und für MUTIGE aufs Butterbrot." - Familie Potz</p>	143	
+144	de	<p>aus Tribuswinkel</p>	<ul>\n\t<li>Reichhaltiger Blütenhonig mit Kakao von der Imkerei Potz aus Tribuswinkel</li>\n\t<li>Echter österreichischer Bienenhonig</li>\n\t<li>Nachhaltig in Glas verpackt</li>\n\t<li>Regionale Vielfalt</li>\n</ul>	<p>"Honig mit Kakao - hier wird unser Blütenhonig mit purem Kakao vermischt und ist somit gleich in der heißen Milch ein fertiger Trinkkakao aber auch auf Brot und Gebäck ein beliebter und Palmöl freier gesunder Aufstrich." - Familie Potz</p>	145	
+145	de	<p>ganz</p>	<ul>\n\t<li>Ganzes Zitronengras aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Erfrischender Zitronengeschmack</li>\n</ul>	<p>Verwöhne deine Sinne mit dem beliebten Traditionsgewürz der asiatischen Küche! Das Bio-Zitronengras hat eine blumig-zitronige Noten und harmoniert durch seine Frische ideal mit scharfen und salzigen Komponenten. Lass deiner Fantasie freien Lauf: von aromatischen Suppen, über würzige Marinaden und Wok-Gerichte, vorbei an klassisch asiatischen Currys, feinen Fischgerichten bis hinein in die Dessert-Kategorie sowie wohltuenden Tee oder exotischen Cocktails.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	146	<p><strong>Zutaten:</strong><br>\nZitronengras</p>
+146	de	<p>ganz</p>	<ul>\n\t<li>Ganzer Kümmel von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Macht schwere Gerichte leichter verdaulich</li>\n\t<li>Herb-würzig</li>\n</ul>	<p>Der Bio-Kümmel gilt als ältestes Gewürz Europas. Es zeichnet sich durch seinen stark aromatischen und warmen Geschmack aus und wird klassisch für würziges Brot, kräftige Schmorgerichte und herzhafte Kartoffelgerichte verwendet. Perfekt auch im Tee - dank seiner wohltuend krampflösenden und entspannenden Wirkung sorgt er schnell für wohlige Wärme im Bauch.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	147	<p><strong>Zutaten:</strong><br>\nKümmel</p>
+147	de	<p>fein gemahlen</p>	<ul>\n\t<li>Fein gemahlener Kümmel von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Macht schwere Gerichte leichter verdaulich</li>\n\t<li>Herb-würzig</li>\n</ul>	<p>Der Bio-Kümmel gilt als ältestes Gewürz Europas. Es zeichnet sich durch seinen stark aromatischen und warmen Geschmack aus und wird klassisch für würziges Brot, kräftige Schmorgerichte und herzhafte Kartoffelgerichte verwendet. Perfekt auch im Tee - dank seiner wohltuend krampflösenden und entspannenden Wirkung sorgt er schnell für wohlige Wärme im Bauch.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	148	<p><strong>Zutaten:</strong><br>\nKümmel gemahlen</p>
+148	de	<p>geschnitten</p>	<ul>\n\t<li>Geschnittener Oregano von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Intensiver mediterraner Geschmack</li>\n\t<li>Aromatisch-würzig</li>\n</ul>	<p>Was wären italienische Spezialitäten wie Pizza und Pasta ohne Oregano? Mit seinem charakteristisch würzigen Aroma rundet das mediterrane Gewürz verschiedenste Gerichte harmonisch ab. Es passt zudem hervorragend zu Tomatensoßen, gebratenem Gemüse und gegrilltem Fleisch.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	149	<p><strong>Zutaten:</strong><br>\nOregano</p>
+149	de	<p>lose</p>	<ul>\n\t<li>Aromatischer Thymian von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Intensiv mediterraner Geschmack</li>\n\t<li>Würzig-herb</li>\n</ul>	<p>Hocharomatisch mit einer würzigen Note - der wunderbare Bio Thymian verfeinert Tomatensauce und rundet mediterrane Gemüse- und Fleischgerichte ab. Dank seiner entzündungshemmenden und antibakteriellen Eigenschaften hilft er vor allem bei Atemwegsinfekten und bei Magen-Darm-Beschwerden in Form von Tee.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	150	<p><strong>Zutaten:</strong><br>\nThymian</p>
+150	de	<p>ganz</p>	<ul>\n\t<li>Köstlicher Koriandersamen von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Süßlich-scharfer Geschmack</li>\n\t<li>Feinwürziges Aroma</li>\n</ul>	<p>Der Geschmack von Koriandersamen unterscheidet sich sehr stark von den Korianderblättern und beinhaltet ein warmes und zitrus-artiges Aroma. Die Samen harmonieren sehr gut mit Fleisch, Currys sowie Saucen, Chutneys und Gebäck. Zudem wirken sie appetitanregend und machen schwer verdauliches Essen bekömmlich.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	151	<p><strong>Zutaten:</strong><br>\nKoriandersamen</p>
+151	de	<p>ganz</p>	<ul>\n\t<li>Fenchel von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Macht schwere Gerichte leichter verdaulich</li>\n\t<li>Süßlich-herb</li>\n</ul>\n\n<p> </p>	<p>Die Bio Fenchelsamen, eignen sich mit ihrer erfrischenden Wirkung und dem feinen süßlich-herben Geschmack zum verfeinern von Wildfleischgerichten, Suppen und Salaten, Eintöpfen sowie Risotto und Currys und vegetarischen Gerichten. Perfekt auch im Tee - dank seiner wohltuend krampflösenden und entspannenden Wirkung sorgt er schnell für wohlige Wärme im Bauch. Tipp: Zerkauen sie 3 bis 4 frische Fenchelsamen direkt nach dem Essen um die Verdauung anzuregen und gleichzeitig für einen angenehmen frischen Atem zu sorgen. </p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	152	<p><strong>Zutaten:</strong><br>\nFenchel</p>
+152	de	<p>gemahlen</p>	<ul>\n\t<li>Feinstes Paprikapulver von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Kulinarischer Allrounder mit wunderbarer Farbgebung</li>\n\t<li>Süßlich-herb</li>\n</ul>	<p>Das edelsüßes Paprikapulver hat das Zeug zum kulinarischen Allrounder. Sein leicht fruchtig-frischer Geschmack in Kombination mit der zurückhaltenden Schärfe verleiht fast allen Gerichten den letzten Schliff. Es eignet sich ausgezeichnet zum Würzen von Fisch, Fleisch, Käsegerichten, Eierspeisen, Dips und Gulasch.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	153	<p><strong>Zutaten:</strong><br>\nPaprika</p>
+153	de	<p>geschnitten</p>	<ul>\n\t<li>Geschnittener Majoran von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Intensiver mediterraner Geschmack</li>\n\t<li>Süßlich-krautig</li>\n</ul>	<p>Was wären italienische Spezialitäten wie Pizza und Pasta ohne Majoran? Mit seinem charakteristisch würzigen Aroma rundet das mediterrane Gewürz verschiedenste Gerichte harmonisch ab. Es passt zudem hervorragend zu Tomatensoßen, gebratenem Gemüse und gegrilltem Fleisch. Seine feine, zugleich ausgeprägte Würzkraft liegt an dem hohen Anteil an ätherischen Ölen und einer zarten Minznote.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	154	<p><strong>Zutaten:</strong><br>\nMajoran</p>
+154	de	<p>mit Schale</p>	<ul>\n\t<li>Ganze Muskatnuss mit Schale aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Hocharomatisch im Geschmack</li>\n\t<li>Warm-süßer Duft</li>\n</ul>	<p>Die positiven antibakteriellen, verdauungsfördernden sowie herzstärkenden und entkrampfenden Eigenschaften entfaltet die Muskatnuss am einfachsten in unseren Nahrungsmitteln. Das kraftvolle Gewürz ist ideal für Suppen, Saucen, Gemüse und Käsefondue und ist besonders geeignet für Kartoffelgerichte. In Weihnachtsgebäck wie Lebkuchen und Spekulatius darf die feine Muskatnote natürlich auch nicht fehlen. Frisch gerieben schenkt sie den Gerichten zugleich Würze und Süße und ist dabei so intensiv, dass schon kleinste Mengen genügen.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	155	<p><strong>Zutaten:</strong><br>\nMuskatnuss</p>
+155	de	<p>ganz</p>	<ul>\n\t<li>Ganze Nelken aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Feurig, süße ganze Knospen des Gewürznelkenbaumes</li>\n</ul>	<p>Das würzig süßliche und zugleich leicht pfeffrige Aroma der Gewürznelken ist ideal für Wildbret, Lamm, fette Fische und geräuchertes oder gepökeltes Fleisch sowie Reisgerichte. Kompotte, Punsch oder Glühwein und weihnachtliche Tees sind ohne den intensiven Geschmack der Nelken kaum vorstellbar. Zudem sind sie mit ihrer stark desinfizierenden, verdauungsfördernden und schmerzbetäubenden Wirkung bei Zahnschmerzen ein bewährtes Hausmittel.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	156	<p><strong>Zutaten:</strong><br>\nGewürznelken</p>
+156	de	<p>ganz</p>	<ul>\n\t<li>Weiße Pfefferkörner aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Milde Schärfe</li>\n</ul>	<p>Die roten Beeren des immergrünen Pfefferkletterstrauches werden reif geerntet und dann schonend von ihrer Fruchtschale befreit. Der weiße Pfeffer beschreibt den helle Kern der Pfefferfrucht, der daraufhin getrocknet wird. Sein Aroma ist intensiv und milder als der schwarze Pfeffer. Vor allem weißen Fleischsorten, Fischgerichten, Saucen und Dressings verleiht der weiße Pfeffer eine milde Schärfe und edle Note.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	157	<p><strong>Zutaten:</strong><br>\nWeißer Pfeffer</p>
+157	de	<p>fein gemahlen</p>	<ul>\n\t<li>Fein gemahlener weißer Pfeffer aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Milde Schärfe</li>\n</ul>	<p>Die roten Beeren des immergrünen Pfefferkletterstrauches werden reif geerntet und dann schonend von ihrer Fruchtschale befreit. Der weiße Pfeffer beschreibt den helle Kern der Pfefferfrucht, der daraufhin getrocknet und fein gemahlen wird. Sein Aroma ist intensiv und milder als der schwarze Pfeffer. Vor allem weißen Fleischsorten, Fischgerichten, Saucen und Dressings verleiht der weiße Pfeffer eine milde Schärfe und edle Note.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	158	<p><strong>Zutaten:</strong><br>\nWeißer Pfeffer gemahlen</p>
+158	de	<p>ganz</p>	<ul>\n\t<li>Schwarze Pfefferkörner aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Pikante Schärfe</li>\n</ul>	<p>Schwarzer Pfeffer verfeinert Gerichte mit einer ausgewogenen Würze und lässt sich mit vielen verschiedenen Aromen kombinieren. Er verfeinert und schärft pikante wie auch süße Speisen: Salate, Dressings, frische Pasta, Fleisch, Fisch und Lebkuchen brauchen dringend etwas von seinem vollen Aroma und seiner wohligen Schärfe.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	159	<p><strong>Zutaten:</strong><br>\nSchwarzer Pfeffer</p>
+159	de	<p>fein gemahlen</p>	<ul>\n\t<li>Fein gemahlener schwarzer Pfeffer aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Pikante Schärfe</li>\n</ul>	<p>Schwarzer Pfeffer verfeinert Gerichte mit einer ausgewogenen Würze und lässt sich mit vielen verschiedenen Aromen kombinieren. Er verfeinert und schärft pikante wie auch süße Speisen: Salate, Dressings, frische Pasta, Fleisch, Fisch und Lebkuchen brauchen dringend etwas von seinem vollen Aroma und seiner wohligen Schärfe.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	160	<p><strong>Zutaten:</strong><br>\nSchwarzer Pfeffer gemahlen</p>
+160	de	<p>fein gemahlen</p>	<ul>\n\t<li>Fein gemahlener Zimt aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Blumig süßliches Aroma</li>\n\t<li>Warm-würzige Note</li>\n</ul>	<p>Der Ceylon Zimt oder auch "echter Zimt" genannt, ist ein aromenstarker Allrounder für die süße und herzhafte Küche mit Soulfood Potential. Fein germahlen verleiht er Suppen, Marinaden und Soßen ihren besonderen Kick, unterstreicht den Geschmack von Hülsenfrüchten in deftigen Eintöpfen und adelt Fleischgerichte im Zusammenspiel mit anderen Gewürzen. Sehr gut harmonisiert das Gewürz auch mit allen Arten von Kuchen, Milchreis sowie Glühwein und Kaffee.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	161	<p><strong>Zutaten:</strong><br>\nZimt gemahlen</p>
+161	de	<p>ganze Rinde</p>	<ul>\n\t<li>Ganze Zimtrinde aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Blumig süßliches Aroma</li>\n\t<li>Warm-würzige Note</li>\n</ul>	<p>Der Ceylon Zimt oder auch "echter Zimt" genannt, ist ein aromenstarker Allrounder für die süße und herzhafte Küche mit Soulfood Potential. Die aromatische Zimtrinde verleiht Rotkraut und Wild einen edlen Geschmack und unterstreicht den Geschmack von Hülsenfrüchten in deftigen Eintöpfen. Sehr gut harmonisiert das Gewürz auch mit allen Arten von Punsch, Glühwein sowie Apfel-Kompott und Milchreis.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	162	<p><strong>Zutaten:</strong><br>\nZimtrinde</p>
+162	de	<p>fein gemahlen</p>	<ul>\n\t<li>Fein gemahlene Muskatnuss aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Hocharomatisch im Geschmack</li>\n\t<li>Warm-süßer Duft</li>\n</ul>	<p>Die positiven antibakteriellen, verdauungsfördernden sowie herzstärkenden und entkrampfenden Eigenschaften entfaltet die Muskatnuss am einfachsten in unseren Nahrungsmitteln. Das kraftvolle Gewürz ist ideal für Suppen, Saucen, Gemüse und Käsefondue und ist besonders geeignet für Kartoffelgerichte. In Weihnachtsgebäck wie Lebkuchen und Spekulatius darf die feine Muskatnote natürlich auch nicht fehlen. Frisch gerieben schenkt sie den Gerichten zugleich Würze und Süße und ist dabei so intensiv, dass schon kleinste Mengen genügen.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	163	<p><strong>Zutaten:</strong><br>\nMuskatnuss gemahlen</p>
+163	de	<p>fein gemahlen</p>	<ul>\n\t<li>Fein gemahlene Nelken aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Feurig-süße, gemahlene Knospen des Gewürznelkenbaumes</li>\n</ul>	<p>Das würzig süßliche und zugleich leicht pfeffrige Aroma der Gewürznelken ist ideal für Wildbret, Lamm, fette Fische und geräuchertes oder gepökeltes Fleisch sowie Reisgerichte. Kompotte, Punsch oder Glühwein und weihnachtliche Tees sind ohne den intensiven Geschmack der Nelken kaum vorstellbar. Zudem sind sie mit ihrer stark desinfizierenden, verdauungsfördernden und schmerzbetäubenden Wirkung bei Zahnschmerzen ein bewährtes Hausmittel.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	164	<p><strong>Zutaten:</strong><br>\nGewürznelken gemahlen</p>
+164	de	<p>fein gemahlen</p>	<ul>\n\t<li>Schwarze Pfefferkörner aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Hochwürziges und süßliches Aroma</li>\n\t<li>Scharfe Note</li>\n</ul>	<p>Das zitronig frische und leicht pfeffrige Aroma des gemahlenen Ingwers harmoniert hervorragend mit zahlreichen Gerichten der indischen und asiatischen Küche wie Wokgerichte, Currys sowie mit Fisch, Krustentieren und Meeresfrüchten. Vor allem Suppen und Nudelgerichte profitieren von seinem hochwürzigen süßlichen Aroma und seiner scharfen Note. Seine kreislaufanregende, verdauungsfördernde, schweißtreibende und antiseptische Wirkung wärmt den Magen und hilft bei Halsschmerzen sowie bei Erkältungen.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	165	<p><strong>Zutaten:</strong><br>\nIngwer gemahlen</p>
+165	de	<p>fein gemahlen</p>	<ul>\n\t<li>Fein gemahlenes Kurkuma aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Süßlich-herbes Aroma</li>\n</ul>	<p>Kurkuma - auch indischer Safran genannt - gilt als reinigendes und energetisierendes Gewürz aus der Ayurveda Küche. Die Inhaltsstoffe wirken verdauungsfördernd, blutreinigend sowie desinfizierend und entzündungshemmend. Das Superfood schenkt Speisen und Getränken eine intensiv gelbe Farbe und sorgt durch seinen würzigen, blumig-holzigen Geschmack für ein besonderes Aroma. Kurkuma ist ideal geeignet, um divergierende Geschmäcker in einem Gericht (etwa Schärfe, Knoblauch, Säure) harmonisch miteinander zu verbinden und verleiht indischen und orientalischen Gerichten eine besondere Note.</p>\n\n<p>Bio Foods Ltd. ist ein wichtiger Fair-Handels-Partner, Verarbeiter und Exporteur Sri Lankas und verarbeitet ausschließlich organisch-biologische Produkte. Gemeinsam mit der Produzent*innenvereinigungen SOFA (Small Organic Farmers Association) setzen Sie sich für die Förderung des Biolandbaus und Kleinproduzent*innen in Sri Lanka ein. Die Mitglieder von SOFA besitzen im Durchschnitt ein Hektar Land und müssen bereits bei Beitritt die Auflagen für organisch-biologischen Anbau erfüllen. Der Anbau von Tee, Gewürzen, Reis, Kokos, Gemüse und Früchten erfolgt im Mischanbau. So umrankt Pfeffer einen Nelken- oder Muskatnussbaum inmitten von Teesträuchern und Kokospalmen.</p>\n\n<p>Ihre Vision ist der Aufbau einer umweltfreundlichen, landwirtschaftlich entwickelten, gleich behandelten und wirtschaftlich gestärkten Gemeinschaft. "Eine nachhaltige Form der Landwirtschaft ist umweltfreundlich, sozial gerecht, wirtschaftlich tragfähig und entspricht der Kultur der Menschen. Organisch-biologischer Landbau und Fairer Handel gehören zusammen.“ - Sarath Ranaweera, Bio Foods</p>	166	<p><strong>Zutaten:</strong><br>\nKurkuma gemahlen</p>
+166	de	<p>ganz</p>	<ul>\n\t<li>Fruchtmantel der Muskatnuss aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Warm-süßes Aroma</li>\n</ul>	<p>Die Muskatblüte ist der Fruchtmantel der Muskatnuss und schmeckt etwas süßer, fast blumig und zugleich nuancenreicher als die Nuss. Die Einsatzgebiete in der Küche sind denen der Muskatnuss allerdings sehr ähnlich: Besonders Kartoffelgerichte, Suppen und Eintöpfe erhalten durch die Blüte eine unverwechselbar edle Würze. Dazu einfach die ganze "Blüte" in etwas Flüssigkeit wie Milch oder Brühe - also der Basis der Sauce oder Suppe - ziehen lassen, bis sich das volle Aroma etwickelt hat. Die Muskatblüte wird bei längerem Kochen weich und löst sich relativ gut auf - bei kürzeren Kochvorgängen sollte sie vor dem Servieren entfernt werden, da sie zu intensiv zum Mitessen ist.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	167	<p><strong>Zutaten:</strong><br>\nMuskatblüte</p>
+167	de	<p>ganz</p>	<ul>\n\t<li>Aromatische Curryblätter aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Herb-zitroniges Aroma</li>\n</ul>	<p>Die ovalen Curryblätter sind ein wichtiges Gewürz in der Ayurveda Küche. Das zitronig frische und leicht herbe Aroma der Blätter harmoniert hervorragend mit zahlreichen Gerichten der indischen und asiatischen Küche wie Wokgerichte, Currys sowie mit Gemüseeintöpfen und Suppen. Zudem wirken die Inhaltsstoffe dieses Superfoods appetitanregend, fiebersenkend sowie blutreinigend und entzündungshemmend. Die Curryblätter können mitgegessen werden und entweder zerrieben verwendet oder zunächst in einer Pfanne mit Öl gebraten und anschließend weiterverarbeitet werden.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	168	<p><strong>Zutaten:</strong><br>\nCurryblätter</p>
+168	de	<p>ganz</p>	<ul>\n\t<li>Aromatischer Sternanis aus Vietnam</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Süßlich warmes Aroma mit der typischen Anisnote</li>\n</ul>	<p>Der Sternanis von Van Chan Bio Farmers besteht aus den getrockneten Früchten eines asiatischen immergrünen Magnolienbaums und ist ein wichtiges Gewürz in der TCM- und Ayurveda Küche. Seine Inhaltsstoffe wirken antibakteriell, harntreibend sowie magenstärkend und schleimlösend. Das süßlich warme und zugleich leicht pfeffrige Aroma harmoniert hervorragend mit zahlreichen Gerichten der indischen und asiatischen Küche wie Wokgerichte, Currys sowie mit Gemüseeintöpfen und Suppen. In Süßspeisen harmoniert er besonders gut mit Früchten und Schokolade.</p>\n\n<p>Die 422 Mitgliedsfamilien des Van Chan Bio Farmers Club stammen aus vier Dorfgemeinschaften der Bezirke Van Chan und Tram Tou in der Provinz Yen Bai im Norden Vietnams. Sie alle sind Angehörige der H’mong und Dao und zählen damit zu zwei der 53 ethnischen Minderheiten Vietnams. Der Faire Handel ermöglicht ihnen einen Zugang zu neuen Märkten, besseren Preisen als am lokalen Markt durch Bio- und FAIRTRADE-Aufschläge sowie eine gemeinschaftliche Vermarktung. Die Produzent*innen werden in die Preisverhandlungen mit den Verarbeitern mit eingebunden, erhalten zudem eine FAITRADE-Prämie und technische Beratung.</p>\n\n<p>Die FAIRTRADE- Prämie wird vor allem für Infrastrukturprojekte verwendet – den Bau einer zerstörten Brücke, den Ausbau des Trinkwassersystems und die Befestigung von Wegen und Straßen. Letztere sind vor allem wichtig, um die Ernte aus den Dörfern und Siedlungen zu den Sammelpunkten und auf die Märkte bringen zu können. Viele der Dörfer sind bis heute nur zu Fuß erreichbar und somit von den Märkten und anderen öffentlichen Einrichtungen abgeschnitten.</p>	169	<p><strong>Zutaten:</strong><br>\nSternanis</p>
+169	de	<p>würzig-kräuterig</p>	<ul>\n\t<li>Bratkartoffelgewürz von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit vielen Gewürzen und ordentlich Röstzwiebeln</li>\n\t<li>Würzig-kräuterig</li>\n</ul>	<p>Das perfekte Gewürz für unvergesslich knusprig-würzige Kartoffeln - bestens geeignet für jede Form von Kartoffelgerichten. Ob Pommes, Ofenkartoffel oder Gratin, das Bratkartoffelgewürz von der österreichischen Bergkräutergenossenschaft verleiht deinen Speisen den richtigen Pepp.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	170	<p><strong>Zutaten:</strong><br>\nBergkernsalz<br>\nRöstzwiebel<br>\nPetersilie<br>\nKurkuma<br>\nIngwerpulver</p>
+171	de	<p>Mühlviertler Salatkräuter</p>	<ul>\n\t<li>Feine Salatkräuter von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mischung nach Mühlviertler Art</li>\n\t<li>Kräuterig-zitroniges Aroma</li>\n\t<li>Frisch-würzige Note</li>\n</ul>	<p>Zu einem frischen, knackigen Salat gehören auch richtig gute Salatkräuter. Mit den BIO Salatkräutern nach Mühlviertler Art bekommt jede und jeder garantiert gute Laune. Passt auch hervorragend in Dips und Nudelgerichte.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	172	<p><strong>Zutaten:</strong><br>\nPetersilie<br>\nDill<br>\nEstragon<br>\nZitronenmelisse<br>\nZwiebelpulver<br>\nKapuzinerkresse<br>\nSellerieblätter<br>\nLiebestöckl<br>\nBrennessel</p>
+170	de	<p>kräuterig-würzig</p>	<ul>\n\t<li>Beste BIO-Suppenwürze von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit 38% Gemüseanteil und einer Vielzahl an Kräutern und Gewürzen</li>\n\t<li>Hefefrei</li>\n</ul>	<p>Der intensive Geschmack von heimischem Gemüse und Kräutern sowie die heilsamen Aromen feiner Gewürze verleihen der Brühe eine kräftig-würzige Note. Der köstliche Mix besticht durch sein intensives Aroma und bringt Würze in jedes Gericht. Hervorragend geeignet als Suppengrundlage sowie zum Verfeinern von Eintöpfen, Aufläufen und Saucen.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	171	<p><strong>Zutaten:</strong><br>\nGemüse 38% (Sellerie, Karotten, Röstzwiebel, Tomaten, Petersilienwurzel, Pastinake, Lauch)<br>\nMeersalz<br>\nMaisstärke<br>\nSonnenblumenöl<br>\nKräuter 5% (Schnittlauch, Petersilie, Liebstöckl, Löwenzahn)<br>\nDextrose<br>\nGewürze (Knoblauchpulver, Chili, Ingwer, Kurkuma, Kümmel, Muskat, Fenchel)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Senf</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>211</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>881</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>6,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>25</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>15</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>37,1</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p> </p>
+172	de	<p>fein gemahlen</p>	<ul>\n\t<li>Erlesenes Curry aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Orientalisch-pikantes Aroma</li>\n\t<li>Würzig-warme Note</li>\n</ul>	<p>Das milde Curry ist durch seinen dezenten Schärfegrad für Einsteiger*innen geeignet und verfeinert eine Vielzahl an Gerichten mit seinen pikant-exotischen Aromen. Die feine Mischung enthält erlesene Gewürze, die - nach der ayurvedischen Lehre - den Körper heilsam erhitzen und den authentischen Geschmack der indischen Küche in Ihr Zuhause bringen. Schmorgerichte mit Hülsenfrüchten, Suppen, Gemüse oder Geflügel harmonieren perfekt mit den würzigen Nuancen dieses Currys.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	173	<p><strong>Zutaten:</strong><br>\nGelbwurz<br>\nKoriander gemahlen<br>\nKreuzkümmel<br>\nIngwer<br>\nZimt gemahlen<br>\nKardamom<br>\nMuskatnuss</p>
 \.
 
 
@@ -12153,7 +13089,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: cms_cmsplugin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1275, true);
+SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1324, true);
 
 
 --
@@ -12174,14 +13110,14 @@ SELECT pg_catalog.setval('public.cms_globalpagepermission_sites_id_seq', 1, fals
 -- Name: cms_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_id_seq', 77, true);
+SELECT pg_catalog.setval('public.cms_page_id_seq', 83, true);
 
 
 --
 -- Name: cms_page_placeholders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 154, true);
+SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 166, true);
 
 
 --
@@ -12195,7 +13131,7 @@ SELECT pg_catalog.setval('public.cms_pagepermission_id_seq', 1, false);
 -- Name: cms_placeholder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 160, true);
+SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 172, true);
 
 
 --
@@ -12209,14 +13145,14 @@ SELECT pg_catalog.setval('public.cms_staticplaceholder_id_seq', 2, true);
 -- Name: cms_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_title_id_seq', 117, true);
+SELECT pg_catalog.setval('public.cms_title_id_seq', 123, true);
 
 
 --
 -- Name: cms_treenode_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_treenode_id_seq', 39, true);
+SELECT pg_catalog.setval('public.cms_treenode_id_seq', 42, true);
 
 
 --
@@ -12258,7 +13194,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_inline_id_seq', 4, true);
 -- Name: cmsplugin_cascade_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cmsplugin_cascade_page_id_seq', 20, true);
+SELECT pg_catalog.setval('public.cmsplugin_cascade_page_id_seq', 22, true);
 
 
 --
@@ -12293,7 +13229,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 934, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1054, true);
 
 
 --
@@ -12321,14 +13257,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 144, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 183, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 1268, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 1620, true);
 
 
 --
@@ -12356,7 +13292,7 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 341, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 380, true);
 
 
 --
@@ -12384,7 +13320,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 146, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 169, true);
 
 
 --
@@ -12496,7 +13432,7 @@ SELECT pg_catalog.setval('public.weltladen_locations_id_seq', 1, true);
 -- Name: weltladen_manufacturer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 71, true);
+SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 78, true);
 
 
 --
@@ -12524,14 +13460,14 @@ SELECT pg_catalog.setval('public.weltladen_orderpayment_id_seq', 1, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 134, true);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 173, true);
 
 
 --
 -- Name: weltladen_productpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 265, true);
+SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 343, true);
 
 
 --
@@ -12545,35 +13481,35 @@ SELECT pg_catalog.setval('public.weltladen_shippingaddress_id_seq', 2, true);
 -- Name: weltladen_supplier_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 3, true);
+SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 4, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 503, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 513, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 134, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 173, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_quality_labels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_quality_labels_id_seq', 253, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_quality_labels_id_seq', 304, true);
 
 
 --
 -- Name: weltladen_weltladenproducttranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 133, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 172, true);
 
 
 --

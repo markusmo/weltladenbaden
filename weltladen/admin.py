@@ -20,9 +20,9 @@ from weltladen.models import (Manufacturer, Supplier, QualityLabel,
 class BooleanDefaultNoFilter(admin.SimpleListFilter):
     def lookups(self, request, model_admin):
         return (
-            ('all', 'All'),
-            (1, '20% sales tax'),
-            (None, '10% sales Tax')
+            ('all', _('All')),
+            (1, _('20% sales tax')),
+            (2, _('10% sales Tax'))
         )
 
     def choices(self, changelist):
@@ -34,14 +34,15 @@ class BooleanDefaultNoFilter(admin.SimpleListFilter):
             }
 
     def queryset(self, request, queryset):
-        if self.value():
-            if self.value() == 'all':
-                return queryset
-            else:
+        if self.value() is None:
+            return queryset
+        else:
+            v = self.value()
+            if self.value() == '2':
+                return queryset.filter(**{self.parameter_name: False})
+            elif self.value() == '1':
                 return queryset.filter(**{self.parameter_name: self.value()})
 
-        elif self.value() == None:
-            return queryset.filter(**{self.parameter_name: False})
 
 class TaxSwitchFilter(BooleanDefaultNoFilter):
     title = _('Sales Tax')
