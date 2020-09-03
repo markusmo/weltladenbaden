@@ -524,8 +524,8 @@ CMSPLUGIN_CASCADE = {
     },
     'leaflet': {
         'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
-        'accessToken': 'pk.eyJ1IjoibWFya3VzbW8iLCJhIjoiY2s5NzZtdWZwMGV6azNocnNrYmRjc2ltciJ9.gn39wNwba9Y01rvSlXpiaw',
-        'apiKey': 'AIzaSyD71sHrtkZMnLqTbgRmY_NsO0A9l9BQmv4',
+        'accessToken': '',
+        'apiKey': '',
     },
     'bookmark_prefix': '/',
     'segmentation_mixins': [
@@ -647,6 +647,7 @@ PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'
 
 try:
-    from .settings_local import SHOP_SENDCLOUD
+    from .settings_local import SHOP_SENDCLOUD, CMSPLUGIN_CASCADE_LOCAL
+    CMSPLUGIN_CASCADE['leaflet'] = CMSPLUGIN_CASCADE_LOCAL
 except ImportError:
     print('setttings_local.py is missing')
