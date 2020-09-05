@@ -95,6 +95,8 @@ class Manufacturer(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name = _("Manufacturer")
+        verbose_name_plural = _("Manufacturers")
 
     def __str__(self):
         return self.name
@@ -109,6 +111,8 @@ class Supplier(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name = _("Supplier")
+        verbose_name_plural = _("Suppliers")
 
     def __str__(self):
         return self.name
@@ -129,6 +133,9 @@ class QualityLabel(models.Model):
     logo = image.FilerImageField(
         on_delete=models.CASCADE
     )
+    class Meta:
+        verbose_name = _("Quality label")
+        verbose_name_plural = _("Quality lables")
 
     def __str__(self):
         return self.name
