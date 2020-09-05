@@ -1,0 +1,12 @@
+.figure > a > div > img {
+	width: auto;
+	height: 160px;
+}
+
+.figure > a > h5 {
+	height: 3.5em;
+}
+
+.figure-caption {
+    height: 5.5em;
+}
