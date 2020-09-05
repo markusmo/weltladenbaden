@@ -168,6 +168,9 @@ LANGUAGES = [
     ('en', "en"),
 ]
 
+#localepaths for translations 
+LOCALE_PATHS = ( os.path.join(PROJECT_ROOT, 'locale'), )
+
 PARLER_DEFAULT_LANGUAGE = LANGUAGE_CODE
 
 PARLER_LANGUAGES = {

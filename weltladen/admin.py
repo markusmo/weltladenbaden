@@ -21,7 +21,9 @@ class BooleanDefaultNoFilter(admin.SimpleListFilter):
     def lookups(self, request, model_admin):
         return (
             ('all', _('All')),
+            # xgettext:no-python-format
             (1, _('20% sales tax')),
+            # xgettext:no-python-format
             (2, _('10% sales Tax'))
         )
 
