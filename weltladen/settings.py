@@ -169,7 +169,10 @@ LANGUAGES = [
 ]
 
 #localepaths for translations 
-LOCALE_PATHS = ( os.path.join(PROJECT_ROOT, 'locale'), )
+LOCALE_PATHS = [
+    os.path.join(PROJECT_ROOT, 'locale'), #weltladen
+    os.path.join(PROJECT_ROOT, 'tpa_locale') #django-shop
+]
 
 PARLER_DEFAULT_LANGUAGE = LANGUAGE_CODE
 
