@@ -166,7 +166,7 @@ msgstr "Gütesiegel"
 
 #: weltladen/models.py:158
 msgid "Product Name"
-msgstr "Productbezeichnung"
+msgstr "Produktbezeichnung"
 
 #: weltladen/models.py:161
 msgid "Slug"
