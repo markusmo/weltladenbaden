@@ -3842,7 +3842,8 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 12	!vrxxGrlvmPUCPuGzKm473uGVwXA29iBxBVZNJqnu	\N	f	84jLT.wKpmd@6ouyM3pVA43jKMx4				f	f	2020-05-30 18:25:16.132496+02
 13	!NTjVmvcD93WsgO6JuE8bxSxmsw4k1nrbMAxAxcWe	\N	f	4b2xahdpSlvYEDD74bd7rAk8rTVr				f	f	2020-06-04 20:35:31.385574+02
 10	pbkdf2_sha256$180000$FTbDHaYB7Axu$dAQRg1NQrgKC8aTpsnOrwgHnTDX4DEg2SwLoaNHyJHI=	2020-08-17 16:37:51.580264+02	t	marija	Marija	Markovic	marija.markovic@gmx.nat	t	t	2020-05-01 12:20:11.542391+02
-4	pbkdf2_sha256$180000$M4xZ2rIRLxiR$K+/CdniEMwF6ndVMdbNfwvj/ITZi6HYXpkvXKaTOfcg=	2020-08-26 19:06:17.568547+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
+14	!yWk3qucTxelx3dK7BTsnCo6CJVSx3GUHdGOFTfB6	\N	f	1LjV1SJth@tef56tE0NTS@HfymmF				f	f	2020-09-09 16:47:18.106827+02
+4	pbkdf2_sha256$180000$M4xZ2rIRLxiR$K+/CdniEMwF6ndVMdbNfwvj/ITZi6HYXpkvXKaTOfcg=	2020-09-10 08:10:56.162532+02	t	markus	Markus	Mohanty	markus.mohanty@gmail.com	t	t	2020-04-26 20:36:02.839145+02
 \.
 
 
@@ -4469,14 +4470,8 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 736	0	de	BootstrapColumnPlugin	2020-04-27 21:29:13.789115+02	2020-04-27 21:29:13.798059+02	735	12	3	2	003O00010001
 445	1	de	ProcessStepPlugin	2020-04-26 19:50:10.066481+02	2020-04-30 19:48:10.922742+02	437	80	6	4	002V00010001000100010002
 1140	0	de	BreadcrumbPlugin	2020-04-26 19:50:07.085316+02	2020-04-30 19:54:39.985272+02	\N	49	1	0	004H
-738	1	de	TextPlugin	2020-04-27 21:29:27.970935+02	2020-04-27 21:32:24.861272+02	736	12	4	0	003O000100010002
 1141	0	de	BootstrapContainerPlugin	2020-04-26 19:50:06.904016+02	2020-04-30 19:54:40.046883+02	\N	50	1	1	004I
 1142	0	de	BootstrapRowPlugin	2020-04-26 19:50:06.911441+02	2020-04-30 19:54:40.053343+02	1141	50	2	1	004I0001
-744	0	de	BootstrapContainerPlugin	2020-04-27 21:29:07.546362+02	2020-04-27 21:32:28.12125+02	\N	14	1	1	003P
-745	0	de	BootstrapRowPlugin	2020-04-27 21:29:13.780944+02	2020-04-27 21:32:28.12449+02	744	14	2	1	003P0001
-747	0	de	HeadingPlugin	2020-04-27 21:29:22.770801+02	2020-04-27 21:32:28.13284+02	746	14	4	0	003P000100010001
-746	0	de	BootstrapColumnPlugin	2020-04-27 21:29:13.789115+02	2020-04-27 21:32:28.129267+02	745	14	3	2	003P00010001
-748	1	de	TextPlugin	2020-04-27 21:29:27.970935+02	2020-04-27 21:32:28.149736+02	746	14	4	0	003P000100010002
 749	1	de	BootstrapSecondaryMenuPlugin	2020-04-27 21:39:33.491424+02	2020-04-27 21:39:40.720815+02	29	3	4	0	0003000100020002
 1145	0	de	HeadingPlugin	2020-04-26 19:50:06.952693+02	2020-04-30 19:54:40.077645+02	1144	50	5	0	004I0001000100010001
 1144	0	de	SegmentPlugin	2020-04-26 19:50:06.940534+02	2020-04-30 19:54:40.069604+02	1143	50	4	1	004I000100010001
@@ -4501,6 +4496,7 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 785	0	de	BootstrapContainerPlugin	2020-04-27 21:39:53.684467+02	2020-04-27 21:49:35.115733+02	\N	89	1	1	003S
 786	0	de	BootstrapRowPlugin	2020-04-27 21:40:03.174033+02	2020-04-27 21:49:35.120061+02	785	89	2	1	003S0001
 788	0	de	HeadingPlugin	2020-04-27 21:40:16.544974+02	2020-04-27 21:49:35.130007+02	787	89	4	0	003S000100010001
+738	1	de	TextPlugin	2020-04-27 21:29:27.970935+02	2020-09-12 14:40:43.740422+02	736	12	4	0	003O000100010002
 789	1	de	LeafletPlugin	2020-04-27 21:44:41.975959+02	2020-04-27 21:49:35.136707+02	787	89	4	0	003S000100010002
 787	0	de	BootstrapColumnPlugin	2020-04-27 21:40:03.18244+02	2020-04-27 21:49:35.125463+02	786	89	3	3	003S00010001
 790	2	de	TextPlugin	2020-04-27 21:45:23.452806+02	2020-04-27 21:49:35.150088+02	787	89	4	0	003S000100010003
@@ -4571,6 +4567,7 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 1275	0	de	BreadcrumbPlugin	2020-08-25 20:13:09.658348+02	2020-08-25 20:13:11.247924+02	\N	149	1	0	0056
 1276	0	de	BootstrapContainerPlugin	2020-08-26 19:09:14.143784+02	2020-08-26 19:09:14.148127+02	\N	162	1	1	0057
 1277	0	de	BootstrapRowPlugin	2020-08-26 19:09:22.134755+02	2020-08-26 19:09:22.144719+02	1276	162	2	1	00570001
+1335	0	de	BootstrapRowPlugin	2020-09-12 14:45:10.228312+02	2020-09-12 14:45:46.562052+02	1334	176	2	1	005G0001
 1281	0	de	TextPlugin	2020-08-26 19:09:48.637524+02	2020-08-26 19:27:24.087647+02	1278	162	4	0	0057000100010002
 1321	0	de	BootstrapContainerPlugin	2020-08-26 19:09:14.143784+02	2020-08-26 19:27:27.778819+02	\N	164	1	1	005D
 1278	0	de	BootstrapColumnPlugin	2020-08-26 19:09:22.150447+02	2020-08-26 19:10:50.606412+02	1277	162	3	1	005700010001
@@ -4580,19 +4577,31 @@ COPY public.cms_cmsplugin (id, "position", language, plugin_type, creation_date,
 1302	0	de	BootstrapContainerPlugin	2020-08-26 19:24:33.854212+02	2020-08-26 19:24:55.887388+02	\N	170	1	1	005B
 1303	0	de	BootstrapRowPlugin	2020-08-26 19:24:40.447292+02	2020-08-26 19:24:40.450868+02	1302	170	2	1	005B0001
 1305	0	de	BootstrapColumnPlugin	2020-08-26 19:24:40.459435+02	2020-08-26 19:24:40.469484+02	1303	170	3	1	005B00010001
+1336	0	de	BootstrapColumnPlugin	2020-09-12 14:45:10.244162+02	2020-09-12 14:45:46.566454+02	1335	176	3	1	005G00010001
+1337	0	de	TextPlugin	2020-09-12 14:45:16.017495+02	2020-09-12 14:45:46.578247+02	1336	176	4	0	005G000100010001
 1294	0	de	BootstrapContainerPlugin	2020-08-26 19:12:36.745124+02	2020-08-26 19:12:36.749668+02	\N	166	1	1	0059
 1295	0	de	BootstrapRowPlugin	2020-08-26 19:12:44.799714+02	2020-08-26 19:12:44.80323+02	1294	166	2	1	00590001
+1325	0	de	BootstrapContainerPlugin	2020-04-27 21:29:07.546362+02	2020-09-12 14:41:08.816744+02	\N	14	1	1	005E
 1296	0	de	BootstrapColumnPlugin	2020-08-26 19:12:44.808437+02	2020-08-26 19:12:44.81799+02	1295	166	3	1	005900010001
 1297	0	de	TextPlugin	2020-08-26 19:12:49.725124+02	2020-08-26 19:13:24.463807+02	1296	166	4	0	0059000100010001
 1298	0	de	BootstrapContainerPlugin	2020-08-26 19:12:36.745124+02	2020-08-26 19:13:30.077665+02	\N	168	1	1	005A
 1299	0	de	BootstrapRowPlugin	2020-08-26 19:12:44.799714+02	2020-08-26 19:13:30.08227+02	1298	168	2	1	005A0001
 1300	0	de	BootstrapColumnPlugin	2020-08-26 19:12:44.808437+02	2020-08-26 19:13:30.086437+02	1299	168	3	1	005A00010001
 1301	0	de	TextPlugin	2020-08-26 19:12:49.725124+02	2020-08-26 19:13:30.095448+02	1300	168	4	0	005A000100010001
+1326	0	de	BootstrapRowPlugin	2020-04-27 21:29:13.780944+02	2020-09-12 14:41:08.826365+02	1325	14	2	1	005E0001
+1328	0	de	HeadingPlugin	2020-04-27 21:29:22.770801+02	2020-09-12 14:41:08.836471+02	1327	14	4	0	005E000100010001
+1327	0	de	BootstrapColumnPlugin	2020-04-27 21:29:13.789115+02	2020-09-12 14:41:08.831162+02	1326	14	3	2	005E00010001
 1308	0	de	TextPlugin	2020-08-26 19:25:00.999017+02	2020-08-26 19:26:53.161274+02	1305	170	4	0	005B000100010001
 1317	0	de	BootstrapContainerPlugin	2020-08-26 19:24:33.854212+02	2020-08-26 19:26:55.404758+02	\N	172	1	1	005C
 1318	0	de	BootstrapRowPlugin	2020-08-26 19:24:40.447292+02	2020-08-26 19:26:55.408009+02	1317	172	2	1	005C0001
 1319	0	de	BootstrapColumnPlugin	2020-08-26 19:24:40.459435+02	2020-08-26 19:26:55.41274+02	1318	172	3	1	005C00010001
 1320	0	de	TextPlugin	2020-08-26 19:25:00.999017+02	2020-08-26 19:26:55.422815+02	1319	172	4	0	005C000100010001
+1329	1	de	TextPlugin	2020-04-27 21:29:27.970935+02	2020-09-12 14:41:08.857065+02	1327	14	4	0	005E000100010002
+1330	0	de	BootstrapContainerPlugin	2020-09-12 14:45:02.146289+02	2020-09-12 14:45:02.158905+02	\N	174	1	1	005F
+1331	0	de	BootstrapRowPlugin	2020-09-12 14:45:10.228312+02	2020-09-12 14:45:10.239341+02	1330	174	2	1	005F0001
+1332	0	de	BootstrapColumnPlugin	2020-09-12 14:45:10.244162+02	2020-09-12 14:45:10.326428+02	1331	174	3	1	005F00010001
+1333	0	de	TextPlugin	2020-09-12 14:45:16.017495+02	2020-09-12 14:45:39.322611+02	1332	174	4	0	005F000100010001
+1334	0	de	BootstrapContainerPlugin	2020-09-12 14:45:02.146289+02	2020-09-12 14:45:46.55767+02	\N	176	1	1	005G
 \.
 
 
@@ -4620,7 +4629,6 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 26	script	markus	2020-04-26 19:50:07.913946+02	2020-04-27 21:17:21.94351+02	2020-04-26 19:50:07.913757+02	\N	t	f	shop-customer-details	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	25	f	13
 4	script	script	2020-04-26 19:50:04.609836+02	2020-04-26 19:50:04.638179+02	2020-04-26 19:50:04.60963+02	\N	f	t	shop-legal-pages	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	3	f	2
 3	script	script	2020-04-26 19:50:04.56443+02	2020-04-26 19:50:04.564449+02	2020-04-26 19:50:04.60963+02	\N	f	t	shop-legal-pages	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	4	f	2
-6	script	markus	2020-04-26 19:50:04.791754+02	2020-04-27 21:32:28.062336+02	2020-04-26 19:50:04.791572+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	5	f	3
 25	script	markus	2020-04-26 19:50:07.569442+02	2020-04-27 21:17:00.322131+02	2020-04-26 19:50:07.913757+02	\N	t	f	shop-customer-details	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	26	f	13
 27	script	markus	2020-04-26 19:50:08.11542+02	2020-04-27 21:17:12.890692+02	2020-04-26 19:50:08.28475+02	\N	t	f	shop-password-change	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	28	f	14
 32	script	markus	2020-04-26 19:50:08.836002+02	2020-04-27 21:15:49.694676+02	2020-04-26 19:50:08.835814+02	\N	t	f	shop-register-customer	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	31	f	16
@@ -4638,7 +4646,6 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 28	script	markus	2020-04-26 19:50:08.284991+02	2020-04-27 21:17:26.249198+02	2020-04-26 19:50:08.28475+02	\N	t	f	shop-password-change	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	27	f	14
 24	script	markus	2020-04-26 19:50:07.313229+02	2020-04-30 19:54:39.816714+02	2020-04-26 19:50:07.312987+02	\N	t	f	shop-order	\N	weltladen/pages/default.html	f	\N	f	OrderApp	\N	f	de,en	0	23	f	12
 23	script	markus	2020-04-26 19:50:06.863302+02	2020-04-27 21:16:41.079314+02	2020-04-26 19:50:07.312987+02	\N	t	f	shop-order	\N	weltladen/pages/default.html	f	\N	f	OrderApp	\N	t	de,en	0	24	f	12
-5	script	markus	2020-04-26 19:50:04.658277+02	2020-04-27 21:14:20.309057+02	2020-04-26 19:50:04.791572+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	6	f	3
 43	markus	markus	2020-04-27 21:37:23.203367+02	2020-04-27 21:37:23.242871+02	2020-04-27 21:37:29.655846+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	44	f	22
 34	script	markus	2020-04-26 19:50:09.104841+02	2020-04-27 21:15:59.131545+02	2020-04-26 19:50:09.104628+02	\N	t	f	password-reset-request	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	33	f	17
 30	script	script	2020-04-26 19:50:08.559358+02	2020-04-26 19:50:08.612353+02	2020-04-26 19:50:08.559172+02	\N	t	f	shop-login	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	29	f	15
@@ -4668,6 +4675,8 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 56	marija	markus	2020-06-18 09:34:52.025171+02	2020-06-18 09:36:33.377518+02	2020-06-18 09:39:25.379519+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	65	f	29
 57	marija	markus	2020-06-18 09:35:22.119027+02	2020-06-18 09:35:32.568474+02	2020-06-18 09:39:28.764661+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	66	f	30
 58	marija	markus	2020-06-18 09:35:57.131145+02	2020-06-18 09:36:07.6874+02	2020-06-18 09:39:31.936878+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	67	f	31
+6	script	markus	2020-04-26 19:50:04.791754+02	2020-09-12 14:41:08.746829+02	2020-04-26 19:50:04.791572+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de,en	0	5	f	3
+5	script	markus	2020-04-26 19:50:04.658277+02	2020-04-27 21:14:20.309057+02	2020-04-26 19:50:04.791572+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de,en	0	6	f	3
 61	marija	markus	2020-06-18 09:37:53.857531+02	2020-06-18 09:38:10.349017+02	2020-06-18 09:39:42.077047+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	70	f	34
 71	marija	markus	2020-06-18 09:39:45.149761+02	2020-08-25 20:12:59.742571+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	f	de	0	62	f	35
 62	marija	markus	2020-06-18 09:38:30.923605+02	2020-06-18 09:38:40.352436+02	2020-06-18 09:39:45.149488+02	\N	t	f	\N	\N	INHERIT	f	\N	f	CatalogListApp	\N	t	de	0	71	f	35
@@ -4689,6 +4698,8 @@ COPY public.cms_page (id, created_by, changed_by, creation_date, changed_date, p
 82	markus	markus	2020-08-26 19:24:00.607134+02	2020-08-26 19:24:05.961747+02	2020-08-26 19:26:03.347621+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	83	f	42
 79	markus	markus	2020-08-26 19:07:33.88636+02	2020-08-26 19:27:27.720132+02	2020-08-26 19:07:33.886036+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	f	de	0	78	f	40
 78	markus	markus	2020-08-26 19:07:03.632022+02	2020-08-26 19:07:30.810536+02	2020-08-26 19:07:33.886036+02	\N	t	f	\N	\N	weltladen/pages/default.html	f	\N	f	\N	\N	t	de	0	79	f	40
+85	markus	markus	2020-09-12 14:45:46.516942+02	2020-09-12 14:45:46.51696+02	2020-09-12 14:45:46.516548+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	f	de	0	84	f	43
+84	markus	markus	2020-09-12 14:43:34.229663+02	2020-09-12 14:43:34.284553+02	2020-09-12 14:45:46.516548+02	\N	t	f	\N	\N	INHERIT	f	\N	f	\N	\N	t	de	0	85	f	43
 \.
 
 
@@ -4841,6 +4852,10 @@ COPY public.cms_page_placeholders (id, page_id, placeholder_id) FROM stdin;
 164	82	170
 165	83	171
 166	83	172
+167	84	173
+168	84	174
+169	85	175
+170	85	176
 \.
 
 
@@ -5023,6 +5038,10 @@ COPY public.cms_placeholder (id, slot, default_width) FROM stdin;
 170	Main Content	\N
 171	Breadcrumb	\N
 172	Main Content	\N
+173	Breadcrumb	\N
+174	Main Content	\N
+175	Breadcrumb	\N
+176	Main Content	\N
 \.
 
 
@@ -5057,8 +5076,6 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 5	de	Legal	\N	\N	\N	legal	legal	f	\N	2020-04-26 19:50:04.592965+02	t	t	0	3	7
 40	en	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-26 19:50:06.068966+02	t	f	0	20	38
 44	en	Watch-List	\N	\N	\N	watch-list	watch-list	f	\N	2020-04-26 19:50:06.631208+02	t	f	0	22	42
-11	de	Impressum				impressum	legal/impressum	f	\N	2020-04-26 19:50:04.774727+02	t	f	0	6	9
-9	de	Impressum				impressum	legal/impressum	f	\N	2020-04-26 19:50:04.774727+02	t	t	0	5	11
 42	en	Watch-List	\N	\N	\N	watch-list	watch-list	f	\N	2020-04-26 19:50:06.631208+02	t	t	0	21	44
 10	en	Imprint	\N	\N	\N	imprint	legal/imprint	f	\N	2020-04-26 19:50:04.783035+02	f	t	1	5	12
 15	de	AGBs				agbs	legal/agbs	f	\N	2020-04-26 19:50:04.864833+02	t	f	0	8	13
@@ -5066,6 +5083,7 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 14	en	Terms and Conditions	\N	\N	\N	terms-and-conditions	legal/terms-and-conditions	f	\N	2020-04-26 19:50:04.872651+02	t	t	1	7	16
 38	en	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-26 19:50:06.068966+02	t	t	1	19	40
 37	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-26 19:50:05.886282+02	t	t	0	19	39
+11	de	Impressum				impressum	legal/impressum	f	\N	2020-04-26 19:50:04.774727+02	t	f	0	6	9
 23	de	Personal Pages	\N	\N	\N	personal-pages	personal-pages	f	\N	2020-04-26 19:50:05.049653+02	t	f	0	12	21
 21	de	Personal Pages	\N	\N	\N	personal-pages	personal-pages	f	\N	2020-04-26 19:50:05.049653+02	t	t	0	11	23
 39	de	Cart	\N	\N	\N	cart	cart	f	\N	2020-04-26 19:50:05.886282+02	t	f	0	20	37
@@ -5132,9 +5150,12 @@ COPY public.cms_title (id, language, title, page_title, menu_title, meta_descrip
 79	de	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-26 19:50:09.916396+02	t	f	0	40	77
 77	de	Checkout	\N	\N	\N	checkout	checkout	f	\N	2020-04-26 19:50:09.916396+02	t	t	0	39	79
 1	de	Home	\N	\N	\N	home		f	\N	2020-04-26 19:50:03.767495+02	t	t	0	1	3
+9	de	Impressum				impressum	legal/impressum	f	\N	2020-04-26 19:50:04.774727+02	t	t	0	5	11
 29	de	Lebensmittel				lebensmittel	lebensmittel	f	\N	2020-04-26 19:50:05.231449+02	t	t	0	15	31
+125	de	Fairer Handel				fairer-handel	fairer-handel	f	\N	2020-09-12 14:43:34.238431+02	t	f	0	85	124
 94	de	Kaffee				kaffee	catalog/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	f	0	54	93
 93	de	Kaffee				kaffee	catalog/kaffee	f	\N	2020-05-02 16:33:01.787651+02	t	t	0	53	94
+124	de	Fairer Handel				fairer-handel	fairer-handel	f	\N	2020-09-12 14:43:34.238431+02	t	t	0	84	125
 99	de	Honig & Aufstrich				honig-aufstrich	lebensmittel/honig-aufstrich	f	\N	2020-06-18 09:36:57.642938+02	t	t	0	59	108
 109	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	f	0	69	100
 100	de	Gewürze				gewurze	lebensmittel/gewurze	f	\N	2020-06-18 09:37:24.262017+02	t	t	0	60	109
@@ -5173,6 +5194,7 @@ COPY public.cms_treenode (id, path, depth, numchild, parent_id, site_id) FROM st
 41	00030001	2	0	40	1
 42	00030002	2	0	40	1
 40	0003	1	2	\N	1
+43	000F	1	0	\N	1
 20	000E	1	0	\N	1
 19	000D	1	0	\N	1
 18	000C	1	0	\N	1
@@ -5835,10 +5857,6 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 737	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h1",\n    "content": "Impressum"\n}	\N
 916	{\n    "xs-column-width": "col"\n}	\N
 444	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "float_xs": "float-right",\n    "float_sm": "",\n    "float_md": "",\n    "float_lg": "",\n    "float_xl": "",\n    "disable_invalid": false,\n    "product": null,\n    "link_type": "NEXT_STEP",\n    "cms_page": null,\n    "section": "",\n    "download_file": null,\n    "ext_url": "",\n    "mail_to": "",\n    "link_target": "",\n    "link_title": "",\n    "icon_font": {\n        "model": "cmsplugin_cascade.iconfont",\n        "pk": 1\n    },\n    "symbol": "right-open",\n    "link_content": "Weiter",\n    "button_type": "btn-success",\n    "button_size": "",\n    "button_options": [],\n    "icon_align": "icon-right",\n    "stretched_link": false\n}	\N
-744	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
-745	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
-746	{\n    "xs-column-width": "col"\n}	\N
-747	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h1",\n    "content": "Impressum"\n}	\N
 749	{\n    "hide_plugin": false,\n    "render_template": "cascade/bootstrap4/secmenu-unstyled-list.html",\n    "page_id": "id-contact",\n    "offset": 0,\n    "limit": 100\n}	\N
 457	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "float_xs": "float-right",\n    "float_sm": "",\n    "float_md": "",\n    "float_lg": "",\n    "float_xl": "",\n    "disable_invalid": false,\n    "product": null,\n    "link_type": "NEXT_STEP",\n    "cms_page": null,\n    "section": "",\n    "download_file": null,\n    "ext_url": "",\n    "mail_to": "",\n    "link_target": "",\n    "link_title": "",\n    "icon_font": {\n        "model": "cmsplugin_cascade.iconfont",\n        "pk": 1\n    },\n    "symbol": "right-open",\n    "link_content": "Weiter",\n    "button_type": "btn-success",\n    "button_size": "",\n    "button_options": [],\n    "icon_align": "icon-right",\n    "stretched_link": false\n}	\N
 918	{\n    "hide_plugin": false,\n    "margins_xs": "",\n    "margins_sm": "",\n    "margins_md": "",\n    "margins_lg": "",\n    "margins_xl": "",\n    "element_id": "",\n    "tag_type": "h1",\n    "content": "AGBs"\n}	\N
@@ -5932,6 +5950,16 @@ COPY public.cmsplugin_cascade_element (cmsplugin_ptr_id, glossary, shared_glossa
 1321	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
 1322	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
 1323	{\n    "xs-column-width": "col"\n}	\N
+1325	{"hide_plugin": false, "breakpoints": ["xs", "sm", "md", "lg", "xl"], "fluid": false}	\N
+1326	{"hide_plugin": false, "padding_xs": "", "padding_sm": "", "padding_md": "", "padding_lg": "", "padding_xl": ""}	\N
+1327	{"xs-column-width": "col"}	\N
+1328	{"hide_plugin": false, "margins_xs": "", "margins_sm": "", "margins_md": "", "margins_lg": "", "margins_xl": "", "element_id": "", "tag_type": "h1", "content": "Impressum"}	\N
+1330	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1331	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1332	{\n    "xs-column-width": "col"\n}	\N
+1334	{\n    "hide_plugin": false,\n    "breakpoints": [\n        "xs",\n        "sm",\n        "md",\n        "lg",\n        "xl"\n    ],\n    "fluid": false\n}	\N
+1335	{\n    "hide_plugin": false,\n    "padding_xs": "",\n    "padding_sm": "",\n    "padding_md": "",\n    "padding_lg": "",\n    "padding_xl": ""\n}	\N
+1336	{\n    "xs-column-width": "col"\n}	\N
 \.
 
 
@@ -5962,7 +5990,6 @@ COPY public.cmsplugin_cascade_page (id, settings, glossary, extended_object_id, 
 1	{}	{\n    "element_ids": {\n        "727": ""\n    }\n}	9	2	\N	\N
 2	{}	{\n    "element_ids": {\n        "727": ""\n    }\n}	10	\N	\N	\N
 3	{}	{\n    "element_ids": {\n        "737": ""\n    }\n}	5	4	\N	\N
-4	{}	{\n    "element_ids": {\n        "737": ""\n    }\n}	6	\N	\N	\N
 5	{}	{\n    "element_ids": {\n        "770": ""\n    }\n}	41	6	\N	\N
 6	{}	{\n    "element_ids": {\n        "770": ""\n    }\n}	42	\N	\N	\N
 7	{}	{\n    "element_ids": {\n        "918": ""\n    }\n}	7	8	\N	\N
@@ -5977,6 +6004,7 @@ COPY public.cmsplugin_cascade_page (id, settings, glossary, extended_object_id, 
 20	{}	{\n    "element_ids": {}\n}	48	\N	\N	\N
 21	{}	{\n    "element_ids": {}\n}	78	22	\N	\N
 22	{}	{\n    "element_ids": {}\n}	79	\N	\N	\N
+4	{}	{"element_ids": {"737": ""}}	6	\N	\N	\N
 \.
 
 
@@ -7082,6 +7110,38 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 1052	2020-09-03 13:55:44.724535+02	172	Salatgewürz 25g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (172)"}}]	135	10
 1053	2020-09-03 14:35:51.064499+02	172	Salatgewürz 25g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
 1054	2020-09-03 18:47:52.333422+02	173	Curry mild 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (173)"}}]	135	10
+1055	2020-09-04 09:37:55.449263+02	174	Ras el Hanout 45g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (174)"}}]	135	10
+1056	2020-09-04 11:16:13.633942+02	175	Indian Curry 50g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (175)"}}]	135	10
+1057	2020-09-04 11:17:37.467334+02	175	Indian Curry 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1058	2020-09-04 11:17:56.550581+02	175	Indian Curry 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1059	2020-09-04 11:18:42.523663+02	175	Indian Curry 50g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1060	2020-09-04 19:52:53.60489+02	79	Sindyanna of Galilee	1	[{"added": {}}]	122	10
+1061	2020-09-04 19:54:41.378626+02	176	Za'atar 40g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (176)"}}]	135	10
+1062	2020-09-04 19:56:30.12837+02	176	Za'atar 40g	2	[{"changed": {"fields": ["Caption", "Short Description", "Description", "Ingredients"]}}]	135	10
+1063	2020-09-08 16:16:37.124749+02	177	Reisgewürz 20g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (177)"}}]	135	10
+1064	2020-09-08 16:20:23.795459+02	177	Reisgewürz 20g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1065	2020-09-08 17:07:19.069675+02	178	Garam Masala 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (178)"}}]	135	10
+1066	2020-09-08 17:08:05.662196+02	178	Garam Masala 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1067	2020-09-08 17:15:57.004097+02	179	Lebkuchengewürz 30g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (179)"}}]	135	10
+1068	2020-09-08 17:19:26.913616+02	179	Lebkuchengewürz 30g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1069	2020-09-09 10:29:34.059922+02	80	Eswatini Swazi Kitchen	1	[{"added": {}}]	122	10
+1070	2020-09-09 10:35:23.345871+02	180	Früchte Chutney 150g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (180)"}}]	135	10
+1071	2020-09-09 11:13:39.185608+02	180	Früchte Chutney 150g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1072	2020-09-09 11:14:43.191931+02	180	Früchte Chutney 150g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1073	2020-09-09 11:25:45.524971+02	181	Chili Chutney 150g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (181)"}}]	135	10
+1074	2020-09-09 11:32:27.671144+02	182	Mango Chutney 150g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (182)"}}]	135	10
+1075	2020-09-09 14:45:24.059152+02	183	Ka Ti Kokosnussmilch 400ml	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (183)"}}]	135	10
+1076	2020-09-09 14:52:42.318472+02	184	Ka Ti Kokosnussmilch 160ml	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (184)"}}]	135	10
+1077	2020-09-09 15:20:57.838572+02	185	Olivenöl 500ml	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (185)"}}]	135	10
+1078	2020-09-09 15:24:27.897506+02	186	Olivenöl 100ml	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (186)"}}]	135	10
+1079	2020-09-09 16:09:34.512914+02	81	Targanine	1	[{"added": {}}]	122	10
+1080	2020-09-09 16:12:02.851493+02	187	Arganöl 250ml	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (187)"}}]	135	10
+1081	2020-09-09 16:13:06.134316+02	187	Arganöl 250ml	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1082	2020-09-10 17:31:06.44113+02	188	Quinua 500g	1	[{"added": {}}, {"added": {"name": "Product Image", "object": "ProductImage object (188)"}}]	135	10
+1083	2020-09-10 17:32:37.851878+02	188	Quinua 500g	2	[{"changed": {"fields": ["Short Description", "Description", "Ingredients"]}}]	135	10
+1084	2020-09-12 14:41:08.87885+02	5	Impressum	2		2	4
+1085	2020-09-12 14:43:34.286985+02	84	Fairer Handel	1	[{"added": {}}]	2	4
+1086	2020-09-12 14:45:46.595831+02	84	Fairer Handel	2		2	4
 \.
 
 
@@ -7392,16 +7452,19 @@ syd5hf3q9fppblwcdaxbu5tbgd9iddmk	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDd
 qtpszskiuwrbjclmszl3culhwnddpz2c	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-06-14 11:57:41.26403+02
 f7p2drnoeyywzd2s36o1y7hr32fowohh	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-06-18 20:54:49.543913+02
 umlq4gqgw7arkw2jl0264667xh89znj3	ODM2MzJhOGM2ODQ0ZWY5OTZhNjE1OWZmZjBkYzNkZmI2YTU0ZmQ0Mjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWV9	2020-05-26 22:03:35.532141+02
+bhaz6fnw54lcub77vvi62f6ir993lto3	ZmY3MDJjZmFmN2JiODQ5YzNjOTBhYTc1MTcxODk5MDM0MzZjODM5OTp7ImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOnRydWV9	2020-09-19 15:59:21.858937+02
 o37wug4iv9mvnnwy8i515n19gif0qybi	Zjg5MmUwOTBiMmY3MzY1OTYxYjgzNGZhNGQ5MDI5NGRiNDdjODI5Nzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-05-31 21:14:58.566445+02
 btkkvd10sl8663eakzadyxbu5c399gz8	MDNiYTI4YjIyMzE1YTNmODBmMDEzNTlhOGQ1MjZlNzk0MmJhMDgyMjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2YmIzMDYxMWUyNjdkYWE0MTljZWI5YTM2MTU3ZmYxNjZlOWZkYjdkIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3IjpmYWxzZSwiY21zX2xvZ19sYXRlc3QiOjMwN30=	2020-05-16 16:40:07.084549+02
 ehl0uc29cwwbc9veigup0vst3hizcpdo	YTU5MjNlNWFjOWIzOTM5YWY0ZWU4MjU4ZjE5NmQxMWM2ZGNlNzFhZjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIn0=	2020-08-09 12:50:40.589089+02
+4g6w4d5fbq4vmy62v6bxhc3rp0z88wsv	NjBjMzkxZGI0ZmFlMDM1ZTU3M2EyMTkyYjU5OGRlOGM3OWIzNjVhYjp7fQ==	2020-09-23 17:29:07.023771+02
 gnh4he5cptb8uamfzvcogzf8k3kxtvmd	MTkyOWFmZTNjYTU1MTAwY2VhZjgwMzUzOGYxNTE2MmZkZDQ4Y2Q1NDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlLCJ3aXphcmRfd2l6YXJkX2NyZWF0ZV92aWV3Ijp7InN0ZXAiOiIwIiwic3RlcF9kYXRhIjp7fSwic3RlcF9maWxlcyI6e30sImV4dHJhX2RhdGEiOnt9fX0=	2020-07-15 22:23:29.415802+02
 h3wx0i70osbi24wnppfophpxaacx0682	YzgzNDk5ZjFkZjM2OGQzZjI0MGQ2Y2UzYzhjYTVjNzg4NjQzYzA2ZTp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZWU5ZDVlNGY0MGZkNGNjYWIxMTgyNDQ2ODA2NmNjNzA1MWMwYjY4YyIsImZpbGVyX2xhc3RfZm9sZGVyX2lkIjoiOCIsImNtc190b29sYmFyX2Rpc2FibGVkIjpmYWxzZSwiY21zX2VkaXQiOmZhbHNlLCJjbXNfcHJldmlldyI6dHJ1ZX0=	2020-07-16 15:30:48.226576+02
 8rtm5clg2vd50ox4boo7c2k543vdm4iw	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-08-09 20:22:42.456243+02
-0omqjkorscsojyxtr5ukgte6hf5ehjjt	YmMyODQ2ZDU1ZGFiYjk5MmFmZWM0NzNiNzJmZGQ5NDJlM2ZmMzQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-09-17 21:13:05.799282+02
+wmhwxc7eu7jyc90zj4u3qe4u89oqinj7	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-09-24 17:53:22.782188+02
 anu946dojvcgkp6oei3a2zxv3v0sw1ir	OWIxZmRhZmQ0YzBmY2IyZjk2YjNkZjcyMmI1MzU5ZTc4MzNmYzlhNTp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-08-09 20:21:18.671512+02
 eewqt3vvdwlb18iy02i07ussbbxqpi6o	YjZjMzg1NmM3MmQ4ODg5ZDNhMzAzMmFiZWYzYWQzNjcxZTkyNTc1YTp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiX3Nlc3Npb25fZXhwaXJ5IjowLCJjbXNfdG9vbGJhcl9kaXNhYmxlZCI6ZmFsc2UsImNtc19lZGl0IjpmYWxzZSwiY21zX3ByZXZpZXciOmZhbHNlLCJmaWxlcl9sYXN0X2ZvbGRlcl9pZCI6IjEyIn0=	2020-09-08 22:12:58.403279+02
-wmhwxc7eu7jyc90zj4u3qe4u89oqinj7	YTYwZWZlODc5N2QzYWZmMjgxOWJkYTIwZjQ0NDI5ZDA3NWNlYjY4ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2Y5YzRhNTVlZTkxYmJlYWZkODNlYzY1NGJlNDZlZGY3YTVmNDA0NiJ9	2020-09-17 18:48:13.184978+02
+0omqjkorscsojyxtr5ukgte6hf5ehjjt	YmMyODQ2ZDU1ZGFiYjk5MmFmZWM0NzNiNzJmZGQ5NDJlM2ZmMzQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiY21zX3Rvb2xiYXJfZGlzYWJsZWQiOmZhbHNlLCJjbXNfZWRpdCI6ZmFsc2UsImNtc19wcmV2aWV3Ijp0cnVlfQ==	2020-09-26 20:35:48.372885+02
+r0xbbbp24nir13ggbqonc3gwe0dhicpx	OWIxZmRhZmQ0YzBmY2IyZjk2YjNkZjcyMmI1MzU5ZTc4MzNmYzlhNTp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTk3NDE3YjQwNzU1MDJiNDA2NzIxMTk0ZThhMWUyZDcxMjRjOGRiIiwiX3Nlc3Npb25fZXhwaXJ5IjowfQ==	2020-09-24 08:11:25.652286+02
 \.
 
 
@@ -7435,9 +7498,7 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 772	<h2>Adresse</h2>\n\n<div>Weltladen Baden</div>\n\n<div>Hauptplatz 9-13, 2500 Baden</div>\n\n<div>Tel: +43 2252 45236</div>\n\n<div>Mail: <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a></div>\n\n<div> </div>\n\n<h3>Konto-Verbindung:</h3>\n\n<div>IBAN: AT90 4300 0364 0778 0000<br>\nBIC: VB0EATWW</div>
 733	<h2 class="adsimple-211124080">Datenschutz</h2>\n\n<p>Wir haben diese Datenschutzerklärung (Fassung 27.04.2020-211124080) verfasst, um Ihnen gemäß der Vorgaben der <a class="adsimple-211124080" href="https://eur-lex.europa.eu/legal-content/DE/ALL/?uri=celex%3A32016R0679&amp;tid=211124080" rel="noopener nofollow" target="_blank">Datenschutz-Grundverordnung (EU) 2016/679</a> zu erklären, welche Informationen wir sammeln, wie wir Daten verwenden und welche Entscheidungsmöglichkeiten Sie als Besucher dieser Webseite haben.</p>\n\n<p>Leider liegt es in der Natur der Sache, dass diese Erklärungen sehr technisch klingen, wir haben uns bei der Erstellung jedoch bemüht die wichtigsten Dinge so einfach und klar wie möglich zu beschreiben.</p>\n\n<h2 class="adsimple-211124080">Automatische Datenspeicherung</h2>\n\n<p>Wenn Sie heutzutage Webseiten besuchen, werden gewisse Informationen automatisch erstellt und gespeichert, so auch auf dieser Webseite.</p>\n\n<p>Wenn Sie unsere Webseite so wie jetzt gerade besuchen, speichert unser Webserver (Computer auf dem diese Webseite gespeichert ist) automatisch Daten wie</p>\n\n<ul class="adsimple-211124080">\n\t<li class="adsimple-211124080">die Adresse (URL) der aufgerufenen Webseite</li>\n\t<li class="adsimple-211124080">Browser und Browserversion</li>\n\t<li class="adsimple-211124080">das verwendete Betriebssystem</li>\n\t<li class="adsimple-211124080">die Adresse (URL) der zuvor besuchten Seite (Referrer URL)</li>\n\t<li class="adsimple-211124080">den Hostname und die IP-Adresse des Geräts von welchem aus zugegriffen wird</li>\n\t<li class="adsimple-211124080">Datum und Uhrzeit</li>\n</ul>\n\n<p>in Dateien (Webserver-Logfiles).</p>\n\n<p>In der Regel werden Webserver-Logfiles zwei Wochen gespeichert und danach automatisch gelöscht. Wir geben diese Daten nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.</p>\n\n<h2 class="adsimple-211124080">Cookies</h2>\n\n<p>Unsere Webseite verwendet HTTP-Cookies, um nutzerspezifische Daten zu speichern.<br>\nIm Folgenden erklären wir, was Cookies sind und warum Sie genutzt werden, damit Sie die folgende Datenschutzerklärung besser verstehen.</p>\n\n<h3 class="adsimple-211124080">Was genau sind Cookies?</h3>\n\n<p>Immer wenn Sie durch das Internet surfen, verwenden Sie einen Browser. Bekannte Browser sind beispielsweise Chrome, Safari, Firefox, Internet Explorer und Microsoft Edge. Die meisten Webseiten speichern kleine Text-Dateien in Ihrem Browser. Diese Dateien nennt man Cookies.</p>\n\n<p>Eines ist nicht von der Hand zu weisen: Cookies sind echt nützliche Helferlein. Fast alle Webseiten verwenden Cookies. Genauer gesprochen sind es HTTP-Cookies, da es auch noch andere Cookies für andere Anwendungsbereiche gibt. HTTP-Cookies sind kleine Dateien, die von unserer Webseite auf Ihrem Computer gespeichert werden. Diese Cookie-Dateien werden automatisch im Cookie-Ordner, quasi dem „Hirn“ Ihres Browsers, untergebracht. Ein Cookie besteht aus einem Namen und einem Wert. Bei der Definition eines Cookies müssen zusätzlich ein oder mehrere Attribute angegeben werden.</p>\n\n<p>Cookies speichern gewisse Nutzerdaten von Ihnen, wie beispielsweise Sprache oder persönliche Seiteneinstellungen. Wenn Sie unsere Seite wieder aufrufen, übermittelt Ihr Browser die „userbezogenen“ Informationen an unsere Seite zurück. Dank der Cookies weiß unsere Webseite, wer Sie sind und bietet Ihnen die Einstellung, die Sie gewohnt sind. In einigen Browsern hat jedes Cookie eine eigene Datei, in anderen wie beispielsweise Firefox sind alle Cookies in einer einzigen Datei gespeichert.</p>\n\n<p>Es gibt sowohl Erstanbieter Cookies als auch Drittanbieter-Cookies. Erstanbieter-Cookies werden direkt von unserer Seite erstellt, Drittanbieter-Cookies werden von Partner-Webseiten (z.B. Google Analytics) erstellt. Jedes Cookie ist individuell zu bewerten, da jedes Cookie andere Daten speichert. Auch die Ablaufzeit eines Cookies variiert von ein paar Minuten bis hin zu ein paar Jahren. Cookies sind keine Software-Programme und enthalten keine Viren, Trojaner oder andere „Schädlinge“. Cookies können auch nicht auf Informationen Ihres PCs zugreifen.</p>\n\n<p>So können zum Beispiel Cookie-Daten aussehen:</p>\n\n<p><strong class="adsimple-211124080">Name:</strong> _ga<br>\n<strong class="adsimple-211124080">Wert:</strong> GA1.2.1326744211.152211124080-6<br>\n<strong class="adsimple-211124080">Verwendungszweck:</strong> Unterscheidung der Webseitenbesucher<br>\n<strong class="adsimple-211124080">Ablaufdatum:</strong> nach 2 Jahren</p>\n\n<p>Diese Mindestgrößen sollte ein Browser unterstützen können:</p>\n\n<ul class="adsimple-211124080">\n\t<li class="adsimple-211124080">Mindestens 4096 Bytes pro Cookie</li>\n\t<li class="adsimple-211124080">Mindestens 50 Cookies pro Domain</li>\n\t<li class="adsimple-211124080">Mindestens 3000 Cookies insgesamt</li>\n</ul>\n\n<h3 class="adsimple-211124080">Welche Arten von Cookies gibt es?</h3>\n\n<p>Die Frage welche Cookies wir im Speziellen verwenden, hängt von den verwendeten Diensten ab und wird in den folgenden Abschnitten der Datenschutzerklärung geklärt. An dieser Stelle möchten wir kurz auf die verschiedenen Arten von HTTP-Cookies eingehen.</p>\n\n<p>Man kann 4 Arten von Cookies unterscheiden:</p>\n\n<p><strong class="adsimple-211124080">Unerlässliche Cookies</strong><br>\nDiese Cookies sind nötig, um grundlegende Funktionen der Webseite sicherzustellen. Zum Beispiel braucht es diese Cookies, wenn ein User ein Produkt in den Warenkorb legt, dann auf anderen Seiten weitersurft und später erst zur Kasse geht. Durch diese Cookies wird der Warenkorb nicht gelöscht, selbst wenn der User sein Browserfenster schließt.</p>\n\n<p><strong class="adsimple-211124080">Zweckmäßige Cookies</strong><br>\nDiese Cookies sammeln Infos über das Userverhalten und ob der User etwaige Fehlermeldungen bekommt. Zudem werden mithilfe dieser Cookies auch die Ladezeit und das Verhalten der Webseite bei verschiedenen Browsern gemessen.</p>\n\n<p><strong class="adsimple-211124080">Zielorientierte Cookies</strong><br>\nDiese Cookies sorgen für eine bessere Nutzerfreundlichkeit. Beispielsweise werden eingegebene Standorte, Schriftgrößen oder Formulardaten gespeichert.</p>\n\n<p><strong class="adsimple-211124080">Werbe-Cookies</strong><br>\nDiese Cookies werden auch Targeting-Cookies genannt. Sie dienen dazu dem User individuell angepasste Werbung zu liefern. Das kann sehr praktisch, aber auch sehr nervig sein.</p>\n\n<p>Üblicherweise werden Sie beim erstmaligen Besuch einer Webseite gefragt, welche dieser Cookiearten Sie zulassen möchten. Und natürlich wird diese Entscheidung auch in einem Cookie gespeichert.</p>\n\n<h3 class="adsimple-211124080">Wie kann ich Cookies löschen?</h3>\n\n<p>Wie und ob Sie Cookies verwenden wollen, entscheiden Sie selbst. Unabhängig von welchem Service oder welcher Webseite die Cookies stammen, haben Sie immer die Möglichkeit Cookies zu löschen, zu deaktivieren oder nur teilweise zuzulassen. Zum Beispiel können Sie Cookies von Drittanbietern blockieren, aber alle anderen Cookies zulassen.</p>\n\n<p>Wenn Sie feststellen möchten, welche Cookies in Ihrem Browser gespeichert wurden, wenn Sie Cookie-Einstellungen ändern oder löschen wollen, können Sie dies in Ihren Browser-Einstellungen finden:</p>\n\n<p><a class="adsimple-211124080" href="https://support.google.com/chrome/answer/95647?tid=211124080" rel="noopener nofollow" target="_blank">Chrome: Cookies in Chrome löschen, aktivieren und verwalten</a></p>\n\n<p><a class="adsimple-211124080" href="https://support.apple.com/de-at/guide/safari/sfri11471/mac?tid=211124080" rel="noopener nofollow" target="_blank">Safari: Verwalten von Cookies und Websitedaten mit Safari</a></p>\n\n<p><a class="adsimple-211124080" href="https://support.mozilla.org/de/kb/cookies-und-website-daten-in-firefox-loschen?tid=211124080" rel="noopener nofollow" target="_blank">Firefox: Cookies löschen, um Daten zu entfernen, die Websites auf Ihrem Computer abgelegt haben</a></p>\n\n<p><a class="adsimple-211124080" href="https://support.microsoft.com/de-at/help/17442/windows-internet-explorer-delete-manage-cookies?tid=211124080" rel="noopener nofollow" target="_blank">Internet Explorer: Löschen und Verwalten von Cookies</a></p>\n\n<p><a class="adsimple-211124080" href="https://support.microsoft.com/de-at/help/4027947/windows-delete-cookies?tid=211124080" rel="noopener nofollow" target="_blank">Microsoft Edge: Löschen und Verwalten von Cookies</a></p>\n\n<p>Falls Sie grundsätzlich keine Cookies haben wollen, können Sie Ihren Browser so einrichten, dass er Sie immer informiert, wenn ein Cookie gesetzt werden soll. So können Sie bei jedem einzelnen Cookie entscheiden, ob Sie das Cookie erlauben oder nicht. Die Vorgangsweise ist je nach Browser verschieden. Am besten Sie suchen die Anleitung in Google mit dem Suchbegriff “Cookies löschen Chrome” oder „Cookies deaktivieren Chrome“ im Falle eines Chrome Browsers.</p>\n\n<h3 class="adsimple-211124080">Wie sieht es mit meinem Datenschutz aus?</h3>\n\n<p>Seit 2009 gibt es die sogenannten „Cookie-Richtlinien“. Darin ist festgehalten, dass das Speichern von Cookies eine Einwilligung des von Ihnen verlangt. Innerhalb der EU-Länder gibt es allerdings noch sehr unterschiedliche Reaktionen auf diese Richtlinien. In Österreich erfolgte aber die Umsetzung dieser Richtlinie in § 96 Abs. 3 des Telekommunikationsgesetzes (TKG).</p>\n\n<p>Wenn Sie mehr über Cookies wissen möchten und vor technischen Dokumentationen nicht zurückscheuen, empfehlen wir <a class="adsimple-211124080" href="https://tools.ietf.org/html/rfc6265" rel="nofollow noopener" target="_blank">https://tools.ietf.org/html/rfc6265</a>, dem Request for Comments der Internet Engineering Task Force (IETF) namens „HTTP State Management Mechanism“.</p>\n\n<h2 class="adsimple-211124080">Speicherung persönlicher Daten</h2>\n\n<p>Persönliche Daten, die Sie uns auf dieser Website elektronisch übermitteln, wie zum Beispiel Name, E-Mail-Adresse, Adresse oder andere persönlichen Angaben im Rahmen der Übermittlung eines Formulars oder Kommentaren im Blog, werden von uns gemeinsam mit dem Zeitpunkt und der IP-Adresse nur zum jeweils angegebenen Zweck verwendet, sicher verwahrt und nicht an Dritte weitergegeben.</p>\n\n<p>Wir nutzen Ihre persönlichen Daten somit nur für die Kommunikation mit jenen Besuchern, die Kontakt ausdrücklich wünschen und für die Abwicklung der auf dieser Webseite angebotenen Dienstleistungen und Produkte. Wir geben Ihre persönlichen Daten ohne Zustimmung nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.</p>\n\n<p>Wenn Sie uns persönliche Daten per E-Mail schicken – somit abseits dieser Webseite – können wir keine sichere Übertragung und den Schutz Ihrer Daten garantieren. Wir empfehlen Ihnen, vertrauliche Daten niemals unverschlüsselt per E-Mail zu übermitteln.</p>\n\n<h2 class="adsimple-211124080">Rechte laut Datenschutzgrundverordnung</h2>\n\n<p>Ihnen stehen laut den Bestimmungen der DSGVO und des österreichischen <a class="adsimple-211124080" href="https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&amp;Gesetzesnummer=10001597&amp;tid=211124080" rel="noopener nofollow" target="_blank">Datenschutzgesetzes (DSG)</a> grundsätzlich die folgende Rechte zu:</p>\n\n<ul class="adsimple-211124080">\n\t<li class="adsimple-211124080">Recht auf Berichtigung (Artikel 16 DSGVO)</li>\n\t<li class="adsimple-211124080">Recht auf Löschung („Recht auf Vergessenwerden“) (Artikel 17 DSGVO)</li>\n\t<li class="adsimple-211124080">Recht auf Einschränkung der Verarbeitung (Artikel 18 DSGVO)</li>\n\t<li class="adsimple-211124080">Recht auf Benachrichtigung – Mitteilungspflicht im Zusammenhang mit der Berichtigung oder Löschung personenbezogener Daten oder der Einschränkung der Verarbeitung (Artikel 19 DSGVO)</li>\n\t<li class="adsimple-211124080">Recht auf Datenübertragbarkeit (Artikel 20 DSGVO)</li>\n\t<li class="adsimple-211124080">Widerspruchsrecht (Artikel 21 DSGVO)</li>\n\t<li class="adsimple-211124080">Recht, nicht einer ausschließlich auf einer automatisierten Verarbeitung — einschließlich Profiling — beruhenden Entscheidung unterworfen zu werden (Artikel 22 DSGVO)</li>\n</ul>\n\n<p>Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren, welche in Österreich die Datenschutzbehörde ist, deren Webseite Sie unter <a class="adsimple-211124080" href="https://www.dsb.gv.at/?tid=211124080" rel="nofollow">https://www.dsb.gv.at/</a> finden.</p>\n\n<h2 class="adsimple-211124080">TLS-Verschlüsselung mit https</h2>\n\n<p>Wir verwenden https um Daten abhörsicher im Internet zu übertragen (Datenschutz durch Technikgestaltung <a class="adsimple-211124080" href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32016R0679&amp;from=DE&amp;tid=211124080" rel="noopener nofollow" target="_blank">Artikel 25 Absatz 1 DSGVO</a>). Durch den Einsatz von TLS (Transport Layer Security), einem Verschlüsselungsprotokoll zur sicheren Datenübertragung im Internet können wir den Schutz vertraulicher Daten sicherstellen. Sie erkennen die Benutzung dieser Absicherung der Datenübertragung am kleinen Schlosssymbol links oben im Browser und der Verwendung des Schemas https (anstatt http) als Teil unserer Internetadresse.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc" rel="follow" style="text-decoration: none;" target="_blank" title="ästhetische Operationen in Wien bei Dr. Doris Wallentin">wallentin.cc</a></p>
 790	<h2>Adresse</h2>\n\n<div>Weltladen Baden</div>\n\n<div>Hauptplatz 9-13, 2500 Baden</div>\n\n<div>Tel: +43 2252 45236</div>\n\n<div>Mail: <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a></div>\n\n<div> </div>\n\n<h3>Konto-Verbindung:</h3>\n\n<div>IBAN: AT90 4300 0364 0778 0000<br>\nBIC: VB0EATWW</div>
-738	<p class="adsimple-221124081">Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.</p>\n\n<p class="adsimple-221124081">Balance Global<br>\n<strong>ZVR:</strong> <span class="blob-code-inner blob-code-marker" data-code-marker="-">819231948</span></p>\n\n<p class="adsimple-221124081">Hauptplatz 9-13,<br>\n2500 Baden,<br>\nÖsterreich</p>\n\n<p class="adsimple-221124081"><strong>Organschaftliche Vertreter</strong><br>\nObmann/Obfrau: Jutta Enzersdorfer<br>\nObmann/Obfrau Stellvertreter: Jasmine Bachmann</p>\n\n<p class="adsimple-221124081"><strong>Vereinssitz:</strong> 2500 Baden<br>\n<strong>Tel.:</strong> +43 2252 45236<br>\n<strong>E-Mail:</strong> <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a></p>\n\n<p class="adsimple-221124081"><strong>Vereinszweck:</strong><br>\nZweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen. Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/impressum-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Impressum Generator von firmenwebseiten.at">Impressum Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc/behandlung/oberlidstraffung-obere-blepharoplastik-schlupflider-wien/" rel="follow" style="text-decoration: none;" target="_blank" title="Oberlidkorrektur (obere Blepharoplastik) Wien bei Dr. Wallentin">Dr. Wallentin</a></p>\n\n<h2 class="adsimple-221124081">EU-Streitschlichtung</h2>\n\n<p>Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten (ODR-Verordnung) möchten wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform) informieren.<br>\nVerbraucher haben die Möglichkeit, Beschwerden an die Online Streitbeilegungsplattform der Europäischen Kommission unter <a class="adsimple-221124081" href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=DE" rel="nofollow" target="_blank">http://ec.europa.eu/odr?tid=221124081</a> zu richten. Die dafür notwendigen Kontaktdaten finden Sie oberhalb in unserem Impressum.</p>\n\n<p>Wir möchten Sie jedoch darauf hinweisen, dass wir nicht bereit oder verpflichtet sind, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n\n<h2 class="adsimple-221124081">Haftung für Inhalte dieser Webseite</h2>\n\n<p>Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns korrekte und aktuelle Informationen bereitzustellen. Leider können wir keine Haftung für die Korrektheit aller Inhalte auf dieser Webseite übernehmen, speziell für jene die seitens Dritter bereitgestellt wurden.</p>\n\n<p>Sollten Ihnen problematische oder rechtswidrige Inhalte auffallen, bitten wir Sie uns umgehend zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Haftung für Links auf dieser Webseite</h2>\n\n<p>Unsere Webseite enthält Links zu anderen Webseiten für deren Inhalt wir nicht verantwortlich sind. Haftung für verlinkte Websites besteht laut <a class="adsimple-221124081" href="https://www.ris.bka.gv.at/Dokument.wxe?Abfrage=Bundesnormen&amp;Dokumentnummer=NOR40025813&amp;tid=221124081" rel="noopener nofollow" target="_blank">§ 17 ECG</a> für uns nicht, da wir keine Kenntnis rechtswidriger Tätigkeiten hatten und haben, uns solche Rechtswidrigkeiten auch bisher nicht aufgefallen sind und wir Links sofort entfernen würden, wenn uns Rechtswidrigkeiten bekannt werden.</p>\n\n<p>Wenn Ihnen rechtswidrige Links auf unserer Website auffallen, bitten wir Sie uns zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Urheberrechtshinweis</h2>\n\n<p>Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos) unterliegen dem Urheberrecht. Falls notwendig, werden wir die unerlaubte Nutzung von Teilen der Inhalte unserer Seite rechtlich verfolgen.</p>\n\n<h2 class="adsimple-221124081">Bildernachweis</h2>\n\n<p>Die Bilder, Fotos und Grafiken auf dieser Webseite sind urheberrechtlich geschützt.</p>\n\n<p>Die Bilderrechte liegen bei den folgenden Fotografen und Unternehmen:</p>\n\n<ul class="adsimple-221124081">\n\t<li class="adsimple-221124081">TODO</li>\n</ul>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.aboutbusiness.at" rel="follow" style="text-decoration: none;" target="_blank" title="">aboutbusiness.at</a></p>
 791	<div><a href="https://www.instagram.com/weltladenbaden/" target="_blank">Instagram</a><br>\n<a href="https://www.facebook.com/Weltladen-Baden-1618306061749181/" target="_blank">Facebook</a></div>
-748	<p class="adsimple-221124081">Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.</p>\n\n<p class="adsimple-221124081">Balance Global<br>\n<strong>ZVR:</strong> <span class="blob-code-inner blob-code-marker" data-code-marker="-">819231948</span></p>\n\n<p class="adsimple-221124081">Hauptplatz 9-13,<br>\n2500 Baden,<br>\nÖsterreich</p>\n\n<p class="adsimple-221124081"><strong>Organschaftliche Vertreter</strong><br>\nObmann/Obfrau: Jutta Enzersdorfer<br>\nObmann/Obfrau Stellvertreter: Jasmine Bachmann</p>\n\n<p class="adsimple-221124081"><strong>Vereinssitz:</strong> 2500 Baden<br>\n<strong>Tel.:</strong> +43 2252 45236<br>\n<strong>E-Mail:</strong> <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a></p>\n\n<p class="adsimple-221124081"><strong>Vereinszweck:</strong><br>\nZweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen. Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/impressum-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Impressum Generator von firmenwebseiten.at">Impressum Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc/behandlung/oberlidstraffung-obere-blepharoplastik-schlupflider-wien/" rel="follow" style="text-decoration: none;" target="_blank" title="Oberlidkorrektur (obere Blepharoplastik) Wien bei Dr. Wallentin">Dr. Wallentin</a></p>\n\n<h2 class="adsimple-221124081">EU-Streitschlichtung</h2>\n\n<p>Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten (ODR-Verordnung) möchten wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform) informieren.<br>\nVerbraucher haben die Möglichkeit, Beschwerden an die Online Streitbeilegungsplattform der Europäischen Kommission unter <a class="adsimple-221124081" href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=DE" rel="nofollow" target="_blank">http://ec.europa.eu/odr?tid=221124081</a> zu richten. Die dafür notwendigen Kontaktdaten finden Sie oberhalb in unserem Impressum.</p>\n\n<p>Wir möchten Sie jedoch darauf hinweisen, dass wir nicht bereit oder verpflichtet sind, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n\n<h2 class="adsimple-221124081">Haftung für Inhalte dieser Webseite</h2>\n\n<p>Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns korrekte und aktuelle Informationen bereitzustellen. Leider können wir keine Haftung für die Korrektheit aller Inhalte auf dieser Webseite übernehmen, speziell für jene die seitens Dritter bereitgestellt wurden.</p>\n\n<p>Sollten Ihnen problematische oder rechtswidrige Inhalte auffallen, bitten wir Sie uns umgehend zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Haftung für Links auf dieser Webseite</h2>\n\n<p>Unsere Webseite enthält Links zu anderen Webseiten für deren Inhalt wir nicht verantwortlich sind. Haftung für verlinkte Websites besteht laut <a class="adsimple-221124081" href="https://www.ris.bka.gv.at/Dokument.wxe?Abfrage=Bundesnormen&amp;Dokumentnummer=NOR40025813&amp;tid=221124081" rel="noopener nofollow" target="_blank">§ 17 ECG</a> für uns nicht, da wir keine Kenntnis rechtswidriger Tätigkeiten hatten und haben, uns solche Rechtswidrigkeiten auch bisher nicht aufgefallen sind und wir Links sofort entfernen würden, wenn uns Rechtswidrigkeiten bekannt werden.</p>\n\n<p>Wenn Ihnen rechtswidrige Links auf unserer Website auffallen, bitten wir Sie uns zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Urheberrechtshinweis</h2>\n\n<p>Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos) unterliegen dem Urheberrecht. Falls notwendig, werden wir die unerlaubte Nutzung von Teilen der Inhalte unserer Seite rechtlich verfolgen.</p>\n\n<h2 class="adsimple-221124081">Bildernachweis</h2>\n\n<p>Die Bilder, Fotos und Grafiken auf dieser Webseite sind urheberrechtlich geschützt.</p>\n\n<p>Die Bilderrechte liegen bei den folgenden Fotografen und Unternehmen:</p>\n\n<ul class="adsimple-221124081">\n\t<li class="adsimple-221124081">TODO</li>\n</ul>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.aboutbusiness.at" rel="follow" style="text-decoration: none;" target="_blank" title="">aboutbusiness.at</a></p>
 809	<div><a href="https://www.instagram.com/weltladenbaden/" target="_blank">Instagram</a><br>\n<a href="https://www.facebook.com/Weltladen-Baden-1618306061749181/" target="_blank">Facebook</a></div>
 882	<h1 style="text-align: center;">Willkommen auf unserer Homepage</h1>
 910	<p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
@@ -7448,6 +7509,7 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 987	<p>Ich habe die <cms-plugin alt="Link - Datenschutzvereinbarung " title="Link - Datenschutzvereinbarung" id="988"></cms-plugin> gelesen.</p>
 1128	<p>Ich habe die <cms-plugin alt="Link - AGBs " title="Link - AGBs" id="1129"></cms-plugin> gelesen und verstanden.</p>
 1178	<h1 style="text-align: center;">Willkommen auf unserer Homepage</h1>
+738	<p class="adsimple-221124081">Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.</p>\n\n<p class="adsimple-221124081">Balance Global<br>\n<strong>ZVR:</strong> <span class="blob-code-inner blob-code-marker" data-code-marker="-">819231948</span></p>\n\n<p class="adsimple-221124081">Hauptplatz 9-13,<br>\n2500 Baden,<br>\nÖsterreich</p>\n\n<p class="adsimple-221124081"><strong>Organschaftliche Vertreter</strong><br>\nObmann/Obfrau: Jutta Enzersdorfer<br>\nObmann/Obfrau Stellvertreter: Jasmine Bachmann</p>\n\n<p class="adsimple-221124081"><strong>Vereinssitz:</strong> 2500 Baden<br>\n<strong>Tel.:</strong> +43 2252 45236<br>\n<strong>E-Mail:</strong> <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a></p>\n\n<p class="adsimple-221124081"><strong>Vereinszweck:</strong><br>\nZweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen. Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/impressum-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Impressum Generator von firmenwebseiten.at">Impressum Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc/behandlung/oberlidstraffung-obere-blepharoplastik-schlupflider-wien/" rel="follow" style="text-decoration: none;" target="_blank" title="Oberlidkorrektur (obere Blepharoplastik) Wien bei Dr. Wallentin">Dr. Wallentin</a></p>\n\n<h2 class="adsimple-221124081">EU-Streitschlichtung</h2>\n\n<p>Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten (ODR-Verordnung) möchten wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform) informieren.<br>\nVerbraucher haben die Möglichkeit, Beschwerden an die Online Streitbeilegungsplattform der Europäischen Kommission unter <a class="adsimple-221124081" href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=DE" rel="nofollow" target="_blank">http://ec.europa.eu/odr?tid=221124081</a> zu richten. Die dafür notwendigen Kontaktdaten finden Sie oberhalb in unserem Impressum.</p>\n\n<p>Wir möchten Sie jedoch darauf hinweisen, dass wir nicht bereit oder verpflichtet sind, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n\n<h2 class="adsimple-221124081">Haftung für Inhalte dieser Webseite</h2>\n\n<p>Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns korrekte und aktuelle Informationen bereitzustellen. Leider können wir keine Haftung für die Korrektheit aller Inhalte auf dieser Webseite übernehmen, speziell für jene die seitens Dritter bereitgestellt wurden.</p>\n\n<p>Sollten Ihnen problematische oder rechtswidrige Inhalte auffallen, bitten wir Sie uns umgehend zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Haftung für Links auf dieser Webseite</h2>\n\n<p>Unsere Webseite enthält Links zu anderen Webseiten für deren Inhalt wir nicht verantwortlich sind. Haftung für verlinkte Websites besteht laut <a class="adsimple-221124081" href="https://www.ris.bka.gv.at/Dokument.wxe?Abfrage=Bundesnormen&amp;Dokumentnummer=NOR40025813&amp;tid=221124081" rel="noopener nofollow" target="_blank">§ 17 ECG</a> für uns nicht, da wir keine Kenntnis rechtswidriger Tätigkeiten hatten und haben, uns solche Rechtswidrigkeiten auch bisher nicht aufgefallen sind und wir Links sofort entfernen würden, wenn uns Rechtswidrigkeiten bekannt werden.</p>\n\n<p>Wenn Ihnen rechtswidrige Links auf unserer Website auffallen, bitten wir Sie uns zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Urheberrechtshinweis</h2>\n\n<p>Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos) unterliegen dem Urheberrecht. Falls notwendig, werden wir die unerlaubte Nutzung von Teilen der Inhalte unserer Seite rechtlich verfolgen.</p>\n\n<h2 class="adsimple-221124081">Bildernachweis</h2>\n\n<p>Die Bilder, Fotos und Grafiken auf dieser Webseite sind urheberrechtlich geschützt.</p>\n\n<p>Die Bilderrechte liegen bei den folgenden Fotografen und Unternehmen:</p>\n\n<ul class="adsimple-221124081">\n\t<li class="adsimple-221124081">EZA Fairer Handel GmbH</li>\n\t<li class="adsimple-221124081">GEPA Gesellschaft zur Förderung der Partnerschaft mit der Dritten Welt mbH</li>\n\t<li class="adsimple-221124081">Imkerei Potz</li>\n</ul>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.aboutbusiness.at" rel="follow" style="text-decoration: none;" target="_blank" title="">aboutbusiness.at</a></p>
 1212	<h2>Our Catalog List View</h2>\n
 1297	<h1>Faircafé</h1>\n\n<p>Bei uns können Sie frisch gebraute Kaffeeköstlichkeiten sowie verschiedene Teesorten und Säfte genießen. Gerne servieren wir Ihnen dazu auch köstliche Kekse zum fairnaschen. Sie können sowohl drinnen in unserer gemütlichen Sitzecke oder am Stehtisch, als auch draußen auf unseren Sitzgelegenheiten in der ruhigen Passage Ihre faire Tasse genießen. Zudem finden Sie in unserer Sitzecke täglich die neuesten Zeitungen und zahlreiche Kinderbücher für Ihre lieben Kleinen. Für ganz Eilige gibt es natürlich auch immer einen Coffee to Go im Recycling Papierbecher.</p>\n\n<p>Wir freuen uns sehr darauf, Sie in unserem Geschäft und Faircafé begrüßen zu dürfen!</p>
 1308	<h1>Verein Global Balance</h1>\n\n<p>Der Verein Balance Global ist der Trägerverein des Weltladens in Baden. Der Zweck ergibt sich aus dem §2 der Vereinsstatuten wie folgt: „Zweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen.</p>\n\n<p>Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.“ Die Obfrau des Vereins ist zur Zeit Jutta Enzersdorfer.</p>\n\n<p>Der Vereinsvorstand entwickelt laufend Projekte zum Thema Öffentlichkeitsarbeit, organisiert Veranstaltungen und unterstützt das Ladenteam. Unsere kontinuierliche Bildungsarbeit richtet sich sowohl an Kinder und Jugendliche an Badener Schulen als auch an die breite Öffentlichkeit. Daraus ergibt sich eine enge Zusammenarbeit mit der Klimabündnis- und Fair Trade Gemeinde Baden.</p>
@@ -7455,6 +7517,9 @@ COPY public.djangocms_text_ckeditor_text (cmsplugin_ptr_id, body) FROM stdin;
 1320	<h1>Verein Global Balance</h1>\n\n<p>Der Verein Balance Global ist der Trägerverein des Weltladens in Baden. Der Zweck ergibt sich aus dem §2 der Vereinsstatuten wie folgt: „Zweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen.</p>\n\n<p>Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.“ Die Obfrau des Vereins ist zur Zeit Jutta Enzersdorfer.</p>\n\n<p>Der Vereinsvorstand entwickelt laufend Projekte zum Thema Öffentlichkeitsarbeit, organisiert Veranstaltungen und unterstützt das Ladenteam. Unsere kontinuierliche Bildungsarbeit richtet sich sowohl an Kinder und Jugendliche an Badener Schulen als auch an die breite Öffentlichkeit. Daraus ergibt sich eine enge Zusammenarbeit mit der Klimabündnis- und Fair Trade Gemeinde Baden.</p>
 1281	<h1>Weltladen Baden</h1>\n\n<p>Seit dem Jahre 1988 gibt es unseren Weltladen in Baden – Ihr Fachgeschäft für den fairen Handel. Im November 2005 übersiedelten wir ins Zentrum der Stadt an unseren aktuellen Standort am Hauptplatz 9 – 12. Unser Sortiment umfasst ein ausgewähltes Angebot an biologischen, fair gehandelten und regionalen Produkten. Unsere Mitarbeiter*innen beraten Sie gerne und bieten auch Hintergrundinformationen zu den sozialen &amp; nachhaltigen Projekten unserer Produkte. Entdecken Sie bei einer köstlichen Tasse Kaffee in unserem integrierten FAIRCAFÉ unsere Auswahl an Fairtrade Produkten. Gerne können Sie auch länger mit Ihren Lieben in unserer Sitzecke verweilen und den Fairen Handel für sich entdecken.</p>\n\n<h3>Sortiment</h3>\n\n<ul>\n\t<li>Biologische, faire und regionale Lebensmittel</li>\n\t<li>Vegane Bio-Kosmetik aus Salzburg</li>\n\t<li>Bad- &amp; Pflegeprodukte</li>\n\t<li>Keramik- Holz- &amp; Glasartikeln</li>\n\t<li>Wohndekor für drinnen &amp; draußen</li>\n\t<li>Frauen- &amp; Männerbekleidung GOTS zertifiziert</li>\n\t<li>Modeaccessoires wie Schmuck und Schals</li>\n\t<li>Lederwaren, Ökoledertaschen und Geldbörsen</li>\n\t<li>Kinder- &amp; Babymode</li>\n\t<li>Spielzeug</li>\n\t<li>Musikinstrumente</li>\n\t<li>Papier- &amp; Geschenkutensilien</li>\n\t<li>Bücher &amp; CDs</li>\n</ul>\n\n<p><strong>Tipp: Wenn Sie unsere Arbeit über Ihren Einkauf hinaus unterstützen wollen, dann können Sie dies jederzeit gerne als Mitglied unseres Trägervereins Balance Global und/oder als ehrenamtliche Mitarbeiter*in im Weltladen tun. Schreiben Sie uns einfach eine E-Mail an <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a> oder rufen Sie an unter <a rel="noreferrer" target="_blank">+43 2252 45236</a>. Weitere Informationen zu unserem Trägerverein finden Sie weiter unten.</strong></p>
 1324	<h1>Weltladen Baden</h1>\n\n<p>Seit dem Jahre 1988 gibt es unseren Weltladen in Baden – Ihr Fachgeschäft für den fairen Handel. Im November 2005 übersiedelten wir ins Zentrum der Stadt an unseren aktuellen Standort am Hauptplatz 9 – 12. Unser Sortiment umfasst ein ausgewähltes Angebot an biologischen, fair gehandelten und regionalen Produkten. Unsere Mitarbeiter*innen beraten Sie gerne und bieten auch Hintergrundinformationen zu den sozialen &amp; nachhaltigen Projekten unserer Produkte. Entdecken Sie bei einer köstlichen Tasse Kaffee in unserem integrierten FAIRCAFÉ unsere Auswahl an Fairtrade Produkten. Gerne können Sie auch länger mit Ihren Lieben in unserer Sitzecke verweilen und den Fairen Handel für sich entdecken.</p>\n\n<h3>Sortiment</h3>\n\n<ul>\n\t<li>Biologische, faire und regionale Lebensmittel</li>\n\t<li>Vegane Bio-Kosmetik aus Salzburg</li>\n\t<li>Bad- &amp; Pflegeprodukte</li>\n\t<li>Keramik- Holz- &amp; Glasartikeln</li>\n\t<li>Wohndekor für drinnen &amp; draußen</li>\n\t<li>Frauen- &amp; Männerbekleidung GOTS zertifiziert</li>\n\t<li>Modeaccessoires wie Schmuck und Schals</li>\n\t<li>Lederwaren, Ökoledertaschen und Geldbörsen</li>\n\t<li>Kinder- &amp; Babymode</li>\n\t<li>Spielzeug</li>\n\t<li>Musikinstrumente</li>\n\t<li>Papier- &amp; Geschenkutensilien</li>\n\t<li>Bücher &amp; CDs</li>\n</ul>\n\n<p><strong>Tipp: Wenn Sie unsere Arbeit über Ihren Einkauf hinaus unterstützen wollen, dann können Sie dies jederzeit gerne als Mitglied unseres Trägervereins Balance Global und/oder als ehrenamtliche Mitarbeiter*in im Weltladen tun. Schreiben Sie uns einfach eine E-Mail an <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a> oder rufen Sie an unter <a rel="noreferrer" target="_blank">+43 2252 45236</a>. Weitere Informationen zu unserem Trägerverein finden Sie weiter unten.</strong></p>
+1329	<p class="adsimple-221124081">Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.</p>\n\n<p class="adsimple-221124081">Balance Global<br>\n<strong>ZVR:</strong> <span class="blob-code-inner blob-code-marker" data-code-marker="-">819231948</span></p>\n\n<p class="adsimple-221124081">Hauptplatz 9-13,<br>\n2500 Baden,<br>\nÖsterreich</p>\n\n<p class="adsimple-221124081"><strong>Organschaftliche Vertreter</strong><br>\nObmann/Obfrau: Jutta Enzersdorfer<br>\nObmann/Obfrau Stellvertreter: Jasmine Bachmann</p>\n\n<p class="adsimple-221124081"><strong>Vereinssitz:</strong> 2500 Baden<br>\n<strong>Tel.:</strong> +43 2252 45236<br>\n<strong>E-Mail:</strong> <a href="mailto:info@weltladen-baden.at">info@weltladen-baden.at</a></p>\n\n<p class="adsimple-221124081"><strong>Vereinszweck:</strong><br>\nZweck des Vereines ist es, insbesondere durch Information, aber auch durch entsprechende Aktionen aufzuzeigen, dass zwei Drittel der Menschheit ihre Grundbedürfnisse nach Arbeit, Nahrung, Bildung, Kleidung und Wohnung nicht ausreichend befriedigen können. Andererseits soll durch konkrete Aktionen ideell, sozial, materiell und finanziell Benachteiligten in sogenannten Entwicklungsländern und bei uns geholfen werden, ihre Lebenssituation selbst zu verbessern und gleichzeitig mit uns ein Netz der internationalen Solidarität unter den Völkern der Welt aufzubauen. Der Verein ist nicht auf Gewinn ausgerichtet und verfolgt rein gemeinnützige Ziele. Jede parteipolitische Tätigkeit ist ausgeschlossen. Gleichbehandlung nach innen und nach außen ist uns wichtig, insbesondere zwischen Frauen und Männern, In- und Ausländern sowie alten und jungen Menschen.</p>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/impressum-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Impressum Generator von firmenwebseiten.at">Impressum Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.wallentin.cc/behandlung/oberlidstraffung-obere-blepharoplastik-schlupflider-wien/" rel="follow" style="text-decoration: none;" target="_blank" title="Oberlidkorrektur (obere Blepharoplastik) Wien bei Dr. Wallentin">Dr. Wallentin</a></p>\n\n<h2 class="adsimple-221124081">EU-Streitschlichtung</h2>\n\n<p>Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten (ODR-Verordnung) möchten wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform) informieren.<br>\nVerbraucher haben die Möglichkeit, Beschwerden an die Online Streitbeilegungsplattform der Europäischen Kommission unter <a class="adsimple-221124081" href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=DE" rel="nofollow" target="_blank">http://ec.europa.eu/odr?tid=221124081</a> zu richten. Die dafür notwendigen Kontaktdaten finden Sie oberhalb in unserem Impressum.</p>\n\n<p>Wir möchten Sie jedoch darauf hinweisen, dass wir nicht bereit oder verpflichtet sind, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>\n\n<h2 class="adsimple-221124081">Haftung für Inhalte dieser Webseite</h2>\n\n<p>Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns korrekte und aktuelle Informationen bereitzustellen. Leider können wir keine Haftung für die Korrektheit aller Inhalte auf dieser Webseite übernehmen, speziell für jene die seitens Dritter bereitgestellt wurden.</p>\n\n<p>Sollten Ihnen problematische oder rechtswidrige Inhalte auffallen, bitten wir Sie uns umgehend zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Haftung für Links auf dieser Webseite</h2>\n\n<p>Unsere Webseite enthält Links zu anderen Webseiten für deren Inhalt wir nicht verantwortlich sind. Haftung für verlinkte Websites besteht laut <a class="adsimple-221124081" href="https://www.ris.bka.gv.at/Dokument.wxe?Abfrage=Bundesnormen&amp;Dokumentnummer=NOR40025813&amp;tid=221124081" rel="noopener nofollow" target="_blank">§ 17 ECG</a> für uns nicht, da wir keine Kenntnis rechtswidriger Tätigkeiten hatten und haben, uns solche Rechtswidrigkeiten auch bisher nicht aufgefallen sind und wir Links sofort entfernen würden, wenn uns Rechtswidrigkeiten bekannt werden.</p>\n\n<p>Wenn Ihnen rechtswidrige Links auf unserer Website auffallen, bitten wir Sie uns zu kontaktieren, Sie finden die Kontaktdaten im Impressum.</p>\n\n<h2 class="adsimple-221124081">Urheberrechtshinweis</h2>\n\n<p>Alle Inhalte dieser Webseite (Bilder, Fotos, Texte, Videos) unterliegen dem Urheberrecht. Falls notwendig, werden wir die unerlaubte Nutzung von Teilen der Inhalte unserer Seite rechtlich verfolgen.</p>\n\n<h2 class="adsimple-221124081">Bildernachweis</h2>\n\n<p>Die Bilder, Fotos und Grafiken auf dieser Webseite sind urheberrechtlich geschützt.</p>\n\n<p>Die Bilderrechte liegen bei den folgenden Fotografen und Unternehmen:</p>\n\n<ul class="adsimple-221124081">\n\t<li class="adsimple-221124081">EZA Fairer Handel GmbH</li>\n\t<li class="adsimple-221124081">GEPA Gesellschaft zur Förderung der Partnerschaft mit der Dritten Welt mbH</li>\n\t<li class="adsimple-221124081">Imkerei Potz</li>\n</ul>\n\n<p style="margin-top: 15px;">Quelle: Erstellt mit dem <a href="https://www.firmenwebseiten.at/datenschutz-generator/" rel="follow" style="text-decoration: none;" target="_blank" title="Datenschutz Generator von firmenwebseiten.at">Datenschutz Generator von firmenwebseiten.at</a> in Kooperation mit <a class="external" href="https://www.aboutbusiness.at" rel="follow" style="text-decoration: none;" target="_blank" title="">aboutbusiness.at</a></p>
+1333	<h1 class="widgetItemTitle ">Faire Handel</h1>\n\n<div class="text">\n<div class="swslang">\n<p><strong>Der Faire Handel ist eine Handelspartnerschaft die auf Dialog, Transparenz und Respekt beruht. Er zählt zu den effizientesten Formen der Entwicklungszusammenarbeit und steht im krassen Widerspruch zu den ungerechten Strukturen des Welthandels.</strong><br>\nDer Faire Handel ist eine 1965 in Holland entstandene soziale Bewegung, mit dem Ziel benachteiligten Bäuer*innen, Handwerker*innen und<br>\nLohnarbeiter*innen in Ländern des Südens ein gerechtes Einkommen und faire Arbeitsbedingungen zu ermöglichen. Mittlerweile ist es eine der größten sozialen Bewegungen der Welt und ein Geschäftszweig, von dem rund eine Million Menschen profitieren. Diese sind vor allem in kleinbäuerlichen Betrieben, Genossenschaften, Kleinfirmen oder Selbsthilfegruppen als Handwerker*innen oder Plantagenarbeiter*innen in den Ländern Afrikas, Asiens und Lateinamerikas tätig.<br>\nDie Produzent*innen unserer Produkte sind keine Almosen-Empfänger*innen, sondern unternehmerisch handelnde Frauen und Männer.<br>\nDurch den Fairen Handel wird ihre Arbeit wertvoll, ihr Verdienst ermunternd und ihre Zukunft sicherer. Zu Organisationen zusammengeschlossen,<br>\nbewerkstelligen die Produzent*innen durch die Vermarktung ihrer Produkte z.B. Bildungs-, Gesundheits- und Landbauprojekte und erarbeiten so für viele Familien die Grundlage für ein menschenwürdiges Leben. Das Mehreinkommen aus dem Fairen Handel wird von den Produzent*innen zweckgebunden für Sozialprojekte, Bildungsprogramme oder ökologische Investitionen eingesetzt.<br>\n<strong>Die Weltläden sind DIE Fachgeschäfte für fairen Handel.</strong> Daher sehen sie sich auch der Bildung und Aufklärung über die herrschenden Handelsstrukturen verpflichtet.<br>\nWir bieten Lösungsansätze an und ermöglichen gemeinsame Lernprozesse. Zudem bieten wir die Möglichkeit, sich sinnvoll und solidarisch zu engagieren.</p>\n</div>\n</div>
+1337	<h1 class="widgetItemTitle ">Faire Handel</h1>\n\n<div class="text">\n<div class="swslang">\n<p><strong>Der Faire Handel ist eine Handelspartnerschaft die auf Dialog, Transparenz und Respekt beruht. Er zählt zu den effizientesten Formen der Entwicklungszusammenarbeit und steht im krassen Widerspruch zu den ungerechten Strukturen des Welthandels.</strong><br>\nDer Faire Handel ist eine 1965 in Holland entstandene soziale Bewegung, mit dem Ziel benachteiligten Bäuer*innen, Handwerker*innen und<br>\nLohnarbeiter*innen in Ländern des Südens ein gerechtes Einkommen und faire Arbeitsbedingungen zu ermöglichen. Mittlerweile ist es eine der größten sozialen Bewegungen der Welt und ein Geschäftszweig, von dem rund eine Million Menschen profitieren. Diese sind vor allem in kleinbäuerlichen Betrieben, Genossenschaften, Kleinfirmen oder Selbsthilfegruppen als Handwerker*innen oder Plantagenarbeiter*innen in den Ländern Afrikas, Asiens und Lateinamerikas tätig.<br>\nDie Produzent*innen unserer Produkte sind keine Almosen-Empfänger*innen, sondern unternehmerisch handelnde Frauen und Männer.<br>\nDurch den Fairen Handel wird ihre Arbeit wertvoll, ihr Verdienst ermunternd und ihre Zukunft sicherer. Zu Organisationen zusammengeschlossen,<br>\nbewerkstelligen die Produzent*innen durch die Vermarktung ihrer Produkte z.B. Bildungs-, Gesundheits- und Landbauprojekte und erarbeiten so für viele Familien die Grundlage für ein menschenwürdiges Leben. Das Mehreinkommen aus dem Fairen Handel wird von den Produzent*innen zweckgebunden für Sozialprojekte, Bildungsprogramme oder ökologische Investitionen eingesetzt.<br>\n<strong>Die Weltläden sind DIE Fachgeschäfte für fairen Handel.</strong> Daher sehen sie sich auch der Bildung und Aufklärung über die herrschenden Handelsstrukturen verpflichtet.<br>\nWir bieten Lösungsansätze an und ermöglichen gemeinsame Lernprozesse. Zudem bieten wir die Möglichkeit, sich sinnvoll und solidarisch zu engagieren.</p>\n</div>\n</div>
 \.
 
 
@@ -7630,20 +7695,35 @@ COPY public.easy_thumbnails_source (id, storage_hash, name, modified) FROM stdin
 167	f9bde26a1556cd667f742bd34ec7c55e	filer_public/2a/69/2a699132-92d4-4981-980f-5780bb0cd397/93104.jpg	2020-09-01 14:56:56.718706+02
 168	f9bde26a1556cd667f742bd34ec7c55e	filer_public/14/ce/14ce3465-2d53-4912-b231-7545471fbe3d/93103.jpg	2020-09-01 15:04:05.658398+02
 169	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a9/f6/a9f6b104-901d-4f60-8daa-2739369337ad/93105.jpg	2020-09-01 15:46:25.774266+02
+195	f9bde26a1556cd667f742bd34ec7c55e	filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg	2020-09-09 15:21:06.104938+02
 170	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8a/f5/8af55200-b3df-44d1-a2ce-8aad041cb94e/93106.jpg	2020-09-01 15:50:55.486754+02
+189	f9bde26a1556cd667f742bd34ec7c55e	filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg	2020-09-08 17:19:37.876368+02
 181	f9bde26a1556cd667f742bd34ec7c55e	filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg	2020-09-03 11:49:31.600644+02
 171	f9bde26a1556cd667f742bd34ec7c55e	filer_public/32/b7/32b708ee-6b77-4d9f-9607-5ef577f00742/93111.jpg	2020-09-01 16:20:53.855038+02
 172	f9bde26a1556cd667f742bd34ec7c55e	filer_public/2f/6f/2f6fad4c-19a3-445c-9d5f-69911e4eb9ec/93112.jpg	2020-09-01 16:29:03.047975+02
 182	f9bde26a1556cd667f742bd34ec7c55e	filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg	2020-09-03 14:36:02.094473+02
 173	f9bde26a1556cd667f742bd34ec7c55e	filer_public/a8/27/a827b787-ae20-479f-b663-3bb56938739d/93263.jpg	2020-09-01 16:33:52.973318+02
+190	f9bde26a1556cd667f742bd34ec7c55e	filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg	2020-09-09 11:13:52.011628+02
 174	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f1/7c/f17c0de5-0923-4022-ad6c-25c6282f43ef/93126.jpg	2020-09-01 16:39:17.134302+02
 183	f9bde26a1556cd667f742bd34ec7c55e	filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg	2020-09-03 18:48:12.370629+02
 175	f9bde26a1556cd667f742bd34ec7c55e	filer_public/45/24/45244fab-260c-45d2-ab22-08a331d4124c/93113.jpg	2020-09-01 16:59:30.958455+02
+196	f9bde26a1556cd667f742bd34ec7c55e	filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg	2020-09-09 15:24:48.497013+02
 176	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e7/d0/e7d03faf-8c4b-4e8d-a3f8-c54a77021b95/93117.jpg	2020-09-02 09:34:15.671931+02
+184	f9bde26a1556cd667f742bd34ec7c55e	filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg	2020-09-04 09:38:05.768984+02
 177	f9bde26a1556cd667f742bd34ec7c55e	filer_public/72/04/72048405-8a3b-4726-9867-89f64b2b83c2/93130.jpg	2020-09-02 10:13:55.276095+02
+185	f9bde26a1556cd667f742bd34ec7c55e	filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg	2020-09-04 11:16:43.787693+02
 178	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8f/de/8fde734d-a46e-486c-8b8d-d8f411dec58d/93278.jpg	2020-09-02 10:55:04.582105+02
+197	f9bde26a1556cd667f742bd34ec7c55e	filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg	2020-09-09 16:12:17.608013+02
 179	f9bde26a1556cd667f742bd34ec7c55e	filer_public/03/6f/036fc22d-d617-4e6e-8744-c06709cd3b4b/93223.jpg	2020-09-02 14:55:10.690448+02
+192	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg	2020-09-09 11:32:39.895757+02
+186	f9bde26a1556cd667f742bd34ec7c55e	filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg	2020-09-04 19:54:53.708933+02
 180	f9bde26a1556cd667f742bd34ec7c55e	filer_public/f6/b4/f6b4fa9c-0e62-478d-9737-b43e15c0f4eb/89512.jpg	2020-09-03 10:59:55.451191+02
+187	f9bde26a1556cd667f742bd34ec7c55e	filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg	2020-09-08 16:21:10.042603+02
+193	f9bde26a1556cd667f742bd34ec7c55e	filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg	2020-09-09 14:45:46.939513+02
+188	f9bde26a1556cd667f742bd34ec7c55e	filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg	2020-09-08 17:07:29.152736+02
+191	f9bde26a1556cd667f742bd34ec7c55e	filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg	2020-09-09 16:47:33.320918+02
+194	f9bde26a1556cd667f742bd34ec7c55e	filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg	2020-09-09 14:52:51.678062+02
+198	f9bde26a1556cd667f742bd34ec7c55e	filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg	2020-09-10 17:31:21.319474+02
 \.
 
 
@@ -9260,6 +9340,145 @@ COPY public.easy_thumbnails_thumbnail (id, storage_hash, name, modified, source_
 1618	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-03 18:48:07.471257+02	183
 1619	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-03 18:48:07.525158+02	183
 1620	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-03 18:48:12.378764+02	183
+1621	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-04 09:37:53.595051+02	184
+1622	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-04 09:37:53.629791+02	184
+1623	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-04 09:37:53.650089+02	184
+1624	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-04 09:37:53.676344+02	184
+1625	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-04 09:37:53.699504+02	184
+1626	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-04 09:37:53.729332+02	184
+1627	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-04 09:38:01.046674+02	184
+1628	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-04 09:38:01.094819+02	184
+1629	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-04 09:38:05.777257+02	184
+1630	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-04 11:16:11.17289+02	185
+1631	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-04 11:16:11.20668+02	185
+1632	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-04 11:16:11.234994+02	185
+1633	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-04 11:16:11.256374+02	185
+1634	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-04 11:16:11.28316+02	185
+1635	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-04 11:16:11.312753+02	185
+1636	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-04 11:16:41.229851+02	185
+1637	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-04 11:16:41.283574+02	185
+1638	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-04 11:16:43.79585+02	185
+1639	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-04 19:54:39.767663+02	186
+1640	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-04 19:54:39.808101+02	186
+1641	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-04 19:54:39.835006+02	186
+1642	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-04 19:54:39.861674+02	186
+1643	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-04 19:54:39.889238+02	186
+1644	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-04 19:54:39.92016+02	186
+1645	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-04 19:54:46.381541+02	186
+1646	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-04 19:54:46.434063+02	186
+1647	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-04 19:54:53.717334+02	186
+1648	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-08 16:16:34.867413+02	187
+1649	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-08 16:16:34.909754+02	187
+1650	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-08 16:16:34.934778+02	187
+1651	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-08 16:16:34.960758+02	187
+1652	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-08 16:16:34.987827+02	187
+1653	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-08 16:16:35.018444+02	187
+1654	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-08 16:21:05.944105+02	187
+1655	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-08 16:21:06.007148+02	187
+1656	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-08 16:21:10.050713+02	187
+1657	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:07:17.566886+02	188
+1658	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:07:17.607761+02	188
+1659	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:07:17.63526+02	188
+1660	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:07:17.663103+02	188
+1661	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:07:17.696584+02	188
+1662	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:07:17.727866+02	188
+1663	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-08 17:07:26.74179+02	188
+1664	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-08 17:07:26.79706+02	188
+1665	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-08 17:07:29.161064+02	188
+1666	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:15:55.254258+02	189
+1667	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:15:55.288093+02	189
+1668	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:15:55.312975+02	189
+1669	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:15:55.349944+02	189
+1670	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:15:55.372131+02	189
+1671	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-08 17:15:55.397972+02	189
+1672	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-08 17:19:35.616888+02	189
+1673	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-08 17:19:35.665394+02	189
+1674	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-08 17:19:37.883854+02	189
+1675	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 10:35:21.060507+02	190
+1676	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 10:35:21.103899+02	190
+1677	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 10:35:21.130854+02	190
+1678	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 10:35:21.161376+02	190
+1679	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 10:35:21.189639+02	190
+1680	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 10:35:21.219731+02	190
+1681	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 11:13:46.016376+02	190
+1682	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 11:13:46.074405+02	190
+1683	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 11:13:52.021369+02	190
+1684	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:25:43.682501+02	191
+1685	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:25:43.737513+02	191
+1686	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:25:43.783541+02	191
+1687	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:25:43.827537+02	191
+1688	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:25:43.874542+02	191
+1689	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:25:43.92238+02	191
+1690	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 11:25:52.764477+02	191
+1691	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 11:25:52.832891+02	191
+1692	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 11:25:55.267544+02	191
+1693	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:32:24.324792+02	192
+1694	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:32:24.364295+02	192
+1695	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:32:24.388475+02	192
+1696	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:32:24.416423+02	192
+1697	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:32:24.444664+02	192
+1698	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 11:32:24.477989+02	192
+1699	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 11:32:34.900573+02	192
+1700	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 11:32:34.961918+02	192
+1701	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 11:32:39.908747+02	192
+1702	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:45:21.017384+02	193
+1703	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:45:21.057128+02	193
+1704	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:45:21.084026+02	193
+1705	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:45:21.111509+02	193
+1706	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:45:21.145429+02	193
+1707	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:45:21.177332+02	193
+1708	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 14:45:42.187239+02	193
+1709	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 14:45:42.240613+02	193
+1710	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 14:45:46.947178+02	193
+1711	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:52:40.367123+02	194
+1712	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:52:40.3946+02	194
+1713	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:52:40.419952+02	194
+1714	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:52:40.446013+02	194
+1715	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:52:40.473277+02	194
+1716	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 14:52:40.500861+02	194
+1717	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 14:52:45.90496+02	194
+1718	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 14:52:45.957744+02	194
+1719	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 14:52:51.686447+02	194
+1720	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:20:34.824185+02	195
+1721	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:20:34.858501+02	195
+1722	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:20:34.877527+02	195
+1723	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:20:34.901378+02	195
+1724	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:20:34.927039+02	195
+1725	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:20:34.952036+02	195
+1726	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 15:21:02.291009+02	195
+1727	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 15:21:02.338669+02	195
+1728	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 15:21:06.113364+02	195
+1729	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:24:26.024634+02	196
+1730	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:24:26.057042+02	196
+1731	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:24:26.083939+02	196
+1732	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:24:26.108533+02	196
+1733	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:24:26.134847+02	196
+1734	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 15:24:26.163376+02	196
+1735	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 15:24:42.964445+02	196
+1736	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 15:24:43.009853+02	196
+1737	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 15:24:48.5057+02	196
+1738	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-09 16:12:01.104379+02	197
+1739	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-09 16:12:01.143008+02	197
+1740	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-09 16:12:01.167006+02	197
+1741	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-09 16:12:01.191431+02	197
+1742	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-09 16:12:01.217692+02	197
+1743	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-09 16:12:01.246762+02	197
+1744	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-09 16:12:14.228398+02	197
+1745	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-09 16:12:14.276512+02	197
+1746	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-09 16:12:17.616307+02	197
+1747	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__80x80_q85_crop_subsampling-2.jpg	2020-09-09 16:47:18.185815+02	191
+1748	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__160x160_q85_crop_subsampling-2.jpg	2020-09-09 16:47:18.223745+02	191
+1749	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__50x50_q85_crop_subsampling-2.jpg	2020-09-09 16:47:33.295836+02	191
+1750	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg__100x100_q85_crop_subsampling-2.jpg	2020-09-09 16:47:33.327937+02	191
+1751	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__16x16_q85_crop_subsampling-2_upscale.jpg	2020-09-10 17:31:04.248343+02	198
+1752	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__32x32_q85_crop_subsampling-2_upscale.jpg	2020-09-10 17:31:04.294079+02	198
+1753	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__48x48_q85_crop_subsampling-2_upscale.jpg	2020-09-10 17:31:04.322407+02	198
+1754	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__80x80_q85_crop_subsampling-2_upscale.jpg	2020-09-10 17:31:04.35099+02	198
+1755	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__128x128_q85_crop_subsampling-2_upscale.jpg	2020-09-10 17:31:04.381073+02	198
+1756	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__180x180_q85_crop_subsampling-2_upscale.jpg	2020-09-10 17:31:04.415378+02	198
+1757	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__244x244_q85_crop_subsampling-2.jpg	2020-09-10 17:31:15.819479+02	198
+1758	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__488x488_q85_crop_subsampling-2.jpg	2020-09-10 17:31:15.880822+02	198
+1759	f9bde26a1556cd667f742bd34ec7c55e	filer_public_thumbnails/filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg__250x250_q85_crop_subsampling-2.jpg	2020-09-10 17:31:21.327578+02	198
 \.
 
 
@@ -9478,6 +9697,21 @@ COPY public.filer_file (id, file, _file_size, sha1, has_all_mandatory_data, orig
 378	filer_public/6a/cd/6acd9254-c3dc-4a75-a8f9-fed5a20f50ab/89519.jpg	235918	3b2c60553719dfef085d0fec98ac1acfb4719ea8	f	89519.jpg		\N	2020-09-03 11:49:10.997487+02	2020-09-03 11:49:10.997511+02	t	\N	10	106
 379	filer_public/42/22/42221448-d896-4c29-b2ba-5f97149b4b95/89602.jpg	258625	da4fee80d2f8e1cd698950af504bcefa7568a0d2	f	89602.jpg		\N	2020-09-03 13:55:42.767791+02	2020-09-03 13:55:42.767813+02	t	\N	10	106
 380	filer_public/76/cc/76cc0978-6188-45a6-936c-eff3da61edcf/93108.jpg	127434	ab09ba2df0b7ba299092b224f00c8e8791ead786	f	93108.jpg		\N	2020-09-03 18:47:47.902713+02	2020-09-03 18:47:47.902735+02	t	\N	10	106
+381	filer_public/ea/b2/eab21870-3035-4b9a-bba1-a5c46161b8bb/93115.jpg	120559	759030bdecdc3658fb3f0e91f0818f70b5543e84	f	93115.jpg		\N	2020-09-04 09:37:53.478614+02	2020-09-04 09:37:53.478635+02	t	\N	10	106
+382	filer_public/72/19/72193e5f-bd95-453b-b66f-3963cc1fb1f7/93118.jpg	119647	3cda4109f80cbcb9bbe009ef236f9bff464038f3	f	93118.jpg		\N	2020-09-04 11:16:11.14348+02	2020-09-04 11:16:11.143501+02	t	\N	10	106
+383	filer_public/bf/39/bf39d78d-fae2-43d3-bbbb-ec351773d1cf/93216.jpg	232794	267a0adc4e8a5a5acf80d4bf85b3f182a2d1b8c5	f	93216.jpg		\N	2020-09-04 19:54:39.728164+02	2020-09-04 19:54:39.728183+02	t	\N	10	106
+384	filer_public/e0/80/e080c417-febd-4929-a7c7-c6803106de5d/93220.jpg	110082	4b1f9f0fd15ec156914d922306be719c3b048acf	f	93220.jpg		\N	2020-09-08 16:16:34.74055+02	2020-09-08 16:16:34.740576+02	t	\N	10	106
+385	filer_public/8e/c0/8ec03ca7-adbb-4071-820a-fdbacc7d6c29/93273.jpg	250664	2fc98ca09a6ba62af0e0dee4dc48b852fdc4353a	f	93273.jpg		\N	2020-09-08 17:07:17.540441+02	2020-09-08 17:07:17.540473+02	t	\N	10	106
+386	filer_public/91/04/910433ae-b749-4e71-906a-96729f548f82/93280.jpg	117144	be185e1f2ada3b2ea2c1112fedfe6240a50cb9a8	f	93280.jpg		\N	2020-09-08 17:15:55.221867+02	2020-09-08 17:15:55.221884+02	t	\N	10	106
+387	filer_public/78/e7/78e79e69-a3dd-4380-88e8-fe5767f9b732/99190.jpg	140005	a8968670c60cfdaf2f9d1e2591810c2cdbc8841c	f	99190.jpg		\N	2020-09-09 10:35:20.949218+02	2020-09-09 10:35:20.949244+02	t	\N	10	106
+388	filer_public/d6/fc/d6fcb3c5-448b-440c-8e41-6a543beeda42/99191.jpg	126077	243308cecdb338f46fd04748e3a02ba5ecae7821	f	99191.jpg		\N	2020-09-09 11:25:43.632184+02	2020-09-09 11:25:43.63223+02	t	\N	10	106
+389	filer_public/f3/1b/f31bd11b-99ef-4276-8956-e00deae5400e/99192.jpg	129382	6f6cff612cf672bb7506a3b79f1c74ec56947759	f	99192.jpg		\N	2020-09-09 11:32:24.289011+02	2020-09-09 11:32:24.289136+02	t	\N	10	106
+390	filer_public/4f/4f/4f4f59ac-cdae-412d-a972-343341ad03af/99400.jpg	269185	fdce466197d66f23c878dc7cbe248bf3f3677fb2	f	99400.jpg		\N	2020-09-09 14:45:20.989629+02	2020-09-09 14:45:20.989661+02	t	\N	10	106
+391	filer_public/7b/6a/7b6ad5dc-7534-4be2-b5f3-61110f6aad71/99401.jpg	181600	b57889c2cba4943813e4d270216fe20dfb8482ab	f	99401.jpg		\N	2020-09-09 14:52:40.336736+02	2020-09-09 14:52:40.336754+02	t	\N	10	106
+392	filer_public/89/ce/89ce4768-caf6-4665-ae42-b588e13dd78a/99520.jpg	74319	a8114dae48ab7b8c03dcb9da32765389351d68b1	f	99520.jpg		\N	2020-09-09 15:20:34.792832+02	2020-09-09 15:20:34.79285+02	t	\N	10	106
+393	filer_public/5a/6f/5a6f4702-aceb-4320-85c9-2007a8ebf37c/99521.jpg	88650	c065f4ae64888671e4eb0e921dafe6eef1798b5f	f	99521.jpg		\N	2020-09-09 15:24:25.993355+02	2020-09-09 15:24:25.993373+02	t	\N	10	106
+394	filer_public/24/ed/24edf032-e3de-4758-bb87-b2a3f8ca215d/99530.jpg	80372	ac000a4eee82f0748c31a503af4d13fa9ef15aca	f	99530.jpg		\N	2020-09-09 16:12:01.068387+02	2020-09-09 16:12:01.068413+02	t	\N	10	106
+395	filer_public/46/cd/46cdfe83-7891-46b1-af06-17e19947cb5a/97800.jpg	435141	5ca571f2d2dc40daedae5bc55a451820d1b5f3b4	f	97800.jpg		\N	2020-09-10 17:31:04.115142+02	2020-09-10 17:31:04.115169+02	t	\N	10	106
 \.
 
 
@@ -9693,6 +9927,21 @@ COPY public.filer_image (file_ptr_id, _height, _width, date_taken, default_alt_t
 378	752	662	2020-09-03 11:49:10.988686+02	\N	\N	\N	f	f	
 379	752	662	2020-09-03 13:55:42.755127+02	\N	\N	\N	f	f	
 380	752	662	2020-09-03 18:47:47.888438+02	\N	\N	\N	f	f	
+381	752	662	2020-09-04 09:37:53.464717+02	\N	\N	\N	f	f	
+382	752	662	2020-09-04 11:16:11.131135+02	\N	\N	\N	f	f	
+383	752	662	2020-09-04 19:54:39.720275+02	\N	\N	\N	f	f	
+384	752	662	2020-09-08 16:16:34.703716+02	\N	\N	\N	f	f	
+385	752	662	2020-09-08 17:07:17.50788+02	\N	\N	\N	f	f	
+386	752	662	2020-09-08 17:15:55.217093+02	\N	\N	\N	f	f	
+387	752	662	2020-09-09 10:35:20.907796+02	\N	\N	\N	f	f	
+388	752	662	2020-09-09 11:25:43.613644+02	\N	\N	\N	f	f	
+389	752	662	2020-09-09 11:32:24.26775+02	\N	\N	\N	f	f	
+390	752	662	2020-09-09 14:45:20.959915+02	\N	\N	\N	f	f	
+391	752	662	2020-09-09 14:52:40.331588+02	\N	\N	\N	f	f	
+392	752	662	2020-09-09 15:20:34.788139+02	\N	\N	\N	f	f	
+393	752	662	2020-09-09 15:24:25.989143+02	\N	\N	\N	f	f	
+394	752	662	2020-09-09 16:12:01.061015+02	\N	\N	\N	f	f	
+395	752	662	2020-09-10 17:31:04.068518+02	\N	\N	\N	f	f	
 \.
 
 
@@ -9709,8 +9958,7 @@ COPY public.filer_thumbnailoption (id, name, width, height, crop, upscale) FROM 
 --
 
 COPY public.menus_cachekey (id, language, site, key) FROM stdin;
-168	de	1	cms_3.7.4_menu_nodes_de_1_4_user:public
-169	de	1	cms_3.7.4_menu_nodes_de_1_10_user:draft
+174	de	1	cms_3.7.4_menu_nodes_de_1_4_user:public
 \.
 
 
@@ -11172,6 +11420,7 @@ COPY public.weltladen_billingaddress (id, priority, name, postal_code, city, cou
 COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_id, customer_id, shipping_address_id) FROM stdin;
 10	2020-06-30 22:32:48.12073+02	2020-07-01 22:00:01.309953+02	{"annotation": "", "payment_modifier": "delivery-note-payment", "shipping_modifier": "self-collection", "payment_extra_data": {}}	\N	4	1
 11	2020-07-02 10:17:19.686767+02	2020-07-02 10:17:19.68679+02	{}	\N	10	\N
+12	2020-09-09 16:47:18.120595+02	2020-09-09 16:47:33.008006+02	{}	\N	14	\N
 \.
 
 
@@ -11180,6 +11429,7 @@ COPY public.weltladen_cart (id, created_at, updated_at, extra, billing_address_i
 --
 
 COPY public.weltladen_cartitem (id, product_code, updated_at, extra, quantity, cart_id, product_id) FROM stdin;
+20	99191	2020-09-09 16:47:33.006496+02	{}	2	12	181
 \.
 
 
@@ -11294,6 +11544,9 @@ COPY public.weltladen_manufacturer (id, name) FROM stdin;
 76	ECOOKIM
 77	Imkerei Potz
 78	Österreichische Bergkräutergenossenschaft
+79	Sindyanna of Galilee
+80	Eswatini Swazi Kitchen
+81	Targanine
 \.
 
 
@@ -11510,6 +11763,21 @@ COPY public.weltladen_productimage (id, "order", image_id, product_id) FROM stdi
 171	1	378	171
 172	1	379	172
 173	1	380	173
+174	1	381	174
+175	1	382	175
+176	1	383	176
+177	1	384	177
+178	1	385	178
+179	1	386	179
+180	1	387	180
+181	1	388	181
+182	1	389	182
+183	1	390	183
+184	1	391	184
+185	1	392	185
+186	1	393	186
+187	1	394	187
+188	1	395	188
 \.
 
 
@@ -11852,6 +12120,36 @@ COPY public.weltladen_productpage (id, page_id, product_id) FROM stdin;
 341	69	172
 342	16	173
 343	69	173
+344	16	174
+345	69	174
+346	16	175
+347	69	175
+348	16	176
+349	69	176
+350	16	177
+351	69	177
+352	16	178
+353	69	178
+354	16	179
+355	69	179
+356	16	180
+357	70	180
+358	16	181
+359	70	181
+360	16	182
+361	70	182
+362	16	183
+363	70	183
+364	16	184
+365	70	184
+366	16	185
+367	70	185
+368	16	186
+369	70	186
+370	16	187
+371	70	187
+372	16	188
+373	71	188
 \.
 
 
@@ -11896,8 +12194,9 @@ COPY public.weltladen_weltladencustomer (user_id, recognized, last_access, extra
 13	0	2020-06-04 20:54:49.255673+02	{}	\N	\N	
 11	1	2020-05-12 22:02:10.818315+02	{}	2	\N	
 12	0	2020-05-31 11:57:40.706449+02	{}	\N	\N	
-10	2	2020-09-03 18:48:12.493993+02	{}	\N	\N	
-4	2	2020-09-03 21:13:05.689278+02	{}	1	+43 676 3239108	mr
+10	2	2020-09-10 17:53:21.672406+02	{}	\N	\N	
+14	0	2020-09-09 17:29:05.309899+02	{}	\N	\N	
+4	2	2020-09-12 20:35:47.628425+02	{}	1	+43 676 3239108	mr
 \.
 
 
@@ -11910,7 +12209,6 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 67	2020-05-25 13:39:05.007286+02	2020-05-25 13:41:01.037358+02	t	Kaffeekapsel Membran - Espresso	kaffeekapsel-membran-espresso	41	2.990	89806	\N	135	2	t	f	f	f	
 11	2020-05-01 20:53:58.436741+02	2020-05-27 10:35:51.673985+02	t	ESPRESSO ORGANICO Bohne 500g	espresso-organico-bohne-500g	10	8.990	83077	2	135	2	t	t	t	t	MX
 20	2020-05-05 15:44:41.117401+02	2020-05-18 10:23:57.121612+02	t	NICA Bohne 1kg	nica-bohne-1kg	20	17.990	82017	17	135	2	t	t	t	t	NI
-169	2020-09-02 14:54:58.660142+02	2020-09-02 14:54:58.660164+02	t	Sternanis 25g	sternanis-25g	168	2.390	93223	37	135	2	f	t	t	t	VN
 101	2020-08-17 19:42:54.614881+02	2020-08-17 19:42:54.614907+02	t	Kaffeelikör Kugeln 100g	kaffeelikor-kugeln-100g	102	3.490	97668	27	135	2	f	f	f	f	DO,MX,NI,PY,PE
 8	2020-05-01 20:31:41.660464+02	2020-05-27 10:32:50.435202+02	t	ORGANICO Bohne 1kg	organico-bohne-1kg	7	17.990	83017	2	135	2	t	t	t	t	MX
 9	2020-05-01 20:37:02.640044+02	2020-05-27 10:33:42.260083+02	t	ORGANICO gemahlen 1kg	organico-gemahlen-1kg	8	17.990	83022	2	135	2	t	t	t	t	MX
@@ -11928,6 +12226,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 102	2020-08-17 22:18:48.236571+02	2020-08-17 22:20:07.361922+02	t	Sahne-Kakao Madeln 100g	sahne-kakao-madeln-100g	103	4.390	97676	27	135	2	f	f	t	f	DO,NI,PY,PE,ST
 98	2020-07-26 18:10:11.61273+02	2020-07-26 18:13:40.820948+02	t	Schoko-Rosinen Noir 100g	schoko-rosinen-noir-100g	96	3.290	97623	27	135	2	f	f	t	t	CL,DO,PY,PE
 95	2020-06-22 11:02:09.631372+02	2020-07-02 15:29:18.610895+02	t	Schoko-Paranüsse 100g	schoko-paranusse-100g	97	3.990	97616	45	135	2	f	f	t	f	DO,CO,NI,PY,PE,PH
+182	2020-09-09 11:32:27.646396+02	2020-09-09 11:32:27.646417+02	t	Mango Chutney 150g	mango-chutney-150g	181	3.990	99192	80	135	2	f	t	t	t	SZ
 21	2020-05-05 15:53:04.598381+02	2020-05-27 10:48:08.034018+02	t	JAMBO Vakuum 250g	jambo-vakuum-250g	21	4.990	91011	18	135	2	t	t	t	t	UG
 33	2020-05-06 15:11:00.118519+02	2020-05-20 15:27:21.529006+02	t	COFFEE FOR FUTURE Bohne 1kg	coffee-future-bohne-1kg	34	19.990	90332	23	135	2	t	t	t	t	MX,UG
 32	2020-05-06 14:27:39.282029+02	2020-05-20 15:26:12.724586+02	t	COFFEE FOR FUTURE Vakuum 500g	coffee-future-vakuum-500g	33	9.590	90321	23	135	2	t	t	t	t	MX,UG
@@ -11972,10 +12271,11 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 34	2020-05-06 15:29:33.732075+02	2020-05-27 13:18:16.89776+02	t	AFRICAFE Löskaffee 100g	africafe-loskaffee-100g	35	6.490	81013	26	135	2	t	t	t	t	TZ
 35	2020-05-06 15:46:34.662559+02	2020-05-27 13:20:22.031983+02	t	LATINO Löskaffee 100g	latino-loskaffee-100g	36	8.990	81033	27	135	2	t	t	t	t	MX,NI
 36	2020-05-06 15:51:41.976545+02	2020-05-27 13:21:36.370514+02	t	LATINO Löskaffee entkoffeiniert 100g	latino-loskaffee-entkoffeiniert-100g	37	8.990	81044	27	135	2	t	t	t	t	MX,NI
+177	2020-09-08 16:16:37.103388+02	2020-09-08 16:20:23.785704+02	t	Reisgewürz 20g	reisgewurz-20g	166	2.490	93220	62	135	2	f	t	t	t	LK
 120	2020-08-24 11:42:23.36107+02	2020-08-26 09:22:55.949601+02	t	Barrita Sesamriegel 20g	barrita-sesamriegel-20g	134	0.490	99111	43	135	3	f	t	t	t	PY
-164	2020-09-01 16:38:48.194216+02	2020-09-01 16:39:57.220582+02	t	Nelken gemahlen 30g	nelken-gemahlen-30g	165	2.590	93126	62	135	2	f	t	t	t	LK
 103	2020-08-19 10:11:07.599382+02	2020-08-19 10:13:14.378971+02	t	Bolitos 100g	bolitos-100g	104	3.490	97679	45	135	2	f	f	t	f	BO,DO,NI,PY,PH,TH
 121	2020-08-24 16:13:51.907164+02	2020-08-26 09:26:14.647894+02	t	Multi Power Fruchtriegel 30g	multi-power-fruchtriegel-30g	135	1.690	99168	59	135	3	f	f	t	t	BF,HN,TR
+179	2020-09-08 17:15:56.980462+02	2020-09-08 17:19:26.905689+02	t	Lebkuchengewürz 30g	lebkuchengewurz-30g	174	2.790	93280	62	135	2	f	t	t	t	LK
 37	2020-05-06 16:22:40.017131+02	2020-06-18 09:44:58.325003+02	t	Kaffeekapsel Set - milde Röstung	kaffeekapsel-set-milde-rostung	38	9.990	89800	\N	135	2	t	f	f	f	
 51	2020-05-07 15:32:59.067737+02	2020-06-18 10:02:25.211196+02	t	CARCADE Hibiskustee lose 50g	carcade-hibiskustee-lose-50g	54	2.690	84011	34	135	2	t	t	t	t	KE
 52	2020-05-07 15:43:04.802807+02	2020-06-18 10:02:40.469147+02	t	CARCADE CITRONELLA Teebeutel 20x2g	carcade-citronella-teebeutel-20x2g	55	2.890	84022	34	135	2	t	t	t	t	KE
@@ -11986,7 +12286,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 62	2020-05-16 22:18:59.634269+02	2020-06-18 10:06:33.946429+02	t	Zuckersticks 1000 x 4g	zuckersticks-1000-x-4g	65	34.100	97198	43	135	2	f	t	t	t	PY
 63	2020-05-17 11:55:17.186328+02	2020-06-18 10:06:52.991239+02	t	50 Schoko-Naps à 4,5g	50-schoko-naps-45g	94	8.990	97299	45	135	2	f	f	t	f	BO,DO,PE,PH
 97	2020-07-02 15:22:07.576397+02	2020-07-26 18:12:44.704303+02	t	Schoko-Paranüsse Noir 100g	schoko-paranusse-noir-100g	98	3.990	97612	45	135	2	f	f	t	t	DO,NI,PY,PE,PH
-172	2020-09-03 13:55:44.710473+02	2020-09-03 14:35:51.057945+02	t	Salatgewürz 25g	salatgewurz-25g	171	3.290	89602	78	135	2	f	t	t	t	AT
+183	2020-09-09 14:45:24.035482+02	2020-09-09 14:45:24.035504+02	t	Ka Ti Kokosnussmilch 400ml	ka-ti-kokosnussmilch-400ml	182	3.590	99400	56	135	2	f	t	t	t	TH
 124	2020-08-24 19:36:58.52857+02	2020-08-24 19:36:58.528589+02	t	Spritzgebäck Stangerl 100g	spritzgeback-stangerl-100g	117	2.990	99162	43	135	2	f	f	t	f	PY
 144	2020-08-26 21:21:39.583667+02	2020-08-26 21:22:25.892074+02	t	Cremehonig mit Graumohn 315g	cremehonig-mit-graumohn-315g	138	7.000	002	77	135	4	f	f	t	t	AT
 117	2020-08-21 17:05:39.21902+02	2020-08-21 17:16:29.379007+02	t	Cashewnüsse & Chili 70g	cashewnusse-chili-70g	121	2.990	97013	36	135	2	f	t	t	t	BF,LK
@@ -12007,6 +12307,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 76	2020-05-26 11:40:45.927426+02	2020-06-18 10:10:44.107761+02	t	MASCAO Noir 100g	mascao-noir-100g	84	2.990	97388	27	135	2	f	t	t	t	BO,DO,PY,PE
 78	2020-05-26 15:29:42.763982+02	2020-06-18 10:11:20.059216+02	t	COMPAÑERA Honig Krokant 50g	companera-honig-krokant-50g	86	1.690	97205	27	135	2	f	f	t	f	BO,DO,PY,PE
 83	2020-05-31 16:56:19.376252+02	2020-06-18 10:13:31.332334+02	t	COMPAÑERA Mocca 50g	companera-mocca-50g	91	1.590	97235	45	135	2	f	f	t	f	BO,DO,EC,PY,PE,PH
+164	2020-09-01 16:38:48.194216+02	2020-09-01 16:39:57.220582+02	t	Nelken gemahlen 30g	nelken-gemahlen-30g	171	2.590	93126	62	135	2	f	t	t	t	LK
 136	2020-08-26 10:24:45.449671+02	2020-08-26 10:25:41.584159+02	t	Bio-Geleefrüchte 100g	bio-geleefruchte-100g	133	1.990	97765	43	135	2	f	t	t	t	PY
 142	2020-08-26 21:08:43.902007+02	2020-08-26 21:08:43.902027+02	t	Blütenhonig 960g	blutenhonig-960g	136	12.000	000	77	135	4	f	f	t	t	AT
 104	2020-08-19 17:08:21.624041+02	2020-08-19 17:09:45.304244+02	t	Eierlikörkugeln 100g	eierlikorkugeln-100g	105	3.990	97687	27	135	2	f	f	f	f	DO,PY,PE,ST
@@ -12016,19 +12317,20 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 105	2020-08-19 18:30:19.347572+02	2020-08-20 11:30:45.354675+02	t	Fairetta Weiß 45g	fairetta-weiss-45g	106	1.190	97525	27	135	2	f	f	f	f	DO,PY,ST
 108	2020-08-20 11:37:55.26125+02	2020-08-20 11:37:55.261273+02	t	Fairetta Honig-Mandel 45g	fairetta-honig-mandel-45g	109	1.190	97572	45	135	2	f	f	t	f	BO,DO,PY,PH,ST
 109	2020-08-20 11:54:18.587058+02	2020-08-20 11:54:18.587079+02	t	Fairetta Quinua 45g	fairetta-quinua-45g	110	1.190	97588	45	135	2	f	f	t	f	BO,DO,PY,PH
-163	2020-09-01 16:33:25.735711+02	2020-09-01 16:34:46.97904+02	t	Muskatnuss gemahlen 30g	muskatnuss-30g	162	2.490	93263	62	135	2	f	t	t	t	LK
+178	2020-09-08 17:07:19.04742+02	2020-09-08 17:08:05.655017+02	t	Garam Masala 30g	garam-masala-30g	165	2.390	93273	62	135	2	f	t	t	t	LK
 122	2020-08-24 17:27:11.185187+02	2020-08-24 19:32:39.47424+02	t	Butterkekse mit Schokostücken 100g	butterkekse-mit-schokostucken-100g	115	2.990	99142	43	135	2	f	f	f	f	PY
 139	2020-08-26 17:21:41.454224+02	2020-08-26 17:21:41.454246+02	t	Honigtrio 3x125g	honigtrio-3x125g	142	6.990	92402	27	135	2	f	f	t	t	MX,UY
 145	2020-08-26 21:26:46.682413+02	2020-08-26 21:26:46.68252+02	t	Honig mit Kakao 315g	honig-mit-kakao-315g	139	7.000	003	77	135	4	f	f	t	t	AT
 133	2020-08-25 19:28:33.082632+02	2020-08-25 19:37:29.427242+02	t	Bio Bärli 100g	bio-barli-100g	130	1.990	97757	43	135	2	f	f	t	t	PY
-165	2020-09-01 16:59:14.747352+02	2020-09-01 17:01:27.16102+02	t	Ingwer gemahlen 30g	ingwer-gemahlen-30g	159	2.390	93113	33	135	2	f	t	t	t	LK
+163	2020-09-01 16:33:25.735711+02	2020-09-01 16:34:46.97904+02	t	Muskatnuss gemahlen 30g	muskatnuss-30g	168	2.490	93263	62	135	2	f	t	t	t	LK
 118	2020-08-24 09:13:05.983011+02	2020-08-24 09:36:59.03347+02	t	Gebrannte Cashewnüsse 100g	gebrannte-cashewnusse-100g	122	3.990	97055	59	135	2	f	t	t	t	BF,PY,LK
 110	2020-08-20 16:11:27.255808+02	2020-08-20 16:11:27.25583+02	t	Fairetta Creamy Kids 37,5g	fairetta-creamy-kids-375g	111	1.190	97708	59	135	2	f	f	t	f	DO,GH,CO,NI,PY,PE,PH
-168	2020-09-02 10:54:52.642205+02	2020-09-02 10:54:52.642243+02	t	Curryblätter 5g	curryblatter-5g	157	1.390	93278	62	135	2	f	t	t	t	LK
-170	2020-09-02 15:51:17.073972+02	2020-09-03 11:00:21.083076+02	t	Bratkartoffelgewürz 50g	bratkartoffelgewurz-50g	169	3.490	89512	78	135	2	f	t	t	t	AT
+175	2020-09-04 11:16:13.617546+02	2020-09-04 11:18:42.517163+02	t	Indian Curry 50g	indian-curry-50g	176	4.490	93118	31	135	2	f	t	t	t	LK,VN
+180	2020-09-09 10:35:23.323365+02	2020-09-09 11:14:43.179639+02	t	Früchte Chutney 150g	fruchte-chutney-150g	179	3.990	99190	80	135	2	f	t	t	t	SZ
 125	2020-08-24 20:59:22.526422+02	2020-08-26 09:21:35.715444+02	t	Doblito Doppelkeks 85g	doblito-doppelkeks-85g	119	1.590	99170	23	135	3	f	f	f	t	BO,DO,GH,MX,PY,PE
-173	2020-09-03 18:47:52.311091+02	2020-09-03 18:47:52.311113+02	t	Curry mild 30g	curry-mild-30g	172	2.390	93108	62	135	2	f	t	t	t	LK
+184	2020-09-09 14:52:42.29705+02	2020-09-09 14:52:42.297073+02	t	Ka Ti Kokosnussmilch 160ml	ka-ti-kokosnussmilch-160ml	183	1.990	99401	56	135	2	f	t	t	t	TH
 149	2020-08-28 11:21:26.146638+02	2020-08-28 11:21:26.146661+02	t	Oregano 20g	oregano-20g	145	2.590	89509	78	135	2	f	t	t	t	AT
+186	2020-09-09 15:24:27.884834+02	2020-09-09 15:24:27.884854+02	t	Olivenöl 100ml	olivenol-100ml	185	3.000	99521	79	135	2	f	t	t	t	IL
 152	2020-08-29 08:20:29.298588+02	2020-08-29 08:20:29.298641+02	t	Fenchel 50g	fenchel-50g	151	2.990	89514	78	135	2	f	t	t	t	AT
 147	2020-08-28 10:35:24.00903+02	2020-08-28 10:35:24.009074+02	t	Kümmel 50g	kummel-50g	148	2.890	89506	78	135	2	f	t	t	t	AT
 111	2020-08-20 16:27:46.532024+02	2020-08-20 16:27:46.532047+02	t	Fairetta Creamy Kokos 37,5g	fairetta-creamy-kokos-375g	112	1.190	97717	59	135	2	f	f	t	f	DO,GH,CO,NI,PY,PE,PH,LK
@@ -12037,9 +12339,7 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 99	2020-07-26 19:05:08.920651+02	2020-07-26 19:07:26.354771+02	t	Schoko-Cashew Noir 100g	schoko-cashew-noir-100g	100	3.990	97634	45	135	2	f	f	t	t	DO,HN,CO,NI,PH
 96	2020-07-02 11:52:13.455677+02	2020-07-02 15:23:55.514287+02	t	Schoko-Kaffeebohnen 100g	schoko-kaffeebohnen-100g	99	3.290	97626	45	135	2	f	f	t	f	DO,CO,MX,NI,PY,PH,ST
 100	2020-07-26 20:18:18.012457+02	2020-07-26 20:19:43.214032+02	t	Joghurt-Cashew 100g	joghurt-cashew-100g	101	3.990	97637	45	135	2	f	f	t	f	DO,HN,CO,NI,PY,PE
-160	2020-09-01 15:50:02.279526+02	2020-09-01 15:50:02.279545+02	t	Pfeffer schwarz gemahlen 30g	pfeffer-schwarz-gemahlen-30g	154	2.390	93106	33	135	2	f	t	t	t	LK
 94	2020-06-19 22:09:30.395646+02	2020-07-02 15:23:17.211419+02	t	Schoko-Rosinen 100g	schoko-rosinen-100g	95	3.290	97601	27	135	2	f	f	t	f	CL,DO,PY,PE
-157	2020-09-01 14:56:48.800372+02	2020-09-01 14:57:39.914252+02	t	Pfeffer weiß 30g	pfeffer-weiss-30g	155	2.690	93104	33	135	2	f	t	t	t	LK
 86	2020-06-11 14:50:15.020673+02	2020-06-18 10:14:29.391821+02	t	SONRISA Mandel 80g	sonrisa-mandel-80g	68	2.190	97142	27	135	2	f	f	t	f	BO,DO,PY,PE
 88	2020-06-11 15:13:43.022226+02	2020-06-18 10:15:01.752778+02	t	SONRISA Noir 80g	sonrisa-noir-80g	70	2.190	97162	27	135	2	f	t	t	t	BO,DO,PY,PE
 115	2020-08-21 11:22:00.533962+02	2020-08-21 11:23:42.946613+02	t	Belgische Nougatmuscheln 100g	belgische-nougatmuscheln-100g	67	6.590	97545	27	135	2	f	f	t	f	PY,PE
@@ -12047,32 +12347,46 @@ COPY public.weltladen_weltladenproduct (id, created_at, updated_at, active, prod
 90	2020-06-11 15:28:25.835455+02	2020-06-18 10:15:37.850138+02	t	SONRISA Orange 80g	sonrisa-orange-80g	72	2.190	97182	27	135	2	f	t	t	t	BO,DO,PY,PE
 92	2020-06-18 15:26:54.645267+02	2020-06-18 15:26:54.645288+02	t	Cremeschokolade Banane 100g	cremeschokolade-banane-100g	74	2.190	97185	27	135	2	f	f	t	f	DO,PY
 93	2020-06-18 21:30:05.628732+02	2020-06-18 21:30:05.628754+02	t	Cremeschokolade Erdbeere 100g	cremeschokolade-erdbeere-100g	75	2.190	97195	27	135	2	f	f	t	f	DO,PY
+170	2020-09-02 15:51:17.073972+02	2020-09-03 11:00:21.083076+02	t	Bratkartoffelgewürz 50g	bratkartoffelgewurz-50g	154	3.490	89512	78	135	2	f	t	t	t	AT
+165	2020-09-01 16:59:14.747352+02	2020-09-01 17:01:27.16102+02	t	Ingwer gemahlen 30g	ingwer-gemahlen-30g	162	2.390	93113	33	135	2	f	t	t	t	LK
+168	2020-09-02 10:54:52.642205+02	2020-09-02 10:54:52.642243+02	t	Curryblätter 5g	curryblatter-5g	160	1.390	93278	62	135	2	f	t	t	t	LK
+173	2020-09-03 18:47:52.311091+02	2020-09-03 18:47:52.311113+02	t	Curry mild 30g	curry-mild-30g	164	2.390	93108	62	135	2	f	t	t	t	LK
+172	2020-09-03 13:55:44.710473+02	2020-09-03 14:35:51.057945+02	t	Salatgewürz 25g	salatgewurz-25g	155	3.290	89602	78	135	2	f	t	t	t	AT
 79	2020-05-28 10:53:29.644663+02	2020-06-18 10:12:28.765234+02	t	COMPAÑERA Crispy 50g	companera-crispy-50g	87	1.690	97215	27	135	2	f	f	t	f	BO,DO,EC,PY,PE
 81	2020-05-28 14:02:56.684837+02	2020-06-18 10:12:51.804288+02	t	COMPAÑERA Noir 50g	companera-noir-50g	89	1.590	97225	27	135	2	f	t	t	t	BO,DO,EC,PY,PE
 123	2020-08-24 19:19:00.651248+02	2020-08-24 19:19:00.65127+02	t	Schokokekse mit Kokosflocken 100g	schokokekse-mit-kokosflocken-100g	116	2.990	99152	45	135	2	f	f	f	f	PY,LK
 80	2020-05-28 11:07:34.957162+02	2020-06-18 10:12:41.053259+02	t	COMPAÑERA Noisette 50g	companera-noisette-50g	88	1.690	97220	27	135	2	f	f	t	f	BO,DO,EC,PY,PE
 119	2020-08-24 09:53:30.265742+02	2020-08-24 11:13:40.06726+02	t	Erdnüsse 150g	erdnusse-150g	123	2.190	97020	63	135	2	f	t	t	t	NI
 126	2020-08-24 21:33:26.192884+02	2020-08-24 21:39:35.788411+02	t	Schoko-Orangen Kekse 125g	schoko-orangen-kekse-125g	118	2.990	99179	59	135	2	f	t	f	t	BO,DO,GH,PE,PH
+167	2020-09-02 10:13:08.215816+02	2020-09-02 10:14:42.799894+02	t	Muskatblüte 15g	muskatblute-15g	169	2.790	93130	62	135	2	f	t	t	t	LK
 130	2020-08-25 16:39:56.616825+02	2020-08-25 16:39:56.616846+02	t	Kokosstreifen 70g	kokosstreifen-70g	127	3.590	97443	33	135	2	f	t	t	t	LK
+155	2020-09-01 09:52:45.106956+02	2020-09-01 16:35:03.232698+02	t	Muskatnuss 30g	muskatnuss-ganz-30g	167	2.490	93022	62	135	2	f	t	t	t	LK
 134	2020-08-25 19:42:53.141272+02	2020-08-26 09:35:20.539109+02	t	Bio Fruchtis 100g	bio-fruchtis-100g	131	1.990	97760	43	135	2	f	f	t	t	PY
+162	2020-09-01 16:28:47.721251+02	2020-09-01 16:28:47.721274+02	t	Ceylon Zimtrinde 25g	ceylon-zimtrinde-25g	173	2.790	93112	62	135	2	f	t	t	t	LK
 143	2020-08-26 21:15:49.478142+02	2020-08-26 21:16:36.910325+02	t	Honig mit Chili 315g	honig-mit-chili-315g	137	7.000	001	77	135	4	f	f	t	t	AT
+161	2020-09-01 16:20:33.003681+02	2020-09-01 16:20:33.003706+02	t	Ceylon Zimt 30g	ceylon-zimt-30g	172	2.490	93111	62	135	2	f	t	t	t	LK
+156	2020-09-01 11:23:23.942934+02	2020-09-01 11:23:23.942954+02	t	Nelken 25g	nelken-25g	170	2.290	93102	62	135	2	f	t	t	t	LK
 137	2020-08-26 11:25:01.957482+02	2020-08-26 11:28:17.34895+02	t	Selva Blütenhonig 500g	selva-blutenhonig-500g	140	6.490	95015	16	135	2	f	f	t	t	GT
 140	2020-08-26 18:25:49.797656+02	2020-08-26 19:14:20.562545+02	t	Equita Schokoaufstrich 400g	equita-schokoaufstrich-400g	143	4.490	94200	23	135	2	f	f	t	f	CR,CI,GH
-167	2020-09-02 10:13:08.215816+02	2020-09-02 10:14:42.799894+02	t	Muskatblüte 15g	muskatblute-15g	163	2.790	93130	62	135	2	f	t	t	t	LK
-155	2020-09-01 09:52:45.106956+02	2020-09-01 16:35:03.232698+02	t	Muskatnuss 30g	muskatnuss-ganz-30g	161	2.490	93022	62	135	2	f	t	t	t	LK
-162	2020-09-01 16:28:47.721251+02	2020-09-01 16:28:47.721274+02	t	Ceylon Zimtrinde 25g	ceylon-zimtrinde-25g	167	2.790	93112	62	135	2	f	t	t	t	LK
-161	2020-09-01 16:20:33.003681+02	2020-09-01 16:20:33.003706+02	t	Ceylon Zimt 30g	ceylon-zimt-30g	166	2.490	93111	62	135	2	f	t	t	t	LK
-156	2020-09-01 11:23:23.942934+02	2020-09-01 11:23:23.942954+02	t	Nelken 25g	nelken-25g	164	2.290	93102	62	135	2	f	t	t	t	LK
+169	2020-09-02 14:54:58.660142+02	2020-09-02 14:54:58.660164+02	t	Sternanis 25g	sternanis-25g	177	2.390	93223	37	135	2	f	t	t	t	VN
+174	2020-09-04 09:37:55.424946+02	2020-09-04 09:37:55.424966+02	t	Ras el Hanout 45g	ras-el-hanout-45g	175	4.490	93115	31	135	2	f	t	t	t	LK,VN
+176	2020-09-04 19:54:41.365558+02	2020-09-04 19:56:30.121427+02	t	Za'atar 40g	zaatar-40g	178	2.990	93216	79	135	2	f	t	t	t	IL
+181	2020-09-09 11:25:45.47803+02	2020-09-09 11:25:45.478076+02	t	Chili Chutney 150g	chili-chutney-150g	180	3.990	99191	80	135	2	f	t	t	t	SZ
+185	2020-09-09 15:20:57.825734+02	2020-09-09 15:20:57.825756+02	t	Olivenöl 500ml	olivenol-500ml	184	12.990	99520	79	135	2	f	t	t	t	IL
 71	2020-05-25 16:01:54.479596+02	2020-06-18 10:09:06.926352+02	t	MASCAO Praliné 100g	mascao-praline-100g	79	3.290	97333	45	135	2	f	f	t	f	BO,DO,PE,PH
 73	2020-05-26 10:49:40.475089+02	2020-06-18 10:09:47.996934+02	t	MASCAO Caramel 100g	mascao-caramel-100g	81	2.990	97350	45	135	2	f	f	t	f	BO,DO,PE,PH
 75	2020-05-26 11:30:07.773077+02	2020-06-18 10:10:27.214871+02	t	MASCAO Rum Trüffel 100g	mascao-rum-truffel-100g	83	3.290	97366	45	135	2	f	f	t	f	BO,DO,PE,PH
-166	2020-09-02 09:34:05.078095+02	2020-09-02 09:34:31.408206+02	t	Kurkuma (Gelbwurz) 30g	kurkuma-gelbwurz-30g	160	2.490	93117	33	135	2	f	t	t	t	LK
+187	2020-09-09 16:12:02.838282+02	2020-09-09 16:13:06.127672+02	t	Arganöl 250ml	arganol-250ml	186	22.990	99530	81	135	2	f	t	t	t	MA
 153	2020-08-29 08:33:30.718755+02	2020-08-29 08:35:02.6868+02	t	Paprika edelsüß 50g	paprika-edelsuss-50g	152	4.990	89515	78	135	2	f	t	t	t	AT
-146	2020-08-28 09:39:41.534081+02	2020-08-28 15:54:10.371255+02	t	Zitronengras 20g	zitronengras-20g	158	1.790	88110	33	135	2	f	t	t	t	LK
 150	2020-08-28 15:46:43.886208+02	2020-08-28 15:46:43.886232+02	t	Thymian 25g	thymian-25g	147	2.990	89510	78	135	2	f	t	t	t	AT
-171	2020-09-03 11:49:13.53009+02	2020-09-03 11:51:27.348384+02	t	Kräuter-Gemüsesuppe 250g	krauter-gemusesuppe-250g	170	9.990	89519	78	135	2	f	t	t	t	AT
-159	2020-09-01 15:46:03.067695+02	2020-09-01 15:46:03.067717+02	t	Pfeffer schwarz 30g	pfeffer-schwarz-30g	153	2.290	93105	33	135	2	f	t	t	t	LK
-158	2020-09-01 15:03:56.313729+02	2020-09-01 15:03:56.313753+02	t	Pfeffer weiß gemahlen 30g	pfeffer-weiss-gemahlen-30g	156	2.690	93103	62	135	2	f	t	t	t	LK
+188	2020-09-10 17:31:06.405184+02	2020-09-10 17:32:37.838948+02	t	Quinua 500g	quinua-500g	187	3.990	97800	55	135	2	f	t	t	t	BO
+171	2020-09-03 11:49:13.53009+02	2020-09-03 11:51:27.348384+02	t	Kräuter-Gemüsesuppe 250g	krauter-gemusesuppe-250g	153	9.990	89519	78	135	2	f	t	t	t	AT
+160	2020-09-01 15:50:02.279526+02	2020-09-01 15:50:02.279545+02	t	Pfeffer schwarz gemahlen 30g	pfeffer-schwarz-gemahlen-30g	157	2.390	93106	33	135	2	f	t	t	t	LK
+157	2020-09-01 14:56:48.800372+02	2020-09-01 14:57:39.914252+02	t	Pfeffer weiß 30g	pfeffer-weiss-30g	158	2.690	93104	33	135	2	f	t	t	t	LK
+166	2020-09-02 09:34:05.078095+02	2020-09-02 09:34:31.408206+02	t	Kurkuma (Gelbwurz) 30g	kurkuma-gelbwurz-30g	163	2.490	93117	33	135	2	f	t	t	t	LK
+146	2020-08-28 09:39:41.534081+02	2020-08-28 15:54:10.371255+02	t	Zitronengras 20g	zitronengras-20g	161	1.790	88110	33	135	2	f	t	t	t	LK
+159	2020-09-01 15:46:03.067695+02	2020-09-01 15:46:03.067717+02	t	Pfeffer schwarz 30g	pfeffer-schwarz-30g	156	2.290	93105	33	135	2	f	t	t	t	LK
+158	2020-09-01 15:03:56.313729+02	2020-09-01 15:03:56.313753+02	t	Pfeffer weiß gemahlen 30g	pfeffer-weiss-gemahlen-30g	159	2.690	93103	62	135	2	f	t	t	t	LK
 \.
 
 
@@ -12594,6 +12908,10 @@ COPY public.weltladen_weltladenproduct_additional_manufacturers (id, weltladenpr
 511	140	60
 512	141	40
 513	141	43
+514	174	37
+515	174	62
+516	175	37
+517	175	62
 \.
 
 
@@ -12865,6 +13183,20 @@ COPY public.weltladen_weltladenproduct_quality_labels (id, weltladenproduct_id, 
 302	171	2
 303	172	2
 304	173	2
+305	174	2
+306	175	2
+307	177	2
+308	178	2
+309	179	2
+310	183	2
+311	183	5
+312	184	2
+313	184	5
+314	185	2
+315	186	2
+316	187	2
+317	188	2
+318	188	5
 \.
 
 
@@ -13040,6 +13372,21 @@ COPY public.weltladen_weltladenproducttranslation (id, language_code, caption, s
 171	de	<p>Mühlviertler Salatkräuter</p>	<ul>\n\t<li>Feine Salatkräuter von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mischung nach Mühlviertler Art</li>\n\t<li>Kräuterig-zitroniges Aroma</li>\n\t<li>Frisch-würzige Note</li>\n</ul>	<p>Zu einem frischen, knackigen Salat gehören auch richtig gute Salatkräuter. Mit den BIO Salatkräutern nach Mühlviertler Art bekommt jede und jeder garantiert gute Laune. Passt auch hervorragend in Dips und Nudelgerichte.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	172	<p><strong>Zutaten:</strong><br>\nPetersilie<br>\nDill<br>\nEstragon<br>\nZitronenmelisse<br>\nZwiebelpulver<br>\nKapuzinerkresse<br>\nSellerieblätter<br>\nLiebestöckl<br>\nBrennessel</p>
 170	de	<p>kräuterig-würzig</p>	<ul>\n\t<li>Beste BIO-Suppenwürze von der österreichischen Bergkräutergenossenschaft</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mit 38% Gemüseanteil und einer Vielzahl an Kräutern und Gewürzen</li>\n\t<li>Hefefrei</li>\n</ul>	<p>Der intensive Geschmack von heimischem Gemüse und Kräutern sowie die heilsamen Aromen feiner Gewürze verleihen der Brühe eine kräftig-würzige Note. Der köstliche Mix besticht durch sein intensives Aroma und bringt Würze in jedes Gericht. Hervorragend geeignet als Suppengrundlage sowie zum Verfeinern von Eintöpfen, Aufläufen und Saucen.</p>\n\n<p>Bio-Kräuter und Bio-Gewürze in höchster Qualität, dafür steht die Österreichische Bergkräutergenossenschaft: In den 1980er Jahren konnten viele Mühlviertler Bäuerinnen und Bauern von der Viehwirtschaft allein nicht mehr leben. Etliche kleinstrukturierte Betriebe standen vor dem Aus. 1986 entschlossen sich innovative Landwirte in Sarleinsbach zur Selbsthilfe. Sie gründeten die Österreichische Bergkräutergenossenschaft - durch den Anbau und Verkauf von Kräutern aus kontrolliert biologischem Anbau sollte der Fortbestand ihre Betriebe gesichert werden. Das gemeinsame Ziel war und ist, hochwertige Lebensmittel herzustellen. Vielen Landwirten ist es allein durch die Einnahmen aus dem Kräuteranbau gelungen, im Vollerwerb zu bleiben.</p>\n\n<p>Die Bergkräuter entstammen dem nördlich der Donau gelegenen Böhmerwaldmassiv. Zwei, in vielen Seitenarmen langsam der Donau zustrebende Flüsse, die Große und die Kleine Mühl, geben der Landschaft ihren Namen: Mühlviertel. Die Kräuter wachsen auf kleinen Feldern, weitab von Industrien und Autobahnen. Die bergige Landschaft in 500 - 900 m Seehöhe mit ihren granithaltigen Böden lässt die Pflanzen optimal gedeihen. Die oftmals nur in Handarbeit mögliche Feldbewirtschaftung erfordert viele Arbeitsstunden. So zeichnen sich die Bergkräuter aus der Bioregion Mühlviertel durch hohe Qualität aus.</p>\n\n<p>Klare Unternehmensstrategie, hohe Qualitätsstandards und starke regionale Ausrichtung in Verbindung mit ausgeprägtem Umweltbewusstsein: Das ist das Credo der Österreichischen Bergkräutergenossenschaft.</p>	171	<p><strong>Zutaten:</strong><br>\nGemüse 38% (Sellerie, Karotten, Röstzwiebel, Tomaten, Petersilienwurzel, Pastinake, Lauch)<br>\nMeersalz<br>\nMaisstärke<br>\nSonnenblumenöl<br>\nKräuter 5% (Schnittlauch, Petersilie, Liebstöckl, Löwenzahn)<br>\nDextrose<br>\nGewürze (Knoblauchpulver, Chili, Ingwer, Kurkuma, Kümmel, Muskat, Fenchel)</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Senf</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>211</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>881</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>6,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>25</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>15</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>6,2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>37,1</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p> </p>
 172	de	<p>fein gemahlen</p>	<ul>\n\t<li>Erlesenes Curry aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Orientalisch-pikantes Aroma</li>\n\t<li>Würzig-warme Note</li>\n</ul>	<p>Das milde Curry ist durch seinen dezenten Schärfegrad für Einsteiger*innen geeignet und verfeinert eine Vielzahl an Gerichten mit seinen pikant-exotischen Aromen. Die feine Mischung enthält erlesene Gewürze, die - nach der ayurvedischen Lehre - den Körper heilsam erhitzen und den authentischen Geschmack der indischen Küche in Ihr Zuhause bringen. Schmorgerichte mit Hülsenfrüchten, Suppen, Gemüse oder Geflügel harmonieren perfekt mit den würzigen Nuancen dieses Currys.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	173	<p><strong>Zutaten:</strong><br>\nGelbwurz<br>\nKoriander gemahlen<br>\nKreuzkümmel<br>\nIngwer<br>\nZimt gemahlen<br>\nKardamom<br>\nMuskatnuss</p>
+173	de	<p>Marokkanische Gewürzmischung</p>	<ul>\n\t<li>Feinstes Ras el Hanout mit dem Geschmack aus 1001 Nacht</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Vielseitige Komposition aus 14 intensiven Gewürzen</li>\n</ul>	<p>Was den Inder*innen das “Curry” ist, ist den Marokkaner*innen das “Ras el Hanout”. Der aromatisch-warme Duft dieser nordafrikanischen Gewürzmischung erinnert an den Zauber der wuseligen Basare und vielfältigen Gewürzstände Marrakeschs. Traditionell findet diese Gewürzmischung in der tunesischen und marokkanischen Landesküche Verwendung. Daher eignet sich Ras el Hanout besonders für orientalische Kreationen, edle Tajine Gerichte und leckeren Couscous.</p>\n\n<p>Die 422 Mitgliedsfamilien des Van Chan Bio Farmers Club stammen aus vier Dorfgemeinschaften der Bezirke Van Chan und Tram Tou in der Provinz Yen Bai im Norden Vietnams. Sie alle sind Angehörige der H’mong und Dao und zählen damit zu zwei der 53 ethnischen Minderheiten Vietnams. Der Faire Handel ermöglicht ihnen einen Zugang zu neuen Märkten, besseren Preisen als am lokalen Markt durch Bio- und FAIRTRADE-Aufschläge sowie eine gemeinschaftliche Vermarktung. Die Produzent*innen werden in die Preisverhandlungen mit den Verarbeitern mit eingebunden, erhalten zudem eine FAITRADE-Prämie und technische Beratung.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>	174	<p><strong>Zutaten:</strong><br>\nCassia Zimt<br>\nKreuzkümmel<br>\nKoriander gemahlen<br>\nIngwer Broken<br>\nPfeffer schwarz broken<br>\nSchwarzer Pfeffer Pulver<br>\nIngwer<br>\nSee-Alge<br>\nPiment<br>\nGelbwurz<br>\nKardamom<br>\nPaprika<br>\nMuskatnuss<br>\nNelken</p>
+175	de	<p>Arabische Gewürzmischung</p>	<ul>\n\t<li>Aromatisches Za'atar aus Israel</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Nussig-würzige Note</li>\n\t<li>Kräuteriger Genuss</li>\n</ul>	<p>Herzhafte Kräuter, Sesam und mediterrane Aromen vereinen sich zu dieser herrlich arabischen Mischung, dessen Duft die lebendigen Straßen orientalischer Weltmetropolen wie Damaskus, Jerusalem und Beirut durchströmt. Das Za'atar von Sindyanna of Galilee verfeinert besonders gut Tajine Gerichte, Hummus sowie Eintöpfe mit Hülsenfrüchten und passt genauso zu knusprigem Weißbrot in Kombination mit Olivenöl.</p>\n\n<p>Eines der Hauptziele von Sindyanna of Galilee ist es, eine Brücke zwischen jüdischen und arabischen Israelis zu schlagen, um sich gemeinsam für die Gleichberechtigung der nicht-jüdischen Bevölkerung Israels einzusetzen. Hierfür schaffen sie Verdienstquellen in der kleinbäuerlichen Landwirtschaft und fördern zudem das Kleingewerbe. Sindyanna ist ein nicht Gewinn orientierter Verein, dessen Leitung seit seiner Gründung in Frauenhänden liegt. Sindyanna besticht vor allem durch sein außergewöhnliches Engagement in der Friedensarbeit, der Frauenförderung und der Vermarktung und Exportförderung von Produkten wirtschaftlich und sozial benachteiligter, arabischer Produzent*innen unter den gegebenen, schwierigen politischen Bedingungen in Israel.</p>\n\n<p>"Ich möchte die Leute wissen lassen, dass es im Nahen Osten auch positive Dinge gibt, nicht nur Krieg und Terrorismus. Es gibt gutes Olivenöl, gutes Essen, gute Traditionen und auch gute Leute mit guten Absichten, Menschen, die einander respektieren und in Frieden leben wollen." - Hadas Lahav, Geschäftsführerin von Sindyanna of Galilee</p>	176	<p><strong>Zutaten:</strong><br>\nSesam (geröstet)<br>\nMajoran (syrisch)<br>\nOlivenöl<br>\nSumach<br>\nSalz</p>
+174	de	<p>Indische Gewürzmischung</p>	<ul>\n\t<li>Edles Curry mit dem Geschmack von Indien</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Vielseitige Komposition aus 13 Zutaten</li>\n\t<li>Blumig-mildes Aroma</li>\n\t<li>Süßlich-warme Note</li>\n</ul>	<p>Diese feine Mischung ist das klassische Rundumtalent unter den Currys und überzeugt mit fruchtigen Aromen und sanfter Schärfe. Sie enthält erlesene Gewürze, die - nach der ayurvedischen Lehre - den Körper heilsam erhitzen und den authentischen Geschmack der indischen Küche in Ihr Zuhause bringen. Schmorgerichte mit Hülsenfrüchten, Suppen, Gemüse oder Geflügel harmonieren perfekt mit den würzigen Nuancen dieses Currys.</p>\n\n<p>Die 422 Mitgliedsfamilien des Van Chan Bio Farmers Club stammen aus vier Dorfgemeinschaften der Bezirke Van Chan und Tram Tou in der Provinz Yen Bai im Norden Vietnams. Sie alle sind Angehörige der H’mong und Dao und zählen damit zu zwei der 53 ethnischen Minderheiten Vietnams. Der Faire Handel ermöglicht ihnen einen Zugang zu neuen Märkten, besseren Preisen als am lokalen Markt durch Bio- und FAIRTRADE-Aufschläge sowie eine gemeinschaftliche Vermarktung. Die Produzent*innen werden in die Preisverhandlungen mit den Verarbeitern mit eingebunden, erhalten zudem eine FAITRADE-Prämie und technische Beratung.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>	175	<p><strong>Zutaten:</strong><br>\nKreuzkümmel<br>\nIngwer Pulver<br>\nKoriander gemahlen<br>\nZwiebel<br>\nZwiebelpulver<br>\nGelbwurz<br>\nKnoblauch<br>\nSee-Alge<br>\nIngwer Broken<br>\nKnoblauch Broken<br>\nSchwarzer Pfeffer Pulver<br>\nCassia Zimt<br>\nKardamom</p>
+176	de	<p>fein gemahlen</p>	<ul>\n\t<li>Aromatisches Reisgewürz aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Süß-pikantes Aroma</li>\n\t<li>Würzig-warme Note</li>\n</ul>	<p>So gelingt garantiert jedes Reisrezept! Einfach direkt beim Kochen schon ins Wasser geben oder den fertigen Reis mit den Gewürzen gemeinsam leicht anbraten. Dieses herrlich komplexe Reisgewürz besitzt einen süßlich-würzigen Geschmack mit orientalischen Noten und verleiht dem Reis zudem eine goldgelbe Farbe. Garantiert ein Geschmackserlebnis der besonderen Art.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	177	<p><strong>Zutaten:</strong><br>\nGelbwurz<br>\nZimt gemahlen<br>\nSchwarzer Pfeffer<br>\nKardamom<br>\nNelken<br>\nCurryblätter</p>
+177	de	<p>fein gemahlen</p>	<ul>\n\t<li>Erlesenes Garam Masala aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Kräftig-pikantes Aroma</li>\n\t<li>Würzig-warme Note</li>\n</ul>	<p>Ein Feuerwerk von natürlichen Aromen: Diese feine Mischung enthält erlesene Gewürze, die - nach der ayurvedischen Lehre - den Körper heilsam erhitzen und den authentischen Geschmack der indischen Küche in Ihr Zuhause bringen. Schmorgerichte mit Hülsenfrüchten, Suppen, Gemüse oder Dips, Hummus und Brotaufstriche harmonieren perfekt mit den würzigen Nuancen dieses Masalas. Tipp: Bei heißen Gerichten, sollte Masala immer erst gegen Ende des Kochvorgangs dazugegeben werden, damit das Gewürz nicht sein intensives Aroma verliert.</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	178	<p><strong>Zutaten:</strong><br>\nKoriander gemahlen<br>\nKreuzkümmel<br>\nGelbwurz<br>\nZimt gemahlen<br>\nSchwarzer Pfeffer<br>\nNelken<br>\nIngwer<br>\nMuskatblüte<br>\nKardamom</p>
+178	de	<p>fein gemahlen</p>	<ul>\n\t<li>Feines Lebkuchengewürz aus Sri Lanka</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Weihnachtlich-würziges Aroma</li>\n\t<li>Süßlich-warme Note</li>\n</ul>	<p>Der Klassiker für die Weihnachtszeit - nichts verbreitet so eine wunderbar wärmende Adventsstimmung wie frisch gebackene Lebkuchen. Das Gewürz eignet sich genauso rund ums Jahr zum Aufpeppen von Kuchen, Kompott, heißer Schokolade, starkem schwarzen Tee oder heißem Kaffee. Lass deiner Fantasie freien Lauf!</p>\n\n<p>PODIE steht für biologischen Anbau, Nachhaltigkeit und fairen Handel. Die Ziele von PODIE umfassen die Einkommensbeschaffung für benachteiligte Gruppen – junge Frauen aus armen Familien Negombos und Kleinproduzent*innen, die nachhaltige ländliche Entwicklung und die Direktvermarktung der Produkte.</p>\n\n<p>Die rund 100 Arbeiterinnen, die bei PODIE in der Gewürzverarbeitung und -verpackung Arbeit finden, stammen alle aus armen Familien Negombos an der Westküste Sri Lankas. Bei den Arbeiterinnen handelt es sich um ledige junge Frauen, die durch die Arbeit ein eigenständiges Einkommen erzielen können, das doppelt so hoch ist wie der Durchschnittslohn in vergleichbaren Beschäftigungsverhältnissen. Zusätzlich werden 15% des Basislohns auf ein Sparbuch eingezahlt und für die Zeit „nach der Arbeit“ angelegt.</p>\n\n<p>Da es für Gewürze keinen Weltmarktpreis gibt, orientiert sich PODIE an den Preisvorstellungen seiner Gewürzbauern und –bäuerinnen, von denen PODIE die Gewürze ohne den üblichen Zwischenhandel bezieht. Dadurch erzielen sie in der Regel um durchschnittlich 20% höhere Preise als auf dem lokalen Markt. Darüber hinaus werden sie von PODIE bei der Qualitätssicherung, der Anschaffung und Errichtung der notwendigen Infrastruktur und durch Kleinkredite und Sparprogramme unterstützt.</p>	179	<p><strong>Zutaten:</strong><br>\nZimt gemahlen<br>\nNelken<br>\nMuskatnuss<br>\nIngwer<br>\nKardamom<br>\nKoriander gemahlen<br>\nFenchel</p>
+180	de	<p>aus Swaziland</p>	<ul>\n\t<li>Fruchtig-scharfes Chili Chutney aus Swaziland</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Erlesene Mischung aus Tomaten, Apfel, Zwiebel und Chili</li>\n\t<li>Perfekt geeignet zum Verfeinern von Soßen und Wok-Gerichten oder als Dip</li>\n</ul>	<p>Scharfe Chilischoten und eine ausgewählte Kombination aus Gewürzen und frischen Zutaten machen diese Sauce zu einem besonderen Geschmackserlebnis. Es harmoniert mit Reisgerichten ebenso vorzüglich wie mit Gegrilltem.</p>\n\n<p>Der gemeinnützige und sozial engagierte Betrieb in Swasiland kooperiert mit Kleinbauernfamilien vor Ort, die ihre Früchte zu besseren Bedingungen verkaufen können, garantiert ein vorbildliches Arbeitsumfeld, sorgt für die Aus- und Weiterbildung sowie aktive Frauenförderung und unterstützt Straßen- und Waisenkinder.</p>\n\n<p>Eswatini Kitchen hat sich von einer kleinen Heimindustrie zu einem florierenden Unternehmen entwickelt, das das Leben benachteiligter Gemeinden verbessert, indem es über 300 Menschen in Swasiland ein faires und nachhaltiges Einkommen bietet und seinen gesamten Erlös für die Manzini Youth Care-Initiativen verwendet, die mehr als 2000 marginalisierte Kinder und Jugendliche in Swaziland unterstützt.</p>	181	<p><strong>Zutaten:</strong><br>\nTomaten<br>\nEssig<br>\nRohrzucker<br>\nApfel<br>\nZwiebel<br>\nChili<br>\nSalz<br>\nPflanzliche Öle<br>\nKnoblauch<br>\nLorbeerblätter</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>169</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>710</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>4,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>29,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>17,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>1,63</td>\n\t\t</tr>\n\t</tbody>\n</table>
+179	de	<p>aus Swaziland</p>	<ul>\n\t<li>Raffiniert würziges Früchte Chutney aus Swaziland</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Erlesene Mischung aus Pfirsich, Apfel, Birne und Gewürzen</li>\n\t<li>Perfekt geeignet zum Verfeinern von Soßen und Wok-Gerichten oder als Dip</li>\n</ul>	<p>Chutneys sind kulinarische Kleinode, denen eine variantenreiche Komposition aus Obst, Gemüse und Gewürzen zugrunde liegt. Hier sind es sonnengereifte Pfirsiche, Äpfel und Birnen die dem Chutney seinen fruchtigen Geschmack verleihen. Es harmoniert mit asiatischen Gerichten ebenso vorzüglich wie mit Käse.</p>\n\n<p>Der gemeinnützige und sozial engagierte Betrieb in Swasiland kooperiert mit Kleinbauernfamilien vor Ort, die ihre Früchte zu besseren Bedingungen verkaufen können, garantiert ein vorbildliches Arbeitsumfeld, sorgt für die Aus- und Weiterbildung sowie aktive Frauenförderung und unterstützt Straßen- und Waisenkinder.</p>\n\n<p>Eswatini Kitchen hat sich von einer kleinen Heimindustrie zu einem florierenden Unternehmen entwickelt, das das Leben benachteiligter Gemeinden verbessert, indem es über 300 Menschen in Swasiland ein faires und nachhaltiges Einkommen bietet und seinen gesamten Erlös für die Manzini Youth Care-Initiativen verwendet, die mehr als 2000 marginalisierte Kinder und Jugendliche in Swaziland unterstützt.</p>	180	<p><strong>Zutaten:</strong><br>\nZucker<br>\nApfel<br>\nPfirsich<br>\nBirne<br>\nEssig<br>\nKnoblauch<br>\nSalz<br>\nChili<br>\nIngwer<br>\nZimt gemahlen<br>\nGaram Masala</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>188</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>796</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,3</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>44,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>23,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,8</td>\n\t\t</tr>\n\t</tbody>\n</table>
+181	de	<p>aus Swaziland</p>	<ul>\n\t<li>Fruchtig-würziges Mango Chutney aus Swaziland</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Erlesene Mischung mit 48% Mango</li>\n\t<li>Perfekt geeignet zum Verfeinern von Soßen und Wok-Gerichten oder als Dip</li>\n</ul>	<p>Chutneys sind kulinarische Kleinode, denen eine variantenreiche Komposition aus Obst, Gemüse und Gewürzen zugrunde liegt. Hier sind es sonnengereifte Mangos, die dem Chutney seinen fruchtig-scharfen Geschmack verleihen. Es harmoniert mit asiatischen Gerichten ebenso vorzüglich wie mit Käse.</p>\n\n<p>Der gemeinnützige und sozial engagierte Betrieb in Swasiland kooperiert mit Kleinbauernfamilien vor Ort, die ihre Früchte zu besseren Bedingungen verkaufen können, garantiert ein vorbildliches Arbeitsumfeld, sorgt für die Aus- und Weiterbildung sowie aktive Frauenförderung und unterstützt Straßen- und Waisenkinder.</p>\n\n<p>Eswatini Kitchen hat sich von einer kleinen Heimindustrie zu einem florierenden Unternehmen entwickelt, das das Leben benachteiligter Gemeinden verbessert, indem es über 300 Menschen in Swasiland ein faires und nachhaltiges Einkommen bietet und seinen gesamten Erlös für die Manzini Youth Care-Initiativen verwendet, die mehr als 2000 marginalisierte Kinder und Jugendliche in Swaziland unterstützt.</p>	182	<p><strong>Zutaten:</strong><br>\nMangos<br>\nRohrzucker<br>\nEssig<br>\nZwiebel<br>\nSalz<br>\nChili<br>\nIngwer<br>\nZimt gemahlen<br>\nKnoblauch<br>\nGaram Masala</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>178</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>753</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>0,4</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>41,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>36,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>1,95</td>\n\t\t</tr>\n\t</tbody>\n</table>
+182	de	<p>fein cremig</p>	<ul>\n\t<li>Fein cremige Kokosnussmilch aus Thailand</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Perfekt geeignet zum Verfeinern von asiatischen Gerichten, Smoothies und als Sahneersatz</li>\n</ul>	<p>Ka Ti bedeutet Kokosmilch auf Thai und verleiht asiatischen Gerichten ihren tropisch-feinen Geschmack. Ka Ti stammt von der Küste Thailands und wird von Green Net, einem Zusammenschluss von Kleinbauernkooperativen, vermarktet. Ihr Ziel sind u. a. die Förderung des Biolandbaus und die Bewahrung der traditionellen Landwirtschaft. Die Produzent*innen der Kokosmilch leben in einem idyllischen Fischerdorf am Golf von Thailand. Gemeinsam haben sie den Bau eines Kohlekraftwerks verhindert. Heute widmet sich die Gruppe dem Anbau von Kokosnüssen. Damit bleibt das Idyll von Ban Krut erhalten.</p>\n\n<p>Tipp: Aus Kokosmilch lässt sich ganz einfach eine vegane Alternative zum Schlagobers herstellen: Dazu nimmt man eisgekühlte Kokosmilch und mixt diese ca. 10 Minuten, mit einem Handmixer oder der Küchenmaschine, bis eine fluffig cremige Masse entstanden ist. Dabei kann es nicht schaden, ein kleine Menge vom Mark einer Vanilleschote sowie etwas Zucker dazu zu geben. Sehr lecker zu Früchten!</p>	183	<p><strong>Zutaten:</strong><br>\nKokosnussmilch 60%<br>\nWasser<br>\nVerdickungsmittel Guarkernmehl</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>203</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>849</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>18</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>15</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,05</td>\n\t\t</tr>\n\t</tbody>\n</table>
+183	de	<p>fein cremig</p>	<ul>\n\t<li>Fein cremige Kokosnussmilch aus Thailand</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Perfekt geeignet zum Verfeinern von asiatischen Gerichten, Smoothies und als Sahneersatz</li>\n</ul>	<p>Ka Ti bedeutet Kokosmilch auf Thai und verleiht asiatischen Gerichten ihren tropisch-feinen Geschmack. Ka Ti stammt von der Küste Thailands und wird von Green Net, einem Zusammenschluss von Kleinbauernkooperativen, vermarktet. Ihr Ziel sind u. a. die Förderung des Biolandbaus und die Bewahrung der traditionellen Landwirtschaft. Die Produzent*innen der Kokosmilch leben in einem idyllischen Fischerdorf am Golf von Thailand. Gemeinsam haben sie den Bau eines Kohlekraftwerks verhindert. Heute widmet sich die Gruppe dem Anbau von Kokosnüssen. Damit bleibt das Idyll von Ban Krut erhalten.</p>\n\n<p>Tipp: Aus Kokosmilch lässt sich ganz einfach eine vegane Alternative zum Schlagobers herstellen: Dazu nimmt man eisgekühlte Kokosmilch und mixt diese ca. 10 Minuten, mit einem Handmixer oder der Küchenmaschine, bis eine fluffig cremige Masse entstanden ist. Dabei kann es nicht schaden, ein kleine Menge vom Mark einer Vanilleschote sowie etwas Zucker dazu zu geben. Sehr lecker zu Früchten!</p>	184	<p><strong>Zutaten:</strong><br>\nKokosnussmilch 60%<br>\nWasser<br>\nVerdickungsmittel Guarkernmehl</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>203</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>849</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>18</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>15</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,026</td>\n\t\t</tr>\n\t</tbody>\n</table>
+184	de	<p>kaltgepresst - extra nativ</p>	<ul>\n\t<li>Kaltgepresstes Olivenöl aus Israel</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Extra nativ &amp; erste Güteklasse</li>\n</ul>	<p>Der Olivenzweig ist ein Symbol für den Frieden. Dafür engagiert sich auch Sindyanna of Galilee, eine von jüdischen und arabischen Frauen getragene Organisation in Israel, die mit palästinensischen Kleinproduzent*innen in Israel und den besetzten Gebieten zusammenarbeitet – damit sie ihr Land bebauen und von den Früchten ihrer Arbeit leben können. Dazu zählt auch dieses kostbare Olivenöl. Seine hohe Qualität und sein kräftiger Geschmack machen es zu einer willkommenen Zutat für die mediterrane Küche. Langfristige und verlässliche Zusammenarbeit sowie faire Bezahlung eröffnen den Kleinbauernfamilien Zukunftsperspektiven und sind ein Beitrag zur Verbesserung ihrer schwierigen Lebenssituation.</p>\n\n<p>"Ich möchte die Leute wissen lassen, dass es im Nahen Osten auch positive Dinge gibt, nicht nur Krieg und Terrorismus. Es gibt gutes Olivenöl, gutes Essen, gute Traditionen und auch gute Leute mit guten Absichten, Menschen, die einander respektieren und in Frieden leben wollen." - Hadas Lahav, Geschäftsführerin von Sindyanna of Galilee</p>	185	<p><strong>Zutaten:</strong><br>\nOlivenöl</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>825</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>3.392</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>91,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon einfach ungesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>68,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon mehrfach ungesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>8,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+185	de	<p>kaltgepresst - extra nativ</p>	<ul>\n\t<li>Kaltgepresstes Olivenöl aus Israel</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Extra nativ &amp; erste Güteklasse</li>\n</ul>	<p>Der Olivenzweig ist ein Symbol für den Frieden. Dafür engagiert sich auch Sindyanna of Galilee, eine von jüdischen und arabischen Frauen getragene Organisation in Israel, die mit palästinensischen Kleinproduzent*innen in Israel und den besetzten Gebieten zusammenarbeitet – damit sie ihr Land bebauen und von den Früchten ihrer Arbeit leben können. Dazu zählt auch dieses kostbare Olivenöl. Seine hohe Qualität und sein kräftiger Geschmack machen es zu einer willkommenen Zutat für die mediterrane Küche. Langfristige und verlässliche Zusammenarbeit sowie faire Bezahlung eröffnen den Kleinbauernfamilien Zukunftsperspektiven und sind ein Beitrag zur Verbesserung ihrer schwierigen Lebenssituation.</p>\n\n<p>"Ich möchte die Leute wissen lassen, dass es im Nahen Osten auch positive Dinge gibt, nicht nur Krieg und Terrorismus. Es gibt gutes Olivenöl, gutes Essen, gute Traditionen und auch gute Leute mit guten Absichten, Menschen, die einander respektieren und in Frieden leben wollen." - Hadas Lahav, Geschäftsführerin von Sindyanna of Galilee</p>	186	<p><strong>Zutaten:</strong><br>\nOlivenöl</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>825</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>3.392</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>91,7</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>13,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon einfach ungesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>68,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon mehrfach ungesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>8,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+186	de	<p>kaltgepresst</p>	<ul>\n\t<li>Geröstetes &amp; kaltgepresstes Arganöl aus Marokko</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Perfekt geeignet zum Verfeinern von Salaten, Gemüse sowie Fleisch- und Fischgerichten</li>\n</ul>	<p>Arganöl eignet sich aufgrund seines intensiven Aromas vorzüglich zum Würzen und Verfeinern von Speisen. Durch seinen kräftigen Geschmack gibt es Ihrem Gericht das gewisse Extra. Es ist zudem reich an hochwertigen Inhaltsstoffen wie Omega-6 Fettsäuren und Vitamin E.</p>\n\n<p>Die Sousse-Ebene im Südwesten Marokkosist die Heimat einer der ältesten Baumarten der Welt: der Arganie. Seit alters her prägt sie den Lebensraum und die Kultur der dortigen Berbervölker und hält das Fortschreiten der Wüste auf. In den Früchten ihres Baumes verbergen sich die Samen, aus denen Frauen in alter Tradition und sorgfältiger Handarbeit das einzigartige Arganöl gewinnen. Unterstützt werden sie dabei vom Netzwerk Targanine, das sich für die Rechte der marokkanischen Frauen, den Erhalt des Arganwaldes und seine nachhaltige Nutzung einsetzt. Mit dem Fairern Handel als Partnerin haben sie die Gewissheit, dass sich ihr hoher Aufwand lohnt.</p>\n\n<p>„Diese Frauen sind anders als zuvor. Und wenn man sie fragt, was sie an den Kooperativen am meisten schätzen, dann ist die einhellige Antwort: Dass wir unsere Häuser verlassen haben!“ - Prof. Z. Charrouf, Gründerin von Targanine</p>	187	<p><strong>Zutaten:</strong><br>\nArganöl</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>828</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>3.404</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>92</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>17,9</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon einfach ungesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>42,6</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon mehrfach ungesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>31,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0</td>\n\t\t</tr>\n\t</tbody>\n</table>
+187	de	<p>mild nussig</p>	<ul>\n\t<li>Edles Königsquinua aus dem Andenhochland</li>\n\t<li>Faire Rohstoffe rückverfolgbar bis zu den Kleinbauerngenossenschaften</li>\n\t<li>Hochwertige Zutaten aus kontrolliert biologischem Anbau</li>\n\t<li>Mild nussig</li>\n</ul>	<p>Das Superfood der Inkas - Kaum ein anderes Lebensmittel ist so vollgepackt mit gesunden Nährstoffen wie Quinoa. Es ist eine der besten pflanzlichen Eiweissquellen auf der Welt und enthält alle neun essentiellen Aminosäuren. Bereits 100 Gramm des Königsquinua decken 25 Prozent des Tagesbedarfs an Eisen, 50 Prozent an Magnesium und mehr als 100 Prozent an Mangan ab.</p>\n\n<p>Das Königsquinua hat einen angenehm nussigen Geschmack und nimmt beim Kochen besonders gut andere Aromen auf, etwa von frischen Kräutern oder Gewürzen. Damit passt es perfekt zu allerlei Pfannengerichten, Salaten sowie als Basis für feine Süßspeisen und Desserts.</p>\n\n<p>Auf über 3.500 Metern Höhe, unweit des Uyuni Salzsees, kultivieren Kleinbäuerinnen und -bauern der Genossenschaft ANAPQUI die traditionelle "Quinua real" (Königsquinua). Durch Fairen Handel haben die Kleinbauernfamilien die Gewissheit, dass sich ihr Aufwand lohnt. ANAPQUI zählt heute 2000 Mitgliedsfamilien indigener Abstammung. Sie sprechen Aymara oder Quechua. Faire Bezahlung und eine verlässliche Zusammenarbeit gibt ihnen und ihren Kindern eine Zukunft.</p>	188	<p><strong>Zutaten:</strong><br>\nQuinua</p>\n\n<p><strong>Zusatzinfo:</strong><br>\nSpuren von Glutenhaltigem Getreide<br>\nSpuren von Nüsse<br>\nSpuren von Sesamsamen</p>\n\n<table border="1" class="bestandteile" style="width: 50%;">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td><strong>Nährwerte:<br>\n\t\t\tBeschreibung</strong></td>\n\t\t\t<td><br>\n\t\t\t<strong>Wert</strong></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Kalorien/100 g</td>\n\t\t\t<td>351</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>K-Joule/100g</td>\n\t\t\t<td>1.484</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Fettgehalt g/100g</td>\n\t\t\t<td>5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon gesättigte Fettsäuren g/100 g</td>\n\t\t\t<td>0,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kohlenhydrate g/100 g</td>\n\t\t\t<td>58,5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>davon Zucker g/100 g</td>\n\t\t\t<td>1,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Eiweiß g/100g</td>\n\t\t\t<td>14,8</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Salz g/100g</td>\n\t\t\t<td>0,02</td>\n\t\t</tr>\n\t</tbody>\n</table>
 \.
 
 
@@ -13075,7 +13422,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.auth_user_id_seq', 13, true);
+SELECT pg_catalog.setval('public.auth_user_id_seq', 14, true);
 
 
 --
@@ -13089,7 +13436,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 -- Name: cms_cmsplugin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1324, true);
+SELECT pg_catalog.setval('public.cms_cmsplugin_id_seq', 1337, true);
 
 
 --
@@ -13110,14 +13457,14 @@ SELECT pg_catalog.setval('public.cms_globalpagepermission_sites_id_seq', 1, fals
 -- Name: cms_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_id_seq', 83, true);
+SELECT pg_catalog.setval('public.cms_page_id_seq', 85, true);
 
 
 --
 -- Name: cms_page_placeholders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 166, true);
+SELECT pg_catalog.setval('public.cms_page_placeholders_id_seq', 170, true);
 
 
 --
@@ -13131,7 +13478,7 @@ SELECT pg_catalog.setval('public.cms_pagepermission_id_seq', 1, false);
 -- Name: cms_placeholder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 172, true);
+SELECT pg_catalog.setval('public.cms_placeholder_id_seq', 176, true);
 
 
 --
@@ -13145,14 +13492,14 @@ SELECT pg_catalog.setval('public.cms_staticplaceholder_id_seq', 2, true);
 -- Name: cms_title_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_title_id_seq', 123, true);
+SELECT pg_catalog.setval('public.cms_title_id_seq', 125, true);
 
 
 --
 -- Name: cms_treenode_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.cms_treenode_id_seq', 42, true);
+SELECT pg_catalog.setval('public.cms_treenode_id_seq', 43, true);
 
 
 --
@@ -13229,7 +13576,7 @@ SELECT pg_catalog.setval('public.cmsplugin_cascade_texteditorconfigfields_id_seq
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1054, true);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1086, true);
 
 
 --
@@ -13257,14 +13604,14 @@ SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
 -- Name: easy_thumbnails_source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 183, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_source_id_seq', 198, true);
 
 
 --
 -- Name: easy_thumbnails_thumbnail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 1620, true);
+SELECT pg_catalog.setval('public.easy_thumbnails_thumbnail_id_seq', 1759, true);
 
 
 --
@@ -13292,7 +13639,7 @@ SELECT pg_catalog.setval('public.filer_clipboarditem_id_seq', 1, false);
 -- Name: filer_file_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.filer_file_id_seq', 380, true);
+SELECT pg_catalog.setval('public.filer_file_id_seq', 395, true);
 
 
 --
@@ -13320,7 +13667,7 @@ SELECT pg_catalog.setval('public.filer_thumbnailoption_id_seq', 1, false);
 -- Name: menus_cachekey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 169, true);
+SELECT pg_catalog.setval('public.menus_cachekey_id_seq', 174, true);
 
 
 --
@@ -13397,14 +13744,14 @@ SELECT pg_catalog.setval('public.weltladen_bioqualitylabel_id_seq', 5, true);
 -- Name: weltladen_cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 11, true);
+SELECT pg_catalog.setval('public.weltladen_cart_id_seq', 12, true);
 
 
 --
 -- Name: weltladen_cartitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 19, true);
+SELECT pg_catalog.setval('public.weltladen_cartitem_id_seq', 20, true);
 
 
 --
@@ -13432,7 +13779,7 @@ SELECT pg_catalog.setval('public.weltladen_locations_id_seq', 1, true);
 -- Name: weltladen_manufacturer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 78, true);
+SELECT pg_catalog.setval('public.weltladen_manufacturer_id_seq', 81, true);
 
 
 --
@@ -13460,14 +13807,14 @@ SELECT pg_catalog.setval('public.weltladen_orderpayment_id_seq', 1, true);
 -- Name: weltladen_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 173, true);
+SELECT pg_catalog.setval('public.weltladen_productimage_id_seq', 188, true);
 
 
 --
 -- Name: weltladen_productpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 343, true);
+SELECT pg_catalog.setval('public.weltladen_productpage_id_seq', 373, true);
 
 
 --
@@ -13488,28 +13835,28 @@ SELECT pg_catalog.setval('public.weltladen_supplier_id_seq', 4, true);
 -- Name: weltladen_weltladenproduct_additional_manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 513, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_additional_manufacturers_id_seq', 517, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 173, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_id_seq', 188, true);
 
 
 --
 -- Name: weltladen_weltladenproduct_quality_labels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproduct_quality_labels_id_seq', 304, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproduct_quality_labels_id_seq', 318, true);
 
 
 --
 -- Name: weltladen_weltladenproducttranslation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: djangouser
 --
 
-SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 172, true);
+SELECT pg_catalog.setval('public.weltladen_weltladenproducttranslation_id_seq', 187, true);
 
 
 --
