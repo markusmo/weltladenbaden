@@ -31,7 +31,7 @@ WORK_DIR = os.environ.get('DJANGO_WORKDIR', os.path.abspath(
     os.path.join(PROJECT_ROOT, 'workdir')))
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 ADMINS = [("Markus Mohanty", 'markus.mohanty@gmail.com')]
 
@@ -313,7 +313,7 @@ if REDIS_HOST:
     }
 
     CACHES['default'] = {
-        'BACKEND': 'redis_cache.RedisCache',
+        'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': 'redis://{}:6379/1'.format(REDIS_HOST),
         'OPTIONS': {
             'PICKLE_VERSION': 2 if six.PY2 else -1,
