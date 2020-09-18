@@ -16,13 +16,12 @@
 		</div>
 		<div class="col col-md-4 offset-sm-1">
 			<bsp-scrollpanel class="shop-product-detail">
-				
 				<ul>
 					{% for img in product.images.all %}
 						<li>
 						<div class="modal-view" ng-controller="ModalViewImageController as $ctrl">
 							<div ng-click="$ctrl.open('lg', '{{img.url}}')">
-								<img width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ product.product_name }}" src="{{ img.url }}" alt="{{ product.product_name }}" />
+								<img width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ product.product_name }}" src="{{ thumb.url }}" alt="{{ product.product_name }}" />
 							</div>
 						</div>
 						</li>
