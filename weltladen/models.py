@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.apps import apps
+from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
 from django.template.loader import select_template
 from djangocms_text_ckeditor.fields import HTMLField
@@ -274,6 +276,15 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
     @property
     def sample_image(self):
         return self.images.first()
+    
+    def invalidate_cache(self):
+        """
+        Method ``ProductCommonSerializer.render_html()`` caches the rendered HTML snippets.
+        Invalidate this HTML snippet after changing relevant parts of the product.
+        """
+        shop_app = apps.get_app_config('shop')
+        if shop_app.cache_supporting_wildcard:
+            cache.delete('product:{}|*'.format(self.id))
 
 
 class WeltladenProductTranslation(TranslatedFieldsModel):
