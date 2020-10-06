@@ -92,6 +92,7 @@ body {
 			}
 		}
 		.shop-search-form {
+			margin-top: 0.5rem;
 			@include media-breakpoint-down(md) {
 				order: 3;
 			}
