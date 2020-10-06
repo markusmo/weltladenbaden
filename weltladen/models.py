@@ -58,6 +58,10 @@ class WeltladenCustomer(BaseCustomer):
         choices=SALUTATION,
     )
 
+    @property
+    def phone_number(self):
+        return self.phonenumber
+
     @classmethod
     def reorder_form_fields(self, field_order):
         field_order.insert(0, 'salutation')

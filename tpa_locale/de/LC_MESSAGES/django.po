@@ -733,7 +733,7 @@ msgstr ""
 
 #: shop/forms/checkout.py:16
 msgid "Customer's Details"
-msgstr "Details des Kunden"
+msgstr "Details"
 
 #: shop/forms/checkout.py:18 shop/forms/checkout.py:56
 msgid "Email address"
@@ -749,7 +749,7 @@ msgstr "Nachname"
 
 #: shop/forms/checkout.py:54
 msgid "Customer's Email"
-msgstr "Details des Kunden"
+msgstr "E-Mail"
 
 #: shop/forms/checkout.py:225 shop/models/defaults/address.py:43
 #: shop/models/defaults/order.py:21

@@ -96,7 +96,7 @@ msgstr "Herr"
 
 #: weltladen/models.py:38
 msgid "(n/a)"
-msgstr "Divers"
+msgstr "Keine Angabe"
 
 #: weltladen/models.py:41
 msgid "Customer Number"
