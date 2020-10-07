@@ -24,7 +24,7 @@ SHOP_APP_LABEL = 'weltladen'
 BASE_DIR = os.path.dirname(__file__)
 
 # Root directory for this django project
-PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.path.pardir))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.path.pardir, os.path.pardir))
 
 # Directory where working files, such as media and databases are kept
 WORK_DIR = os.environ.get('DJANGO_WORKDIR', os.path.abspath(
@@ -34,15 +34,6 @@ WORK_DIR = os.environ.get('DJANGO_WORKDIR', os.path.abspath(
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 ADMINS = [("Markus Mohanty", 'markus.mohanty@gmail.com')]
-
-# SECURITY WARNING: in production, inject the secret key through the environment
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY', '75lHXSVhpVrMW0v7bFvYX9WoWAaUJ7muW4jh3j9AJHUgfFQY3aGRCVDdotQ4Kt6H')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
@@ -120,8 +111,6 @@ INSTALLED_APPS = [
     'shop_sendcloud',
     'weltladen',
 ]
-if DEBUG:
-    INSTALLED_APPS.extend(['django_extensions',])
 
 MIDDLEWARE = [
     # 'django.middleware.cache.UpdateCacheMiddleware',
@@ -611,7 +600,6 @@ ELASTICSEARCH_DSL = {
     },
 }
 
-
 ############################################
 # settings for django-shop and its plugins
 
@@ -651,9 +639,3 @@ WELTLADEN_SHIPPING_DISTANCE = 5 #in km
 WELTLADEN_EMAIL_ADDRESS = 'baden@weltladen.at'
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'
-
-try:
-    from .settings_local import SHOP_SENDCLOUD, CMSPLUGIN_CASCADE_LOCAL
-    CMSPLUGIN_CASCADE['leaflet'] = CMSPLUGIN_CASCADE_LOCAL
-except ImportError:
-    print('setttings_local.py is missing')
