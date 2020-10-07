@@ -23,22 +23,21 @@ class CartExcludedTaxModifier(BaseCartModifier):
     and that the tax is calculated per cart but not added to the cart.
     """
     identifier = 'taxes'
-    taxes10 = 1 - 1 / (1 + settings.SHOP_VALUE_ADDED_TAX10/ 100)
+    taxes10 = 1 - 1 / (1 + settings.SHOP_VALUE_ADDED_TAX10 / 100)
     taxes20 = 1 - 1 / (1 + settings.SHOP_VALUE_ADDED_TAX / 100)
-
 
     def add_extra_cart_row(self, cart, request):
         """
         Add a field on cart.extra_price_fields:
         """
         subtotal10 = (cart.items.filter(product__tax_switch=False).values('quantity', 'product__unit_price')
-            .aggregate(total=ExpressionWrapper(
-                Sum(F('quantity')*F('product__unit_price')), DecimalField())
-                ))['total'] #10 percent tax
+                      .aggregate(total=ExpressionWrapper(
+                          Sum(F('quantity')*F('product__unit_price')), DecimalField())
+        ))['total']  # 10 percent tax
         subtotal20 = (cart.items.filter(product__tax_switch=True).values('quantity', 'product__unit_price')
-            .aggregate(total=ExpressionWrapper(
-                Sum(F('quantity')*F('product__unit_price')), DecimalField())
-                ))['total'] #20 percent tax
+                      .aggregate(total=ExpressionWrapper(
+                          Sum(F('quantity')*F('product__unit_price')), DecimalField())
+        ))['total']  # 20 percent tax
 
         amount10 = (subtotal10 or 0) * self.taxes10
         amount20 = (subtotal20 or 0) * self.taxes20
@@ -55,7 +54,7 @@ class CartExcludedTaxModifier(BaseCartModifier):
         cart.extra_rows[self.identifier+'20'] = ExtraCartRow(instance20)
 
     def add_extra_cart_item_row(self, cart_item, request):
-        t_format = SHOP_VALUE_ADDED_TAX10
+        t_format = settings.SHOP_VALUE_ADDED_TAX10
         if cart_item.product.tax_switch:
             taxes = self.taxes20
             t_format = settings.SHOP_VALUE_ADDED_TAX
@@ -65,7 +64,7 @@ class CartExcludedTaxModifier(BaseCartModifier):
 
         amount = cart_item.line_total * taxes
         instance = {
-            'label': _("{}% VAT incl.").format(t_format),
+            'label': _("{}% VAT").format(t_format),
             'amount': amount,
         }
         cart_item.extra_rows[self.identifier] = ExtraCartRow(instance)
@@ -86,7 +85,7 @@ class ClimateNeutralShippingModifier(ShippingModifier):
         return (self.identifier, _("Climate neutral shipping"))
 
     def is_disabled(self, cart):
-        #geolocate address of customer
+        # geolocate address of customer
         if cart.shipping_address:
             postal_code = cart.shipping_address.postal_code
             city = cart.shipping_address.city
@@ -107,7 +106,6 @@ class ClimateNeutralShippingModifier(ShippingModifier):
 
     def ship_the_goods(self, delivery):
         super().ship_the_goods(delivery)
-
 
 
 class PostalShippingModifier(ShippingModifier):

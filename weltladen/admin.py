@@ -11,11 +11,12 @@ from shop.models.defaults.order import Order
 from shop.admin.delivery import DeliveryOrderAdminMixin
 from shop_sendcloud.admin import SendCloudOrderAdminMixin
 from adminsortable2.admin import SortableAdminMixin
-from shop.admin.product import (CMSPageAsCategoryMixin, UnitPriceMixin, 
+from shop.admin.product import (CMSPageAsCategoryMixin, UnitPriceMixin,
                                 ProductImageInline, InvalidateProductCacheMixin,
                                 SearchProductIndexMixin)
 from weltladen.models import (Manufacturer, Supplier, QualityLabel,
                               WeltladenProduct, WeltladenCustomer)
+
 
 class BooleanDefaultNoFilter(admin.SimpleListFilter):
     def lookups(self, request, model_admin):
@@ -50,6 +51,7 @@ class TaxSwitchFilter(BooleanDefaultNoFilter):
     title = _('Sales Tax')
     parameter_name = 'tax_switch'
 
+
 admin.site.site_header = "Weltladen Administration"
 admin.site.unregister(ThumbnailOption)
 
@@ -78,10 +80,10 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             ],
         }),
         (_("Translatable Fields"), {
-            'fields': ['caption', 'short_description' ,'description'],
+            'fields': ['caption', 'short_description', 'description'],
         }),
         (_("Properties"), {
-            'fields': ['quality_labels','manufacturer', 'additional_manufacturers',
+            'fields': ['quality_labels', 'manufacturer', 'additional_manufacturers',
                        'supplier', 'origin_countries', 'vegan', 'lactose_free', 'gluten_free'],
         }),
         (_("Ingredients"), {
@@ -94,4 +96,4 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
     list_display = ['product_name', 'product_code', 'get_unit_price', 'active']
     search_fields = ['product_name']
     filter_horizontal = ['quality_labels', 'additional_manufacturers']
-    list_filter = [TaxSwitchFilter,]
+    list_filter = [TaxSwitchFilter, ]

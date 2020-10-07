@@ -11,15 +11,15 @@ DEBUG = True
 ALLOWED_HOSTS = ['someURL']
 
 SHOP_SENDCLOUD = {
-  'API_KEY': 'n/a',
-  'API_SECRET': 'n/a',
+    'API_KEY': 'n/a',
+    'API_SECRET': 'n/a',
 }
 
 CMSPLUGIN_CASCADE['leaflet'] = {
-  'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
-  'accessToken': 'n/a',
-  'apiKey': 'n/a'
+    'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+    'accessToken': 'n/a',
+    'apiKey': 'n/a'
 }
 
 if DEBUG is True:
-  raise EnvironmentError('Production not configured!')
+    raise EnvironmentError('Production not configured!')
