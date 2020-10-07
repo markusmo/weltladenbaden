@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db.models import Sum, ExpressionWrapper, F, DecimalField
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
@@ -13,7 +14,6 @@ from shop.shipping.modifiers import ShippingModifier
 from shop.payment.modifiers import PaymentModifier
 from weltladen.providers import DeliveryNotePayment
 
-from weltladen.settings import WELTLADEN_SHIPPING_DISTANCE, SHOP_VALUE_ADDED_TAX, SHOP_VALUE_ADDED_TAX10
 from weltladen.geolocate import checkdistance
 
 
@@ -23,8 +23,8 @@ class CartExcludedTaxModifier(BaseCartModifier):
     and that the tax is calculated per cart but not added to the cart.
     """
     identifier = 'taxes'
-    taxes10 = 1 - 1 / (1 + SHOP_VALUE_ADDED_TAX10/ 100)
-    taxes20 = 1 - 1 / (1 + SHOP_VALUE_ADDED_TAX / 100)
+    taxes10 = 1 - 1 / (1 + settings.SHOP_VALUE_ADDED_TAX10/ 100)
+    taxes20 = 1 - 1 / (1 + settings.SHOP_VALUE_ADDED_TAX / 100)
 
 
     def add_extra_cart_row(self, cart, request):
@@ -44,11 +44,11 @@ class CartExcludedTaxModifier(BaseCartModifier):
         amount20 = (subtotal20 or 0) * self.taxes20
 
         instance10 = {
-            'label': _("{}% VAT incl.").format(SHOP_VALUE_ADDED_TAX10),
+            'label': _("{}% VAT incl.").format(settings.SHOP_VALUE_ADDED_TAX10),
             'amount': Money(amount10),
         }
         instance20 = {
-            'label': _("{}% VAT incl.").format(SHOP_VALUE_ADDED_TAX),
+            'label': _("{}% VAT incl.").format(settings.SHOP_VALUE_ADDED_TAX),
             'amount': Money(amount20),
         }
         cart.extra_rows[self.identifier+'10'] = ExtraCartRow(instance10)
@@ -58,10 +58,10 @@ class CartExcludedTaxModifier(BaseCartModifier):
         t_format = SHOP_VALUE_ADDED_TAX10
         if cart_item.product.tax_switch:
             taxes = self.taxes20
-            t_format = SHOP_VALUE_ADDED_TAX
+            t_format = settings.SHOP_VALUE_ADDED_TAX
         else:
             taxes = self.taxes10
-            t_format = SHOP_VALUE_ADDED_TAX10
+            t_format = settings.SHOP_VALUE_ADDED_TAX10
 
         amount = cart_item.line_total * taxes
         instance = {
@@ -92,7 +92,7 @@ class ClimateNeutralShippingModifier(ShippingModifier):
             city = cart.shipping_address.city
             country = cart.shipping_address.country
             distance = checkdistance(postal_code, city, country)
-            if distance > WELTLADEN_SHIPPING_DISTANCE:
+            if distance > settings.WELTLADEN_SHIPPING_DISTANCE:
                 return True
         return False
 
