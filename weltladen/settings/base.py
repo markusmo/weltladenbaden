@@ -157,10 +157,10 @@ LANGUAGES = [
     ('en', "en"),
 ]
 
-#localepaths for translations 
+# localepaths for translations
 LOCALE_PATHS = [
-    os.path.join(PROJECT_ROOT, 'locale'), #weltladen
-    os.path.join(PROJECT_ROOT, 'tpa_locale') #django-shop
+    os.path.join(PROJECT_ROOT, 'locale'),  # weltladen
+    os.path.join(PROJECT_ROOT, 'tpa_locale')  # django-shop
 ]
 
 PARLER_DEFAULT_LANGUAGE = LANGUAGE_CODE
@@ -614,7 +614,7 @@ SHOP_CART_MODIFIERS = [
     'shop_sendcloud.modifiers.SendcloudShippingModifiers',
     'shop.modifiers.defaults.WeightedCartModifier',
     'weltladen.modifiers.CartExcludedTaxModifier',
-    #'weltladen.modifiers.PostalShippingModifier',
+    # 'weltladen.modifiers.PostalShippingModifier',
     'weltladen.modifiers.ClimateNeutralShippingModifier',
     'weltladen.modifiers.DeliveryNotePaymentModifier',
     'shop.shipping.modifiers.SelfCollectionModifier',
@@ -633,9 +633,9 @@ SHOP_CASCADE_FORMS = {
     'CustomerForm': 'weltladen.forms.CustomerForm',
 }
 
-#Weltladen settings
+# Weltladen settings
 WELTLADEN_BADEN_LOCATION = (48.0083297, 16.2340982)
-WELTLADEN_SHIPPING_DISTANCE = 5 #in km
+WELTLADEN_SHIPPING_DISTANCE = 5  # in km
 WELTLADEN_EMAIL_ADDRESS = 'baden@weltladen.at'
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'

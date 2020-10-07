@@ -33,8 +33,8 @@ urlpatterns = [
 ]
 
 urlpatterns.extend(
-    [ path(r'contact-us', ContactUsView.as_view(), name='contact-us')
-])
+    [path(r'contact-us', ContactUsView.as_view(), name='contact-us')
+     ])
 
 if settings.USE_I18N:
     urlpatterns.extend(i18n_patterns(*i18n_urls))

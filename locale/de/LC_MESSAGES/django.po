@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-05 16:19+0200\n"
+"POT-Creation-Date: 2020-10-07 19:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,8 +44,8 @@ msgstr "Übersetzbare Felder"
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: weltladen/admin.py:87 weltladen/models.py:309
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:55
+#: weltladen/admin.py:87 weltladen/models.py:324
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:54
 msgid "Ingredients"
 msgstr "Inhaltsstoffe"
 
@@ -86,214 +86,217 @@ msgstr "Text"
 msgid "Initialize the workdir to run the demo of weltladen."
 msgstr ""
 
-#: weltladen/models.py:38
+#: weltladen/models.py:40
 msgid "Mrs."
 msgstr "Frau"
 
-#: weltladen/models.py:38
+#: weltladen/models.py:40
 msgid "Mr."
 msgstr "Herr"
 
-#: weltladen/models.py:38
+#: weltladen/models.py:40
 msgid "(n/a)"
 msgstr "Keine Angabe"
 
-#: weltladen/models.py:41
+#: weltladen/models.py:43
 msgid "Customer Number"
 msgstr "Kundennummber"
 
-#: weltladen/models.py:48
+#: weltladen/models.py:50
 msgid "Phone number"
 msgstr "Telefonnummer"
 
-#: weltladen/models.py:54
+#: weltladen/models.py:56
 msgid "Salutation"
 msgstr "Anrede"
 
-#: weltladen/models.py:85
+#: weltladen/models.py:91
 msgid "Ordered quantity"
 msgstr "Anzahl Bestellung"
 
-#: weltladen/models.py:86
+#: weltladen/models.py:92
 msgid "Item canceled "
 msgstr "Bestellposition storniert"
 
-#: weltladen/models.py:91
+#: weltladen/models.py:97
 msgid "Name"
 msgstr "Name"
 
-#: weltladen/models.py:98 weltladen/models.py:172
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:79
+#: weltladen/models.py:104 weltladen/models.py:178
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:78
 msgid "Manufacturer"
 msgstr "Hersteller"
 
-#: weltladen/models.py:99
+#: weltladen/models.py:105
 #, fuzzy
 #| msgid "Manufacturer"
 msgid "Manufacturers"
 msgstr "Hersteller"
 
-#: weltladen/models.py:107 weltladen/models.py:114 weltladen/models.py:186
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:62
+#: weltladen/models.py:113 weltladen/models.py:120 weltladen/models.py:192
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:61
 msgid "Supplier"
 msgstr "Lieferant"
 
-#: weltladen/models.py:115
+#: weltladen/models.py:121
 #, fuzzy
 #| msgid "Supplier"
 msgid "Suppliers"
 msgstr "Lieferant"
 
-#: weltladen/models.py:123
+#: weltladen/models.py:129
 msgid "Ordering"
 msgstr "Sortierung"
 
-#: weltladen/models.py:128
+#: weltladen/models.py:134
 msgid "Quality Label"
 msgstr "Gütesiegel"
 
-#: weltladen/models.py:137
+#: weltladen/models.py:143
 #, fuzzy
 #| msgid "Quality labels"
 msgid "Quality label"
 msgstr "Gütesiegel"
 
-#: weltladen/models.py:138
+#: weltladen/models.py:144
 #, fuzzy
 #| msgid "Quality labels"
 msgid "Quality lables"
 msgstr "Gütesiegel"
 
-#: weltladen/models.py:158
+#: weltladen/models.py:164
 msgid "Product Name"
 msgstr "Produktbezeichnung"
 
-#: weltladen/models.py:161
+#: weltladen/models.py:167
 msgid "Slug"
 msgstr "Slug"
 
-#: weltladen/models.py:180
+#: weltladen/models.py:186
 msgid "Additional Manufacturers"
 msgstr "Andere Hersteller"
 
-#: weltladen/models.py:193
+#: weltladen/models.py:199
 msgid "Quality labels"
 msgstr "Gütesiegel"
 
-#: weltladen/models.py:198
+#: weltladen/models.py:204
 msgid "Origin countries"
 msgstr "Ursprungsländer"
 
-#: weltladen/models.py:199
+#: weltladen/models.py:205
 msgid "Select one or many"
 msgstr "Eines oder mehrere auswählen"
 
-#: weltladen/models.py:206
+#: weltladen/models.py:212
 msgid "Sort by"
 msgstr "Sortieren nach"
 
-#: weltladen/models.py:213
+#: weltladen/models.py:219
 msgid "Choose list view this product shall appear on."
 msgstr "Kategorien auf denen dieses Product erscheinen soll."
 
-#: weltladen/models.py:222
+#: weltladen/models.py:228
 msgid "Unit price"
 msgstr "Preis pro Stück"
 
-#: weltladen/models.py:224
+#: weltladen/models.py:230
 msgid "Gross price for this product"
 msgstr "Preis pro Stück mit Steuer."
 
-#: weltladen/models.py:228
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:94
+#: weltladen/models.py:234
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:93
 msgid "Vegan"
 msgstr "Vegan"
 
-#: weltladen/models.py:233
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:100
+#: weltladen/models.py:239
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:99
 msgid "Lactose free"
 msgstr "Laktosefrei"
 
-#: weltladen/models.py:238
+#: weltladen/models.py:244
 msgid "Gluten free"
 msgstr "Glutenfrei"
 
-#: weltladen/models.py:243
+#: weltladen/models.py:249
 msgid "Switch Tax"
 msgstr "MwSt.-Steuerung"
 
-#: weltladen/models.py:245
+#: weltladen/models.py:251
 msgid "If switched on, then 20% tax item, if off then 10% tax item"
 msgstr "Wenn angehakt, dann 20% MwST, sonst 10% MwSt."
 
-#: weltladen/models.py:249
+#: weltladen/models.py:255
 msgid "Product code"
 msgstr "Artikelnummer"
 
-#: weltladen/models.py:255
+#: weltladen/models.py:261
 msgid "Product"
 msgstr "Produkt"
 
-#: weltladen/models.py:256
+#: weltladen/models.py:262
 msgid "Products"
 msgstr "Produkte"
 
-#: weltladen/models.py:288
+#: weltladen/models.py:303
 msgid "Caption"
 msgstr "Untertitel"
 
-#: weltladen/models.py:291
+#: weltladen/models.py:306
 msgid "Short description used in the catalog's list view of products."
 msgstr "Stichwörter, die in der Produktübersicht angezeigt werden."
 
-#: weltladen/models.py:295
+#: weltladen/models.py:310
 msgid "Short Description"
 msgstr "Kurzbeschreibung"
 
-#: weltladen/models.py:298
+#: weltladen/models.py:313
 msgid "A short description as an overview for customers."
 msgstr "Kurzbeschreibung als Überblick für den Kunden."
 
-#: weltladen/models.py:302
+#: weltladen/models.py:317
 msgid "Description"
 msgstr "Langtext"
 
-#: weltladen/models.py:305
+#: weltladen/models.py:320
 msgid "Full description used in the catalog's detail view of Products."
 msgstr "Vollständige Produktbeschreiung für die Produktseite."
 
-#: weltladen/models.py:311
+#: weltladen/models.py:326
 msgid "What it contains."
 msgstr "Was es enthält"
 
-#: weltladen/models.py:322
+#: weltladen/models.py:337
 msgid "ZIP / Postal code"
 msgstr "Postleitzahl"
 
-#: weltladen/models.py:327
+#: weltladen/models.py:342
 msgid "City"
 msgstr "Stadt"
 
-#: weltladen/models.py:332
+#: weltladen/models.py:347
 msgid "Country"
 msgstr "Land"
 
-#: weltladen/models.py:337
+#: weltladen/models.py:352
 msgid "Distance to Baden"
 msgstr "Distanz zu Baden"
 
-#: weltladen/models.py:341
+#: weltladen/models.py:356
 msgid "Location"
 msgstr "Standort (Kunde)"
 
-#: weltladen/models.py:342
+#: weltladen/models.py:357
 msgid "Locations"
 msgstr "Standorte (Kunde)"
 
 #: weltladen/modifiers.py:47 weltladen/modifiers.py:51
-#: weltladen/modifiers.py:68
 msgid "{}% VAT incl."
 msgstr "{}% MwSt inkl."
+
+#: weltladen/modifiers.py:68
+msgid "{}% VAT"
+msgstr "{}% MwSt"
 
 #: weltladen/modifiers.py:79
 msgid "Payment by delivery note"
@@ -303,23 +306,23 @@ msgstr "Zahlung auf Lieferschein"
 msgid "Climate neutral shipping"
 msgstr "Klimaneutrale Lieferung"
 
-#: weltladen/modifiers.py:105 weltladen/modifiers.py:128
+#: weltladen/modifiers.py:104 weltladen/modifiers.py:127
 msgid "Shipping costs"
 msgstr "Lieferkosten"
 
-#: weltladen/modifiers.py:118
+#: weltladen/modifiers.py:117
 msgid "Postal shipping"
 msgstr "Lieferung mit der Post"
 
-#: weltladen/settings.py:440
+#: weltladen/settings/base.py:432
 msgid "Default Page"
 msgstr "Standardseite"
 
-#: weltladen/settings.py:501
+#: weltladen/settings/base.py:493
 msgid "Product Heading"
 msgstr "Produktüberschrift"
 
-#: weltladen/settings.py:506
+#: weltladen/settings/base.py:498
 msgid "Default"
 msgstr "Standard"
 
@@ -344,21 +347,21 @@ msgstr "Preis pro Stück"
 msgid "incl. VAT"
 msgstr "inkl. MwSt"
 
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:49
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:48
 msgid "Details"
 msgstr "Details"
 
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:69
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:68
 msgid "Country of Origin"
 msgstr "Herkunftsland"
 
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:95
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:101
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:107
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:94
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:100
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:106
 msgid "Yes"
 msgstr "Ja"
 
-#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:106
+#: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:105
 msgid "Gluten Free"
 msgstr "Glutenfrei"
 

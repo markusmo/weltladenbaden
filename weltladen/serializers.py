@@ -7,12 +7,15 @@ from django_countries.serializer_fields import CountryField
 from shop.serializers.bases import ProductSerializer
 from weltladen.models import WeltladenProduct
 
+
 class ProductDetailSerializer(ProductSerializer):
     origin_countries = CountryField()
+
     class Meta(ProductSerializer.Meta):
         model = WeltladenProduct
         fields = ['product_name', 'slug', 'unit_price', 'manufacturer', 'vegan',
                   'supplier', 'origin_countries', 'product_code']
+
 
 '''
 class CatalogSearchSerializer(BaseProductSearchSerializer):

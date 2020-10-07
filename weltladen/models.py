@@ -31,7 +31,6 @@ from django_countries.fields import CountryField
 from filer.fields import image
 
 
-
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
            'BillingAddress', 'ShippingAddress']
 
@@ -123,6 +122,7 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
+
 class QualityLabel(models.Model):
 
     ordering = models.PositiveIntegerField(
@@ -139,12 +139,14 @@ class QualityLabel(models.Model):
     logo = image.FilerImageField(
         on_delete=models.CASCADE
     )
+
     class Meta:
         verbose_name = _("Quality label")
         verbose_name_plural = _("Quality lables")
 
     def __str__(self):
         return self.name
+
 
 class ProductQuerySet(TranslatableQuerySet, PolymorphicQuerySet):
     pass
@@ -280,7 +282,7 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
     @property
     def sample_image(self):
         return self.images.first()
-    
+
     def invalidate_cache(self):
         """
         Method ``ProductCommonSerializer.render_html()`` caches the rendered HTML snippets.

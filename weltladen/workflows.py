@@ -7,6 +7,7 @@ from django_fsm import transition, RETURN_VALUE
 from shop.models.order import BaseOrder, OrderPayment
 from shop.payment.workflows import CancelOrderWorkflowMixin
 
+
 class DeliveryNotePaymentWorkflowMixin(object):
 
     TRANSITION_TARGETS = {

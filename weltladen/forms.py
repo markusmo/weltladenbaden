@@ -17,7 +17,7 @@ class ContactUsForm(NgModelFormMixin, Bootstrap3Form):
     '''
     Form for contacting us
     '''
-    form_name='contact_us_form'
+    form_name = 'contact_us_form'
     scope_prefix = 'contact_us'
     field_css_classes = 'input-group has-feedback'
 
@@ -36,11 +36,11 @@ class ContactUsForm(NgModelFormMixin, Bootstrap3Form):
         widget=TextInput(attrs={'placeholder': _("Subject")})
     )
 
-    body = fields.CharField( 
+    body = fields.CharField(
         label=_("Text"),
         widget=Textarea(attrs={'required': True})
     )
-    
+
     def save(self, request=None):
         '''
         send mail and so
@@ -55,4 +55,3 @@ class ContactUsForm(NgModelFormMixin, Bootstrap3Form):
             message=body
         )
         email_queued()
-
