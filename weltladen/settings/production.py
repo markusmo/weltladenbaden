@@ -22,4 +22,4 @@ CMSPLUGIN_CASCADE['leaflet'] = {
 }
 
 if DEBUG is True:
-    raise EnvironmentError('Production not configured!')
+    raise EnvironmentError('Production not configured! -> https://stackoverflow.com/questions/25076295/gunicorn-environment-variable-setting')

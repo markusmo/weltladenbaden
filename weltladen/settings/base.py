@@ -291,7 +291,7 @@ CACHES = {
 # settings for caching and storing session data
 REDIS_HOST = os.getenv('REDIS_HOST')
 if REDIS_HOST:
-    SESSION_ENGINE = 'redis_sessions.session'
+    SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
     SESSION_REDIS = {
         'host': REDIS_HOST,
