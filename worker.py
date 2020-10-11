@@ -12,7 +12,7 @@ if __name__ == '__main__':
     from django.utils import timezone
 
     # initialize Django
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'weltladen.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'weltladen.settings.production')
     setup()
 
     # schedule jobs
