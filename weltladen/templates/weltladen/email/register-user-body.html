@@ -1,5 +1,25 @@
-{% extends "shop/email/register-user-body.html" %}
-{% load post_office %}
+{% extends "shop/email/base.html" %}
+{% load i18n %}
+
+{% block email-title %}Bitte bestätigen Sie Ihre Registrierung beim Weltladen Baden{% endblock %}
+
+{% block email-body %}
+<p>Sehr geehrte*r {{user.salutation}} {{user.last_name}},</p>
+
+<p>Vielen Dank für Ihre Anmeldung auf unserem Onlineshop.</p>
+
+<p>Hinweis: Falls es sich bei dieser Anmeldung um ein Versehen handelt oder die Registrierung nicht von Ihnen vorgenommen wurde, können Sie diese Nachricht ignorieren. 
+Sie werden keine weiteren E-Mails von uns erhalten.
+</p>
+<p>
+Nur noch ein Schritt und dann kann es losgehen!<br/>
+Bitte bestätigen Sie Ihre Registrierung mit einem Klick auf folgenden Link: {{absolute_base_uri}}
+</p>
+<p>Sollten Sie den Link nicht anklicken können, kopieren Sie diesen bitte in Ihr Browserfenster.</p>
+<p>In the future, please use username {{ email }} with password {{ password }} to sign
+into {{ absolute_base_uri }}.</p>
+<p>Mit freundlichen Grüßen,<br/>Ihr Weltladen Baden</p>
+{% endblock email-body %}{% load post_office %}
 
 {% block email-logo %}
 <img src="{% inline_image 'weltladen/weltladen.png' %}" width="200" style="margin: 20px auto; display: block;" />

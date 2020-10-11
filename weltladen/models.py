@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import hashlib
+from datetime import datetime, timedelta
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.apps import apps
 from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
+from django.utils.crypto import get_random_string
 from django.template.loader import select_template
 from djangocms_text_ckeditor.fields import HTMLField
 from polymorphic.query import PolymorphicQuerySet
@@ -35,24 +38,30 @@ __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
            'BillingAddress', 'ShippingAddress']
 
 
+def get_activation_key(username):
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    secret_key = get_random_string(20, chars)
+    return hashlib.sha256((secret_key + username).encode('utf-8')).hexdigest()
+
+
 class WeltladenCustomer(BaseCustomer):
     SALUTATION = [('mrs', _("Mrs.")), ('mr', _("Mr.")), ('na', _("(n/a)"))]
 
     number = models.PositiveIntegerField(
-        _("Customer Number"),
+        _('Customer Number'),
         null=True,
         default=None,
         unique=True,
     )
 
     phonenumber = PhoneNumberField(
-        _("Phone number"),
+        _('Phone number'),
         null=True,
         blank=True,
     )
 
     salutation = models.CharField(
-        _("Salutation"),
+        _('Salutation'),
         max_length=5,
         choices=SALUTATION,
     )
@@ -84,6 +93,22 @@ class WeltladenCustomer(BaseCustomer):
         ]
         template = select_template(template_names)
         return template.render({'customer': self})
+
+class Activation(models.Model):
+    customer = models.OneToOneField(
+        WeltladenCustomer,
+        on_delete=models.CASCADE,
+    )
+    
+    activation_key = models.CharField(
+        _('Activation Key'),
+        max_length=64
+    )
+
+    activation_key_expires = models.DateField(
+        _('Activation Key Expiration'),
+        default=(datetime.now() + timedelta(days=3)).date()
+    )
 
 
 class OrderItem(BaseOrderItem):
