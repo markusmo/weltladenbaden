@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.apps import apps
 from django.core.cache import cache
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django.template.loader import select_template
 from djangocms_text_ckeditor.fields import HTMLField
@@ -291,6 +292,11 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         shop_app = apps.get_app_config('shop')
         if shop_app.cache_supporting_wildcard:
             cache.delete('product:{}|*'.format(self.id))
+    
+    def clean_fields(self, exclude=None):
+        super().clean_fields(exclude=exclude)
+        if WeltladenProduct.objects.filter(slug=self.slug).exclude(id=self.id).exists():
+            raise ValidationError(_('Product slug already exits'), code='invalid')
 
 
 class WeltladenProductTranslation(TranslatedFieldsModel):
