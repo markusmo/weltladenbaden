@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 from rest_framework import serializers
 from django_countries.serializer_fields import CountryField
 from shop.serializers.bases import ProductSerializer
-from weltladen.models import WeltladenProduct
+from weltladen.models import WeltladenProduct, Activation
 
 
 class ProductDetailSerializer(ProductSerializer):

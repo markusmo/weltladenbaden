@@ -79,8 +79,13 @@ class MyRegisterUserForm(RegisterUserFormBase):
         ], using='post_office')
         message = body_text_template.render(context)
         html_message = body_html_template.render(context)
-        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL')
-        user.email_user(subject, message, from_email=from_email, html_message=html_message)
+        mail.send(
+            user.email,
+            settings.WELTLADEN_EMAIL_ADDRESS,
+            subject=subject,
+            message=message,
+            html_message=html_message
+        )
         email_queued()
 
 

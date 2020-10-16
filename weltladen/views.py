@@ -1,10 +1,11 @@
+from datetime import date, timedelta
 from django.core.exceptions import NON_FIELD_ERRORS
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, RetrieveAPIView
 from rest_framework.response import Response
 from weltladen.forms import ContactUsForm, MyRegisterUserForm
-from weltladen.models import WeltladenCustomer
+from weltladen.models import WeltladenCustomer, Activation
 
 
 class RegisterUserView(GenericAPIView):
@@ -33,6 +34,25 @@ class RegisterUserView(GenericAPIView):
         if 'email' in errors:
             errors.update({NON_FIELD_ERRORS: errors.pop('email')})
         return Response({form.form_name: errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+
+class ActivateUserView(GenericAPIView):
+    form_class = None
+    def get(self, request):
+        activation_key = request.GET.get('activation_key')
+        activation = Activation.objects.first(activation_key=activation_key)
+        form = self.form_class(instance=activation)
+        if form.is_valid(): #check if expired full_clean()
+            form.save(request=request)
+            response_data = {form.form_name: {
+                'success_message': _('Activation of your account has been successfull')
+            }}
+            return Response(response_data ,status=status.HTTP_200_OK)
+        errors = {form.form_name: {
+            dict(form.errors)
+        }}
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 
 class ContactUsView(GenericAPIView):
