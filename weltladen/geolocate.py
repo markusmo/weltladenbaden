@@ -11,7 +11,7 @@ def checkdistance(zip_code, city, country):
     see https://geopy.readthedocs.io/en/stable/#module-geopy.geocoders
     '''
     if not Locations.objects.filter(zip_code=zip_code, country=country).exists():
-        geolocator = Nominatim(settings.SHOP_APP_LABEL+'_baden')
+        geolocator = Nominatim(user_agent=settings.SHOP_APP_LABEL+'_baden')
         location_str = {
             'postalcode': zip_code,
             'city': city,
