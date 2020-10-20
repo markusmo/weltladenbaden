@@ -9,8 +9,6 @@ https://docs.djangoproject.com/en/stable/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/stable/ref/settings/
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from decimal import Decimal
 import os
 import six
@@ -21,6 +19,7 @@ from cmsplugin_cascade.bootstrap4.mixins import BootstrapUtilities
 from cmsplugin_cascade.extra_fields.config import PluginExtraFieldsConfig
 
 SHOP_APP_LABEL = 'weltladen'
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(__file__)
 
 # Root directory for this django project
@@ -36,6 +35,8 @@ WORK_DIR = os.environ.get('DJANGO_WORKDIR', os.path.abspath(
 ADMINS = [("Markus Mohanty", 'markus.mohanty@gmail.com')]
 
 SITE_ID = 1
+
+DEBUG = bool(os.environ.get("DJANGO_DEBUG", '1'))
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
