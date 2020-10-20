@@ -37,6 +37,7 @@ django-countries = "*"
 django-elasticsearch-dsl = "*"
 elasticsearch-dsl = ">=7"
 djangoshop-sendcloud = "*"
+python-dotenv = "*"
 
 [dev-packages]
 tox = "*"
