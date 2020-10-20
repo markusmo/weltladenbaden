@@ -13,7 +13,6 @@ from shop.modifiers.base import BaseCartModifier
 from shop.shipping.modifiers import ShippingModifier
 from shop.payment.modifiers import PaymentModifier
 from weltladen.providers import DeliveryNotePayment
-
 from weltladen.geolocate import checkdistance
 
 
