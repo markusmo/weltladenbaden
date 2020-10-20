@@ -9,8 +9,6 @@ https://docs.djangoproject.com/en/stable/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/stable/ref/settings/
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from decimal import Decimal
 import os
 import six
@@ -21,6 +19,7 @@ from cmsplugin_cascade.bootstrap4.mixins import BootstrapUtilities
 from cmsplugin_cascade.extra_fields.config import PluginExtraFieldsConfig
 
 SHOP_APP_LABEL = 'weltladen'
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(__file__)
 
 # Root directory for this django project
@@ -36,6 +35,8 @@ WORK_DIR = os.environ.get('DJANGO_WORKDIR', os.path.abspath(
 ADMINS = [("Markus Mohanty", 'markus.mohanty@gmail.com')]
 
 SITE_ID = 1
+
+DEBUG = bool(os.environ.get("DJANGO_DEBUG", '1'))
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -215,7 +216,7 @@ MEDIA_URL = '/media/'
 
 # Absolute path to the directory that holds static files.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.getenv('DJANGO_STATIC_ROOT', os.path.join(WORK_DIR, 'static'))
+STATIC_ROOT = os.path.join(WORK_DIR, 'static')
 
 # URL that handles the static files served from STATIC_ROOT.
 # Example: "http://media.lawrence.com/static/"
@@ -636,6 +637,8 @@ SHOP_CASCADE_FORMS = {
 # Weltladen settings
 WELTLADEN_BADEN_LOCATION = (48.0083297, 16.2340982)
 WELTLADEN_SHIPPING_DISTANCE = 5  # in km
+WELTLADEN_BIKING_PRICE = '5'
 WELTLADEN_EMAIL_ADDRESS = 'baden@weltladen.at'
+WELTLADEN_MANAGER_EMAIL_ADDRESS = os.environ.get('WELTLADEN_MANAGER_MAIL')
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'AT'

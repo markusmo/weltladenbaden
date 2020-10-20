@@ -5,9 +5,6 @@ from .base import *
 SECRET_KEY = os.environ.get(
     'DJANGO_SECRET_KEY', '75lHXSVhpVrMW0v7bFvYX9WoWAaUJ7muW4jh3j9AJHUgfFQY3aGRCVDdotQ4Kt6H')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS.extend(['django_extensions', ])

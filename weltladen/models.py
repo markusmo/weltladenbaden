@@ -3,13 +3,17 @@ from __future__ import unicode_literals
 
 import hashlib
 from datetime import datetime, timedelta
-from django.core.validators import MinValueValidator
 from django.db import models
 from django.apps import apps
+from django.conf import settings
+from django.core.validators import MinValueValidator
 from django.core.cache import cache
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django.utils.crypto import get_random_string
 from django.template.loader import select_template
+from django.dispatch import receiver
+from post_office.signals import email_queued
 from djangocms_text_ckeditor.fields import HTMLField
 from polymorphic.query import PolymorphicQuerySet
 from parler.managers import TranslatableManager, TranslatableQuerySet
@@ -316,6 +320,11 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         shop_app = apps.get_app_config('shop')
         if shop_app.cache_supporting_wildcard:
             cache.delete('product:{}|*'.format(self.id))
+    
+    def clean_fields(self, exclude=None):
+        super().clean_fields(exclude=exclude)
+        if WeltladenProduct.objects.filter(slug=self.slug).exclude(id=self.id).exists():
+            raise ValidationError(_('Product slug already exits'), code='invalid')
 
 
 class WeltladenProductTranslation(TranslatedFieldsModel):
@@ -382,3 +391,11 @@ class Locations(models.Model):
     class Meta:
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
+
+
+#signal for email model
+@receiver(email_queued)
+def add_default_bcc_to_emails(sender, emails, **kwargs):
+    for e in emails:
+        e.bcc = [settings.WELTLADEN_EMAIL_ADDRESS, settings.WELTLADEN_MANAGER_EMAIL_ADDRESS]
+        e.save()

@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+schedule = "*"
 django = ">=3"
 djangocms-cascade = ">=1.3"
 djangocms-text-ckeditor = ">=3.9.1"
@@ -36,6 +37,7 @@ django-countries = "*"
 django-elasticsearch-dsl = "*"
 elasticsearch-dsl = ">=7"
 djangoshop-sendcloud = "*"
+python-dotenv = "*"
 
 [dev-packages]
 tox = "*"

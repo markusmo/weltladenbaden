@@ -2,23 +2,19 @@
 from .base import *
 
 # SECURITY WARNING: in production, inject the secret key through the environment
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY', 'n/a')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 ALLOWED_HOSTS = ['someURL']
 
 SHOP_SENDCLOUD = {
-    'API_KEY': 'n/a',
-    'API_SECRET': 'n/a',
+    'API_KEY': os.environ.get('SENDCLOUD_APIKEY'),
+    'API_SECRET': os.environ.get('SENDCLOUD_APISECRET'),
 }
 
 CMSPLUGIN_CASCADE['leaflet'] = {
     'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
-    'accessToken': 'n/a',
-    'apiKey': 'n/a'
+    'accessToken': os.environ.get('LEAFLET_ACCESSTOKEN'),
+    'apiKey': os.environ.get('LEAFLET_APIKEY')
 }
 
 if DEBUG is True:

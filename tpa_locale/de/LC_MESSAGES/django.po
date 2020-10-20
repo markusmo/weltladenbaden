@@ -2760,7 +2760,7 @@ msgstr "Es wurden keine Produkte gefunden"
 #| msgid "Add Product to Cart"
 msgctxt "catalog"
 msgid "Add %(product_name)s to cart"
-msgstr "In %(product_name)s den Warenkorb"
+msgstr "%(product_name)s in den Warenkorb legen"
 
 #: shop/templates/shop/catalog/product-add2cart.html:35
 #, fuzzy

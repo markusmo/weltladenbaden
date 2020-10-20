@@ -13,7 +13,6 @@ from shop.modifiers.base import BaseCartModifier
 from shop.shipping.modifiers import ShippingModifier
 from shop.payment.modifiers import PaymentModifier
 from weltladen.providers import DeliveryNotePayment
-
 from weltladen.geolocate import checkdistance
 
 
@@ -98,8 +97,7 @@ class ClimateNeutralShippingModifier(ShippingModifier):
     def add_extra_cart_row(self, cart, request):
         if not self.is_active(cart.extra.get('shipping_modifier')) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
             return
-        # add a shipping flat fee
-        amount = Money('0')
+        amount = Money(settings.WELTLADEN_BIKING_PRICE)
         instance = {'label': _("Shipping costs"), 'amount': amount}
         cart.extra_rows[self.identifier] = ExtraCartRow(instance)
         cart.total += amount
