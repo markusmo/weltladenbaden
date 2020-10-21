@@ -45,7 +45,7 @@ services:
       - docker-files/databases.environ
     environment:
       - VIRTUAL_HOST=www.example.com
-      - ***REMOVED***
+      - DJANGO_DEBUG=1
       - DJANGO_SETTINGS_MODULE=weltladen.settings
     volumes:
       - ./:/web
