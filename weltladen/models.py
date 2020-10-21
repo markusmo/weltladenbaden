@@ -114,6 +114,13 @@ class Activation(models.Model):
         default=(datetime.now() + timedelta(days=3)).date()
     )
 
+    def full_clean(self):
+        super().full_clean()
+        if (date.today() - self.activation_key_expires) > timedelta(days=3):
+            raise ValidationError(_('Your activation has expired!'))
+
+
+
 
 class OrderItem(BaseOrderItem):
     quantity = models.PositiveIntegerField(_("Ordered quantity"))

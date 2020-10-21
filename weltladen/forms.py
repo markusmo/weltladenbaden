@@ -32,9 +32,10 @@ class MyRegisterUserForm(RegisterUserFormBase):
         activation.activation_key = get_activation_key(self.cleaned_data['email'])
         self.instance.user.activation = activation
         activation.save()
+        preset_passwort = self.cleaned_data['preset_password']
         password = self.cleaned_data['password1']
         #if self.cleaned_data['preset_password']:
-        self._send_password(request, customer.user, password)
+        self._send_password(request, customer.user, preset_password, password)
         user = authenticate(username=customer.user.username, password=password)
         login(request, user)
         return customer
@@ -53,13 +54,14 @@ class MyRegisterUserForm(RegisterUserFormBase):
             self.save_m2m = self._save_m2m
         return self.instance
 
-    def _send_password(self, request, user, password):
+    def _send_password(self, request, user, preset_password, password):
         current_site = get_current_site(request)
         context = {
             'site_name': current_site.name,
             'absolute_base_uri': request.build_absolute_uri('/'),
             'email': user.email,
             'password': password,
+            'preset_password': preset_password,
             'user': user,
             'activation_key': user.activation.activation_key
         }

@@ -13,11 +13,10 @@ Sie werden keine weiteren E-Mails von uns erhalten.
 </p>
 <p>
 Nur noch ein Schritt und dann kann es losgehen!<br/>
-Bitte bestätigen Sie Ihre Registrierung mit einem Klick auf folgenden Link: {{absolute_base_uri}}
+Bitte bestätigen Sie Ihre Registrierung mit einem Klick auf folgenden Link: <a href="{{absolute_base_uri}}/activation/{{activation_key}}">Activieren Sie Ihren User</a>
 </p>
-<p>Sollten Sie den Link nicht anklicken können, kopieren Sie diesen bitte in Ihr Browserfenster.</p>
-<p>In the future, please use username {{ email }} with password {{ password }} to sign
-into {{ absolute_base_uri }}.</p>
+<p>Sollten Sie den Link nicht anklicken können, kopieren Sie diesen bitte in Ihr Browserfenster. {{absolute_base_uri}}/activation/{{activation_key}}</p>
+<p>Nach der Aktivierung können Sie mit Ihrer {{ email }} {% if preset_password %} und mit dem Passwort {{ password }} {% endif %} bei uns einloggen {{ absolute_base_uri }}.</p>
 <p>Mit freundlichen Grüßen,<br/>Ihr Weltladen Baden</p>
 {% endblock email-body %}{% load post_office %}
 

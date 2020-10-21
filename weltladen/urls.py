@@ -11,7 +11,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 from cms.sitemaps import CMSSitemap
 from weltladen.sitemap import ProductSitemap
-from weltladen.views import ContactUsView, RegisterUserView
+from weltladen.views import ContactUsView, RegisterUserView, ActivateUserView
 
 sitemaps = {'cmspages': CMSSitemap,
             'products': ProductSitemap}
@@ -34,7 +34,8 @@ urlpatterns = [
 
 urlpatterns.extend([
         path(r'contact-us', ContactUsView.as_view(), name='contact-us'),
-        path(r'register', RegisterUserView.as_view(), name='register-user')
+        path(r'register', RegisterUserView.as_view(), name='register-user'),
+        path(r'activate/<str:activation_key>', ActivateUserView.as_view(), name='activate-user)
     ])
 
 if settings.USE_I18N:

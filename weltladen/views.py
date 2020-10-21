@@ -1,5 +1,5 @@
 from datetime import date, timedelta
-from django.core.exceptions import NON_FIELD_ERRORS
+from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.generics import GenericAPIView, RetrieveAPIView
@@ -37,22 +37,23 @@ class RegisterUserView(GenericAPIView):
 
 
 class ActivateUserView(GenericAPIView):
-    form_class = None
+    template_name = 'weltladen/auth/activation.html'
+    view_name = 'Activation'
     def get(self, request):
-        activation_key = request.GET.get('activation_key')
+        activation_key = self.kwargs['activation_key']
         activation = Activation.objects.first(activation_key=activation_key)
-        form = self.form_class(instance=activation)
-        if form.is_valid(): #check if expired full_clean()
+        try:
+            activation.full_clean(): #check if expired full_clean()
             form.save(request=request)
-            response_data = {form.form_name: {
+            response_data = {self.view_name: {
                 'success_message': _('Activation of your account has been successfull')
             }}
             return Response(response_data ,status=status.HTTP_200_OK)
-        errors = {form.form_name: {
-            dict(form.errors)
-        }}
-        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
-    
+        except ValidationError as e:
+            errors = {self.view_name: {
+                dict(e.error_dict)
+            }
+            return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ContactUsView(GenericAPIView):
