@@ -4,7 +4,7 @@ from django.forms.widgets import EmailInput, TextInput, Textarea
 from django.contrib.auth import authenticate, login
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import ugettext_lazy as _
-from django.template.loader import get_template, select_template, render_to_string
+from django.template.loader import select_template
 from shop.forms.checkout import CustomerForm as CustomerFormBase
 from shop.forms.auth import RegisterUserForm as RegisterUserFormBase
 from djng.forms import fields
@@ -32,7 +32,7 @@ class MyRegisterUserForm(RegisterUserFormBase):
         activation.activation_key = get_activation_key(self.cleaned_data['email'])
         self.instance.user.activation = activation
         activation.save()
-        preset_passwort = self.cleaned_data['preset_password']
+        preset_password = self.cleaned_data['preset_password']
         password = self.cleaned_data['password1']
         #if self.cleaned_data['preset_password']:
         self._send_password(request, customer.user, preset_password, password)

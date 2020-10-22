@@ -1,0 +1,16 @@
+{% extends "shop/email/base.html" %}
+{% load i18n post_office %}
+
+
+{% block email-title %}Eine neue Bestellung {{ order.number }} bei Weltladen Baden.{% endblock %}
+
+{% block email-body %}
+<h2>Eine neue Bestellung {{order.number}} ist eingegangen</h2>
+
+<p>Bitte unter <a href="http://{{admin_url}}">prüfen</a></p>
+
+{% endblock email-body %}
+
+{% block email-logo %}
+<img src="{% inline_image 'weltladen/weltladen.png' %}" width="200" style="margin: 20px auto; display: block;" />
+{% endblock %}

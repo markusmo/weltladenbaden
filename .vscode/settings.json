@@ -1,4 +1,10 @@
 {
     "python.pythonPath": "/Users/mohi/.local/share/virtualenvs/weltladen-shop-HCPwLesS/bin/python",
-    "python.autoComplete.extraPaths": ["/Users/mohi/.local/share/virtualenvs/weltladen-shop-HCPwLesS/lib/python3.7/site-packages/"],
+    "python.autoComplete.extraPaths": [
+        "/Users/mohi/.local/share/virtualenvs/weltladen-shop-HCPwLesS/lib/python3.7/site-packages/"
+    ],
+    "python.analysis.extraPaths": [
+        "/Users/mohi/.local/share/virtualenvs/weltladen-shop-HCPwLesS/lib/python3.7/site-packages/"
+    ],
+    "python.linting.pylintEnabled": true,
 }

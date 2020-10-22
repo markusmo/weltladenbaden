@@ -2,41 +2,41 @@
 from __future__ import unicode_literals
 
 import hashlib
-from datetime import datetime, timedelta
-from django.db import models
+from datetime import date, datetime, timedelta
+
 from django.apps import apps
 from django.conf import settings
-from django.core.validators import MinValueValidator
 from django.core.cache import cache
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
-from django.utils.crypto import get_random_string
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch.dispatcher import receiver
 from django.template.loader import select_template
-from django.dispatch import receiver
-from post_office.signals import email_queued
+from django.utils.crypto import get_random_string
+from django.utils.translation import ugettext_lazy as _
+from django_countries.fields import CountryField
 from djangocms_text_ckeditor.fields import HTMLField
-from polymorphic.query import PolymorphicQuerySet
+from filer.fields import image
+from parler.fields import TranslatedField
 from parler.managers import TranslatableManager, TranslatableQuerySet
 from parler.models import TranslatableModelMixin, TranslatedFieldsModel
-from parler.fields import TranslatedField
 from phonenumber_field.modelfields import PhoneNumberField
-from shop.money.fields import MoneyField
-from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenceMixin
-from shop.models.defaults.cart import Cart
-from shop.models.defaults.cart_item import CartItem
-from shop.models.order import BaseOrderItem
-from shop.models.defaults.delivery import Delivery
-from shop.models.defaults.delivery_item import DeliveryItem
-from shop.models.defaults.order import Order
-from shop.models.defaults.mapping import ProductPage, ProductImage
-from shop_sendcloud.models.address import BillingAddress, ShippingAddress
+from polymorphic.query import PolymorphicQuerySet
+from post_office.models import Email
+from shop.conf import app_settings
 #from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
-from shop.models import address
-from shop.conf import app_settings
-from django_countries.fields import CountryField
-from filer.fields import image
-
+from shop.models.defaults.cart import Cart
+from shop.models.defaults.cart_item import CartItem
+from shop.models.defaults.delivery import Delivery
+from shop.models.defaults.delivery_item import DeliveryItem
+from shop.models.defaults.mapping import ProductImage, ProductPage
+from shop.models.defaults.order import Order
+from shop.models.order import BaseOrderItem
+from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenceMixin
+from shop.money.fields import MoneyField
+from shop_sendcloud.models.address import BillingAddress, ShippingAddress
+from .workflows import send_new_order_to_shop
 
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
            'BillingAddress', 'ShippingAddress']
@@ -98,12 +98,13 @@ class WeltladenCustomer(BaseCustomer):
         template = select_template(template_names)
         return template.render({'customer': self})
 
+
 class Activation(models.Model):
     customer = models.OneToOneField(
         WeltladenCustomer,
         on_delete=models.CASCADE,
     )
-    
+
     activation_key = models.CharField(
         _('Activation Key'),
         max_length=64
@@ -118,8 +119,6 @@ class Activation(models.Model):
         super().full_clean()
         if (date.today() - self.activation_key_expires) > timedelta(days=3):
             raise ValidationError(_('Your activation has expired!'))
-
-
 
 
 class OrderItem(BaseOrderItem):
@@ -327,7 +326,7 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         shop_app = apps.get_app_config('shop')
         if shop_app.cache_supporting_wildcard:
             cache.delete('product:{}|*'.format(self.id))
-    
+
     def clean_fields(self, exclude=None):
         super().clean_fields(exclude=exclude)
         if WeltladenProduct.objects.filter(slug=self.slug).exclude(id=self.id).exists():
@@ -400,9 +399,14 @@ class Locations(models.Model):
         verbose_name_plural = _("Locations")
 
 
-#signal for email model
-@receiver(email_queued)
-def add_default_bcc_to_emails(sender, emails, **kwargs):
-    for e in emails:
-        e.bcc = [settings.WELTLADEN_EMAIL_ADDRESS, settings.WELTLADEN_MANAGER_EMAIL_ADDRESS]
-        e.save()
+@receiver(post_save, sender=Email)
+def email_post_save_receiver(sender, instance, created, **kwargs):
+    if instance.template is not None and created:  # there is a configured template and it is new
+        instance.bcc = [settings.WELTLADEN_MANAGER_EMAIL_ADDRESS, settings.WELTLADEN_EMAIL_ADDRESS]
+        instance.save()
+
+
+@receiver(post_save, sender=Order)
+def order_post_save_receiver(sender, instance, created, **kwargs):
+    if created:
+        send_new_order_to_shop(instance)

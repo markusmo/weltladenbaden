@@ -35,7 +35,7 @@ urlpatterns = [
 urlpatterns.extend([
         path(r'contact-us', ContactUsView.as_view(), name='contact-us'),
         path(r'register', RegisterUserView.as_view(), name='register-user'),
-        path(r'activate/<str:activation_key>', ActivateUserView.as_view(), name='activate-user)
+        path(r'activate/<str:activation_key>', ActivateUserView.as_view(), name='activate-user')
     ])
 
 if settings.USE_I18N:

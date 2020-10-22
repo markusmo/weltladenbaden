@@ -43,8 +43,7 @@ class ActivateUserView(GenericAPIView):
         activation_key = self.kwargs['activation_key']
         activation = Activation.objects.first(activation_key=activation_key)
         try:
-            activation.full_clean(): #check if expired full_clean()
-            form.save(request=request)
+            activation.full_clean() #check if expired full_clean()
             response_data = {self.view_name: {
                 'success_message': _('Activation of your account has been successfull')
             }}
@@ -52,7 +51,7 @@ class ActivateUserView(GenericAPIView):
         except ValidationError as e:
             errors = {self.view_name: {
                 dict(e.error_dict)
-            }
+            }}
             return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 
