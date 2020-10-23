@@ -397,16 +397,3 @@ class Locations(models.Model):
     class Meta:
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
-
-
-@receiver(post_save, sender=Email)
-def email_post_save_receiver(sender, instance, created, **kwargs):
-    if instance.template is not None and created:  # there is a configured template and it is new
-        instance.bcc = [settings.WELTLADEN_MANAGER_EMAIL_ADDRESS, settings.WELTLADEN_EMAIL_ADDRESS]
-        instance.save()
-
-
-@receiver(post_save, sender=Order)
-def order_post_save_receiver(sender, instance, created, **kwargs):
-    if created:
-        send_new_order_to_shop(instance)
