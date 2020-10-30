@@ -1,0 +1,43 @@
+{% load i18n %}
+{% include "shop/djng-form.html" %}
+
+<div class="card">
+	<div class="card-header">
+	{% block form-title %}{% trans "User Activation" %}{% endblock %}
+	</div>
+
+	<div class="card-body">
+        {% if activation_not_found %}
+            <h2>{% trans "No Activation to this key found" %}</h2>
+            <p>{% trans "Please check your E-Mail again and copy paste the activation link again into you browser navigation." %}</p>
+        {% else %}
+            {% if activation_valid %}
+                <form name="{{ form_name }}" djng-endpoint="{% url 'activate-user' activation_key%}" role="form" novalidate>
+                    {% include "shop/auth/form-messages.html" %}
+
+                    <h2>{% trans "Press below button to finish activation of your user." %}</h2>
+                    <div class="form-group">
+                        <button type="button" ng-click="{% include 'shop/auth/proceed-with.html' with proceed_delay=1000 %}" ng-disabled="isDisabled()" class="btn btn-primary">
+                            {% if user.is_authenticated %}
+                                {% trans "Continue" %}
+                            {% else %}
+                                {% trans "Continue with login" %}&emsp;<i class="fa fa-user"></i>
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+            {% else %} <!--activation_valid-->
+                <form name="{{ form_name }}" djng-endpoint="{% url 'new-activation-link' activation_key%}" role="form" novalidate>
+                    {% include "shop/auth/form-messages.html" %}
+
+                    <h3>{% trans "Your activation has run out, please request a new one" %}</h3>
+                    <div class="form-group">
+                        <button type="button" ng-click="{% include 'shop/auth/proceed-with.html' with proceed_delay=1000 %}" ng-disabled="isDisabled()" class="btn btn-primary">
+                            {% trans "Request new authentication E-Mail" %}&emsp;<i class="fontaws-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            {% endif %} <!--activation_valid-->
+        {% endif %} <!--activation_not_found-->
+	</div>
+</div>
