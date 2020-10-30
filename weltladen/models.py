@@ -5,12 +5,9 @@ import hashlib
 from datetime import date, datetime, timedelta
 
 from django.apps import apps
-from django.conf import settings
 from django.core.cache import cache
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch.dispatcher import receiver
 from django.template.loader import select_template
 from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
@@ -22,7 +19,6 @@ from parler.managers import TranslatableManager, TranslatableQuerySet
 from parler.models import TranslatableModelMixin, TranslatedFieldsModel
 from phonenumber_field.modelfields import PhoneNumberField
 from polymorphic.query import PolymorphicQuerySet
-from post_office.models import Email
 from shop.conf import app_settings
 #from shop.models.defaults.address import BillingAddress, ShippingAddress
 from shop.models.customer import BaseCustomer
@@ -36,7 +32,6 @@ from shop.models.order import BaseOrderItem
 from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenceMixin
 from shop.money.fields import MoneyField
 from shop_sendcloud.models.address import BillingAddress, ShippingAddress
-from .workflows import send_new_order_to_shop
 
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
            'BillingAddress', 'ShippingAddress']
@@ -115,10 +110,15 @@ class Activation(models.Model):
         default=(datetime.now() + timedelta(days=3)).date()
     )
 
-    def full_clean(self):
-        super().full_clean()
+    def set_new_activation_key(self):
+        self.activation_key_expires = (datetime.now() + timedelta(days=3)).date()
+        self.activation_key = get_activation_key(self.customer.email)
+
+    def verify(self):
         if (date.today() - self.activation_key_expires) > timedelta(days=3):
-            raise ValidationError(_('Your activation has expired!'))
+            return False
+        return True
+        
 
 
 class OrderItem(BaseOrderItem):
