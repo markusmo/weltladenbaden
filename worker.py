@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 import os
-import redis
-import schedule
 import time
 
+import redis
+import schedule
+from dotenv import load_dotenv
+
+# https://help.pythonanywhere.com/pages/environment-variables-for-web-apps/
+# load environment
+project_folder = os.path.expanduser('~/django_project')
+load_dotenv(os.path.join(project_folder, '.env'))
 
 if __name__ == '__main__':
     from django import setup
@@ -12,7 +18,7 @@ if __name__ == '__main__':
     from django.utils import timezone
 
     # initialize Django
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'weltladen.settings.production')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'weltladen.settings.develop')
     setup()
 
     # schedule jobs
