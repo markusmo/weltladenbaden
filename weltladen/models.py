@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+<<<<<<< HEAD
 import hashlib
 from datetime import date, datetime, timedelta
 
@@ -32,35 +33,85 @@ from shop.models.order import BaseOrderItem
 from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenceMixin
 from shop.money.fields import MoneyField
 from shop_sendcloud.models.address import BillingAddress, ShippingAddress
+=======
+from django.db import models
+from django.apps import apps
+from django.conf import settings
+from django.core.validators import MinValueValidator
+from django.core.cache import cache
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
+from django.template.loader import select_template
+from django.dispatch import receiver
+from post_office.signals import email_queued
+from djangocms_text_ckeditor.fields import HTMLField
+from polymorphic.query import PolymorphicQuerySet
+from parler.managers import TranslatableManager, TranslatableQuerySet
+from parler.models import TranslatableModelMixin, TranslatedFieldsModel
+from parler.fields import TranslatedField
+from phonenumber_field.modelfields import PhoneNumberField
+from shop.money.fields import MoneyField
+from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenceMixin
+from shop.models.defaults.cart import Cart
+from shop.models.defaults.cart_item import CartItem
+from shop.models.order import BaseOrderItem
+from shop.models.defaults.delivery import Delivery
+from shop.models.defaults.delivery_item import DeliveryItem
+from shop.models.defaults.order import Order
+from shop.models.defaults.mapping import ProductPage, ProductImage
+from shop_sendcloud.models.address import BillingAddress, ShippingAddress
+#from shop.models.defaults.address import BillingAddress, ShippingAddress
+from shop.models.customer import BaseCustomer
+from shop.models import address
+from shop.conf import app_settings
+from django_countries.fields import CountryField
+from filer.fields import image
+
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
 
 __all__ = ['Cart', 'CartItem', 'Order', 'Delivery', 'DeliveryItem',
            'BillingAddress', 'ShippingAddress']
 
 
+<<<<<<< HEAD
 def get_activation_key(username):
     chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
     secret_key = get_random_string(20, chars)
     return hashlib.sha256((secret_key + username).encode('utf-8')).hexdigest()
 
 
+=======
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
 class WeltladenCustomer(BaseCustomer):
     SALUTATION = [('mrs', _("Mrs.")), ('mr', _("Mr.")), ('na', _("(n/a)"))]
 
     number = models.PositiveIntegerField(
+<<<<<<< HEAD
         _('Customer Number'),
+=======
+        _("Customer Number"),
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
         null=True,
         default=None,
         unique=True,
     )
 
     phonenumber = PhoneNumberField(
+<<<<<<< HEAD
         _('Phone number'),
+=======
+        _("Phone number"),
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
         null=True,
         blank=True,
     )
 
     salutation = models.CharField(
+<<<<<<< HEAD
         _('Salutation'),
+=======
+        _("Salutation"),
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
         max_length=5,
         choices=SALUTATION,
     )
@@ -94,6 +145,7 @@ class WeltladenCustomer(BaseCustomer):
         return template.render({'customer': self})
 
 
+<<<<<<< HEAD
 class Activation(models.Model):
     customer = models.OneToOneField(
         WeltladenCustomer,
@@ -121,6 +173,8 @@ class Activation(models.Model):
         
 
 
+=======
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
 class OrderItem(BaseOrderItem):
     quantity = models.PositiveIntegerField(_("Ordered quantity"))
     canceled = models.BooleanField(_("Item canceled "), default=False)
@@ -326,7 +380,11 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         shop_app = apps.get_app_config('shop')
         if shop_app.cache_supporting_wildcard:
             cache.delete('product:{}|*'.format(self.id))
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
     def clean_fields(self, exclude=None):
         super().clean_fields(exclude=exclude)
         if WeltladenProduct.objects.filter(slug=self.slug).exclude(id=self.id).exists():
@@ -396,4 +454,16 @@ class Locations(models.Model):
 
     class Meta:
         verbose_name = _("Location")
+<<<<<<< HEAD
         verbose_name_plural = _("Locations")
+=======
+        verbose_name_plural = _("Locations")
+
+
+#signal for email model
+@receiver(email_queued)
+def add_default_bcc_to_emails(sender, emails, **kwargs):
+    for e in emails:
+        e.bcc = [settings.WELTLADEN_EMAIL_ADDRESS, settings.WELTLADEN_MANAGER_EMAIL_ADDRESS]
+        e.save()
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7

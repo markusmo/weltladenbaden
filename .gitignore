@@ -37,5 +37,9 @@ django-shop-workdir_*
 __pycache__/
 staticfiles/
 settings_local.py
+<<<<<<< HEAD
 shop
 .env
+=======
+shop
+>>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
