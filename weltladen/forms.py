@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
@@ -9,30 +8,20 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.loader import select_template
 from shop.forms.checkout import CustomerForm as CustomerFormBase
 from shop.forms.auth import RegisterUserForm as RegisterUserFormBase
-=======
-from django.conf import settings
-from django.forms.widgets import EmailInput, TextInput, Textarea
-from django.utils.translation import ugettext_lazy as _
-from shop.forms.checkout import CustomerForm as CustomerFormBase
->>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
 from djng.forms import fields
 from djng.styling.bootstrap3.forms import Bootstrap3Form
 from djng.forms.angular_model import NgModelFormMixin
 from post_office import mail
 from shop.signals import email_queued
-<<<<<<< HEAD
 from shop.conf import app_settings
 from .models import Activation
 from .send_mail_helper import send_register_user_mail
-=======
->>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
 
 
 class CustomerForm(CustomerFormBase):
     field_order = ['salutation', 'first_name', 'last_name', 'email', 'phonenumber']
 
 
-<<<<<<< HEAD
 class MyRegisterUserForm(RegisterUserFormBase):
 
     def save(self, request=None, commit=True):
@@ -69,8 +58,6 @@ class MyRegisterUserForm(RegisterUserFormBase):
         return self.instance
 
 
-=======
->>>>>>> 9e1d37f6522f03e044c498b69508452478d233d7
 class ContactUsForm(NgModelFormMixin, Bootstrap3Form):
     '''
     Form for contacting us
