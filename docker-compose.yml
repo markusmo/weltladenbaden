@@ -46,7 +46,7 @@ services:
     environment:
       - VIRTUAL_HOST=www.example.com
       - DJANGO_DEBUG=1
-      - DJANGO_SETTINGS_MODULE=weltladen.settings
+      - DJANGO_SETTINGS_MODULE=weltladen.settings.develop
     volumes:
       - ./:/web
     entrypoint: /usr/local/bin/entrypoint.sh

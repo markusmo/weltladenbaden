@@ -2804,7 +2804,7 @@ msgctxt "catalog"
 msgid ""
 "By adding a product to the cart you are giving consent to cookies being used."
 msgstr ""
-"Mit dem Hinzufügen eines Produkts geben stimmen Sie unserer Cookie-Richtlinie zu."
+"Mit dem Hinzufügen eines Produkts stimmen Sie unserer Cookie-Richtlinie zu."
 
 #: shop/templates/shop/catalog/product-add2cart.html:96
 #, fuzzy
