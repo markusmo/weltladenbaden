@@ -75,7 +75,13 @@
 				{% endif %}
 				{% if product.manufacturer%}
 				<li class="list-group-item d-flex">
-					<div class="w-50">{% trans "Manufacturer" %}:</div>
+					<div class="w-50">
+					{% if product.display_manufacturer_as_raw_material_supplier %}
+						{% trans "Raw material supplier" %}
+					{% else %}
+						{% trans "Manufacturer" %}:
+					{% endif %}
+					</div>
 					{% if not product.additional_manufacturers.all %}
 					<strong>{{ product.manufacturer }}</strong>
 					{% else %}

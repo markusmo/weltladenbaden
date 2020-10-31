@@ -224,6 +224,11 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         related_name="additional_manufacturers",
     )
 
+    display_manufacturer_as_raw_material_supplier = models.BooleanField(
+        _("Display manufacturer as raw material supplier"),
+        default=False
+    )
+
     supplier = models.ForeignKey(
         Supplier,
         verbose_name=_("Supplier"),

@@ -82,9 +82,12 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
         (_("Translatable Fields"), {
             'fields': ['caption', 'short_description', 'description'],
         }),
+        (_("Manufacturer and Supplier"), {
+            'fields': ['manufacturer', 'additional_manufacturers', 'display_manufacturer_as_raw_material_supplier'
+                       'supplier', 'origin_countries'],
+        }),
         (_("Properties"), {
-            'fields': ['quality_labels', 'manufacturer', 'additional_manufacturers',
-                       'supplier', 'origin_countries', 'vegan', 'lactose_free', 'gluten_free'],
+            'fields': ['quality_labels', 'vegan', 'lactose_free', 'gluten_free'],
         }),
         (_("Ingredients"), {
             'classes': ['collapse'],
