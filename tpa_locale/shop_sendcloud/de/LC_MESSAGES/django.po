@@ -1,0 +1,225 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-05 16:19+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: René Fleschenberg <rene@fleschenberg.net>\n"
+"Language-Team: René Fleschenberg <rene@fleschenberg.net>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#: shop_sendcloud/management/commands/sendcloud_import.py:14
+msgid "Fetch shipping method fees from SendCloud."
+msgstr ""
+
+#: shop_sendcloud/models/__init__.py:29
+msgid "Updated at"
+msgstr ""
+
+#: shop_sendcloud/models/__init__.py:34
+#, fuzzy
+#| msgid "Shipping costs"
+msgid "Shipping Method"
+msgstr "Lieferkosten"
+
+#: shop_sendcloud/models/__init__.py:35
+#, fuzzy
+#| msgid "Shipping costs"
+msgid "Shipping Methods"
+msgstr "Lieferkosten"
+
+#: shop_sendcloud/models/__init__.py:50 shop_sendcloud/models/__init__.py:51
+#, fuzzy
+#| msgid "Shipping costs"
+msgid "Shipping Destination"
+msgstr "Lieferkosten"
+
+#: shop_sendcloud/models/address.py:13
+msgid "Full name"
+msgstr "Name"
+
+#: shop_sendcloud/models/address.py:18
+msgid "Company name"
+msgstr "Firmenname"
+
+#: shop_sendcloud/models/address.py:25
+msgid "Address line"
+msgstr "Adresse"
+
+#: shop_sendcloud/models/address.py:30
+msgid "House number"
+msgstr "Hausnummer"
+
+#: shop_sendcloud/models/address.py:35 weltladen/models.py:384
+msgid "ZIP / Postal code"
+msgstr "Postleitzahl"
+
+#: shop_sendcloud/models/address.py:40 weltladen/models.py:389
+msgid "City"
+msgstr "Stadt"
+
+#: shop_sendcloud/models/address.py:44 weltladen/models.py:394
+msgid "Country"
+msgstr "Land"
+
+#: shop_sendcloud/models/address.py:52
+msgid "Shipping Address"
+msgstr "Lieferadresse"
+
+#: shop_sendcloud/models/address.py:53
+msgid "Shipping Addresses"
+msgstr "Lieferadressen"
+
+#: shop_sendcloud/models/address.py:62
+msgid "Billing Address"
+msgstr "E-Mailadresse"
+
+#: shop_sendcloud/models/address.py:63
+msgid "Billing Addresses"
+msgstr "Rechnungsadresse"
+
+#: shop_sendcloud/models/customer.py:9 weltladen/models.py:47
+msgid "Mrs."
+msgstr "Frau"
+
+#: shop_sendcloud/models/customer.py:9 weltladen/models.py:47
+msgid "Mr."
+msgstr "Herr"
+
+#: shop_sendcloud/models/customer.py:9 weltladen/models.py:47
+msgid "(n/a)"
+msgstr "Keine Angabe"
+
+#: shop_sendcloud/models/customer.py:12 weltladen/models.py:50
+msgid "Customer Number"
+msgstr "Kundennummber"
+
+#: shop_sendcloud/models/customer.py:19 weltladen/models.py:63
+msgid "Salutation"
+msgstr "Anrede"
+
+#: shop_sendcloud/models/customer.py:25 weltladen/models.py:57
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: shop_sendcloud/modifiers.py:22
+msgid "Parcel can not be delivered: {}"
+msgstr ""
+
+#: shop_sendcloud/modifiers.py:52 weltladen/modifiers.py:101
+#: weltladen/modifiers.py:123
+msgid "Shipping costs"
+msgstr "Lieferkosten"
+
+#: shop_sendcloud/modifiers.py:56
+msgid "Unable to ship"
+msgstr "Lieferung nicht möglich"
+
+#: shop_sendcloud/modifiers.py:113
+msgid "Missing shipping label in response data['parcel']"
+msgstr "Fehlende Daten in Lieferdienst-Anbieter Response data['parcel']"
+
+#: shop_sendcloud/serializers.py:14
+msgid "Announced"
+msgstr "Bestellung bereit"
+
+#: shop_sendcloud/serializers.py:15
+msgid "Announced: not collected"
+msgstr "Bestellung Bereit: nicht abgeholt"
+
+#: shop_sendcloud/serializers.py:16
+msgid "Announcement failed"
+msgstr "Bestellung fehlgeschlagen"
+
+#: shop_sendcloud/serializers.py:17
+msgid "message': 'En route to sorting center"
+msgstr "Nachricht: Auf dem Weg zum Sortierzentrum"
+
+#: shop_sendcloud/serializers.py:18
+msgid "Delivery delayed"
+msgstr "Lieferung verspätet"
+
+#: shop_sendcloud/serializers.py:19
+msgid "Sorted"
+msgstr "Sortiert"
+
+#: shop_sendcloud/serializers.py:20
+msgid "Not sorted"
+msgstr "Nicht sortiert"
+
+#: shop_sendcloud/serializers.py:21
+msgid "Being sorted"
+msgstr "Wird sortiert"
+
+#: shop_sendcloud/serializers.py:22
+msgid "Delivery attempt failed"
+msgstr "Lieferungsversuch fehlgeschlagen"
+
+#: shop_sendcloud/serializers.py:23
+msgid "Delivered"
+msgstr "Geliefert"
+
+#: shop_sendcloud/serializers.py:24
+msgid "Awaiting customer pickup"
+msgstr "Auf Kundenabholung bereit"
+
+#: shop_sendcloud/serializers.py:25
+msgid "Error collecting"
+msgstr "Fehler beim Abholen"
+
+#: shop_sendcloud/serializers.py:26
+msgid "Picked up from postoffice"
+msgstr "Von Postfiliale abgeholt"
+
+#: shop_sendcloud/serializers.py:27
+msgid "Unable to deliver"
+msgstr "Lieferung nicht möglich"
+
+#: shop_sendcloud/serializers.py:28
+msgid "Parcel en route"
+msgstr "Paket ist unterwegs"
+
+#: shop_sendcloud/serializers.py:29
+msgid "Driver en route"
+msgstr "Fahrer ist unterwegs"
+
+#: shop_sendcloud/serializers.py:30
+msgid "Picked up at service point"
+msgstr "Beim Paketpartner abgeholt"
+
+#: shop_sendcloud/serializers.py:31
+msgid "No label"
+msgstr "Keine Beschriftung"
+
+#: shop_sendcloud/serializers.py:32
+msgid "Ready to send"
+msgstr "Bereit zum versandt"
+
+#: shop_sendcloud/serializers.py:33
+msgid "Being announced"
+msgstr "Frankiert"
+
+#: shop_sendcloud/serializers.py:34
+msgid "Cancelled"
+msgstr "Storniert"
+
+#: shop_sendcloud/serializers.py:35
+msgid "Submitting cancellation request"
+msgstr "Storno abschikcnen"
+
+#: shop_sendcloud/serializers.py:36
+msgid "Cancellation requested"
+msgstr "Storno angefordert"
+
+#: shop_sendcloud/serializers.py:37
+msgid "Unknown status - check carrier track & trace page for more insights"
+msgstr "Unbekannter Status - bitte mti Postpartner abklären"
+
+#: shop_sendcloud/serializers.py:75
+msgid "Purchase order issued"
+msgstr "Bestellung ausgestellt"

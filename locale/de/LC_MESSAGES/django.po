@@ -1,18 +1,18 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Copyright (C) 2020 Markus Mohanty
+# This file is distributed under the same license as the Weltladen package.
+# Markus Mohanty <markus.mohanty@gmail.com>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-31 22:19+0100\n"
+"POT-Creation-Date: 2020-11-01 11:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: Markus Mohanty <markus.mohanty@gmail.com>\n"
+"Language-Team: Markus Mohanty <markus.mohanty@gmail.com>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,7 +41,6 @@ msgid "Translatable Fields"
 msgstr "Übersetzbare Felder"
 
 #: weltladen/admin.py:85
-#| msgid "Manufacturer"
 msgid "Manufacturer and Supplier"
 msgstr "Hersteller und Lieferant"
 
@@ -98,30 +97,6 @@ msgstr "Text"
 #: weltladen/management/commands/initialize_shop_demo.py:20
 msgid "Initialize the workdir to run the demo of weltladen."
 msgstr ""
-
-#: weltladen/models.py:47
-msgid "Mrs."
-msgstr "Frau"
-
-#: weltladen/models.py:47
-msgid "Mr."
-msgstr "Herr"
-
-#: weltladen/models.py:47
-msgid "(n/a)"
-msgstr "Keine Angabe"
-
-#: weltladen/models.py:50
-msgid "Customer Number"
-msgstr "Kundennummber"
-
-#: weltladen/models.py:57
-msgid "Phone number"
-msgstr "Telefonnummer"
-
-#: weltladen/models.py:63
-msgid "Salutation"
-msgstr "Anrede"
 
 #: weltladen/models.py:104
 msgid "Activation Key"
@@ -295,18 +270,6 @@ msgstr "Vollständige Produktbeschreiung für die Produktseite."
 msgid "What it contains."
 msgstr "Was es enthält"
 
-#: weltladen/models.py:384
-msgid "ZIP / Postal code"
-msgstr "Postleitzahl"
-
-#: weltladen/models.py:389
-msgid "City"
-msgstr "Stadt"
-
-#: weltladen/models.py:394
-msgid "Country"
-msgstr "Land"
-
 #: weltladen/models.py:399
 msgid "Distance to Baden"
 msgstr "Distanz zu Baden"
@@ -335,23 +298,19 @@ msgstr "Zahlung auf Lieferschein"
 msgid "Climate neutral shipping"
 msgstr "Klimaneutrale Lieferung"
 
-#: weltladen/modifiers.py:101 weltladen/modifiers.py:123
-msgid "Shipping costs"
-msgstr "Lieferkosten"
-
 #: weltladen/modifiers.py:113
 msgid "Postal shipping"
 msgstr "Lieferung mit der Post"
 
-#: weltladen/settings/base.py:433
+#: weltladen/settings/base.py:434
 msgid "Default Page"
 msgstr "Standardseite"
 
-#: weltladen/settings/base.py:494
+#: weltladen/settings/base.py:495
 msgid "Product Heading"
 msgstr "Produktüberschrift"
 
-#: weltladen/settings/base.py:499
+#: weltladen/settings/base.py:500
 msgid "Default"
 msgstr "Standard"
 
@@ -367,7 +326,9 @@ msgstr "Keine Aktivierung für diesen Eintrag gefunden"
 msgid ""
 "Please check your E-Mail again and copy paste the activation link again into "
 "you browser navigation."
-msgstr "Bitte prüfen Sie ihre E-Mail nochmals und kopieren den Link nochmals in Ihren Browser"
+msgstr ""
+"Bitte prüfen Sie ihre E-Mail nochmals und kopieren den Link nochmals in "
+"Ihren Browser"
 
 #: weltladen/templates/weltladen/auth/activation.html:18
 msgid "Press below button to finish activation of your user."
@@ -403,7 +364,6 @@ msgid "This field is required."
 msgstr "Dieses Feld ist verpflichtend."
 
 #: weltladen/templates/weltladen/auth/register-user.html:18
-#| msgid "Your e-mail address"
 msgid "Enter a valid email address."
 msgstr "Geben Sie eine gültige E-Mail-Addresse ein"
 
@@ -478,7 +438,6 @@ msgstr ""
 "erneut."
 
 #: weltladen/views.py:29
-#| msgid "Successfully sent message"
 msgid "Successfully registered yourself."
 msgstr "Sie haben sich erfolgreich registriert."
 
