@@ -3,9 +3,10 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
+from shop.signals import email_queued
 from .forms import ContactUsForm, MyRegisterUserForm
 from .models import WeltladenCustomer, Activation
-from .send_mail_helper import send_register_user_mail
+from .send_mail_helper import send_register_user_mail, send_activate_user_mail
 
 
 class RegisterUserView(GenericAPIView):
@@ -43,6 +44,8 @@ class ActivateUserView(GenericAPIView):
         activation = Activation.objects.filter(activation_key=activation_key).first()
         activation.activation_key = ''
         activation.save()
+        email = activation.customer.email
+        send_activate_user_mail(request, email)
         response_data = {self.view_name: {
             'success_message': _('Activation of your account has been successfull.')
         }}

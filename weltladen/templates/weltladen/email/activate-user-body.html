@@ -1,0 +1,24 @@
+{% extends "weltladen/email/base.html" %}
+{% load i18n post_office %}
+
+{% block email-title %}Willkommen beim Weltladen Baden{% endblock %}
+
+{% block email-body %}
+<p>
+    Herzlich Willkommen beim Weltladen Baden. Sie haben sich erfolgreich registriert.
+</p>
+<p>Loginname: {{email}} </p>
+<p>
+    Das Passwort wird aus Sicherheitsgründen nicht per Email versandt. Sie haben das Passwort bei der Registrierung festgelegt.
+    Sollten Sie Ihr Passwort vergessen haben, nutzen Sie bitte die Passwortvergessen-Funktion auf der Webseite: </br>
+    <a href="{{absolute_base_uri}}personal-pages/change-password/">{{absolute_base_uri}}personal-pages/change-password/</a>
+</p>
+<p>
+Ab sofort können Sie ganz bequem und egal von wo aus, auf  stöbern und shoppen. Viel Spaß!
+</p>
+<p>Mit freundlichen Grüßen<br/> Ihr Weltladen Baden</p>
+{% endblock email-body %}
+
+{% block email-logo %}
+<img src="{% inline_image 'weltladen/weltladen.png' %}" width="200" style="margin: 20px auto; display: block;" />
+{% endblock %}

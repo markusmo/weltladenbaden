@@ -43,3 +43,23 @@ def send_register_user_mail(request, user, preset_password=False, password=None)
         html_message=html_message
     )
     email_queued()
+
+def send_activate_user_mail(request, email):
+    context = {
+        'absolute_base_uri': request.build_absolute_uri('/'),
+        'email': email
+    }
+
+    subject = 'Weltladen Baden: Aktivierung Ihre Accounts erfolgreich'
+    body_html_template = select_template([
+        '{}/email/activate-user-body.html'.format(app_settings.APP_LABEL),
+        'shop/email/activate-user-body.html',
+    ], using='post_office')
+    html_message = body_html_template.render(context)
+    mail.send(
+        email,
+        settings.WELTLADEN_EMAIL_ADDRESS,
+        subject=subject,
+        html_message=html_message
+    )
+    email_queued()

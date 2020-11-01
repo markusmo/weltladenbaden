@@ -1,4 +1,4 @@
-{% extends "shop/email/base.html" %}
+{% extends "weltladen/email/base.html" %}
 {% load i18n post_office %}
 
 {% block email-title %}Bitte bestätigen Sie Ihre Registrierung beim Weltladen Baden{% endblock %}
@@ -21,6 +21,7 @@
     </p>
     <p>
         Nach der Aktivierung können Sie mit Ihrer {{ email }} {% if preset_password %} und mit dem Passwort {{ password }} {% endif %} bei uns einloggen {{ absolute_base_uri }}.
+        {% if preset_password %} <br/> Sie sollten Ihr Passwort nach der Aktivierung unter <a href="{{absolute_base_uri}}personal-pages/change-password/">diesem Link</a> ändern {% endif %}
     </p>
     <p>Mit freundlichen Grüßen,<br/>Ihr Weltladen Baden</p>
 {% endblock email-body %}{% load post_office %}
