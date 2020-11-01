@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('activation_key', models.CharField(max_length=64, verbose_name='Activation Key')),
-                ('activation_key_expires', models.DateField(default=datetime.date(2020, 10, 14), verbose_name='Activation Key Expiration')),
+                ('activation_key_expires', models.DateField(default=datetime.date.today(), verbose_name='Activation Key Expiration')),
                 ('customer', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='weltladen.WeltladenCustomer')),
             ],
         ),

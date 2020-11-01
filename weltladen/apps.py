@@ -22,3 +22,5 @@ class Weltladen(AppConfig):
             os.makedirs(settings.COMPRESS_ROOT)
         as_i18n = " as I18N"
         self.logger.info("Running as smartcard{}".format(as_i18n))
+        from weltladen import search_indexes
+        __all__ = ['search_indexes']

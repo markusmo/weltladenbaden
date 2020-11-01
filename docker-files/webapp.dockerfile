@@ -1,4 +1,4 @@
-FROM python:3.6.6
+FROM python:3.8.6
 LABEL Description="Das ist der Webshop des Weltladen Baden" Maintainer="Markus Mohanty"
 RUN mkdir /web
 WORKDIR /web
@@ -10,6 +10,7 @@ RUN apt-get upgrade -y
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs optipng jpegoptim
 RUN pip install --upgrade pip
+RUN pip install python-dotenv
 COPY docker-files/entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt

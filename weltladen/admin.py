@@ -15,7 +15,7 @@ from shop.admin.product import (CMSPageAsCategoryMixin, UnitPriceMixin,
                                 ProductImageInline, InvalidateProductCacheMixin,
                                 SearchProductIndexMixin)
 from weltladen.models import (Manufacturer, Supplier, QualityLabel,
-                              WeltladenProduct, WeltladenCustomer)
+                              WeltladenProduct)
 
 
 class BooleanDefaultNoFilter(admin.SimpleListFilter):
@@ -69,7 +69,7 @@ __all__ = ['customer']
 
 
 @admin.register(WeltladenProduct)
-class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, TranslatableAdmin, CMSPageAsCategoryMixin, UnitPriceMixin, admin.ModelAdmin):
+class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, TranslatableAdmin, CMSPageAsCategoryMixin, UnitPriceMixin, SearchProductIndexMixin, admin.ModelAdmin):
     fieldsets = [
         (None, {
             'fields': [
@@ -83,7 +83,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             'fields': ['caption', 'short_description', 'description'],
         }),
         (_("Manufacturer and Supplier"), {
-            'fields': ['manufacturer', 'additional_manufacturers', 'display_manufacturer_as_raw_material_supplier'
+            'fields': ['manufacturer', 'additional_manufacturers', 'display_manufacturer_as_raw_material_supplier',
                        'supplier', 'origin_countries'],
         }),
         (_("Properties"), {

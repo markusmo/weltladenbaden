@@ -23,7 +23,8 @@ services:
     image: elasticsearch:7.7.0
     container_name: elasticsearch
     environment:
-      - cluster.name=docker-cluster
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
@@ -31,9 +32,11 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - esdata:/usr/share/elasticsearch/data
+      - esdata:/Users/mohi/elasticsearch/data
     networks:
       - shopnet
+    ports:
+      - 9200:9200
 
   webapp:
     restart: always

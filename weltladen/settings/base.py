@@ -71,7 +71,6 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'email_auth',
     'polymorphic',
-    # deprecated: 'djangocms_admin_style',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
