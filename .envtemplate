@@ -6,7 +6,7 @@ DJANGO_WORKDIR=path/to/weltladen-shop/workdir
 
 POSTGRES_DB=db
 POSTGRES_USER=dbuser
-#POSTGRES_PASSWORD=to_be_defined
+POSTGRES_PASSWORD=to_be_defined
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 
