@@ -36,7 +36,7 @@ ADMINS = [("Markus Mohanty", 'markus.mohanty@gmail.com')]
 
 SITE_ID = 1
 
-DEBUG = bool(os.environ.get("DJANGO_DEBUG", '1'))
+DEBUG = os.environ.get("DJANGO_DEBUG") == 'True'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

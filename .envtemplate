@@ -1,6 +1,6 @@
 DJANGO_SETTINGS_MODULE=weltladen.settings.develop
 
-DJANGO_DEBUG=1
+DJANGO_DEBUG=False
 DJANGO_SECRET_KEY
 DJANGO_WORKDIR=path/to/weltladen-shop/workdir
 

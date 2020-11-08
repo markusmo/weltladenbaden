@@ -17,5 +17,37 @@ CMSPLUGIN_CASCADE['leaflet'] = {
     'apiKey': os.environ.get('LEAFLET_APIKEY')
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': '/home/_some_user_/_path_here_/log/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.db.backends': {
+            'handlers': ['file'],
+            'level': 'WARNING',   # DEBUG will log all queries, so change it to WARNING.
+            'propagate': False,   # Don't propagate to other handlers
+        },
+    },
+}
+
+
 if DEBUG is True:
     raise EnvironmentError('Production not configured! -> https://stackoverflow.com/questions/25076295/gunicorn-environment-variable-setting')
