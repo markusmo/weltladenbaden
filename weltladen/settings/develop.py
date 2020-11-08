@@ -15,7 +15,7 @@ SHOP_SENDCLOUD = {
 }
 
 CMSPLUGIN_CASCADE['leaflet'] = {
-    'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+    'tilesURL': 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
     'accessToken': 'pk.eyJ1IjoibWFya3VzbW8iLCJhIjoiY2s5NzZtdWZwMGV6azNocnNrYmRjc2ltciJ9.gn39wNwba9Y01rvSlXpiaw',
     'apiKey': 'AIzaSyD71sHrtkZMnLqTbgRmY_NsO0A9l9BQmv4'
 }

@@ -21,6 +21,6 @@ class Weltladen(AppConfig):
         if hasattr(settings, 'COMPRESS_ROOT') and not os.path.isdir(settings.COMPRESS_ROOT):
             os.makedirs(settings.COMPRESS_ROOT)
         as_i18n = " as I18N"
-        self.logger.info("Running as smartcard{}".format(as_i18n))
+        self.logger.info("Running as weltladen{}".format(as_i18n))
         from weltladen import search_indexes
         __all__ = ['search_indexes']

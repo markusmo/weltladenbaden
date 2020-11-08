@@ -12,7 +12,7 @@ SHOP_SENDCLOUD = {
 }
 
 CMSPLUGIN_CASCADE['leaflet'] = {
-    'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+    'tilesURL': 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
     'accessToken': os.environ.get('LEAFLET_ACCESSTOKEN'),
     'apiKey': os.environ.get('LEAFLET_APIKEY')
 }

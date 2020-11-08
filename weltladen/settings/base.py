@@ -519,7 +519,7 @@ CMSPLUGIN_CASCADE = {
         'BootstrapButtonPlugin': BootstrapUtilities(BootstrapUtilities.floats),
     },
     'leaflet': {
-        'tilesURL': 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+        'tilesURL': 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
         'accessToken': '',
         'apiKey': '',
     },
@@ -636,7 +636,7 @@ SHOP_CASCADE_FORMS = {
 
 # Weltladen settings
 WELTLADEN_BADEN_LOCATION = (48.0083297, 16.2340982)
-WELTLADEN_SHIPPING_DISTANCE = 5  # in km
+WELTLADEN_SHIPPING_DISTANCE = 3  # in km
 WELTLADEN_BIKING_PRICE = '5'
 WELTLADEN_EMAIL_ADDRESS = 'baden@weltladen.at'
 WELTLADEN_MANAGER_EMAIL_ADDRESS = os.environ.get('WELTLADEN_MANAGER_MAIL', WELTLADEN_EMAIL_ADDRESS)

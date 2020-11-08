@@ -13,7 +13,6 @@ from djng.styling.bootstrap3.forms import Bootstrap3Form
 from djng.forms.angular_model import NgModelFormMixin
 from post_office import mail
 from shop.signals import email_queued
-from shop.conf import app_settings
 from .models import Activation
 from .send_mail_helper import send_register_user_mail
 
