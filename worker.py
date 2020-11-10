@@ -24,7 +24,6 @@ if __name__ == '__main__':
     # schedule jobs
     schedule.every().minute.do(call_command, 'send_queued_mail')
     rebuild_at = timezone.now() + timezone.timedelta(minutes=6)
-    schedule.every().hour.at(rebuild_at.strftime(':%M')).do(call_command, 'search_index --rebuild', interactive=False)
     schedule.every().monday.do(call_command, 'sendcloud_import')
     schedule.every().sunday.do(call_command, 'shopcustomers', delete_expired=True)
 
