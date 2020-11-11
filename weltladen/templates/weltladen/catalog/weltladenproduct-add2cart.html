@@ -14,7 +14,7 @@
 			</div>
 		{% endblock %}
 		{% block product-unit-price %}
-			<div class="d-flex flex-column">
+			<div style="padding-left:1rem;" class="d-flex flex-column">
 				<span class="label">{% trans "Unit Price" %}</span>
 				<div class="lead mt-1" ng-cloak>
 				{% verbatim %}{{ context.unit_price }}{% endverbatim %}
