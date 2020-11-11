@@ -3,7 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from shop.signals import email_queued
 from .forms import ContactUsForm, MyRegisterUserForm
 from .models import WeltladenCustomer, Activation
 from .send_mail_helper import send_register_user_mail, send_activate_user_mail
