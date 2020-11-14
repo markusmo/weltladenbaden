@@ -3,3 +3,14 @@
         margin-top: 0.5em;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .stepwizard{
+        padding-bottom: 1rem;
+    }
+	.stepwizard-step > p {
+		visibility: hidden;
+        clear: both;
+        display: none;
+	}
+}
