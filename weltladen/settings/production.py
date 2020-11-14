@@ -29,21 +29,31 @@ LOGGING = {
         },
     },
     'handlers': {
-        'file': {
+        'django-server': {
             'level': 'WARNING',
-            'class': 'logging.FileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes' : 1024*1024*10, # 10MB
+            'backupCount' : 10,
             'formatter': 'verbose',
             'filename': '/home/_some_user_/_path_here_/log/debug.log',
+        },
+        'sql-server': {
+            'level': 'WARNING',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes' : 1024*1024*10, # 10MB
+            'backupCount' : 10,
+            'formatter': 'verbose',
+            'filename': '/home/_some_user_/_path_here_/log/sql_debug.log',
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['django-server'],
             'level': 'DEBUG',
             'propagate': True,
         },
         'django.db.backends': {
-            'handlers': ['file'],
+            'handlers': ['sql-server'],
             'level': 'WARNING',   # DEBUG will log all queries, so change it to WARNING.
             'propagate': False,   # Don't propagate to other handlers
         },
