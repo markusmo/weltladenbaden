@@ -264,7 +264,7 @@ msgstr "Benutzer Registrieren"
 
 #: shop/cascade/auth.py:21 shop/templates/shop/auth/continue-as-guest.html:11
 msgid "Continue as guest"
-msgstr "Als Gast fortsetzen"
+msgstr "Als Gast fortfahren"
 
 #: shop/cascade/auth.py:27
 msgid "Rendered Form"
@@ -703,7 +703,7 @@ msgstr "Passwort"
 #| msgctxt "admin"
 #| msgid "Order Confirmation"
 msgid "New password confirmation"
-msgstr "Bestbestätigung"
+msgstr "Passwort bestätigen"
 
 #: shop/forms/auth.py:53
 #, fuzzy
@@ -2543,7 +2543,7 @@ msgstr ""
 #: shop/templates/shop/auth/password-reset-request.html:4
 #: shop/templates/shop/navbar/login-logout.html:82
 msgid "Password Forgotten?"
-msgstr "Passwort Vergessen?"
+msgstr "Passwort vergessen?"
 
 #: shop/templates/shop/auth/login.html:4
 msgid "Sign In"

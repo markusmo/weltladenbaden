@@ -17,6 +17,8 @@ CMSPLUGIN_CASCADE['leaflet'] = {
     'apiKey': os.environ.get('LEAFLET_APIKEY')
 }
 
+TOMTOM_APIKEY=os.environ.get('TOMTOM_APIKEY')
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

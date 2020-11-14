@@ -19,3 +19,5 @@ CMSPLUGIN_CASCADE['leaflet'] = {
     'accessToken': 'pk.eyJ1IjoibWFya3VzbW8iLCJhIjoiY2s5NzZtdWZwMGV6azNocnNrYmRjc2ltciJ9.gn39wNwba9Y01rvSlXpiaw',
     'apiKey': 'AIzaSyD71sHrtkZMnLqTbgRmY_NsO0A9l9BQmv4'
 }
+
+TOMTOM_APIKEY=os.environ.get('TOMTOM_APIKEY')
