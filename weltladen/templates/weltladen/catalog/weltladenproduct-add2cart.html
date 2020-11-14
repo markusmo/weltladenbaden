@@ -22,7 +22,7 @@
 			</div>
 		{% endblock %}
 		{% block purchase-item-subtotal %}
-			<div class="d-flex flex-column">
+			<div style="padding-left:0.5rem" class="d-flex flex-column">
 				<span class="label">{% trans "Subtotal" %}</span>
 				<div class="lead mt-1 font-weight-bold" ng-cloak>
 				{% verbatim %}{{ context.subtotal }}<sup>*</sup>{% endverbatim %}

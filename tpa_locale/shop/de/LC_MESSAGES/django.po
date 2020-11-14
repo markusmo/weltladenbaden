@@ -2653,7 +2653,7 @@ msgstr "Entfernen"
 #| msgid "Watch Item"
 msgctxt "cart"
 msgid "Watch Item"
-msgstr "Artikel beobachten"
+msgstr "Auf die Wunschliste"
 
 #: shop/templates/shop/cart/editable.html:73
 #: shop/templates/shop/cart/static.html:51
@@ -2786,7 +2786,7 @@ msgstr "inkl. MwSt und Versandtkosten."
 #| msgid "Watch product"
 msgctxt "catalog"
 msgid "Watch product"
-msgstr "Beobachte Produkt"
+msgstr "Auf die Wunschliste"
 
 #: shop/templates/shop/catalog/product-add2cart.html:68
 msgid "The product has been successfully placed in the shopping cart:"
