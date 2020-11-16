@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 11:21+0100\n"
+"POT-Creation-Date: 2020-11-15 15:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Markus Mohanty <markus.mohanty@gmail.com>\n"
 "Language-Team: Markus Mohanty <markus.mohanty@gmail.com>\n"
@@ -57,18 +57,29 @@ msgstr "Inhaltsstoffe"
 msgid "My Shop"
 msgstr "Mein Shop"
 
-#: weltladen/cms_plugins.py:9
+#: weltladen/cms_plugins.py:27
 #: weltladen/templates/weltladen/forms/contact-us.html:7
 msgid "Contact Us"
 msgstr "Kontakt"
 
-#: weltladen/cms_plugins.py:30
+#: weltladen/cms_plugins.py:48
 msgid "Register User"
 msgstr "User Registrieren"
 
-#: weltladen/cms_plugins.py:51
+#: weltladen/cms_plugins.py:69
 msgid "New User Activation"
 msgstr "Useraktivierung"
+
+#: weltladen/cms_plugins.py:120
+msgid "Leaflet Map"
+msgstr ""
+
+#: weltladen/cms_plugins.py:208
+#, python-brace-format
+msgid "with {0} marker"
+msgid_plural "with {0} markers"
+msgstr[0] ""
+msgstr[1] ""
 
 #: weltladen/filters.py:24
 msgid "Any Manufacturer"
@@ -78,25 +89,49 @@ msgstr "Hersteller"
 msgid "Restrict product on this manufacturer only"
 msgstr "Filtern auf diesen Hersteller"
 
-#: weltladen/forms.py:74
+#: weltladen/forms.py:73
 msgid "Your e-mail address"
 msgstr "Ihre E-Mail-Addresse"
 
-#: weltladen/forms.py:75
+#: weltladen/forms.py:74
 msgid "E-mail address"
 msgstr "E-Mail Addresse"
 
-#: weltladen/forms.py:79 weltladen/forms.py:81
+#: weltladen/forms.py:78 weltladen/forms.py:80
 msgid "Subject"
 msgstr "Betreff"
 
-#: weltladen/forms.py:85
+#: weltladen/forms.py:84
 msgid "Text"
 msgstr "Text"
 
 #: weltladen/management/commands/initialize_shop_demo.py:20
 msgid "Initialize the workdir to run the demo of weltladen."
 msgstr ""
+
+#: weltladen/models.py:47
+msgid "Mrs."
+msgstr "Frau"
+
+#: weltladen/models.py:47
+msgid "Mr."
+msgstr "Herr"
+
+#: weltladen/models.py:47
+msgid "(n/a)"
+msgstr "Keine Angabe"
+
+#: weltladen/models.py:50
+msgid "Customer Number"
+msgstr "Kundennummer"
+
+#: weltladen/models.py:57
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: weltladen/models.py:63
+msgid "Salutation"
+msgstr "Anrede"
 
 #: weltladen/models.py:104
 msgid "Activation Key"
@@ -240,7 +275,7 @@ msgstr "Produkte"
 
 #: weltladen/models.py:338
 msgid "Product slug already exits"
-msgstr ""
+msgstr "Produkt slug existiert bereits"
 
 #: weltladen/models.py:350
 msgid "Caption"
@@ -270,6 +305,18 @@ msgstr "Vollständige Produktbeschreiung für die Produktseite."
 msgid "What it contains."
 msgstr "Was es enthält"
 
+#: weltladen/models.py:384
+msgid "ZIP / Postal code"
+msgstr "PLZ"
+
+#: weltladen/models.py:389
+msgid "City"
+msgstr "Stadt"
+
+#: weltladen/models.py:394
+msgid "Country"
+msgstr "Land"
+
 #: weltladen/models.py:399
 msgid "Distance to Baden"
 msgstr "Distanz zu Baden"
@@ -298,19 +345,23 @@ msgstr "Zahlung auf Lieferschein"
 msgid "Climate neutral shipping"
 msgstr "Klimaneutrale Lieferung"
 
+#: weltladen/modifiers.py:101 weltladen/modifiers.py:123
+msgid "Shipping costs"
+msgstr "Lieferkosten"
+
 #: weltladen/modifiers.py:113
 msgid "Postal shipping"
 msgstr "Lieferung mit der Post"
 
-#: weltladen/settings/base.py:434
+#: weltladen/settings/base.py:433
 msgid "Default Page"
 msgstr "Standardseite"
 
-#: weltladen/settings/base.py:495
+#: weltladen/settings/base.py:494
 msgid "Product Heading"
 msgstr "Produktüberschrift"
 
-#: weltladen/settings/base.py:500
+#: weltladen/settings/base.py:499
 msgid "Default"
 msgstr "Standard"
 
@@ -401,6 +452,27 @@ msgstr "Preis pro Stück"
 msgid "incl. VAT"
 msgstr "inkl. MwSt"
 
+#: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:48
+#| msgid "Product"
+msgctxt "catalog"
+msgid "Watch product"
+msgstr "Auf die Wunschliste"
+
+#: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:51
+msgid "The product has been successfully placed in the shopping cart:"
+msgstr "Das Produkt wurde erfolgreich in den Warenkorb gelegt."
+
+#: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:53
+msgctxt "catalog"
+msgid "Add to cart"
+msgstr "In den Warenkorb"
+
+#: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:59
+msgctxt "catalog"
+msgid ""
+"By adding a product to the cart you are giving consent to cookies being used."
+msgstr "Wenn Sie ein Produkt in den Warenkorb legen, stimmen Sie zu, dass Cookies genutzt werden."
+
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:48
 msgid "Details"
 msgstr "Details"
@@ -437,15 +509,41 @@ msgstr ""
 "klicken Sie auf <a href=\"%(login_url)s\">sign in</a> und versuchen es "
 "erneut."
 
+#: weltladen/templates/weltladen/search/results.html:17
+msgid "{{ search_data.count }} matching products found"
+msgstr "{{ search_data.count }} Treffer"
+
+#: weltladen/templates/weltladen/search/results.html:18
+#, fuzzy
+#| msgid "Unit Price"
+msgid "Base Price"
+msgstr "Preis pro Stück"
+
+#: weltladen/templates/weltladen/search/results.html:21
+msgid "Searching for <em>{{ searchQuery }}</em> has revealed nothing."
+msgstr ""
+
+#: weltladen/templates/weltladen/search/results.html:41
+msgid "Page navigation"
+msgstr "Seitennavigation"
+
+#: weltladen/templates/weltladen/search/results.html:48
+msgid "Loading more results"
+msgstr "Lade mehr Produkte"
+
+#: weltladen/templates/weltladen/search/results.html:55
+msgid "Load more products"
+msgstr "Lade mehr Produkte"
+
 #: weltladen/views.py:29
 msgid "Successfully registered yourself."
 msgstr "Sie haben sich erfolgreich registriert."
 
-#: weltladen/views.py:47
+#: weltladen/views.py:49
 msgid "Activation of your account has been successfull."
 msgstr "Ihre Aktivierung für Ihren Zugang war erfolgreich."
 
-#: weltladen/views.py:75
+#: weltladen/views.py:77
 msgid "Successfully sent message"
 msgstr "Nachricht erfolgreich versandt."
 

@@ -2,6 +2,7 @@
 {% load cms_tags sekizai_tags sass_tags %}
 
 {% block title %}{{ product.product_name }}{% endblock %}
+{% block robots %}noindex, nofollow{% endblock %}
 
 {% block breadcrumb %}{% with extra_ance=product.product_name %}
 	{% include "shop/breadcrumb/default.html" %}

@@ -19,6 +19,8 @@ CMSPLUGIN_CASCADE['leaflet'] = {
 
 TOMTOM_APIKEY=os.environ.get('TOMTOM_APIKEY')
 
+ROBOTS_META_TAGS = ('index, follow')
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

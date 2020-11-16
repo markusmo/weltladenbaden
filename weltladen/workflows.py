@@ -27,9 +27,10 @@ class DeliveryNotePaymentWorkflowMixin(object):
         """
         Acknowledge the payment. Create Payment-line
         """
-        OrderPayment.objects.create(
+        op = OrderPayment.objects.create(
             order=self,
             amount=self._total,
             transaction_id='auto generated',
             payment_method='delivery-note'
-        ).save()
+        )
+        op.save()
