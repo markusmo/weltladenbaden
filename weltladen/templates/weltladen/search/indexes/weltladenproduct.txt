@@ -4,6 +4,9 @@
 {{ product.manufacturer }}
 {{ product.supplier }}
 {{ product.country_of_origin }}
+{% if product.gluten_free %}glutenfrei gluten free{% endif %}
+{% if product.lactose_free %}laktosefrei lactose free{% endif %}
+{% if product.vegan %}vegan{% endif %}
 {{ product.short_description|striptags }}
 {{ product.manufacturer }}{% for page in product.cms_pages.public %}
 {{ page.get_title }}{% endfor %}

@@ -30,7 +30,7 @@ django-redis-sessions = "*"
 phonenumbers = "*"
 djangocms-bootstrap = "*"
 libsass = "*"
-django-shop = ">=1.2"
+django-shop = {editable = true, git = "https://github.com/awesto/django-shop.git"}
 psycopg2-binary = "*"
 geopy = "*"
 django-countries = "*"

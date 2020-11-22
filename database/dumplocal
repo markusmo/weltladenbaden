@@ -1,1 +1,3 @@
-pg_dump -U djangouser weltladenshop > dump_latest.sql
+#pg_dump -U djangouser weltladenshop > dump_latest.sql
+
+pg_dump  -U djangouser --table=weltladen_locations --data-only --column-inserts weltladenshop > gemeinden.sql
