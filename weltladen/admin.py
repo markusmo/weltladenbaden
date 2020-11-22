@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import csv
+import re
 from django.contrib import admin
 from django.http.response import HttpResponse
 from django.utils.translation import ugettext_lazy as _
@@ -116,6 +117,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
         for fields see: https://business.facebook.com/business/help/120325381656392?id=725943027705960
         '''
         short_description = _('Export products for Instragram')
+        cleanr = re.compile('<.*?>')
         insta_fields =[
             'id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'brand']
         response = HttpResponse(content_type='text/csv')
@@ -129,7 +131,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             row = []
             row.append(p.pk)
             row.append(p.product_name)
-            row.append(p.description)
+            row.append(re.sub(cleanr, '', p.description))
             row.append(p.active)
             row.append('new')
             row.append(str(p.unit_price))
