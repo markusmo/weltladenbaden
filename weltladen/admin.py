@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import csv
 from django.contrib import admin
+from django.http.response import HttpResponse
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.sites.shortcuts import get_current_site
 from parler.admin import TranslatableAdmin
 from filer.models import ThumbnailOption
 from shop.admin.defaults import customer
@@ -70,6 +73,11 @@ __all__ = ['customer']
 
 @admin.register(WeltladenProduct)
 class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, TranslatableAdmin, CMSPageAsCategoryMixin, UnitPriceMixin, SearchProductIndexMixin, admin.ModelAdmin):
+    '''
+     # selbstabholung anderer text in mail
+    #TODO: 
+    # pro.get_absolute_url()
+    '''
     fieldsets = [
         (None, {
             'fields': [
@@ -100,3 +108,33 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
     search_fields = ['product_name']
     filter_horizontal = ['quality_labels', 'additional_manufacturers']
     list_filter = [TaxSwitchFilter, ]
+    actions = ['export_instagram_products']
+
+    def export_instagram_products(self, request, queryset):
+        '''
+        Exports data for instagram posts
+        for fields see: https://business.facebook.com/business/help/120325381656392?id=725943027705960
+        '''
+        short_description = _('Export products for Instragram')
+        insta_fields =[
+            'id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'brand']
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=products_instagram.csv'
+        writer = csv.writer(response)
+        site_url = request.scheme + '://' + get_current_site(request).domain
+        writer.writerow([insta for insta in insta_fields ])
+        if queryset == None:
+            queryset = WeltladenProduct.objects.all()
+        for p in queryset:
+            row = []
+            row.append(p.pk)
+            row.append(p.product_name)
+            row.append(p.description)
+            row.append(p.active)
+            row.append('new')
+            row.append(str(p.unit_price))
+            row.append(site_url+p.get_absolute_url())
+            row.append(site_url+p.images.first().url)
+            row.append(p.supplier)
+            row = writer.writerow(row)
+        return response
