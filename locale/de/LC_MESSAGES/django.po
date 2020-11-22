@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-15 15:28+0100\n"
+"POT-Creation-Date: 2020-11-22 16:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Markus Mohanty <markus.mohanty@gmail.com>\n"
 "Language-Team: Markus Mohanty <markus.mohanty@gmail.com>\n"
@@ -18,44 +18,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: weltladen/admin.py:24
+#: weltladen/admin.py:27
 msgid "All"
 msgstr "Alle"
 
-#: weltladen/admin.py:26
+#: weltladen/admin.py:29
 #, no-python-format
 msgid "20% sales tax"
 msgstr "20% MwSt"
 
-#: weltladen/admin.py:28
+#: weltladen/admin.py:31
 #, no-python-format
 msgid "10% sales Tax"
 msgstr "10% MwSt"
 
-#: weltladen/admin.py:51
+#: weltladen/admin.py:54
 msgid "Sales Tax"
 msgstr "Mehrwertssteuer"
 
-#: weltladen/admin.py:82
+#: weltladen/admin.py:90
 msgid "Translatable Fields"
 msgstr "Übersetzbare Felder"
 
-#: weltladen/admin.py:85
+#: weltladen/admin.py:93
 msgid "Manufacturer and Supplier"
 msgstr "Hersteller und Lieferant"
 
-#: weltladen/admin.py:89
+#: weltladen/admin.py:97
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: weltladen/admin.py:92 weltladen/models.py:371
+#: weltladen/admin.py:100 weltladen/models.py:371
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:54
 msgid "Ingredients"
 msgstr "Inhaltsstoffe"
 
+#: weltladen/admin.py:118
+msgid "Export products for Instragram"
+msgstr ""
+
 #: weltladen/apps.py:13
 msgid "My Shop"
 msgstr "Mein Shop"
+
+#: weltladen/cms_apps.py:66
+msgid "Catalog Search"
+msgstr ""
 
 #: weltladen/cms_plugins.py:27
 #: weltladen/templates/weltladen/forms/contact-us.html:7
@@ -453,7 +461,6 @@ msgid "incl. VAT"
 msgstr "inkl. MwSt"
 
 #: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:48
-#| msgid "Product"
 msgctxt "catalog"
 msgid "Watch product"
 msgstr "Auf die Wunschliste"
@@ -471,7 +478,9 @@ msgstr "In den Warenkorb"
 msgctxt "catalog"
 msgid ""
 "By adding a product to the cart you are giving consent to cookies being used."
-msgstr "Wenn Sie ein Produkt in den Warenkorb legen, stimmen Sie zu, dass Cookies genutzt werden."
+msgstr ""
+"Wenn Sie ein Produkt in den Warenkorb legen, stimmen Sie zu, dass Cookies "
+"genutzt werden."
 
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:48
 msgid "Details"
@@ -499,7 +508,15 @@ msgstr "Glutenfrei"
 msgid "Send"
 msgstr "Senden"
 
+#: weltladen/templates/weltladen/pages/error.html:13
+msgid "An error occured, please click the button below"
+msgstr "Ein Fehler ist aufgetreten, bitte klicken Sie auf den Button um es erneut zu versuchen."
+
 #: weltladen/templates/weltladen/pages/error.html:14
+msgid "Reload"
+msgstr "Neu laden"
+
+#: weltladen/templates/weltladen/pages/error.html:16
 #, python-format
 msgid ""
 "In case you have ordered anything on this site before, please <a href="

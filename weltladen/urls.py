@@ -39,6 +39,12 @@ urlpatterns.extend([
         path(r'new-activation-link/<str:activation_key>/', NewActivationView.as_view(), name='new-activation-link')
     ])
 
+if settings.DEBUG:
+    from .views import custom_page_not_found
+    urlpatterns.extend([
+        path(r'de/404/', custom_page_not_found)
+    ])
+
 if settings.USE_I18N:
     urlpatterns.extend(i18n_patterns(*i18n_urls))
 else:

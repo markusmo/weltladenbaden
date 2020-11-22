@@ -82,3 +82,7 @@ class ContactUsView(GenericAPIView):
         if 'email' in errors:
             errors.update({NON_FIELD_ERRORS: errors.pop('email')})
         return Response({form.form_name: errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+def custom_page_not_found(request):
+    import django
+    return django.views.defaults.page_not_found(request, None)
