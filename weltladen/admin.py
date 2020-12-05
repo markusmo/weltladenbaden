@@ -136,7 +136,8 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             row.append('new')
             row.append(str(p.unit_price))
             row.append(site_url+p.get_absolute_url())
-            row.append(site_url+p.images.first().url)
+            if p.images.first():
+                row.append(site_url+p.images.first().url)
             row.append(p.supplier)
             row = writer.writerow(row)
         return response
