@@ -42,7 +42,8 @@ def get_activation_key(username):
     secret_key = get_random_string(20, chars)
     return hashlib.sha256((secret_key + username).encode('utf-8')).hexdigest()
 
-
+def get_default_expiration_date(self):
+    return (datetime.now() + timedelta(days=3)).date()
 class WeltladenCustomer(BaseCustomer):
     SALUTATION = [('mrs', _("Mrs.")), ('mr', _("Mr.")), ('na', _("(n/a)"))]
 
@@ -107,7 +108,7 @@ class Activation(models.Model):
 
     activation_key_expires = models.DateField(
         _('Activation Key Expiration'),
-        default=(datetime.now() + timedelta(days=3)).date()
+        default=get_default_expiration_date()
     )
 
     def set_new_activation_key(self):
@@ -118,7 +119,6 @@ class Activation(models.Model):
         if (date.today() - self.activation_key_expires) > timedelta(days=3):
             return False
         return True
-        
 
 
 class OrderItem(BaseOrderItem):
