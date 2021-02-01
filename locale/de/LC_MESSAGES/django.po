@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 16:14+0100\n"
+"POT-Creation-Date: 2021-01-24 22:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Markus Mohanty <markus.mohanty@gmail.com>\n"
 "Language-Team: Markus Mohanty <markus.mohanty@gmail.com>\n"
@@ -18,44 +18,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: weltladen/admin.py:27
+#: weltladen/admin.py:28
 msgid "All"
 msgstr "Alle"
 
-#: weltladen/admin.py:29
+#: weltladen/admin.py:30
 #, no-python-format
 msgid "20% sales tax"
 msgstr "20% MwSt"
 
-#: weltladen/admin.py:31
+#: weltladen/admin.py:32
 #, no-python-format
 msgid "10% sales Tax"
 msgstr "10% MwSt"
 
-#: weltladen/admin.py:54
+#: weltladen/admin.py:55
 msgid "Sales Tax"
 msgstr "Mehrwertssteuer"
 
-#: weltladen/admin.py:90
+#: weltladen/admin.py:92
 msgid "Translatable Fields"
 msgstr "Übersetzbare Felder"
 
-#: weltladen/admin.py:93
+#: weltladen/admin.py:95
 msgid "Manufacturer and Supplier"
 msgstr "Hersteller und Lieferant"
 
-#: weltladen/admin.py:97
+#: weltladen/admin.py:99
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: weltladen/admin.py:100 weltladen/models.py:371
+#: weltladen/admin.py:102 weltladen/models.py:403
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:54
 msgid "Ingredients"
 msgstr "Inhaltsstoffe"
 
-#: weltladen/admin.py:118
+#: weltladen/admin.py:106
+msgid "Instagram"
+msgstr "Instagram"
+
+#: weltladen/admin.py:131
 msgid "Export products for Instragram"
-msgstr ""
+msgstr "Produkte für Instagram exportieren"
 
 #: weltladen/apps.py:13
 msgid "My Shop"
@@ -63,7 +67,7 @@ msgstr "Mein Shop"
 
 #: weltladen/cms_apps.py:66
 msgid "Catalog Search"
-msgstr ""
+msgstr "Suche im Katalog"
 
 #: weltladen/cms_plugins.py:27
 #: weltladen/templates/weltladen/forms/contact-us.html:7
@@ -80,7 +84,7 @@ msgstr "Useraktivierung"
 
 #: weltladen/cms_plugins.py:120
 msgid "Leaflet Map"
-msgstr ""
+msgstr "Leaflet Karte"
 
 #: weltladen/cms_plugins.py:208
 #, python-brace-format
@@ -117,223 +121,234 @@ msgstr "Text"
 msgid "Initialize the workdir to run the demo of weltladen."
 msgstr ""
 
-#: weltladen/models.py:47
+#: weltladen/models.py:49
 msgid "Mrs."
 msgstr "Frau"
 
-#: weltladen/models.py:47
+#: weltladen/models.py:49
 msgid "Mr."
 msgstr "Herr"
 
-#: weltladen/models.py:47
+#: weltladen/models.py:49
 msgid "(n/a)"
 msgstr "Keine Angabe"
 
-#: weltladen/models.py:50
+#: weltladen/models.py:52
 msgid "Customer Number"
 msgstr "Kundennummer"
 
-#: weltladen/models.py:57
+#: weltladen/models.py:59
 msgid "Phone number"
 msgstr "Telefonnummer"
 
-#: weltladen/models.py:63
+#: weltladen/models.py:65
 msgid "Salutation"
 msgstr "Anrede"
 
-#: weltladen/models.py:104
+#: weltladen/models.py:106
 msgid "Activation Key"
-msgstr ""
+msgstr "Aktivierungsid"
 
-#: weltladen/models.py:109
+#: weltladen/models.py:111
 msgid "Activation Key Expiration"
-msgstr ""
+msgstr "Auslaufdatum"
 
-#: weltladen/models.py:125
+#: weltladen/models.py:126
 msgid "Ordered quantity"
 msgstr "Anzahl Bestellung"
 
-#: weltladen/models.py:126
+#: weltladen/models.py:127
 msgid "Item canceled "
 msgstr "Bestellposition storniert"
 
-#: weltladen/models.py:131
+#: weltladen/models.py:132
 msgid "Name"
 msgstr "Name"
 
-#: weltladen/models.py:138 weltladen/models.py:215
+#: weltladen/models.py:139 weltladen/models.py:240
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:82
 msgid "Manufacturer"
 msgstr "Hersteller"
 
-#: weltladen/models.py:139
-#, fuzzy
-#| msgid "Manufacturer"
+#: weltladen/models.py:140
 msgid "Manufacturers"
 msgstr "Hersteller"
 
-#: weltladen/models.py:147 weltladen/models.py:154 weltladen/models.py:234
+#: weltladen/models.py:148 weltladen/models.py:155 weltladen/models.py:259
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:61
 msgid "Supplier"
 msgstr "Lieferant"
 
-#: weltladen/models.py:155
-#, fuzzy
-#| msgid "Supplier"
+#: weltladen/models.py:156
 msgid "Suppliers"
 msgstr "Lieferant"
 
-#: weltladen/models.py:164
+#: weltladen/models.py:165
 msgid "Ordering"
 msgstr "Sortierung"
 
-#: weltladen/models.py:169
+#: weltladen/models.py:170
+#: weltladen/models.py:180
 msgid "Quality Label"
 msgstr "Gütesiegel"
 
-#: weltladen/models.py:179
-#, fuzzy
-#| msgid "Quality labels"
-msgid "Quality label"
-msgstr "Gütesiegel"
-
-#: weltladen/models.py:180
-#, fuzzy
-#| msgid "Quality labels"
+#: weltladen/models.py:181
 msgid "Quality lables"
 msgstr "Gütesiegel"
 
-#: weltladen/models.py:201
+#: weltladen/models.py:188
+msgid "Taxonomy number"
+msgstr "Kategorie-Nummer"
+
+#: weltladen/models.py:189
+msgid ""
+"See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt "
+"for further information"
+msgstr ""
+"Siehe https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US."
+"txt für mehr Infos"
+
+#: weltladen/models.py:193
+msgid "Taxonomy name"
+msgstr "Bezeichner"
+
+#: weltladen/models.py:208
+msgid "Instagram category"
+msgstr "Instagram-Kategorisierung"
+
+#: weltladen/models.py:226
 msgid "Product Name"
 msgstr "Produktbezeichnung"
 
-#: weltladen/models.py:204
+#: weltladen/models.py:229
 msgid "Slug"
 msgstr "Slug"
 
-#: weltladen/models.py:223
+#: weltladen/models.py:248
 msgid "Additional Manufacturers"
 msgstr "Andere Hersteller"
 
-#: weltladen/models.py:228
+#: weltladen/models.py:253
 msgid "Display manufacturer as raw material supplier"
-msgstr ""
+msgstr "Zeige Hersteller als Rohstofflieferant an."
 
-#: weltladen/models.py:241
+#: weltladen/models.py:266
 msgid "Quality labels"
 msgstr "Gütesiegel"
 
-#: weltladen/models.py:246
+#: weltladen/models.py:271
 msgid "Origin countries"
 msgstr "Ursprungsländer"
 
-#: weltladen/models.py:247
+#: weltladen/models.py:272
 msgid "Select one or many"
 msgstr "Eines oder mehrere auswählen"
 
-#: weltladen/models.py:254
+#: weltladen/models.py:279
 msgid "Sort by"
 msgstr "Sortieren nach"
 
-#: weltladen/models.py:261
+#: weltladen/models.py:286
 msgid "Choose list view this product shall appear on."
 msgstr "Kategorien auf denen dieses Product erscheinen soll."
 
-#: weltladen/models.py:270
+#: weltladen/models.py:295
 msgid "Unit price"
 msgstr "Preis pro Stück"
 
-#: weltladen/models.py:272
+#: weltladen/models.py:297
 msgid "Gross price for this product"
 msgstr "Preis pro Stück mit Steuer."
 
-#: weltladen/models.py:276
+#: weltladen/models.py:301
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:99
 msgid "Vegan"
 msgstr "Vegan"
 
-#: weltladen/models.py:281
+#: weltladen/models.py:306
 #: weltladen/templates/weltladen/catalog/weltladenproduct-detail.html:105
 msgid "Lactose free"
 msgstr "Laktosefrei"
 
-#: weltladen/models.py:286
+#: weltladen/models.py:311
 msgid "Gluten free"
 msgstr "Glutenfrei"
 
-#: weltladen/models.py:291
+#: weltladen/models.py:316
 msgid "Switch Tax"
 msgstr "MwSt.-Steuerung"
 
-#: weltladen/models.py:293
+#: weltladen/models.py:318
 msgid "If switched on, then 20% tax item, if off then 10% tax item"
 msgstr "Wenn angehakt, dann 20% MwST, sonst 10% MwSt."
 
-#: weltladen/models.py:297
+#: weltladen/models.py:322
+#: weltladen/templates/weltladen/email/order-detail.html:14
 msgid "Product code"
 msgstr "Artikelnummer"
 
-#: weltladen/models.py:303
+#: weltladen/models.py:335
+#: weltladen/templates/weltladen/email/order-detail.html:15
 msgid "Product"
 msgstr "Produkt"
 
-#: weltladen/models.py:304
+#: weltladen/models.py:336
 msgid "Products"
 msgstr "Produkte"
 
-#: weltladen/models.py:338
+#: weltladen/models.py:370
 msgid "Product slug already exits"
 msgstr "Produkt slug existiert bereits"
 
-#: weltladen/models.py:350
+#: weltladen/models.py:382
 msgid "Caption"
 msgstr "Untertitel"
 
-#: weltladen/models.py:353
+#: weltladen/models.py:385
 msgid "Short description used in the catalog's list view of products."
 msgstr "Stichwörter, die in der Produktübersicht angezeigt werden."
 
-#: weltladen/models.py:357
+#: weltladen/models.py:389
 msgid "Short Description"
 msgstr "Kurzbeschreibung"
 
-#: weltladen/models.py:360
+#: weltladen/models.py:392
 msgid "A short description as an overview for customers."
 msgstr "Kurzbeschreibung als Überblick für den Kunden."
 
-#: weltladen/models.py:364
+#: weltladen/models.py:396
 msgid "Description"
 msgstr "Langtext"
 
-#: weltladen/models.py:367
+#: weltladen/models.py:399
 msgid "Full description used in the catalog's detail view of Products."
 msgstr "Vollständige Produktbeschreiung für die Produktseite."
 
-#: weltladen/models.py:373
+#: weltladen/models.py:405
 msgid "What it contains."
 msgstr "Was es enthält"
 
-#: weltladen/models.py:384
+#: weltladen/models.py:416
 msgid "ZIP / Postal code"
 msgstr "PLZ"
 
-#: weltladen/models.py:389
+#: weltladen/models.py:421
 msgid "City"
 msgstr "Stadt"
 
-#: weltladen/models.py:394
+#: weltladen/models.py:426
 msgid "Country"
 msgstr "Land"
 
-#: weltladen/models.py:399
+#: weltladen/models.py:431
 msgid "Distance to Baden"
 msgstr "Distanz zu Baden"
 
-#: weltladen/models.py:403
+#: weltladen/models.py:435
 msgid "Location"
 msgstr "Standort (Kunde)"
 
-#: weltladen/models.py:404
+#: weltladen/models.py:436
 msgid "Locations"
 msgstr "Standorte (Kunde)"
 
@@ -437,10 +452,12 @@ msgstr "Registrieren"
 
 #: weltladen/templates/weltladen/cart/editable.html:11
 #: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:26
+#: weltladen/templates/weltladen/email/order-detail.html:62
 msgid "Subtotal"
 msgstr "Zwischensumme"
 
 #: weltladen/templates/weltladen/cart/editable.html:27
+#: weltladen/templates/weltladen/email/order-detail.html:74
 msgid "Total"
 msgstr "Summe"
 
@@ -449,10 +466,12 @@ msgid "Close"
 msgstr "Schließen"
 
 #: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:10
+#: weltladen/templates/weltladen/email/order-detail.html:13
 msgid "Quantity"
 msgstr "Anzahl"
 
 #: weltladen/templates/weltladen/catalog/weltladenproduct-add2cart.html:18
+#: weltladen/templates/weltladen/search/results.html:18
 msgid "Unit Price"
 msgstr "Preis pro Stück"
 
@@ -504,13 +523,24 @@ msgstr "Ja"
 msgid "Gluten Free"
 msgstr "Glutenfrei"
 
+#: weltladen/templates/weltladen/email/order-detail.html:8
+#, python-format
+msgid "Summary of Your Order %(order_number)s"
+msgstr "Zusammenfassung Ihrer Bestellung %(order_number)s"
+
+#: weltladen/templates/weltladen/email/order-detail.html:16
+msgid "Price"
+msgstr "Preis"
+
 #: weltladen/templates/weltladen/forms/contact-us.html:55
 msgid "Send"
 msgstr "Senden"
 
 #: weltladen/templates/weltladen/pages/error.html:13
 msgid "An error occured, please click the button below"
-msgstr "Ein Fehler ist aufgetreten, bitte klicken Sie auf den Button um es erneut zu versuchen."
+msgstr ""
+"Ein Fehler ist aufgetreten, bitte klicken Sie auf den Button um es erneut zu "
+"versuchen."
 
 #: weltladen/templates/weltladen/pages/error.html:14
 msgid "Reload"
@@ -530,15 +560,9 @@ msgstr ""
 msgid "{{ search_data.count }} matching products found"
 msgstr "{{ search_data.count }} Treffer"
 
-#: weltladen/templates/weltladen/search/results.html:18
-#, fuzzy
-#| msgid "Unit Price"
-msgid "Base Price"
-msgstr "Preis pro Stück"
-
 #: weltladen/templates/weltladen/search/results.html:21
 msgid "Searching for <em>{{ searchQuery }}</em> has revealed nothing."
-msgstr ""
+msgstr "Suche nach <em>{{ searchQuery}}</em hat nichts ergeben."
 
 #: weltladen/templates/weltladen/search/results.html:41
 msgid "Page navigation"

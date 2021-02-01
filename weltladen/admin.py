@@ -19,7 +19,7 @@ from shop.admin.product import (CMSPageAsCategoryMixin, UnitPriceMixin,
                                 ProductImageInline, InvalidateProductCacheMixin,
                                 SearchProductIndexMixin)
 from weltladen.models import (Manufacturer, Supplier, QualityLabel,
-                              WeltladenProduct)
+                              WeltladenProduct, InstagramCategory)
 
 
 class BooleanDefaultNoFilter(admin.SimpleListFilter):
@@ -68,6 +68,7 @@ class OrderAdmin(DeliveryOrderAdminMixin, SendCloudOrderAdminMixin, OrderAdmin):
 admin.site.register(Manufacturer, admin.ModelAdmin)
 admin.site.register(Supplier, admin.ModelAdmin)
 admin.site.register(QualityLabel, admin.ModelAdmin)
+admin.site.register(InstagramCategory, admin.ModelAdmin)
 
 __all__ = ['customer']
 
@@ -102,6 +103,10 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             'classes': ['collapse'],
             'fields': ['ingredients'],
         }),
+        (_("Instagram"), {
+            'classes': ['collapse'],
+            'fields': ['instagram_category'],
+        }),
     ]
     inlines = [ProductImageInline]
     prepopulated_fields = {'slug': ['product_name']}
@@ -111,6 +116,13 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
     list_filter = [TaxSwitchFilter, ]
     actions = ['export_instagram_products']
 
+    def save_model(self, request, product, form, change):
+        if 'cms_pages' in form.changed_data:
+            cms_pages = product.cms_pages.filter(instagramcategory__isnull=False)
+            if len(cms_pages) >= 1:
+                product.instagram_category = InstagramCategory.objects.get(cms_page=cms_pages.first())
+        return super().save_model(request, product, form, change)
+
     def export_instagram_products(self, request, queryset):
         '''
         Exports data for instagram posts
@@ -119,9 +131,10 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
         short_description = _('Export products for Instragram')
         cleanr = re.compile('<.*?>')
         insta_fields =[
-            'id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'brand']
+            'id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'brand', 'google_product_category']
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=products_instagram.csv'
+        response.write(u'\ufeff'.encode('utf8'))
         writer = csv.writer(response)
         site_url = request.scheme + '://' + get_current_site(request).domain
         writer.writerow([insta for insta in insta_fields ])
@@ -129,15 +142,21 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             queryset = WeltladenProduct.objects.all()
         for p in queryset:
             row = []
-            row.append(p.pk)
-            row.append(p.product_name)
-            row.append(re.sub(cleanr, '', p.description))
-            row.append(p.active)
-            row.append('new')
-            row.append(str(p.unit_price))
-            row.append(site_url+p.get_absolute_url())
-            if p.images.first():
+            row.append(p.pk) #id
+            row.append(p.product_name) #title
+            row.append(re.sub(cleanr, '', p.description)) #description
+            row.append('in stock' if p.active else ' out of stock') #availability
+            row.append('new') #condition
+            row.append(str(p.unit_price)) #price 
+            row.append(site_url+p.get_absolute_url()) #url
+            if p.images.first(): #image
                 row.append(site_url+p.images.first().url)
-            row.append(p.supplier)
+            else:
+                row.append('')
+            row.append(p.supplier) #brand
+            if p.instagram_category:
+                row.append(p.instagram_category.taxonomy_name) #google_product_category
+            else:
+                row.append('')
             row = writer.writerow(row)
         return response

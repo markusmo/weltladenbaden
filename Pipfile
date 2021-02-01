@@ -36,7 +36,7 @@ geopy = "*"
 django-countries = "*"
 django-elasticsearch-dsl = "*"
 elasticsearch-dsl = ">=7"
-djangoshop-sendcloud = "*"
+djangoshop-sendcloud = {editable = true, git = "https://github.com/markusmo/djangoshop-sendcloud.git"}
 python-dotenv = "*"
 
 [dev-packages]
@@ -52,7 +52,7 @@ django-extensions = "*"
 werkzeug = "*"
 
 [requires]
-python_version = "3.8.6"
+python_version = "3.8.7"
 
 [pipenv]
 allow_prereleases = true

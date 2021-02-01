@@ -15,7 +15,7 @@
 {% block search-results-head %}
 	<div class="row lead text-muted py-1" ng-if="search_data.count>0">
 		<div class="col-8" ng-cloak>{% trans "{{ search_data.count }} matching products found" %}</div>
-		<div class="col-4 text-right">{% trans "Base Price" %}</div>
+		<div class="col-4 text-right">{% trans "Unit Price" %}</div>
 	</div>
 	<div class="row lead text-muted" ng-if="search_data.count==0">
 		<div class="col" ng-cloak>{% trans "Searching for <em>{{ searchQuery }}</em> has revealed nothing." %}</div>

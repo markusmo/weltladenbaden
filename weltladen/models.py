@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import hashlib
 from datetime import date, datetime, timedelta
 
+from cms.models.pagemodel import Page
 from django.apps import apps
 from django.core.cache import cache
 from django.core.exceptions import ValidationError
@@ -42,7 +43,7 @@ def get_activation_key(username):
     secret_key = get_random_string(20, chars)
     return hashlib.sha256((secret_key + username).encode('utf-8')).hexdigest()
 
-def get_default_expiration_date(self):
+def get_default_expiration_date():
     return (datetime.now() + timedelta(days=3)).date()
 class WeltladenCustomer(BaseCustomer):
     SALUTATION = [('mrs', _("Mrs.")), ('mr', _("Mr.")), ('na', _("(n/a)"))]
@@ -182,6 +183,30 @@ class QualityLabel(models.Model):
     def __str__(self):
         return self.name
 
+class InstagramCategory(models.Model):
+    taxonomy_number = models.PositiveIntegerField(
+        _("Taxonomy number"),
+        help_text=_("See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt for further information")
+    )
+
+    taxonomy_name = models.CharField(
+        _("Taxonomy name"),
+        max_length=255,
+        unique=True
+    )
+
+    cms_page = models.ForeignKey(
+        Page,
+        limit_choices_to={'publisher_is_draft': False},
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.taxonomy_name
+
+    class Meta:
+        verbose_name=_("Instagram category")
+        verbose_name_plural=("Instagram categories")
 
 class ProductQuerySet(TranslatableQuerySet, PolymorphicQuerySet):
     pass
@@ -297,6 +322,13 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         _("Product code"),
         max_length=255,
         unique=True,
+    )
+
+    instagram_category = models.ForeignKey(
+        InstagramCategory,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
     )
 
     class Meta:
