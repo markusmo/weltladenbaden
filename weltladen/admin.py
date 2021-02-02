@@ -155,7 +155,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
                 row.append('')
             row.append(p.supplier) #brand
             if p.instagram_category:
-                row.append(p.instagram_category.taxonomy_name) #google_product_category
+                row.append(p.instagram_category.taxonomy_number) #google_product_category
             else:
                 row.append('')
             row = writer.writerow(row)
