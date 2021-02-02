@@ -140,12 +140,12 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
         writer.writerow([insta for insta in insta_fields ])
         if queryset == None:
             queryset = WeltladenProduct.objects.all()
-        for p in queryset:
+        for p in queryset.filter(active=True):
             row = []
             row.append(p.pk) #id
             row.append(p.product_name) #title
             row.append(re.sub(cleanr, '', p.description)) #description
-            row.append('in stock' if p.active else ' out of stock') #availability
+            row.append('in stock' if p.active else 'out of stock') #availability
             row.append('new') #condition
             row.append(str(p.unit_price)) #price 
             row.append(site_url+p.get_absolute_url()) #url
