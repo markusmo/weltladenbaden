@@ -115,13 +115,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
     filter_horizontal = ['quality_labels', 'additional_manufacturers']
     list_filter = [TaxSwitchFilter, ]
     actions = ['export_instagram_products']
-
-    def save_model(self, request, product, form, change):
-        if 'cms_pages' in form.changed_data:
-            cms_pages = product.cms_pages.filter(instagramcategory__isnull=False)
-            if len(cms_pages) >= 1:
-                product.instagram_category = InstagramCategory.objects.get(cms_page=cms_pages.first())
-        return super().save_model(request, product, form, change)
+    
 
     def export_instagram_products(self, request, queryset):
         '''

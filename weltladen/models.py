@@ -9,6 +9,8 @@ from django.apps import apps
 from django.core.cache import cache
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.template.loader import select_template
 from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
@@ -369,6 +371,14 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         if WeltladenProduct.objects.filter(slug=self.slug).exclude(id=self.id).exists():
             raise ValidationError(_('Product slug already exits'), code='invalid')
 
+#save instagram category according to its product page automatically
+@receiver(post_save, sender=ProductPage)
+def weltadenproduct_post_save_receiver(sender, instance, **kwargs):
+    print('it works')
+    instagram_category = instance.page.instagramcategory_set.first()
+    if instagram_category:
+        instagram_category.weltladenproduct_set.add(instance.product)
+        instagram_category.save()
 
 class WeltladenProductTranslation(TranslatedFieldsModel):
     master = models.ForeignKey(
