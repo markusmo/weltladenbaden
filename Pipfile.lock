@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "99a28456b6c9533064dc0308e76e5cdd1b7d31af3d06ba5c2fd3f735351ddc9e"
+            "sha256": "46a8626af9195427d27f4ca8ce2b98c584b9b7802fdadef5b63ed4a5393d0bd0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -412,7 +412,7 @@
         "djangoshop-sendcloud": {
             "editable": true,
             "git": "https://github.com/markusmo/djangoshop-sendcloud.git",
-            "ref": "49c01045bf163246f3c49976093fe0aeb01678ca"
+            "ref": "45f114092bc273c6ec1917aa23d9cd8a6b796df7"
         },
         "easy-thumbnails": {
             "hashes": [
