@@ -85,7 +85,7 @@ class WeltladenProductAdmin(InvalidateProductCacheMixin, SortableAdminMixin, Tra
             'fields': [
                 ('product_name', 'slug'),
                 ('product_code'),
-                ('unit_price', 'tax_switch'),
+                ('unit_price', 'tax_switch', 'weight'),
                 'active',
             ],
         }),

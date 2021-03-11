@@ -333,6 +333,14 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
         blank=True
     )
 
+    weight = models.DecimalField(
+        _("Weight"),
+        help_text=_("Weight in kilograms (kg). max 99.99kg"),
+        decimal_places=2,
+        max_digits=4,
+        default=0.0
+    )
+
     class Meta:
         verbose_name = _("Product")
         verbose_name_plural = _("Products")
@@ -356,6 +364,9 @@ class WeltladenProduct(CMSPageReferenceMixin, TranslatableModelMixin, BaseProduc
     @property
     def sample_image(self):
         return self.images.first()
+
+    def get_weight(self):
+        return self.weight
 
     def invalidate_cache(self):
         """
