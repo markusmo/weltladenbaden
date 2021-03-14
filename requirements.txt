@@ -43,7 +43,7 @@ djangocms-bootstrap==1.1.2
 djangocms-cascade==1.3.7
 djangocms-text-ckeditor==4.0.0
 djangorestframework==3.12.2
--e git+https://github.com/markusmo/djangoshop-sendcloud.git@7358ac180ab24a76a9291ebb4cef8b3408033cce#egg=djangoshop_sendcloud
+-e git+https://github.com/markusmo/djangoshop-sendcloud.git@227a2b0abb2803cae7dab43bd9bc969b8388b78e#egg=djangoshop_sendcloud
 easy-thumbnails==2.7.1
 elasticsearch==7.10.1
 elasticsearch-dsl==7.3.0
