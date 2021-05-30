@@ -13,6 +13,16 @@
 	{% render_block "css" %}
 </head>
 
+{% addtobloc "js" %} 
+<script src="https://cdn.jsdelivr.net/gh/manucaralmo/GlowCookies@3.1.1/src/glowCookies.min.js"></script>
+<script>
+    glowCookies.start('{{ LANGUAGE_CODE }}', { 
+        style: 1,
+        analytics: '{{ GOOGLE_ANALYTICS }}', 
+        facebookPixel: '{{ FACEBOOK_PIXEL }}',
+        policyLink: 'https://weltladen-baden.at/cookiepolicy'
+    });
+</script> {% endaddtoblock %}
 {% addtoblock "js" %}<script src="{% static 'node_modules/angular/angular.min.js' %}" type="text/javascript"></script>{% endaddtoblock %}
 {% addtoblock "js" %}<script src="{% static 'node_modules/angular-sanitize/angular-sanitize.min.js' %}" type="text/javascript"></script>{% endaddtoblock %}
 {% addtoblock "js" %}<script src="{% static 'node_modules/angular-i18n/' %}{% djng_locale_script 'de' %}" type="text/javascript"></script>{% endaddtoblock %}
