@@ -18,6 +18,8 @@ CMSPLUGIN_CASCADE['leaflet'] = {
 }
 
 TOMTOM_APIKEY=os.environ.get('TOMTOM_APIKEY')
+GOOGLE_ANALYTICS = os.environ.get('GOOGLE_ANALYTICS')
+FACEBOOK_PIXEL = os.environ.get('FACEBOOK_PIXEL')
 
 ROBOTS_META_TAGS = ('index, follow')
 
