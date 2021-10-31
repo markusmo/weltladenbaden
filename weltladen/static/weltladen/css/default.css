@@ -9535,10 +9535,10 @@ html.cms-toolbar-expanded .modal-dialog {
 
 body {
   padding-top: 50px; }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     body {
       padding-top: 90px; } }
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     body .navbar {
       height: 90px;
       transition: height 500ms ease, box-shadow 250ms ease;
@@ -9589,16 +9589,13 @@ body {
   body .navbar .shop-social-icons .cms-placeholder {
     display: inline-block; }
   body .navbar .shop-primary-menu {
-    font-size: 125%;
     font-weight: 300; }
     @media (max-width: 991.98px) {
       body .navbar .shop-primary-menu {
         order: 1; } }
     @media (min-width: 992px) {
-      body .navbar .shop-primary-menu {
-        font-size: 150%; }
-        body .navbar .shop-primary-menu .dropdown-toggle::after {
-          font-size: initial; } }
+      body .navbar .shop-primary-menu .dropdown-toggle::after {
+        font-size: initial; } }
   @media (max-width: 991.98px) {
     body .navbar .shop-secondary-menu {
       order: 2; } }

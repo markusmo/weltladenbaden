@@ -71,13 +71,11 @@ body {
 			}
 		}
 		.shop-primary-menu {
-			font-size: 125%;
 			font-weight: 300;
 			@include media-breakpoint-down(md) {
 				order: 1;
 			}
 			@include media-breakpoint-up(lg) {
-				font-size: 150%;
 				.dropdown-toggle::after {
 					font-size: initial;
 				}
