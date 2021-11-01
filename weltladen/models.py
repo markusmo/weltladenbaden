@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import hashlib
 from datetime import date, datetime, timedelta
+from urllib.parse import urljoin
 
 from cms.models.pagemodel import Page
 from django.apps import apps
@@ -32,7 +33,7 @@ from shop.models.defaults.delivery_item import DeliveryItem
 from shop.models.defaults.mapping import ProductImage, ProductPage
 from shop.models.defaults.order import Order
 from shop.models.order import BaseOrderItem
-from shop.models.product import BaseProduct, BaseProductManager, CMSPageReferenceMixin
+from shop.models.product import BaseProduct, BaseProductManager
 from shop.money.fields import MoneyField
 from shop_sendcloud.models.address import BillingAddress, ShippingAddress
 
@@ -47,6 +48,29 @@ def get_activation_key(username):
 
 def get_default_expiration_date():
     return (datetime.now() + timedelta(days=3)).date()
+
+class CMSPageReferenceMixin:
+    """
+    Products which refer to CMS pages in order to emulate categories, normally need a method for
+    being accessed directly through a canonical URL. Add this mixin class for adding a
+    ``get_absolute_url()`` method to any to product model.
+    NOTE: Had to modify to use ``first`` instead of last to make it work with multiple categories
+    which also can be deactivated
+    """
+    category_fields = ['cms_pages']  # used by ProductIndex to fill the categories
+
+    def get_absolute_url(self):
+        """
+        Return the absolute URL of a product
+        """
+        # sorting by highest level, so that the canonical URL
+        # associates with the most generic category
+        cms_page = self.cms_pages.order_by('node__path').first()
+        if cms_page is None:
+            return urljoin('/category-not-assigned/', self.slug)
+        return urljoin(cms_page.get_absolute_url(), self.slug)
+
+
 class WeltladenCustomer(BaseCustomer):
     SALUTATION = [('mrs', _("Mrs.")), ('mr', _("Mr.")), ('na', _("(n/a)"))]
 
