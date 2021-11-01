@@ -135,7 +135,7 @@ class Activation(models.Model):
 
     activation_key_expires = models.DateField(
         _('Activation Key Expiration'),
-        default=get_default_expiration_date()
+        default=get_default_expiration_date
     )
 
     def set_new_activation_key(self):
